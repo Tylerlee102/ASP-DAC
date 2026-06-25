@@ -35,6 +35,7 @@ Current non-RTL executable evidence:
 
 - event-boundary model: `scripts/replaycapsule_model.py`
 - RV32I instruction interpreter: `scripts/rv32i_firmware_sim.py`
+- deterministic benchmark image builder: `scripts/build_firmware_images.py`
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 

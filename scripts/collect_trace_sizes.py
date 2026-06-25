@@ -84,8 +84,8 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
         commit_events = [event for event in events if event.get("event_type") == "EV_COMMIT"]
         kinst = max(len(commit_events) / 1000.0, 0.001)
         for name in BASELINES:
-            selected = _select_events(name, events)
-            if selected is None:
+            measurement = _baseline_measure(name, run, events)
+            if measurement is None:
                 rows.append(_todo_row(benchmark, name, "requires simulator/RTL artifact not yet generated"))
                 continue
             replay_success = _baseline_replay_success(benchmark, name, evidence_level)
@@ -94,15 +94,47 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
                     "benchmark": benchmark,
                     "baseline": name,
                     "status": "MEASURED",
-                    "event_count": str(len(selected)),
-                    "bytes": str(_estimated_record_bytes(name, selected)),
-                    "events_per_kinst": f"{len(selected) / kinst:.3f}",
+                    "event_count": str(measurement["event_count"]),
+                    "bytes": str(measurement["bytes"]),
+                    "events_per_kinst": f"{measurement['event_count'] / kinst:.3f}",
                     "replay_success": str(replay_success),
                     "evidence_level": evidence_level,
-                    "notes": f"size and replay success measured from {evidence_level} evidence; RTL trace sizes pending",
+                    "notes": f"{measurement['notes']}; RTL trace sizes pending",
                 }
             )
     return rows
+
+
+def _baseline_measure(
+    name: str,
+    run: dict[str, object],
+    events: list[dict[str, object]],
+) -> dict[str, int | str] | None:
+    selected = _select_events(name, events)
+    if selected is not None:
+        return {
+            "event_count": len(selected),
+            "bytes": _estimated_record_bytes(name, selected),
+            "notes": f"size and replay success measured from {run.get('evidence_level', 'model')} evidence",
+        }
+
+    if name == "full_instruction_trace" and run.get("evidence_level") == "firmware-sim":
+        commit_events = [event for event in events if event.get("event_type") == "EV_COMMIT"]
+        return {
+            "event_count": len(commit_events),
+            "bytes": len(commit_events) * 8,
+            "notes": "PC+instruction bytes measured from firmware-sim commits",
+        }
+
+    if name == "snapshot_on_failure" and run.get("evidence_level") == "firmware-sim":
+        final_state = run.get("final_state")
+        if isinstance(final_state, dict) and isinstance(final_state.get("snapshot_bytes"), int):
+            return {
+                "event_count": 1,
+                "bytes": int(final_state["snapshot_bytes"]),
+                "notes": "architectural snapshot bytes measured from firmware-sim final state",
+            }
+    return None
 
 
 def _select_events(name: str, events: list[dict[str, object]]) -> list[dict[str, object]] | None:

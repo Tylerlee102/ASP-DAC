@@ -47,51 +47,51 @@ watchdog_timeout_bug,mmio_only_trace,MEASURED,1,16,45.455,False,model,size and r
 watchdog_timeout_bug,interrupt_mmio_trace,MEASURED,3,48,136.364,False,model,size and replay success measured from model evidence; RTL trace sizes pending
 watchdog_timeout_bug,snapshot_on_failure,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
 watchdog_timeout_bug,property_aware_replaycapsule_rv,MEASURED,4,84,181.818,True,model,size and replay success measured from model evidence; RTL trace sizes pending
-sensor_threshold_bug,full_instruction_trace,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+sensor_threshold_bug,full_instruction_trace,MEASURED,18,144,1000.000,False,firmware-sim,PC+instruction bytes measured from firmware-sim commits; RTL trace sizes pending
 sensor_threshold_bug,full_commit_trace,MEASURED,18,288,1000.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 sensor_threshold_bug,branch_only_trace,MEASURED,7,112,388.889,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 sensor_threshold_bug,store_only_trace,MEASURED,0,0,0.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 sensor_threshold_bug,mmio_only_trace,MEASURED,1,16,55.556,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 sensor_threshold_bug,interrupt_mmio_trace,MEASURED,1,16,55.556,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-sensor_threshold_bug,snapshot_on_failure,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+sensor_threshold_bug,snapshot_on_failure,MEASURED,1,132,55.556,False,firmware-sim,architectural snapshot bytes measured from firmware-sim final state; RTL trace sizes pending
 sensor_threshold_bug,property_aware_replaycapsule_rv,MEASURED,9,189,500.000,True,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-interrupt_race_bug,full_instruction_trace,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+interrupt_race_bug,full_instruction_trace,MEASURED,4,32,1000.000,False,firmware-sim,PC+instruction bytes measured from firmware-sim commits; RTL trace sizes pending
 interrupt_race_bug,full_commit_trace,MEASURED,4,64,1000.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 interrupt_race_bug,branch_only_trace,MEASURED,0,0,0.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 interrupt_race_bug,store_only_trace,MEASURED,1,16,250.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 interrupt_race_bug,mmio_only_trace,MEASURED,1,16,250.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 interrupt_race_bug,interrupt_mmio_trace,MEASURED,3,48,750.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-interrupt_race_bug,snapshot_on_failure,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+interrupt_race_bug,snapshot_on_failure,MEASURED,1,132,250.000,False,firmware-sim,architectural snapshot bytes measured from firmware-sim final state; RTL trace sizes pending
 interrupt_race_bug,property_aware_replaycapsule_rv,MEASURED,4,84,1000.000,True,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-mmio_ordering_bug,full_instruction_trace,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+mmio_ordering_bug,full_instruction_trace,MEASURED,3,24,1000.000,False,firmware-sim,PC+instruction bytes measured from firmware-sim commits; RTL trace sizes pending
 mmio_ordering_bug,full_commit_trace,MEASURED,3,48,1000.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 mmio_ordering_bug,branch_only_trace,MEASURED,0,0,0.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 mmio_ordering_bug,store_only_trace,MEASURED,1,16,333.333,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 mmio_ordering_bug,mmio_only_trace,MEASURED,1,16,333.333,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 mmio_ordering_bug,interrupt_mmio_trace,MEASURED,1,16,333.333,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-mmio_ordering_bug,snapshot_on_failure,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+mmio_ordering_bug,snapshot_on_failure,MEASURED,1,132,333.333,False,firmware-sim,architectural snapshot bytes measured from firmware-sim final state; RTL trace sizes pending
 mmio_ordering_bug,property_aware_replaycapsule_rv,MEASURED,2,42,666.667,True,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-stack_corruption_bug,full_instruction_trace,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+stack_corruption_bug,full_instruction_trace,MEASURED,6,48,1000.000,False,firmware-sim,PC+instruction bytes measured from firmware-sim commits; RTL trace sizes pending
 stack_corruption_bug,full_commit_trace,MEASURED,6,96,1000.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 stack_corruption_bug,branch_only_trace,MEASURED,0,0,0.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 stack_corruption_bug,store_only_trace,MEASURED,1,16,166.667,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 stack_corruption_bug,mmio_only_trace,MEASURED,0,0,0.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 stack_corruption_bug,interrupt_mmio_trace,MEASURED,0,0,0.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-stack_corruption_bug,snapshot_on_failure,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+stack_corruption_bug,snapshot_on_failure,MEASURED,1,140,166.667,False,firmware-sim,architectural snapshot bytes measured from firmware-sim final state; RTL trace sizes pending
 stack_corruption_bug,property_aware_replaycapsule_rv,MEASURED,2,42,333.333,True,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-uart_command_bug,full_instruction_trace,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+uart_command_bug,full_instruction_trace,MEASURED,6,48,1000.000,False,firmware-sim,PC+instruction bytes measured from firmware-sim commits; RTL trace sizes pending
 uart_command_bug,full_commit_trace,MEASURED,6,96,1000.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 uart_command_bug,branch_only_trace,MEASURED,1,16,166.667,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 uart_command_bug,store_only_trace,MEASURED,1,16,166.667,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 uart_command_bug,mmio_only_trace,MEASURED,2,32,333.333,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 uart_command_bug,interrupt_mmio_trace,MEASURED,2,32,333.333,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-uart_command_bug,snapshot_on_failure,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+uart_command_bug,snapshot_on_failure,MEASURED,1,132,166.667,False,firmware-sim,architectural snapshot bytes measured from firmware-sim final state; RTL trace sizes pending
 uart_command_bug,property_aware_replaycapsule_rv,MEASURED,5,105,833.333,True,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-watchdog_timeout_bug,full_instruction_trace,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+watchdog_timeout_bug,full_instruction_trace,MEASURED,14,112,1000.000,False,firmware-sim,PC+instruction bytes measured from firmware-sim commits; RTL trace sizes pending
 watchdog_timeout_bug,full_commit_trace,MEASURED,14,224,1000.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 watchdog_timeout_bug,branch_only_trace,MEASURED,5,80,357.143,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 watchdog_timeout_bug,store_only_trace,MEASURED,0,0,0.000,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 watchdog_timeout_bug,mmio_only_trace,MEASURED,1,16,71.429,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
 watchdog_timeout_bug,interrupt_mmio_trace,MEASURED,3,48,214.286,False,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending
-watchdog_timeout_bug,snapshot_on_failure,TODO,NA,NA,NA,TODO,NA,requires simulator/RTL artifact not yet generated
+watchdog_timeout_bug,snapshot_on_failure,MEASURED,1,132,71.429,False,firmware-sim,architectural snapshot bytes measured from firmware-sim final state; RTL trace sizes pending
 watchdog_timeout_bug,property_aware_replaycapsule_rv,MEASURED,9,189,642.857,True,firmware-sim,size and replay success measured from firmware-sim evidence; RTL trace sizes pending

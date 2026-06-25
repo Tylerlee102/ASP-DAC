@@ -50,6 +50,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 
 - Model-level replay: `results/processed/replay_experiments.csv`
 - Firmware-sim replay: `results/processed/firmware_sim_replay.csv`
+- Firmware images: `firmware/build/`
 - Baseline sizes and replay success: `results/processed/trace_sizes.csv`
 - Ablations: `results/processed/ablations.csv`
 - Static RTL check summary: `scripts/static_rtl_checks.py`

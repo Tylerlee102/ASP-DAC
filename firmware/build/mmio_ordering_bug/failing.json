@@ -1,0 +1,12 @@
+{
+  "benchmark": "mmio_ordering_bug",
+  "command_value": 0,
+  "hex": "firmware/build/mmio_ordering_bug/failing.hex",
+  "interrupt_commit": null,
+  "labels": {},
+  "mem": "firmware/build/mmio_ordering_bug/failing.mem",
+  "reset_pc": "0x00000080",
+  "sensor_value": 850,
+  "variant": "failing",
+  "word_count": 7
+}

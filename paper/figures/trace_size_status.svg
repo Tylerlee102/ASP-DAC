@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="980" height="168" viewBox="0 0 980 168">
 <rect width="980" height="168" fill="#ffffff"/>
 <text x="490" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">Trace Size Status</text>
-<text x="28" y="62" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">measured model rows: 72</text>
-<text x="28" y="88" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">TODO rows: 24</text>
+<text x="28" y="62" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">measured model rows: 84</text>
+<text x="28" y="88" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">TODO rows: 12</text>
 <text x="28" y="114" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">model replay-success rows: 12</text>
 <text x="28" y="140" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">RTL/PicoRV32 trace and synthesis rows remain TODO until external tools exist.</text>
 </svg>

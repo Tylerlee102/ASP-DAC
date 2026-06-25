@@ -174,6 +174,17 @@ class RV32IFirmwareSim:
             failure_signature=self.failure_signature,
         )
 
+    def final_state_payload(self) -> dict[str, object]:
+        touched_memory = {f"0x{addr:08x}": f"0x{value:08x}" for addr, value in sorted(self.dmem.items())}
+        snapshot_bytes = 4 + (32 * 4) + (len(touched_memory) * 8)
+        return {
+            "pc": f"0x{self.pc:08x}",
+            "commit_index": self.commit,
+            "registers": [f"0x{value & WORD_MASK:08x}" for value in self.regs],
+            "data_memory": touched_memory,
+            "snapshot_bytes": snapshot_bytes,
+        }
+
     def _execute(self, inst: int) -> None:
         pc_before = self.pc
         next_pc = (self.pc + 4) & WORD_MASK
@@ -405,7 +416,11 @@ def run_suite(failing: bool = True) -> list[RunResult]:
     return [run_firmware(benchmark, failing=failing) for benchmark in BENCHMARKS]
 
 
-def trace_payload(result: RunResult, program: EncodedProgram | None = None) -> dict[str, object]:
+def trace_payload(
+    result: RunResult,
+    program: EncodedProgram | None = None,
+    final_state: dict[str, object] | None = None,
+) -> dict[str, object]:
     payload: dict[str, object] = {
         "benchmark": result.benchmark,
         "variant": result.variant,
@@ -417,6 +432,8 @@ def trace_payload(result: RunResult, program: EncodedProgram | None = None) -> d
     if program is not None:
         payload["firmware_words"] = [f"0x{word:08x}" for word in program.words]
         payload["labels"] = {label: f"0x{pc:08x}" for label, pc in program.labels.items()}
+    if final_state is not None:
+        payload["final_state"] = final_state
     return payload
 
 
@@ -424,8 +441,9 @@ def suite_json() -> str:
     runs = []
     for benchmark in BENCHMARKS:
         program = build_program(benchmark, failing=True)
-        result = RV32IFirmwareSim(program).run()
-        runs.append(trace_payload(result, program))
+        sim = RV32IFirmwareSim(program)
+        result = sim.run()
+        runs.append(trace_payload(result, program, sim.final_state_payload()))
     return json.dumps({"runs": runs}, indent=2, sort_keys=True)
 
 
@@ -457,7 +475,8 @@ def write_results(out_csv: Path, out_json: Path) -> None:
     runs = []
     for benchmark in BENCHMARKS:
         program = build_program(benchmark, failing=True)
-        result = RV32IFirmwareSim(program).run()
+        sim = RV32IFirmwareSim(program)
+        result = sim.run()
         expected = parse_capsule(capsule_fixture(result), source=f"{benchmark}:expected")
         observed = parse_capsule(capsule_fixture(result), source=f"{benchmark}:observed")
         compare = compare_capsules(expected, observed, mode="commit-index")
@@ -474,7 +493,7 @@ def write_results(out_csv: Path, out_json: Path) -> None:
                 "notes": "; ".join(compare.errors) if compare.errors else "RV32I instruction interpreter replay evidence matched",
             }
         )
-        runs.append(trace_payload(result, program))
+        runs.append(trace_payload(result, program, sim.final_state_payload()))
 
     out_csv.parent.mkdir(parents=True, exist_ok=True)
     with out_csv.open("w", newline="", encoding="utf-8") as handle:
@@ -609,4 +628,3 @@ def main(argv: list[str] | None = None) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

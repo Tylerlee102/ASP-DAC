@@ -73,7 +73,14 @@ def _replay_flow_svg() -> str:
 def _baseline_trace_sizes_svg(rows: list[dict[str, str]]) -> str:
     measured = [
         row for row in rows
-        if row.get("baseline") in {"full_commit_trace", "interrupt_mmio_trace", "property_aware_replaycapsule_rv"}
+        if row.get("baseline")
+        in {
+            "full_instruction_trace",
+            "full_commit_trace",
+            "interrupt_mmio_trace",
+            "snapshot_on_failure",
+            "property_aware_replaycapsule_rv",
+        }
         and row.get("status") == "MEASURED"
         and row.get("evidence_level") in {"firmware-sim", "model"}
     ]
@@ -82,27 +89,35 @@ def _baseline_trace_sizes_svg(rows: list[dict[str, str]]) -> str:
     if any(row.get("evidence_level") == "firmware-sim" for row in measured):
         measured = [row for row in measured if row.get("evidence_level") == "firmware-sim"]
     labels = sorted({row["benchmark"] for row in measured})
-    baselines = ["full_commit_trace", "interrupt_mmio_trace", "property_aware_replaycapsule_rv"]
+    baselines = [
+        "full_instruction_trace",
+        "full_commit_trace",
+        "interrupt_mmio_trace",
+        "snapshot_on_failure",
+        "property_aware_replaycapsule_rv",
+    ]
     max_bytes = max(int(row["bytes"]) for row in measured if row["bytes"].isdigit())
-    width = 1080
+    width = 1280
     height = 90 + len(labels) * 78
     parts = [_svg_open(width, height), _title("Baseline Trace Sizes (firmware-sim bytes)", width)]
     y = 70
     colors = {
+        "full_instruction_trace": "#b7a7ff",
         "full_commit_trace": "#8fb3ff",
         "interrupt_mmio_trace": "#ffcc66",
+        "snapshot_on_failure": "#f7a6a6",
         "property_aware_replaycapsule_rv": "#7bd88f",
     }
     for benchmark in labels:
         parts.append(_text(24, y + 16, benchmark, size=13))
-        x = 260
+        x = 220
         for baseline in baselines:
             row = next((item for item in measured if item["benchmark"] == benchmark and item["baseline"] == baseline), None)
             value = int(row["bytes"]) if row and row["bytes"].isdigit() else 0
-            bar_w = int((value / max_bytes) * 190) if max_bytes else 0
+            bar_w = int((value / max_bytes) * 130) if max_bytes else 0
             parts.append(f'<rect x="{x}" y="{y}" width="{bar_w}" height="16" fill="{colors[baseline]}"/>')
             parts.append(_text(x, y + 36, f"{_short_baseline(baseline)} {value}B", size=11))
-            x += 260
+            x += 205
         y += 78
     parts.append(_svg_close())
     return "\n".join(parts)
@@ -226,8 +241,10 @@ def _rotated_text(x: float, y: float, value: str, size: int = 10) -> str:
 
 def _short_baseline(value: str) -> str:
     return {
+        "full_instruction_trace": "instr",
         "full_commit_trace": "commit",
         "interrupt_mmio_trace": "irq+mmio",
+        "snapshot_on_failure": "snapshot",
         "property_aware_replaycapsule_rv": "capsule",
     }.get(value, value)
 

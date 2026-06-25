@@ -1,46 +1,70 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="558" viewBox="0 0 1080 558">
-<rect width="1080" height="558" fill="#ffffff"/>
-<text x="540" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">Baseline Trace Sizes (firmware-sim bytes)</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="558" viewBox="0 0 1280 558">
+<rect width="1280" height="558" fill="#ffffff"/>
+<text x="640" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">Baseline Trace Sizes (firmware-sim bytes)</text>
 <text x="24" y="86" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">interrupt_race_bug</text>
-<rect x="260" y="70" width="42" height="16" fill="#8fb3ff"/>
-<text x="260" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 64B</text>
-<rect x="520" y="70" width="31" height="16" fill="#ffcc66"/>
-<text x="520" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 48B</text>
-<rect x="780" y="70" width="55" height="16" fill="#7bd88f"/>
-<text x="780" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 84B</text>
+<rect x="220" y="70" width="14" height="16" fill="#b7a7ff"/>
+<text x="220" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">instr 32B</text>
+<rect x="425" y="70" width="28" height="16" fill="#8fb3ff"/>
+<text x="425" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 64B</text>
+<rect x="630" y="70" width="21" height="16" fill="#ffcc66"/>
+<text x="630" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 48B</text>
+<rect x="835" y="70" width="59" height="16" fill="#f7a6a6"/>
+<text x="835" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">snapshot 132B</text>
+<rect x="1040" y="70" width="37" height="16" fill="#7bd88f"/>
+<text x="1040" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 84B</text>
 <text x="24" y="164" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">mmio_ordering_bug</text>
-<rect x="260" y="148" width="31" height="16" fill="#8fb3ff"/>
-<text x="260" y="184" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 48B</text>
-<rect x="520" y="148" width="10" height="16" fill="#ffcc66"/>
-<text x="520" y="184" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 16B</text>
-<rect x="780" y="148" width="27" height="16" fill="#7bd88f"/>
-<text x="780" y="184" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 42B</text>
+<rect x="220" y="148" width="10" height="16" fill="#b7a7ff"/>
+<text x="220" y="184" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">instr 24B</text>
+<rect x="425" y="148" width="21" height="16" fill="#8fb3ff"/>
+<text x="425" y="184" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 48B</text>
+<rect x="630" y="148" width="7" height="16" fill="#ffcc66"/>
+<text x="630" y="184" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 16B</text>
+<rect x="835" y="148" width="59" height="16" fill="#f7a6a6"/>
+<text x="835" y="184" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">snapshot 132B</text>
+<rect x="1040" y="148" width="18" height="16" fill="#7bd88f"/>
+<text x="1040" y="184" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 42B</text>
 <text x="24" y="242" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">sensor_threshold_bug</text>
-<rect x="260" y="226" width="190" height="16" fill="#8fb3ff"/>
-<text x="260" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 288B</text>
-<rect x="520" y="226" width="10" height="16" fill="#ffcc66"/>
-<text x="520" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 16B</text>
-<rect x="780" y="226" width="124" height="16" fill="#7bd88f"/>
-<text x="780" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 189B</text>
+<rect x="220" y="226" width="65" height="16" fill="#b7a7ff"/>
+<text x="220" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">instr 144B</text>
+<rect x="425" y="226" width="130" height="16" fill="#8fb3ff"/>
+<text x="425" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 288B</text>
+<rect x="630" y="226" width="7" height="16" fill="#ffcc66"/>
+<text x="630" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 16B</text>
+<rect x="835" y="226" width="59" height="16" fill="#f7a6a6"/>
+<text x="835" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">snapshot 132B</text>
+<rect x="1040" y="226" width="85" height="16" fill="#7bd88f"/>
+<text x="1040" y="262" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 189B</text>
 <text x="24" y="320" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">stack_corruption_bug</text>
-<rect x="260" y="304" width="63" height="16" fill="#8fb3ff"/>
-<text x="260" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 96B</text>
-<rect x="520" y="304" width="0" height="16" fill="#ffcc66"/>
-<text x="520" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 0B</text>
-<rect x="780" y="304" width="27" height="16" fill="#7bd88f"/>
-<text x="780" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 42B</text>
+<rect x="220" y="304" width="21" height="16" fill="#b7a7ff"/>
+<text x="220" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">instr 48B</text>
+<rect x="425" y="304" width="43" height="16" fill="#8fb3ff"/>
+<text x="425" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 96B</text>
+<rect x="630" y="304" width="0" height="16" fill="#ffcc66"/>
+<text x="630" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 0B</text>
+<rect x="835" y="304" width="63" height="16" fill="#f7a6a6"/>
+<text x="835" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">snapshot 140B</text>
+<rect x="1040" y="304" width="18" height="16" fill="#7bd88f"/>
+<text x="1040" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 42B</text>
 <text x="24" y="398" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">uart_command_bug</text>
-<rect x="260" y="382" width="63" height="16" fill="#8fb3ff"/>
-<text x="260" y="418" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 96B</text>
-<rect x="520" y="382" width="21" height="16" fill="#ffcc66"/>
-<text x="520" y="418" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 32B</text>
-<rect x="780" y="382" width="69" height="16" fill="#7bd88f"/>
-<text x="780" y="418" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 105B</text>
+<rect x="220" y="382" width="21" height="16" fill="#b7a7ff"/>
+<text x="220" y="418" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">instr 48B</text>
+<rect x="425" y="382" width="43" height="16" fill="#8fb3ff"/>
+<text x="425" y="418" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 96B</text>
+<rect x="630" y="382" width="14" height="16" fill="#ffcc66"/>
+<text x="630" y="418" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 32B</text>
+<rect x="835" y="382" width="59" height="16" fill="#f7a6a6"/>
+<text x="835" y="418" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">snapshot 132B</text>
+<rect x="1040" y="382" width="47" height="16" fill="#7bd88f"/>
+<text x="1040" y="418" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 105B</text>
 <text x="24" y="476" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">watchdog_timeout_bug</text>
-<rect x="260" y="460" width="147" height="16" fill="#8fb3ff"/>
-<text x="260" y="496" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 224B</text>
-<rect x="520" y="460" width="31" height="16" fill="#ffcc66"/>
-<text x="520" y="496" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 48B</text>
-<rect x="780" y="460" width="124" height="16" fill="#7bd88f"/>
-<text x="780" y="496" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 189B</text>
+<rect x="220" y="460" width="50" height="16" fill="#b7a7ff"/>
+<text x="220" y="496" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">instr 112B</text>
+<rect x="425" y="460" width="101" height="16" fill="#8fb3ff"/>
+<text x="425" y="496" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">commit 224B</text>
+<rect x="630" y="460" width="21" height="16" fill="#ffcc66"/>
+<text x="630" y="496" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">irq+mmio 48B</text>
+<rect x="835" y="460" width="59" height="16" fill="#f7a6a6"/>
+<text x="835" y="496" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">snapshot 132B</text>
+<rect x="1040" y="460" width="85" height="16" fill="#7bd88f"/>
+<text x="1040" y="496" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">capsule 189B</text>
 </svg>

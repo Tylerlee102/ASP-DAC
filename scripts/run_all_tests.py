@@ -56,12 +56,22 @@ BUG_BENCHMARKS = [
     "bug_watchdog_timeout",
 ]
 
+BENCHMARK_IDS = [
+    "sensor_threshold_bug",
+    "interrupt_race_bug",
+    "mmio_ordering_bug",
+    "stack_corruption_bug",
+    "uart_command_bug",
+    "watchdog_timeout_bug",
+]
+
 REQUIRED_TB = [
     "tb/system/tb_property_checker.sv",
     "tb/system/tb_capsule_buffer.sv",
 ]
 
 PYTHON_FILES = [
+    "scripts/build_firmware_images.py",
     "scripts/replaycapsule_model.py",
     "scripts/rv32i_firmware_sim.py",
     "scripts/static_rtl_checks.py",
@@ -80,6 +90,13 @@ def main() -> int:
     _check_firmware_benchmarks(rows, failures)
     _check_required_testbenches(rows, failures)
     _compile_python(rows, failures)
+    _run_subprocess(
+        rows,
+        failures,
+        "firmware_image_build",
+        [sys.executable, "scripts/build_firmware_images.py"],
+    )
+    _check_firmware_images(rows, failures)
     _run_subprocess(
         rows,
         failures,
@@ -209,6 +226,21 @@ def _check_required_testbenches(rows: list[dict[str, str]], failures: list[str])
         rows.append(_row("directed_sv_testbenches", "FAIL", ", ".join(missing)))
     else:
         rows.append(_row("directed_sv_testbenches", "PASS", f"{len(REQUIRED_TB)} source-present testbenches"))
+
+
+def _check_firmware_images(rows: list[dict[str, str]], failures: list[str]) -> None:
+    missing: list[str] = []
+    for benchmark in BENCHMARK_IDS:
+        for variant in ["failing", "fixed"]:
+            for suffix in [".hex", ".mem", ".json"]:
+                path = REPO_ROOT / "firmware" / "build" / benchmark / f"{variant}{suffix}"
+                if not path.exists():
+                    missing.append(str(path.relative_to(REPO_ROOT)))
+    if missing:
+        failures.extend(f"missing firmware image artifact {path}" for path in missing)
+        rows.append(_row("firmware_image_artifacts", "FAIL", ", ".join(missing)))
+    else:
+        rows.append(_row("firmware_image_artifacts", "PASS", f"{len(BENCHMARK_IDS) * 2} image sets present"))
 
 
 def _compile_python(rows: list[dict[str, str]], failures: list[str]) -> None:
