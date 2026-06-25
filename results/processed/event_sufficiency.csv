@@ -1,0 +1,7 @@
+benchmark,evidence_level,required_event_classes,notes
+sensor_threshold_bug,model,mmio_read_values;interrupt_timing,derived from ablations where removing the class breaks commit-index replay
+interrupt_race_bug,model,interrupt_timing,derived from ablations where removing the class breaks commit-index replay
+mmio_ordering_bug,model,property_fail_pc_and_mmio_context_only,derived from ablations where removing the class breaks commit-index replay
+stack_corruption_bug,model,store_events,derived from ablations where removing the class breaks commit-index replay
+uart_command_bug,model,branch_events;mmio_read_values;external_input_values,derived from ablations where removing the class breaks commit-index replay
+watchdog_timeout_bug,model,mmio_read_values;interrupt_timing,derived from ablations where removing the class breaks commit-index replay

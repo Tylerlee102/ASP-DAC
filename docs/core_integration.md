@@ -1,0 +1,35 @@
+# Core Integration Plan
+
+ReplayCapsule-RV should use PicoRV32 first because it is compact, RV32I-friendly, and easy to wrap in small FPGA-style SoCs.
+
+## Phase 1 Boundary
+
+The current implementation uses a deterministic SoC scaffold in `rtl/rv32i_integration/replaycapsule_soc.sv`. It is deliberately a boundary exerciser, not a paper result. It provides the signals the replay capsule hardware needs while the real RISC-V simulator/toolchain path is brought up.
+
+PicoRV32 has also been vendored under `third_party/picorv32`, and `rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv` instantiates the upstream core with IRQ and trace support enabled. The wrapper connects native memory transactions, trace-valid events, IRQ/EOI observations, and external inputs into `replay_capsule_top`.
+
+## PicoRV32 Integration Target
+
+Connect:
+
+- instruction memory at reset PC `0x0000_0080`
+- data memory below the MMIO aperture
+- MMIO aperture at `0x4000_0000`
+- timer interrupt source into the core interrupt request line
+- sensor input register
+- actuator/PWM output register
+- command/UART register
+- commit visibility via either a retirement pulse wrapper, RVFI-style wrapper, or an instruction-valid approximation validated against the core configuration
+
+## Modes
+
+- deterministic seeded input mode for reproducible baseline experiments
+- randomized interrupt mode for stress testing
+- replay mode in which MMIO read values and interrupt timing come from a capsule
+
+## Open Work
+
+- Add a bare-metal RISC-V compiler path.
+- Compile and simulate the PicoRV32 wrapper with Verilator or another HDL simulator.
+- Connect instruction/data memories and MMIO peripherals around the PicoRV32 wrapper.
+- Confirm the commit pulse corresponds to architectural instruction retirement.

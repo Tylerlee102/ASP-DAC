@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="220" viewBox="0 0 980 220">
+<rect width="980" height="220" fill="#ffffff"/>
+<text x="490" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">Deterministic Replay Methodology</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+<line x1="180" y1="109" x2="220" y2="109" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="370" y1="109" x2="410" y2="109" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="560" y1="109" x2="600" y2="109" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="750" y1="109" x2="790" y2="109" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="80" width="150" height="58" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="105" y="114" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">Record run</text>
+<rect x="220" y="80" width="150" height="58" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="295" y="114" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">Property fail</text>
+<rect x="410" y="80" width="150" height="58" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="485" y="114" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">Freeze capsule</text>
+<rect x="600" y="80" width="150" height="58" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="675" y="114" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">Commit-index replay</text>
+<rect x="790" y="80" width="150" height="58" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="865" y="114" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">Compare signature</text>
+</svg>

@@ -1,0 +1,85 @@
+ablation,benchmark,status,replay_success,evidence_level,reason
+remove_branch_events,sensor_threshold_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_store_events,sensor_threshold_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_mmio_read_values,sensor_threshold_bug,MEASURED,False,model,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at commit 1: addr=0x40000000 value=0x0 direction='read'
+remove_interrupt_timing,sensor_threshold_bug,MEASURED,False,model,missing interrupt event at commit 4: irq='timer0' state='taken'; missing interrupt event at commit 4: irq='timer0' state='return'
+remove_external_input_values,sensor_threshold_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_checkpoint_hashes,sensor_threshold_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_property_aware_slicing,sensor_threshold_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+capsule_buffer_size_2,sensor_threshold_bug,MEASURED,False,model,model property-aware event count 4 exceeds buffer 2; overflow invalidates replay
+capsule_buffer_size_4,sensor_threshold_bug,MEASURED,True,model,model property-aware event count 4 fits buffer 4
+capsule_buffer_size_8,sensor_threshold_bug,MEASURED,True,model,model property-aware event count 4 fits buffer 8
+capsule_buffer_size_16,sensor_threshold_bug,MEASURED,True,model,model property-aware event count 4 fits buffer 16
+last_k_context_0,sensor_threshold_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_1,sensor_threshold_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_4,sensor_threshold_bug,MEASURED,True,model,model replay evidence retained by this context window
+remove_branch_events,interrupt_race_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_store_events,interrupt_race_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_mmio_read_values,interrupt_race_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_interrupt_timing,interrupt_race_bug,MEASURED,False,model,missing interrupt event at commit 3: irq='timer0' state='taken'; missing interrupt event at commit 3: irq='timer0' state='return'
+remove_external_input_values,interrupt_race_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_checkpoint_hashes,interrupt_race_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_property_aware_slicing,interrupt_race_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+capsule_buffer_size_2,interrupt_race_bug,MEASURED,False,model,model property-aware event count 5 exceeds buffer 2; overflow invalidates replay
+capsule_buffer_size_4,interrupt_race_bug,MEASURED,False,model,model property-aware event count 5 exceeds buffer 4; overflow invalidates replay
+capsule_buffer_size_8,interrupt_race_bug,MEASURED,True,model,model property-aware event count 5 fits buffer 8
+capsule_buffer_size_16,interrupt_race_bug,MEASURED,True,model,model property-aware event count 5 fits buffer 16
+last_k_context_0,interrupt_race_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_1,interrupt_race_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_4,interrupt_race_bug,MEASURED,True,model,model replay evidence retained by this context window
+remove_branch_events,mmio_ordering_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_store_events,mmio_ordering_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_mmio_read_values,mmio_ordering_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_interrupt_timing,mmio_ordering_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_external_input_values,mmio_ordering_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_checkpoint_hashes,mmio_ordering_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_property_aware_slicing,mmio_ordering_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+capsule_buffer_size_2,mmio_ordering_bug,MEASURED,False,model,model property-aware event count 3 exceeds buffer 2; overflow invalidates replay
+capsule_buffer_size_4,mmio_ordering_bug,MEASURED,True,model,model property-aware event count 3 fits buffer 4
+capsule_buffer_size_8,mmio_ordering_bug,MEASURED,True,model,model property-aware event count 3 fits buffer 8
+capsule_buffer_size_16,mmio_ordering_bug,MEASURED,True,model,model property-aware event count 3 fits buffer 16
+last_k_context_0,mmio_ordering_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_1,mmio_ordering_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_4,mmio_ordering_bug,MEASURED,True,model,model replay evidence retained by this context window
+remove_branch_events,stack_corruption_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_store_events,stack_corruption_bug,MEASURED,False,model,missing store event at commit 2: pc=0xe0 addr=0x1010 value=0xdeadbeef
+remove_mmio_read_values,stack_corruption_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_interrupt_timing,stack_corruption_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_external_input_values,stack_corruption_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_checkpoint_hashes,stack_corruption_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_property_aware_slicing,stack_corruption_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+capsule_buffer_size_2,stack_corruption_bug,MEASURED,False,model,model property-aware event count 3 exceeds buffer 2; overflow invalidates replay
+capsule_buffer_size_4,stack_corruption_bug,MEASURED,True,model,model property-aware event count 3 fits buffer 4
+capsule_buffer_size_8,stack_corruption_bug,MEASURED,True,model,model property-aware event count 3 fits buffer 8
+capsule_buffer_size_16,stack_corruption_bug,MEASURED,True,model,model property-aware event count 3 fits buffer 16
+last_k_context_0,stack_corruption_bug,MEASURED,False,model,missing store event at commit 2: pc=0xe0 addr=0x1010 value=0xdeadbeef
+last_k_context_1,stack_corruption_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_4,stack_corruption_bug,MEASURED,True,model,model replay evidence retained by this context window
+remove_branch_events,uart_command_bug,MEASURED,False,model,missing branch event at commit 2: pc=0xf0 value=0x1
+remove_store_events,uart_command_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_mmio_read_values,uart_command_bug,MEASURED,False,model,missing mmio event at commit 1: addr=0x4000000c value=0x55 direction='read'; extra observed mmio event at commit 1: addr=0x4000000c value=0x0 direction='read'
+remove_interrupt_timing,uart_command_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_external_input_values,uart_command_bug,MEASURED,False,model,missing input event at commit 1: input_id='input1' value=0x55; extra observed input event at commit 1: input_id='input1' value=0x0
+remove_checkpoint_hashes,uart_command_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_property_aware_slicing,uart_command_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+capsule_buffer_size_2,uart_command_bug,MEASURED,False,model,model property-aware event count 5 exceeds buffer 2; overflow invalidates replay
+capsule_buffer_size_4,uart_command_bug,MEASURED,False,model,model property-aware event count 5 exceeds buffer 4; overflow invalidates replay
+capsule_buffer_size_8,uart_command_bug,MEASURED,True,model,model property-aware event count 5 fits buffer 8
+capsule_buffer_size_16,uart_command_bug,MEASURED,True,model,model property-aware event count 5 fits buffer 16
+last_k_context_0,uart_command_bug,MEASURED,False,model,missing branch event at commit 2: pc=0xf0 value=0x1
+last_k_context_1,uart_command_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_4,uart_command_bug,MEASURED,True,model,model replay evidence retained by this context window
+remove_branch_events,watchdog_timeout_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_store_events,watchdog_timeout_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_mmio_read_values,watchdog_timeout_bug,MEASURED,False,model,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at commit 1: addr=0x40000000 value=0x0 direction='read'
+remove_interrupt_timing,watchdog_timeout_bug,MEASURED,False,model,missing interrupt event at commit 6: irq='timer0' state='taken'; missing interrupt event at commit 6: irq='timer0' state='return'
+remove_external_input_values,watchdog_timeout_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_checkpoint_hashes,watchdog_timeout_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+remove_property_aware_slicing,watchdog_timeout_bug,MEASURED,True,model,no replay mismatch observed for this model benchmark
+capsule_buffer_size_2,watchdog_timeout_bug,MEASURED,False,model,model property-aware event count 4 exceeds buffer 2; overflow invalidates replay
+capsule_buffer_size_4,watchdog_timeout_bug,MEASURED,True,model,model property-aware event count 4 fits buffer 4
+capsule_buffer_size_8,watchdog_timeout_bug,MEASURED,True,model,model property-aware event count 4 fits buffer 8
+capsule_buffer_size_16,watchdog_timeout_bug,MEASURED,True,model,model property-aware event count 4 fits buffer 16
+last_k_context_0,watchdog_timeout_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_1,watchdog_timeout_bug,MEASURED,True,model,model replay evidence retained by this context window
+last_k_context_4,watchdog_timeout_bug,MEASURED,True,model,model replay evidence retained by this context window

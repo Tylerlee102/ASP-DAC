@@ -1,0 +1,754 @@
+{
+  "runs": [
+    {
+      "benchmark": "sensor_threshold_bug",
+      "events": [
+        {
+          "addr": "0x00000000",
+          "commit": 0,
+          "cycle": 0,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000080",
+          "seq": 0
+        },
+        {
+          "addr": "0x40000000",
+          "commit": 1,
+          "cycle": 1,
+          "data": "0x00000352",
+          "event_type": "EV_MMIO_READ",
+          "pc": "0x00000090",
+          "seq": 1
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 1,
+          "cycle": 2,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000090",
+          "seq": 2
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 2,
+          "cycle": 3,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 3
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 3,
+          "cycle": 4,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 4
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 4,
+          "cycle": 5,
+          "data": "0x00000001",
+          "event_type": "EV_INTERRUPT_ENTER",
+          "pc": "0x000000c0",
+          "seq": 5
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 4,
+          "cycle": 6,
+          "data": "0x00000000",
+          "event_type": "EV_INTERRUPT_EXIT",
+          "pc": "0x000000c0",
+          "seq": 6
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 4,
+          "cycle": 7,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 7
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 5,
+          "cycle": 8,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 8
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 6,
+          "cycle": 9,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 9
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 7,
+          "cycle": 10,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 10
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 8,
+          "cycle": 11,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 11
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 9,
+          "cycle": 12,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 12
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 10,
+          "cycle": 13,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 13
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 11,
+          "cycle": 14,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 14
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 12,
+          "cycle": 15,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 15
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 13,
+          "cycle": 16,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 16
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 14,
+          "cycle": 17,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 17
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 15,
+          "cycle": 18,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 18
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 16,
+          "cycle": 19,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 19
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 17,
+          "cycle": 20,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 20
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 18,
+          "cycle": 21,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000c0",
+          "seq": 21
+        },
+        {
+          "addr": "0x00000003",
+          "commit": 19,
+          "cycle": 22,
+          "data": "0x5e055494",
+          "event_type": "EV_PROPERTY_FAIL",
+          "pc": "0x000000c0",
+          "seq": 22
+        }
+      ],
+      "failure_signature": "0x5e055494",
+      "property_id": "P3_SENSOR_DEADLINE",
+      "variant": "failing"
+    },
+    {
+      "benchmark": "interrupt_race_bug",
+      "events": [
+        {
+          "addr": "0x00000000",
+          "commit": 0,
+          "cycle": 0,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000080",
+          "seq": 0
+        },
+        {
+          "addr": "0x4000000c",
+          "commit": 1,
+          "cycle": 1,
+          "data": "0x00000001",
+          "event_type": "EV_MMIO_WRITE",
+          "pc": "0x000000f0",
+          "seq": 1
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 1,
+          "cycle": 2,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000f0",
+          "seq": 2
+        },
+        {
+          "addr": "0x40000008",
+          "commit": 2,
+          "cycle": 3,
+          "data": "0x00001111",
+          "event_type": "EV_MMIO_WRITE",
+          "pc": "0x000000a0",
+          "seq": 3
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 2,
+          "cycle": 4,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000a0",
+          "seq": 4
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 3,
+          "cycle": 5,
+          "data": "0x00000001",
+          "event_type": "EV_INTERRUPT_ENTER",
+          "pc": "0x000000d0",
+          "seq": 5
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 3,
+          "cycle": 6,
+          "data": "0x00000000",
+          "event_type": "EV_INTERRUPT_EXIT",
+          "pc": "0x000000d0",
+          "seq": 6
+        },
+        {
+          "addr": "0x00000002",
+          "commit": 3,
+          "cycle": 7,
+          "data": "0x5e05578a",
+          "event_type": "EV_PROPERTY_FAIL",
+          "pc": "0x000000d0",
+          "seq": 7
+        }
+      ],
+      "failure_signature": "0x5e05578a",
+      "property_id": "P2_INTERRUPT_CRITICAL",
+      "variant": "failing"
+    },
+    {
+      "benchmark": "mmio_ordering_bug",
+      "events": [
+        {
+          "addr": "0x00000000",
+          "commit": 0,
+          "cycle": 0,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000080",
+          "seq": 0
+        },
+        {
+          "addr": "0x40000004",
+          "commit": 1,
+          "cycle": 1,
+          "data": "0x00000019",
+          "event_type": "EV_MMIO_WRITE",
+          "pc": "0x000000b0",
+          "seq": 1
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 1,
+          "cycle": 2,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000b0",
+          "seq": 2
+        },
+        {
+          "addr": "0x00000005",
+          "commit": 2,
+          "cycle": 3,
+          "data": "0x5e053e47",
+          "event_type": "EV_PROPERTY_FAIL",
+          "pc": "0x000000b0",
+          "seq": 3
+        },
+        {
+          "addr": "0x40000008",
+          "commit": 2,
+          "cycle": 4,
+          "data": "0x0000cafe",
+          "event_type": "EV_MMIO_WRITE",
+          "pc": "0x000000a0",
+          "seq": 4
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 2,
+          "cycle": 5,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000a0",
+          "seq": 5
+        }
+      ],
+      "failure_signature": "0x5e053e47",
+      "property_id": "P5_MMIO_ORDERING",
+      "variant": "failing"
+    },
+    {
+      "benchmark": "stack_corruption_bug",
+      "events": [
+        {
+          "addr": "0x00000000",
+          "commit": 0,
+          "cycle": 0,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000080",
+          "seq": 0
+        },
+        {
+          "addr": "0x40000008",
+          "commit": 1,
+          "cycle": 1,
+          "data": "0x0000cafe",
+          "event_type": "EV_MMIO_WRITE",
+          "pc": "0x000000a0",
+          "seq": 1
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 1,
+          "cycle": 2,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000a0",
+          "seq": 2
+        },
+        {
+          "addr": "0x00001010",
+          "commit": 2,
+          "cycle": 3,
+          "data": "0xdeadbeef",
+          "event_type": "EV_STORE",
+          "pc": "0x000000e0",
+          "seq": 3
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 2,
+          "cycle": 4,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000e0",
+          "seq": 4
+        },
+        {
+          "addr": "0x00000004",
+          "commit": 3,
+          "cycle": 5,
+          "data": "0x5e0548c6",
+          "event_type": "EV_PROPERTY_FAIL",
+          "pc": "0x000000e0",
+          "seq": 5
+        }
+      ],
+      "failure_signature": "0x5e0548c6",
+      "property_id": "P4_STACK_PROTECT",
+      "variant": "failing"
+    },
+    {
+      "benchmark": "uart_command_bug",
+      "events": [
+        {
+          "addr": "0x00000000",
+          "commit": 0,
+          "cycle": 0,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000080",
+          "seq": 0
+        },
+        {
+          "addr": "0x00000001",
+          "commit": 1,
+          "cycle": 1,
+          "data": "0x00000055",
+          "event_type": "EV_EXTERNAL_INPUT",
+          "pc": "0x000000f0",
+          "seq": 1
+        },
+        {
+          "addr": "0x4000000c",
+          "commit": 1,
+          "cycle": 2,
+          "data": "0x00000055",
+          "event_type": "EV_MMIO_READ",
+          "pc": "0x000000f0",
+          "seq": 2
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 1,
+          "cycle": 3,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000f0",
+          "seq": 3
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 2,
+          "cycle": 4,
+          "data": "0x00000001",
+          "event_type": "EV_BRANCH",
+          "pc": "0x000000f0",
+          "seq": 4
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 2,
+          "cycle": 5,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000f0",
+          "seq": 5
+        },
+        {
+          "addr": "0x40000004",
+          "commit": 3,
+          "cycle": 6,
+          "data": "0x000000fa",
+          "event_type": "EV_MMIO_WRITE",
+          "pc": "0x000000b0",
+          "seq": 6
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 3,
+          "cycle": 7,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x000000b0",
+          "seq": 7
+        },
+        {
+          "addr": "0x00000001",
+          "commit": 4,
+          "cycle": 8,
+          "data": "0x5e053733",
+          "event_type": "EV_PROPERTY_FAIL",
+          "pc": "0x000000b0",
+          "seq": 8
+        }
+      ],
+      "failure_signature": "0x5e053733",
+      "property_id": "P1_ACTUATOR_LIMIT",
+      "variant": "failing"
+    },
+    {
+      "benchmark": "watchdog_timeout_bug",
+      "events": [
+        {
+          "addr": "0x00000000",
+          "commit": 0,
+          "cycle": 0,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000080",
+          "seq": 0
+        },
+        {
+          "addr": "0x40000000",
+          "commit": 1,
+          "cycle": 1,
+          "data": "0x00000352",
+          "event_type": "EV_MMIO_READ",
+          "pc": "0x00000090",
+          "seq": 1
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 1,
+          "cycle": 2,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000090",
+          "seq": 2
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 2,
+          "cycle": 3,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 3
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 3,
+          "cycle": 4,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 4
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 4,
+          "cycle": 5,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 5
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 5,
+          "cycle": 6,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 6
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 6,
+          "cycle": 7,
+          "data": "0x00000001",
+          "event_type": "EV_INTERRUPT_ENTER",
+          "pc": "0x000000d0",
+          "seq": 7
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 6,
+          "cycle": 8,
+          "data": "0x00000000",
+          "event_type": "EV_INTERRUPT_EXIT",
+          "pc": "0x000000d0",
+          "seq": 8
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 6,
+          "cycle": 9,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 9
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 7,
+          "cycle": 10,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 10
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 8,
+          "cycle": 11,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 11
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 9,
+          "cycle": 12,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 12
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 10,
+          "cycle": 13,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 13
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 11,
+          "cycle": 14,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 14
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 12,
+          "cycle": 15,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 15
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 13,
+          "cycle": 16,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 16
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 14,
+          "cycle": 17,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 17
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 15,
+          "cycle": 18,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 18
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 16,
+          "cycle": 19,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 19
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 17,
+          "cycle": 20,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 20
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 18,
+          "cycle": 21,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 21
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 19,
+          "cycle": 22,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 22
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 20,
+          "cycle": 23,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 23
+        },
+        {
+          "addr": "0x00000000",
+          "commit": 21,
+          "cycle": 24,
+          "data": "0x00000013",
+          "event_type": "EV_COMMIT",
+          "pc": "0x00000100",
+          "seq": 24
+        },
+        {
+          "addr": "0x00000006",
+          "commit": 22,
+          "cycle": 25,
+          "data": "0x5e05a884",
+          "event_type": "EV_PROPERTY_FAIL",
+          "pc": "0x00000100",
+          "seq": 25
+        }
+      ],
+      "failure_signature": "0x5e05a884",
+      "property_id": "P6_WATCHDOG_TIMEOUT",
+      "variant": "failing"
+    }
+  ]
+}

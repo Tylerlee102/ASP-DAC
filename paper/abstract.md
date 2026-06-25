@@ -1,0 +1,4 @@
+# Abstract
+
+Embedded safety failures often depend on interrupt timing and memory-mapped I/O values that are difficult to reconstruct after the fact. ReplayCapsule-RV studies the minimum event boundary needed to reproduce such failures on a single-core RV32I embedded system. The prototype records nondeterministic MMIO inputs, interrupt timing, and property-relevant context into a compact hardware failure capsule that also drives runtime safety checking. This draft currently includes the formal model, RTL capture scaffold, replay smoke tests, and evaluation scripts; full firmware-running replay and synthesis numbers are pending real tool runs.
+

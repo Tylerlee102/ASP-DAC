@@ -1,0 +1,3 @@
+tool,top,status,cells,luts,ffs,brams,fmax_mhz,notes
+yosys,picorv32_replaycapsule_wrapper,TODO,NA,NA,NA,NA,NA,yosys not available
+yosys,replay_capsule_top,TODO,NA,NA,NA,NA,NA,yosys not available

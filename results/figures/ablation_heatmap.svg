@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1816" height="358" viewBox="0 0 1816 358">
+<rect width="1816" height="358" fill="#ffffff"/>
+<text x="908" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">Ablation Outcome Heatmap (model-level)</text>
+<text x="24" y="58" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">red = removing event breaks replay; green = no mismatch in this benchmark</text>
+<text x="208" y="86" transform="rotate(-35 208 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">capsule buffer size 16</text>
+<text x="322" y="86" transform="rotate(-35 322 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">capsule buffer size 2</text>
+<text x="436" y="86" transform="rotate(-35 436 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">capsule buffer size 4</text>
+<text x="550" y="86" transform="rotate(-35 550 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">capsule buffer size 8</text>
+<text x="664" y="86" transform="rotate(-35 664 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">last k context 0</text>
+<text x="778" y="86" transform="rotate(-35 778 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">last k context 1</text>
+<text x="892" y="86" transform="rotate(-35 892 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">last k context 4</text>
+<text x="1006" y="86" transform="rotate(-35 1006 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">branch</text>
+<text x="1120" y="86" transform="rotate(-35 1120 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">checkpoint hashes</text>
+<text x="1234" y="86" transform="rotate(-35 1234 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">external input</text>
+<text x="1348" y="86" transform="rotate(-35 1348 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">interrupt timing</text>
+<text x="1462" y="86" transform="rotate(-35 1462 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">mmio read</text>
+<text x="1576" y="86" transform="rotate(-35 1576 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">property aware slicing</text>
+<text x="1690" y="86" transform="rotate(-35 1690 86)" font-family="Arial, sans-serif" font-size="10" fill="#1f2933">store</text>
+<text x="24" y="117" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">interrupt_race_bug</text>
+<rect x="190" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="200" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="304" y="96" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="314" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="418" y="96" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="428" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="532" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="542" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="646" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="656" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="760" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="770" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="874" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="884" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="988" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="998" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1102" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1112" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1216" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1226" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1330" y="96" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="1340" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="1444" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1454" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1558" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1568" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1672" y="96" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1682" y="116" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<text x="24" y="149" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">mmio_ordering_bug</text>
+<rect x="190" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="200" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="304" y="128" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="314" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="418" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="428" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="532" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="542" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="646" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="656" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="760" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="770" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="874" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="884" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="988" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="998" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1102" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1112" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1216" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1226" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1330" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1340" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1444" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1454" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1558" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1568" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1672" y="128" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1682" y="148" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<text x="24" y="181" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">sensor_threshold_bug</text>
+<rect x="190" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="200" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="304" y="160" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="314" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="418" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="428" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="532" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="542" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="646" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="656" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="760" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="770" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="874" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="884" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="988" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="998" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1102" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1112" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1216" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1226" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1330" y="160" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="1340" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="1444" y="160" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="1454" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="1558" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1568" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1672" y="160" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1682" y="180" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<text x="24" y="213" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">stack_corruption_bug</text>
+<rect x="190" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="200" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="304" y="192" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="314" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="418" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="428" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="532" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="542" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="646" y="192" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="656" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="760" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="770" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="874" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="884" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="988" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="998" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1102" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1112" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1216" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1226" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1330" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1340" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1444" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1454" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1558" y="192" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1568" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1672" y="192" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="1682" y="212" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<text x="24" y="245" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">uart_command_bug</text>
+<rect x="190" y="224" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="200" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="304" y="224" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="314" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="418" y="224" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="428" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="532" y="224" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="542" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="646" y="224" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="656" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="760" y="224" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="770" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="874" y="224" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="884" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="988" y="224" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="998" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="1102" y="224" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1112" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1216" y="224" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="1226" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="1330" y="224" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1340" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1444" y="224" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="1454" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="1558" y="224" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1568" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1672" y="224" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1682" y="244" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<text x="24" y="277" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">watchdog_timeout_bug</text>
+<rect x="190" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="200" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="304" y="256" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="314" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="418" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="428" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="532" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="542" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="646" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="656" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="760" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="770" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="874" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="884" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="988" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="998" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1102" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1112" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1216" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1226" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1330" y="256" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="1340" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="1444" y="256" width="110" height="28" fill="#f06a6a" stroke="#ffffff"/>
+<text x="1454" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">breaks</text>
+<rect x="1558" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1568" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+<rect x="1672" y="256" width="110" height="28" fill="#8bdc8b" stroke="#ffffff"/>
+<text x="1682" y="276" font-family="Arial, sans-serif" font-size="10" font-weight="400" text-anchor="start" fill="#1f2933">ok</text>
+</svg>

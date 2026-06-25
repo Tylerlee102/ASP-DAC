@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="340" viewBox="0 0 820 340">
+<rect width="820" height="340" fill="#ffffff"/>
+<text x="410" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">ReplayCapsule-RV RTL Architecture</text>
+<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>
+<line x1="180" y1="107" x2="230" y2="67" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="380" y1="67" x2="430" y2="67" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="580" y1="67" x2="630" y2="67" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="180" y1="107" x2="230" y2="167" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="380" y1="167" x2="430" y2="167" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="580" y1="167" x2="630" y2="167" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="705" y1="94" x2="505" y2="240" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<line x1="580" y1="267" x2="630" y2="267" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="30" y="80" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="105" y="112" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">RV32I core</text>
+<rect x="230" y="40" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="305" y="72" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">event_tap</text>
+<rect x="430" y="40" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="505" y="72" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">classifier</text>
+<rect x="630" y="40" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="705" y="72" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">capsule_buffer</text>
+<rect x="230" y="140" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="305" y="172" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">property_checker</text>
+<rect x="430" y="140" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="505" y="172" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">event_slicer</text>
+<rect x="630" y="140" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="705" y="172" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">hash_signature</text>
+<rect x="430" y="240" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="505" y="272" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">replay_control</text>
+<rect x="630" y="240" width="150" height="54" rx="6" fill="#f8fbff" stroke="#4b6f9f" stroke-width="1.5"/>
+<text x="705" y="272" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="middle" fill="#1f2933">MMIO/IRQ inject</text>
+</svg>
