@@ -13,12 +13,14 @@ import sys
 REPO_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO_ROOT / "scripts"))
 from replaycapsule_model import capsule_fixture, run_benchmark  # noqa: E402
+from rv32i_firmware_sim import run_firmware  # noqa: E402
 sys.path.insert(0, str(REPO_ROOT / "tb" / "replay_testbench"))
 from capsule_parser import parse_capsule  # noqa: E402
 from replay_compare import compare_capsules  # noqa: E402
 
 
 RAW_TRACE = REPO_ROOT / "results/raw/model_suite_traces.json"
+FIRMWARE_SIM_TRACE = REPO_ROOT / "results/raw/firmware_sim_traces.json"
 OUT_CSV = REPO_ROOT / "results/processed/trace_sizes.csv"
 
 BASELINES = [
@@ -40,6 +42,8 @@ def main() -> int:
     args = parser.parse_args()
 
     rows = collect(args.trace)
+    if args.trace == RAW_TRACE and FIRMWARE_SIM_TRACE.exists():
+        rows.extend(collect(FIRMWARE_SIM_TRACE))
     args.out.parent.mkdir(parents=True, exist_ok=True)
     with args.out.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
@@ -75,6 +79,7 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for run in runs:
         benchmark = str(run.get("benchmark", "unknown"))
+        evidence_level = str(run.get("evidence_level", "model"))
         events = list(run.get("events", []))
         commit_events = [event for event in events if event.get("event_type") == "EV_COMMIT"]
         kinst = max(len(commit_events) / 1000.0, 0.001)
@@ -83,7 +88,7 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
             if selected is None:
                 rows.append(_todo_row(benchmark, name, "requires simulator/RTL artifact not yet generated"))
                 continue
-            replay_success = _baseline_replay_success(benchmark, name)
+            replay_success = _baseline_replay_success(benchmark, name, evidence_level)
             rows.append(
                 {
                     "benchmark": benchmark,
@@ -93,8 +98,8 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
                     "bytes": str(_estimated_record_bytes(name, selected)),
                     "events_per_kinst": f"{len(selected) / kinst:.3f}",
                     "replay_success": str(replay_success),
-                    "evidence_level": "model",
-                    "notes": "size and replay success measured from model-level evidence; RTL trace sizes pending",
+                    "evidence_level": evidence_level,
+                    "notes": f"size and replay success measured from {evidence_level} evidence; RTL trace sizes pending",
                 }
             )
     return rows
@@ -144,8 +149,11 @@ def _estimated_record_bytes(name: str, events: list[dict[str, object]]) -> int:
     return len(events) * 16
 
 
-def _baseline_replay_success(benchmark: str, baseline: str) -> bool:
-    result = run_benchmark(benchmark, failing=True)
+def _baseline_replay_success(benchmark: str, baseline: str, evidence_level: str) -> bool:
+    if evidence_level == "firmware-sim":
+        result = run_firmware(benchmark, failing=True)
+    else:
+        result = run_benchmark(benchmark, failing=True)
     expected = parse_capsule(capsule_fixture(result), source=f"{benchmark}:expected")
     omitted = _baseline_omissions(baseline)
     observed = parse_capsule(capsule_fixture(result, omit=omitted), source=f"{benchmark}:{baseline}")

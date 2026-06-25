@@ -78,10 +78,14 @@ def compare_capsules(
 
     expected_pc = expected.events_of_kind("pc")
     expected_mmio = expected.events_of_kind("mmio")
+    expected_store = expected.events_of_kind("store")
+    expected_branch = expected.events_of_kind("branch")
+    expected_input = expected.events_of_kind("input")
+    expected_interrupt = expected.events_of_kind("interrupt")
     if not expected_pc:
         errors.append("expected capsule has no PC evidence events")
-    if not expected_mmio:
-        errors.append("expected capsule has no MMIO evidence events")
+    if not (expected_mmio or expected_store or expected_branch or expected_input or expected_interrupt):
+        errors.append("expected capsule has no replay-relevant evidence events")
 
     _match_event_set(
         "pc",
@@ -103,7 +107,7 @@ def compare_capsules(
     )
     _match_event_set(
         "input",
-        expected.events_of_kind("input"),
+        expected_input,
         observed.events_of_kind("input"),
         normalized_mode,
         errors,
@@ -112,7 +116,7 @@ def compare_capsules(
     )
     _match_event_set(
         "interrupt",
-        expected.events_of_kind("interrupt"),
+        expected_interrupt,
         observed.events_of_kind("interrupt"),
         normalized_mode,
         errors,
@@ -121,7 +125,7 @@ def compare_capsules(
     )
     _match_event_set(
         "store",
-        expected.events_of_kind("store"),
+        expected_store,
         observed.events_of_kind("store"),
         normalized_mode,
         errors,
@@ -130,7 +134,7 @@ def compare_capsules(
     )
     _match_event_set(
         "branch",
-        expected.events_of_kind("branch"),
+        expected_branch,
         observed.events_of_kind("branch"),
         normalized_mode,
         errors,

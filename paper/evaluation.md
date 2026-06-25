@@ -2,18 +2,19 @@
 
 The evaluation will report replay success, capsule size, trace reduction, event rate, hardware overhead, Fmax loss, runtime overhead, buffer overflow rate, and false or missed property failures.
 
-Current measured local results cover six model-level benchmark capsules and the replay comparator. The model-level suite exercises sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout failures. Verilator, Yosys, and a RISC-V compiler were not available in the local environment at kickoff, so firmware-running RTL simulation and synthesis are marked TODO until real tools are run.
+Current measured local results cover six model-level benchmark capsules, six RV32I firmware-sim benchmark capsules, and the replay comparator. The suites exercise sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout failures. Verilator, Yosys, and a RISC-V compiler were not available in the local environment at kickoff, so firmware-running RTL simulation and synthesis are marked TODO until real tools are run.
 
 Current generated artifacts:
 
 - `results/processed/replay_experiments.csv`
+- `results/processed/firmware_sim_replay.csv`
 - `results/processed/trace_sizes.csv`
 - `results/processed/ablations.csv`
 - `results/processed/event_sufficiency.csv`
 - `results/processed/synthesis.csv`
 - `results/figures/*.svg`
 
-The paper must label current replay, baseline, ablation, and event-sufficiency numbers as model-level evidence until replaced or corroborated by RTL/PicoRV32 runs.
+The paper must label current replay, baseline, ablation, and event-sufficiency numbers as model-level or firmware-sim evidence until replaced or corroborated by RTL/PicoRV32 runs.
 
 The result pipeline is:
 

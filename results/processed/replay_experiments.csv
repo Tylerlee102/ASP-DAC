@@ -1,8 +1,14 @@
 experiment,status,mode,benchmark_count,property_id,failure_signature,evidence_level,notes
 sensor_threshold_bug,PASS,commit-index,1,P3_SENSOR_DEADLINE,0x5e055494,model,model-level replay evidence matched
+sensor_threshold_bug_firmware_sim,PASS,commit-index,1,P3_SENSOR_DEADLINE,0x5e0554cd,firmware-sim,RV32I instruction interpreter replay evidence matched
 interrupt_race_bug,PASS,commit-index,1,P2_INTERRUPT_CRITICAL,0x5e05578a,model,model-level replay evidence matched
+interrupt_race_bug_firmware_sim,PASS,commit-index,1,P2_INTERRUPT_CRITICAL,0x5e0546c4,firmware-sim,RV32I instruction interpreter replay evidence matched
 mmio_ordering_bug,PASS,commit-index,1,P5_MMIO_ORDERING,0x5e053e47,model,model-level replay evidence matched
+mmio_ordering_bug_firmware_sim,PASS,commit-index,1,P5_MMIO_ORDERING,0x5e053e7f,firmware-sim,RV32I instruction interpreter replay evidence matched
 stack_corruption_bug,PASS,commit-index,1,P4_STACK_PROTECT,0x5e0548c6,model,model-level replay evidence matched
+stack_corruption_bug_firmware_sim,PASS,commit-index,1,P4_STACK_PROTECT,0x5e0548b4,firmware-sim,RV32I instruction interpreter replay evidence matched
 uart_command_bug,PASS,commit-index,1,P1_ACTUATOR_LIMIT,0x5e053733,model,model-level replay evidence matched
+uart_command_bug_firmware_sim,PASS,commit-index,1,P1_ACTUATOR_LIMIT,0x5e05372a,firmware-sim,RV32I instruction interpreter replay evidence matched
 watchdog_timeout_bug,PASS,commit-index,1,P6_WATCHDOG_TIMEOUT,0x5e05a884,model,model-level replay evidence matched
+watchdog_timeout_bug_firmware_sim,PASS,commit-index,1,P6_WATCHDOG_TIMEOUT,0x5e05a910,firmware-sim,RV32I instruction interpreter replay evidence matched
 firmware_running_rtl_suite,TODO,commit-index,0,NA,NA,rtl,requires PicoRV32/Verilator/RISC-V toolchain artifacts

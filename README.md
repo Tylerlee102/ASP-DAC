@@ -7,7 +7,7 @@ This repository is a research prototype scaffold. It is intentionally honest abo
 Current status:
 
 - Phase 0 repository plan and research-lab ownership scaffold: present.
-- Phase 1 minimal SoC/event simulation: six-benchmark Python model present.
+- Phase 1 minimal SoC/event simulation: six-benchmark Python model and RV32I firmware interpreter present.
 - PicoRV32 integration: upstream source vendored and wrapper source present; simulation pending.
 - Phase 2 event-stream RTL: synthesizable SystemVerilog source files and static RTL checks present.
 - Phase 3/4 property checking and capsule generation: record-side RTL modules present; firmware-running validation pending.
@@ -49,9 +49,10 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 ## Current Evidence
 
 - Model-level replay: `results/processed/replay_experiments.csv`
+- Firmware-sim replay: `results/processed/firmware_sim_replay.csv`
 - Baseline sizes and replay success: `results/processed/trace_sizes.csv`
 - Ablations: `results/processed/ablations.csv`
 - Static RTL check summary: `scripts/static_rtl_checks.py`
 - Generated figures: `results/figures/` and `paper/figures/`
 
-Rows marked `model` are executable event-model evidence, not firmware-running RTL evidence.
+Rows marked `model` are executable event-model evidence. Rows marked `firmware-sim` execute RV32I instruction words in the local interpreter. Neither is firmware-running RTL evidence.

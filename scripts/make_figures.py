@@ -75,15 +75,18 @@ def _baseline_trace_sizes_svg(rows: list[dict[str, str]]) -> str:
         row for row in rows
         if row.get("baseline") in {"full_commit_trace", "interrupt_mmio_trace", "property_aware_replaycapsule_rv"}
         and row.get("status") == "MEASURED"
+        and row.get("evidence_level") in {"firmware-sim", "model"}
     ]
     if not measured:
         return _text_svg("Baseline Trace Sizes", ["No measured model rows yet."])
+    if any(row.get("evidence_level") == "firmware-sim" for row in measured):
+        measured = [row for row in measured if row.get("evidence_level") == "firmware-sim"]
     labels = sorted({row["benchmark"] for row in measured})
     baselines = ["full_commit_trace", "interrupt_mmio_trace", "property_aware_replaycapsule_rv"]
     max_bytes = max(int(row["bytes"]) for row in measured if row["bytes"].isdigit())
     width = 1080
     height = 90 + len(labels) * 78
-    parts = [_svg_open(width, height), _title("Baseline Trace Sizes (model-level bytes)", width)]
+    parts = [_svg_open(width, height), _title("Baseline Trace Sizes (firmware-sim bytes)", width)]
     y = 70
     colors = {
         "full_commit_trace": "#8fb3ff",
@@ -239,4 +242,3 @@ def _escape(value: str) -> str:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -63,6 +63,7 @@ REQUIRED_TB = [
 
 PYTHON_FILES = [
     "scripts/replaycapsule_model.py",
+    "scripts/rv32i_firmware_sim.py",
     "scripts/static_rtl_checks.py",
     "tb/replay_testbench/capsule_parser.py",
     "tb/replay_testbench/replay_compare.py",
@@ -94,7 +95,7 @@ def main() -> int:
     _run_subprocess(
         rows,
         failures,
-        "phase12_smoke_model",
+        "model_suite",
         [
             sys.executable,
             "scripts/replaycapsule_model.py",
@@ -103,6 +104,20 @@ def main() -> int:
             "results/raw/phase12_sensor_threshold_trace.json",
             "--dump-suite-json",
             "results/raw/model_suite_traces.json",
+        ],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "rv32i_firmware_sim",
+        [
+            sys.executable,
+            "scripts/rv32i_firmware_sim.py",
+            "--self-test",
+            "--out-csv",
+            "results/processed/firmware_sim_replay.csv",
+            "--out-json",
+            "results/raw/firmware_sim_traces.json",
         ],
     )
     _run_subprocess(
@@ -120,7 +135,7 @@ def main() -> int:
     _run_subprocess(
         rows,
         failures,
-        "ablation_smoke",
+        "ablation_suite",
         [sys.executable, "scripts/run_ablations.py"],
     )
     _run_subprocess(rows, failures, "yosys_synthesis_probe", [sys.executable, "scripts/synth_yosys.py"])

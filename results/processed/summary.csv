@@ -4,16 +4,18 @@ event_type_definitions,PASS,12 event names present
 firmware_benchmark_pairs,PASS,6 failing/fixed pairs present
 directed_sv_testbenches,PASS,2 source-present testbenches
 syntax:scripts/replaycapsule_model.py,PASS,
+syntax:scripts/rv32i_firmware_sim.py,PASS,
 syntax:scripts/static_rtl_checks.py,PASS,
 syntax:tb/replay_testbench/capsule_parser.py,PASS,
 syntax:tb/replay_testbench/replay_compare.py,PASS,
 syntax:tb/replay_testbench/replay_driver.py,PASS,
 static_rtl_contract_checks,PASS,"Summary: 43 passed, 0 failed"
 replay_driver_demo_commit,PASS,matched checkpoint: 0
-phase12_smoke_model,PASS,WROTE results\raw\model_suite_traces.json
+model_suite,PASS,WROTE results\raw\model_suite_traces.json
+rv32i_firmware_sim,PASS,WROTE results\raw\firmware_sim_traces.json
 replay_experiments,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\replay_experiments.csv
 trace_size_collection,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\trace_sizes.csv
-ablation_smoke,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\event_sufficiency.csv
+ablation_suite,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\event_sufficiency.csv
 yosys_synthesis_probe,PASS,TODO yosys not found; wrote 2 report(s) under C:\Users\tyboy\OneDrive\Documents\New project\results\raw
 synthesis_report_parse,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis.csv
 figure_generation,PASS,WROTE 6 SVG figures to C:\Users\tyboy\OneDrive\Documents\New project\results\figures and C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
