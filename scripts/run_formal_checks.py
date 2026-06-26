@@ -115,6 +115,18 @@ FORMAL_TARGETS = (
         notes="bounded replay-control injection and underflow covers over depth 8",
     ),
     FormalTarget(
+        name="replay_mismatch_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/replay_mismatch_bmc.sby"),
+        depth=14,
+        notes="bounded replay mismatch guards for wrong time, wrong kind, early EOF, clear recovery, and exact payload injection over depth 14",
+    ),
+    FormalTarget(
+        name="replay_mismatch_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/replay_mismatch_cover.sby"),
+        depth=14,
+        notes="bounded replay mismatch covers for wrong time, wrong kind, early EOF, clear recovery, and exact payload injection over depth 14",
+    ),
+    FormalTarget(
         name="capsule_buffer_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/capsule_buffer_bmc.sby"),
         depth=12,

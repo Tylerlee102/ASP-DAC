@@ -59,6 +59,14 @@ Implemented now:
 - `replay_control_cover.sby`: depth-8 cover run over the same replay-control
   harness. It checks that MMIO injection, interrupt injection, and underflow are
   reachable.
+- `replay_mismatch_bmc.sby` plus `replay_mismatch_bmc_harness.sv`: depth-14 BMC
+  over replay mismatch handling. The harness checks wrong-cycle rejection,
+  wrong-commit rejection, wrong-kind rejection, early-EOF underflow, clear
+  recovery, and exact payload injection for MMIO/external-input events.
+- `replay_mismatch_cover.sby`: depth-14 cover run over the same replay-mismatch
+  harness. It checks that wrong-time, wrong-kind, early-EOF, clear-recovery,
+  MMIO payload, external-input payload, and interrupt-injection scenarios are
+  reachable.
 - `capsule_buffer_bmc.sby` plus `capsule_buffer_bmc_harness.sv`: depth-12 BMC
   over a four-entry buffer. The harness checks count bounds, failure-to-freeze,
   frozen-count stability, sticky overflow, legal write-count increments, and

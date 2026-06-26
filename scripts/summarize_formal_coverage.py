@@ -90,6 +90,15 @@ COVERAGE_ROWS = (
         explicit_limit="local event packets; no firmware-running SoC replay proof",
     ),
     CoverageRow(
+        module_family="replay_mismatch_guards",
+        rtl_sources="rtl/replay_control.sv",
+        bmc_check="replay_mismatch_bmc",
+        cover_check="replay_mismatch_cover",
+        depth=14,
+        obligations="wrong-cycle rejection, wrong-commit rejection, wrong-kind rejection, early-EOF underflow, clear recovery, exact payload injection",
+        explicit_limit="deterministic mismatch microsequence; no full replay-stream comparator proof",
+    ),
+    CoverageRow(
         module_family="capsule_buffer",
         rtl_sources="rtl/capsule_buffer.sv",
         bmc_check="capsule_buffer_bmc",

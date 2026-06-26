@@ -13,6 +13,8 @@ registers_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\ra
 registers_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_registers_cover.txt,bounded register decode/readback/control-write covers over depth 6
 replay_control_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_control_bmc.txt,bounded replay-control consume/inject invariants over depth 8
 replay_control_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_control_cover.txt,bounded replay-control injection and underflow covers over depth 8
+replay_mismatch_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_mismatch_bmc.txt,"bounded replay mismatch guards for wrong time, wrong kind, early EOF, clear recovery, and exact payload injection over depth 14"
+replay_mismatch_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_mismatch_cover.txt,"bounded replay mismatch covers for wrong time, wrong kind, early EOF, clear recovery, and exact payload injection over depth 14"
 capsule_buffer_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_capsule_buffer_bmc.txt,bounded capsule-buffer invariants over depth 12
 capsule_buffer_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_capsule_buffer_cover.txt,bounded capsule-buffer reachability covers over depth 12
 replay_capsule_top_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_capsule_top_bmc.txt,bounded recorder invariants over depth 16

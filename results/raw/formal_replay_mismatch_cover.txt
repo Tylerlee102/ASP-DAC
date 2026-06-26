@@ -1,0 +1,100 @@
+SBY [.tools\formal_checks\replay_mismatch_cover] Removing directory '<repo>\.tools\formal_checks\replay_mismatch_cover'.
+SBY [.tools\formal_checks\replay_mismatch_cover] Copy '<repo>\rtl\event_pkg.sv' to '<repo>\.tools\formal_checks\replay_mismatch_cover\src\rtl\event_pkg.sv'.
+SBY [.tools\formal_checks\replay_mismatch_cover] Copy '<repo>\rtl\event_defs.svh' to '<repo>\.tools\formal_checks\replay_mismatch_cover\src\rtl\event_defs.svh'.
+SBY [.tools\formal_checks\replay_mismatch_cover] Copy '<repo>\rtl\replay_control.sv' to '<repo>\.tools\formal_checks\replay_mismatch_cover\src\rtl\replay_control.sv'.
+SBY [.tools\formal_checks\replay_mismatch_cover] Copy '<repo>\formal\yosys_smtbmc_scripts\replay_mismatch_bmc_harness.sv' to '<repo>\.tools\formal_checks\replay_mismatch_cover\src\formal\yosys_smtbmc_scripts\replay_mismatch_bmc_harness.sv'.
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: smtbmc
+SBY [.tools\formal_checks\replay_mismatch_cover] base: starting process "cd .tools\formal_checks\replay_mismatch_cover/src& yosys -ql ../model/design.log ../model/design.ys"
+SBY [.tools\formal_checks\replay_mismatch_cover] base: finished (returncode=0)
+SBY [.tools\formal_checks\replay_mismatch_cover] prep: starting process "cd .tools\formal_checks\replay_mismatch_cover/model& yosys -ql design_prep.log design_prep.ys"
+SBY [.tools\formal_checks\replay_mismatch_cover] prep: finished (returncode=0)
+SBY [.tools\formal_checks\replay_mismatch_cover] smt2: starting process "cd .tools\formal_checks\replay_mismatch_cover/model& yosys -ql design_smt2.log design_smt2.ys"
+SBY [.tools\formal_checks\replay_mismatch_cover] smt2: finished (returncode=0)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: starting process "cd .tools\formal_checks\replay_mismatch_cover& yosys-smtbmc --presat --unroll -c --noprogress -t 14  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Solver: yices
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 0..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 1..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 2..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 3..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 3 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:151.5-151.49 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_151_93)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace0.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace0.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 3..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 4..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 4 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:152.5-152.49 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_152_97)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace1.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace1.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 4..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 5..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 5 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:153.5-153.49 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_153_101)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace2.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace2.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 5..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 6..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 6 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:154.5-154.88 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_154_105)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace3.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace3.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 6..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 7..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 7 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:155.5-155.88 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_155_111)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace4.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace4.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 7..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 8..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 8 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:156.5-156.59 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_156_117)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace5.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace5_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace5.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace5.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 8..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 9..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 9 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:157.5-157.58 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_157_121)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace6.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace6_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace6.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace6.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 9..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 10..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 11..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 11 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:158.5-158.53 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_158_125)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace7.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace7_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace7.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace7.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 11..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 12..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Checking cover reachability in step 13..
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Reached cover statement in step 13 at replay_mismatch_bmc_harness: formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:159.5-159.54 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_159_129)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace8.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace8_tb.v
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace8.smtc
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace8.yw
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: ## <time> Status: passed
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: finished (returncode=0)
+SBY [.tools\formal_checks\replay_mismatch_cover] engine_0: Status returned by engine: pass
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: Elapsed clock time <time>
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: Elapsed process time unvailable on Windows
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: engine_0 (smtbmc) returned pass
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: cover trace: .tools\formal_checks\replay_mismatch_cover\engine_0\trace0.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] summary:   reached cover statement replay_mismatch_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_151_93 at formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:151.5-151.49 step 3
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: cover trace: .tools\formal_checks\replay_mismatch_cover\engine_0\trace1.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] summary:   reached cover statement replay_mismatch_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_152_97 at formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:152.5-152.49 step 4
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: cover trace: .tools\formal_checks\replay_mismatch_cover\engine_0\trace2.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] summary:   reached cover statement replay_mismatch_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_153_101 at formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:153.5-153.49 step 5
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: cover trace: .tools\formal_checks\replay_mismatch_cover\engine_0\trace3.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] summary:   reached cover statement replay_mismatch_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_154_105 at formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:154.5-154.88 step 6
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: cover trace: .tools\formal_checks\replay_mismatch_cover\engine_0\trace4.vcd
+SBY [.tools\formal_checks\replay_mismatch_cover] summary:   reached cover statement replay_mismatch_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_replay_mismatch_bmc_harness_sv_155_111 at formal/yosys_smtbmc_scripts/replay_mismatch_bmc_harness.sv:155.5-155.88 step 7
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: and 4 further traces
+SBY [.tools\formal_checks\replay_mismatch_cover] summary: see .tools\formal_checks\replay_mismatch_cover/PASS for a complete summary
+SBY [.tools\formal_checks\replay_mismatch_cover] DONE (PASS, rc=0)

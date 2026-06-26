@@ -51,8 +51,8 @@ Current RTL-smoke evidence:
 Current bounded formal evidence:
 
 - Event-tap, event-classifier/slicer, property-checker, hash-signature,
-  MMIO/interrupt logger, register block, replay-control, capsule-buffer, and
-  recorder checks: `results/processed/formal_checks.csv`
+  MMIO/interrupt logger, register block, replay-control, replay-mismatch,
+  capsule-buffer, and recorder checks: `results/processed/formal_checks.csv`
 - Reviewer-facing formal coverage packaging:
   `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
 

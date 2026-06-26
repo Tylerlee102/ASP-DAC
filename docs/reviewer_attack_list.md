@@ -24,7 +24,7 @@ Required evidence: narrowed embedded RV32I interrupt/MMIO boundary and minimal e
 
 Current weakness: the replay-sufficiency theorem is still a written proof sketch. Bounded SMTBMC checks cover local recorder, classifier/slicer, checker, logger, register, buffer, hash, and replay-control contracts, but not the end-to-end theorem.
 
-Fix plan: keep expanding the bounded checks toward replay mismatch families, then connect the written theorem to the checked local contracts.
+Fix plan: connect the written theorem to the checked local contracts and add broader stream-level replay proofs.
 
 ## 4. "The novelty is only integration."
 
@@ -48,7 +48,7 @@ Required evidence: explicit assumptions, equivalence definition, induction over 
 
 Current weakness: no mechanized end-to-end proof. Current bounded evidence is summarized in `docs/formal_coverage_matrix.md` and `results/processed/formal_checks.csv`.
 
-Fix plan: strengthen theorem with invariants linked to the checked formal/SVA contracts and add replay-mismatch proof families.
+Fix plan: strengthen theorem with invariants linked to the checked formal/SVA contracts and add broader stream-level replay proof families.
 
 ## 7. "The hardware overhead is too high."
 

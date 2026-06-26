@@ -1,0 +1,50 @@
+SBY [.tools\formal_checks\replay_mismatch_bmc] Removing directory '<repo>\.tools\formal_checks\replay_mismatch_bmc'.
+SBY [.tools\formal_checks\replay_mismatch_bmc] Copy '<repo>\rtl\event_pkg.sv' to '<repo>\.tools\formal_checks\replay_mismatch_bmc\src\rtl\event_pkg.sv'.
+SBY [.tools\formal_checks\replay_mismatch_bmc] Copy '<repo>\rtl\event_defs.svh' to '<repo>\.tools\formal_checks\replay_mismatch_bmc\src\rtl\event_defs.svh'.
+SBY [.tools\formal_checks\replay_mismatch_bmc] Copy '<repo>\rtl\replay_control.sv' to '<repo>\.tools\formal_checks\replay_mismatch_bmc\src\rtl\replay_control.sv'.
+SBY [.tools\formal_checks\replay_mismatch_bmc] Copy '<repo>\formal\yosys_smtbmc_scripts\replay_mismatch_bmc_harness.sv' to '<repo>\.tools\formal_checks\replay_mismatch_bmc\src\formal\yosys_smtbmc_scripts\replay_mismatch_bmc_harness.sv'.
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: smtbmc
+SBY [.tools\formal_checks\replay_mismatch_bmc] base: starting process "cd .tools\formal_checks\replay_mismatch_bmc/src& yosys -ql ../model/design.log ../model/design.ys"
+SBY [.tools\formal_checks\replay_mismatch_bmc] base: finished (returncode=0)
+SBY [.tools\formal_checks\replay_mismatch_bmc] prep: starting process "cd .tools\formal_checks\replay_mismatch_bmc/model& yosys -ql design_prep.log design_prep.ys"
+SBY [.tools\formal_checks\replay_mismatch_bmc] prep: finished (returncode=0)
+SBY [.tools\formal_checks\replay_mismatch_bmc] smt2: starting process "cd .tools\formal_checks\replay_mismatch_bmc/model& yosys -ql design_smt2.log design_smt2.ys"
+SBY [.tools\formal_checks\replay_mismatch_bmc] smt2: finished (returncode=0)
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: starting process "cd .tools\formal_checks\replay_mismatch_bmc& yosys-smtbmc --presat --unroll --noprogress -t 14  --append 0 --dump-vcd engine_0/trace.vcd --dump-yw engine_0/trace.yw --dump-vlogtb engine_0/trace_tb.v --dump-smtc engine_0/trace.smtc model/design_smt2.smt2"
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Solver: yices
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 0..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 0..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 1..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 1..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 2..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 2..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 3..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 3..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 4..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 4..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 5..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 5..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 6..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 6..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 7..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 7..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 8..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 8..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 9..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 9..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 10..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 10..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 11..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 11..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 12..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 12..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assumptions in step 13..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Checking assertions in step 13..
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: ## <time> Status: passed
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: finished (returncode=0)
+SBY [.tools\formal_checks\replay_mismatch_bmc] engine_0: Status returned by engine: pass
+SBY [.tools\formal_checks\replay_mismatch_bmc] summary: Elapsed clock time <time>
+SBY [.tools\formal_checks\replay_mismatch_bmc] summary: Elapsed process time unvailable on Windows
+SBY [.tools\formal_checks\replay_mismatch_bmc] summary: engine_0 (smtbmc) returned pass
+SBY [.tools\formal_checks\replay_mismatch_bmc] summary: engine_0 did not produce any traces
+SBY [.tools\formal_checks\replay_mismatch_bmc] DONE (PASS, rc=0)
