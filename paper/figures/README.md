@@ -17,6 +17,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/trace_sizes.csv` | Yes | Baseline trace-size data source. |
 | `../../results/figures/trace_size_status.svg` | Yes | Existing generated trace-size status figure; not final paper styling. |
 | `../../results/processed/ablations.csv` | Yes | Ablation heatmap data source. |
+| `../../results/processed/hdl_checks.csv` | Yes | Directed HDL frontend verification source. |
 | `../../results/raw/yosys_replay_capsule_top.txt` | Yes | Yosys generic synthesis report for the record-side top. |
 | `../../results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Yosys generic synthesis report for the integrated wrapper. |
 | `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source with generic cells measured and mapped resource/timing fields TODO/NA. |
@@ -49,6 +50,6 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | Requirement | Applies to |
 | --- | --- |
 | Firmware-running PicoRV32 traces for all listed benchmarks | Replay flow, baseline sizes, ablation heatmap. |
-| Verilator or cocotb RTL simulation outputs | Replay success, cycles to failure, overflow behavior. |
+| Full Verilator or cocotb RTL simulation outputs | Replay success, cycles to failure, overflow behavior. |
 | Yosys report parsed into `synthesis.csv` | Synthesis/resource table. |
 | Mapped FPGA report for both baseline and ReplayCapsule builds | LUT/FF/BRAM/Fmax and overhead fields. |

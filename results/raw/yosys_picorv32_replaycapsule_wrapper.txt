@@ -4264,6 +4264,6 @@ Optimizing module event_classifier.
         1   $paramod$d75034f469e7d17c42270a63ae493641baa8e744\replay_capsule_top
 
 Warnings: 1 unique messages, 2 total
-End of script. Logfile hash: 41508981db, time: 3.39s, user: 3.39s, system: 0.00s
+End of script. Logfile hash: 41508981db, time: 3.48s, user: 3.48s, system: 0.00s
 Yosys 0.66 (git sha1 86f2ddebc, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.66]
-Time spent: 21% 1x proc_mux (0 sec), 18% 1x proc_arst (0 sec), ...
+Time spent: 21% 1x proc_mux (0 sec), 17% 1x proc_arst (0 sec), ...

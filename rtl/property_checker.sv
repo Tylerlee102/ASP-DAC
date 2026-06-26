@@ -10,7 +10,7 @@ module property_checker #(
   parameter logic [31:0] SENSOR_THRESHOLD  = 32'd700,
   parameter logic [31:0] ACTUATOR_MAX_SAFE = 32'd100,
   parameter logic [31:0] CONFIG_SAFE_MAGIC = 32'h0000_cafe,
-  parameter int          RESPONSE_DEADLINE = 16
+  parameter logic [7:0]  RESPONSE_DEADLINE = 8'd16
 ) (
   input  logic        clk,
   input  logic        rst_n,

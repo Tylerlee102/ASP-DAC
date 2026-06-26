@@ -9,10 +9,10 @@ Current status:
 - Phase 0 repository plan and research-lab ownership scaffold: present.
 - Phase 1 minimal SoC/event simulation: six-benchmark Python model and RV32I firmware interpreter present.
 - PicoRV32 integration: upstream source vendored and wrapper source present; simulation pending.
-- Phase 2 event-stream RTL: synthesizable SystemVerilog source files, static RTL checks, and generic Yosys synthesis evidence present.
+- Phase 2 event-stream RTL: synthesizable SystemVerilog source files, static RTL checks, directed Icarus simulations, Verilator lint, and generic Yosys synthesis evidence present.
 - Phase 3/4 property checking and capsule generation: record-side RTL modules present; firmware-running validation pending.
 - Phase 5/6/7/8 replay, bug suite, baselines, and ablations: model-level results generated for six benchmarks; RTL-level results pending.
-- Verilator/firmware-running RTL simulation and mapped FPGA synthesis: pending local tool installation.
+- Firmware-running RTL simulation and mapped FPGA synthesis: pending local `make`/C++ build support, RISC-V compiler, and mapped flow.
 - Paper results: no fabricated numbers; result files are generated only by scripts.
 
 ## Quick Start
@@ -27,7 +27,7 @@ On Unix-like shells:
 python3 scripts/run_all_tests.py
 ```
 
-The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, replay parsing/comparison, six model-level bug capsules, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. RTL simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
+The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL frontend checks, replay parsing/comparison, six model-level bug capsules, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. Firmware-running RTL simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
 
 ## Research Claim
 
@@ -54,6 +54,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Baseline sizes and replay success: `results/processed/trace_sizes.csv`
 - Ablations: `results/processed/ablations.csv`
 - Static RTL check summary: `scripts/static_rtl_checks.py`
+- Directed HDL checks: `results/processed/hdl_checks.csv`
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
 - Generated figures: `results/figures/` and `paper/figures/`
 

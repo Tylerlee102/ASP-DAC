@@ -26,6 +26,7 @@ hand into captions, plots, or tables.
 | `results/figures/baseline_trace_sizes.svg` | Yes | Baseline trace-size figure | Generated from `trace_sizes.csv`. |
 | `results/figures/ablation_heatmap.svg` | Yes | Ablation heatmap | Generated from model-level ablation rows. |
 | `results/processed/ablations.csv` | Yes | Ablation heatmap | Model-level ablations are available; RTL-backed rows require firmware-running traces. |
+| `results/processed/hdl_checks.csv` | Yes | Verification status | Directed Icarus simulations and Verilator lint-only checks pass. |
 | `results/raw/yosys_replay_capsule_top.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the record-side top. |
 | `results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the integrated wrapper. |
 | `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains measured generic cell counts plus TODO/NA mapped resource and timing fields. |
@@ -183,6 +184,6 @@ Use the existing pipeline as the source of truth:
 | Gate | Needed artifacts | Unlocks |
 | --- | --- | --- |
 | PicoRV32 integration | Firmware-running record/replay traces for each benchmark | Full replay flow, full baseline comparison, full ablation heatmap, core-relative resource overhead. |
-| Verilator/cocotb plus RISC-V toolchain | Reproducible RTL simulation traces and firmware images | Benchmark-wide event logs, replay success, cycles to failure, overflow checks. |
+| Full Verilator/cocotb plus RISC-V toolchain | Reproducible RTL simulation traces and firmware images | Benchmark-wide event logs, replay success, cycles to failure, overflow checks. |
 | Yosys | Real synthesis report for `replay_capsule_top` and integrated variants | Generic cell counts and synthesis status. Current local flow satisfies this with `yowasp-yosys`. |
 | FPGA mapping flow | Device-mapped reports for baseline and ReplayCapsule builds | LUT, FF, BRAM, Fmax, and timing-overhead fields. |

@@ -4,6 +4,7 @@ event_type_definitions,PASS,12 event names present
 firmware_benchmark_pairs,PASS,6 failing/fixed pairs present
 directed_sv_testbenches,PASS,2 source-present testbenches
 syntax:scripts/build_firmware_images.py,PASS,
+syntax:scripts/run_hdl_checks.py,PASS,
 syntax:scripts/replaycapsule_model.py,PASS,
 syntax:scripts/rv32i_firmware_sim.py,PASS,
 syntax:scripts/static_rtl_checks.py,PASS,
@@ -13,6 +14,7 @@ syntax:tb/replay_testbench/replay_driver.py,PASS,
 firmware_image_build,PASS,WROTE 12 firmware image sets under C:\Users\tyboy\OneDrive\Documents\New project\firmware\build
 firmware_image_artifacts,PASS,12 image sets present
 static_rtl_contract_checks,PASS,"Summary: 43 passed, 0 failed"
+hdl_frontend_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\hdl_checks.csv
 replay_driver_demo_commit,PASS,matched checkpoint: 0
 model_suite,PASS,WROTE results\raw\model_suite_traces.json
 rv32i_firmware_sim,PASS,WROTE results\raw\firmware_sim_traces.json
@@ -22,6 +24,9 @@ ablation_suite,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\
 yosys_synthesis_probe,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\raw\yosys_picorv32_replaycapsule_wrapper.txt
 synthesis_report_parse,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis.csv
 figure_generation,PASS,WROTE 6 SVG figures to C:\Users\tyboy\OneDrive\Documents\New project\results\figures and C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
-tool:verilator,TODO,external tool not found locally
+tool:verilator,PASS,workspace-local oss-cad-suite verilator_bin.exe
+tool:iverilog,PASS,workspace-local oss-cad-suite iverilog.exe
+tool:vvp,PASS,workspace-local oss-cad-suite vvp.exe
 tool:yosys,PASS,workspace-local yowasp-yosys
+tool:make,TODO,external tool not found locally
 tool:riscv64-unknown-elf-gcc,TODO,external tool not found locally

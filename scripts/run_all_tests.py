@@ -73,6 +73,7 @@ REQUIRED_TB = [
 
 PYTHON_FILES = [
     "scripts/build_firmware_images.py",
+    "scripts/run_hdl_checks.py",
     "scripts/replaycapsule_model.py",
     "scripts/rv32i_firmware_sim.py",
     "scripts/static_rtl_checks.py",
@@ -103,6 +104,12 @@ def main() -> int:
         failures,
         "static_rtl_contract_checks",
         [sys.executable, "scripts/static_rtl_checks.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "hdl_frontend_checks",
+        [sys.executable, "scripts/run_hdl_checks.py"],
     )
     _run_subprocess(
         rows,
@@ -170,7 +177,10 @@ def main() -> int:
         [sys.executable, "scripts/make_figures.py"],
     )
     _record_tool_availability(rows, "verilator")
+    _record_tool_availability(rows, "iverilog")
+    _record_tool_availability(rows, "vvp")
     _record_tool_availability(rows, "yosys")
+    _record_tool_availability(rows, "make")
     _record_tool_availability(rows, "riscv64-unknown-elf-gcc")
     _write_summary(rows)
 
@@ -285,8 +295,17 @@ def _record_tool_availability(rows: list[dict[str, str]], tool: str) -> None:
         rows.append(_row(f"tool:{tool}", "PASS", found))
     elif tool == "yosys" and _local_yowasp_yosys():
         rows.append(_row("tool:yosys", "PASS", "workspace-local yowasp-yosys"))
+    elif local_tool := _local_oss_cad_tool(tool):
+        rows.append(_row(f"tool:{tool}", "PASS", f"workspace-local oss-cad-suite {local_tool.name}"))
     else:
         rows.append(_row(f"tool:{tool}", "TODO", "external tool not found locally"))
+
+
+def _local_oss_cad_tool(tool: str) -> Path | None:
+    suite = REPO_ROOT / ".tools" / "oss-cad-suite" / "oss-cad-suite"
+    local_name = "verilator_bin.exe" if tool == "verilator" else f"{tool}.exe"
+    local_tool = suite / "bin" / local_name
+    return local_tool if local_tool.exists() else None
 
 
 def _local_yowasp_yosys() -> bool:

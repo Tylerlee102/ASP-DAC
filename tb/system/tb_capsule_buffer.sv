@@ -53,6 +53,7 @@ module tb_capsule_buffer;
     @(posedge clk);
 
     push_packet(32'd0);
+    #1;
     if (write_count != 3'd1) begin
       $fatal(1, "capsule buffer did not accept first packet");
     end
@@ -61,11 +62,13 @@ module tb_capsule_buffer;
     fail_freeze <= 1'b1;
     @(posedge clk);
     fail_freeze <= 1'b0;
+    #1;
     if (!frozen) begin
       $fatal(1, "capsule buffer did not freeze");
     end
 
     push_packet(32'd1);
+    #1;
     if (write_count != 3'd1) begin
       $fatal(1, "frozen capsule buffer accepted a later packet");
     end
@@ -83,4 +86,3 @@ module tb_capsule_buffer;
     end
   endtask
 endmodule
-

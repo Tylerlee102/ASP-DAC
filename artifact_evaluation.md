@@ -27,10 +27,11 @@ Required now:
 Used when available for generic synthesis evidence:
 
 - Yosys, including workspace-local `yowasp-yosys`
+- OSS CAD Suite, including workspace-local Icarus Verilog, `vvp`, and Verilator lint
 
 Required for later RTL/synthesis gates:
 
-- Verilator
+- `make` and a C++ compiler for full Verilator builds
 - a RISC-V bare-metal compiler toolchain
 - optionally OpenROAD or vendor FPGA tools
 
@@ -42,6 +43,7 @@ Current non-RTL executable evidence:
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe` when installed
+outside git tracking, and `.tools/oss-cad-suite/oss-cad-suite/` when extracted
 outside git tracking.
 
 ## Result Integrity

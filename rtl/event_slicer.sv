@@ -17,7 +17,7 @@ module event_slicer #(
   `include "event_defs.svh"
 
   localparam int COUNT_W = (LAST_K <= 1) ? 1 : $clog2(LAST_K + 1);
-  localparam logic [COUNT_W-1:0] LAST_K_VALUE = LAST_K;
+  localparam logic [COUNT_W-1:0] LAST_K_VALUE = COUNT_W'(LAST_K);
   logic [COUNT_W-1:0] context_count;
 
   always_comb begin

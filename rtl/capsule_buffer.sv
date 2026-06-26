@@ -22,7 +22,7 @@ module capsule_buffer #(
 );
   logic [EVENT_WIDTH-1:0] mem [0:DEPTH-1];
   logic [ADDR_W-1:0] write_ptr;
-  localparam logic [ADDR_W:0] DEPTH_COUNT = DEPTH;
+  localparam logic [ADDR_W:0] DEPTH_COUNT = (ADDR_W + 1)'(DEPTH);
 
   assign read_data = mem[read_addr];
 
