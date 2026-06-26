@@ -13,4 +13,4 @@ Out of scope:
 - unsupported properties
 - unbounded firmware claims
 
-The current implementation is also an early scaffold: six PicoRV32 wrapper firmware smokes and generic synthesis numbers are measured, but benchmark-wide firmware-running tests, replay outputs, and mapped FPGA timing/resource numbers remain pending.
+The current implementation is also an early scaffold: twelve PicoRV32 wrapper firmware smokes and generic synthesis numbers are measured, but benchmark-wide firmware-running replay/export tests and mapped FPGA timing/resource numbers remain pending.

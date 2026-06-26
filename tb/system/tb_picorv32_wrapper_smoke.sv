@@ -152,6 +152,9 @@ module tb_picorv32_wrapper_smoke;
         irq = 32'h0;
       end
       if (property_fail_valid) begin
+        if (expected_property == 0) begin
+          $fatal(1, "unexpected property failure id %0d", property_id);
+        end
         if (property_id != expected_property[7:0]) begin
           $fatal(1, "expected property id %0d, got id %0d", expected_property, property_id);
         end
@@ -165,6 +168,13 @@ module tb_picorv32_wrapper_smoke;
         end
         $finish;
       end
+    end
+
+    if (expected_property == 0) begin
+      if (capsule_event_count == 9'h0) begin
+        $fatal(1, "no-failure smoke did not record any events");
+      end
+      $finish;
     end
 
     $fatal(1, "PicoRV32 wrapper did not raise the expected property failure");

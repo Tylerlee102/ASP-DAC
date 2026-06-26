@@ -44,6 +44,22 @@ class VerilatorLintTarget:
     include_dirs: tuple[str, ...]
 
 
+PICORV32_WRAPPER_SOURCES = (
+    "tb_picorv32_wrapper_smoke.sv",
+    "../../third_party/picorv32/picorv32.v",
+    "../../rtl/event_tap.sv",
+    "../../rtl/event_classifier.sv",
+    "../../rtl/capsule_buffer.sv",
+    "../../rtl/property_checker.sv",
+    "../../rtl/event_slicer.sv",
+    "../../rtl/hash_signature.sv",
+    "../../rtl/replay_capsule_top.sv",
+    "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
+)
+
+PICORV32_INCLUDE_DIRS = ("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32")
+
+
 IVERILOG_TESTS = (
     IverilogTest(
         name="tb_property_checker",
@@ -198,6 +214,86 @@ IVERILOG_TESTS = (
             "+SENSOR_VALUE=850",
             "+COMMAND_VALUE=0",
             "+MAX_CYCLES=900",
+        ),
+        defines=("RC_ENABLE_WATCHDOG",),
+    ),
+    IverilogTest(
+        name="tb_picorv32_sensor_threshold_fixed_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/sensor_threshold_bug/fixed.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_mmio_ordering_fixed_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/mmio_ordering_bug/fixed.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_interrupt_race_fixed_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/interrupt_race_bug/fixed.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
+        ),
+        defines=("RC_IRQ_VECTOR_WORD_INDEX=9",),
+    ),
+    IverilogTest(
+        name="tb_picorv32_stack_corruption_fixed_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/stack_corruption_bug/fixed.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_uart_command_fixed_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/uart_command_bug/fixed.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_watchdog_timeout_fixed_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/watchdog_timeout_bug/fixed.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=300",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
         ),
         defines=("RC_ENABLE_WATCHDOG",),
     ),
