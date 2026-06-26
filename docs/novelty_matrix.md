@@ -62,10 +62,10 @@ Avoid language like:
 
 Resolve these before submitting a paper or making public claims:
 
-1. Read the full Security Capsules paper and confirm what "capsule" means structurally, what signals it monitors, and what overhead/evaluation it reports.
-2. Read the full Hassert paper and confirm whether it supports replay-like debug, what assertions are supported, and what FPGA resources/limitations are reported.
-3. Read the full REMU paper and distinguish its checkpoint/replay boundary from ReplayCapsule-RV's proposed event boundary.
-4. Read the full FlashBox paper and document whether it performs deterministic replay or only postmortem event logging.
+1. Read the full Security Capsules paper before making detailed claims about capsule structure, monitored signals, or overhead/evaluation.
+2. Read the full Hassert paper before making detailed claims about replay-like debug, supported assertions, FPGA resources, or limitations.
+3. Read the full REMU paper before making detailed claims about its checkpoint/replay boundary, replay mechanism, or measured results.
+4. Read the full FlashBox paper before making detailed claims about whether it performs deterministic replay or only postmortem event logging.
 5. Survey RISC-V data trace and N-Trace future data/bus trace support before saying MMIO is outside standards.
 6. Add local evaluation evidence before making any compression, overhead, replay-success, or coverage claims.
 7. Confirm whether optional cycle-delta replay is needed for each benchmark; otherwise keep claims at commit-index architectural replay.
