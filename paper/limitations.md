@@ -13,4 +13,4 @@ Out of scope:
 - unsupported properties
 - unbounded firmware claims
 
-The current implementation is also an early scaffold: twelve PicoRV32 wrapper firmware smokes, a seeded RTL-smoke interrupt reproducibility campaign, twelve failing/fixed RTL-smoke capsule export self-compare, missing-event, duplicate-event, metadata-corruption, payload-corruption, order-corruption, and PC-context checks, twelve RTL/firmware-sim alignment rows, and generic synthesis/overhead context are measured, but benchmark-wide firmware-running replay tests and mapped FPGA timing/resource numbers remain pending.
+The current implementation is also an early scaffold: fifteen PicoRV32 wrapper firmware smokes, a seeded RTL-smoke interrupt reproducibility campaign, twelve failing/fixed RTL-smoke capsule export self-compare, missing-event, duplicate-event, metadata-corruption, payload-corruption, order-corruption, and PC-context checks, twelve RTL/firmware-sim alignment rows, and generic synthesis/overhead context are measured, but benchmark-wide firmware-running replay tests and mapped FPGA timing/resource numbers remain pending.

@@ -18,7 +18,7 @@ The current runnable path covers all six benchmark classes at two non-RTL eviden
 - `model`: event-boundary model from `scripts/replaycapsule_model.py`
 - `firmware-sim`: RV32I instruction interpreter from `scripts/rv32i_firmware_sim.py`
 
-Firmware-running RTL results currently include twelve PicoRV32 wrapper smokes: failing and fixed images for sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout. A seeded RTL-smoke interrupt campaign reruns selected interrupt-race schedules in fresh Icarus processes and checks capsule digest reproducibility. A generated alignment table checks that failing RTL-smoke capsules agree with the RV32I firmware interpreter on property IDs and key replay-visible event values. Full benchmark-wide RTL replay/export/compare coverage remains pending a broader PicoRV32 simulation harness, `make`/C++ support for Verilator-style builds, and a RISC-V compiler or equivalent firmware image flow.
+Firmware-running RTL results currently include fifteen PicoRV32 wrapper smokes: failing and fixed images for sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout, plus selected no-failure sensor, UART-command, and watchdog edge cases. A seeded RTL-smoke interrupt campaign reruns selected interrupt-race schedules in fresh Icarus processes and checks capsule digest reproducibility. A generated alignment table checks that failing RTL-smoke capsules agree with the RV32I firmware interpreter on property IDs and key replay-visible event values. Full benchmark-wide RTL replay/export/compare coverage remains pending a broader PicoRV32 simulation harness, `make`/C++ support for Verilator-style builds, and a RISC-V compiler or equivalent firmware image flow.
 
 ## Metrics
 
@@ -64,7 +64,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts and gener
 - `results/processed/trace_sizes.csv`: model-level and firmware-sim baseline sizes and replay success, plus RTL-smoke capsule-byte rows where exported packets exist.
 - `results/processed/ablations.csv`: model-level event removal, buffer-size, and last-K sweeps.
 - `results/processed/event_sufficiency.csv`: per-benchmark event classes whose removal breaks replay.
-- `results/processed/hdl_checks.csv`: nine directed Icarus module simulations, twelve PicoRV32 wrapper smokes, and Verilator lint-only HDL frontend checks.
+- `results/processed/hdl_checks.csv`: nine directed Icarus module simulations, fifteen PicoRV32 wrapper smokes, and Verilator lint-only HDL frontend checks.
 - `results/processed/formal_checks.csv`: bounded SMTBMC event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover checks.
 - `results/processed/synthesis.csv`: Yosys generic cell counts when available; honest TODO/NA fields for LUT/FF/BRAM/Fmax until a mapped FPGA flow exists.
 - `results/processed/synthesis_overhead.csv`: derived generic cell-overhead context between baseline PicoRV32 and the integrated wrapper; mapped fields remain `NA`.

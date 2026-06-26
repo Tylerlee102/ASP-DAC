@@ -68,6 +68,11 @@ GLOBS = (
     ("paper/figures/table*.md", "scripts/render_paper_tables.py", "generated paper table source"),
     ("paper/figures/*.svg", "scripts/make_figures.py", "paper SVG figure mirror"),
     ("results/figures/*.svg", "scripts/make_figures.py", "generated SVG figure source"),
+    ("results/raw/tb_*_*.txt", "scripts/run_hdl_checks.py", "raw HDL compile/simulation log"),
+    ("results/raw/verilator_lint_*.txt", "scripts/run_hdl_checks.py", "raw Verilator lint log"),
+    ("results/raw/formal_*.txt", "scripts/run_formal_checks.py", "raw bounded formal log"),
+    ("results/raw/randomized_interrupt_campaign/*.txt", "scripts/run_randomized_interrupt_campaign.py", "raw seeded interrupt campaign log"),
+    ("results/raw/rtl_capsules/*.json", "scripts/export_rtl_capsules.py", "raw exported RTL-smoke capsule"),
     ("results/raw/yosys_*.txt", "scripts/synth_yosys.py", "raw generic synthesis report"),
 )
 

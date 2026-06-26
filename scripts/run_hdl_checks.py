@@ -362,6 +362,49 @@ IVERILOG_TESTS = (
         ),
         defines=("RC_ENABLE_WATCHDOG",),
     ),
+    IverilogTest(
+        name="tb_picorv32_sensor_threshold_below_threshold_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/sensor_threshold_bug/failing.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=300",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_uart_command_no_command_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/uart_command_bug/failing.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_watchdog_timeout_below_threshold_smoke",
+        workdir=Path("tb/system"),
+        sources=PICORV32_WRAPPER_SOURCES,
+        include_dirs=PICORV32_INCLUDE_DIRS,
+        run_args=(
+            "+MEMFILE=firmware/build/watchdog_timeout_bug/failing.mem",
+            "+EXPECTED_PROPERTY=0",
+            "+SENSOR_VALUE=300",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
+        ),
+        defines=("RC_ENABLE_WATCHDOG",),
+    ),
 )
 
 

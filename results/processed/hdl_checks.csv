@@ -20,6 +20,9 @@ tb_picorv32_interrupt_race_fixed_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite
 tb_picorv32_stack_corruption_fixed_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_stack_corruption_fixed_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_uart_command_fixed_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_uart_command_fixed_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_watchdog_timeout_fixed_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_watchdog_timeout_fixed_smoke_vvp_run.txt,compile and simulation passed
+tb_picorv32_sensor_threshold_below_threshold_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_sensor_threshold_below_threshold_smoke_vvp_run.txt,compile and simulation passed
+tb_picorv32_uart_command_no_command_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_uart_command_no_command_smoke_vvp_run.txt,compile and simulation passed
+tb_picorv32_watchdog_timeout_below_threshold_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_watchdog_timeout_below_threshold_smoke_vvp_run.txt,compile and simulation passed
 verilator_lint_replay_capsule_top,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replay_capsule_top.txt,lint-only frontend check passed
 verilator_lint_picorv32_wrapper,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_picorv32_wrapper.txt,lint-only frontend check passed
 verilator_lint_replaycapsule_soc,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replaycapsule_soc.txt,lint-only frontend check passed

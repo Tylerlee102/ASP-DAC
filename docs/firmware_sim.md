@@ -55,4 +55,4 @@ It writes:
 
 Rows marked `firmware-sim` prove that benchmark firmware programs can be encoded as RV32I words, executed by the local interpreter, and replay-compared under commit-index evidence.
 
-Rows marked `firmware-sim` do not prove that PicoRV32 firmware-running RTL replay passes. The current HDL checks include twelve PicoRV32 wrapper smokes for failing and fixed images; full benchmark-wide firmware-running RTL replay/export/compare remains pending.
+Rows marked `firmware-sim` do not prove that PicoRV32 firmware-running RTL replay passes. The current HDL checks include fifteen PicoRV32 wrapper smokes for failing, fixed, and selected no-failure edge images; full benchmark-wide firmware-running RTL replay/export/compare remains pending.

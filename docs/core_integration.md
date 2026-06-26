@@ -37,7 +37,7 @@ Connect:
 ## Open Work
 
 - Add a bare-metal RISC-V compiler path.
-- Scale the twelve current PicoRV32 wrapper smokes into full replay/export/compare
+- Scale the fifteen current PicoRV32 wrapper smokes into full replay/export/compare
   runs for all benchmark firmware images.
 - Connect fuller instruction/data memory and MMIO peripheral models around the PicoRV32 wrapper.
 - Confirm the commit pulse corresponds to architectural instruction retirement.
