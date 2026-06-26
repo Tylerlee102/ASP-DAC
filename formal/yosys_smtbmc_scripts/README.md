@@ -13,6 +13,15 @@ Implemented now:
 - `event_tap_cover.sby`: depth-2 cover run over the same event-tap harness. It
   checks that interrupt, MMIO read, store, branch, and multievent cases are
   reachable.
+- `event_classifier_slicer_bmc.sby` plus
+  `event_classifier_slicer_bmc_harness.sv`: depth-8 BMC over capture-policy
+  classification and LAST_K context-window behavior. The harness checks
+  nondeterministic/property-relevant flags, keep-event rules for each capture
+  mode, and context-window reset/open/expire transitions.
+- `event_classifier_slicer_cover.sby`: depth-8 cover run over the same
+  classifier/slicer harness. It checks that capture-all, MMIO evidence,
+  overflow-guard retention, context-window opening, and context-window expiry
+  are reachable.
 - `property_checker_bmc.sby` plus `property_checker_bmc_harness.sv`: depth-8
   BMC over reduced-deadline property-checker behavior. The harness checks
   failure IDs and signatures for actuator-limit, interrupt-critical,

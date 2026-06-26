@@ -1,0 +1,21 @@
+[options]
+mode bmc
+depth 8
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/event_pkg.sv
+read_verilog -formal -sv -Irtl rtl/event_classifier.sv
+read_verilog -formal -sv -Irtl rtl/event_slicer.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/event_classifier_slicer_bmc_harness.sv
+prep -top event_classifier_slicer_bmc_harness
+
+[files]
+rtl/event_pkg.sv rtl/event_pkg.sv
+rtl/event_defs.svh rtl/event_defs.svh
+rtl/event_classifier.sv rtl/event_classifier.sv
+rtl/event_slicer.sv rtl/event_slicer.sv
+formal/yosys_smtbmc_scripts/event_classifier_slicer_bmc_harness.sv formal/yosys_smtbmc_scripts/event_classifier_slicer_bmc_harness.sv

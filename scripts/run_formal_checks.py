@@ -43,6 +43,18 @@ FORMAL_TARGETS = (
         notes="bounded event-tap priority and event-kind covers over depth 2",
     ),
     FormalTarget(
+        name="event_classifier_slicer_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/event_classifier_slicer_bmc.sby"),
+        depth=8,
+        notes="bounded event-classifier policy and slicer context-window invariants over depth 8",
+    ),
+    FormalTarget(
+        name="event_classifier_slicer_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/event_classifier_slicer_cover.sby"),
+        depth=8,
+        notes="bounded event-classifier policy and slicer context-window covers over depth 8",
+    ),
+    FormalTarget(
         name="property_checker_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/property_checker_bmc.sby"),
         depth=8,
