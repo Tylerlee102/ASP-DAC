@@ -33,6 +33,7 @@ class IverilogTest:
     sources: tuple[str, ...]
     include_dirs: tuple[str, ...]
     run_args: tuple[str, ...] = field(default_factory=tuple)
+    defines: tuple[str, ...] = field(default_factory=tuple)
 
 
 @dataclass(frozen=True)
@@ -148,6 +149,31 @@ IVERILOG_TESTS = (
             "+COMMAND_VALUE=85",
         ),
     ),
+    IverilogTest(
+        name="tb_picorv32_watchdog_timeout_smoke",
+        workdir=Path("tb/system"),
+        sources=(
+            "tb_picorv32_wrapper_smoke.sv",
+            "../../third_party/picorv32/picorv32.v",
+            "../../rtl/event_tap.sv",
+            "../../rtl/event_classifier.sv",
+            "../../rtl/capsule_buffer.sv",
+            "../../rtl/property_checker.sv",
+            "../../rtl/event_slicer.sv",
+            "../../rtl/hash_signature.sv",
+            "../../rtl/replay_capsule_top.sv",
+            "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
+        ),
+        include_dirs=("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32"),
+        run_args=(
+            "+MEMFILE=firmware/build/watchdog_timeout_bug/failing.mem",
+            "+EXPECTED_PROPERTY=6",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=900",
+        ),
+        defines=("RC_ENABLE_WATCHDOG",),
+    ),
 )
 
 
@@ -209,6 +235,8 @@ def _run_iverilog_tests(rows: list[dict[str, str]], failures: list[str]) -> None
         compile_cmd = [iverilog.command, "-g2012"]
         for include_dir in test.include_dirs:
             compile_cmd.extend(["-I", include_dir])
+        for define in test.defines:
+            compile_cmd.append(f"-D{define}")
         compile_cmd.extend(["-o", os.path.relpath(output_path, cwd), *test.sources])
         compile_result = _run(compile_cmd, cwd=cwd, env=iverilog.env)
         compile_log.write_text(_clean_log(compile_result.stdout) or "compile passed without output\n", encoding="utf-8")

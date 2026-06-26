@@ -5,7 +5,8 @@ module picorv32_replaycapsule_wrapper #(
   parameter logic [31:0] PROGADDR_IRQ   = 32'h0000_0010,
   parameter logic [31:0] STACKADDR      = 32'h0000_2000,
   parameter int          CAPSULE_DEPTH  = 256,
-  parameter int          CAPSULE_ADDR_W = $clog2(CAPSULE_DEPTH)
+  parameter int          CAPSULE_ADDR_W = $clog2(CAPSULE_DEPTH),
+  parameter bit          ENABLE_WATCHDOG = 1'b0
 ) (
   input  logic        clk,
   input  logic        rst_n,
@@ -140,7 +141,8 @@ module picorv32_replaycapsule_wrapper #(
 
   replay_capsule_top #(
     .CAPSULE_DEPTH(CAPSULE_DEPTH),
-    .ADDR_W(CAPSULE_ADDR_W)
+    .ADDR_W(CAPSULE_ADDR_W),
+    .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
   ) u_replay_capsule_top (
     .clk(clk),
     .rst_n(rst_n),

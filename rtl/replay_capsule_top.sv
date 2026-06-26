@@ -2,7 +2,8 @@
 
 module replay_capsule_top #(
   parameter int CAPSULE_DEPTH = 256,
-  parameter int ADDR_W = $clog2(CAPSULE_DEPTH)
+  parameter int ADDR_W = $clog2(CAPSULE_DEPTH),
+  parameter bit ENABLE_WATCHDOG = 1'b0
 ) (
   input  logic        clk,
   input  logic        rst_n,
@@ -102,7 +103,9 @@ module replay_capsule_top #(
     .multievent_pending(raw_multievent_pending)
   );
 
-  property_checker u_property_checker (
+  property_checker #(
+    .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
+  ) u_property_checker (
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),

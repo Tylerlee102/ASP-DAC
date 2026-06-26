@@ -1,6 +1,12 @@
 `timescale 1ns/1ps
 
 module tb_picorv32_wrapper_smoke;
+`ifdef RC_ENABLE_WATCHDOG
+  localparam bit ENABLE_WATCHDOG = 1'b1;
+`else
+  localparam bit ENABLE_WATCHDOG = 1'b0;
+`endif
+
   localparam int MEM_WORDS = 256;
   localparam logic [31:0] RESET_PC = 32'h0000_0080;
   localparam logic [31:0] SENSOR_ADDR = 32'h4000_0000;
@@ -38,7 +44,9 @@ module tb_picorv32_wrapper_smoke;
   integer irq_end_cycle;
   integer cycle_index;
 
-  picorv32_replaycapsule_wrapper u_wrapper (
+  picorv32_replaycapsule_wrapper #(
+    .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
+  ) u_wrapper (
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),
