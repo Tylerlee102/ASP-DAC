@@ -4,6 +4,10 @@ This file gives a compact formal statement for the ReplayCapsule-RV target
 theorem. It is deliberately modest: the theorem is conditional on the
 assumptions in `formal/assumptions.md`.
 
+`docs/proof_obligation_matrix.md` is generated from current artifacts and maps
+these assumptions to available evidence and limits. It should be read as a
+reviewer-facing evidence index, not as a mechanized proof.
+
 ## Objects
 
 Let:

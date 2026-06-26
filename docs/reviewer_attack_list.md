@@ -22,7 +22,7 @@ Fix plan: connect replay driver to RTL-generated capsules.
 
 Required evidence: narrowed embedded RV32I interrupt/MMIO boundary and minimal event model.
 
-Current weakness: the replay-sufficiency theorem is still a written proof sketch. Bounded SMTBMC checks cover local recorder, classifier/slicer, checker, logger, register, buffer, hash, replay-control, and replay-mismatch contracts, but not the end-to-end theorem.
+Current weakness: the replay-sufficiency theorem is still a written proof sketch. `docs/proof_obligation_matrix.md` now maps assumptions to current evidence and limits. Bounded SMTBMC checks cover local recorder, classifier/slicer, checker, logger, register, buffer, hash, replay-control, and replay-mismatch contracts, but not the end-to-end theorem.
 
 Fix plan: connect the written theorem to the checked local contracts and add broader stream-level replay proofs.
 
@@ -46,7 +46,7 @@ Fix plan: implement all six failing/fixed firmware images.
 
 Required evidence: explicit assumptions, equivalence definition, induction over commit-index time.
 
-Current weakness: no mechanized end-to-end proof. Current bounded evidence is summarized in `docs/formal_coverage_matrix.md` and `results/processed/formal_checks.csv`.
+Current weakness: no mechanized end-to-end proof. Current bounded evidence is summarized in `docs/formal_coverage_matrix.md`, `docs/proof_obligation_matrix.md`, `results/processed/formal_checks.csv`, and `results/processed/proof_obligations.csv`.
 
 Fix plan: strengthen theorem with invariants linked to the checked formal/SVA contracts and add broader stream-level replay proof families.
 

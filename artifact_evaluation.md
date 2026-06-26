@@ -60,6 +60,9 @@ Current bounded formal evidence:
   capsule-buffer, and recorder checks: `results/processed/formal_checks.csv`
 - Reviewer-facing formal coverage packaging:
   `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
+- Replay-sufficiency proof-obligation packaging:
+  `results/processed/proof_obligations.csv` and
+  `docs/proof_obligation_matrix.md`
 
 Current generic synthesis evidence:
 
@@ -72,7 +75,7 @@ Current generic synthesis evidence:
 - Generated paper table sources for replay evidence, trace-size baselines,
   event-sufficiency ablations, and bounded formal coverage:
   `paper/figures/table02_replay_evidence.md` through
-  `paper/figures/table05_formal_coverage.md`
+  `paper/figures/table06_proof_obligations.md`
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,

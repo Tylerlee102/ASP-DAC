@@ -17,6 +17,7 @@ ABLATIONS_CSV = REPO_ROOT / "results/processed/ablations.csv"
 RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
 RTL_CLASSES_CSV = REPO_ROOT / "results/processed/rtl_capsule_event_classes.csv"
 FORMAL_COVERAGE_CSV = REPO_ROOT / "results/processed/formal_coverage.csv"
+PROOF_OBLIGATIONS_CSV = REPO_ROOT / "results/processed/proof_obligations.csv"
 PAPER_FIGURES = REPO_ROOT / "paper/figures"
 
 SYNTHESIS_ORDER = [
@@ -70,6 +71,7 @@ def main() -> int:
             _read_rows(ABLATIONS_CSV),
         ),
         "table05_formal_coverage.md": _render_formal_coverage_table(_read_rows(FORMAL_COVERAGE_CSV)),
+        "table06_proof_obligations.md": _render_proof_obligation_table(_read_rows(PROOF_OBLIGATIONS_CSV)),
     }
     for name, content in outputs.items():
         (PAPER_FIGURES / name).write_text(content, encoding="utf-8")
@@ -265,6 +267,33 @@ def _render_formal_coverage_table(rows: list[dict[str, str]]) -> str:
         )
     if not rows:
         lines.append("| No formal coverage rows | NA | TODO | Missing formal coverage CSV | NA |")
+    return "\n".join(lines) + "\n"
+
+
+def _render_proof_obligation_table(rows: list[dict[str, str]]) -> str:
+    lines = [
+        "# Table 6. Replay-Sufficiency Proof Obligations",
+        "",
+        "Generated from `../../results/processed/proof_obligations.csv`.",
+        "",
+        "This table links theorem assumptions to current evidence. It is not a",
+        "mechanized end-to-end replay proof.",
+        "",
+        "| Obligation | Assumption | Status | Evidence level | Current limit |",
+        "| --- | --- | --- | --- | --- |",
+    ]
+    for row in rows:
+        lines.append(
+            "| {obligation} | {assumption} | {status} | {level} | {limit} |".format(
+                obligation=_escape_cell(row.get("obligation_id", "unknown")),
+                assumption=_escape_cell(row.get("theorem_assumption", "NA")),
+                status=_escape_cell(row.get("evidence_status", "TODO")),
+                level=_escape_cell(row.get("evidence_level", "NA")),
+                limit=_escape_cell(row.get("current_limit", "NA")),
+            )
+        )
+    if not rows:
+        lines.append("| No proof-obligation rows | NA | TODO | NA | Missing proof-obligations CSV |")
     return "\n".join(lines) + "\n"
 
 

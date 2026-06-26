@@ -35,6 +35,9 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `table03_trace_baselines.md` | Yes | Generated Markdown source for trace-size baselines. |
 | `table04_event_sufficiency.md` | Yes | Generated Markdown source for event-sufficiency ablations. |
 | `table05_formal_coverage.md` | Yes | Generated Markdown source for bounded formal coverage. |
+| `../../results/processed/proof_obligations.csv` | Yes | Replay-sufficiency proof-obligation source. |
+| `../../docs/proof_obligation_matrix.md` | Yes | Reviewer-facing proof-obligation matrix. |
+| `table06_proof_obligations.md` | Yes | Generated Markdown source for replay-sufficiency proof obligations. |
 | `../../results/processed/summary.csv` | Yes | Provenance and missing-tool status ledger. |
 
 ## Planned Assets
@@ -53,6 +56,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `table03_trace_baselines.md` | Generated partial table today | `../../results/processed/trace_sizes.csv`, `../../results/processed/rtl_capsule_event_classes.csv` | Full benchmark-wide RTL trace-size rows and mapped/replay-backed reductions. |
 | `table04_event_sufficiency.md` | Generated partial table today | `../../results/processed/event_sufficiency.csv`, `../../results/processed/ablations.csv` | RTL-backed ablations. |
 | `table05_formal_coverage.md` | Generated table today | `../../results/processed/formal_coverage.csv` | End-to-end proof remains outside current bounded checks. |
+| `table06_proof_obligations.md` | Generated partial table today | `../../results/processed/proof_obligations.csv` | End-to-end mechanized theorem remains outside current bounded checks. |
 
 ## Rendering Rules
 
@@ -72,4 +76,5 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | Firmware-running PicoRV32 traces for all listed benchmarks | Replay flow, baseline sizes, ablation heatmap. |
 | Full Verilator or cocotb RTL simulation outputs | Replay success, cycles to failure, overflow behavior. |
 | Yosys reports parsed into `synthesis.csv` and `synthesis_overhead.csv` | Synthesis/resource table. |
+| Proof-obligation matrix generated from theorem assumptions and result artifacts | Formal/replay-sufficiency table. |
 | Mapped FPGA report for both baseline and ReplayCapsule builds | LUT/FF/BRAM/Fmax and overhead fields. |

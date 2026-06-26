@@ -5,6 +5,10 @@ terms. The matching formal assumptions are in `formal/assumptions.md`; the
 symbolic statement and proof sketch are in
 `formal/replay_sufficiency_theorem.md`.
 
+The generated proof-obligation matrix in `docs/proof_obligation_matrix.md`
+links each theorem assumption to current generated evidence and explicit
+remaining limits. It is evidence packaging, not a mechanized end-to-end proof.
+
 ## Claim
 
 For a single-hart RV32I embedded firmware run, a replay capsule is sufficient to
