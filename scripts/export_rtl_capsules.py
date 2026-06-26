@@ -55,12 +55,22 @@ def main() -> int:
             json_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
             parsed = parse_capsule(json.dumps(payload), source=f"{benchmark}:rtl")
             compare = compare_capsules(parsed, parsed, mode="commit-index")
-            status = "PASS" if compare.success else "FAIL"
-            notes = (
-                "RTL smoke capsule export parsed and self-compared; not full replay"
-                if compare.success
-                else "; ".join(compare.errors)
+            negative_payload = _drop_one_replay_event(payload)
+            negative = compare_capsules(
+                parsed,
+                parse_capsule(json.dumps(negative_payload), source=f"{benchmark}:negative"),
+                mode="commit-index",
             )
+            negative_check = "PASS" if not negative.success else "FAIL"
+            status = "PASS" if compare.success and negative_check == "PASS" else "FAIL"
+            if status == "PASS":
+                notes = (
+                    "RTL smoke capsule export parsed, self-compared, and missing-event negative check failed as expected; not full replay"
+                )
+            elif compare.success:
+                notes = "missing-event negative check unexpectedly matched"
+            else:
+                notes = "; ".join(compare.errors)
         except Exception as exc:  # noqa: BLE001 - report all export failures in the CSV
             failed = True
             rows.append(
@@ -72,6 +82,7 @@ def main() -> int:
                     "replay_event_count": "0",
                     "property_id": "NA",
                     "failure_signature": "NA",
+                    "negative_check": "NA",
                     "raw_log": str(log_path.relative_to(REPO_ROOT)),
                     "capsule_json": "NA",
                     "notes": str(exc),
@@ -89,6 +100,7 @@ def main() -> int:
                 "replay_event_count": str(len(payload["events"])),
                 "property_id": str(payload["property_id"]),
                 "failure_signature": str(payload["failure_signature"]),
+                "negative_check": negative_check,
                 "raw_log": str(log_path.relative_to(REPO_ROOT)),
                 "capsule_json": str(json_path.relative_to(REPO_ROOT)),
                 "notes": notes,
@@ -106,6 +118,7 @@ def main() -> int:
                 "replay_event_count",
                 "property_id",
                 "failure_signature",
+                "negative_check",
                 "raw_log",
                 "capsule_json",
                 "notes",
@@ -225,6 +238,16 @@ def _event_payload(packet: dict[str, int]) -> dict[str, object] | None:
     if event_type == 0xB:
         return {**base, "kind": "checkpoint", "value": f"0x{packet['data']:08x}"}
     return None
+
+
+def _drop_one_replay_event(payload: dict[str, object]) -> dict[str, object]:
+    events = list(payload["events"])  # type: ignore[arg-type]
+    for index, event in enumerate(events):
+        if isinstance(event, dict) and event.get("kind") != "pc":
+            corrupted = dict(payload)
+            corrupted["events"] = events[:index] + events[index + 1 :]
+            return corrupted
+    raise ValueError("cannot build negative check without a replay-relevant event")
 
 
 if __name__ == "__main__":

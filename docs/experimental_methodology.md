@@ -53,7 +53,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts may be re
 
 - `results/processed/replay_experiments.csv`: six model-level commit-index replay rows.
 - `results/processed/firmware_sim_replay.csv`: six RV32I firmware-sim commit-index replay rows.
-- `results/processed/rtl_capsule_exports.csv`: six RTL-smoke capsule export parse/self-compare rows.
+- `results/processed/rtl_capsule_exports.csv`: six RTL-smoke capsule export parse/self-compare and missing-event negative-check rows.
 - `results/processed/trace_sizes.csv`: model-level baseline sizes and replay success.
 - `results/processed/ablations.csv`: model-level event removal, buffer-size, and last-K sweeps.
 - `results/processed/event_sufficiency.csv`: per-benchmark event classes whose removal breaks replay.
