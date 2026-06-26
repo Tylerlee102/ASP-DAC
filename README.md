@@ -11,7 +11,7 @@ Current status:
 - PicoRV32 integration: upstream source vendored, wrapper source present, and twelve firmware smokes pass through the wrapper; full replay/export/compare simulation remains pending.
 - Phase 2 event-stream RTL: synthesizable SystemVerilog source files, static RTL checks, directed Icarus simulations, Verilator lint, bounded formal checks, and generic Yosys synthesis evidence present.
 - Phase 3/4 property checking and capsule generation: record-side RTL modules present; twelve firmware-running wrapper smokes validate failing and fixed images; full validation pending.
-- Phase 5/6/7/8 replay, bug suite, baselines, and ablations: model-level results generated for six benchmarks; RTL smoke capsule export self/negative/PC-context checks and RTL/firmware-sim alignment rows present; full RTL replay metrics pending.
+- Phase 5/6/7/8 replay, bug suite, baselines, and ablations: model-level results generated for six benchmarks; RTL smoke capsule export self-compare, negative corruption, and PC-context checks plus RTL/firmware-sim alignment rows present; full RTL replay metrics pending.
 - Firmware-running RTL simulation and mapped FPGA synthesis: pending local `make`/C++ build support, RISC-V compiler, and mapped flow.
 - Paper results: no fabricated numbers; result files are generated only by scripts.
 

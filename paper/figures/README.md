@@ -14,7 +14,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | --- | --- | --- |
 | `../../results/raw/phase12_sensor_threshold_trace.json` | Yes | Smoke event timeline for model and replay-flow figures. |
 | `../../results/processed/replay_experiments.csv` | Yes | Replay-flow status source. |
-| `../../results/processed/rtl_capsule_exports.csv` | Yes | RTL-smoke capsule export, negative-check, and PC-context source. |
+| `../../results/processed/rtl_capsule_exports.csv` | Yes | RTL-smoke capsule export, missing-event, metadata-corruption, payload-corruption, and PC-context source. |
 | `../../results/processed/rtl_firmware_alignment.csv` | Yes | RTL-smoke versus firmware-sim property/key-event alignment source. |
 | `../../results/processed/trace_sizes.csv` | Yes | Baseline trace-size data source. |
 | `../../results/figures/trace_size_status.svg` | Yes | Existing generated trace-size status figure; not final paper styling. |
