@@ -10,7 +10,7 @@ hand into captions, plots, or tables.
 
 | Status | Meaning |
 | --- | --- |
-| Generated today | A real artifact exists in `results/` with today's run output and can be used as source evidence. |
+| Generated today | A real artifact exists in `results/` or `paper/figures/` with today's run output and can be used as source evidence. |
 | Partial today | A source artifact exists today, but the final paper figure/table has not been rendered or the artifact only covers the smoke path. |
 | Requires RTL/PicoRV32 | Needs firmware-running RTL traces from the PicoRV32 integration, Verilator/cocotb, and a RISC-V toolchain before paper claims can be filled. |
 | Requires mapped FPGA flow | Needs OpenROAD or vendor mapping for LUT/FF/BRAM/Fmax fields. |
@@ -39,6 +39,7 @@ hand into captions, plots, or tables.
 | `results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the integrated wrapper. |
 | `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains measured generic cell counts plus TODO/NA mapped resource and timing fields. |
 | `results/processed/synthesis_overhead.csv` | Yes | Synthesis/resource table | Contains derived generic cell-count overhead context from measured baseline and wrapper rows, with mapped fields kept as NA. |
+| `paper/figures/table01_synthesis_resources.md` | Yes | Synthesis/resource table | Generated Markdown table source derived from the synthesis CSVs; mapped fields remain NA. |
 | `results/processed/summary.csv` | Yes | All figure/table provenance | One-command status ledger for generated artifacts and missing tools. |
 
 ## Paper Figure and Table Manifest
@@ -51,7 +52,7 @@ hand into captions, plots, or tables.
 | Fig. 4 | Ablation heatmap | Show which omitted event classes break replay for each benchmark and which omissions are benign for the observed fixture. | `paper/figures/ablation_heatmap.svg` | Yes. Generated from `results/processed/ablations.csv`. | Yes for buffer-size sweeps, last-K context-window sweeps, and RTL-backed ablations. |
 | Fig. 5 | RTL capsule event classes | Show packet-class composition of exported RTL-smoke capsules without treating it as full benchmark-wide trace evidence. | `paper/figures/rtl_capsule_event_classes.svg` | Yes. Generated from `results/processed/rtl_capsule_event_classes.csv`. | Yes for full benchmark-wide RTL class counts. |
 | Fig. 6 | Seeded interrupt campaign | Show seeded RTL-smoke interrupt-race reruns and frozen capsule packet counts after digest-match checks. | `paper/figures/randomized_interrupt_campaign.svg` | Yes. Generated from `results/processed/randomized_interrupt_campaign.csv`. | Yes for full record/replay randomized campaign. |
-| Table 1 | Synthesis/resource table | Report monitor/resource cost and timing only from generated synthesis outputs. | `paper/figures/table01_synthesis_resources.md` or paper-native table source | Partial today. `results/processed/synthesis.csv` contains measured generic Yosys cell counts for the baseline core, record-side top, and integrated wrapper; `results/processed/synthesis_overhead.csv` derives generic cell-count context. | Requires mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
+| Table 1 | Synthesis/resource table | Report monitor/resource cost and timing only from generated synthesis outputs. | `paper/figures/table01_synthesis_resources.md` | Generated partial table today from `results/processed/synthesis.csv` and `results/processed/synthesis_overhead.csv`. | Requires mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
 
 ## Figure Details
 
@@ -169,11 +170,13 @@ timing fields remain TODO/NA until the mapped tool flow exists.
 Source material:
 - `scripts/synth_yosys.py`
 - `scripts/parse_synthesis_reports.py`
+- `scripts/render_paper_tables.py`
 - `results/raw/yosys_picorv32.txt`
 - `results/raw/yosys_replay_capsule_top.txt`
 - `results/raw/yosys_picorv32_replaycapsule_wrapper.txt`
 - `results/processed/synthesis.csv`
 - `results/processed/synthesis_overhead.csv`
+- `paper/figures/table01_synthesis_resources.md`
 
 Paper-readiness checks:
 - Yosys generic cells may be reported only after a real report is parsed.
@@ -193,7 +196,8 @@ Use the existing pipeline as the source of truth:
 4. Run `scripts/run_ablations.py` for ablation rows.
 5. Run `scripts/synth_yosys.py`; it uses system Yosys or workspace-local `yowasp-yosys` when available.
 6. Run `scripts/parse_synthesis_reports.py` after synthesis.
-7. Run `scripts/make_figures.py` or its paper-rendering successor.
+7. Run `scripts/render_paper_tables.py` for generated Markdown table sources.
+8. Run `scripts/make_figures.py` for generated SVG status figures.
 
 ## Missing Artifact Gates
 

@@ -1,9 +1,8 @@
 # Paper Figures
 
 This directory is the landing zone for final paper-ready figure and table
-assets. At the moment, the real generated outputs live under `../../results/`;
-this directory contains only the manifest until camera-ready assets are rendered
-from those sources.
+assets. It mirrors generated SVG status figures from `../../results/figures/`
+and includes generated Markdown table sources derived from `../../results/`.
 
 Do not manually type measurement values into paper figures or tables. Numeric
 content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
@@ -31,6 +30,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Yosys generic synthesis report for the integrated wrapper. |
 | `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source with generic cells measured and mapped resource/timing fields TODO/NA. |
 | `../../results/processed/synthesis_overhead.csv` | Yes | Derived generic cell-overhead context with mapped fields kept as NA. |
+| `table01_synthesis_resources.md` | Yes | Generated Markdown source for the synthesis/resource table. |
 | `../../results/processed/summary.csv` | Yes | Provenance and missing-tool status ledger. |
 
 ## Planned Assets
@@ -44,7 +44,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `fig05_ablation_heatmap.svg` / `.pdf` | CSV generated today; heatmap not generated | `../../results/processed/ablations.csv` | Full-suite rows require firmware-running RTL/PicoRV32 traces. |
 | `fig06_rtl_capsule_event_classes.svg` / `.pdf` | Status SVG generated today | `../../results/processed/rtl_capsule_event_classes.csv`, `../../results/figures/rtl_capsule_event_classes.svg` | Full benchmark-wide RTL traces required before treating this as complete baseline coverage. |
 | `fig07_randomized_interrupt_campaign.svg` / `.pdf` | Status SVG generated today | `../../results/processed/randomized_interrupt_campaign.csv`, `../../results/figures/randomized_interrupt_campaign.svg` | Full record/replay randomized RTL campaign remains pending. |
-| `table01_synthesis_resources.md` | Partial source generated today | `../../results/processed/synthesis.csv`, `../../results/processed/synthesis_overhead.csv` | Mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
+| `table01_synthesis_resources.md` | Generated partial table today | `../../results/processed/synthesis.csv`, `../../results/processed/synthesis_overhead.csv` | Mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
 
 ## Rendering Rules
 

@@ -66,3 +66,4 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts and gener
 - `results/processed/formal_checks.csv`: bounded SMTBMC event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover checks.
 - `results/processed/synthesis.csv`: Yosys generic cell counts when available; honest TODO/NA fields for LUT/FF/BRAM/Fmax until a mapped FPGA flow exists.
 - `results/processed/synthesis_overhead.csv`: derived generic cell-overhead context between baseline PicoRV32 and the integrated wrapper; mapped fields remain `NA`.
+- `paper/figures/table01_synthesis_resources.md`: generated Markdown paper table source derived from the synthesis CSVs.

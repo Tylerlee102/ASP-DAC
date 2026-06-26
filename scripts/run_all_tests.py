@@ -88,6 +88,7 @@ PYTHON_FILES = [
     "scripts/run_randomized_interrupt_campaign.py",
     "scripts/run_replay_negative_tests.py",
     "scripts/make_figures.py",
+    "scripts/render_paper_tables.py",
     "scripts/summarize_rtl_capsule_classes.py",
     "scripts/summarize_formal_coverage.py",
     "scripts/summarize_synthesis_overhead.py",
@@ -234,6 +235,12 @@ def main() -> int:
         failures,
         "synthesis_overhead_summary",
         [sys.executable, "scripts/summarize_synthesis_overhead.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "paper_table_generation",
+        [sys.executable, "scripts/render_paper_tables.py"],
     )
     _run_subprocess(
         rows,

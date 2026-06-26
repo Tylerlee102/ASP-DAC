@@ -64,6 +64,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Formal coverage matrix: `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
 - Generic cell-overhead context: `results/processed/synthesis_overhead.csv`
+- Paper synthesis/resource table: `paper/figures/table01_synthesis_resources.md`
 - Generated figures: `results/figures/` and `paper/figures/`
 
 Rows marked `model` are executable event-model evidence. Rows marked `firmware-sim` execute RV32I instruction words in the local interpreter. The current HDL rows include directed module simulations, Verilator lint, and twelve PicoRV32 wrapper smokes, but not the full six-benchmark RTL replay suite.

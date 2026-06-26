@@ -67,6 +67,8 @@ Current generic synthesis evidence:
   `results/processed/synthesis.csv`
 - Derived generic cell-overhead context, with mapped FPGA fields preserved as
   `NA`: `results/processed/synthesis_overhead.csv`
+- Generated paper table source for synthesis/resource reporting:
+  `paper/figures/table01_synthesis_resources.md`
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,
