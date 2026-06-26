@@ -14,6 +14,8 @@ or hardware timing data and are not estimated.
 | rtl_smoke_capsule_export_pass_rate | MEASURED (rtl-smoke) | 12/12 (100.0%) | percent | rtl-smoke | Exported RTL-smoke capsules parse and pass self/negative checks; not benchmark-wide RTL replay. |
 | rtl_smoke_false_property_failures | MEASURED (rtl-smoke) | 0/6 | count | rtl-smoke | Fixed RTL-smoke and firmware-sim variants both avoid property failures. |
 | rtl_smoke_missed_property_failures | MEASURED (rtl-smoke) | 0/6 | count | rtl-smoke | Failing RTL-smoke and firmware-sim variants align on property IDs. |
+| seeded_rtl_smoke_interrupt_reproducibility_rate | MEASURED (rtl-smoke) | 13/13 (100.0%) | percent | rtl-smoke | Seeded interrupt-race RTL-smoke cases rerun in fresh simulator invocations and compare frozen capsule digests. |
+| seeded_randomized_interrupt_coverage_item_pass_rate | MEASURED (rtl-smoke) | 7/12 (58.3%) | percent | rtl-smoke | Generated checklist over current seeded interrupt coverage and stronger randomized RTL cases still marked TODO. |
 | median_firmware_sim_replaycapsule_bytes | MEASURED (firmware-sim) | 94.5 | bytes | firmware-sim | ReplayCapsule bytes over firmware-sim failing runs. |
 | median_firmware_sim_full_instruction_trace_bytes | MEASURED (firmware-sim) | 48 | bytes | firmware-sim | Full instruction-trace bytes over firmware-sim failing runs. |
 | median_firmware_sim_snapshot_bytes | MEASURED (firmware-sim) | 132 | bytes | firmware-sim | Architectural snapshot bytes over firmware-sim failing runs. |

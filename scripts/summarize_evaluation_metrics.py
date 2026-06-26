@@ -16,6 +16,8 @@ NEGATIVE_CSV = REPO_ROOT / "results/processed/replay_negative_tests.csv"
 TRACE_CSV = REPO_ROOT / "results/processed/trace_sizes.csv"
 RTL_EXPORTS_CSV = REPO_ROOT / "results/processed/rtl_capsule_exports.csv"
 RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
+RANDOMIZED_IRQ_CSV = REPO_ROOT / "results/processed/randomized_interrupt_campaign.csv"
+RANDOMIZED_IRQ_COVERAGE_CSV = REPO_ROOT / "results/processed/randomized_interrupt_coverage.csv"
 SYNTH_OVERHEAD_CSV = REPO_ROOT / "results/processed/synthesis_overhead.csv"
 MODEL_TRACE_JSON = REPO_ROOT / "results/raw/model_suite_traces.json"
 FIRMWARE_TRACE_JSON = REPO_ROOT / "results/raw/firmware_sim_traces.json"
@@ -31,6 +33,7 @@ def main() -> int:
     rows.extend(_replay_success_metrics(replay_rows))
     rows.extend(_negative_fixture_metrics(_read_rows(NEGATIVE_CSV)))
     rows.extend(_rtl_smoke_metrics(_read_rows(RTL_EXPORTS_CSV), _read_rows(RTL_ALIGNMENT_CSV)))
+    rows.extend(_randomized_interrupt_metrics(_read_rows(RANDOMIZED_IRQ_CSV), _read_rows(RANDOMIZED_IRQ_COVERAGE_CSV)))
     rows.extend(_trace_size_metrics(trace_rows))
     rows.extend(_failure_prefix_metrics(MODEL_TRACE_JSON, "model"))
     rows.extend(_failure_prefix_metrics(FIRMWARE_TRACE_JSON, "firmware-sim"))
@@ -129,6 +132,28 @@ def _rtl_smoke_metrics(exports: list[dict[str, str]], alignment: list[dict[str, 
             "rtl-smoke",
             "results/processed/rtl_firmware_alignment.csv",
             "Failing RTL-smoke and firmware-sim variants align on property IDs.",
+        ),
+    ]
+
+
+def _randomized_interrupt_metrics(
+    campaign: list[dict[str, str]],
+    coverage: list[dict[str, str]],
+) -> list[dict[str, str]]:
+    return [
+        _rate_row(
+            "seeded_rtl_smoke_interrupt_reproducibility_rate",
+            campaign,
+            "rtl-smoke",
+            "results/processed/randomized_interrupt_campaign.csv",
+            "Seeded interrupt-race RTL-smoke cases rerun in fresh simulator invocations and compare frozen capsule digests.",
+        ),
+        _rate_row(
+            "seeded_randomized_interrupt_coverage_item_pass_rate",
+            coverage,
+            "rtl-smoke",
+            "results/processed/randomized_interrupt_coverage.csv",
+            "Generated checklist over current seeded interrupt coverage and stronger randomized RTL cases still marked TODO.",
         ),
     ]
 

@@ -88,6 +88,7 @@ PYTHON_FILES = [
     "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
     "scripts/run_randomized_interrupt_campaign.py",
+    "scripts/summarize_randomized_interrupt_campaign.py",
     "scripts/run_replay_negative_tests.py",
     "scripts/run_rtl_smoke_ablations.py",
     "scripts/make_figures.py",
@@ -163,6 +164,12 @@ def main() -> int:
         failures,
         "randomized_interrupt_campaign",
         [sys.executable, "scripts/run_randomized_interrupt_campaign.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "randomized_interrupt_summary",
+        [sys.executable, "scripts/summarize_randomized_interrupt_campaign.py"],
     )
     _run_subprocess(
         rows,
