@@ -51,6 +51,9 @@ Current RTL-smoke evidence:
 - RTL-smoke capsule export checks: `results/processed/rtl_capsule_exports.csv`
 - RTL-smoke capsule event-class breakdown:
   `results/processed/rtl_capsule_event_classes.csv`
+- RTL-smoke event-class ablations:
+  `results/processed/rtl_smoke_ablations.csv` and
+  `results/processed/rtl_smoke_event_sufficiency.csv`
 - RTL-smoke versus firmware-sim alignment: `results/processed/rtl_firmware_alignment.csv`
 
 Current bounded formal evidence:

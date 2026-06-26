@@ -87,6 +87,7 @@ PYTHON_FILES = [
     "scripts/run_hdl_checks.py",
     "scripts/run_randomized_interrupt_campaign.py",
     "scripts/run_replay_negative_tests.py",
+    "scripts/run_rtl_smoke_ablations.py",
     "scripts/make_figures.py",
     "scripts/render_paper_tables.py",
     "scripts/summarize_proof_obligations.py",
@@ -141,6 +142,12 @@ def main() -> int:
         failures,
         "rtl_capsule_event_classes",
         [sys.executable, "scripts/summarize_rtl_capsule_classes.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "rtl_smoke_ablations",
+        [sys.executable, "scripts/run_rtl_smoke_ablations.py"],
     )
     _run_subprocess(
         rows,

@@ -16,6 +16,8 @@ Current generated artifacts:
 - `results/processed/trace_sizes.csv`
 - `results/processed/ablations.csv`
 - `results/processed/event_sufficiency.csv`
+- `results/processed/rtl_smoke_ablations.csv`
+- `results/processed/rtl_smoke_event_sufficiency.csv`
 - `results/processed/hdl_checks.csv`
 - `results/processed/formal_checks.csv`
 - `results/processed/formal_coverage.csv`
@@ -30,7 +32,7 @@ Current generated artifacts:
 - `paper/figures/table05_formal_coverage.md`
 - `paper/figures/table06_proof_obligations.md`
 
-The paper must label current replay, baseline, ablation, and event-sufficiency numbers as model-level, firmware-sim, or RTL-smoke evidence until replaced or corroborated by benchmark-wide RTL/PicoRV32 runs. Current RTL simulation evidence is twelve PicoRV32 wrapper smokes and exported smoke capsule byte counts, current formal evidence is bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, recorder, and capsule-buffer BMC/cover targets plus a generated theorem proof-obligation matrix, and current synthesis evidence is limited to Yosys generic cell counts and derived generic cell-overhead context.
+The paper must label current replay, baseline, ablation, and event-sufficiency numbers as model-level, firmware-sim, or RTL-smoke evidence until replaced or corroborated by benchmark-wide RTL/PicoRV32 runs. Current RTL simulation evidence is twelve PicoRV32 wrapper smokes, exported smoke capsule byte counts, and exported-capsule event-class ablations; current formal evidence is bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, recorder, and capsule-buffer BMC/cover targets plus a generated theorem proof-obligation matrix, and current synthesis evidence is limited to Yosys generic cell counts and derived generic cell-overhead context.
 
 The result pipeline is:
 

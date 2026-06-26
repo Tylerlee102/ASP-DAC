@@ -1,0 +1,7 @@
+benchmark,variant,evidence_level,required_event_classes,notes
+sensor_threshold_bug,failing,rtl-smoke,pc_context;branch_events;mmio_read_values,derived from exported RTL-smoke capsules by removing event classes and rerunning the replay comparator; not benchmark-wide RTL replay
+interrupt_race_bug,failing,rtl-smoke,pc_context;mmio_write_observations;interrupt_timing,derived from exported RTL-smoke capsules by removing event classes and rerunning the replay comparator; not benchmark-wide RTL replay
+mmio_ordering_bug,failing,rtl-smoke,pc_context;mmio_write_observations,derived from exported RTL-smoke capsules by removing event classes and rerunning the replay comparator; not benchmark-wide RTL replay
+stack_corruption_bug,failing,rtl-smoke,pc_context;store_events,derived from exported RTL-smoke capsules by removing event classes and rerunning the replay comparator; not benchmark-wide RTL replay
+uart_command_bug,failing,rtl-smoke,pc_context;branch_events;mmio_read_values;mmio_write_observations,derived from exported RTL-smoke capsules by removing event classes and rerunning the replay comparator; not benchmark-wide RTL replay
+watchdog_timeout_bug,failing,rtl-smoke,pc_context;branch_events;mmio_read_values,derived from exported RTL-smoke capsules by removing event classes and rerunning the replay comparator; not benchmark-wide RTL replay

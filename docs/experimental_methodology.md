@@ -57,6 +57,8 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts and gener
 - `results/processed/firmware_sim_replay.csv`: six RV32I firmware-sim commit-index replay rows.
 - `results/processed/rtl_capsule_exports.csv`: twelve failing/fixed RTL-smoke capsule export parse/self-compare, missing-event, duplicate-event, metadata-corruption, payload-corruption, order-corruption, and memory-event PC-context rows.
 - `results/processed/rtl_capsule_event_classes.csv`: event-class counts and packet bytes decoded from exported RTL-smoke capsules.
+- `results/processed/rtl_smoke_ablations.csv`: event-class removal ablations over exported RTL-smoke capsules using the replay comparator.
+- `results/processed/rtl_smoke_event_sufficiency.csv`: required RTL-smoke event classes derived from those exported-capsule ablations.
 - `results/processed/rtl_firmware_alignment.csv`: twelve RTL-smoke versus firmware-sim property and key-event alignment rows.
 - `results/processed/randomized_interrupt_campaign.csv`: seeded RTL-smoke interrupt-race reruns with capsule-digest reproducibility checks.
 - `results/processed/trace_sizes.csv`: model-level and firmware-sim baseline sizes and replay success, plus RTL-smoke capsule-byte rows where exported packets exist.

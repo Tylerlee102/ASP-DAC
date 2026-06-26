@@ -62,7 +62,7 @@ Fix plan: run at least one mapped FPGA flow and report LUT/FF/BRAM/Fmax from gen
 
 Required evidence: ablations and per-bug minimum event set table.
 
-Current weakness: default capture currently includes property context beyond strict nondeterminism.
+Current weakness: default capture currently includes property context beyond strict nondeterminism. Model-level and exported RTL-smoke event-class ablations now exist, but full RTL replay ablations are still pending.
 
 Fix plan: distinguish sufficiency core from diagnostic context and quantify both.
 

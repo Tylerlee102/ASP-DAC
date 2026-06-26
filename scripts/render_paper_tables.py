@@ -14,6 +14,7 @@ REPLAY_CSV = REPO_ROOT / "results/processed/replay_experiments.csv"
 TRACE_SIZES_CSV = REPO_ROOT / "results/processed/trace_sizes.csv"
 EVENT_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/event_sufficiency.csv"
 ABLATIONS_CSV = REPO_ROOT / "results/processed/ablations.csv"
+RTL_SMOKE_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/rtl_smoke_event_sufficiency.csv"
 RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
 RTL_CLASSES_CSV = REPO_ROOT / "results/processed/rtl_capsule_event_classes.csv"
 FORMAL_COVERAGE_CSV = REPO_ROOT / "results/processed/formal_coverage.csv"
@@ -69,6 +70,7 @@ def main() -> int:
         "table04_event_sufficiency.md": _render_event_sufficiency_table(
             _read_rows(EVENT_SUFFICIENCY_CSV),
             _read_rows(ABLATIONS_CSV),
+            _read_rows(RTL_SMOKE_SUFFICIENCY_CSV),
         ),
         "table05_formal_coverage.md": _render_formal_coverage_table(_read_rows(FORMAL_COVERAGE_CSV)),
         "table06_proof_obligations.md": _render_proof_obligation_table(_read_rows(PROOF_OBLIGATIONS_CSV)),
@@ -211,20 +213,28 @@ def _render_trace_baseline_table(trace_rows: list[dict[str, str]], rtl_class_row
     return "\n".join(lines) + "\n"
 
 
-def _render_event_sufficiency_table(sufficiency_rows: list[dict[str, str]], ablation_rows: list[dict[str, str]]) -> str:
+def _render_event_sufficiency_table(
+    sufficiency_rows: list[dict[str, str]],
+    ablation_rows: list[dict[str, str]],
+    rtl_sufficiency_rows: list[dict[str, str]],
+) -> str:
     lines = [
         "# Table 4. Event-Sufficiency Ablation Summary",
         "",
-        "Generated from `../../results/processed/event_sufficiency.csv` and "
-        "`../../results/processed/ablations.csv`.",
+        "Generated from `../../results/processed/event_sufficiency.csv`, "
+        "`../../results/processed/ablations.csv`, and "
+        "`../../results/processed/rtl_smoke_event_sufficiency.csv`.",
         "",
-        "Rows are model-level ablation evidence until firmware-running RTL traces exist.",
+        "Model rows are commit-index replay ablations. RTL-smoke rows remove event",
+        "classes from exported capsules and rerun the replay comparator; they are not",
+        "full benchmark-wide RTL replay.",
         "",
-        "| Benchmark | Evidence level | Required event classes | Event-removal ablations that break replay |",
+        "| Benchmark | Model required classes | RTL-smoke required classes | Model event-removal ablations that break replay |",
         "| --- | --- | --- | --- |",
     ]
     for benchmark in BENCHMARK_ORDER:
         sufficiency = _find_row(sufficiency_rows, benchmark=benchmark)
+        rtl_sufficiency = _find_row(rtl_sufficiency_rows, benchmark=benchmark, variant="failing")
         breaking = [
             _short_ablation(row.get("ablation", ""))
             for row in ablation_rows
@@ -234,10 +244,10 @@ def _render_event_sufficiency_table(sufficiency_rows: list[dict[str, str]], abla
             and row.get("ablation", "").startswith("remove_")
         ]
         lines.append(
-            "| {benchmark} | {level} | {classes} | {breaking} |".format(
+            "| {benchmark} | {model_classes} | {rtl_classes} | {breaking} |".format(
                 benchmark=_escape_cell(_benchmark_name(benchmark)),
-                level=_escape_cell(sufficiency.get("evidence_level", "TODO")),
-                classes=_escape_cell(_format_semicolon_list(sufficiency.get("required_event_classes", "TODO"))),
+                model_classes=_escape_cell(_format_semicolon_list(sufficiency.get("required_event_classes", "TODO"))),
+                rtl_classes=_escape_cell(_format_semicolon_list(rtl_sufficiency.get("required_event_classes", "TODO"))),
                 breaking=_escape_cell("; ".join(breaking) if breaking else "none observed in event-removal rows"),
             )
         )

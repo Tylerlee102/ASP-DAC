@@ -22,6 +22,8 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/figures/rtl_capsule_event_classes.svg` | Yes | Existing generated RTL-smoke capsule class figure; not final paper styling. |
 | `../../results/figures/randomized_interrupt_campaign.svg` | Yes | Existing generated seeded interrupt campaign figure; not final paper styling. |
 | `../../results/processed/ablations.csv` | Yes | Ablation heatmap data source. |
+| `../../results/processed/rtl_smoke_ablations.csv` | Yes | RTL-smoke exported-capsule event-class ablation source. |
+| `../../results/processed/rtl_smoke_event_sufficiency.csv` | Yes | Required event classes for failing RTL-smoke capsules. |
 | `../../results/processed/hdl_checks.csv` | Yes | Directed HDL and PicoRV32 wrapper smoke verification source with nine directed module rows and twelve wrapper smoke rows. |
 | `../../results/processed/formal_checks.csv` | Yes | Bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, capsule-buffer, and recorder formal status source. |
 | `../../results/processed/formal_coverage.csv` | Yes | Reviewer-facing mapping from formal BMC/cover targets to RTL contract families and explicit limits. |
@@ -54,7 +56,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `table01_synthesis_resources.md` | Generated partial table today | `../../results/processed/synthesis.csv`, `../../results/processed/synthesis_overhead.csv` | Mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
 | `table02_replay_evidence.md` | Generated partial table today | `../../results/processed/replay_experiments.csv`, `../../results/processed/rtl_firmware_alignment.csv` | Full firmware-running RTL replay suite. |
 | `table03_trace_baselines.md` | Generated partial table today | `../../results/processed/trace_sizes.csv`, `../../results/processed/rtl_capsule_event_classes.csv` | Full benchmark-wide RTL trace-size rows and mapped/replay-backed reductions. |
-| `table04_event_sufficiency.md` | Generated partial table today | `../../results/processed/event_sufficiency.csv`, `../../results/processed/ablations.csv` | RTL-backed ablations. |
+| `table04_event_sufficiency.md` | Generated partial table today | `../../results/processed/event_sufficiency.csv`, `../../results/processed/ablations.csv`, `../../results/processed/rtl_smoke_event_sufficiency.csv` | Full benchmark-wide RTL-backed ablations. |
 | `table05_formal_coverage.md` | Generated table today | `../../results/processed/formal_coverage.csv` | End-to-end proof remains outside current bounded checks. |
 | `table06_proof_obligations.md` | Generated partial table today | `../../results/processed/proof_obligations.csv` | End-to-end mechanized theorem remains outside current bounded checks. |
 

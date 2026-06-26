@@ -15,6 +15,7 @@ RTL_EXPORTS_CSV = REPO_ROOT / "results/processed/rtl_capsule_exports.csv"
 RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
 RANDOMIZED_IRQ_CSV = REPO_ROOT / "results/processed/randomized_interrupt_campaign.csv"
 EVENT_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/event_sufficiency.csv"
+RTL_SMOKE_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/rtl_smoke_event_sufficiency.csv"
 FORMAL_COVERAGE_CSV = REPO_ROOT / "results/processed/formal_coverage.csv"
 OUT_CSV = REPO_ROOT / "results/processed/proof_obligations.csv"
 OUT_DOC = REPO_ROOT / "docs/proof_obligation_matrix.md"
@@ -63,6 +64,7 @@ class EvidenceData:
         self.rtl_alignment = _read_rows(RTL_ALIGNMENT_CSV)
         self.randomized_irq = _read_rows(RANDOMIZED_IRQ_CSV)
         self.event_sufficiency = _read_rows(EVENT_SUFFICIENCY_CSV)
+        self.rtl_smoke_sufficiency = _read_rows(RTL_SMOKE_SUFFICIENCY_CSV)
         self.formal_coverage = _read_rows(FORMAL_COVERAGE_CSV)
 
     @classmethod
@@ -94,6 +96,7 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
     rtl_alignment_pass = data.all_status(data.rtl_alignment)
     randomized_irq_pass = data.all_status(data.randomized_irq)
     event_sufficiency_rows = len(data.event_sufficiency)
+    rtl_smoke_sufficiency_rows = len(data.rtl_smoke_sufficiency)
     order_negative_passes = data.negative_passes("swap_strict_event_order_tags")
     missing_negative_passes = data.negative_passes("missing_first_replay_event")
     duplicate_negative_passes = data.negative_passes("duplicate_first_replay_event")
@@ -123,9 +126,9 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
             "PO-03",
             "A4 boundary event completeness",
             "Replay capsules retain every nondeterministic boundary event needed by the scoped benchmark failures.",
-            "PARTIAL" if event_sufficiency_rows == 6 and rtl_exports_pass else "TODO",
+            "PARTIAL" if event_sufficiency_rows == 6 and rtl_smoke_sufficiency_rows == 6 and rtl_exports_pass else "TODO",
             "model+rtl-smoke",
-            "results/processed/event_sufficiency.csv; results/processed/rtl_capsule_exports.csv; results/processed/rtl_capsule_event_classes.csv",
+            "results/processed/event_sufficiency.csv; results/processed/rtl_smoke_event_sufficiency.csv; results/processed/rtl_capsule_exports.csv; results/processed/rtl_capsule_event_classes.csv",
             "Completeness is exercised for six model benchmarks and twelve RTL-smoke capsules, not for arbitrary firmware or full benchmark-wide RTL traces.",
         ),
         Obligation(

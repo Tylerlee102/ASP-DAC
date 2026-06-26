@@ -57,7 +57,8 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Seeded RTL-smoke interrupt campaign: `results/processed/randomized_interrupt_campaign.csv`
 - Firmware images: `firmware/build/`
 - Baseline sizes and replay success: `results/processed/trace_sizes.csv`
-- Ablations: `results/processed/ablations.csv`
+- Model ablations: `results/processed/ablations.csv`
+- RTL-smoke ablations: `results/processed/rtl_smoke_ablations.csv` and `results/processed/rtl_smoke_event_sufficiency.csv`
 - Static RTL check summary: `scripts/static_rtl_checks.py`
 - Directed HDL checks: `results/processed/hdl_checks.csv`
 - Bounded formal checks: `results/processed/formal_checks.csv`
