@@ -14,6 +14,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 REPLAY_CSV = REPO_ROOT / "results/processed/replay_experiments.csv"
 NEGATIVE_CSV = REPO_ROOT / "results/processed/replay_negative_tests.csv"
 TRACE_CSV = REPO_ROOT / "results/processed/trace_sizes.csv"
+HDL_CSV = REPO_ROOT / "results/processed/hdl_checks.csv"
 RTL_EXPORTS_CSV = REPO_ROOT / "results/processed/rtl_capsule_exports.csv"
 RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
 RANDOMIZED_IRQ_CSV = REPO_ROOT / "results/processed/randomized_interrupt_campaign.csv"
@@ -32,6 +33,7 @@ def main() -> int:
     trace_rows = _read_rows(TRACE_CSV)
     rows.extend(_replay_success_metrics(replay_rows))
     rows.extend(_negative_fixture_metrics(_read_rows(NEGATIVE_CSV)))
+    rows.extend(_hdl_frontend_metrics(_read_rows(HDL_CSV)))
     rows.extend(_rtl_smoke_metrics(_read_rows(RTL_EXPORTS_CSV), _read_rows(RTL_ALIGNMENT_CSV)))
     rows.extend(_randomized_interrupt_metrics(_read_rows(RANDOMIZED_IRQ_CSV), _read_rows(RANDOMIZED_IRQ_COVERAGE_CSV)))
     rows.extend(_trace_size_metrics(trace_rows))
@@ -84,6 +86,42 @@ def _negative_fixture_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]
             "results/processed/replay_negative_tests.csv",
             "Benchmark-derived positive and negative comparator fixtures across commit-index and cycle-index modes.",
         )
+    ]
+
+
+def _hdl_frontend_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    directed = [row for row in rows if row.get("check", "").startswith("tb_") and not row.get("check", "").startswith("tb_picorv32")]
+    wrapper = [row for row in rows if row.get("check", "").startswith("tb_picorv32")]
+    verilator = [row for row in rows if row.get("check", "").startswith("verilator_lint_")]
+    return [
+        _rate_row(
+            "hdl_frontend_pass_rate",
+            rows,
+            "rtl-smoke",
+            "results/processed/hdl_checks.csv",
+            "Directed Icarus simulations, PicoRV32 wrapper smokes, and Verilator lint-only frontend checks.",
+        ),
+        _rate_row(
+            "directed_icarus_module_pass_rate",
+            directed,
+            "rtl-smoke",
+            "results/processed/hdl_checks.csv",
+            "Standalone directed Icarus module simulations excluding PicoRV32 wrapper smoke rows.",
+        ),
+        _rate_row(
+            "picorv32_wrapper_smoke_pass_rate",
+            wrapper,
+            "rtl-smoke",
+            "results/processed/hdl_checks.csv",
+            "Firmware-running PicoRV32 wrapper smokes, including failing/fixed images and selected no-failure edge cases.",
+        ),
+        _rate_row(
+            "verilator_lint_pass_rate",
+            verilator,
+            "rtl-smoke",
+            "results/processed/hdl_checks.csv",
+            "Verilator lint-only frontend checks for top-level integration and property assertion sources.",
+        ),
     ]
 
 

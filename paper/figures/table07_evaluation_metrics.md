@@ -11,6 +11,10 @@ or hardware timing data and are not estimated.
 | firmware_sim_replay_success_rate | MEASURED (firmware-sim) | 6/6 (100.0%) | percent | firmware-sim | RV32I firmware-sim commit-index replay rows. |
 | firmware_running_rtl_replay_success_rate | TODO (rtl) | TODO | percent | rtl | Benchmark-wide firmware-running RTL replay remains blocked by missing make/C++/RISC-V compiler support. |
 | replay_negative_fixture_pass_rate | MEASURED (model) | 96/96 (100.0%) | percent | model | Benchmark-derived positive and negative comparator fixtures across commit-index and cycle-index modes. |
+| hdl_frontend_pass_rate | MEASURED (rtl-smoke) | 28/28 (100.0%) | percent | rtl-smoke | Directed Icarus simulations, PicoRV32 wrapper smokes, and Verilator lint-only frontend checks. |
+| directed_icarus_module_pass_rate | MEASURED (rtl-smoke) | 9/9 (100.0%) | percent | rtl-smoke | Standalone directed Icarus module simulations excluding PicoRV32 wrapper smoke rows. |
+| picorv32_wrapper_smoke_pass_rate | MEASURED (rtl-smoke) | 15/15 (100.0%) | percent | rtl-smoke | Firmware-running PicoRV32 wrapper smokes, including failing/fixed images and selected no-failure edge cases. |
+| verilator_lint_pass_rate | MEASURED (rtl-smoke) | 4/4 (100.0%) | percent | rtl-smoke | Verilator lint-only frontend checks for top-level integration and property assertion sources. |
 | rtl_smoke_capsule_export_pass_rate | MEASURED (rtl-smoke) | 12/12 (100.0%) | percent | rtl-smoke | Exported RTL-smoke capsules parse and pass self/negative checks; not benchmark-wide RTL replay. |
 | rtl_smoke_false_property_failures | MEASURED (rtl-smoke) | 0/6 | count | rtl-smoke | Fixed RTL-smoke and firmware-sim variants both avoid property failures. |
 | rtl_smoke_missed_property_failures | MEASURED (rtl-smoke) | 0/6 | count | rtl-smoke | Failing RTL-smoke and firmware-sim variants align on property IDs. |
