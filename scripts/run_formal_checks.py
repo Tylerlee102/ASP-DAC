@@ -79,6 +79,18 @@ FORMAL_TARGETS = (
         notes="bounded hash-signature reset/stability/update covers over depth 4",
     ),
     FormalTarget(
+        name="mmio_interrupt_loggers_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/mmio_interrupt_loggers_bmc.sby"),
+        depth=6,
+        notes="bounded MMIO event-routing and interrupt depth/unpaired-exit invariants over depth 6",
+    ),
+    FormalTarget(
+        name="mmio_interrupt_loggers_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/mmio_interrupt_loggers_cover.sby"),
+        depth=6,
+        notes="bounded MMIO event-routing and interrupt depth/unpaired-exit covers over depth 6",
+    ),
+    FormalTarget(
         name="replay_control_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/replay_control_bmc.sby"),
         depth=8,

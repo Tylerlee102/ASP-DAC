@@ -27,7 +27,7 @@ hand into captions, plots, or tables.
 | `results/figures/ablation_heatmap.svg` | Yes | Ablation heatmap | Generated from model-level ablation rows. |
 | `results/processed/ablations.csv` | Yes | Ablation heatmap | Model-level ablations are available; RTL-backed rows require firmware-running traces. |
 | `results/processed/hdl_checks.csv` | Yes | Verification status | Nine directed Icarus module simulations, twelve PicoRV32 wrapper smokes, and Verilator lint-only checks pass. |
-| `results/processed/formal_checks.csv` | Yes | Verification status | Depth-2 event-tap, depth-8 event-classifier/slicer, depth-8 property-checker, depth-4 hash-signature, depth-8 replay-control, depth-12 capsule-buffer, and depth-16 recorder SMTBMC BMC/cover targets pass. |
+| `results/processed/formal_checks.csv` | Yes | Verification status | Depth-2 event-tap, depth-8 event-classifier/slicer, depth-8 property-checker, depth-4 hash-signature, depth-6 MMIO/interrupt loggers, depth-8 replay-control, depth-12 capsule-buffer, and depth-16 recorder SMTBMC BMC/cover targets pass. |
 | `results/processed/rtl_capsule_exports.csv` | Yes | RTL capsule export status | Failing and fixed RTL smoke capsules decode to JSON, self-compare, fail missing-event, metadata-corruption, and payload-corruption negative checks through the replay comparator, and pass memory-event PC-context checks. |
 | `results/processed/rtl_firmware_alignment.csv` | Yes | RTL/firmware consistency status | Failing RTL-smoke capsules agree with firmware-sim property IDs and benchmark-specific replay-visible event evidence; fixed rows agree on property absence. |
 | `results/raw/yosys_replay_capsule_top.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the record-side top. |

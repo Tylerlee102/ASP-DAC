@@ -36,6 +36,14 @@ Implemented now:
 - `hash_signature_cover.sby`: depth-4 cover run over the same hash-signature
   harness. It checks that reset, clear, no-event stability, and event-update
   states are reachable.
+- `mmio_interrupt_loggers_bmc.sby` plus
+  `mmio_interrupt_loggers_bmc_harness.sv`: depth-6 BMC over MMIO event field
+  routing and interrupt depth tracking. The harness checks read/write packet
+  fields, interrupt enter/exit packet fields, active-depth increments and
+  decrements, and sticky unpaired-exit detection.
+- `mmio_interrupt_loggers_cover.sby`: depth-6 cover run over the same
+  logger harness. It checks that MMIO read/write events, paired interrupt
+  enter/exit, and unpaired interrupt exit cases are reachable.
 - `replay_control_bmc.sby` plus `replay_control_bmc_harness.sv`: depth-8 BMC
   over replay consume/inject behavior. The harness checks disabled and
   time-mismatched events remain idle, MMIO/external-input packets inject data,

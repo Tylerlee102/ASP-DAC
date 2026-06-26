@@ -1,0 +1,21 @@
+[options]
+mode bmc
+depth 6
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/event_pkg.sv
+read_verilog -formal -sv -Irtl rtl/mmio_logger.sv
+read_verilog -formal -sv -Irtl rtl/interrupt_logger.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/mmio_interrupt_loggers_bmc_harness.sv
+prep -top mmio_interrupt_loggers_bmc_harness
+
+[files]
+rtl/event_pkg.sv rtl/event_pkg.sv
+rtl/event_defs.svh rtl/event_defs.svh
+rtl/mmio_logger.sv rtl/mmio_logger.sv
+rtl/interrupt_logger.sv rtl/interrupt_logger.sv
+formal/yosys_smtbmc_scripts/mmio_interrupt_loggers_bmc_harness.sv formal/yosys_smtbmc_scripts/mmio_interrupt_loggers_bmc_harness.sv
