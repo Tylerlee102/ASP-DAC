@@ -93,6 +93,12 @@ IVERILOG_TESTS = (
         include_dirs=("../../rtl",),
     ),
     IverilogTest(
+        name="tb_event_tap",
+        workdir=Path("tb/system"),
+        sources=("tb_event_tap.sv", "../../rtl/event_tap.sv"),
+        include_dirs=("../../rtl",),
+    ),
+    IverilogTest(
         name="tb_picorv32_sensor_threshold_smoke",
         workdir=Path("tb/system"),
         sources=(

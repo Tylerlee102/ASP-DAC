@@ -23,6 +23,7 @@ Current directed SystemVerilog test sources:
 - `tb_replay_control.sv`
 - `tb_event_classifier_slicer.sv`
 - `tb_hash_signature.sv`
+- `tb_event_tap.sv`
 
 They are run by `scripts/run_hdl_checks.py` when Icarus Verilog and `vvp` are
 available. The current local gate reports them as PASS in
