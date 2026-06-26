@@ -1,0 +1,7 @@
+coverage_item,status,evidence_level,covered_cases,source,notes
+picorv32_wrapper_smokes_total,PASS,rtl-smoke,15,results/processed/picorv32_smoke_summary.csv,All PicoRV32 wrapper smoke rows passed log-level capsule sanity checks.
+failing_image_property_capsules,PASS,rtl-smoke,6,results/processed/picorv32_smoke_summary.csv,"Failing firmware images produced nonzero property IDs, frozen capsules, and no overflow."
+fixed_image_no_failure_capsules,PASS,rtl-smoke,6,results/processed/picorv32_smoke_summary.csv,Fixed firmware images completed without property failures while still recording capsule events.
+no_failure_edge_capsules,PASS,rtl-smoke,3,results/processed/picorv32_smoke_summary.csv,Selected no-failure edge cases completed with property ID zero and no overflow.
+six_benchmark_wrapper_coverage,PASS,rtl-smoke,6,results/processed/picorv32_smoke_summary.csv,Wrapper smokes cover all six local benchmark families.
+no_failure_property_absence,PASS,rtl-smoke,9,results/processed/picorv32_smoke_summary.csv,All fixed and edge no-failure smokes report property ID zero.

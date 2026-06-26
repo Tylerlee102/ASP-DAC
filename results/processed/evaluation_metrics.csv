@@ -7,6 +7,7 @@ hdl_frontend_pass_rate,MEASURED,28/28 (100.0%),percent,rtl-smoke,results/process
 directed_icarus_module_pass_rate,MEASURED,9/9 (100.0%),percent,rtl-smoke,results/processed/hdl_checks.csv,Standalone directed Icarus module simulations excluding PicoRV32 wrapper smoke rows.
 picorv32_wrapper_smoke_pass_rate,MEASURED,15/15 (100.0%),percent,rtl-smoke,results/processed/hdl_checks.csv,"Firmware-running PicoRV32 wrapper smokes, including failing/fixed images and selected no-failure edge cases."
 verilator_lint_pass_rate,MEASURED,4/4 (100.0%),percent,rtl-smoke,results/processed/hdl_checks.csv,Verilator lint-only frontend checks for top-level integration and property assertion sources.
+picorv32_smoke_log_sanity_pass_rate,MEASURED,6/6 (100.0%),percent,rtl-smoke,results/processed/picorv32_smoke_coverage.csv,"Generated log-level checks over PicoRV32 wrapper smoke capsule counts, property IDs, freeze state, and overflow state."
 rtl_smoke_capsule_export_pass_rate,MEASURED,12/12 (100.0%),percent,rtl-smoke,results/processed/rtl_capsule_exports.csv,Exported RTL-smoke capsules parse and pass self/negative checks; not benchmark-wide RTL replay.
 rtl_smoke_false_property_failures,MEASURED,0/6,count,rtl-smoke,results/processed/rtl_firmware_alignment.csv,Fixed RTL-smoke and firmware-sim variants both avoid property failures.
 rtl_smoke_missed_property_failures,MEASURED,0/6,count,rtl-smoke,results/processed/rtl_firmware_alignment.csv,Failing RTL-smoke and firmware-sim variants align on property IDs.

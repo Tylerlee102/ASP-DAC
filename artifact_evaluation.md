@@ -46,6 +46,9 @@ Current non-RTL executable evidence:
 Current RTL-smoke evidence:
 
 - PicoRV32 wrapper and directed HDL checks: `results/processed/hdl_checks.csv`
+- PicoRV32 wrapper smoke observed capsule summaries:
+  `results/processed/picorv32_smoke_summary.csv` and
+  `results/processed/picorv32_smoke_coverage.csv`
 - Seeded interrupt reproducibility campaign:
   `results/processed/randomized_interrupt_campaign.csv`
 - Seeded interrupt campaign summary and coverage checklist:

@@ -256,7 +256,7 @@ def _write_cmd_shim(path: Path, target: Path) -> None:
 
 def _clean_log(text: str) -> str:
     cleaned = text.replace(str(REPO_ROOT), "<repo>")
-    cleaned = re.sub(r"SBY \d{2}:\d{2}:\d{2} ", "SBY ", cleaned)
+    cleaned = re.sub(r"SBY\s+\d+:\d{2}:\d{2}\s+", "SBY ", cleaned)
     cleaned = re.sub(r"##\s+0:00:\d{2}\s+", "## <time> ", cleaned)
     cleaned = re.sub(
         r"summary: Elapsed clock time \[H:MM:SS \(secs\)\]: .+",

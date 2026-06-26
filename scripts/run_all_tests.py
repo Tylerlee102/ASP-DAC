@@ -87,6 +87,7 @@ PYTHON_FILES = [
     "scripts/export_rtl_capsules.py",
     "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
+    "scripts/summarize_picorv32_smokes.py",
     "scripts/run_randomized_interrupt_campaign.py",
     "scripts/summarize_randomized_interrupt_campaign.py",
     "scripts/run_replay_negative_tests.py",
@@ -135,6 +136,12 @@ def main() -> int:
         failures,
         "hdl_frontend_checks",
         [sys.executable, "scripts/run_hdl_checks.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "picorv32_smoke_summary",
+        [sys.executable, "scripts/summarize_picorv32_smokes.py"],
     )
     _run_subprocess(
         rows,

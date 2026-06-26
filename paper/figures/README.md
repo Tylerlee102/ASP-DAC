@@ -27,6 +27,8 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/rtl_smoke_ablations.csv` | Yes | RTL-smoke exported-capsule event-class ablation source. |
 | `../../results/processed/rtl_smoke_event_sufficiency.csv` | Yes | Required event classes for failing RTL-smoke capsules. |
 | `../../results/processed/hdl_checks.csv` | Yes | Directed HDL and PicoRV32 wrapper smoke verification source with nine directed module rows and fifteen wrapper smoke rows. |
+| `../../results/processed/picorv32_smoke_summary.csv` | Yes | Log-level PicoRV32 wrapper smoke capsule observation source. |
+| `../../results/processed/picorv32_smoke_coverage.csv` | Yes | PicoRV32 wrapper smoke coverage/sanity-check source. |
 | `../../results/processed/formal_checks.csv` | Yes | Bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, capsule-buffer, and recorder formal status source. |
 | `../../results/processed/formal_coverage.csv` | Yes | Reviewer-facing mapping from formal BMC/cover targets to RTL contract families and explicit limits. |
 | `../../results/raw/yosys_picorv32.txt` | Yes | Yosys generic synthesis report for the baseline PicoRV32 core. |

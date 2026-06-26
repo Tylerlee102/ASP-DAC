@@ -9,6 +9,7 @@ syntax:scripts/check_rtl_firmware_alignment.py,PASS,
 syntax:scripts/export_rtl_capsules.py,PASS,
 syntax:scripts/run_formal_checks.py,PASS,
 syntax:scripts/run_hdl_checks.py,PASS,
+syntax:scripts/summarize_picorv32_smokes.py,PASS,
 syntax:scripts/run_randomized_interrupt_campaign.py,PASS,
 syntax:scripts/summarize_randomized_interrupt_campaign.py,PASS,
 syntax:scripts/run_replay_negative_tests.py,PASS,
@@ -31,6 +32,7 @@ firmware_image_build,PASS,WROTE 12 firmware image sets under C:\Users\tyboy\OneD
 firmware_image_artifacts,PASS,12 image sets present
 static_rtl_contract_checks,PASS,"Summary: 43 passed, 0 failed"
 hdl_frontend_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\hdl_checks.csv
+picorv32_smoke_summary,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\picorv32_smoke_summary.csv and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\picorv32_smoke_coverage.csv
 rtl_capsule_export_compare,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_capsule_exports.csv
 rtl_capsule_event_classes,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_capsule_event_classes.csv
 rtl_smoke_ablations,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_smoke_ablations.csv and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_smoke_event_sufficiency.csv
@@ -65,4 +67,4 @@ tool:make,TODO,external tool not found locally
 tool:cxx,TODO,"none found from: c++, g++, clang++, cl"
 tool:riscv64-unknown-elf-gcc,TODO,external tool not found locally
 toolchain_status,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\toolchain_status.csv
-artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=165 missing=0
+artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=167 missing=0

@@ -27,7 +27,7 @@ On Unix-like shells:
 python3 scripts/run_all_tests.py
 ```
 
-The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including fifteen PicoRV32 wrapper smokes, a seeded RTL-smoke interrupt reproducibility campaign with generated summary/coverage ledgers, bounded formal event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt loggers, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover targets when local SMTBMC tools are available, a generated formal coverage matrix, replay parsing/comparison, six model-level bug capsules, replay-comparator negative fixtures, baseline trace sizes, ablations, generic Yosys synthesis and derived generic cell-overhead context when available, SVG figure generation, and a hash manifest for the main generated artifacts. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
+The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including fifteen PicoRV32 wrapper smokes with generated log-level capsule sanity summaries, a seeded RTL-smoke interrupt reproducibility campaign with generated summary/coverage ledgers, bounded formal event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt loggers, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover targets when local SMTBMC tools are available, a generated formal coverage matrix, replay parsing/comparison, six model-level bug capsules, replay-comparator negative fixtures, baseline trace sizes, ablations, generic Yosys synthesis and derived generic cell-overhead context when available, SVG figure generation, and a hash manifest for the main generated artifacts. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
 
 ## Research Claim
 
@@ -62,6 +62,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - RTL-smoke ablations: `results/processed/rtl_smoke_ablations.csv` and `results/processed/rtl_smoke_event_sufficiency.csv`
 - Static RTL check summary: `scripts/static_rtl_checks.py`
 - Directed HDL checks: `results/processed/hdl_checks.csv`
+- PicoRV32 smoke log summaries: `results/processed/picorv32_smoke_summary.csv` and `results/processed/picorv32_smoke_coverage.csv`
 - Bounded formal checks: `results/processed/formal_checks.csv`
 - Formal coverage matrix: `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
 - Proof obligation matrix: `results/processed/proof_obligations.csv` and `docs/proof_obligation_matrix.md`
