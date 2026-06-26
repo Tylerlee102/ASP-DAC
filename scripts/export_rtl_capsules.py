@@ -62,30 +62,43 @@ def main() -> int:
             parsed = parse_capsule(json.dumps(payload), source=f"{benchmark}:rtl")
             compare = compare_capsules(parsed, parsed, mode="commit-index")
             negative_check = _negative_check(parsed, payload, benchmark)
+            duplicate_check = _duplicate_check(parsed, payload, benchmark)
             metadata_corruption_check = _metadata_corruption_check(parsed, payload, benchmark)
             payload_corruption_check = _payload_corruption_check(parsed, payload, benchmark)
+            order_corruption_check = _order_corruption_check(parsed, payload, benchmark)
             pc_context_check = _pc_context_check(packets)
             status = (
                 "PASS"
                 if compare.success
                 and negative_check in {"PASS", "NA"}
+                and duplicate_check in {"PASS", "NA"}
                 and metadata_corruption_check == "PASS"
                 and payload_corruption_check in {"PASS", "NA"}
+                and order_corruption_check in {"PASS", "NA"}
                 and pc_context_check in {"PASS", "NA"}
                 else "FAIL"
             )
             if status == "PASS":
-                if negative_check == "PASS" and payload_corruption_check == "PASS":
-                    notes = "RTL smoke capsule export parsed, self-compared, and rejected missing-event, metadata-corruption, and payload-corruption negatives; PC context checked; not full replay"
+                if (
+                    negative_check == "PASS"
+                    and duplicate_check == "PASS"
+                    and payload_corruption_check == "PASS"
+                    and order_corruption_check == "PASS"
+                ):
+                    notes = "RTL smoke capsule export parsed, self-compared, and rejected missing-event, duplicate-event, metadata-corruption, payload-corruption, and order-corruption negatives; PC context checked; not full replay"
                 else:
-                    notes = "RTL smoke capsule export parsed and self-compared; metadata corruption rejected; PC context checked; no replay-relevant event available for one negative check"
+                    notes = "RTL smoke capsule export parsed and self-compared; available negative checks rejected; PC context checked; no replay-relevant event available for one negative check"
             elif compare.success:
                 if negative_check == "FAIL":
                     notes = "missing-event negative check unexpectedly matched"
+                elif duplicate_check == "FAIL":
+                    notes = "duplicate-event negative check unexpectedly matched"
                 elif metadata_corruption_check == "FAIL":
                     notes = "metadata-corruption negative check unexpectedly matched"
                 elif payload_corruption_check == "FAIL":
                     notes = "payload-corruption negative check unexpectedly matched"
+                elif order_corruption_check == "FAIL":
+                    notes = "order-corruption negative check unexpectedly matched"
                 else:
                     notes = "memory event PC context unexpectedly points into the MMIO aperture"
             else:
@@ -103,8 +116,10 @@ def main() -> int:
                     "property_id": "NA",
                     "failure_signature": "NA",
                     "negative_check": "NA",
+                    "duplicate_check": "NA",
                     "metadata_corruption_check": "NA",
                     "payload_corruption_check": "NA",
+                    "order_corruption_check": "NA",
                     "pc_context_check": "NA",
                     "raw_log": str(log_path.relative_to(REPO_ROOT)),
                     "capsule_json": "NA",
@@ -125,8 +140,10 @@ def main() -> int:
                 "property_id": str(payload["property_id"]),
                 "failure_signature": str(payload["failure_signature"]),
                 "negative_check": negative_check,
+                "duplicate_check": duplicate_check,
                 "metadata_corruption_check": metadata_corruption_check,
                 "payload_corruption_check": payload_corruption_check,
+                "order_corruption_check": order_corruption_check,
                 "pc_context_check": pc_context_check,
                 "raw_log": str(log_path.relative_to(REPO_ROOT)),
                 "capsule_json": str(json_path.relative_to(REPO_ROOT)),
@@ -147,8 +164,10 @@ def main() -> int:
                 "property_id",
                 "failure_signature",
                 "negative_check",
+                "duplicate_check",
                 "metadata_corruption_check",
                 "payload_corruption_check",
+                "order_corruption_check",
                 "pc_context_check",
                 "raw_log",
                 "capsule_json",
@@ -310,6 +329,30 @@ def _negative_check(parsed, payload: dict[str, object], benchmark: str) -> str:
     return "PASS" if not negative.success else "FAIL"
 
 
+def _duplicate_check(parsed, payload: dict[str, object], benchmark: str) -> str:
+    try:
+        corrupted = _duplicate_one_replay_event(payload)
+    except ValueError:
+        return "NA"
+
+    negative = compare_capsules(
+        parsed,
+        parse_capsule(json.dumps(corrupted), source=f"{benchmark}:duplicate-event"),
+        mode="commit-index",
+    )
+    return "PASS" if not negative.success else "FAIL"
+
+
+def _duplicate_one_replay_event(payload: dict[str, object]) -> dict[str, object]:
+    events = list(payload["events"])  # type: ignore[arg-type]
+    for index, event in enumerate(events):
+        if isinstance(event, dict) and event.get("kind") != "pc":
+            corrupted = dict(payload)
+            corrupted["events"] = events[: index + 1] + [dict(event)] + events[index + 1 :]
+            return corrupted
+    raise ValueError("cannot build duplicate check without a replay-relevant event")
+
+
 def _metadata_corruption_check(parsed, payload: dict[str, object], benchmark: str) -> str:
     corrupted = dict(payload)
     property_id = str(corrupted.get("property_id", ""))
@@ -339,6 +382,35 @@ def _payload_corruption_check(parsed, payload: dict[str, object], benchmark: str
         mode="commit-index",
     )
     return "PASS" if not negative.success else "FAIL"
+
+
+def _order_corruption_check(parsed, payload: dict[str, object], benchmark: str) -> str:
+    try:
+        corrupted = _corrupt_one_replay_order(payload)
+    except ValueError:
+        return "NA"
+
+    negative = compare_capsules(
+        parsed,
+        parse_capsule(json.dumps(corrupted), source=f"{benchmark}:order-corruption"),
+        mode="commit-index",
+    )
+    return "PASS" if not negative.success else "FAIL"
+
+
+def _corrupt_one_replay_order(payload: dict[str, object]) -> dict[str, object]:
+    events = list(payload["events"])  # type: ignore[arg-type]
+    for index, event in enumerate(events):
+        if not isinstance(event, dict) or event.get("kind") == "pc":
+            continue
+        if "order" not in event:
+            continue
+        corrupted_event = dict(event)
+        corrupted_event["order"] = int(corrupted_event["order"]) + 1
+        corrupted = dict(payload)
+        corrupted["events"] = events[:index] + [corrupted_event] + events[index + 1 :]
+        return corrupted
+    raise ValueError("cannot build order corruption check without a replay-relevant order field")
 
 
 def _corrupt_one_replay_payload(payload: dict[str, object]) -> dict[str, object]:
