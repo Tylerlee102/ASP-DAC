@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import json
 from pathlib import Path
 
 
@@ -11,6 +12,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 CAMPAIGN_CSV = REPO_ROOT / "results/processed/randomized_interrupt_campaign.csv"
 SUMMARY_CSV = REPO_ROOT / "results/processed/randomized_interrupt_summary.csv"
 COVERAGE_CSV = REPO_ROOT / "results/processed/randomized_interrupt_coverage.csv"
+CORRUPTION_CSV = REPO_ROOT / "results/processed/randomized_interrupt_corruption.csv"
+
+import export_rtl_capsules as rtl_capsules  # noqa: E402
 
 SUMMARY_FIELDS = [
     "scope",
@@ -36,15 +40,35 @@ SUMMARY_FIELDS = [
 ]
 
 COVERAGE_FIELDS = ["coverage_item", "status", "evidence_level", "covered_cases", "source", "notes"]
+CORRUPTION_FIELDS = [
+    "seed",
+    "family",
+    "benchmark",
+    "status",
+    "evidence_level",
+    "raw_log",
+    "rtl_packet_count",
+    "replay_event_count",
+    "self_compare",
+    "missing_event_check",
+    "duplicate_event_check",
+    "metadata_corruption_check",
+    "payload_corruption_check",
+    "order_corruption_check",
+    "notes",
+]
 
 
 def main() -> int:
     rows = _read_rows(CAMPAIGN_CSV)
+    corruption_rows = _corruption_rows(rows)
     SUMMARY_CSV.parent.mkdir(parents=True, exist_ok=True)
     _write_rows(SUMMARY_CSV, SUMMARY_FIELDS, _summary_rows(rows))
-    _write_rows(COVERAGE_CSV, COVERAGE_FIELDS, _coverage_rows(rows))
-    print(f"WROTE {SUMMARY_CSV} and {COVERAGE_CSV}")
-    return 1 if any(row.get("status") == "FAIL" for row in rows) else 0
+    _write_rows(COVERAGE_CSV, COVERAGE_FIELDS, _coverage_rows(rows, corruption_rows))
+    _write_rows(CORRUPTION_CSV, CORRUPTION_FIELDS, corruption_rows)
+    print(f"WROTE {SUMMARY_CSV}, {COVERAGE_CSV}, and {CORRUPTION_CSV}")
+    failed = any(row.get("status") == "FAIL" for row in rows + corruption_rows)
+    return 1 if failed else 0
 
 
 def _summary_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -115,10 +139,11 @@ def _summary_row(
     }
 
 
-def _coverage_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+def _coverage_rows(rows: list[dict[str, str]], corruption_rows: list[dict[str, str]]) -> list[dict[str, str]]:
     passing = [row for row in rows if row.get("status") == "PASS"]
     after_command = [row for row in passing if row.get("family") == "irq_after_command"]
     fixed_window = [row for row in passing if row.get("family") == "fixed_irq_window"]
+    corruption_passing = [row for row in corruption_rows if row.get("status") == "PASS"]
     all_pass = bool(rows) and len(passing) == len(rows)
 
     return [
@@ -190,20 +215,106 @@ def _coverage_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
         ),
         _coverage_row(
             "corrupted_seed_replay_rejection",
-            "TODO",
-            0,
-            "Randomized seed-specific corruption checks remain pending; directed RTL-smoke corruption checks are tracked separately.",
+            "PASS" if corruption_rows and len(corruption_passing) == len(corruption_rows) else _derived_status(corruption_rows),
+            len(corruption_passing),
+            "Each seeded run1 capsule self-compares, then missing-event, duplicate-event, metadata, payload, and order corruptions must be rejected by the replay comparator.",
+            source="results/processed/randomized_interrupt_corruption.csv",
         ),
     ]
 
 
-def _coverage_row(item: str, status: str, covered_cases: int, notes: str) -> dict[str, str]:
+def _corruption_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    output: list[dict[str, str]] = []
+    for row in rows:
+        if row.get("status") != "PASS":
+            output.append(_corruption_todo_row(row, row.get("status", "TODO"), "campaign row did not pass"))
+            continue
+        try:
+            output.append(_corruption_row(row))
+        except Exception as exc:  # noqa: BLE001 - summarize all per-seed evidence failures
+            output.append(_corruption_todo_row(row, "FAIL", str(exc)))
+    return output
+
+
+def _corruption_row(row: dict[str, str]) -> dict[str, str]:
+    raw_log = row.get("raw_log_run1", "")
+    log_path = REPO_ROOT / Path(raw_log.replace("\\", "/"))
+    packets = rtl_capsules._read_packets(log_path)
+    benchmark = row.get("benchmark", "interrupt_race_bug") or "interrupt_race_bug"
+    payload = rtl_capsules._capsule_payload(benchmark, "failing", log_path, packets)
+    parsed = rtl_capsules.parse_capsule(json.dumps(payload), source=f"{row.get('seed', 'seed')}:randomized")
+    self_compare = rtl_capsules.compare_capsules(parsed, parsed, mode="commit-index")
+    missing_event_check = rtl_capsules._negative_check(parsed, payload, benchmark)
+    duplicate_event_check = rtl_capsules._duplicate_check(parsed, payload, benchmark)
+    metadata_corruption_check = rtl_capsules._metadata_corruption_check(parsed, payload, benchmark)
+    payload_corruption_check = rtl_capsules._payload_corruption_check(parsed, payload, benchmark)
+    order_corruption_check = rtl_capsules._order_corruption_check(parsed, payload, benchmark)
+    checks = (
+        missing_event_check,
+        duplicate_event_check,
+        metadata_corruption_check,
+        payload_corruption_check,
+        order_corruption_check,
+    )
+    status = "PASS" if self_compare.success and all(check == "PASS" for check in checks) else "FAIL"
+    return {
+        "seed": row.get("seed", "NA"),
+        "family": row.get("family", "NA"),
+        "benchmark": benchmark,
+        "status": status,
+        "evidence_level": "rtl-smoke",
+        "raw_log": raw_log,
+        "rtl_packet_count": str(len(packets)),
+        "replay_event_count": str(len(payload["events"])),
+        "self_compare": "PASS" if self_compare.success else "FAIL",
+        "missing_event_check": missing_event_check,
+        "duplicate_event_check": duplicate_event_check,
+        "metadata_corruption_check": metadata_corruption_check,
+        "payload_corruption_check": payload_corruption_check,
+        "order_corruption_check": order_corruption_check,
+        "notes": _corruption_notes(status, self_compare.errors),
+    }
+
+
+def _corruption_todo_row(row: dict[str, str], status: str, notes: str) -> dict[str, str]:
+    return {
+        "seed": row.get("seed", "NA"),
+        "family": row.get("family", "NA"),
+        "benchmark": row.get("benchmark", "interrupt_race_bug"),
+        "status": status,
+        "evidence_level": "rtl-smoke",
+        "raw_log": row.get("raw_log_run1", "NA"),
+        "rtl_packet_count": "NA",
+        "replay_event_count": "NA",
+        "self_compare": "NA",
+        "missing_event_check": "NA",
+        "duplicate_event_check": "NA",
+        "metadata_corruption_check": "NA",
+        "payload_corruption_check": "NA",
+        "order_corruption_check": "NA",
+        "notes": notes,
+    }
+
+
+def _corruption_notes(status: str, errors: list[str]) -> str:
+    if status == "PASS":
+        return "seeded RTL-smoke capsule self-compared and replay comparator rejected missing-event, duplicate-event, metadata, payload, and order corruptions"
+    return "; ".join(errors) if errors else "one or more seeded corruption checks unexpectedly matched"
+
+
+def _coverage_row(
+    item: str,
+    status: str,
+    covered_cases: int,
+    notes: str,
+    source: str = "results/processed/randomized_interrupt_campaign.csv",
+) -> dict[str, str]:
     return {
         "coverage_item": item,
         "status": status,
         "evidence_level": "rtl-smoke",
         "covered_cases": str(covered_cases),
-        "source": "results/processed/randomized_interrupt_campaign.csv",
+        "source": source,
         "notes": notes,
     }
 

@@ -16,6 +16,7 @@ RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
 RANDOMIZED_IRQ_CSV = REPO_ROOT / "results/processed/randomized_interrupt_campaign.csv"
 RANDOMIZED_IRQ_SUMMARY_CSV = REPO_ROOT / "results/processed/randomized_interrupt_summary.csv"
 RANDOMIZED_IRQ_COVERAGE_CSV = REPO_ROOT / "results/processed/randomized_interrupt_coverage.csv"
+RANDOMIZED_IRQ_CORRUPTION_CSV = REPO_ROOT / "results/processed/randomized_interrupt_corruption.csv"
 EVENT_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/event_sufficiency.csv"
 RTL_SMOKE_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/rtl_smoke_event_sufficiency.csv"
 FORMAL_COVERAGE_CSV = REPO_ROOT / "results/processed/formal_coverage.csv"
@@ -65,6 +66,7 @@ class EvidenceData:
         self.rtl_exports = _read_rows(RTL_EXPORTS_CSV)
         self.rtl_alignment = _read_rows(RTL_ALIGNMENT_CSV)
         self.randomized_irq = _read_rows(RANDOMIZED_IRQ_CSV)
+        self.randomized_irq_corruption = _read_rows(RANDOMIZED_IRQ_CORRUPTION_CSV)
         self.event_sufficiency = _read_rows(EVENT_SUFFICIENCY_CSV)
         self.rtl_smoke_sufficiency = _read_rows(RTL_SMOKE_SUFFICIENCY_CSV)
         self.formal_coverage = _read_rows(FORMAL_COVERAGE_CSV)
@@ -102,7 +104,7 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
     replay_firmware = data.replay_passes("firmware-sim")
     rtl_exports_pass = data.all_status(data.rtl_exports)
     rtl_alignment_pass = data.all_status(data.rtl_alignment)
-    randomized_irq_pass = data.all_status(data.randomized_irq)
+    randomized_irq_pass = data.all_status(data.randomized_irq) and data.all_status(data.randomized_irq_corruption)
     event_sufficiency_rows = len(data.event_sufficiency)
     rtl_smoke_sufficiency_rows = len(data.rtl_smoke_sufficiency)
     checked_modes = ("commit-index", "cycle-index")
@@ -168,8 +170,8 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
             "Interrupt timing is represented at commit-index boundaries and reproduced in seeded RTL-smoke schedules.",
             "PARTIAL" if randomized_irq_pass and rtl_alignment_pass else "TODO",
             "rtl-smoke+firmware-sim",
-            "results/processed/randomized_interrupt_campaign.csv; results/processed/randomized_interrupt_summary.csv; results/processed/randomized_interrupt_coverage.csv; results/processed/rtl_firmware_alignment.csv; results/processed/event_sufficiency.csv",
-            "Seeded interrupt evidence covers RTL-smoke interrupt-race schedules and explicitly marks stronger randomized record/replay cases TODO; there is no full interrupt-controller proof or benchmark-wide randomized campaign.",
+            "results/processed/randomized_interrupt_campaign.csv; results/processed/randomized_interrupt_summary.csv; results/processed/randomized_interrupt_coverage.csv; results/processed/randomized_interrupt_corruption.csv; results/processed/rtl_firmware_alignment.csv; results/processed/event_sufficiency.csv",
+            "Seeded interrupt evidence covers RTL-smoke interrupt-race schedules and seed-specific corruption rejection, while stronger randomized record/replay cases remain TODO; there is no full interrupt-controller proof or benchmark-wide randomized campaign.",
         ),
         Obligation(
             "PO-06",

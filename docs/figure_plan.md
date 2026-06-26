@@ -31,6 +31,7 @@ hand into captions, plots, or tables.
 | `results/processed/rtl_capsule_event_classes.csv` | Yes | RTL capsule event-class figure | Decodes exported RTL-smoke capsules into packet class counts; not a full benchmark-wide trace baseline. |
 | `results/figures/rtl_capsule_event_classes.svg` | Yes | RTL capsule event-class figure | Generated from `rtl_capsule_event_classes.csv`. |
 | `results/processed/randomized_interrupt_campaign.csv` | Yes | Seeded interrupt campaign figure | RTL-smoke interrupt-race seeds reproduce expected property IDs and capsule digests across fresh simulator invocations. |
+| `results/processed/randomized_interrupt_corruption.csv` | Yes | Seeded interrupt campaign table context | Per-seed RTL-smoke capsules self-compare and reject missing-event, duplicate-event, metadata, payload, and order corruptions through the replay comparator. |
 | `results/figures/randomized_interrupt_campaign.svg` | Yes | Seeded interrupt campaign figure | Generated from `randomized_interrupt_campaign.csv`. |
 | `results/processed/hdl_checks.csv` | Yes | Verification status | Nine directed Icarus module simulations, fifteen PicoRV32 wrapper smokes, and Verilator lint-only checks pass. |
 | `results/processed/picorv32_smoke_summary.csv` | Yes | Wrapper smoke observations | Parses PicoRV32 smoke logs for property IDs, capsule counts, freeze state, and overflow state. |

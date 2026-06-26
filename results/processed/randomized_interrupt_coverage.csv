@@ -10,4 +10,4 @@ record_then_replay_with_live_noise,TODO,rtl-smoke,0,results/processed/randomized
 mmio_latency_randomization,TODO,rtl-smoke,0,results/processed/randomized_interrupt_campaign.csv,Requires an RTL harness that varies MMIO response latency independently from interrupt timing.
 buffer_pressure_overflow_randomization,TODO,rtl-smoke,0,results/processed/randomized_interrupt_campaign.csv,Requires randomized buffer-capacity and overflow runs beyond the current fixed-depth smoke campaign.
 interrupt_before_during_after_mmio_wait,TODO,rtl-smoke,0,results/processed/randomized_interrupt_campaign.csv,Requires a checker that classifies interrupt timing relative to an exposed MMIO wait-state window.
-corrupted_seed_replay_rejection,TODO,rtl-smoke,0,results/processed/randomized_interrupt_campaign.csv,Randomized seed-specific corruption checks remain pending; directed RTL-smoke corruption checks are tracked separately.
+corrupted_seed_replay_rejection,PASS,rtl-smoke,13,results/processed/randomized_interrupt_corruption.csv,"Each seeded run1 capsule self-compares, then missing-event, duplicate-event, metadata, payload, and order corruptions must be rejected by the replay comparator."

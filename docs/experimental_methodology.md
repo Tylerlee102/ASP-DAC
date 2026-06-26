@@ -18,7 +18,7 @@ The current runnable path covers all six benchmark classes at two non-RTL eviden
 - `model`: event-boundary model from `scripts/replaycapsule_model.py`
 - `firmware-sim`: RV32I instruction interpreter from `scripts/rv32i_firmware_sim.py`
 
-Firmware-running RTL results currently include fifteen PicoRV32 wrapper smokes: failing and fixed images for sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout, plus selected no-failure sensor, UART-command, and watchdog edge cases. A generated smoke summary parses those wrapper logs and checks observed property IDs, capsule counts, freeze state, and overflow state. A seeded RTL-smoke interrupt campaign reruns selected interrupt-race schedules in fresh Icarus processes and checks capsule digest reproducibility. A generated alignment table checks that failing RTL-smoke capsules agree with the RV32I firmware interpreter on property IDs and key replay-visible event values. Full benchmark-wide RTL replay/export/compare coverage remains pending a broader PicoRV32 simulation harness, `make`/C++ support for Verilator-style builds, and a RISC-V compiler or equivalent firmware image flow.
+Firmware-running RTL results currently include fifteen PicoRV32 wrapper smokes: failing and fixed images for sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout, plus selected no-failure sensor, UART-command, and watchdog edge cases. A generated smoke summary parses those wrapper logs and checks observed property IDs, capsule counts, freeze state, and overflow state. A seeded RTL-smoke interrupt campaign reruns selected interrupt-race schedules in fresh Icarus processes, checks capsule digest reproducibility, and verifies per-seed replay-comparator rejection of missing-event, duplicate-event, metadata, payload, and order corruptions. A generated alignment table checks that failing RTL-smoke capsules agree with the RV32I firmware interpreter on property IDs and key replay-visible event values. Full benchmark-wide RTL replay/export/compare coverage remains pending a broader PicoRV32 simulation harness, `make`/C++ support for Verilator-style builds, and a RISC-V compiler or equivalent firmware image flow.
 
 ## Metrics
 
@@ -61,6 +61,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts and gener
 - `results/processed/rtl_smoke_event_sufficiency.csv`: required RTL-smoke event classes derived from those exported-capsule ablations.
 - `results/processed/rtl_firmware_alignment.csv`: twelve RTL-smoke versus firmware-sim property and key-event alignment rows.
 - `results/processed/randomized_interrupt_campaign.csv`: seeded RTL-smoke interrupt-race reruns with capsule-digest reproducibility checks.
+- `results/processed/randomized_interrupt_corruption.csv`: per-seed replay-comparator rejection checks for corrupted seeded RTL-smoke capsules.
 - `results/processed/trace_sizes.csv`: model-level and firmware-sim baseline sizes and replay success, plus RTL-smoke capsule-byte rows where exported packets exist.
 - `results/processed/ablations.csv`: model-level event removal, buffer-size, and last-K sweeps.
 - `results/processed/event_sufficiency.csv`: per-benchmark event classes whose removal breaks replay.

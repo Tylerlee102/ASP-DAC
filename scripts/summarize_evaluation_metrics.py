@@ -233,7 +233,7 @@ def _randomized_interrupt_metrics(
             coverage,
             "rtl-smoke",
             "results/processed/randomized_interrupt_coverage.csv",
-            "Generated checklist over current seeded interrupt coverage and stronger randomized RTL cases still marked TODO.",
+            "Generated checklist over current seeded interrupt coverage, seed-specific corruption rejection, and stronger randomized RTL cases still marked TODO.",
         ),
     ]
 

@@ -43,6 +43,7 @@ ARTIFACTS = (
     ArtifactSpec("results/processed/randomized_interrupt_campaign.csv", "scripts/run_randomized_interrupt_campaign.py", "seeded RTL-smoke interrupt campaign rows"),
     ArtifactSpec("results/processed/randomized_interrupt_summary.csv", "scripts/summarize_randomized_interrupt_campaign.py", "seeded interrupt campaign summary"),
     ArtifactSpec("results/processed/randomized_interrupt_coverage.csv", "scripts/summarize_randomized_interrupt_campaign.py", "seeded interrupt coverage and TODO checklist"),
+    ArtifactSpec("results/processed/randomized_interrupt_corruption.csv", "scripts/summarize_randomized_interrupt_campaign.py", "seeded interrupt corruption-rejection checks"),
     ArtifactSpec("results/processed/trace_sizes.csv", "scripts/collect_trace_sizes.py", "baseline trace-size rows"),
     ArtifactSpec("results/processed/ablations.csv", "scripts/run_ablations.py", "model-level ablation rows"),
     ArtifactSpec("results/processed/event_sufficiency.csv", "scripts/run_ablations.py", "model event-sufficiency summary"),

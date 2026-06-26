@@ -39,7 +39,7 @@ rtl_capsule_event_classes,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New proje
 rtl_smoke_ablations,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_smoke_ablations.csv and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_smoke_event_sufficiency.csv
 rtl_firmware_alignment,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_firmware_alignment.csv
 randomized_interrupt_campaign,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_campaign.csv
-randomized_interrupt_summary,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_summary.csv and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_coverage.csv
+randomized_interrupt_summary,PASS,"WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_summary.csv, C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_coverage.csv, and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_corruption.csv"
 bounded_formal_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_checks.csv
 formal_coverage_matrix,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_coverage.csv and C:\Users\tyboy\OneDrive\Documents\New project\docs\formal_coverage_matrix.md
 replay_driver_demo_cycle,PASS,matched checkpoint: 0
@@ -69,4 +69,4 @@ tool:make,TODO,external tool not found locally
 tool:cxx,TODO,"none found from: c++, g++, clang++, cl"
 tool:riscv64-unknown-elf-gcc,TODO,external tool not found locally
 toolchain_status,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\toolchain_status.csv
-artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=168 missing=0
+artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=169 missing=0

@@ -54,6 +54,8 @@ Current RTL-smoke evidence:
 - Seeded interrupt campaign summary and coverage checklist:
   `results/processed/randomized_interrupt_summary.csv` and
   `results/processed/randomized_interrupt_coverage.csv`
+- Seeded interrupt corruption-rejection checks:
+  `results/processed/randomized_interrupt_corruption.csv`
 - RTL-smoke capsule export checks: `results/processed/rtl_capsule_exports.csv`
 - RTL-smoke capsule event-class breakdown:
   `results/processed/rtl_capsule_event_classes.csv`
