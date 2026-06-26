@@ -1,0 +1,2 @@
+check,status,tool,raw_log,notes
+replay_capsule_top_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_capsule_top_bmc.txt,bounded recorder invariants over depth 16

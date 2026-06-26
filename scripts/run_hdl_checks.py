@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import csv
 import os
+import re
 import shutil
 import subprocess
 from dataclasses import dataclass
@@ -463,6 +464,12 @@ def _run(command: list[str], cwd: Path, env: dict[str, str]) -> subprocess.Compl
 
 
 def _clean_log(text: str) -> str:
+    text = re.sub(
+        r"Walltime [0-9.]+ s \(elab=[0-9.]+, cvt=[0-9.]+, bld=[0-9.]+\); "
+        r"cpu [0-9.]+ s on ([0-9]+) threads; allocated [0-9.]+ MB",
+        r"Walltime <time> (elab=<time>, cvt=<time>, bld=<time>); cpu <time> on \1 threads; allocated <mem> MB",
+        text,
+    )
     lines = [line.rstrip() for line in text.splitlines()]
     return "\n".join(lines) + "\n" if lines else ""
 

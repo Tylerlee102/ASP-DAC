@@ -9,7 +9,7 @@ Current status:
 - Phase 0 repository plan and research-lab ownership scaffold: present.
 - Phase 1 minimal SoC/event simulation: six-benchmark Python model and RV32I firmware interpreter present.
 - PicoRV32 integration: upstream source vendored, wrapper source present, and twelve firmware smokes pass through the wrapper; full replay/export/compare simulation remains pending.
-- Phase 2 event-stream RTL: synthesizable SystemVerilog source files, static RTL checks, directed Icarus simulations, Verilator lint, and generic Yosys synthesis evidence present.
+- Phase 2 event-stream RTL: synthesizable SystemVerilog source files, static RTL checks, directed Icarus simulations, Verilator lint, bounded formal checks, and generic Yosys synthesis evidence present.
 - Phase 3/4 property checking and capsule generation: record-side RTL modules present; twelve firmware-running wrapper smokes validate failing and fixed images; full validation pending.
 - Phase 5/6/7/8 replay, bug suite, baselines, and ablations: model-level results generated for six benchmarks; RTL smoke capsule export self/negative-checks present; full RTL replay metrics pending.
 - Firmware-running RTL simulation and mapped FPGA synthesis: pending local `make`/C++ build support, RISC-V compiler, and mapped flow.
@@ -27,7 +27,7 @@ On Unix-like shells:
 python3 scripts/run_all_tests.py
 ```
 
-The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including twelve PicoRV32 wrapper smokes, replay parsing/comparison, six model-level bug capsules, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
+The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including twelve PicoRV32 wrapper smokes, bounded formal recorder invariants when local SMTBMC tools are available, replay parsing/comparison, six model-level bug capsules, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
 
 ## Research Claim
 
@@ -41,7 +41,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - `rtl/rv32i_integration/`: SoC integration scaffold.
 - `firmware/`: Embedded firmware examples and bug benchmark descriptions.
 - `tb/`: System, replay, and future Verilator/cocotb tests.
-- `formal/`: assumptions, theorem, and future assertion scripts.
+- `formal/`: assumptions, theorem, SVA checks, and bounded SMTBMC harnesses.
 - `scripts/`: reproducible experiment and test drivers.
 - `docs/`: architecture, model, novelty, methodology, and reviewer materials.
 - `paper/`: paper draft package.
@@ -56,6 +56,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Ablations: `results/processed/ablations.csv`
 - Static RTL check summary: `scripts/static_rtl_checks.py`
 - Directed HDL checks: `results/processed/hdl_checks.csv`
+- Bounded formal checks: `results/processed/formal_checks.csv`
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
 - Generated figures: `results/figures/` and `paper/figures/`
 

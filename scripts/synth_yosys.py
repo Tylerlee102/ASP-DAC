@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import re
 import shutil
 import subprocess
 from pathlib import Path
@@ -85,6 +86,12 @@ def report_path(top: str) -> Path:
 
 
 def _clean_report(text: str) -> str:
+    text = re.sub(
+        r"End of script\. Logfile hash: ([0-9a-f]+), time: [^,]+, user: [^,]+, system: [^\n]+",
+        r"End of script. Logfile hash: \1, time: <time>, user: <time>, system: <time>",
+        text,
+    )
+    text = re.sub(r"Time spent: .+", "Time spent: <normalized>", text)
     return "\n".join(line.rstrip() for line in text.splitlines()) + "\n"
 
 

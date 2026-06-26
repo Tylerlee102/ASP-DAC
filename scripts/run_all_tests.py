@@ -75,6 +75,7 @@ REQUIRED_TB = [
 PYTHON_FILES = [
     "scripts/build_firmware_images.py",
     "scripts/export_rtl_capsules.py",
+    "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
     "scripts/replaycapsule_model.py",
     "scripts/rv32i_firmware_sim.py",
@@ -118,6 +119,12 @@ def main() -> int:
         failures,
         "rtl_capsule_export_compare",
         [sys.executable, "scripts/export_rtl_capsules.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "bounded_formal_checks",
+        [sys.executable, "scripts/run_formal_checks.py"],
     )
     _run_subprocess(
         rows,
@@ -188,6 +195,8 @@ def main() -> int:
     _record_tool_availability(rows, "iverilog")
     _record_tool_availability(rows, "vvp")
     _record_tool_availability(rows, "yosys")
+    _record_tool_availability(rows, "sby")
+    _record_tool_availability(rows, "yosys-smtbmc")
     _record_tool_availability(rows, "make")
     _record_tool_availability(rows, "riscv64-unknown-elf-gcc")
     _write_summary(rows)
@@ -301,6 +310,10 @@ def _record_tool_availability(rows: list[dict[str, str]], tool: str) -> None:
     found = shutil.which(tool)
     if found:
         rows.append(_row(f"tool:{tool}", "PASS", found))
+    elif tool == "sby" and _local_yowasp_tool("yowasp-sby.exe"):
+        rows.append(_row("tool:sby", "PASS", "workspace-local yowasp-sby"))
+    elif tool == "yosys-smtbmc" and _local_yowasp_tool("yowasp-yosys-smtbmc.exe"):
+        rows.append(_row("tool:yosys-smtbmc", "PASS", "workspace-local yowasp-yosys-smtbmc"))
     elif tool == "yosys" and _local_yowasp_yosys():
         rows.append(_row("tool:yosys", "PASS", "workspace-local yowasp-yosys"))
     elif local_tool := _local_oss_cad_tool(tool):
@@ -319,6 +332,13 @@ def _local_oss_cad_tool(tool: str) -> Path | None:
 def _local_yowasp_yosys() -> bool:
     return (
         (REPO_ROOT / ".tools" / "python" / "bin" / "yowasp-yosys.exe").exists()
+        and (REPO_ROOT / ".tools" / "python").exists()
+    )
+
+
+def _local_yowasp_tool(filename: str) -> bool:
+    return (
+        (REPO_ROOT / ".tools" / "python" / "bin" / filename).exists()
         and (REPO_ROOT / ".tools" / "python").exists()
     )
 

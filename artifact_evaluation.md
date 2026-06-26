@@ -24,10 +24,11 @@ Required now:
 
 - Python 3.9 or newer
 
-Used when available for generic synthesis evidence:
+Used when available for generic synthesis and bounded formal evidence:
 
 - Yosys, including workspace-local `yowasp-yosys`
 - OSS CAD Suite, including workspace-local Icarus Verilog, `vvp`, and Verilator lint
+- SymbiYosys/SMTBMC, including workspace-local `yowasp-sby` and `yowasp-yosys-smtbmc`
 
 Required for later RTL/synthesis gates:
 
@@ -42,9 +43,10 @@ Current non-RTL executable evidence:
 - deterministic benchmark image builder: `scripts/build_firmware_images.py`
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
-The current local flow can use `.tools/python/bin/yowasp-yosys.exe` when installed
-outside git tracking, and `.tools/oss-cad-suite/oss-cad-suite/` when extracted
-outside git tracking.
+The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,
+`.tools/python/bin/yowasp-sby.exe`, and
+`.tools/python/bin/yowasp-yosys-smtbmc.exe` when installed outside git tracking,
+plus `.tools/oss-cad-suite/oss-cad-suite/` when extracted outside git tracking.
 
 ## Result Integrity
 

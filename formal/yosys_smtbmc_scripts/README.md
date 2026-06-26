@@ -1,8 +1,16 @@
 # Yosys SMTBMC Verification Scripts
 
-This directory should hold bounded model checking scripts and harness notes for
+This directory holds bounded model checking scripts and harness notes for
 ReplayCapsule-RV. The goal is to prove the recorder and replay contracts around a
 small nondeterministic RV32I boundary, not to prove every processor behavior.
+
+Implemented now:
+
+- `replay_capsule_top_bmc.sby` plus `replay_capsule_top_bmc_harness.sv`: depth-16
+  BMC over a four-entry recorder configuration. The harness checks event-count
+  bounds, failure-to-freeze, frozen-count stability, and sticky overflow. The
+  one-command gate runs this through `scripts/run_formal_checks.py` when local
+  SMTBMC tooling is available.
 
 ## Recommended Targets
 
