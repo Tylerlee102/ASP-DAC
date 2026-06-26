@@ -52,6 +52,7 @@ hand into captions, plots, or tables.
 | `paper/figures/table06_proof_obligations.md` | Yes | Proof-obligation table | Generated Markdown paper table source derived from proof-obligations CSV. |
 | `paper/figures/table07_evaluation_metrics.md` | Yes | Evaluation metric table | Generated Markdown paper table source derived from evaluation metrics CSV. |
 | `results/processed/claim_audit.csv` | Yes | Honesty gate | Generated audit of high-risk claim phrases; uncaveated rows fail the local gate. |
+| `results/processed/toolchain_status.csv` | Yes | Reproducibility gate | Generated availability ledger for local tools and later-gate blockers. |
 | `results/processed/summary.csv` | Yes | All figure/table provenance | One-command status ledger for generated artifacts and missing tools. |
 
 ## Paper Figure and Table Manifest

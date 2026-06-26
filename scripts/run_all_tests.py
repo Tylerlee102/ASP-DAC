@@ -12,6 +12,7 @@ from pathlib import Path
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
+TOOLCHAIN_CSV = REPO_ROOT / "results/processed/toolchain_status.csv"
 
 REQUIRED_RTL = [
     "rtl/event_pkg.sv",
@@ -291,6 +292,8 @@ def main() -> int:
     _record_tool_availability(rows, "make")
     _record_any_tool_availability(rows, "cxx", ["c++", "g++", "clang++", "cl"])
     _record_tool_availability(rows, "riscv64-unknown-elf-gcc")
+    _write_toolchain_status(rows)
+    rows.append(_row("toolchain_status", "PASS", f"WROTE {TOOLCHAIN_CSV}"))
     _write_summary(rows)
 
     for row in rows:
@@ -451,6 +454,38 @@ def _write_summary(rows: list[dict[str, str]]) -> None:
         writer = csv.DictWriter(handle, fieldnames=["name", "status", "detail"])
         writer.writeheader()
         writer.writerows(rows)
+
+
+def _write_toolchain_status(rows: list[dict[str, str]]) -> None:
+    tool_rows = [row for row in rows if row["name"].startswith("tool:")]
+    TOOLCHAIN_CSV.parent.mkdir(parents=True, exist_ok=True)
+    with TOOLCHAIN_CSV.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=["tool", "status", "detail", "needed_for"])
+        writer.writeheader()
+        for row in tool_rows:
+            tool = row["name"].removeprefix("tool:")
+            writer.writerow(
+                {
+                    "tool": tool,
+                    "status": row["status"],
+                    "detail": row["detail"],
+                    "needed_for": _tool_needed_for(tool),
+                }
+            )
+
+
+def _tool_needed_for(tool: str) -> str:
+    return {
+        "verilator": "Verilator lint and future C++ simulation builds",
+        "iverilog": "directed Icarus SystemVerilog simulations",
+        "vvp": "directed Icarus simulation execution",
+        "yosys": "generic synthesis and formal frontend",
+        "sby": "bounded formal orchestration",
+        "yosys-smtbmc": "bounded formal SMTBMC checks",
+        "make": "full Verilator/C++ flow orchestration",
+        "cxx": "full Verilator C++ simulation builds",
+        "riscv64-unknown-elf-gcc": "external RISC-V bare-metal firmware compilation",
+    }.get(tool, "local reproducibility")
 
 
 def _row(name: str, status: str, detail: str) -> dict[str, str]:

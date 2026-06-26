@@ -43,6 +43,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/evaluation_metrics.csv` | Yes | Headline evaluation metric rollup source with TODO hardware rows. |
 | `table07_evaluation_metrics.md` | Yes | Generated Markdown source for evaluation metric rollup. |
 | `../../results/processed/claim_audit.csv` | Yes | Claim-audit source for honesty-gate review. |
+| `../../results/processed/toolchain_status.csv` | Yes | Tool availability and missing-blocker ledger. |
 | `../../results/processed/summary.csv` | Yes | Provenance and missing-tool status ledger. |
 
 ## Planned Assets

@@ -24,7 +24,7 @@ Current local tool caveat:
   `python3`; both resolve to Windows Store aliases that fail at runtime. The
   checked-in `scripts/reproduce_all.ps1` wrapper finds the bundled Codex Python
   runtime and successfully runs the local gate.
-- `make`, a C++ compiler entry point, and `riscv64-unknown-elf-gcc` are missing. System `yosys` is also
+- `make`, a C++ compiler entry point, and `riscv64-unknown-elf-gcc` are missing. `results/processed/toolchain_status.csv` records this tool status. System `yosys` is also
   missing, but the local gate can use workspace-local `yowasp-yosys` and
   `yowasp-sby`/`yowasp-yosys-smtbmc` from `.tools/python/`, plus OSS CAD Suite
   HDL tools from `.tools/oss-cad-suite/`, when installed outside git tracking.

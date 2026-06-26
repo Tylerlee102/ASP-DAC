@@ -1,0 +1,10 @@
+tool,status,detail,needed_for
+verilator,PASS,workspace-local oss-cad-suite verilator_bin.exe,Verilator lint and future C++ simulation builds
+iverilog,PASS,workspace-local oss-cad-suite iverilog.exe,directed Icarus SystemVerilog simulations
+vvp,PASS,workspace-local oss-cad-suite vvp.exe,directed Icarus simulation execution
+yosys,PASS,workspace-local yowasp-yosys,generic synthesis and formal frontend
+sby,PASS,workspace-local yowasp-sby,bounded formal orchestration
+yosys-smtbmc,PASS,workspace-local yowasp-yosys-smtbmc,bounded formal SMTBMC checks
+make,TODO,external tool not found locally,full Verilator/C++ flow orchestration
+cxx,TODO,"none found from: c++, g++, clang++, cl",full Verilator C++ simulation builds
+riscv64-unknown-elf-gcc,TODO,external tool not found locally,external RISC-V bare-metal firmware compilation
