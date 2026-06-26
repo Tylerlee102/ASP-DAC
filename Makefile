@@ -5,7 +5,7 @@ VERILATOR ?= verilator
 VERILATOR_ENV ?= env -u VERILATOR_ROOT -u VERILATOR_BIN -u OSS_CAD_SUITE
 VERILATOR_MDIR ?= build/verilator/obj_dir
 VERILATOR_OUTPUT ?= ../replaycapsule_sim
-VERILATOR_CFLAGS ?= -std=c++17 -O2 -Itb/verilator
+VERILATOR_CFLAGS ?= -std=c++17 -O2 -I$(abspath tb/verilator)
 BENCH ?= sensor_threshold_bug
 VARIANT ?= failing
 SEED ?= 1
@@ -35,6 +35,8 @@ VERILATOR_SOURCES = \
 	tb/verilator/main.cpp \
 	tb/verilator/rtl_harness.cpp \
 	tb/verilator/capsule_io.cpp
+
+VERILATOR_ABS_SOURCES = $(foreach src,$(VERILATOR_SOURCES),$(abspath $(src)))
 
 test:
 	$(PYTHON) scripts/run_all_tests.py
@@ -67,7 +69,7 @@ verilator-harness:
 		--Mdir $(VERILATOR_MDIR) \
 		-CFLAGS "$(VERILATOR_CFLAGS)" \
 		-o $(VERILATOR_OUTPUT) \
-		$(VERILATOR_SOURCES) > results/raw/verilator/build.log 2>&1
+		$(VERILATOR_ABS_SOURCES) > results/raw/verilator/build.log 2>&1
 	@test -x build/verilator/replaycapsule_sim || test -x build/verilator/replaycapsule_sim.exe || (echo "ERROR: Verilator simulator binary missing. See results/raw/verilator/build.log." && exit 1)
 
 full-rtl-replay: firmware
