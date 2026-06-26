@@ -1,0 +1,31 @@
+[options]
+mode cover
+depth 16
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/event_pkg.sv
+read_verilog -formal -sv -Irtl rtl/event_tap.sv
+read_verilog -formal -sv -Irtl rtl/event_classifier.sv
+read_verilog -formal -sv -Irtl rtl/capsule_buffer.sv
+read_verilog -formal -sv -Irtl rtl/property_checker.sv
+read_verilog -formal -sv -Irtl rtl/event_slicer.sv
+read_verilog -formal -sv -Irtl rtl/hash_signature.sv
+read_verilog -formal -sv -Irtl rtl/replay_capsule_top.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv
+prep -top replay_capsule_top_bmc_harness
+
+[files]
+rtl/event_pkg.sv rtl/event_pkg.sv
+rtl/event_defs.svh rtl/event_defs.svh
+rtl/event_tap.sv rtl/event_tap.sv
+rtl/event_classifier.sv rtl/event_classifier.sv
+rtl/capsule_buffer.sv rtl/capsule_buffer.sv
+rtl/property_checker.sv rtl/property_checker.sv
+rtl/event_slicer.sv rtl/event_slicer.sv
+rtl/hash_signature.sv rtl/hash_signature.sv
+rtl/replay_capsule_top.sv rtl/replay_capsule_top.sv
+formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv

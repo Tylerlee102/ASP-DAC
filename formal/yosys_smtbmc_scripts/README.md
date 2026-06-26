@@ -11,6 +11,9 @@ Implemented now:
   bounds, failure-to-freeze, frozen-count stability, and sticky overflow. The
   one-command gate runs this through `scripts/run_formal_checks.py` when local
   SMTBMC tooling is available.
+- `replay_capsule_top_cover.sby`: depth-16 cover run over the same harness. It
+  checks that captured-event, frozen-capsule, and overflow states are reachable,
+  which guards against over-constraining the bounded proof harness.
 
 ## Recommended Targets
 

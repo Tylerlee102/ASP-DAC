@@ -1,0 +1,59 @@
+SBY [.tools\formal_checks\replay_capsule_top_cover] Removing directory '<repo>\.tools\formal_checks\replay_capsule_top_cover'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\event_pkg.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\event_pkg.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\event_defs.svh' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\event_defs.svh'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\event_tap.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\event_tap.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\event_classifier.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\event_classifier.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\capsule_buffer.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\capsule_buffer.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\property_checker.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\property_checker.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\event_slicer.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\event_slicer.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\hash_signature.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\hash_signature.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\rtl\replay_capsule_top.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\rtl\replay_capsule_top.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] Copy '<repo>\formal\yosys_smtbmc_scripts\replay_capsule_top_bmc_harness.sv' to '<repo>\.tools\formal_checks\replay_capsule_top_cover\src\formal\yosys_smtbmc_scripts\replay_capsule_top_bmc_harness.sv'.
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: smtbmc
+SBY [.tools\formal_checks\replay_capsule_top_cover] base: starting process "cd .tools\formal_checks\replay_capsule_top_cover/src& yosys -ql ../model/design.log ../model/design.ys"
+SBY [.tools\formal_checks\replay_capsule_top_cover] base: Warning: Replacing memory \mem with list of registers. See rtl/capsule_buffer.sv:43
+SBY [.tools\formal_checks\replay_capsule_top_cover] base: finished (returncode=0)
+SBY [.tools\formal_checks\replay_capsule_top_cover] prep: starting process "cd .tools\formal_checks\replay_capsule_top_cover/model& yosys -ql design_prep.log design_prep.ys"
+SBY [.tools\formal_checks\replay_capsule_top_cover] prep: finished (returncode=0)
+SBY [.tools\formal_checks\replay_capsule_top_cover] smt2: starting process "cd .tools\formal_checks\replay_capsule_top_cover/model& yosys -ql design_smt2.log design_smt2.ys"
+SBY [.tools\formal_checks\replay_capsule_top_cover] smt2: finished (returncode=0)
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: starting process "cd .tools\formal_checks\replay_capsule_top_cover& yosys-smtbmc --presat --unroll -c --noprogress -t 16  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Solver: yices
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 0..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 1..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 2..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Reached cover statement in step 2 at replay_capsule_top_bmc_harness: formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv:108.5-108.51 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_capsule_top_bmc_harness_sv_108_253)
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace0.vcd
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace0.smtc
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 2..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 3..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 4..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Reached cover statement in step 4 at replay_capsule_top_bmc_harness: formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv:109.5-109.45 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_capsule_top_bmc_harness_sv_109_257)
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace1.vcd
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace1.smtc
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 4..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 5..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 6..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Checking cover reachability in step 7..
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Reached cover statement in step 7 at replay_capsule_top_bmc_harness: formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv:110.5-110.47 (_witness_.check_cover_formal_yosys_smtbmc_scripts_replay_capsule_top_bmc_harness_sv_110_261)
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace2.vcd
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace2.smtc
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: ## <time> Status: passed
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: finished (returncode=0)
+SBY [.tools\formal_checks\replay_capsule_top_cover] engine_0: Status returned by engine: pass
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary: Elapsed clock time <time>
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary: Elapsed process time unvailable on Windows
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary: engine_0 (smtbmc) returned pass
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary: cover trace: .tools\formal_checks\replay_capsule_top_cover\engine_0\trace0.vcd
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary:   reached cover statement replay_capsule_top_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_replay_capsule_top_bmc_harness_sv_108_253 at formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv:108.5-108.51 step 2
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary: cover trace: .tools\formal_checks\replay_capsule_top_cover\engine_0\trace1.vcd
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary:   reached cover statement replay_capsule_top_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_replay_capsule_top_bmc_harness_sv_109_257 at formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv:109.5-109.45 step 4
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary: cover trace: .tools\formal_checks\replay_capsule_top_cover\engine_0\trace2.vcd
+SBY [.tools\formal_checks\replay_capsule_top_cover] summary:   reached cover statement replay_capsule_top_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_replay_capsule_top_bmc_harness_sv_110_261 at formal/yosys_smtbmc_scripts/replay_capsule_top_bmc_harness.sv:110.5-110.47 step 7
+SBY [.tools\formal_checks\replay_capsule_top_cover] DONE (PASS, rc=0)

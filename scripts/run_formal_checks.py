@@ -36,6 +36,12 @@ FORMAL_TARGETS = (
         depth=16,
         notes="bounded recorder invariants over depth 16",
     ),
+    FormalTarget(
+        name="replay_capsule_top_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/replay_capsule_top_cover.sby"),
+        depth=16,
+        notes="bounded reachability covers over depth 16",
+    ),
 )
 
 
