@@ -20,14 +20,20 @@ from capsule_parser import parse_capsule  # noqa: E402
 from replay_compare import compare_capsules  # noqa: E402
 
 
-SMOKE_LOGS = {
-    "sensor_threshold_bug": RAW_DIR / "tb_picorv32_sensor_threshold_smoke_vvp_run.txt",
-    "interrupt_race_bug": RAW_DIR / "tb_picorv32_interrupt_race_smoke_vvp_run.txt",
-    "mmio_ordering_bug": RAW_DIR / "tb_picorv32_mmio_ordering_smoke_vvp_run.txt",
-    "stack_corruption_bug": RAW_DIR / "tb_picorv32_stack_corruption_smoke_vvp_run.txt",
-    "uart_command_bug": RAW_DIR / "tb_picorv32_uart_command_smoke_vvp_run.txt",
-    "watchdog_timeout_bug": RAW_DIR / "tb_picorv32_watchdog_timeout_smoke_vvp_run.txt",
-}
+SMOKE_LOGS = (
+    ("sensor_threshold_bug", "failing", RAW_DIR / "tb_picorv32_sensor_threshold_smoke_vvp_run.txt"),
+    ("interrupt_race_bug", "failing", RAW_DIR / "tb_picorv32_interrupt_race_smoke_vvp_run.txt"),
+    ("mmio_ordering_bug", "failing", RAW_DIR / "tb_picorv32_mmio_ordering_smoke_vvp_run.txt"),
+    ("stack_corruption_bug", "failing", RAW_DIR / "tb_picorv32_stack_corruption_smoke_vvp_run.txt"),
+    ("uart_command_bug", "failing", RAW_DIR / "tb_picorv32_uart_command_smoke_vvp_run.txt"),
+    ("watchdog_timeout_bug", "failing", RAW_DIR / "tb_picorv32_watchdog_timeout_smoke_vvp_run.txt"),
+    ("sensor_threshold_bug", "fixed", RAW_DIR / "tb_picorv32_sensor_threshold_fixed_smoke_vvp_run.txt"),
+    ("interrupt_race_bug", "fixed", RAW_DIR / "tb_picorv32_interrupt_race_fixed_smoke_vvp_run.txt"),
+    ("mmio_ordering_bug", "fixed", RAW_DIR / "tb_picorv32_mmio_ordering_fixed_smoke_vvp_run.txt"),
+    ("stack_corruption_bug", "fixed", RAW_DIR / "tb_picorv32_stack_corruption_fixed_smoke_vvp_run.txt"),
+    ("uart_command_bug", "fixed", RAW_DIR / "tb_picorv32_uart_command_fixed_smoke_vvp_run.txt"),
+    ("watchdog_timeout_bug", "fixed", RAW_DIR / "tb_picorv32_watchdog_timeout_fixed_smoke_vvp_run.txt"),
+)
 
 PROPERTY_NAMES = {
     1: "P1_ACTUATOR_LIMIT",
@@ -47,26 +53,21 @@ def main() -> int:
 
     rows: list[dict[str, str]] = []
     failed = False
-    for benchmark, log_path in SMOKE_LOGS.items():
+    for benchmark, variant, log_path in SMOKE_LOGS:
         try:
             packets = _read_packets(log_path)
-            payload = _capsule_payload(benchmark, log_path, packets)
-            json_path = CAPSULE_DIR / f"{benchmark}.json"
+            payload = _capsule_payload(benchmark, variant, log_path, packets)
+            json_path = CAPSULE_DIR / f"{benchmark}_{variant}.json"
             json_path.write_text(json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8")
             parsed = parse_capsule(json.dumps(payload), source=f"{benchmark}:rtl")
             compare = compare_capsules(parsed, parsed, mode="commit-index")
-            negative_payload = _drop_one_replay_event(payload)
-            negative = compare_capsules(
-                parsed,
-                parse_capsule(json.dumps(negative_payload), source=f"{benchmark}:negative"),
-                mode="commit-index",
-            )
-            negative_check = "PASS" if not negative.success else "FAIL"
-            status = "PASS" if compare.success and negative_check == "PASS" else "FAIL"
+            negative_check = _negative_check(parsed, payload, benchmark)
+            status = "PASS" if compare.success and negative_check in {"PASS", "NA"} else "FAIL"
             if status == "PASS":
-                notes = (
-                    "RTL smoke capsule export parsed, self-compared, and missing-event negative check failed as expected; not full replay"
-                )
+                if negative_check == "PASS":
+                    notes = "RTL smoke capsule export parsed, self-compared, and missing-event negative check failed as expected; not full replay"
+                else:
+                    notes = "RTL smoke capsule export parsed and self-compared; no replay-relevant event available for negative check"
             elif compare.success:
                 notes = "missing-event negative check unexpectedly matched"
             else:
@@ -76,6 +77,7 @@ def main() -> int:
             rows.append(
                 {
                     "benchmark": benchmark,
+                    "variant": variant,
                     "status": "FAIL",
                     "mode": "commit-index",
                     "rtl_packet_count": "0",
@@ -94,6 +96,7 @@ def main() -> int:
         rows.append(
             {
                 "benchmark": benchmark,
+                "variant": variant,
                 "status": status,
                 "mode": "commit-index",
                 "rtl_packet_count": str(len(packets)),
@@ -112,6 +115,7 @@ def main() -> int:
             handle,
             fieldnames=[
                 "benchmark",
+                "variant",
                 "status",
                 "mode",
                 "rtl_packet_count",
@@ -161,14 +165,18 @@ def _decode_packet(packet: int, index: int) -> dict[str, int]:
     }
 
 
-def _capsule_payload(benchmark: str, log_path: Path, packets: list[dict[str, int]]) -> dict[str, object]:
+def _capsule_payload(benchmark: str, variant: str, log_path: Path, packets: list[dict[str, int]]) -> dict[str, object]:
     property_packet = next((packet for packet in packets if packet["event_type"] == 0xA), None)
-    if property_packet is None:
+    if variant == "failing" and property_packet is None:
         raise ValueError(f"{log_path} has no property-fail packet")
 
-    property_number = property_packet["addr"] & 0xFF
-    property_id = PROPERTY_NAMES.get(property_number, f"P{property_number}")
-    failure_signature = f"0x{property_packet['data']:08x}"
+    if property_packet is not None:
+        property_number = property_packet["addr"] & 0xFF
+        property_id = PROPERTY_NAMES.get(property_number, f"P{property_number}")
+        failure_signature = f"0x{property_packet['data']:08x}"
+    else:
+        property_id = "NONE"
+        failure_signature = "NA"
 
     events: list[dict[str, object]] = []
     for packet in packets:
@@ -182,7 +190,7 @@ def _capsule_payload(benchmark: str, log_path: Path, packets: list[dict[str, int
 
     return {
         "benchmark": benchmark,
-        "variant": "failing",
+        "variant": variant,
         "evidence_level": "rtl-smoke",
         "source_log": str(log_path.relative_to(REPO_ROOT)),
         "property_id": property_id,
@@ -248,6 +256,20 @@ def _drop_one_replay_event(payload: dict[str, object]) -> dict[str, object]:
             corrupted["events"] = events[:index] + events[index + 1 :]
             return corrupted
     raise ValueError("cannot build negative check without a replay-relevant event")
+
+
+def _negative_check(parsed, payload: dict[str, object], benchmark: str) -> str:
+    try:
+        negative_payload = _drop_one_replay_event(payload)
+    except ValueError:
+        return "NA"
+
+    negative = compare_capsules(
+        parsed,
+        parse_capsule(json.dumps(negative_payload), source=f"{benchmark}:negative"),
+        mode="commit-index",
+    )
+    return "PASS" if not negative.success else "FAIL"
 
 
 if __name__ == "__main__":

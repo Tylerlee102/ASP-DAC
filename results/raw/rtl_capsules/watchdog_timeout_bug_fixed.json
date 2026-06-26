@@ -1,0 +1,125 @@
+{
+  "benchmark": "watchdog_timeout_bug",
+  "events": [
+    {
+      "commit": 2,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x40000000"
+    },
+    {
+      "addr": "0x40000000",
+      "commit": 2,
+      "direction": "read",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x40000000",
+      "value": "0x0000012c"
+    },
+    {
+      "commit": 7,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x4000000c"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 7,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 1,
+      "pc": "0x4000000c",
+      "value": "0x0000feed"
+    },
+    {
+      "commit": 9,
+      "kind": "pc",
+      "order": 2,
+      "pc": "0x00000094"
+    },
+    {
+      "commit": 9,
+      "kind": "branch",
+      "order": 2,
+      "pc": "0x00000094",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 11,
+      "kind": "pc",
+      "order": 3,
+      "pc": "0x4000000c"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 11,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 3,
+      "pc": "0x4000000c",
+      "value": "0x0000feed"
+    },
+    {
+      "commit": 13,
+      "kind": "pc",
+      "order": 4,
+      "pc": "0x00000094"
+    },
+    {
+      "commit": 13,
+      "kind": "branch",
+      "order": 4,
+      "pc": "0x00000094",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 15,
+      "kind": "pc",
+      "order": 5,
+      "pc": "0x4000000c"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 15,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 5,
+      "pc": "0x4000000c",
+      "value": "0x0000feed"
+    },
+    {
+      "commit": 17,
+      "kind": "pc",
+      "order": 6,
+      "pc": "0x00000094"
+    },
+    {
+      "commit": 17,
+      "kind": "branch",
+      "order": 6,
+      "pc": "0x00000094",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 19,
+      "kind": "pc",
+      "order": 7,
+      "pc": "0x4000000c"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 19,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 7,
+      "pc": "0x4000000c",
+      "value": "0x0000feed"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "NA",
+  "property_id": "NONE",
+  "rtl_packet_count": 8,
+  "source_log": "results\\raw\\tb_picorv32_watchdog_timeout_fixed_smoke_vvp_run.txt",
+  "variant": "fixed"
+}

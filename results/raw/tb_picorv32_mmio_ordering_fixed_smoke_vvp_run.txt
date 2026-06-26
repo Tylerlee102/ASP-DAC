@@ -1,1 +1,5 @@
-tb_picorv32_wrapper_smoke.sv:206: $finish called at 3046000 (1ps)
+RC_CAPSULE_BEGIN count=2 property=0 signature=00000000 frozen=0 overflow=0
+RC_CAPSULE_EVENT index=0 packet=62000000000000000440000008400000080000cafe
+RC_CAPSULE_EVENT index=1 packet=620000000100000007400000044000000400000019
+RC_CAPSULE_END
+tb_picorv32_wrapper_smoke.sv:206: $finish called at 3048000 (1ps)

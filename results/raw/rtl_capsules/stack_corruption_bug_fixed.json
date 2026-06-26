@@ -1,0 +1,25 @@
+{
+  "benchmark": "stack_corruption_bug",
+  "events": [
+    {
+      "commit": 6,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x00001800"
+    },
+    {
+      "addr": "0x00001800",
+      "commit": 6,
+      "kind": "store",
+      "order": 0,
+      "pc": "0x00001800",
+      "value": "0xdeadbeef"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "NA",
+  "property_id": "NONE",
+  "rtl_packet_count": 1,
+  "source_log": "results\\raw\\tb_picorv32_stack_corruption_fixed_smoke_vvp_run.txt",
+  "variant": "fixed"
+}

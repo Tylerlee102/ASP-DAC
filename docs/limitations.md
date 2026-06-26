@@ -30,4 +30,4 @@ ReplayCapsule-RV v1 is intentionally narrow.
 - The SoC RTL integration has twelve firmware smokes, not a completed benchmark-wide PicoRV32 replay/export system.
 - `make`, C++ build support for full Verilator simulations, and a RISC-V cross compiler are not available locally.
 - Mapped FPGA LUT/FF/BRAM/Fmax rows are TODO until a real mapped flow is run.
-- Model-level and firmware-sim replay are measured for six benchmarks; RTL firmware-running evidence is currently limited to twelve wrapper smokes and six smoke-level capsule export self/negative-checks.
+- Model-level and firmware-sim replay are measured for six benchmarks; RTL firmware-running evidence is currently limited to twelve wrapper smokes and twelve failing/fixed smoke-level capsule export self/negative-checks.

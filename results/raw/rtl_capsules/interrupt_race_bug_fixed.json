@@ -1,0 +1,757 @@
+{
+  "benchmark": "interrupt_race_bug",
+  "events": [
+    {
+      "commit": 4,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x4000000c"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 4,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x4000000c",
+      "value": "0x00000001"
+    },
+    {
+      "commit": 8,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x40000008"
+    },
+    {
+      "addr": "0x40000008",
+      "commit": 8,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 1,
+      "pc": "0x40000008",
+      "value": "0x0000cafe"
+    },
+    {
+      "commit": 10,
+      "kind": "pc",
+      "order": 2,
+      "pc": "0x4000000c"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 10,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 2,
+      "pc": "0x4000000c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 0,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x00000076"
+    },
+    {
+      "commit": 0,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x00000086"
+    },
+    {
+      "commit": 12,
+      "kind": "pc",
+      "order": 5,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 12,
+      "kind": "branch",
+      "order": 5,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 13,
+      "kind": "pc",
+      "order": 6,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 13,
+      "kind": "branch",
+      "order": 6,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 14,
+      "kind": "pc",
+      "order": 7,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 14,
+      "kind": "branch",
+      "order": 7,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 15,
+      "kind": "pc",
+      "order": 8,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 15,
+      "kind": "branch",
+      "order": 8,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 16,
+      "kind": "pc",
+      "order": 9,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 16,
+      "kind": "branch",
+      "order": 9,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 17,
+      "kind": "pc",
+      "order": 10,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 17,
+      "kind": "branch",
+      "order": 10,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 18,
+      "kind": "pc",
+      "order": 11,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 18,
+      "kind": "branch",
+      "order": 11,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 19,
+      "kind": "pc",
+      "order": 12,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 19,
+      "kind": "branch",
+      "order": 12,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 20,
+      "kind": "pc",
+      "order": 13,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 20,
+      "kind": "branch",
+      "order": 13,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 21,
+      "kind": "pc",
+      "order": 14,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 21,
+      "kind": "branch",
+      "order": 14,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 22,
+      "kind": "pc",
+      "order": 15,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 22,
+      "kind": "branch",
+      "order": 15,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 23,
+      "kind": "pc",
+      "order": 16,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 23,
+      "kind": "branch",
+      "order": 16,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 24,
+      "kind": "pc",
+      "order": 17,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 24,
+      "kind": "branch",
+      "order": 17,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 25,
+      "kind": "pc",
+      "order": 18,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 25,
+      "kind": "branch",
+      "order": 18,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 26,
+      "kind": "pc",
+      "order": 19,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 26,
+      "kind": "branch",
+      "order": 19,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 27,
+      "kind": "pc",
+      "order": 20,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 27,
+      "kind": "branch",
+      "order": 20,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 28,
+      "kind": "pc",
+      "order": 21,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 28,
+      "kind": "branch",
+      "order": 21,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 29,
+      "kind": "pc",
+      "order": 22,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 29,
+      "kind": "branch",
+      "order": 22,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 30,
+      "kind": "pc",
+      "order": 23,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 30,
+      "kind": "branch",
+      "order": 23,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 31,
+      "kind": "pc",
+      "order": 24,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 31,
+      "kind": "branch",
+      "order": 24,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 32,
+      "kind": "pc",
+      "order": 25,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 32,
+      "kind": "branch",
+      "order": 25,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 33,
+      "kind": "pc",
+      "order": 26,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 33,
+      "kind": "branch",
+      "order": 26,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 34,
+      "kind": "pc",
+      "order": 27,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 34,
+      "kind": "branch",
+      "order": 27,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 35,
+      "kind": "pc",
+      "order": 28,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 35,
+      "kind": "branch",
+      "order": 28,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 36,
+      "kind": "pc",
+      "order": 29,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 36,
+      "kind": "branch",
+      "order": 29,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 37,
+      "kind": "pc",
+      "order": 30,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 37,
+      "kind": "branch",
+      "order": 30,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 38,
+      "kind": "pc",
+      "order": 31,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 38,
+      "kind": "branch",
+      "order": 31,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 39,
+      "kind": "pc",
+      "order": 32,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 39,
+      "kind": "branch",
+      "order": 32,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 40,
+      "kind": "pc",
+      "order": 33,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 40,
+      "kind": "branch",
+      "order": 33,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 41,
+      "kind": "pc",
+      "order": 34,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 41,
+      "kind": "branch",
+      "order": 34,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 42,
+      "kind": "pc",
+      "order": 35,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 42,
+      "kind": "branch",
+      "order": 35,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 43,
+      "kind": "pc",
+      "order": 36,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 43,
+      "kind": "branch",
+      "order": 36,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 44,
+      "kind": "pc",
+      "order": 37,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 44,
+      "kind": "branch",
+      "order": 37,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 45,
+      "kind": "pc",
+      "order": 38,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 45,
+      "kind": "branch",
+      "order": 38,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 46,
+      "kind": "pc",
+      "order": 39,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 46,
+      "kind": "branch",
+      "order": 39,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 47,
+      "kind": "pc",
+      "order": 40,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 47,
+      "kind": "branch",
+      "order": 40,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 48,
+      "kind": "pc",
+      "order": 41,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 48,
+      "kind": "branch",
+      "order": 41,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 49,
+      "kind": "pc",
+      "order": 42,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 49,
+      "kind": "branch",
+      "order": 42,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 50,
+      "kind": "pc",
+      "order": 43,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 50,
+      "kind": "branch",
+      "order": 43,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 51,
+      "kind": "pc",
+      "order": 44,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 51,
+      "kind": "branch",
+      "order": 44,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 52,
+      "kind": "pc",
+      "order": 45,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 52,
+      "kind": "branch",
+      "order": 45,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 53,
+      "kind": "pc",
+      "order": 46,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 53,
+      "kind": "branch",
+      "order": 46,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 54,
+      "kind": "pc",
+      "order": 47,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 54,
+      "kind": "branch",
+      "order": 47,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 55,
+      "kind": "pc",
+      "order": 48,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 55,
+      "kind": "branch",
+      "order": 48,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 56,
+      "kind": "pc",
+      "order": 49,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 56,
+      "kind": "branch",
+      "order": 49,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 57,
+      "kind": "pc",
+      "order": 50,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 57,
+      "kind": "branch",
+      "order": 50,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 58,
+      "kind": "pc",
+      "order": 51,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 58,
+      "kind": "branch",
+      "order": 51,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 59,
+      "kind": "pc",
+      "order": 52,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 59,
+      "kind": "branch",
+      "order": 52,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 60,
+      "kind": "pc",
+      "order": 53,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 60,
+      "kind": "branch",
+      "order": 53,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 61,
+      "kind": "pc",
+      "order": 54,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 61,
+      "kind": "branch",
+      "order": 54,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 62,
+      "kind": "pc",
+      "order": 55,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 62,
+      "kind": "branch",
+      "order": 55,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 63,
+      "kind": "pc",
+      "order": 56,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 63,
+      "kind": "branch",
+      "order": 56,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 64,
+      "kind": "pc",
+      "order": 57,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 64,
+      "kind": "branch",
+      "order": 57,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "NA",
+  "property_id": "NONE",
+  "rtl_packet_count": 58,
+  "source_log": "results\\raw\\tb_picorv32_interrupt_race_fixed_smoke_vvp_run.txt",
+  "variant": "fixed"
+}

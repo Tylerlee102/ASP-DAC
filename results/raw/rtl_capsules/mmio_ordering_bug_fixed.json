@@ -1,0 +1,41 @@
+{
+  "benchmark": "mmio_ordering_bug",
+  "events": [
+    {
+      "commit": 4,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x40000008"
+    },
+    {
+      "addr": "0x40000008",
+      "commit": 4,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x40000008",
+      "value": "0x0000cafe"
+    },
+    {
+      "commit": 7,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x40000004"
+    },
+    {
+      "addr": "0x40000004",
+      "commit": 7,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 1,
+      "pc": "0x40000004",
+      "value": "0x00000019"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "NA",
+  "property_id": "NONE",
+  "rtl_packet_count": 2,
+  "source_log": "results\\raw\\tb_picorv32_mmio_ordering_fixed_smoke_vvp_run.txt",
+  "variant": "fixed"
+}

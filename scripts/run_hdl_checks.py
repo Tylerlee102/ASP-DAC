@@ -235,6 +235,7 @@ IVERILOG_TESTS = (
             "+SENSOR_VALUE=850",
             "+COMMAND_VALUE=0",
             "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
         ),
     ),
     IverilogTest(
@@ -248,6 +249,7 @@ IVERILOG_TESTS = (
             "+SENSOR_VALUE=850",
             "+COMMAND_VALUE=0",
             "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
         ),
     ),
     IverilogTest(
@@ -261,6 +263,7 @@ IVERILOG_TESTS = (
             "+SENSOR_VALUE=850",
             "+COMMAND_VALUE=0",
             "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
         ),
         defines=("RC_IRQ_VECTOR_WORD_INDEX=9",),
     ),
@@ -275,6 +278,7 @@ IVERILOG_TESTS = (
             "+SENSOR_VALUE=850",
             "+COMMAND_VALUE=0",
             "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
         ),
     ),
     IverilogTest(
@@ -288,6 +292,7 @@ IVERILOG_TESTS = (
             "+SENSOR_VALUE=850",
             "+COMMAND_VALUE=0",
             "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
         ),
     ),
     IverilogTest(
@@ -301,6 +306,7 @@ IVERILOG_TESTS = (
             "+SENSOR_VALUE=300",
             "+COMMAND_VALUE=0",
             "+MAX_CYCLES=300",
+            "+DUMP_CAPSULE=1",
         ),
         defines=("RC_ENABLE_WATCHDOG",),
     ),

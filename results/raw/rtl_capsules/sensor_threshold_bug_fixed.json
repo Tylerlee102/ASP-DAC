@@ -1,0 +1,69 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "events": [
+    {
+      "commit": 2,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x40000000"
+    },
+    {
+      "addr": "0x40000000",
+      "commit": 2,
+      "direction": "read",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x40000000",
+      "value": "0x00000352"
+    },
+    {
+      "commit": 4,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x00000094"
+    },
+    {
+      "commit": 4,
+      "kind": "branch",
+      "order": 1,
+      "pc": "0x00000094",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 8,
+      "kind": "pc",
+      "order": 2,
+      "pc": "0x40000008"
+    },
+    {
+      "addr": "0x40000008",
+      "commit": 8,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 2,
+      "pc": "0x40000008",
+      "value": "0x0000cafe"
+    },
+    {
+      "commit": 10,
+      "kind": "pc",
+      "order": 3,
+      "pc": "0x40000004"
+    },
+    {
+      "addr": "0x40000004",
+      "commit": 10,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 3,
+      "pc": "0x40000004",
+      "value": "0x00000000"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "NA",
+  "property_id": "NONE",
+  "rtl_packet_count": 4,
+  "source_log": "results\\raw\\tb_picorv32_sensor_threshold_fixed_smoke_vvp_run.txt",
+  "variant": "fixed"
+}
