@@ -15,6 +15,10 @@ This directory holds a lightweight deterministic replay engine skeleton for embe
 - exact interrupt events and timing, with no extra observed interrupts
 
 PC evidence is treated as checkpoint-style evidence, so extra observed PC events are allowed. MMIO, input, and interrupt evidence are strict.
+`scripts/run_replay_negative_tests.py` generates benchmark-derived positive and
+negative fixtures that must be caught by these rules. It covers property-ID
+mismatch, failure-signature mismatch, missing strict events, duplicate strict
+events, payload corruption, commit-index shifts, and explicit order-tag swaps.
 
 ## Run
 

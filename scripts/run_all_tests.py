@@ -85,6 +85,7 @@ PYTHON_FILES = [
     "scripts/export_rtl_capsules.py",
     "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
+    "scripts/run_replay_negative_tests.py",
     "scripts/summarize_formal_coverage.py",
     "scripts/replaycapsule_model.py",
     "scripts/rv32i_firmware_sim.py",
@@ -186,6 +187,12 @@ def main() -> int:
         failures,
         "replay_experiments",
         [sys.executable, "scripts/run_replay_experiments.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "replay_negative_tests",
+        [sys.executable, "scripts/run_replay_negative_tests.py"],
     )
     _run_subprocess(
         rows,

@@ -8,6 +8,7 @@ syntax:scripts/check_rtl_firmware_alignment.py,PASS,
 syntax:scripts/export_rtl_capsules.py,PASS,
 syntax:scripts/run_formal_checks.py,PASS,
 syntax:scripts/run_hdl_checks.py,PASS,
+syntax:scripts/run_replay_negative_tests.py,PASS,
 syntax:scripts/summarize_formal_coverage.py,PASS,
 syntax:scripts/replaycapsule_model.py,PASS,
 syntax:scripts/rv32i_firmware_sim.py,PASS,
@@ -27,6 +28,7 @@ replay_driver_demo_commit,PASS,matched checkpoint: 0
 model_suite,PASS,WROTE results\raw\model_suite_traces.json
 rv32i_firmware_sim,PASS,WROTE results\raw\firmware_sim_traces.json
 replay_experiments,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\replay_experiments.csv
+replay_negative_tests,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\replay_negative_tests.csv
 trace_size_collection,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\trace_sizes.csv
 ablation_suite,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\event_sufficiency.csv
 yosys_synthesis_probe,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\raw\yosys_picorv32_replaycapsule_wrapper.txt
