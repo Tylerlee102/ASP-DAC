@@ -4,16 +4,32 @@ event_type_definitions,PASS,12 event names present
 firmware_benchmark_pairs,PASS,6 failing/fixed pairs present
 directed_sv_testbenches,PASS,10 source-present testbenches
 syntax:scripts/audit_claims.py,PASS,
+syntax:scripts/audit_paper_numbers.py,PASS,
+syntax:scripts/audit_todos.py,PASS,
+syntax:scripts/build_firmware.py,PASS,
+syntax:scripts/build_paper.py,PASS,
 syntax:scripts/build_firmware_images.py,PASS,
+syntax:scripts/collect_trace_sizes.py,PASS,
 syntax:scripts/check_rtl_firmware_alignment.py,PASS,
+syntax:scripts/check_toolchain.py,PASS,
 syntax:scripts/export_rtl_capsules.py,PASS,
+syntax:scripts/generate_conference_evidence_tables.py,PASS,
+syntax:scripts/package_artifact.py,PASS,
+syntax:scripts/parse_synthesis_reports.py,PASS,
+syntax:scripts/run_ablations.py,PASS,
+syntax:scripts/run_full_rtl_replay.py,PASS,
+syntax:scripts/run_full_rtl_negative.py,PASS,
+syntax:scripts/run_runtime_overhead.py,PASS,
 syntax:scripts/run_formal_checks.py,PASS,
 syntax:scripts/run_hdl_checks.py,PASS,
+syntax:scripts/run_mapped_synthesis.py,PASS,
 syntax:scripts/summarize_picorv32_smokes.py,PASS,
 syntax:scripts/run_randomized_interrupt_campaign.py,PASS,
 syntax:scripts/summarize_randomized_interrupt_campaign.py,PASS,
 syntax:scripts/run_replay_negative_tests.py,PASS,
+syntax:scripts/run_replay_experiments.py,PASS,
 syntax:scripts/run_rtl_smoke_ablations.py,PASS,
+syntax:scripts/synth_yosys.py,PASS,
 syntax:scripts/make_figures.py,PASS,
 syntax:scripts/render_paper_tables.py,PASS,
 syntax:scripts/summarize_evaluation_metrics.py,PASS,
@@ -30,45 +46,56 @@ syntax:scripts/static_rtl_checks.py,PASS,
 syntax:tb/replay_testbench/capsule_parser.py,PASS,
 syntax:tb/replay_testbench/replay_compare.py,PASS,
 syntax:tb/replay_testbench/replay_driver.py,PASS,
-firmware_image_build,PASS,WROTE 12 firmware image sets under C:\Users\tyboy\OneDrive\Documents\New project\firmware\build
+firmware_image_build,PASS,WROTE 12 firmware image sets under firmware/build
+firmware_build,PASS,WROTE results/processed/firmware_build.csv
 firmware_image_artifacts,PASS,12 image sets present
 static_rtl_contract_checks,PASS,"Summary: 43 passed, 0 failed"
-hdl_frontend_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\hdl_checks.csv
-picorv32_smoke_summary,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\picorv32_smoke_summary.csv and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\picorv32_smoke_coverage.csv
-rtl_capsule_export_compare,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_capsule_exports.csv
-rtl_capsule_event_classes,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_capsule_event_classes.csv
-rtl_smoke_ablations,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_smoke_ablations.csv and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_smoke_event_sufficiency.csv
-rtl_firmware_alignment,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_firmware_alignment.csv
-randomized_interrupt_campaign,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_campaign.csv
-randomized_interrupt_summary,PASS,"WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_summary.csv, C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_coverage.csv, and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_corruption.csv"
-bounded_formal_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_checks.csv
-formal_coverage_matrix,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_coverage.csv and C:\Users\tyboy\OneDrive\Documents\New project\docs\formal_coverage_matrix.md
-overflow_contracts,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\overflow_contracts.csv
+hdl_frontend_checks,PASS,WROTE .\results\processed\hdl_checks.csv
+picorv32_smoke_summary,PASS,WROTE .\results\processed\picorv32_smoke_summary.csv and .\results\processed\picorv32_smoke_coverage.csv
+rtl_capsule_export_compare,PASS,WROTE .\results\processed\rtl_capsule_exports.csv
+rtl_capsule_event_classes,PASS,WROTE .\results\processed\rtl_capsule_event_classes.csv
+rtl_smoke_ablations,PASS,WROTE .\results\processed\rtl_smoke_ablations.csv and .\results\processed\rtl_smoke_event_sufficiency.csv
+rtl_firmware_alignment,PASS,WROTE .\results\processed\rtl_firmware_alignment.csv
+randomized_interrupt_campaign,PASS,WROTE .\results\processed\randomized_interrupt_campaign.csv
+randomized_interrupt_summary,PASS,"WROTE .\results\processed\randomized_interrupt_summary.csv, .\results\processed\randomized_interrupt_coverage.csv, and .\results\processed\randomized_interrupt_corruption.csv"
+bounded_formal_checks,PASS,WROTE .\results\processed\formal_checks.csv
+formal_coverage_matrix,PASS,WROTE .\results\processed\formal_coverage.csv and .\docs\formal_coverage_matrix.md
+overflow_contracts,PASS,WROTE .\results\processed\overflow_contracts.csv
 replay_driver_demo_cycle,PASS,matched checkpoint: 0
 replay_driver_demo_commit,PASS,matched checkpoint: 0
 model_suite,PASS,WROTE results\raw\model_suite_traces.json
 rv32i_firmware_sim,PASS,WROTE results\raw\firmware_sim_traces.json
-replay_experiments,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\replay_experiments.csv
-replay_negative_tests,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\replay_negative_tests.csv
-trace_size_collection,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\trace_sizes.csv
-ablation_suite,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\event_sufficiency.csv
-benchmark_coverage,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\benchmark_coverage.csv
-proof_obligation_matrix,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\proof_obligations.csv and C:\Users\tyboy\OneDrive\Documents\New project\docs\proof_obligation_matrix.md
-yosys_synthesis_probe,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\raw\yosys_picorv32_replaycapsule_wrapper.txt
-synthesis_report_parse,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis.csv
-synthesis_overhead_summary,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis_overhead.csv
-evaluation_metrics_summary,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\evaluation_metrics.csv
-paper_table_generation,PASS,WROTE 7 paper table(s) under C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
-claim_audit,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\claim_audit.csv; REVIEW rows=0
-figure_generation,PASS,WROTE 8 SVG figures to C:\Users\tyboy\OneDrive\Documents\New project\results\figures and C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
+replay_experiments,PASS,WROTE .\results\processed\replay_experiments.csv
+replay_negative_tests,PASS,WROTE .\results\processed\replay_negative_tests.csv
+full_rtl_replay_status,PASS,WROTE results/processed/full_rtl_replay.csv
+full_rtl_negative_status,PASS,WROTE results/processed/full_rtl_replay_negative.csv
+runtime_overhead_status,PASS,WROTE results/processed/runtime_overhead_summary.csv
+trace_size_collection,PASS,WROTE .\results\processed\trace_sizes.csv
+ablation_suite,PASS,WROTE .\results\processed\event_sufficiency.csv
+conference_evidence_tables,PASS,WROTE .\paper\figures\table_event_sufficiency.md
+mapped_synthesis,PASS,WROTE results/processed/mapped_overhead.csv
+benchmark_coverage,PASS,WROTE .\results\processed\benchmark_coverage.csv
+proof_obligation_matrix,PASS,WROTE .\results\processed\proof_obligations.csv and .\docs\proof_obligation_matrix.md
+yosys_synthesis_probe,PASS,WROTE .\results\raw\yosys_picorv32_replaycapsule_wrapper.txt
+synthesis_report_parse,PASS,WROTE .\results\processed\synthesis.csv
+synthesis_overhead_summary,PASS,WROTE .\results\processed\synthesis_overhead.csv
+evaluation_metrics_summary,PASS,WROTE .\results\processed\evaluation_metrics.csv
+paper_table_generation,PASS,WROTE 7 paper table(s) under .\paper\figures
+paper_build_status,PASS,WROTE .\results\processed\paper_build_status.csv
+claim_audit,PASS,WROTE .\results\processed\claim_audit.csv; REVIEW rows=0
+paper_number_audit,PASS,WROTE .\results\processed\paper_number_audit.csv; FAIL rows=0
+todo_audit,PASS,WROTE .\results\processed\todo_audit.csv; FAIL rows=0
+figure_generation,PASS,WROTE 8 SVG figures to .\results\figures and .\paper\figures
 tool:verilator,PASS,workspace-local oss-cad-suite verilator_bin.exe
 tool:iverilog,PASS,workspace-local oss-cad-suite iverilog.exe
 tool:vvp,PASS,workspace-local oss-cad-suite vvp.exe
 tool:yosys,PASS,workspace-local yowasp-yosys
 tool:sby,PASS,workspace-local yowasp-sby
 tool:yosys-smtbmc,PASS,workspace-local yowasp-yosys-smtbmc
-tool:make,TODO,external tool not found locally
-tool:cxx,TODO,"none found from: c++, g++, clang++, cl"
+tool:make,PASS,workspace-local winlibs make.exe
+tool:cxx,PASS,workspace-local winlibs g++.exe
 tool:riscv64-unknown-elf-gcc,TODO,external tool not found locally
-toolchain_status,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\toolchain_status.csv
-artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=178 missing=0
+toolchain_status,PASS,WROTE results/processed/toolchain_status.csv
+toolchain_check_full_rtl,PASS,WROTE results/processed/toolchain_status.csv
+artifact_manifest,PASS,WROTE results/processed/artifact_manifest.csv; present=387 missing=0
+artifact_package,PASS,PACKAGED 531 files

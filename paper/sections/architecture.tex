@@ -1,0 +1,12 @@
+\section{Hardware Architecture}
+
+ReplayCapsule-RV instruments the processor boundary rather than replacing the core. The PicoRV32 wrapper exposes memory, MMIO, interrupt, and commit-context signals to the record-side modules. The event tap observes candidate facts, the classifier selects replay-relevant and diagnostic classes, the slicer retains context around a property failure, the capsule buffer stores encoded packets, and the property checker freezes the capsule on a target violation.
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/architecture_overview.pdf}{\includegraphics[width=\linewidth]{figures/architecture_overview.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{paper/figures/architecture\_overview.svg}}}}
+\caption{ReplayCapsule hardware architecture. Source generated from \texttt{scripts/make\_figures.py}.}
+\label{fig:architecture}
+\end{figure}
+
+The design keeps resource claims separate from functionality claims. Generic Yosys cell-count evidence is available for the baseline core, the recorder top, and the integrated wrapper. Scoped tiny iCE40 mapped rows are generated for a tiny baseline and recorder configuration; full-core FPGA or ASIC area/timing overhead claims are not made because comparable full-core mapped PASS reports are not present in the artifact.

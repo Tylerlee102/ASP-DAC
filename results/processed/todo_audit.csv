@@ -1,0 +1,2 @@
+check,status,file,line,detail
+paper_todo_audit,PASS,paper,NA,"no unresolved TODO/draft markers, expected assets present, citations defined"

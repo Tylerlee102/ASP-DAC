@@ -23,6 +23,7 @@ module tb_property_checker;
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),
+    .watchdog_enable(1'b0),
     .event_valid(event_valid),
     .event_type(event_type),
     .event_commit_index(event_commit_index),
@@ -88,4 +89,3 @@ module tb_property_checker;
     end
   endtask
 endmodule
-

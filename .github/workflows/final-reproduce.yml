@@ -1,0 +1,167 @@
+name: ReplayCapsule-RV Final Reproduction
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  final-reproduce:
+    runs-on: ubuntu-latest
+    env:
+      PYTHON: python3
+      REQUIRE_COMPILER: "1"
+      ALLOW_FALLBACK: "0"
+      REPLAYCAPSULE_REQUIRE_COMPILER: "1"
+      REPLAYCAPSULE_ALLOW_FALLBACK: "0"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install final reproduction tools
+        run: |
+          set -uo pipefail
+          mkdir -p results/processed
+          echo "package,status,notes" > results/processed/apt_install_status.csv
+          sudo apt-get update
+          packages=(
+            build-essential
+            make
+            git
+            python3
+            python3-pip
+            cmake
+            verilator
+            yosys
+            nextpnr-ice40
+            gcc-riscv64-unknown-elf
+            binutils-riscv64-unknown-elf
+            latexmk
+            texlive-latex-base
+            texlive-latex-extra
+            texlive-fonts-recommended
+            texlive-publishers
+            zip
+          )
+          for package in "${packages[@]}"; do
+            if sudo apt-get install -y --no-install-recommends "$package"; then
+              echo "$package,PASS,installed by apt-get" >> results/processed/apt_install_status.csv
+            else
+              echo "$package,FAIL,apt-get install failed; see workflow log and toolchain_status.csv" >> results/processed/apt_install_status.csv
+            fi
+          done
+
+      - name: Check reproduction toolchain
+        continue-on-error: true
+        run: make check-toolchain
+
+      - name: Build compiler-backed firmware
+        continue-on-error: true
+        run: make firmware
+
+      - name: Build Verilator harness
+        continue-on-error: true
+        run: make verilator-harness
+
+      - name: Run full RTL replay
+        continue-on-error: true
+        run: make full-rtl-replay
+
+      - name: Run full RTL negative replay
+        continue-on-error: true
+        run: make full-rtl-negative
+
+      - name: Measure runtime overhead
+        continue-on-error: true
+        run: make runtime-overhead
+
+      - name: Run mapped synthesis
+        continue-on-error: true
+        run: make mapped-synth
+
+      - name: Build paper
+        continue-on-error: true
+        run: make paper
+
+      - name: Audit paper claims
+        continue-on-error: true
+        run: make paper-audit
+
+      - name: Package artifact
+        continue-on-error: true
+        run: make artifact
+
+      - name: Upload generated evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: replaycapsule-rv-final-evidence
+          if-no-files-found: warn
+          path: |
+            results/
+            paper/main.pdf
+            dist/replaycapsule-rv-artifact.zip
+
+      - name: Evaluate final CI gates
+        if: always()
+        run: |
+          python3 - <<'PY'
+          import csv
+          import sys
+          from pathlib import Path
+
+          failures = []
+
+          def rows(path):
+              p = Path(path)
+              if not p.exists():
+                  failures.append(f"missing {path}")
+                  return []
+              with p.open(newline="", encoding="utf-8") as handle:
+                  return list(csv.DictReader(handle))
+
+          firmware = rows("results/processed/firmware_build.csv")
+          compiler_rows = [
+              row for row in firmware
+              if row.get("build_status") == "PASS" and row.get("firmware_source") == "compiler_c"
+          ]
+          if len(compiler_rows) != 15:
+              failures.append(f"compiler-backed firmware rows {len(compiler_rows)}/15")
+
+          replay = rows("results/processed/full_rtl_replay.csv")
+          replay_pass = [
+              row for row in replay
+              if row.get("rtl_record_status") == "PASS"
+              and row.get("replay_status") == "PASS"
+              and row.get("final_signature_match") == "PASS"
+              and row.get("compiler_backed") == "true"
+          ]
+          if len(replay_pass) != 45:
+              failures.append(f"compiler-backed full RTL replay PASS rows {len(replay_pass)}/45")
+
+          negative = rows("results/processed/full_rtl_replay_negative.csv")
+          unexpected_accepts = [row for row in negative if row.get("actual_result") == "ACCEPT"]
+          negative_failures = [row for row in negative if row.get("actual_result") == "FAIL"]
+          if unexpected_accepts or negative_failures:
+              failures.append(
+                  f"negative replay unexpected accepts={len(unexpected_accepts)} fail={len(negative_failures)}"
+              )
+
+          paper_status = rows("results/processed/paper_build_status.csv")
+          paper_pass = any(row.get("target") == "paper/main.pdf" and row.get("status") == "PASS" for row in paper_status)
+          if not paper_pass or not Path("paper/main.pdf").exists():
+              failures.append("paper/main.pdf was not built")
+
+          artifact = Path("dist/replaycapsule-rv-artifact.zip")
+          if not artifact.exists():
+              failures.append("artifact zip missing")
+
+          if failures:
+              print("FINAL CI STATUS: NOT READY")
+              for failure in failures:
+                  print(f"BLOCKER: {failure}")
+              sys.exit(1)
+
+          print("FINAL CI STATUS: WORKSHOP-READY SOURCE EVIDENCE")
+          PY

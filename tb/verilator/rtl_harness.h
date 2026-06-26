@@ -1,0 +1,32 @@
+#pragma once
+
+#include "capsule_io.h"
+
+#include <cstdint>
+#include <map>
+#include <string>
+#include <vector>
+
+struct HarnessOptions {
+  std::string mode = "record";
+  std::string benchmark;
+  std::string variant;
+  std::string firmware;
+  std::string capsule_path;
+  std::string signature_path;
+  std::string debug_dir = "results/debug/pass4";
+  int seed = 1;
+  uint64_t max_cycles = 100000;
+  bool debug_events = false;
+};
+
+struct HarnessResult {
+  bool ok = false;
+  std::string error_code;
+  std::string notes;
+  Capsule capsule;
+  uint64_t cycles_to_failure = 0;
+  uint64_t commits_to_failure = 0;
+};
+
+HarnessResult run_harness(const HarnessOptions& options);

@@ -31,6 +31,7 @@ SAFE_CONTEXT = (
     "caveat",
     "do not",
     "does not",
+    "disallowed",
     "current weakness",
     "fix plan",
     "future",
@@ -46,9 +47,11 @@ SAFE_CONTEXT = (
     "not generated",
     "not ",
     "out of scope",
+    "partial",
     "pending",
     "preserved",
     "rather than",
+    "reported as",
     "require",
     "requirement",
     "required",
@@ -62,6 +65,7 @@ SAFE_CONTEXT = (
     "until",
     "will report",
     "without",
+    "would require",
 )
 
 
@@ -75,27 +79,37 @@ class ClaimPattern:
 PATTERNS = (
     ClaimPattern(
         "first_or_replacement_claim",
-        re.compile(r"\b(first ever|first deterministic replay|first hardware replay|first fpga replay|replaces e-trace|replaces n-trace|supersedes)\b", re.IGNORECASE),
+        re.compile(r"\b(first|first ever|first deterministic replay|first hardware replay|first fpga replay|replaces?|replaces e-trace|replaces n-trace|supersedes|replacement for)\b", re.IGNORECASE),
         "Avoid first-ever/replacement claims unless the related-work evidence is complete.",
     ),
     ClaimPattern(
+        "novelty_claim",
+        re.compile(r"\b(novel|novelty)\b", re.IGNORECASE),
+        "Novelty language must be narrow, caveated, and tied to related-work evidence.",
+    ),
+    ClaimPattern(
         "guarantee_claim",
-        re.compile(r"\bguarantee(?:s|d)?\b", re.IGNORECASE),
+        re.compile(r"\b(guarantee(?:s|d)?|always)\b", re.IGNORECASE),
         "Guarantees must be scoped to the stated assumptions and generated evidence.",
     ),
     ClaimPattern(
+        "minimality_claim",
+        re.compile(r"\bminimal(?:ity)?\b", re.IGNORECASE),
+        "Minimality claims must be replaced by sufficient/capsule-scope language unless proved.",
+    ),
+    ClaimPattern(
         "compression_or_overhead_target",
-        re.compile(r"(?<![\d.])(10x|100x|<5%|0-3%)(?![\d.])", re.IGNORECASE),
+        re.compile(r"(?<![\d.])(10x|100x|<5%|0-3%|negligible|hardware overhead is low|outperforms?)\b", re.IGNORECASE),
         "Numerical targets must be presented as goals unless generated measurements support them.",
     ),
     ClaimPattern(
         "mapped_hardware_metric",
-        re.compile(r"\b(mapped fpga|lut/ff/bram|fmax|runtime overhead|runtime slowdown)\b", re.IGNORECASE),
+        re.compile(r"\b(mapped fpga|fpga-mapped|lut|ff|bram|fmax|runtime overhead|runtime slowdown)\b", re.IGNORECASE),
         "Mapped hardware and timing metrics must remain TODO/NA until backed by real tool reports.",
     ),
     ClaimPattern(
         "full_rtl_scope",
-        re.compile(r"\b(full benchmark(?:-wide)?|benchmark-wide|full rtl|firmware-running rtl)\b", re.IGNORECASE),
+        re.compile(r"\b(full benchmark(?:-wide)?|benchmark-wide|full rtl|full-system|cycle-accurate|firmware-running rtl)\b", re.IGNORECASE),
         "Full RTL scope must be described as pending unless benchmark-wide RTL evidence exists.",
     ),
     ClaimPattern(
@@ -162,6 +176,7 @@ def _markdown_files() -> list[Path]:
             paths.append(root)
         elif root.is_dir():
             paths.extend(path for path in root.rglob("*.md") if not _skip(path))
+            paths.extend(path for path in root.rglob("*.tex") if not _skip(path))
     return sorted(set(paths))
 
 

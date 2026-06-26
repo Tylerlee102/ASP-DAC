@@ -10,6 +10,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 SYNTHESIS_CSV = REPO_ROOT / "results/processed/synthesis.csv"
 SYNTHESIS_OVERHEAD_CSV = REPO_ROOT / "results/processed/synthesis_overhead.csv"
+MAPPED_SYNTHESIS_CSV = REPO_ROOT / "results/processed/mapped_synthesis.csv"
 REPLAY_CSV = REPO_ROOT / "results/processed/replay_experiments.csv"
 TRACE_SIZES_CSV = REPO_ROOT / "results/processed/trace_sizes.csv"
 EVENT_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/event_sufficiency.csv"
@@ -59,6 +60,7 @@ def main() -> int:
         "table01_synthesis_resources.md": _render_synthesis_table(
             _ordered_synthesis_rows(_read_rows(SYNTHESIS_CSV)),
             _read_rows(SYNTHESIS_OVERHEAD_CSV),
+            _read_rows(MAPPED_SYNTHESIS_CSV),
         ),
         "table02_replay_evidence.md": _render_replay_table(
             _read_rows(REPLAY_CSV),
@@ -83,15 +85,20 @@ def main() -> int:
     return 0
 
 
-def _render_synthesis_table(synthesis_rows: list[dict[str, str]], overhead_rows: list[dict[str, str]]) -> str:
+def _render_synthesis_table(
+    synthesis_rows: list[dict[str, str]],
+    overhead_rows: list[dict[str, str]],
+    mapped_rows: list[dict[str, str]],
+) -> str:
     lines = [
         "# Table 1. Synthesis Resource Status",
         "",
-        "Generated from `../../results/processed/synthesis.csv` and "
-        "`../../results/processed/synthesis_overhead.csv`.",
+        "Generated from `../../results/processed/synthesis.csv`, "
+        "`../../results/processed/synthesis_overhead.csv`, and "
+        "`../../results/processed/mapped_synthesis.csv`.",
         "",
         "Generic Yosys cell counts are measured from real local reports. "
-        "Mapped FPGA LUT/FF/BRAM/Fmax fields remain `NA` until a mapped flow exists.",
+        "Mapped rows are shown only where a real place-and-route flow produced them.",
         "",
         "| Design | Tool | Status | Generic cells | LUTs | FFs | BRAMs | Fmax MHz | Notes |",
         "| --- | --- | --- | ---: | --- | --- | --- | --- | --- |",
@@ -142,6 +149,32 @@ def _render_synthesis_table(synthesis_rows: list[dict[str, str]], overhead_rows:
             )
     else:
         lines.append("| No overhead row | NA | TODO | NA | NA | NA | NA | NA | Missing overhead CSV |")
+    lines.extend(
+        [
+            "",
+            "## Scoped Mapped FPGA Rows",
+            "",
+            "| Target | Flow | Design | Status | LUTs | FFs | BRAMs | Fmax MHz | Notes |",
+            "| --- | --- | --- | --- | ---: | ---: | --- | --- | --- |",
+        ]
+    )
+    if mapped_rows:
+        for row in mapped_rows:
+            lines.append(
+                "| {target} | {flow} | {design} | {status} | {lut} | {ff} | {bram} | {fmax} | {notes} |".format(
+                    target=_escape_cell(row.get("target", "NA")),
+                    flow=_escape_cell(row.get("flow", "NA")),
+                    design=_escape_cell(row.get("design", "NA")),
+                    status=_escape_cell(row.get("status", "NA")),
+                    lut=_escape_cell(row.get("lut", "NA")),
+                    ff=_escape_cell(row.get("ff", "NA")),
+                    bram=_escape_cell(row.get("bram", "NA")),
+                    fmax=_escape_cell(row.get("fmax_mhz", "NA")),
+                    notes=_escape_cell(row.get("notes", "")),
+                )
+            )
+    else:
+        lines.append("| NA | NA | No mapped rows | TODO | NA | NA | NA | NA | Missing mapped synthesis CSV |")
     return "\n".join(lines) + "\n"
 
 
@@ -315,8 +348,8 @@ def _render_evaluation_metrics_table(rows: list[dict[str, str]]) -> str:
         "",
         "Generated from `../../results/processed/evaluation_metrics.csv`.",
         "",
-        "Metrics marked `TODO` require benchmark-wide firmware-running RTL, mapped FPGA,",
-        "or hardware timing data and are not estimated.",
+        "Metrics marked `TODO` or `BLOCKED` cover unavailable full-core mapped FPGA,",
+        "hardware timing, runtime-overhead, or runtime-counter gates and are not estimated.",
         "",
         "| Metric | Status | Value | Unit | Evidence level | Notes |",
         "| --- | --- | ---: | --- | --- | --- |",

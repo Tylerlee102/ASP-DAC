@@ -1,0 +1,22 @@
+\section{Replay Engine and Verification}
+
+The replay comparator consumes an expected capsule and an observed replay trace. A passing comparison requires matching property metadata, the required event classes at the selected commit or cycle index, exact payload equality for replay-driving events, and no extra replay-driving events. Negative tests corrupt metadata, remove events, duplicate events, shift indices, swap order tags, and perturb payloads. The same comparator is used for model fixtures and exported RTL-smoke capsules.
+
+\begin{table}[t]
+\caption{Evidence levels and gate status. Generated sources include \texttt{results/processed/replay\_experiments.csv}, \texttt{results/processed/rtl\_capsule\_exports.csv}, and \texttt{results/processed/full\_rtl\_replay.csv}.}
+\label{tab:evidence}
+\centering
+\begin{tabular}{lll}
+\toprule
+Level & Current role & Status meaning \\
+\midrule
+Model & event-level executable replay fixtures & generated pass rows \\
+Firmware-sim & RV32I interpreter replay fixtures & generated pass rows \\
+RTL-smoke & wrapper runs and capsule export checks & generated pass rows \\
+Full RTL & firmware-running record/replay suite & blocked rows \\
+Mapped synthesis & FPGA or ASIC reports & unavailable rows \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Bounded local checks cover recorder and control contracts such as event classification, buffer behavior, property signatures, replay mismatch handling, register access, hash/signature update, and MMIO/interrupt logging. These checks support local RTL obligations; they are not a mechanized end-to-end processor theorem.

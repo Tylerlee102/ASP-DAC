@@ -98,7 +98,7 @@ platform defines them as deterministic functions of commit-index time.
 Commit-index time is the logical replay clock.
 
 `commit_index = k` means exactly `k` firmware instructions have retired. The
-first retired instruction has instruction index `1`; the state after it has
+initial retired instruction has instruction index `1`; the state after it has
 `commit_index = 1`.
 
 Boundary events are tagged by:

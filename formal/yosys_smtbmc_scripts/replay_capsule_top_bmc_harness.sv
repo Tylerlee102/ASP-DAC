@@ -53,6 +53,7 @@ module replay_capsule_top_bmc_harness (
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),
+    .watchdog_enable(1'b0),
     .capture_mode(CAPTURE_ALL),
     .commit_valid(commit_valid),
     .commit_pc(commit_pc),

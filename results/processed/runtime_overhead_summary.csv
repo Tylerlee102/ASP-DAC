@@ -1,0 +1,5 @@
+metric,config,median,mean,min,max,n,status,notes
+sim_wall_time_sec,recorder_enabled,0.027185,0.023765,0.009229,0.129478,45,MEASURED,current host-driven Verilator recorder-enabled wall-clock rows; not overhead
+cycle_overhead_pct,recorder_enabled_vs_baseline,NA,NA,NA,NA,0,BLOCKED,no comparable baseline core wrapper without ReplayCapsule instrumentation exists
+commit_overhead_pct,recorder_enabled_vs_baseline,NA,NA,NA,NA,0,BLOCKED,no comparable baseline core wrapper without ReplayCapsule instrumentation exists
+sim_wall_time_overhead_pct,recorder_enabled_vs_baseline,NA,NA,NA,NA,0,BLOCKED,no comparable baseline core wrapper without ReplayCapsule instrumentation exists

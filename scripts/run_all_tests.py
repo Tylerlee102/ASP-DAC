@@ -13,6 +13,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 TOOLCHAIN_CSV = REPO_ROOT / "results/processed/toolchain_status.csv"
+LOCAL_WINLIBS_BIN = REPO_ROOT / ".tools" / "winlibs" / "mingw64" / "bin"
 
 REQUIRED_RTL = [
     "rtl/event_pkg.sv",
@@ -82,16 +83,32 @@ REQUIRED_TB = [
 
 PYTHON_FILES = [
     "scripts/audit_claims.py",
+    "scripts/audit_paper_numbers.py",
+    "scripts/audit_todos.py",
+    "scripts/build_firmware.py",
+    "scripts/build_paper.py",
     "scripts/build_firmware_images.py",
+    "scripts/collect_trace_sizes.py",
     "scripts/check_rtl_firmware_alignment.py",
+    "scripts/check_toolchain.py",
     "scripts/export_rtl_capsules.py",
+    "scripts/generate_conference_evidence_tables.py",
+    "scripts/package_artifact.py",
+    "scripts/parse_synthesis_reports.py",
+    "scripts/run_ablations.py",
+    "scripts/run_full_rtl_replay.py",
+    "scripts/run_full_rtl_negative.py",
+    "scripts/run_runtime_overhead.py",
     "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
+    "scripts/run_mapped_synthesis.py",
     "scripts/summarize_picorv32_smokes.py",
     "scripts/run_randomized_interrupt_campaign.py",
     "scripts/summarize_randomized_interrupt_campaign.py",
     "scripts/run_replay_negative_tests.py",
+    "scripts/run_replay_experiments.py",
     "scripts/run_rtl_smoke_ablations.py",
+    "scripts/synth_yosys.py",
     "scripts/make_figures.py",
     "scripts/render_paper_tables.py",
     "scripts/summarize_evaluation_metrics.py",
@@ -125,6 +142,12 @@ def main() -> int:
         failures,
         "firmware_image_build",
         [sys.executable, "scripts/build_firmware_images.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "firmware_build",
+        [sys.executable, "scripts/build_firmware.py"],
     )
     _check_firmware_images(rows, failures)
     _run_subprocess(
@@ -254,6 +277,24 @@ def main() -> int:
     _run_subprocess(
         rows,
         failures,
+        "full_rtl_replay_status",
+        [sys.executable, "scripts/run_full_rtl_replay.py", "--allow-fallback"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "full_rtl_negative_status",
+        [sys.executable, "scripts/run_full_rtl_negative.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "runtime_overhead_status",
+        [sys.executable, "scripts/run_runtime_overhead.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
         "trace_size_collection",
         [sys.executable, "scripts/collect_trace_sizes.py"],
     )
@@ -262,6 +303,18 @@ def main() -> int:
         failures,
         "ablation_suite",
         [sys.executable, "scripts/run_ablations.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "conference_evidence_tables",
+        [sys.executable, "scripts/generate_conference_evidence_tables.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "mapped_synthesis",
+        [sys.executable, "scripts/run_mapped_synthesis.py"],
     )
     _run_subprocess(
         rows,
@@ -303,8 +356,26 @@ def main() -> int:
     _run_subprocess(
         rows,
         failures,
+        "paper_build_status",
+        [sys.executable, "scripts/build_paper.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
         "claim_audit",
         [sys.executable, "scripts/audit_claims.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "paper_number_audit",
+        [sys.executable, "scripts/audit_paper_numbers.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "todo_audit",
+        [sys.executable, "scripts/audit_todos.py"],
     )
     _run_subprocess(
         rows,
@@ -322,12 +393,23 @@ def main() -> int:
     _record_any_tool_availability(rows, "cxx", ["c++", "g++", "clang++", "cl"])
     _record_tool_availability(rows, "riscv64-unknown-elf-gcc")
     _write_toolchain_status(rows)
-    rows.append(_row("toolchain_status", "PASS", f"WROTE {TOOLCHAIN_CSV}"))
+    rows.append(_row("toolchain_status", "PASS", f"WROTE {_rel(TOOLCHAIN_CSV)}"))
+    _run_subprocess_status_only(
+        rows,
+        "toolchain_check_full_rtl",
+        [sys.executable, "scripts/check_toolchain.py", "--gate", "full-rtl-replay"],
+    )
     _run_subprocess(
         rows,
         failures,
         "artifact_manifest",
         [sys.executable, "scripts/summarize_artifact_manifest.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "artifact_package",
+        [sys.executable, "scripts/package_artifact.py"],
     )
     _write_summary(rows)
 
@@ -436,10 +518,29 @@ def _run_subprocess(
         rows.append(_row(name, "FAIL", _last_line(completed.stdout)))
 
 
+def _run_subprocess_status_only(
+    rows: list[dict[str, str]],
+    name: str,
+    command: list[str],
+) -> None:
+    completed = subprocess.run(
+        command,
+        cwd=REPO_ROOT,
+        env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    rows.append(_row(name, "PASS" if completed.returncode == 0 else "BLOCKED", _last_line(completed.stdout)))
+
+
 def _record_tool_availability(rows: list[dict[str, str]], tool: str) -> None:
     found = shutil.which(tool)
     if found:
         rows.append(_row(f"tool:{tool}", "PASS", found))
+    elif tool == "make" and (local_tool := _local_winlibs_tool(["make.exe", "mingw32-make.exe"])):
+        rows.append(_row("tool:make", "PASS", f"workspace-local winlibs {local_tool.name}"))
     elif tool == "sby" and _local_yowasp_tool("yowasp-sby.exe"):
         rows.append(_row("tool:sby", "PASS", "workspace-local yowasp-sby"))
     elif tool == "yosys-smtbmc" and _local_yowasp_tool("yowasp-yosys-smtbmc.exe"):
@@ -458,6 +559,9 @@ def _record_any_tool_availability(rows: list[dict[str, str]], name: str, candida
         if found:
             rows.append(_row(f"tool:{name}", "PASS", f"{tool}: {found}"))
             return
+    if name == "cxx" and (local_tool := _local_winlibs_tool(["g++.exe", "c++.exe", "clang++.exe"])):
+        rows.append(_row("tool:cxx", "PASS", f"workspace-local winlibs {local_tool.name}"))
+        return
     rows.append(_row(f"tool:{name}", "TODO", f"none found from: {', '.join(candidates)}"))
 
 
@@ -466,6 +570,14 @@ def _local_oss_cad_tool(tool: str) -> Path | None:
     local_name = "verilator_bin.exe" if tool == "verilator" else f"{tool}.exe"
     local_tool = suite / "bin" / local_name
     return local_tool if local_tool.exists() else None
+
+
+def _local_winlibs_tool(names: list[str]) -> Path | None:
+    for name in names:
+        candidate = LOCAL_WINLIBS_BIN / name
+        if candidate.exists():
+            return candidate
+    return None
 
 
 def _local_yowasp_yosys() -> bool:
@@ -524,12 +636,23 @@ def _tool_needed_for(tool: str) -> str:
 
 
 def _row(name: str, status: str, detail: str) -> dict[str, str]:
-    return {"name": name, "status": status, "detail": detail}
+    return {"name": name, "status": status, "detail": _repo_relative_text(detail)}
 
 
 def _last_line(output: str) -> str:
     lines = [line.strip() for line in output.splitlines() if line.strip()]
-    return lines[-1] if lines else ""
+    return _repo_relative_text(lines[-1]) if lines else ""
+
+
+def _repo_relative_text(text: str) -> str:
+    return text.replace(str(REPO_ROOT), ".").replace(str(REPO_ROOT).replace("\\", "/"), ".")
+
+
+def _rel(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(REPO_ROOT.resolve()).as_posix()
+    except ValueError:
+        return path.as_posix()
 
 
 if __name__ == "__main__":

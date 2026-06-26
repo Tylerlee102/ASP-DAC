@@ -12,6 +12,7 @@ from typing import Iterable
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 REPLAY_CSV = REPO_ROOT / "results/processed/replay_experiments.csv"
+FULL_RTL_REPLAY_CSV = REPO_ROOT / "results/processed/full_rtl_replay.csv"
 NEGATIVE_CSV = REPO_ROOT / "results/processed/replay_negative_tests.csv"
 TRACE_CSV = REPO_ROOT / "results/processed/trace_sizes.csv"
 HDL_CSV = REPO_ROOT / "results/processed/hdl_checks.csv"
@@ -23,6 +24,9 @@ RANDOMIZED_IRQ_CSV = REPO_ROOT / "results/processed/randomized_interrupt_campaig
 RANDOMIZED_IRQ_COVERAGE_CSV = REPO_ROOT / "results/processed/randomized_interrupt_coverage.csv"
 OVERFLOW_CONTRACTS_CSV = REPO_ROOT / "results/processed/overflow_contracts.csv"
 SYNTH_OVERHEAD_CSV = REPO_ROOT / "results/processed/synthesis_overhead.csv"
+MAPPED_SYNTHESIS_CSV = REPO_ROOT / "results/processed/mapped_synthesis.csv"
+MAPPED_OVERHEAD_CSV = REPO_ROOT / "results/processed/mapped_overhead.csv"
+RUNTIME_OVERHEAD_SUMMARY_CSV = REPO_ROOT / "results/processed/runtime_overhead_summary.csv"
 MODEL_TRACE_JSON = REPO_ROOT / "results/raw/model_suite_traces.json"
 FIRMWARE_TRACE_JSON = REPO_ROOT / "results/raw/firmware_sim_traces.json"
 OUT_CSV = REPO_ROOT / "results/processed/evaluation_metrics.csv"
@@ -34,7 +38,7 @@ def main() -> int:
     rows: list[dict[str, str]] = []
     replay_rows = _read_rows(REPLAY_CSV)
     trace_rows = _read_rows(TRACE_CSV)
-    rows.extend(_replay_success_metrics(replay_rows))
+    rows.extend(_replay_success_metrics(replay_rows, _read_rows(FULL_RTL_REPLAY_CSV)))
     rows.extend(_negative_fixture_metrics(_read_rows(NEGATIVE_CSV)))
     rows.extend(_hdl_frontend_metrics(_read_rows(HDL_CSV)))
     rows.extend(_picorv32_smoke_metrics(_read_rows(PICORV32_SMOKE_COVERAGE_CSV)))
@@ -46,7 +50,8 @@ def main() -> int:
     rows.extend(_failure_prefix_metrics(MODEL_TRACE_JSON, "model"))
     rows.extend(_failure_prefix_metrics(FIRMWARE_TRACE_JSON, "firmware-sim"))
     rows.extend(_synthesis_metrics(_read_rows(SYNTH_OVERHEAD_CSV)))
-    rows.extend(_hardware_todo_metrics())
+    rows.extend(_mapped_recorder_metrics(_read_rows(MAPPED_SYNTHESIS_CSV), _read_rows(MAPPED_OVERHEAD_CSV)))
+    rows.extend(_hardware_todo_metrics(_read_rows(RUNTIME_OVERHEAD_SUMMARY_CSV)))
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", newline="", encoding="utf-8") as handle:
@@ -57,7 +62,7 @@ def main() -> int:
     return 0
 
 
-def _replay_success_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+def _replay_success_metrics(rows: list[dict[str, str]], full_rtl_rows: list[dict[str, str]]) -> list[dict[str, str]]:
     return [
         _rate_row(
             "model_replay_success_rate",
@@ -73,14 +78,36 @@ def _replay_success_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
             "results/processed/replay_experiments.csv",
             "RV32I firmware-sim commit-index replay rows.",
         ),
-        _todo_row(
+        _full_rtl_replay_success_metric(full_rtl_rows),
+    ]
+
+
+def _full_rtl_replay_success_metric(rows: list[dict[str, str]]) -> dict[str, str]:
+    total = len(rows)
+    if total == 0:
+        return _todo_row(
             "firmware_running_rtl_replay_success_rate",
             "percent",
             "rtl",
-            "results/processed/replay_experiments.csv",
-            "Benchmark-wide firmware-running RTL replay remains blocked by missing make/C++/RISC-V compiler support.",
-        ),
-    ]
+            "results/processed/full_rtl_replay.csv",
+            "No full RTL replay rows available.",
+        )
+    passes = sum(
+        1
+        for row in rows
+        if row.get("rtl_record_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+    )
+    return _metric_row(
+        "firmware_running_rtl_replay_success_rate",
+        "MEASURED",
+        f"{passes}/{total} ({100.0 * passes / total:.1f}%)",
+        "percent",
+        "rtl",
+        "results/processed/full_rtl_replay.csv",
+        "Host-driven Verilator record/replay rows across evaluated benchmark/variant/seed cases; not a mapped hardware timing or synthesizable replay-consume datapath claim.",
+    )
 
 
 def _negative_fixture_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
@@ -164,7 +191,7 @@ def _benchmark_coverage_metrics(rows: list[dict[str, str]]) -> list[dict[str, st
             "percent",
             "model+firmware-sim+rtl-smoke",
             "results/processed/benchmark_coverage.csv",
-            "Per-benchmark local evidence coverage across model replay, firmware-sim replay, wrapper smokes, RTL-smoke exports, alignment, and sufficiency rows; full RTL replay remains TODO.",
+            "Per-benchmark local evidence coverage across model replay, firmware-sim replay, wrapper smokes, RTL-smoke exports, alignment, and sufficiency rows; host-driven full RTL replay is reported separately and is not a mapped hardware timing claim.",
         )
     ]
 
@@ -387,47 +414,229 @@ def _synthesis_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
             "percent",
             "generic-yosys",
             "results/processed/synthesis_overhead.csv",
-            "Generic unmapped cell-count overhead; mapped FPGA overhead remains TODO.",
+            "Generic unmapped cell-count overhead; full-core mapped FPGA overhead remains blocked.",
         ),
     ]
 
 
-def _hardware_todo_metrics() -> list[dict[str, str]]:
-    return [
-        _todo_row(
-            "mapped_lut_overhead_percent",
+def _mapped_recorder_metrics(rows: list[dict[str, str]], overhead_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    baseline = next(
+        (
+            row
+            for row in rows
+            if row.get("status") == "PASS" and row.get("design") == "replaycapsule_tiny_baseline"
+        ),
+        None,
+    )
+    recorder = next(
+        (
+            row
+            for row in rows
+            if row.get("status") == "PASS" and row.get("design") == "replaycapsule_recorder_tiny"
+        ),
+        None,
+    )
+    if recorder is None:
+        return [
+            _todo_row(
+                "mapped_recorder_tiny_lut",
+                "lut",
+                "mapped-fpga",
+                "results/processed/mapped_synthesis.csv",
+                "Recorder-only mapped iCE40 row is missing or failed.",
+            ),
+            _todo_row(
+                "mapped_recorder_tiny_ff",
+                "ff",
+                "mapped-fpga",
+                "results/processed/mapped_synthesis.csv",
+                "Recorder-only mapped iCE40 row is missing or failed.",
+            ),
+            _todo_row(
+                "mapped_recorder_tiny_fmax_mhz",
+                "MHz",
+                "mapped-fpga",
+                "results/processed/mapped_synthesis.csv",
+                "Recorder-only mapped iCE40 row is missing or failed.",
+            ),
+        ]
+    scoped_notes = (
+        "Scoped tiny iCE40 mapped result; not a full PicoRV32+ReplayCapsule mapped overhead claim."
+    )
+    recorder_notes = (
+        "Scoped recorder-only iCE40 mapped result for replaycapsule_recorder_tiny; "
+        "not a full PicoRV32+ReplayCapsule mapped overhead claim."
+    )
+    metric_rows: list[dict[str, str]] = []
+    if baseline is None:
+        metric_rows.extend(
+            [
+                _todo_row(
+                    "mapped_tiny_baseline_lut",
+                    "lut",
+                    "mapped-fpga",
+                    "results/processed/mapped_synthesis.csv",
+                    "Tiny baseline mapped iCE40 row is missing or failed.",
+                ),
+                _todo_row(
+                    "mapped_tiny_baseline_ff",
+                    "ff",
+                    "mapped-fpga",
+                    "results/processed/mapped_synthesis.csv",
+                    "Tiny baseline mapped iCE40 row is missing or failed.",
+                ),
+                _todo_row(
+                    "mapped_tiny_baseline_fmax_mhz",
+                    "MHz",
+                    "mapped-fpga",
+                    "results/processed/mapped_synthesis.csv",
+                    "Tiny baseline mapped iCE40 row is missing or failed.",
+                ),
+            ]
+        )
+    else:
+        metric_rows.extend(
+            [
+                _metric_row(
+                    "mapped_tiny_baseline_lut",
+                    "MEASURED",
+                    baseline.get("lut", "NA"),
+                    "lut",
+                    "mapped-fpga",
+                    "results/processed/mapped_synthesis.csv",
+                    scoped_notes,
+                ),
+                _metric_row(
+                    "mapped_tiny_baseline_ff",
+                    "MEASURED",
+                    baseline.get("ff", "NA"),
+                    "ff",
+                    "mapped-fpga",
+                    "results/processed/mapped_synthesis.csv",
+                    scoped_notes,
+                ),
+                _metric_row(
+                    "mapped_tiny_baseline_fmax_mhz",
+                    "MEASURED",
+                    baseline.get("fmax_mhz", "NA"),
+                    "MHz",
+                    "mapped-fpga",
+                    "results/processed/mapped_synthesis.csv",
+                    scoped_notes,
+                ),
+            ]
+        )
+    metric_rows.extend(
+        [
+        _metric_row(
+            "mapped_recorder_tiny_lut",
+            "MEASURED",
+            recorder.get("lut", "NA"),
+            "lut",
+            "mapped-fpga",
+            "results/processed/mapped_synthesis.csv",
+            recorder_notes,
+        ),
+        _metric_row(
+            "mapped_recorder_tiny_ff",
+            "MEASURED",
+            recorder.get("ff", "NA"),
+            "ff",
+            "mapped-fpga",
+            "results/processed/mapped_synthesis.csv",
+            recorder_notes,
+        ),
+        _metric_row(
+            "mapped_recorder_tiny_fmax_mhz",
+            "MEASURED",
+            recorder.get("fmax_mhz", "NA"),
+            "MHz",
+            "mapped-fpga",
+            "results/processed/mapped_synthesis.csv",
+            recorder_notes,
+        ),
+        ]
+    )
+    metric_rows.extend(_mapped_tiny_overhead_metrics(overhead_rows))
+    return metric_rows
+
+
+def _mapped_tiny_overhead_metrics(overhead_rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    mapping = [
+        ("mapped_tiny_lut_overhead_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_lut", "percent"),
+        ("mapped_tiny_ff_overhead_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_ff", "percent"),
+        ("mapped_tiny_bram_overhead", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_bram", "brams"),
+        ("mapped_tiny_fmax_delta_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_fmax_mhz", "percent"),
+    ]
+    rows: list[dict[str, str]] = []
+    for metric_name, source_metric, unit in mapping:
+        source_row = next((row for row in overhead_rows if row.get("metric") == source_metric), None)
+        if source_row is None:
+            rows.append(
+                _todo_row(
+                    metric_name,
+                    unit,
+                    "mapped-fpga",
+                    "results/processed/mapped_overhead.csv",
+                    "Scoped tiny mapped overhead row is missing.",
+                )
+            )
+            continue
+        value = source_row.get("percent_overhead", "NA")
+        status = "MEASURED" if value not in {"", "NA", "TODO"} else "BLOCKED"
+        rows.append(
+            _metric_row(
+                metric_name,
+                status,
+                value,
+                unit,
+                "mapped-fpga",
+                "results/processed/mapped_overhead.csv",
+                source_row.get("notes", "Scoped tiny-wrapper overhead; not a full-core overhead claim."),
+            )
+        )
+    return rows
+
+
+def _hardware_todo_metrics(runtime_summary: list[dict[str, str]]) -> list[dict[str, str]]:
+    cycle_overhead = _summary_metric(runtime_summary, "cycle_overhead_pct")
+    sim_wall_time_overhead = _summary_metric(runtime_summary, "sim_wall_time_overhead_pct")
+    rows = [
+        _metric_row(
+            "full_core_mapped_lut_overhead_percent",
+            "BLOCKED",
+            "NA",
             "percent",
             "mapped-fpga",
-            "results/processed/synthesis_overhead.csv",
-            "Requires mapped FPGA LUT reports.",
+            "results/processed/mapped_overhead.csv",
+            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule.",
         ),
-        _todo_row(
-            "mapped_ff_overhead_percent",
+        _metric_row(
+            "full_core_mapped_ff_overhead_percent",
+            "BLOCKED",
+            "NA",
             "percent",
             "mapped-fpga",
-            "results/processed/synthesis_overhead.csv",
-            "Requires mapped FPGA FF reports.",
+            "results/processed/mapped_overhead.csv",
+            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule.",
         ),
-        _todo_row(
-            "bram_overhead",
+        _metric_row(
+            "full_core_bram_overhead",
+            "BLOCKED",
+            "NA",
             "brams",
             "mapped-fpga",
-            "results/processed/synthesis_overhead.csv",
-            "Requires mapped FPGA BRAM reports.",
+            "results/processed/mapped_overhead.csv",
+            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule.",
         ),
-        _todo_row(
-            "fmax_loss_percent",
+        _metric_row(
+            "full_core_fmax_delta_percent",
+            "BLOCKED",
+            "NA",
             "percent",
             "mapped-fpga",
-            "results/processed/synthesis_overhead.csv",
-            "Requires timing reports from OpenROAD or vendor FPGA flow.",
-        ),
-        _todo_row(
-            "runtime_slowdown_percent",
-            "percent",
-            "rtl",
-            "results/processed/replay_experiments.csv",
-            "Requires benchmark-wide firmware-running RTL or hardware execution timing.",
+            "results/processed/mapped_overhead.csv",
+            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule.",
         ),
         _todo_row(
             "buffer_overflow_rate",
@@ -437,6 +646,43 @@ def _hardware_todo_metrics() -> list[dict[str, str]]:
             "Requires benchmark-wide runtime overflow counters; bounded buffer checks exist separately.",
         ),
     ]
+    rows.append(_runtime_metric_row("cycle_overhead_pct", cycle_overhead))
+    rows.append(_runtime_metric_row("sim_wall_time_overhead_pct", sim_wall_time_overhead))
+    return rows
+
+
+def _runtime_metric_row(metric: str, source_row: dict[str, str] | None) -> dict[str, str]:
+    if source_row is None:
+        return _todo_row(
+            metric,
+            "percent",
+            "rtl",
+            "results/processed/runtime_overhead_summary.csv",
+            "Runtime overhead script has not produced a summary row.",
+        )
+    if source_row.get("status") == "MEASURED":
+        return _metric_row(
+            metric,
+            "MEASURED",
+            source_row.get("median", "NA"),
+            "percent" if metric.endswith("_pct") else "seconds",
+            "rtl",
+            "results/processed/runtime_overhead_summary.csv",
+            source_row.get("notes", ""),
+        )
+    return _metric_row(
+        metric,
+        source_row.get("status", "BLOCKED"),
+        source_row.get("median", "NA"),
+        "percent" if metric.endswith("_pct") else "seconds",
+        "rtl",
+        "results/processed/runtime_overhead_summary.csv",
+        source_row.get("notes", "Runtime overhead is blocked."),
+    )
+
+
+def _summary_metric(rows: list[dict[str, str]], metric: str) -> dict[str, str] | None:
+    return next((row for row in rows if row.get("metric") == metric), None)
 
 
 def _rate_row(

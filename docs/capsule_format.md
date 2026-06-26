@@ -224,7 +224,7 @@ Payload length: 6 words.
 The replay engine expects the core to issue a read with matching `addr` and
 `byte_en` when this event is due. It then returns `rdata` and `resp` after the
 recorded latency when `HAS_CYCLE_DELTAS` is set, or as soon as the request is
-accepted when cycle-accurate replay is disabled.
+accepted when the replay mode uses commit-index ordering.
 
 The current RTL packet supplies `addr` and `rdata`; absent byte enable,
 response, latency, and window fields are exported as zero.

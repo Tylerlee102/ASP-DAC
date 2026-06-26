@@ -149,6 +149,7 @@ module property_checker_bmc_harness (
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),
+    .watchdog_enable(1'b0),
     .event_valid(event_valid),
     .event_type(event_type),
     .event_commit_index(event_commit_index),

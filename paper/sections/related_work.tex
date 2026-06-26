@@ -1,0 +1,11 @@
+\section{Related Work}
+
+Processor trace standards and debug fabrics, including RISC-V trace work and vendor debug systems, aim to reconstruct program execution with rich control-flow or instruction-level visibility~\cite{riscvTrace,riscvDebug}. ReplayCapsule-RV does not replace those mechanisms. It asks whether a scoped embedded failure can be replayed from the smaller set of firmware-visible boundary facts that drive the property failure.
+
+Runtime verification and assertion monitors detect violations close to the hardware/software boundary~\cite{runtimeVerification}. ReplayCapsule-RV uses property checking as a capsule trigger, but its artifact focuses on replay-driving event capture and comparator evidence rather than only online detection.
+
+Deterministic replay systems record nondeterministic inputs and ordering so an execution can be reconstructed~\cite{leblanc1987debugging,dunlap2002revirt}. ReplayCapsule-RV borrows that replay discipline but narrows the target to single-hart embedded RV32I interrupt/MMIO failures and commit-indexed hardware capsules.
+
+Snapshots and checkpoint systems capture enough state to resume or inspect execution~\cite{king2005debugging}. The capsule design is complementary: it records boundary events and property context rather than claiming that a snapshot or full trace is unnecessary for every debugging task.
+
+The open-source implementation builds on PicoRV32, Verilator, Icarus Verilog, Yosys, and bounded formal tooling~\cite{picorv32,verilator,icarus,yosys,symbiyosys}. These tools are part of the reproducibility story, not the scientific contribution.

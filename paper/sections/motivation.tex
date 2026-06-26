@@ -1,0 +1,23 @@
+\section{Motivation and Threat/Failure Model}
+
+The motivating failures are firmware bugs whose manifestation depends on external ordering rather than pure arithmetic determinism. The current benchmark suite covers sensor threshold handling, interrupt races, MMIO ordering, stack protection, UART command handling, and watchdog timeout behavior. Each family has a failing image and a fixed image; selected families also include a no-failure edge case. Table~\ref{tab:benchmarks} summarizes the scope.
+
+\begin{table}[t]
+\caption{Benchmark families and intended failure mechanisms. Generated coverage rows are in \texttt{results/processed/benchmark\_coverage.csv}.}
+\label{tab:benchmarks}
+\centering
+\begin{tabular}{ll}
+\toprule
+Family & Failure mechanism \\
+\midrule
+Sensor threshold & high MMIO sensor value and deadline property \\
+Interrupt race & interrupt delivery inside critical firmware window \\
+MMIO ordering & unsafe command/output ordering at device boundary \\
+Stack corruption & protected-store observation reaches checker \\
+UART command & delayed unsafe command read drives actuator write \\
+Watchdog timeout & missed heartbeat under long-running path \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The threat model is a debugging and validation setting, not an attacker model. The recorder may observe firmware-visible events and property-checker outputs. Replay starts from the same image and initial architectural state. Unsupported nondeterminism is out of scope unless it is modeled as an event. In particular, multicore interleavings, DMA, caches/coherence effects, analog device state, and undefined C behavior are not covered by the current artifact.
