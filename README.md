@@ -69,6 +69,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
 - Generic cell-overhead context: `results/processed/synthesis_overhead.csv`
 - Evaluation metric rollup: `results/processed/evaluation_metrics.csv`
+- Per-benchmark local coverage: `results/processed/benchmark_coverage.csv`
 - Claim audit: `results/processed/claim_audit.csv`
 - Toolchain status: `results/processed/toolchain_status.csv`
 - Artifact hash manifest: `results/processed/artifact_manifest.csv`

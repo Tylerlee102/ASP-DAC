@@ -66,6 +66,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts and gener
 - `results/processed/event_sufficiency.csv`: per-benchmark event classes whose removal breaks replay.
 - `results/processed/hdl_checks.csv`: nine directed Icarus module simulations, fifteen PicoRV32 wrapper smokes, and Verilator lint-only HDL frontend checks.
 - `results/processed/picorv32_smoke_summary.csv` and `results/processed/picorv32_smoke_coverage.csv`: log-level wrapper smoke checks for property IDs, capsule counts, freeze state, overflow state, failing-image capsules, fixed-image no-failure capsules, and no-failure edge capsules.
+- `results/processed/benchmark_coverage.csv`: six-benchmark local coverage ledger joining model replay, firmware-sim replay, wrapper smokes, RTL-smoke exports, alignment, and sufficiency rows while preserving full firmware-running RTL replay as TODO.
 - `results/processed/formal_checks.csv`: bounded SMTBMC event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover checks.
 - `results/processed/synthesis.csv`: Yosys generic cell counts when available; honest TODO/NA fields for LUT/FF/BRAM/Fmax until a mapped FPGA flow exists.
 - `results/processed/synthesis_overhead.csv`: derived generic cell-overhead context between baseline PicoRV32 and the integrated wrapper; mapped fields remain `NA`.

@@ -18,6 +18,7 @@ syntax:scripts/make_figures.py,PASS,
 syntax:scripts/render_paper_tables.py,PASS,
 syntax:scripts/summarize_evaluation_metrics.py,PASS,
 syntax:scripts/summarize_artifact_manifest.py,PASS,
+syntax:scripts/summarize_benchmark_coverage.py,PASS,
 syntax:scripts/summarize_proof_obligations.py,PASS,
 syntax:scripts/summarize_rtl_capsule_classes.py,PASS,
 syntax:scripts/summarize_formal_coverage.py,PASS,
@@ -49,6 +50,7 @@ replay_experiments,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\resu
 replay_negative_tests,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\replay_negative_tests.csv
 trace_size_collection,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\trace_sizes.csv
 ablation_suite,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\event_sufficiency.csv
+benchmark_coverage,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\benchmark_coverage.csv
 proof_obligation_matrix,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\proof_obligations.csv and C:\Users\tyboy\OneDrive\Documents\New project\docs\proof_obligation_matrix.md
 yosys_synthesis_probe,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\raw\yosys_picorv32_replaycapsule_wrapper.txt
 synthesis_report_parse,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis.csv
@@ -67,4 +69,4 @@ tool:make,TODO,external tool not found locally
 tool:cxx,TODO,"none found from: c++, g++, clang++, cl"
 tool:riscv64-unknown-elf-gcc,TODO,external tool not found locally
 toolchain_status,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\toolchain_status.csv
-artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=167 missing=0
+artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=168 missing=0

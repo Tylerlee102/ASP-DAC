@@ -51,6 +51,7 @@ ARTIFACTS = (
     ArtifactSpec("results/processed/hdl_checks.csv", "scripts/run_hdl_checks.py", "directed HDL simulation and lint rows"),
     ArtifactSpec("results/processed/picorv32_smoke_summary.csv", "scripts/summarize_picorv32_smokes.py", "PicoRV32 wrapper smoke observed capsule summary"),
     ArtifactSpec("results/processed/picorv32_smoke_coverage.csv", "scripts/summarize_picorv32_smokes.py", "PicoRV32 wrapper smoke log-level coverage checks"),
+    ArtifactSpec("results/processed/benchmark_coverage.csv", "scripts/summarize_benchmark_coverage.py", "per-benchmark local evidence coverage ledger"),
     ArtifactSpec("results/processed/formal_checks.csv", "scripts/run_formal_checks.py", "bounded formal check rows"),
     ArtifactSpec("results/processed/formal_coverage.csv", "scripts/summarize_formal_coverage.py", "formal coverage matrix source"),
     ArtifactSpec("results/processed/proof_obligations.csv", "scripts/summarize_proof_obligations.py", "proof-obligation source"),

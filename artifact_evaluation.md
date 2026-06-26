@@ -81,6 +81,8 @@ Current generic synthesis evidence:
   `NA`: `results/processed/synthesis_overhead.csv`
 - Generated metric rollup, with blocked hardware metrics preserved as `TODO`:
   `results/processed/evaluation_metrics.csv`
+- Generated per-benchmark local evidence coverage ledger:
+  `results/processed/benchmark_coverage.csv`
 - Generated claim audit for high-risk paper/reviewer wording:
   `results/processed/claim_audit.csv`
 - Generated toolchain status ledger:

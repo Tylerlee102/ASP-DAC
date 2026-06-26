@@ -16,6 +16,7 @@ NEGATIVE_CSV = REPO_ROOT / "results/processed/replay_negative_tests.csv"
 TRACE_CSV = REPO_ROOT / "results/processed/trace_sizes.csv"
 HDL_CSV = REPO_ROOT / "results/processed/hdl_checks.csv"
 PICORV32_SMOKE_COVERAGE_CSV = REPO_ROOT / "results/processed/picorv32_smoke_coverage.csv"
+BENCHMARK_COVERAGE_CSV = REPO_ROOT / "results/processed/benchmark_coverage.csv"
 RTL_EXPORTS_CSV = REPO_ROOT / "results/processed/rtl_capsule_exports.csv"
 RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
 RANDOMIZED_IRQ_CSV = REPO_ROOT / "results/processed/randomized_interrupt_campaign.csv"
@@ -36,6 +37,7 @@ def main() -> int:
     rows.extend(_negative_fixture_metrics(_read_rows(NEGATIVE_CSV)))
     rows.extend(_hdl_frontend_metrics(_read_rows(HDL_CSV)))
     rows.extend(_picorv32_smoke_metrics(_read_rows(PICORV32_SMOKE_COVERAGE_CSV)))
+    rows.extend(_benchmark_coverage_metrics(_read_rows(BENCHMARK_COVERAGE_CSV)))
     rows.extend(_rtl_smoke_metrics(_read_rows(RTL_EXPORTS_CSV), _read_rows(RTL_ALIGNMENT_CSV)))
     rows.extend(_randomized_interrupt_metrics(_read_rows(RANDOMIZED_IRQ_CSV), _read_rows(RANDOMIZED_IRQ_COVERAGE_CSV)))
     rows.extend(_trace_size_metrics(trace_rows))
@@ -135,6 +137,32 @@ def _picorv32_smoke_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
             "rtl-smoke",
             "results/processed/picorv32_smoke_coverage.csv",
             "Generated log-level checks over PicoRV32 wrapper smoke capsule counts, property IDs, freeze state, and overflow state.",
+        )
+    ]
+
+
+def _benchmark_coverage_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    total = len(rows)
+    if total == 0:
+        return [
+            _todo_row(
+                "six_benchmark_local_coverage_rate",
+                "percent",
+                "model+firmware-sim+rtl-smoke",
+                "results/processed/benchmark_coverage.csv",
+                "No benchmark coverage rows available.",
+            )
+        ]
+    passes = sum(1 for row in rows if row.get("local_coverage_status") == "PASS_LOCAL")
+    return [
+        _metric_row(
+            "six_benchmark_local_coverage_rate",
+            "MEASURED",
+            f"{passes}/{total} ({100.0 * passes / total:.1f}%)",
+            "percent",
+            "model+firmware-sim+rtl-smoke",
+            "results/processed/benchmark_coverage.csv",
+            "Per-benchmark local evidence coverage across model replay, firmware-sim replay, wrapper smokes, RTL-smoke exports, alignment, and sufficiency rows; full RTL replay remains TODO.",
         )
     ]
 
