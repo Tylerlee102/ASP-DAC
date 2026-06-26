@@ -15,6 +15,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 
 REQUIRED_RTL = [
     "rtl/event_pkg.sv",
+    "rtl/event_defs.svh",
     "rtl/replay_capsule_top.sv",
     "rtl/event_tap.sv",
     "rtl/event_classifier.sv",
@@ -282,8 +283,17 @@ def _record_tool_availability(rows: list[dict[str, str]], tool: str) -> None:
     found = shutil.which(tool)
     if found:
         rows.append(_row(f"tool:{tool}", "PASS", found))
+    elif tool == "yosys" and _local_yowasp_yosys():
+        rows.append(_row("tool:yosys", "PASS", "workspace-local yowasp-yosys"))
     else:
         rows.append(_row(f"tool:{tool}", "TODO", "external tool not found locally"))
+
+
+def _local_yowasp_yosys() -> bool:
+    return (
+        (REPO_ROOT / ".tools" / "python" / "bin" / "yowasp-yosys.exe").exists()
+        and (REPO_ROOT / ".tools" / "python").exists()
+    )
 
 
 def _write_summary(rows: list[dict[str, str]]) -> None:

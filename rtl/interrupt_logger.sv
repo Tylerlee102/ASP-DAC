@@ -17,7 +17,7 @@ module interrupt_logger (
   output logic        unpaired_exit,
   output logic [7:0]  active_depth
 );
-  import replaycapsule_event_pkg::*;
+  `include "event_defs.svh"
 
   always_comb begin
     event_valid = trap_enter || trap_exit;
@@ -47,4 +47,3 @@ module interrupt_logger (
     end
   end
 endmodule
-

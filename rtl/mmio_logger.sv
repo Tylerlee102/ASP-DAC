@@ -19,7 +19,7 @@ module mmio_logger #(
   output logic [31:0] event_addr,
   output logic [31:0] event_data
 );
-  import replaycapsule_event_pkg::*;
+  `include "event_defs.svh"
 
   logic is_mmio;
   assign is_mmio = (bus_addr & MMIO_MASK) == (MMIO_BASE & MMIO_MASK);
@@ -33,4 +33,3 @@ module mmio_logger #(
     event_data = bus_write ? bus_wdata : bus_rdata;
   end
 endmodule
-

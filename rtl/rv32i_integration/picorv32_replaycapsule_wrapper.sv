@@ -28,7 +28,7 @@ module picorv32_replaycapsule_wrapper #(
   input  logic [31:0] external_input_value,
 
   input  logic [CAPSULE_ADDR_W-1:0] capsule_read_addr,
-  output logic [replaycapsule_event_pkg::RC_EVENT_WIDTH-1:0] capsule_read_data,
+  output logic [167:0] capsule_read_data,
   output logic        capsule_frozen,
   output logic        capsule_overflow,
   output logic [CAPSULE_ADDR_W:0] capsule_event_count,
@@ -37,7 +37,7 @@ module picorv32_replaycapsule_wrapper #(
   output logic [7:0]  property_id,
   output logic [31:0] property_signature
 );
-  import replaycapsule_event_pkg::*;
+  `include "../event_defs.svh"
 
   logic [31:0] core_mem_addr;
   logic [31:0] core_mem_wdata;
@@ -175,4 +175,3 @@ module picorv32_replaycapsule_wrapper #(
     .captured_event_type()
   );
 endmodule
-

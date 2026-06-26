@@ -22,7 +22,7 @@ ReplayCapsule-RV should contribute:
 
 ## Current Environment Finding
 
-The workspace started empty and was not a git repository. Local `verilator`, `yosys`, and `make` commands were not available at kickoff, so Phase 1/2 verification begins with Python smoke tests and static RTL checks. Tool-dependent synthesis and RTL simulation must remain marked TODO/NA until those tools are installed or supplied by CI.
+The workspace started empty and was not a git repository. Local `verilator`, `yosys`, and `make` commands were not available at kickoff, so Phase 1/2 verification began with Python smoke tests and static RTL checks. Current runs can use workspace-local `yowasp-yosys` for generic synthesis. Verilator, `make`, and the RISC-V compiler remain unavailable locally, so RTL simulation and mapped hardware metrics remain TODO/NA until those tools are installed or supplied by CI.
 
 ## Subagent Plan
 
@@ -84,4 +84,3 @@ Deliverables:
 - Do not report replay success until the replay scripts observe matching failures.
 - Do not claim minimality globally; claim sufficiency under the defined model and use ablations to support practical minimal event sets per benchmark.
 - Do not claim multicore, cache coherence, DMA, analog nondeterminism, undefined C behavior, or arbitrary external bus reordering support unless explicitly modeled and tested.
-

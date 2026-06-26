@@ -1,3 +1,5 @@
 # Standard-library only for the Phase 1/2 smoke path.
 # Later plotting can add matplotlib/pandas once real result artifacts exist.
 
+# Optional local HDL tooling:
+# yowasp-yosys

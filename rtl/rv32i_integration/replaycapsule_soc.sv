@@ -15,7 +15,7 @@ module replaycapsule_soc #(
   output logic [31:0] running_signature,
   output logic [15:0] capsule_event_count
 );
-  import replaycapsule_event_pkg::*;
+  `include "../event_defs.svh"
 
   typedef enum logic [3:0] {
     S_IDLE,

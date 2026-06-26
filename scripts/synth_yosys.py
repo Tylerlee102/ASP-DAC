@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import shutil
 import subprocess
 from pathlib import Path
@@ -45,8 +46,8 @@ def main() -> int:
 
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     targets = [args.top] if args.top else list(SYNTH_TARGETS)
-    yosys = shutil.which("yosys")
-    if not yosys:
+    yosys_cmd, yosys_env, yosys_label = _find_yosys()
+    if not yosys_cmd:
         for top in targets:
             report_path(top).write_text(f"STATUS: TODO\nTOP: {top}\nREASON: yosys not found on PATH\n", encoding="utf-8")
         print(f"TODO yosys not found; wrote {len(targets)} report(s) under {RAW_DIR}")
@@ -63,8 +64,17 @@ def main() -> int:
                 "stat",
             ]
         )
-        completed = subprocess.run([yosys, "-p", script], cwd=REPO_ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
-        report_path(top).write_text(completed.stdout, encoding="utf-8")
+        completed = subprocess.run(
+            [*yosys_cmd, "-p", script],
+            cwd=REPO_ROOT,
+            env=yosys_env,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+        )
+        completed_stdout = _clean_report(f"TOOL: {yosys_label}\nTOP: {top}\n" + completed.stdout)
+        report_path(top).write_text(completed_stdout, encoding="utf-8")
         failed = failed or completed.returncode != 0
         print(f"WROTE {report_path(top)}")
     return 1 if failed else 0
@@ -74,6 +84,25 @@ def report_path(top: str) -> Path:
     return RAW_DIR / f"yosys_{top}.txt"
 
 
+def _clean_report(text: str) -> str:
+    return "\n".join(line.rstrip() for line in text.splitlines()) + "\n"
+
+
+def _find_yosys() -> tuple[list[str] | None, dict[str, str] | None, str]:
+    system_yosys = shutil.which("yosys")
+    if system_yosys:
+        return [system_yosys], None, "yosys"
+
+    local_bin = REPO_ROOT / ".tools" / "python" / "bin" / "yowasp-yosys.exe"
+    local_pkg = REPO_ROOT / ".tools" / "python"
+    if local_bin.exists() and local_pkg.exists():
+        env = dict(os.environ)
+        existing = env.get("PYTHONPATH")
+        env["PYTHONPATH"] = str(local_pkg) if not existing else str(local_pkg) + os.pathsep + existing
+        return [str(local_bin)], env, "yowasp-yosys"
+
+    return None, None, "missing"
+
+
 if __name__ == "__main__":
     raise SystemExit(main())
-

@@ -24,10 +24,13 @@ Required now:
 
 - Python 3.9 or newer
 
+Used when available for generic synthesis evidence:
+
+- Yosys, including workspace-local `yowasp-yosys`
+
 Required for later RTL/synthesis gates:
 
 - Verilator
-- Yosys
 - a RISC-V bare-metal compiler toolchain
 - optionally OpenROAD or vendor FPGA tools
 
@@ -38,6 +41,8 @@ Current non-RTL executable evidence:
 - deterministic benchmark image builder: `scripts/build_firmware_images.py`
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
+The current local flow can use `.tools/python/bin/yowasp-yosys.exe` when installed
+outside git tracking.
 
 ## Result Integrity
 

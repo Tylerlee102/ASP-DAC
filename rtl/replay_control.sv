@@ -21,7 +21,7 @@ module replay_control #(
   output logic                   inject_interrupt_exit,
   output logic                   replay_underflow
 );
-  import replaycapsule_event_pkg::*;
+  `include "event_defs.svh"
 
   logic [3:0] replay_type;
   logic [31:0] replay_time;
@@ -73,4 +73,3 @@ module replay_control #(
     end
   end
 endmodule
-

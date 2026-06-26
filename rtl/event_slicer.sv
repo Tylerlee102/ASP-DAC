@@ -14,7 +14,7 @@ module event_slicer #(
   output logic       property_window_active,
   output logic       keep_context_event
 );
-  import replaycapsule_event_pkg::*;
+  `include "event_defs.svh"
 
   localparam int COUNT_W = (LAST_K <= 1) ? 1 : $clog2(LAST_K + 1);
   localparam logic [COUNT_W-1:0] LAST_K_VALUE = LAST_K;

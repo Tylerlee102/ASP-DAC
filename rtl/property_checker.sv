@@ -29,7 +29,7 @@ module property_checker #(
   output logic        sensor_deadline_active,
   output logic        critical_section_active
 );
-  import replaycapsule_event_pkg::*;
+  `include "event_defs.svh"
 
   localparam logic [7:0] PROP_ACTUATOR_LIMIT = 8'd1;
   localparam logic [7:0] PROP_INTERRUPT_CRIT = 8'd2;

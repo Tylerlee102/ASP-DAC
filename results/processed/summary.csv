@@ -1,5 +1,5 @@
 name,status,detail
-rtl_required_files,PASS,16 files present
+rtl_required_files,PASS,17 files present
 event_type_definitions,PASS,12 event names present
 firmware_benchmark_pairs,PASS,6 failing/fixed pairs present
 directed_sv_testbenches,PASS,2 source-present testbenches
@@ -19,9 +19,9 @@ rv32i_firmware_sim,PASS,WROTE results\raw\firmware_sim_traces.json
 replay_experiments,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\replay_experiments.csv
 trace_size_collection,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\trace_sizes.csv
 ablation_suite,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\event_sufficiency.csv
-yosys_synthesis_probe,PASS,TODO yosys not found; wrote 2 report(s) under C:\Users\tyboy\OneDrive\Documents\New project\results\raw
+yosys_synthesis_probe,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\raw\yosys_picorv32_replaycapsule_wrapper.txt
 synthesis_report_parse,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis.csv
 figure_generation,PASS,WROTE 6 SVG figures to C:\Users\tyboy\OneDrive\Documents\New project\results\figures and C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
 tool:verilator,TODO,external tool not found locally
-tool:yosys,TODO,external tool not found locally
+tool:yosys,PASS,workspace-local yowasp-yosys
 tool:riscv64-unknown-elf-gcc,TODO,external tool not found locally

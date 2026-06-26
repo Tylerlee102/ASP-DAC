@@ -1,7 +1,7 @@
 `include "event_pkg.sv"
 
 module hash_signature #(
-  parameter int EVENT_WIDTH = replaycapsule_event_pkg::RC_EVENT_WIDTH,
+  parameter int EVENT_WIDTH = 168,
   parameter logic [31:0] RESET_SEED = 32'h5243_5256
 ) (
   input  logic                   clk,

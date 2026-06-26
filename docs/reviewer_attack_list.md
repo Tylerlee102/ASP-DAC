@@ -54,9 +54,9 @@ Fix plan: strengthen theorem with invariants linked to formal/SVA checks.
 
 Required evidence: LUT/FF/BRAM/Fmax from a real synthesis flow.
 
-Current weakness: Yosys and FPGA tools are not available locally.
+Current weakness: generic Yosys cell counts exist, but mapped FPGA resources and timing do not.
 
-Fix plan: run Yosys and at least one mapped FPGA flow.
+Fix plan: run at least one mapped FPGA flow and report LUT/FF/BRAM/Fmax from generated reports.
 
 ## 8. "The capsule is not actually minimal."
 
@@ -105,4 +105,3 @@ Required evidence: formal model, synthesizable design, FPGA/synthesis evaluation
 Current weakness: early prototype stage.
 
 Fix plan: complete gates before making a venue-ready claim.
-

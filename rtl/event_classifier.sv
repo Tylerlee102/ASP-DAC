@@ -10,7 +10,7 @@ module event_classifier (
   output logic       event_is_nondeterministic,
   output logic       event_is_property_relevant
 );
-  import replaycapsule_event_pkg::*;
+  `include "event_defs.svh"
 
   always_comb begin
     event_is_nondeterministic = 1'b0;
@@ -67,4 +67,3 @@ module event_classifier (
     endcase
   end
 endmodule
-

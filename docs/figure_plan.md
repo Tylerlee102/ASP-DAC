@@ -13,7 +13,7 @@ hand into captions, plots, or tables.
 | Generated today | A real artifact exists in `results/` with today's run output and can be used as source evidence. |
 | Partial today | A source artifact exists today, but the final paper figure/table has not been rendered or the artifact only covers the smoke path. |
 | Requires RTL/PicoRV32 | Needs firmware-running RTL traces from the PicoRV32 integration, Verilator/cocotb, and a RISC-V toolchain before paper claims can be filled. |
-| Requires Yosys | Needs a real Yosys synthesis report, and possibly a mapped FPGA flow for LUT/FF/BRAM/Fmax fields. |
+| Requires mapped FPGA flow | Needs OpenROAD or vendor mapping for LUT/FF/BRAM/Fmax fields. |
 | Spec only | The figure can be drawn from the architecture/model docs, but no generated paper asset exists yet. |
 
 ## Generated Artifact Snapshot
@@ -26,8 +26,9 @@ hand into captions, plots, or tables.
 | `results/figures/baseline_trace_sizes.svg` | Yes | Baseline trace-size figure | Generated from `trace_sizes.csv`. |
 | `results/figures/ablation_heatmap.svg` | Yes | Ablation heatmap | Generated from model-level ablation rows. |
 | `results/processed/ablations.csv` | Yes | Ablation heatmap | Model-level ablations are available; RTL-backed rows require firmware-running traces. |
-| `results/raw/yosys_replay_capsule_top.txt` | Yes | Synthesis/resource table | Probe records that Yosys was not available. |
-| `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains TODO/NA resource fields until Yosys is run. |
+| `results/raw/yosys_replay_capsule_top.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the record-side top. |
+| `results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the integrated wrapper. |
+| `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains measured generic cell counts plus TODO/NA mapped resource and timing fields. |
 | `results/processed/summary.csv` | Yes | All figure/table provenance | One-command status ledger for generated artifacts and missing tools. |
 
 ## Paper Figure and Table Manifest
@@ -38,7 +39,7 @@ hand into captions, plots, or tables.
 | Fig. 2 | Replay flow | Show record, freeze, export, replay, compare, and property-signature verification using the replay comparator path. | `paper/figures/replay_flow.svg` | Yes. Generated from script-level diagram specification. | Yes for full firmware-running replay across the benchmark suite. |
 | Fig. 3 | Baseline trace sizes | Compare available baseline trace/capsule sizes and mark unavailable baselines as TODO/NA without estimating them. | `paper/figures/baseline_trace_sizes.svg` | Yes. Generated from `results/processed/trace_sizes.csv`. | Yes for full-instruction trace and snapshot-on-failure baselines. |
 | Fig. 4 | Ablation heatmap | Show which omitted event classes break replay for each benchmark and which omissions are benign for the observed fixture. | `paper/figures/ablation_heatmap.svg` | Yes. Generated from `results/processed/ablations.csv`. | Yes for buffer-size sweeps, last-K context-window sweeps, and RTL-backed ablations. |
-| Table 1 | Synthesis/resource table | Report monitor/resource cost and timing only from generated synthesis outputs. | `paper/figures/table01_synthesis_resources.md` or paper-native table source | Partial today. `results/processed/synthesis.csv` exists but contains TODO/NA because Yosys was unavailable. | Requires Yosys for generic cell counts. Requires mapped FPGA flow for LUT/FF/BRAM/Fmax. Requires PicoRV32 integration for core-relative overhead. |
+| Table 1 | Synthesis/resource table | Report monitor/resource cost and timing only from generated synthesis outputs. | `paper/figures/table01_synthesis_resources.md` or paper-native table source | Partial today. `results/processed/synthesis.csv` contains measured generic Yosys cell counts. | Requires mapped FPGA flow for LUT/FF/BRAM/Fmax. Requires a matching baseline core build for core-relative overhead. |
 
 ## Figure Details
 
@@ -149,9 +150,9 @@ Paper-readiness checks:
 ### Table 1: Synthesis/Resource Table
 
 Caption draft:
-Resource and timing results are generated from synthesis reports. When the tool
-flow is unavailable, resource fields remain TODO/NA and no overhead claim is
-made.
+Resource and timing results are generated from synthesis reports. Generic Yosys
+cell counts can be reported from the current local run. Mapped resource and
+timing fields remain TODO/NA until the mapped tool flow exists.
 
 Source material:
 - `scripts/synth_yosys.py`
@@ -161,7 +162,7 @@ Source material:
 
 Paper-readiness checks:
 - Yosys generic cells may be reported only after a real report is parsed.
-- LUT/FF/BRAM/Fmax require a mapped FPGA flow, not the current TODO probe.
+- LUT/FF/BRAM/Fmax require a mapped FPGA flow, not the generic Yosys report.
 - Core-relative overhead requires a PicoRV32-integrated top and matching
   baseline core build.
 
@@ -173,7 +174,7 @@ Use the existing pipeline as the source of truth:
 2. Run `scripts/run_replay_experiments.py` for replay status.
 3. Run `scripts/collect_trace_sizes.py` for baseline trace-size rows.
 4. Run `scripts/run_ablations.py` for ablation rows.
-5. Run `scripts/synth_yosys.py` only when Yosys is available.
+5. Run `scripts/synth_yosys.py`; it uses system Yosys or workspace-local `yowasp-yosys` when available.
 6. Run `scripts/parse_synthesis_reports.py` after synthesis.
 7. Run `scripts/make_figures.py` or its paper-rendering successor.
 
@@ -183,5 +184,5 @@ Use the existing pipeline as the source of truth:
 | --- | --- | --- |
 | PicoRV32 integration | Firmware-running record/replay traces for each benchmark | Full replay flow, full baseline comparison, full ablation heatmap, core-relative resource overhead. |
 | Verilator/cocotb plus RISC-V toolchain | Reproducible RTL simulation traces and firmware images | Benchmark-wide event logs, replay success, cycles to failure, overflow checks. |
-| Yosys | Real synthesis report for `replay_capsule_top` and integrated variants | Generic cell counts and synthesis status. |
+| Yosys | Real synthesis report for `replay_capsule_top` and integrated variants | Generic cell counts and synthesis status. Current local flow satisfies this with `yowasp-yosys`. |
 | FPGA mapping flow | Device-mapped reports for baseline and ReplayCapsule builds | LUT, FF, BRAM, Fmax, and timing-overhead fields. |

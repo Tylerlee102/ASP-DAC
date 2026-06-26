@@ -1,7 +1,7 @@
 `include "event_pkg.sv"
 
 module capsule_buffer #(
-  parameter int EVENT_WIDTH = replaycapsule_event_pkg::RC_EVENT_WIDTH,
+  parameter int EVENT_WIDTH = 168,
   parameter int DEPTH = 256,
   parameter int ADDR_W = $clog2(DEPTH)
 ) (

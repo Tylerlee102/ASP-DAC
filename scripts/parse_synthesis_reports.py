@@ -28,14 +28,28 @@ def main() -> int:
 def parse_report(path: Path) -> dict[str, str]:
     top = _top_from_path(path)
     text = path.read_text(encoding="utf-8", errors="replace")
+    tool = _first_str(r"TOOL:\s+([^\n]+)", text) or "yosys"
     explicit_top = _first_str(r"TOP:\s+(\S+)", text)
     if explicit_top:
         top = explicit_top
     if "STATUS: TODO" in text:
-        return _todo(top, "yosys not available")
-    cells = _first_int(r"Number of cells:\s+(\d+)", text)
+        return _todo(top, "yosys not available", tool=tool)
+    error = _first_str(r"ERROR:\s+([^\n]+)", text)
+    if error:
+        return {
+            "tool": tool,
+            "top": top,
+            "status": "FAIL",
+            "cells": "NA",
+            "luts": "NA",
+            "ffs": "NA",
+            "brams": "NA",
+            "fmax_mhz": "NA",
+            "notes": f"Yosys failed: {error}",
+        }
+    cells = _cell_count(text)
     return {
-        "tool": "yosys",
+        "tool": tool,
         "top": top,
         "status": "MEASURED" if cells is not None else "TODO",
         "cells": str(cells) if cells is not None else "NA",
@@ -47,9 +61,9 @@ def parse_report(path: Path) -> dict[str, str]:
     }
 
 
-def _todo(top: str, notes: str) -> dict[str, str]:
+def _todo(top: str, notes: str, tool: str = "yosys") -> dict[str, str]:
     return {
-        "tool": "yosys",
+        "tool": tool,
         "top": top,
         "status": "TODO",
         "cells": "NA",
@@ -66,6 +80,14 @@ def _top_from_path(path: Path) -> str:
     return stem[6:] if stem.startswith("yosys_") else stem
 
 
+def _cell_count(text: str) -> int | None:
+    legacy = _first_int(r"Number of cells:\s+(\d+)", text)
+    if legacy is not None:
+        return legacy
+    matches = [int(match.group(1)) for match in re.finditer(r"^\s*(\d+)\s+cells\s*$", text, re.MULTILINE)]
+    return matches[-1] if matches else None
+
+
 def _first_int(pattern: str, text: str) -> int | None:
     match = re.search(pattern, text)
     return int(match.group(1)) if match else None
@@ -78,4 +100,3 @@ def _first_str(pattern: str, text: str) -> str | None:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

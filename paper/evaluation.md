@@ -2,7 +2,7 @@
 
 The evaluation will report replay success, capsule size, trace reduction, event rate, hardware overhead, Fmax loss, runtime overhead, buffer overflow rate, and false or missed property failures.
 
-Current measured local results cover six model-level benchmark capsules, six RV32I firmware-sim benchmark capsules, and the replay comparator. The suites exercise sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout failures. Verilator, Yosys, and a RISC-V compiler were not available in the local environment at kickoff, so firmware-running RTL simulation and synthesis are marked TODO until real tools are run.
+Current measured local results cover six model-level benchmark capsules, six RV32I firmware-sim benchmark capsules, the replay comparator, and generic Yosys synthesis cell counts for `replay_capsule_top` and `picorv32_replaycapsule_wrapper`. The suites exercise sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout failures. Verilator and a RISC-V compiler are still not available locally, so firmware-running RTL simulation remains TODO. FPGA-mapped LUT/FF/BRAM/Fmax numbers also remain TODO until an OpenROAD or vendor flow is run.
 
 Current generated artifacts:
 
@@ -14,7 +14,7 @@ Current generated artifacts:
 - `results/processed/synthesis.csv`
 - `results/figures/*.svg`
 
-The paper must label current replay, baseline, ablation, and event-sufficiency numbers as model-level or firmware-sim evidence until replaced or corroborated by RTL/PicoRV32 runs.
+The paper must label current replay, baseline, ablation, and event-sufficiency numbers as model-level or firmware-sim evidence until replaced or corroborated by RTL/PicoRV32 runs. Current synthesis evidence is limited to Yosys generic cell counts.
 
 The result pipeline is:
 

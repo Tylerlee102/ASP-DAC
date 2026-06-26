@@ -33,7 +33,7 @@ module event_tap #(
   output logic [31:0] event_data,
   output logic        multievent_pending
 );
-  import replaycapsule_event_pkg::*;
+  `include "event_defs.svh"
 
   logic is_mmio;
   logic [4:0] candidate_count;
@@ -113,4 +113,3 @@ module event_tap #(
   assign unused_clk = clk;
   assign unused_rst_n = rst_n;
 endmodule
-

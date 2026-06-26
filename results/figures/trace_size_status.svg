@@ -4,5 +4,5 @@
 <text x="28" y="62" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">measured model rows: 84</text>
 <text x="28" y="88" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">TODO rows: 12</text>
 <text x="28" y="114" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">model replay-success rows: 12</text>
-<text x="28" y="140" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">RTL/PicoRV32 trace and synthesis rows remain TODO until external tools exist.</text>
+<text x="28" y="140" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">RTL/PicoRV32 trace rows remain TODO; generic Yosys synthesis is tracked separately.</text>
 </svg>

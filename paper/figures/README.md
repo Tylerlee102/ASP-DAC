@@ -17,8 +17,9 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/trace_sizes.csv` | Yes | Baseline trace-size data source. |
 | `../../results/figures/trace_size_status.svg` | Yes | Existing generated trace-size status figure; not final paper styling. |
 | `../../results/processed/ablations.csv` | Yes | Ablation heatmap data source. |
-| `../../results/raw/yosys_replay_capsule_top.txt` | Yes | Yosys availability probe. |
-| `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source; currently TODO/NA until Yosys is available. |
+| `../../results/raw/yosys_replay_capsule_top.txt` | Yes | Yosys generic synthesis report for the record-side top. |
+| `../../results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Yosys generic synthesis report for the integrated wrapper. |
+| `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source with generic cells measured and mapped resource/timing fields TODO/NA. |
 | `../../results/processed/summary.csv` | Yes | Provenance and missing-tool status ledger. |
 
 ## Planned Assets
@@ -30,7 +31,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `fig03_replay_flow.svg` / `.pdf` | Partial source generated | `../../results/processed/replay_experiments.csv`, replay testbench scripts | Full benchmark replay requires RTL/PicoRV32 traces. |
 | `fig04_baseline_trace_sizes.svg` / `.pdf` | Status SVG generated today | `../../results/processed/trace_sizes.csv`, `../../results/figures/trace_size_status.svg` | Missing baselines and replay-success fields require simulator/RTL/PicoRV32 artifacts. |
 | `fig05_ablation_heatmap.svg` / `.pdf` | CSV generated today; heatmap not generated | `../../results/processed/ablations.csv` | Full-suite rows require firmware-running RTL/PicoRV32 traces. |
-| `table01_synthesis_resources.md` | TODO source generated today | `../../results/processed/synthesis.csv` | Yosys for cells; mapped FPGA flow for LUT/FF/BRAM/Fmax; PicoRV32 integration for core-relative overhead. |
+| `table01_synthesis_resources.md` | Partial source generated today | `../../results/processed/synthesis.csv` | Mapped FPGA flow for LUT/FF/BRAM/Fmax and a matching baseline core build for core-relative overhead. |
 
 ## Rendering Rules
 
@@ -51,4 +52,3 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | Verilator or cocotb RTL simulation outputs | Replay success, cycles to failure, overflow behavior. |
 | Yosys report parsed into `synthesis.csv` | Synthesis/resource table. |
 | Mapped FPGA report for both baseline and ReplayCapsule builds | LUT/FF/BRAM/Fmax and overhead fields. |
-

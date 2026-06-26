@@ -160,7 +160,7 @@ def _synthesis_status_svg(rows: list[dict[str, str]]) -> str:
     lines = ["Synthesis/resource status"]
     for row in rows:
         lines.append(
-            f"{row.get('tool', 'tool')}: {row.get('status', 'NA')} cells={row.get('cells', 'NA')} "
+            f"{row.get('top', 'top')} ({row.get('tool', 'tool')}): {row.get('status', 'NA')} cells={row.get('cells', 'NA')} "
             f"LUT={row.get('luts', 'NA')} FF={row.get('ffs', 'NA')} Fmax={row.get('fmax_mhz', 'NA')}"
         )
         lines.append(row.get("notes", ""))
@@ -177,7 +177,7 @@ def _trace_status_svg(rows: list[dict[str, str]]) -> str:
         f"measured model rows: {measured}",
         f"TODO rows: {todo}",
         f"model replay-success rows: {passes}",
-        "RTL/PicoRV32 trace and synthesis rows remain TODO until external tools exist.",
+        "RTL/PicoRV32 trace rows remain TODO; generic Yosys synthesis is tracked separately.",
     ]
     return _text_svg("Trace Size Status", lines)
 

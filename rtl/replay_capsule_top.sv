@@ -29,7 +29,7 @@ module replay_capsule_top #(
   input  logic        checkpoint_hash_req,
 
   input  logic [ADDR_W-1:0] capsule_read_addr,
-  output logic [replaycapsule_event_pkg::RC_EVENT_WIDTH-1:0] capsule_read_data,
+  output logic [167:0] capsule_read_data,
 
   output logic        capsule_frozen,
   output logic        capsule_overflow,
@@ -41,7 +41,7 @@ module replay_capsule_top #(
   output logic        captured_event_valid,
   output logic [3:0]  captured_event_type
 );
-  import replaycapsule_event_pkg::*;
+  `include "event_defs.svh"
 
   localparam int EVENT_WIDTH = RC_EVENT_WIDTH;
 
@@ -240,4 +240,3 @@ module replay_capsule_top #(
   assign unused_sensor_deadline_active = sensor_deadline_active;
   assign unused_critical_section_active = critical_section_active;
 endmodule
-
