@@ -85,6 +85,9 @@ formal harness should not try to prove a full processor. It should prove the
 ReplayCapsule interface contract around the processor boundary.
 
 See [formal/yosys_smtbmc_scripts/README.md](../formal/yosys_smtbmc_scripts/README.md).
+The generated reviewer-facing module coverage ledger is
+[docs/formal_coverage_matrix.md](formal_coverage_matrix.md), with source CSV at
+`results/processed/formal_coverage.csv`.
 
 ### Directed Simulation
 

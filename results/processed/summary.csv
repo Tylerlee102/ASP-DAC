@@ -8,6 +8,7 @@ syntax:scripts/check_rtl_firmware_alignment.py,PASS,
 syntax:scripts/export_rtl_capsules.py,PASS,
 syntax:scripts/run_formal_checks.py,PASS,
 syntax:scripts/run_hdl_checks.py,PASS,
+syntax:scripts/summarize_formal_coverage.py,PASS,
 syntax:scripts/replaycapsule_model.py,PASS,
 syntax:scripts/rv32i_firmware_sim.py,PASS,
 syntax:scripts/static_rtl_checks.py,PASS,
@@ -21,6 +22,7 @@ hdl_frontend_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\res
 rtl_capsule_export_compare,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_capsule_exports.csv
 rtl_firmware_alignment,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_firmware_alignment.csv
 bounded_formal_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_checks.csv
+formal_coverage_matrix,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_coverage.csv and C:\Users\tyboy\OneDrive\Documents\New project\docs\formal_coverage_matrix.md
 replay_driver_demo_commit,PASS,matched checkpoint: 0
 model_suite,PASS,WROTE results\raw\model_suite_traces.json
 rv32i_firmware_sim,PASS,WROTE results\raw\firmware_sim_traces.json

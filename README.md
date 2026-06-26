@@ -27,7 +27,7 @@ On Unix-like shells:
 python3 scripts/run_all_tests.py
 ```
 
-The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including twelve PicoRV32 wrapper smokes, bounded formal event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt loggers, registers, replay-control, capsule-buffer, and recorder proof/cover targets when local SMTBMC tools are available, replay parsing/comparison, six model-level bug capsules, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
+The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including twelve PicoRV32 wrapper smokes, bounded formal event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt loggers, registers, replay-control, capsule-buffer, and recorder proof/cover targets when local SMTBMC tools are available, a generated formal coverage matrix, replay parsing/comparison, six model-level bug capsules, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
 
 ## Research Claim
 
@@ -58,6 +58,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Static RTL check summary: `scripts/static_rtl_checks.py`
 - Directed HDL checks: `results/processed/hdl_checks.csv`
 - Bounded formal checks: `results/processed/formal_checks.csv`
+- Formal coverage matrix: `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
 - Generated figures: `results/figures/` and `paper/figures/`
 

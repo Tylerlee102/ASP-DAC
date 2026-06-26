@@ -22,9 +22,9 @@ Fix plan: connect replay driver to RTL-generated capsules.
 
 Required evidence: narrowed embedded RV32I interrupt/MMIO boundary and minimal event model.
 
-Current weakness: proof is a sketch, not machine-checked.
+Current weakness: the replay-sufficiency theorem is still a written proof sketch. Bounded SMTBMC checks cover local recorder, classifier/slicer, checker, logger, register, buffer, hash, and replay-control contracts, but not the end-to-end theorem.
 
-Fix plan: add SV assertions and bounded formal checks for recorder invariants.
+Fix plan: keep expanding the bounded checks toward replay mismatch families, then connect the written theorem to the checked local contracts.
 
 ## 4. "The novelty is only integration."
 
@@ -46,9 +46,9 @@ Fix plan: implement all six failing/fixed firmware images.
 
 Required evidence: explicit assumptions, equivalence definition, induction over commit-index time.
 
-Current weakness: no mechanized proof.
+Current weakness: no mechanized end-to-end proof. Current bounded evidence is summarized in `docs/formal_coverage_matrix.md` and `results/processed/formal_checks.csv`.
 
-Fix plan: strengthen theorem with invariants linked to formal/SVA checks.
+Fix plan: strengthen theorem with invariants linked to the checked formal/SVA contracts and add replay-mismatch proof families.
 
 ## 7. "The hardware overhead is too high."
 
@@ -86,9 +86,9 @@ Fix plan: implement trace-size baselines and discuss adapter feasibility.
 
 Required evidence: snapshot-on-failure baseline showing inability to replay pre-failure nondeterministic path without event history.
 
-Current weakness: snapshot baseline is currently planned, not measured.
+Current weakness: model-level and firmware-sim snapshot sizes are measured, but RTL replay-success and RTL snapshot comparisons are still pending.
 
-Fix plan: implement snapshot-size and replay-success baseline.
+Fix plan: implement RTL snapshot-size and replay-success baseline rows once firmware-running RTL traces are available.
 
 ## 12. "Why does this need hardware?"
 
@@ -102,6 +102,6 @@ Fix plan: quantify software-only instrumentation perturbation versus RTL capture
 
 Required evidence: formal model, synthesizable design, FPGA/synthesis evaluation, and reproducible artifact.
 
-Current weakness: early prototype stage.
+Current weakness: the artifact has local RTL, formal, firmware-sim, and generic synthesis evidence, but still lacks benchmark-wide RTL replay and mapped hardware measurements.
 
 Fix plan: complete gates before making a venue-ready claim.

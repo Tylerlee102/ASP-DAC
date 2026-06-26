@@ -85,6 +85,7 @@ PYTHON_FILES = [
     "scripts/export_rtl_capsules.py",
     "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
+    "scripts/summarize_formal_coverage.py",
     "scripts/replaycapsule_model.py",
     "scripts/rv32i_firmware_sim.py",
     "scripts/static_rtl_checks.py",
@@ -139,6 +140,12 @@ def main() -> int:
         failures,
         "bounded_formal_checks",
         [sys.executable, "scripts/run_formal_checks.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "formal_coverage_matrix",
+        [sys.executable, "scripts/summarize_formal_coverage.py"],
     )
     _run_subprocess(
         rows,

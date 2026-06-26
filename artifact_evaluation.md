@@ -53,6 +53,8 @@ Current bounded formal evidence:
 - Event-tap, event-classifier/slicer, property-checker, hash-signature,
   MMIO/interrupt logger, register block, replay-control, capsule-buffer, and
   recorder checks: `results/processed/formal_checks.csv`
+- Reviewer-facing formal coverage packaging:
+  `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,

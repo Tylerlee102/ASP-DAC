@@ -56,6 +56,7 @@ Current local tool caveat:
 - Ablations and event sufficiency: `results/processed/ablations.csv`, `results/processed/event_sufficiency.csv`
 - HDL checks: `results/processed/hdl_checks.csv`
 - Formal checks: `results/processed/formal_checks.csv`
+- Formal coverage matrix: `results/processed/formal_coverage.csv`, `docs/formal_coverage_matrix.md`
 - Generic synthesis: `results/processed/synthesis.csv`
 - Local run ledger: `results/processed/summary.csv`
 
