@@ -22,7 +22,7 @@ Fix plan: connect replay driver to RTL-generated capsules.
 
 Required evidence: narrowed embedded RV32I interrupt/MMIO boundary and minimal event model.
 
-Current weakness: the replay-sufficiency theorem is still a written proof sketch. Bounded SMTBMC checks cover local recorder, classifier/slicer, checker, logger, register, buffer, hash, and replay-control contracts, but not the end-to-end theorem.
+Current weakness: the replay-sufficiency theorem is still a written proof sketch. Bounded SMTBMC checks cover local recorder, classifier/slicer, checker, logger, register, buffer, hash, replay-control, and replay-mismatch contracts, but not the end-to-end theorem.
 
 Fix plan: connect the written theorem to the checked local contracts and add broader stream-level replay proofs.
 
