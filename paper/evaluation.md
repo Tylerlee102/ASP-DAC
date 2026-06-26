@@ -29,6 +29,7 @@ Current generated artifacts:
 - `results/processed/evaluation_metrics.csv`
 - `results/processed/claim_audit.csv`
 - `results/processed/toolchain_status.csv`
+- `results/processed/artifact_manifest.csv`
 - `results/figures/*.svg`
 - `paper/figures/table01_synthesis_resources.md`
 - `paper/figures/table02_replay_evidence.md`

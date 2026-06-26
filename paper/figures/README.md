@@ -46,6 +46,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `table07_evaluation_metrics.md` | Yes | Generated Markdown source for evaluation metric rollup. |
 | `../../results/processed/claim_audit.csv` | Yes | Claim-audit source for honesty-gate review. |
 | `../../results/processed/toolchain_status.csv` | Yes | Tool availability and missing-blocker ledger. |
+| `../../results/processed/artifact_manifest.csv` | Yes | SHA-256 hash manifest for main generated evidence files. |
 | `../../results/processed/summary.csv` | Yes | Provenance and missing-tool status ledger. |
 
 ## Planned Assets

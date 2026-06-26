@@ -82,6 +82,8 @@ Current generic synthesis evidence:
   `results/processed/claim_audit.csv`
 - Generated toolchain status ledger:
   `results/processed/toolchain_status.csv`
+- Generated artifact hash manifest for the main local evidence files:
+  `results/processed/artifact_manifest.csv`
 - Generated paper table source for synthesis/resource reporting:
   `paper/figures/table01_synthesis_resources.md`
 - Generated paper table sources for replay evidence, trace-size baselines,
@@ -98,4 +100,4 @@ plus `.tools/oss-cad-suite/oss-cad-suite/` when extracted outside git tracking.
 
 ## Result Integrity
 
-No paper result should be manually typed into a figure or summary table. Results must flow from generated raw artifacts to `results/processed/summary.csv` and then to figures.
+No paper result should be manually typed into a figure or summary table. Results must flow from generated raw artifacts to `results/processed/summary.csv`, `results/processed/artifact_manifest.csv`, and then to figures.

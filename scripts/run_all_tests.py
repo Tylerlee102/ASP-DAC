@@ -94,6 +94,7 @@ PYTHON_FILES = [
     "scripts/make_figures.py",
     "scripts/render_paper_tables.py",
     "scripts/summarize_evaluation_metrics.py",
+    "scripts/summarize_artifact_manifest.py",
     "scripts/summarize_proof_obligations.py",
     "scripts/summarize_rtl_capsule_classes.py",
     "scripts/summarize_formal_coverage.py",
@@ -301,6 +302,12 @@ def main() -> int:
     _record_tool_availability(rows, "riscv64-unknown-elf-gcc")
     _write_toolchain_status(rows)
     rows.append(_row("toolchain_status", "PASS", f"WROTE {TOOLCHAIN_CSV}"))
+    _run_subprocess(
+        rows,
+        failures,
+        "artifact_manifest",
+        [sys.executable, "scripts/summarize_artifact_manifest.py"],
+    )
     _write_summary(rows)
 
     for row in rows:
