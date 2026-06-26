@@ -212,6 +212,7 @@ def main() -> int:
     _record_tool_availability(rows, "sby")
     _record_tool_availability(rows, "yosys-smtbmc")
     _record_tool_availability(rows, "make")
+    _record_any_tool_availability(rows, "cxx", ["c++", "g++", "clang++", "cl"])
     _record_tool_availability(rows, "riscv64-unknown-elf-gcc")
     _write_summary(rows)
 
@@ -334,6 +335,15 @@ def _record_tool_availability(rows: list[dict[str, str]], tool: str) -> None:
         rows.append(_row(f"tool:{tool}", "PASS", f"workspace-local oss-cad-suite {local_tool.name}"))
     else:
         rows.append(_row(f"tool:{tool}", "TODO", "external tool not found locally"))
+
+
+def _record_any_tool_availability(rows: list[dict[str, str]], name: str, candidates: list[str]) -> None:
+    for tool in candidates:
+        found = shutil.which(tool)
+        if found:
+            rows.append(_row(f"tool:{name}", "PASS", f"{tool}: {found}"))
+            return
+    rows.append(_row(f"tool:{name}", "TODO", f"none found from: {', '.join(candidates)}"))
 
 
 def _local_oss_cad_tool(tool: str) -> Path | None:

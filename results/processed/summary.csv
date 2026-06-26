@@ -37,4 +37,5 @@ tool:yosys,PASS,workspace-local yowasp-yosys
 tool:sby,PASS,workspace-local yowasp-sby
 tool:yosys-smtbmc,PASS,workspace-local yowasp-yosys-smtbmc
 tool:make,TODO,external tool not found locally
+tool:cxx,TODO,"none found from: c++, g++, clang++, cl"
 tool:riscv64-unknown-elf-gcc,TODO,external tool not found locally
