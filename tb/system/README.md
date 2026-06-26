@@ -20,6 +20,9 @@ Current directed SystemVerilog test sources:
 
 - `tb_property_checker.sv`
 - `tb_capsule_buffer.sv`
+- `tb_replay_control.sv`
+- `tb_event_classifier_slicer.sv`
 
-They are source-present for the future simulator flow and are not counted as
-passing RTL simulation until Verilator or another HDL simulator runs them.
+They are run by `scripts/run_hdl_checks.py` when Icarus Verilog and `vvp` are
+available. The current local gate reports them as PASS in
+`results/processed/hdl_checks.csv`.

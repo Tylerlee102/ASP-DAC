@@ -69,6 +69,8 @@ BENCHMARK_IDS = [
 REQUIRED_TB = [
     "tb/system/tb_property_checker.sv",
     "tb/system/tb_capsule_buffer.sv",
+    "tb/system/tb_replay_control.sv",
+    "tb/system/tb_event_classifier_slicer.sv",
     "tb/system/tb_picorv32_wrapper_smoke.sv",
 ]
 

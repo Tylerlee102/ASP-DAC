@@ -75,6 +75,18 @@ IVERILOG_TESTS = (
         include_dirs=("../../rtl",),
     ),
     IverilogTest(
+        name="tb_replay_control",
+        workdir=Path("tb/system"),
+        sources=("tb_replay_control.sv", "../../rtl/replay_control.sv"),
+        include_dirs=("../../rtl",),
+    ),
+    IverilogTest(
+        name="tb_event_classifier_slicer",
+        workdir=Path("tb/system"),
+        sources=("tb_event_classifier_slicer.sv", "../../rtl/event_classifier.sv", "../../rtl/event_slicer.sv"),
+        include_dirs=("../../rtl",),
+    ),
+    IverilogTest(
         name="tb_picorv32_sensor_threshold_smoke",
         workdir=Path("tb/system"),
         sources=(
