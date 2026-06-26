@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="530" viewBox="0 0 1120 530">
-<rect width="1120" height="530" fill="#ffffff"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="666" viewBox="0 0 1120 666">
+<rect width="1120" height="666" fill="#ffffff"/>
 <text x="560" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">Seeded RTL-Smoke Interrupt Campaign</text>
 <text x="24" y="58" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">Each seed ran twice; bars show frozen capsule packet count from run 1 after digest match.</text>
 <text x="24" y="102" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 1101 irq_after_command</text>
@@ -41,4 +41,16 @@
 <text x="24" y="510" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 2131 fixed_irq_window</text>
 <rect x="270" y="494" width="300" height="16" fill="#ffcc66"/>
 <text x="582" y="507" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">10 packets, window 80-110, property 2</text>
+<text x="24" y="544" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 3101 mmio_wait_latency</text>
+<rect x="270" y="528" width="90" height="16" fill="#b7a7ff"/>
+<text x="372" y="541" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window NA-NA, property 2</text>
+<text x="24" y="578" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 3109 mmio_wait_latency</text>
+<rect x="270" y="562" width="90" height="16" fill="#b7a7ff"/>
+<text x="372" y="575" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window NA-NA, property 2</text>
+<text x="24" y="612" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 3119 mmio_wait_latency</text>
+<rect x="270" y="596" width="90" height="16" fill="#b7a7ff"/>
+<text x="372" y="609" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window NA-NA, property 2</text>
+<text x="24" y="646" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 3121 mmio_wait_latency</text>
+<rect x="270" y="630" width="90" height="16" fill="#b7a7ff"/>
+<text x="372" y="643" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window NA-NA, property 2</text>
 </svg>
