@@ -1,0 +1,2 @@
+tool,baseline_top,instrumented_top,status,baseline_cells,instrumented_cells,generic_cell_delta,generic_cell_overhead_percent,record_side_top,record_side_cells,luts,ffs,brams,fmax_mhz,notes
+yowasp-yosys,picorv32,picorv32_replaycapsule_wrapper,MEASURED,519,2023,1504,289.79,replay_capsule_top,1292,NA,NA,NA,NA,Generic Yosys cell-count context only; mapped FPGA overhead requires LUT/FF/BRAM/Fmax reports

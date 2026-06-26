@@ -90,6 +90,7 @@ PYTHON_FILES = [
     "scripts/make_figures.py",
     "scripts/summarize_rtl_capsule_classes.py",
     "scripts/summarize_formal_coverage.py",
+    "scripts/summarize_synthesis_overhead.py",
     "scripts/replaycapsule_model.py",
     "scripts/rv32i_firmware_sim.py",
     "scripts/static_rtl_checks.py",
@@ -227,6 +228,12 @@ def main() -> int:
         failures,
         "synthesis_report_parse",
         [sys.executable, "scripts/parse_synthesis_reports.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "synthesis_overhead_summary",
+        [sys.executable, "scripts/summarize_synthesis_overhead.py"],
     )
     _run_subprocess(
         rows,

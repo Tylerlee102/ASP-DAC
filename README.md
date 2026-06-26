@@ -27,7 +27,7 @@ On Unix-like shells:
 python3 scripts/run_all_tests.py
 ```
 
-The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including twelve PicoRV32 wrapper smokes, a seeded RTL-smoke interrupt reproducibility campaign, bounded formal event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt loggers, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover targets when local SMTBMC tools are available, a generated formal coverage matrix, replay parsing/comparison, six model-level bug capsules, replay-comparator negative fixtures, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
+The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including twelve PicoRV32 wrapper smokes, a seeded RTL-smoke interrupt reproducibility campaign, bounded formal event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt loggers, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover targets when local SMTBMC tools are available, a generated formal coverage matrix, replay parsing/comparison, six model-level bug capsules, replay-comparator negative fixtures, baseline trace sizes, ablations, generic Yosys synthesis and derived generic cell-overhead context when available, and SVG figure generation. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
 
 ## Research Claim
 
@@ -63,6 +63,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Bounded formal checks: `results/processed/formal_checks.csv`
 - Formal coverage matrix: `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
+- Generic cell-overhead context: `results/processed/synthesis_overhead.csv`
 - Generated figures: `results/figures/` and `paper/figures/`
 
 Rows marked `model` are executable event-model evidence. Rows marked `firmware-sim` execute RV32I instruction words in the local interpreter. The current HDL rows include directed module simulations, Verilator lint, and twelve PicoRV32 wrapper smokes, but not the full six-benchmark RTL replay suite.

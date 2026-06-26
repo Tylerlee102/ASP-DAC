@@ -61,6 +61,13 @@ Current bounded formal evidence:
 - Reviewer-facing formal coverage packaging:
   `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
 
+Current generic synthesis evidence:
+
+- Baseline core, record-side top, and integrated wrapper generic cell counts:
+  `results/processed/synthesis.csv`
+- Derived generic cell-overhead context, with mapped FPGA fields preserved as
+  `NA`: `results/processed/synthesis_overhead.csv`
+
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,
 `.tools/python/bin/yowasp-sby.exe`, and

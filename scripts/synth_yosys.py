@@ -15,6 +15,9 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = REPO_ROOT / "results/raw"
 
 SYNTH_TARGETS = {
+    "picorv32": [
+        "third_party/picorv32/picorv32.v",
+    ],
     "replay_capsule_top": [
         "rtl/event_pkg.sv",
         "rtl/event_tap.sv",

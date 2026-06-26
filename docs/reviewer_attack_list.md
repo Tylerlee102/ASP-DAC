@@ -54,7 +54,7 @@ Fix plan: strengthen theorem with invariants linked to the checked formal/SVA co
 
 Required evidence: LUT/FF/BRAM/Fmax from a real synthesis flow.
 
-Current weakness: generic Yosys cell counts exist, but mapped FPGA resources and timing do not.
+Current weakness: generic Yosys cell counts and a derived generic cell-overhead row exist, but mapped FPGA resources and timing do not.
 
 Fix plan: run at least one mapped FPGA flow and report LUT/FF/BRAM/Fmax from generated reports.
 

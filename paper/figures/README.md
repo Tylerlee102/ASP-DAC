@@ -26,9 +26,11 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/hdl_checks.csv` | Yes | Directed HDL and PicoRV32 wrapper smoke verification source with nine directed module rows and twelve wrapper smoke rows. |
 | `../../results/processed/formal_checks.csv` | Yes | Bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, capsule-buffer, and recorder formal status source. |
 | `../../results/processed/formal_coverage.csv` | Yes | Reviewer-facing mapping from formal BMC/cover targets to RTL contract families and explicit limits. |
+| `../../results/raw/yosys_picorv32.txt` | Yes | Yosys generic synthesis report for the baseline PicoRV32 core. |
 | `../../results/raw/yosys_replay_capsule_top.txt` | Yes | Yosys generic synthesis report for the record-side top. |
 | `../../results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Yosys generic synthesis report for the integrated wrapper. |
 | `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source with generic cells measured and mapped resource/timing fields TODO/NA. |
+| `../../results/processed/synthesis_overhead.csv` | Yes | Derived generic cell-overhead context with mapped fields kept as NA. |
 | `../../results/processed/summary.csv` | Yes | Provenance and missing-tool status ledger. |
 
 ## Planned Assets
@@ -42,7 +44,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `fig05_ablation_heatmap.svg` / `.pdf` | CSV generated today; heatmap not generated | `../../results/processed/ablations.csv` | Full-suite rows require firmware-running RTL/PicoRV32 traces. |
 | `fig06_rtl_capsule_event_classes.svg` / `.pdf` | Status SVG generated today | `../../results/processed/rtl_capsule_event_classes.csv`, `../../results/figures/rtl_capsule_event_classes.svg` | Full benchmark-wide RTL traces required before treating this as complete baseline coverage. |
 | `fig07_randomized_interrupt_campaign.svg` / `.pdf` | Status SVG generated today | `../../results/processed/randomized_interrupt_campaign.csv`, `../../results/figures/randomized_interrupt_campaign.svg` | Full record/replay randomized RTL campaign remains pending. |
-| `table01_synthesis_resources.md` | Partial source generated today | `../../results/processed/synthesis.csv` | Mapped FPGA flow for LUT/FF/BRAM/Fmax and a matching baseline core build for core-relative overhead. |
+| `table01_synthesis_resources.md` | Partial source generated today | `../../results/processed/synthesis.csv`, `../../results/processed/synthesis_overhead.csv` | Mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
 
 ## Rendering Rules
 
@@ -61,5 +63,5 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | --- | --- |
 | Firmware-running PicoRV32 traces for all listed benchmarks | Replay flow, baseline sizes, ablation heatmap. |
 | Full Verilator or cocotb RTL simulation outputs | Replay success, cycles to failure, overflow behavior. |
-| Yosys report parsed into `synthesis.csv` | Synthesis/resource table. |
+| Yosys reports parsed into `synthesis.csv` and `synthesis_overhead.csv` | Synthesis/resource table. |
 | Mapped FPGA report for both baseline and ReplayCapsule builds | LUT/FF/BRAM/Fmax and overhead fields. |
