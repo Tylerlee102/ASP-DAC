@@ -72,6 +72,19 @@ Every randomized test must emit:
 The same seed must be runnable in record-only, replay-only, and record-then-replay
 modes. When a failure is found, convert the minimized seed into a directed test.
 
+## Current Runnable RTL-Smoke Campaign
+
+`scripts/run_randomized_interrupt_campaign.py` runs the current seeded Icarus
+PicoRV32 wrapper campaign. It varies the interrupt pulse width after the command
+MMIO write and also sweeps fixed interrupt assertion windows in
+`interrupt_race_bug`. Each seed runs twice in fresh simulator invocations and
+must reproduce the same expected property ID, frozen capsule count, signature,
+and capsule-packet digest on both runs.
+
+This is an RTL-smoke reproducibility campaign, not a full record-then-replay
+randomized Verilator campaign. The stronger replay-noise and MMIO-latency cases
+above remain pending until the full simulation/replay harness exists.
+
 ## Deterministic Replay Checks
 
 For each selected seed:

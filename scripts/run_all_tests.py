@@ -85,6 +85,7 @@ PYTHON_FILES = [
     "scripts/export_rtl_capsules.py",
     "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
+    "scripts/run_randomized_interrupt_campaign.py",
     "scripts/run_replay_negative_tests.py",
     "scripts/summarize_formal_coverage.py",
     "scripts/replaycapsule_model.py",
@@ -135,6 +136,12 @@ def main() -> int:
         failures,
         "rtl_firmware_alignment",
         [sys.executable, "scripts/check_rtl_firmware_alignment.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "randomized_interrupt_campaign",
+        [sys.executable, "scripts/run_randomized_interrupt_campaign.py"],
     )
     _run_subprocess(
         rows,

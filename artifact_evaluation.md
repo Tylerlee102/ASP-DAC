@@ -46,6 +46,8 @@ Current non-RTL executable evidence:
 Current RTL-smoke evidence:
 
 - PicoRV32 wrapper and directed HDL checks: `results/processed/hdl_checks.csv`
+- Seeded interrupt reproducibility campaign:
+  `results/processed/randomized_interrupt_campaign.csv`
 - RTL-smoke capsule export checks: `results/processed/rtl_capsule_exports.csv`
 - RTL-smoke versus firmware-sim alignment: `results/processed/rtl_firmware_alignment.csv`
 

@@ -26,7 +26,7 @@ ReplayCapsule-RV v1 is intentionally narrow.
 
 ## Current Implementation Limits
 
-- The local executable path includes a deterministic Python event model, an RV32I firmware interpreter, directed HDL checks, twelve PicoRV32 wrapper firmware smokes, RTL-smoke capsule export self-compare, missing-event, metadata-corruption, payload-corruption, and PC-context checks, RTL/firmware-sim alignment rows, and generic Yosys synthesis.
+- The local executable path includes a deterministic Python event model, an RV32I firmware interpreter, directed HDL checks, twelve PicoRV32 wrapper firmware smokes, a seeded RTL-smoke interrupt reproducibility campaign, RTL-smoke capsule export self-compare, missing-event, metadata-corruption, payload-corruption, and PC-context checks, RTL/firmware-sim alignment rows, and generic Yosys synthesis.
 - The SoC RTL integration has twelve firmware smokes, not a completed benchmark-wide PicoRV32 replay/export system.
 - `make`, C++ build support for full Verilator simulations, and a RISC-V cross compiler are not available locally.
 - Mapped FPGA LUT/FF/BRAM/Fmax rows are TODO until a real mapped flow is run.

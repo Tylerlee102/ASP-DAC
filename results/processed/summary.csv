@@ -8,6 +8,7 @@ syntax:scripts/check_rtl_firmware_alignment.py,PASS,
 syntax:scripts/export_rtl_capsules.py,PASS,
 syntax:scripts/run_formal_checks.py,PASS,
 syntax:scripts/run_hdl_checks.py,PASS,
+syntax:scripts/run_randomized_interrupt_campaign.py,PASS,
 syntax:scripts/run_replay_negative_tests.py,PASS,
 syntax:scripts/summarize_formal_coverage.py,PASS,
 syntax:scripts/replaycapsule_model.py,PASS,
@@ -22,6 +23,7 @@ static_rtl_contract_checks,PASS,"Summary: 43 passed, 0 failed"
 hdl_frontend_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\hdl_checks.csv
 rtl_capsule_export_compare,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_capsule_exports.csv
 rtl_firmware_alignment,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_firmware_alignment.csv
+randomized_interrupt_campaign,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_campaign.csv
 bounded_formal_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_checks.csv
 formal_coverage_matrix,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_coverage.csv and C:\Users\tyboy\OneDrive\Documents\New project\docs\formal_coverage_matrix.md
 replay_driver_demo_commit,PASS,matched checkpoint: 0
