@@ -331,6 +331,12 @@ VERILATOR_TARGETS = (
         sources=("third_party/picorv32/picorv32.v", *COMMON_RTL, "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv"),
         include_dirs=("rtl", "rtl/rv32i_integration", "third_party/picorv32"),
     ),
+    VerilatorLintTarget(
+        name="verilator_lint_replay_capsule_properties",
+        top="replay_capsule_properties",
+        sources=("rtl/event_pkg.sv", "formal/sv_assertions/replay_capsule_properties.sv"),
+        include_dirs=("rtl", "formal/sv_assertions"),
+    ),
 )
 
 
