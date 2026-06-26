@@ -90,6 +90,7 @@ PYTHON_FILES = [
     "scripts/run_rtl_smoke_ablations.py",
     "scripts/make_figures.py",
     "scripts/render_paper_tables.py",
+    "scripts/summarize_evaluation_metrics.py",
     "scripts/summarize_proof_obligations.py",
     "scripts/summarize_rtl_capsule_classes.py",
     "scripts/summarize_formal_coverage.py",
@@ -255,6 +256,12 @@ def main() -> int:
         failures,
         "synthesis_overhead_summary",
         [sys.executable, "scripts/summarize_synthesis_overhead.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "evaluation_metrics_summary",
+        [sys.executable, "scripts/summarize_evaluation_metrics.py"],
     )
     _run_subprocess(
         rows,

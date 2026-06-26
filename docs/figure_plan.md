@@ -41,6 +41,7 @@ hand into captions, plots, or tables.
 | `results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the integrated wrapper. |
 | `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains measured generic cell counts plus TODO/NA mapped resource and timing fields. |
 | `results/processed/synthesis_overhead.csv` | Yes | Synthesis/resource table | Contains derived generic cell-count overhead context from measured baseline and wrapper rows, with mapped fields kept as NA. |
+| `results/processed/evaluation_metrics.csv` | Yes | Evaluation metric table | Rolls up generated success rates, sizes, reduction ratios, cycles-to-failure, generic synthesis context, and explicit hardware TODOs. |
 | `paper/figures/table01_synthesis_resources.md` | Yes | Synthesis/resource table | Generated Markdown table source derived from the synthesis CSVs; mapped fields remain NA. |
 | `paper/figures/table02_replay_evidence.md` | Yes | Replay evidence table | Generated Markdown table source derived from replay and RTL/firmware alignment CSVs. |
 | `paper/figures/table03_trace_baselines.md` | Yes | Baseline trace-size table | Generated Markdown table source derived from trace-size and RTL-smoke capsule-class CSVs. |
@@ -49,6 +50,7 @@ hand into captions, plots, or tables.
 | `results/processed/proof_obligations.csv` | Yes | Proof-obligation matrix | Generated CSV mapping replay-sufficiency theorem assumptions to current evidence and limits. |
 | `docs/proof_obligation_matrix.md` | Yes | Proof-obligation matrix | Generated reviewer-facing theorem evidence matrix. |
 | `paper/figures/table06_proof_obligations.md` | Yes | Proof-obligation table | Generated Markdown paper table source derived from proof-obligations CSV. |
+| `paper/figures/table07_evaluation_metrics.md` | Yes | Evaluation metric table | Generated Markdown paper table source derived from evaluation metrics CSV. |
 | `results/processed/summary.csv` | Yes | All figure/table provenance | One-command status ledger for generated artifacts and missing tools. |
 
 ## Paper Figure and Table Manifest
@@ -67,6 +69,7 @@ hand into captions, plots, or tables.
 | Table 4 | Event-sufficiency table | Summarize model-level and RTL-smoke event-removal ablations that break replay by benchmark. | `paper/figures/table04_event_sufficiency.md` | Generated partial table today from `results/processed/event_sufficiency.csv`, `results/processed/ablations.csv`, and `results/processed/rtl_smoke_event_sufficiency.csv`. | Requires full benchmark-wide RTL-backed ablations. |
 | Table 5 | Formal coverage table | Summarize bounded formal contract families, depths, obligations, and explicit limits. | `paper/figures/table05_formal_coverage.md` | Generated table today from `results/processed/formal_coverage.csv`. | End-to-end processor/replay theorem remains outside current bounded checks. |
 | Table 6 | Proof-obligation table | Link replay-sufficiency theorem assumptions to current generated evidence and remaining limits. | `paper/figures/table06_proof_obligations.md` | Generated partial table today from `results/processed/proof_obligations.csv`. | End-to-end mechanized theorem remains outside current bounded checks. |
+| Table 7 | Evaluation metric rollup | Summarize headline measured metrics and explicit hardware-dependent TODOs. | `paper/figures/table07_evaluation_metrics.md` | Generated partial table today from `results/processed/evaluation_metrics.csv`. | Requires benchmark-wide RTL replay, mapped FPGA resources/Fmax, runtime slowdown, and overflow counters. |
 
 ## Figure Details
 

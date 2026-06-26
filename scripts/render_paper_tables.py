@@ -19,6 +19,7 @@ RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
 RTL_CLASSES_CSV = REPO_ROOT / "results/processed/rtl_capsule_event_classes.csv"
 FORMAL_COVERAGE_CSV = REPO_ROOT / "results/processed/formal_coverage.csv"
 PROOF_OBLIGATIONS_CSV = REPO_ROOT / "results/processed/proof_obligations.csv"
+EVALUATION_METRICS_CSV = REPO_ROOT / "results/processed/evaluation_metrics.csv"
 PAPER_FIGURES = REPO_ROOT / "paper/figures"
 
 SYNTHESIS_ORDER = [
@@ -74,6 +75,7 @@ def main() -> int:
         ),
         "table05_formal_coverage.md": _render_formal_coverage_table(_read_rows(FORMAL_COVERAGE_CSV)),
         "table06_proof_obligations.md": _render_proof_obligation_table(_read_rows(PROOF_OBLIGATIONS_CSV)),
+        "table07_evaluation_metrics.md": _render_evaluation_metrics_table(_read_rows(EVALUATION_METRICS_CSV)),
     }
     for name, content in outputs.items():
         (PAPER_FIGURES / name).write_text(content, encoding="utf-8")
@@ -304,6 +306,34 @@ def _render_proof_obligation_table(rows: list[dict[str, str]]) -> str:
         )
     if not rows:
         lines.append("| No proof-obligation rows | NA | TODO | NA | Missing proof-obligations CSV |")
+    return "\n".join(lines) + "\n"
+
+
+def _render_evaluation_metrics_table(rows: list[dict[str, str]]) -> str:
+    lines = [
+        "# Table 7. Evaluation Metric Rollup",
+        "",
+        "Generated from `../../results/processed/evaluation_metrics.csv`.",
+        "",
+        "Metrics marked `TODO` require benchmark-wide firmware-running RTL, mapped FPGA,",
+        "or hardware timing data and are not estimated.",
+        "",
+        "| Metric | Status | Value | Unit | Evidence level | Notes |",
+        "| --- | --- | ---: | --- | --- | --- |",
+    ]
+    for row in rows:
+        lines.append(
+            "| {metric} | {status} | {value} | {unit} | {level} | {notes} |".format(
+                metric=_escape_cell(row.get("metric", "unknown")),
+                status=_status_cell(row.get("status", "TODO"), row.get("evidence_level", "NA")),
+                value=_escape_cell(row.get("value", "NA")),
+                unit=_escape_cell(row.get("unit", "NA")),
+                level=_escape_cell(row.get("evidence_level", "NA")),
+                notes=_escape_cell(row.get("notes", "NA")),
+            )
+        )
+    if not rows:
+        lines.append("| No evaluation metrics | TODO | TODO | NA | NA | Missing evaluation metrics CSV |")
     return "\n".join(lines) + "\n"
 
 

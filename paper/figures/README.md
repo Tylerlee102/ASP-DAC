@@ -40,6 +40,8 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/proof_obligations.csv` | Yes | Replay-sufficiency proof-obligation source. |
 | `../../docs/proof_obligation_matrix.md` | Yes | Reviewer-facing proof-obligation matrix. |
 | `table06_proof_obligations.md` | Yes | Generated Markdown source for replay-sufficiency proof obligations. |
+| `../../results/processed/evaluation_metrics.csv` | Yes | Headline evaluation metric rollup source with TODO hardware rows. |
+| `table07_evaluation_metrics.md` | Yes | Generated Markdown source for evaluation metric rollup. |
 | `../../results/processed/summary.csv` | Yes | Provenance and missing-tool status ledger. |
 
 ## Planned Assets
@@ -59,6 +61,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `table04_event_sufficiency.md` | Generated partial table today | `../../results/processed/event_sufficiency.csv`, `../../results/processed/ablations.csv`, `../../results/processed/rtl_smoke_event_sufficiency.csv` | Full benchmark-wide RTL-backed ablations. |
 | `table05_formal_coverage.md` | Generated table today | `../../results/processed/formal_coverage.csv` | End-to-end proof remains outside current bounded checks. |
 | `table06_proof_obligations.md` | Generated partial table today | `../../results/processed/proof_obligations.csv` | End-to-end mechanized theorem remains outside current bounded checks. |
+| `table07_evaluation_metrics.md` | Generated partial table today | `../../results/processed/evaluation_metrics.csv` | Benchmark-wide RTL replay, mapped FPGA resources/Fmax, runtime slowdown, and overflow counters. |
 
 ## Rendering Rules
 

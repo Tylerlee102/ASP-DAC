@@ -73,12 +73,15 @@ Current generic synthesis evidence:
   `results/processed/synthesis.csv`
 - Derived generic cell-overhead context, with mapped FPGA fields preserved as
   `NA`: `results/processed/synthesis_overhead.csv`
+- Generated metric rollup, with blocked hardware metrics preserved as `TODO`:
+  `results/processed/evaluation_metrics.csv`
 - Generated paper table source for synthesis/resource reporting:
   `paper/figures/table01_synthesis_resources.md`
 - Generated paper table sources for replay evidence, trace-size baselines,
-  event-sufficiency ablations, and bounded formal coverage:
+  event-sufficiency ablations, bounded formal coverage, proof obligations, and
+  metric rollup:
   `paper/figures/table02_replay_evidence.md` through
-  `paper/figures/table06_proof_obligations.md`
+  `paper/figures/table07_evaluation_metrics.md`
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,

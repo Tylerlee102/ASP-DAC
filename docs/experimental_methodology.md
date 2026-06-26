@@ -68,6 +68,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts and gener
 - `results/processed/formal_checks.csv`: bounded SMTBMC event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover checks.
 - `results/processed/synthesis.csv`: Yosys generic cell counts when available; honest TODO/NA fields for LUT/FF/BRAM/Fmax until a mapped FPGA flow exists.
 - `results/processed/synthesis_overhead.csv`: derived generic cell-overhead context between baseline PicoRV32 and the integrated wrapper; mapped fields remain `NA`.
+- `results/processed/evaluation_metrics.csv`: headline metric rollup from generated replay, trace-size, RTL-smoke, and synthesis artifacts, with hardware-dependent metrics left as `TODO`.
 - `results/processed/proof_obligations.csv`: conservative mapping from theorem assumptions to current generated evidence and remaining limits.
 - `paper/figures/table01_synthesis_resources.md`: generated Markdown paper table source derived from the synthesis CSVs.
-- `paper/figures/table02_replay_evidence.md` through `paper/figures/table06_proof_obligations.md`: generated Markdown paper table sources for replay evidence, trace-size baselines, event-sufficiency ablations, bounded formal coverage, and replay-sufficiency proof obligations.
+- `paper/figures/table02_replay_evidence.md` through `paper/figures/table07_evaluation_metrics.md`: generated Markdown paper table sources for replay evidence, trace-size baselines, event-sufficiency ablations, bounded formal coverage, replay-sufficiency proof obligations, and evaluation metrics.

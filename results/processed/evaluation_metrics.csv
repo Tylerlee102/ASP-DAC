@@ -1,0 +1,26 @@
+metric,status,value,unit,evidence_level,source,notes
+model_replay_success_rate,MEASURED,6/6 (100.0%),percent,model,results/processed/replay_experiments.csv,Model-level commit-index replay rows.
+firmware_sim_replay_success_rate,MEASURED,6/6 (100.0%),percent,firmware-sim,results/processed/replay_experiments.csv,RV32I firmware-sim commit-index replay rows.
+firmware_running_rtl_replay_success_rate,TODO,TODO,percent,rtl,results/processed/replay_experiments.csv,Benchmark-wide firmware-running RTL replay remains blocked by missing make/C++/RISC-V compiler support.
+replay_negative_fixture_pass_rate,MEASURED,96/96 (100.0%),percent,model,results/processed/replay_negative_tests.csv,Benchmark-derived positive and negative comparator fixtures across commit-index and cycle-index modes.
+rtl_smoke_capsule_export_pass_rate,MEASURED,12/12 (100.0%),percent,rtl-smoke,results/processed/rtl_capsule_exports.csv,Exported RTL-smoke capsules parse and pass self/negative checks; not benchmark-wide RTL replay.
+rtl_smoke_false_property_failures,MEASURED,0/6,count,rtl-smoke,results/processed/rtl_firmware_alignment.csv,Fixed RTL-smoke and firmware-sim variants both avoid property failures.
+rtl_smoke_missed_property_failures,MEASURED,0/6,count,rtl-smoke,results/processed/rtl_firmware_alignment.csv,Failing RTL-smoke and firmware-sim variants align on property IDs.
+median_firmware_sim_replaycapsule_bytes,MEASURED,94.5,bytes,firmware-sim,results/processed/trace_sizes.csv,ReplayCapsule bytes over firmware-sim failing runs.
+median_firmware_sim_full_instruction_trace_bytes,MEASURED,48,bytes,firmware-sim,results/processed/trace_sizes.csv,Full instruction-trace bytes over firmware-sim failing runs.
+median_firmware_sim_snapshot_bytes,MEASURED,132,bytes,firmware-sim,results/processed/trace_sizes.csv,Architectural snapshot bytes over firmware-sim failing runs.
+median_firmware_sim_reduction_vs_full_instruction,MEASURED,0.667,x,firmware-sim,results/processed/trace_sizes.csv,Full-instruction bytes divided by ReplayCapsule bytes; less than 1.0 means the capsule is larger for these tiny workloads.
+median_firmware_sim_reduction_vs_snapshot,MEASURED,1.414,x,firmware-sim,results/processed/trace_sizes.csv,Snapshot bytes divided by ReplayCapsule bytes.
+median_model_reduction_vs_full_commit,MEASURED,0.762,x,model,results/processed/trace_sizes.csv,Model full-commit bytes divided by model ReplayCapsule bytes using fixed record-size estimates.
+median_model_cycles_to_failure,MEASURED,7.5,cycles,model,results/raw/model_suite_traces.json,Median cycle index of EV_PROPERTY_FAIL in generated failing traces.
+median_model_commits_to_failure,MEASURED,3.5,commits,model,results/raw/model_suite_traces.json,Median commit index of EV_PROPERTY_FAIL in generated failing traces.
+median_firmware_sim_cycles_to_failure,MEASURED,7.5,cycles,firmware-sim,results/raw/firmware_sim_traces.json,Median cycle index of EV_PROPERTY_FAIL in generated failing traces.
+median_firmware_sim_commits_to_failure,MEASURED,5,commits,firmware-sim,results/raw/firmware_sim_traces.json,Median commit index of EV_PROPERTY_FAIL in generated failing traces.
+generic_yosys_cell_delta,MEASURED,1504,cells,generic-yosys,results/processed/synthesis_overhead.csv,Generic unmapped cell-count delta; not LUT/FF/BRAM/Fmax.
+generic_yosys_cell_overhead_percent,MEASURED,289.79,percent,generic-yosys,results/processed/synthesis_overhead.csv,Generic unmapped cell-count overhead; mapped FPGA overhead remains TODO.
+mapped_lut_overhead_percent,TODO,TODO,percent,mapped-fpga,results/processed/synthesis_overhead.csv,Requires mapped FPGA LUT reports.
+mapped_ff_overhead_percent,TODO,TODO,percent,mapped-fpga,results/processed/synthesis_overhead.csv,Requires mapped FPGA FF reports.
+bram_overhead,TODO,TODO,brams,mapped-fpga,results/processed/synthesis_overhead.csv,Requires mapped FPGA BRAM reports.
+fmax_loss_percent,TODO,TODO,percent,mapped-fpga,results/processed/synthesis_overhead.csv,Requires timing reports from OpenROAD or vendor FPGA flow.
+runtime_slowdown_percent,TODO,TODO,percent,rtl,results/processed/replay_experiments.csv,Requires benchmark-wide firmware-running RTL or hardware execution timing.
+buffer_overflow_rate,TODO,TODO,percent,rtl,results/processed/rtl_capsule_exports.csv,Requires benchmark-wide runtime overflow counters; bounded buffer checks exist separately.

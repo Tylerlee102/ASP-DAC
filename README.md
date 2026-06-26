@@ -66,8 +66,9 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Proof obligation matrix: `results/processed/proof_obligations.csv` and `docs/proof_obligation_matrix.md`
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
 - Generic cell-overhead context: `results/processed/synthesis_overhead.csv`
+- Evaluation metric rollup: `results/processed/evaluation_metrics.csv`
 - Paper synthesis/resource table: `paper/figures/table01_synthesis_resources.md`
-- Paper replay/baseline/ablation/formal/proof tables: `paper/figures/table02_replay_evidence.md` through `paper/figures/table06_proof_obligations.md`
+- Paper replay/baseline/ablation/formal/proof/metrics tables: `paper/figures/table02_replay_evidence.md` through `paper/figures/table07_evaluation_metrics.md`
 - Generated figures: `results/figures/` and `paper/figures/`
 
 Rows marked `model` are executable event-model evidence. Rows marked `firmware-sim` execute RV32I instruction words in the local interpreter. The current HDL rows include directed module simulations, Verilator lint, and twelve PicoRV32 wrapper smokes, but not the full six-benchmark RTL replay suite.
