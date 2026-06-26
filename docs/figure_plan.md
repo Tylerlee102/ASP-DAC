@@ -26,7 +26,7 @@ hand into captions, plots, or tables.
 | `results/figures/baseline_trace_sizes.svg` | Yes | Baseline trace-size figure | Generated from `trace_sizes.csv`. |
 | `results/figures/ablation_heatmap.svg` | Yes | Ablation heatmap | Generated from model-level ablation rows. |
 | `results/processed/ablations.csv` | Yes | Ablation heatmap | Model-level ablations are available; RTL-backed rows require firmware-running traces. |
-| `results/processed/hdl_checks.csv` | Yes | Verification status | Six directed Icarus module simulations, twelve PicoRV32 wrapper smokes, and Verilator lint-only checks pass. |
+| `results/processed/hdl_checks.csv` | Yes | Verification status | Eight directed Icarus module simulations, twelve PicoRV32 wrapper smokes, and Verilator lint-only checks pass. |
 | `results/processed/formal_checks.csv` | Yes | Verification status | Depth-12 capsule-buffer and depth-16 recorder SMTBMC BMC/cover targets pass. |
 | `results/processed/rtl_capsule_exports.csv` | Yes | RTL capsule export status | Failing and fixed RTL smoke capsules decode to JSON, self-compare, and fail missing-event negative checks through the replay comparator. |
 | `results/raw/yosys_replay_capsule_top.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the record-side top. |

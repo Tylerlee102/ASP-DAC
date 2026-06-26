@@ -58,6 +58,6 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts may be re
 - `results/processed/trace_sizes.csv`: model-level and firmware-sim baseline sizes and replay success, plus RTL-smoke capsule-byte rows where exported packets exist.
 - `results/processed/ablations.csv`: model-level event removal, buffer-size, and last-K sweeps.
 - `results/processed/event_sufficiency.csv`: per-benchmark event classes whose removal breaks replay.
-- `results/processed/hdl_checks.csv`: six directed Icarus module simulations, twelve PicoRV32 wrapper smokes, and Verilator lint-only HDL frontend checks.
+- `results/processed/hdl_checks.csv`: eight directed Icarus module simulations, twelve PicoRV32 wrapper smokes, and Verilator lint-only HDL frontend checks.
 - `results/processed/formal_checks.csv`: bounded SMTBMC recorder and capsule-buffer proof/cover checks.
 - `results/processed/synthesis.csv`: Yosys generic cell counts when available; honest TODO/NA fields for LUT/FF/BRAM/Fmax until a mapped FPGA flow exists.

@@ -73,6 +73,8 @@ REQUIRED_TB = [
     "tb/system/tb_event_classifier_slicer.sv",
     "tb/system/tb_hash_signature.sv",
     "tb/system/tb_event_tap.sv",
+    "tb/system/tb_mmio_interrupt_loggers.sv",
+    "tb/system/tb_registers.sv",
     "tb/system/tb_picorv32_wrapper_smoke.sv",
 ]
 

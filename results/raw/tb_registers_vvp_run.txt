@@ -1,0 +1,1 @@
+tb_registers.sv:120: $finish called at 76000 (1ps)

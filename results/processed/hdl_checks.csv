@@ -5,6 +5,8 @@ tb_replay_control,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_r
 tb_event_classifier_slicer,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_event_classifier_slicer_vvp_run.txt,compile and simulation passed
 tb_hash_signature,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_hash_signature_vvp_run.txt,compile and simulation passed
 tb_event_tap,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_event_tap_vvp_run.txt,compile and simulation passed
+tb_mmio_interrupt_loggers,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_mmio_interrupt_loggers_vvp_run.txt,compile and simulation passed
+tb_registers,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_registers_vvp_run.txt,compile and simulation passed
 tb_picorv32_sensor_threshold_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_sensor_threshold_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_mmio_ordering_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_mmio_ordering_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_interrupt_race_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_interrupt_race_smoke_vvp_run.txt,compile and simulation passed

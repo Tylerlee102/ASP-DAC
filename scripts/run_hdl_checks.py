@@ -99,6 +99,18 @@ IVERILOG_TESTS = (
         include_dirs=("../../rtl",),
     ),
     IverilogTest(
+        name="tb_mmio_interrupt_loggers",
+        workdir=Path("tb/system"),
+        sources=("tb_mmio_interrupt_loggers.sv", "../../rtl/mmio_logger.sv", "../../rtl/interrupt_logger.sv"),
+        include_dirs=("../../rtl",),
+    ),
+    IverilogTest(
+        name="tb_registers",
+        workdir=Path("tb/system"),
+        sources=("tb_registers.sv", "../../rtl/registers.sv"),
+        include_dirs=("../../rtl",),
+    ),
+    IverilogTest(
         name="tb_picorv32_sensor_threshold_smoke",
         workdir=Path("tb/system"),
         sources=(
