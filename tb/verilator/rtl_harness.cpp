@@ -29,6 +29,38 @@ std::string rel(const std::string& path) {
   return std::filesystem::path(path).generic_string();
 }
 
+std::string hex32(uint32_t value) {
+  std::ostringstream out;
+  out << "0x" << std::hex << std::setw(8) << std::setfill('0') << value;
+  return out.str();
+}
+
+bool wants_debug_trace(const HarnessOptions& options) {
+  return options.debug_events || options.dump_mmio || options.dump_property || options.dump_pc;
+}
+
+std::filesystem::path debug_stem(const HarnessOptions& options) {
+  std::ostringstream out;
+  out << options.benchmark << "_" << options.variant << "_seed" << options.seed;
+  return std::filesystem::path(options.debug_dir) / out.str();
+}
+
+void write_debug_lines(const HarnessOptions& options, const std::string& suffix, const std::vector<std::string>& lines) {
+  if (lines.empty()) return;
+  std::filesystem::create_directories(std::filesystem::path(options.debug_dir));
+  const std::filesystem::path path = debug_stem(options).generic_string() + "_" + suffix;
+  std::ofstream out;
+  if (options.mode == "replay") {
+    out.open(path, std::ios::app);
+  } else {
+    out.open(path);
+  }
+  out << "[" << options.mode << "]\n";
+  for (const auto& line : lines) {
+    out << line << "\n";
+  }
+}
+
 Stimulus stimulus_for(const std::string& benchmark, const std::string& variant) {
   Stimulus s;
   const bool edge = variant == "no_failure_edge";
@@ -223,6 +255,10 @@ HarnessResult run_harness(const HarnessOptions& options) {
   bool replay_ok = true;
   std::string replay_notes = "ok";
   uint32_t irq_pulse_remaining = 0;
+  uint32_t last_irq_line = 0;
+  std::vector<std::string> pc_trace;
+  std::vector<std::string> mmio_trace;
+  std::vector<std::string> property_trace;
 
   top.clk = 0;
   top.rst_n = 0;
@@ -255,6 +291,12 @@ HarnessResult run_harness(const HarnessOptions& options) {
       const uint32_t addr = top.mem_addr;
       if (top.mem_instr) {
         top.mem_rdata = read_word(memory, addr);
+        if ((options.debug_events || options.dump_pc) && pc_trace.size() < 512) {
+          std::ostringstream line;
+          line << "cycle=" << cycles << " commit=" << top.commit_count
+               << " fetch_pc=" << hex32(addr) << " instr=" << hex32(top.mem_rdata);
+          pc_trace.push_back(line.str());
+        }
       } else if (top.mem_wstrb == 0) {
         if (options.mode == "replay" && (addr == SENSOR_ADDR || addr == COMMAND_ADDR)) {
           top.mem_rdata = replay_mmio_value(record_capsule, &replay_mmio_index, addr, &replay_ok, &replay_notes);
@@ -265,12 +307,45 @@ HarnessResult run_harness(const HarnessOptions& options) {
         } else {
           top.mem_rdata = read_word(memory, addr);
         }
+        if ((options.debug_events || options.dump_mmio) && addr >= 0x40000000u) {
+          std::ostringstream line;
+          line << "cycle=" << cycles << " commit=" << top.commit_count
+               << " read addr=" << hex32(addr) << " data=" << hex32(top.mem_rdata);
+          mmio_trace.push_back(line.str());
+        }
+        if ((options.debug_events || options.dump_property) && addr >= 0x40000000u) {
+          std::ostringstream line;
+          line << "cycle=" << cycles << " property_input=mmio_read"
+               << " commit=" << top.commit_count << " addr=" << hex32(addr)
+               << " data=" << hex32(top.mem_rdata);
+          property_trace.push_back(line.str());
+        }
       } else {
         if (addr < 0x40000000u) {
           write_word(&memory, addr, top.mem_wdata, top.mem_wstrb);
         }
         if (stimulus.irq_after_command && addr == COMMAND_ADDR && (top.mem_wdata & 1u)) {
           irq_pulse_remaining = stimulus.irq_pulse_cycles;
+        }
+        if ((options.debug_events || options.dump_mmio) && addr >= 0x40000000u) {
+          std::ostringstream line;
+          line << "cycle=" << cycles << " commit=" << top.commit_count
+               << " write addr=" << hex32(addr) << " data=" << hex32(top.mem_wdata)
+               << " wstrb=" << hex32(top.mem_wstrb);
+          mmio_trace.push_back(line.str());
+        }
+        if ((options.debug_events || options.dump_property) && addr >= 0x40000000u) {
+          std::ostringstream line;
+          line << "cycle=" << cycles << " property_input=mmio_write"
+               << " commit=" << top.commit_count << " addr=" << hex32(addr)
+               << " data=" << hex32(top.mem_wdata);
+          property_trace.push_back(line.str());
+        } else if ((options.debug_events || options.dump_property) && addr < 0x40000000u) {
+          std::ostringstream line;
+          line << "cycle=" << cycles << " property_input=store"
+               << " commit=" << top.commit_count << " addr=" << hex32(addr)
+               << " data=" << hex32(top.mem_wdata);
+          property_trace.push_back(line.str());
         }
       }
     }
@@ -283,11 +358,26 @@ HarnessResult run_harness(const HarnessOptions& options) {
     } else {
       top.irq = 0;
     }
+    if ((options.debug_events || options.dump_property) && top.irq != last_irq_line) {
+      std::ostringstream line;
+      line << "cycle=" << cycles << " property_input=irq_line"
+           << " commit=" << top.commit_count << " value=" << hex32(top.irq);
+      property_trace.push_back(line.str());
+      last_irq_line = top.irq;
+    }
 
     top.eval();
     top.clk = 1;
     top.eval();
     context.timeInc(1);
+
+    if ((options.debug_events || options.dump_property) && top.property_fail_valid) {
+      std::ostringstream line;
+      line << "cycle=" << (cycles + 1) << " property_output=fail"
+           << " commit=" << top.commit_count << " property_id=" << static_cast<unsigned>(top.property_id)
+           << " signature=" << hex32(top.property_signature);
+      property_trace.push_back(line.str());
+    }
 
     if (top.property_fail_valid) {
       saw_failure = true;
@@ -295,6 +385,10 @@ HarnessResult run_harness(const HarnessOptions& options) {
       result.commits_to_failure = top.commit_count;
       break;
     }
+  }
+  if (!saw_failure) {
+    result.cycles_to_failure = cycles;
+    result.commits_to_failure = top.commit_count;
   }
 
   if (!replay_ok) {
@@ -317,6 +411,11 @@ HarnessResult run_harness(const HarnessOptions& options) {
   }
 
   result.capsule = read_capsule_from_dut(&top, options);
+  if (wants_debug_trace(options)) {
+    write_debug_lines(options, "pc_trace.txt", pc_trace);
+    write_debug_lines(options, "mmio_trace.txt", mmio_trace);
+    write_debug_lines(options, "property_trace.txt", property_trace);
+  }
   write_debug_events(options, result.capsule);
   std::string write_error;
   if (!options.capsule_path.empty() && options.mode == "record") {

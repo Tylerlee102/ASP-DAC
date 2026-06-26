@@ -104,7 +104,11 @@ jobs:
           unset VERILATOR_BIN
           unset OSS_CAD_SUITE
           hash -r
-          make full-rtl-replay
+          make full-rtl-replay DEBUG=1
+
+      - name: Compare fallback and compiler firmware sources
+        continue-on-error: true
+        run: make firmware-source-compare
 
       - name: Run full RTL negative replay
         continue-on-error: true

@@ -18,6 +18,10 @@ struct HarnessOptions {
   int seed = 1;
   uint64_t max_cycles = 100000;
   bool debug_events = false;
+  bool dump_mmio = false;
+  bool dump_property = false;
+  bool dump_pc = false;
+  bool dump_disasm_context = false;
 };
 
 struct HarnessResult {

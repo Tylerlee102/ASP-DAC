@@ -22,7 +22,7 @@ FIRMWARE_BUILD_CSV = REPO_ROOT / "results/processed/firmware_build.csv"
 FIRMWARE_COMPARISON_CSV = REPO_ROOT / "results/processed/firmware_source_comparison.csv"
 CAPSULE_DIR = REPO_ROOT / "results/raw/rtl_capsules"
 SIGNATURE_DIR = REPO_ROOT / "results/raw/rtl_signatures"
-DEBUG_DIR = REPO_ROOT / "results/debug/pass4"
+DEBUG_DIR = REPO_ROOT / "results/debug/pass7"
 LOCAL_WINLIBS_BIN = REPO_ROOT / ".tools/winlibs/mingw64/bin"
 OSS_CAD_SUITE = Path(os.environ.get("REPLAYCAPSULE_OSS_CAD_SUITE", REPO_ROOT / ".tools/oss-cad-suite/oss-cad-suite"))
 LOCAL_BUILD_ROOT = Path(os.environ.get("REPLAYCAPSULE_LOCAL_BUILD_ROOT", Path.home() / ".cache/replaycapsule-rv/verilator"))
@@ -95,12 +95,29 @@ COMPARISON_FIELDS = [
     "seed",
     "fallback_status",
     "compiler_status",
+    "fallback_property_id",
+    "compiler_property_id",
+    "fallback_cycles_to_failure",
+    "compiler_cycles_to_failure",
+    "fallback_commits_to_failure",
+    "compiler_commits_to_failure",
+    "fallback_event_count",
+    "compiler_event_count",
     "same_property",
-    "same_signature",
     "same_event_count",
     "first_divergence",
+    "likely_root_cause",
     "notes",
 ]
+
+EXPECTED_PROPERTIES = {
+    "sensor_threshold_bug": 3,
+    "interrupt_race_bug": 2,
+    "mmio_ordering_bug": 5,
+    "stack_corruption_bug": 4,
+    "uart_command_bug": 1,
+    "watchdog_timeout_bug": 6,
+}
 
 
 def main() -> int:
@@ -116,6 +133,10 @@ def main() -> int:
     parser.add_argument("--seed", type=int, help="run one seed only")
     parser.add_argument("--max-cycles", type=int, default=100000)
     parser.add_argument("--debug-events", action="store_true", help="write record/replay event debug logs")
+    parser.add_argument("--dump-mmio", action="store_true", help="write live MMIO traces for debug runs")
+    parser.add_argument("--dump-property", action="store_true", help="write property-checker input/output traces")
+    parser.add_argument("--dump-pc", action="store_true", help="write instruction fetch PC traces")
+    parser.add_argument("--dump-disasm-context", action="store_true", help="write firmware disassembly or HEX context")
     parser.add_argument("--debug-dir", default=str(DEBUG_DIR), help="directory for --debug-events outputs")
     parser.add_argument("--allow-fallback", action="store_true", help="permit non-compiler fallback HEX rows")
     args = parser.parse_args()
@@ -148,7 +169,21 @@ def main() -> int:
     for benchmark in benchmarks:
         for variant in variants[benchmark]:
             for seed in seeds:
-                rows.append(_run_case(benchmark, variant, seed, args.max_cycles, allow_fallback, args.debug_events, Path(args.debug_dir)))
+                rows.append(
+                    _run_case(
+                        benchmark,
+                        variant,
+                        seed,
+                        args.max_cycles,
+                        allow_fallback,
+                        args.debug_events,
+                        Path(args.debug_dir),
+                        args.dump_mmio,
+                        args.dump_property,
+                        args.dump_pc,
+                        args.dump_disasm_context,
+                    )
+                )
 
     _write_rows(rows)
     _write_firmware_source_comparison(rows)
@@ -268,6 +303,10 @@ def _run_case(
     allow_fallback: bool,
     debug_events: bool = False,
     debug_dir: Path = DEBUG_DIR,
+    dump_mmio: bool = False,
+    dump_property: bool = False,
+    dump_pc: bool = False,
+    dump_disasm_context: bool = False,
 ) -> dict[str, str]:
     firmware, firmware_meta, firmware_blocker = _select_firmware(benchmark, variant, allow_fallback)
     if firmware_blocker is not None or firmware is None:
@@ -278,17 +317,74 @@ def _run_case(
     record_sig = SIGNATURE_DIR / f"{base}_record.json"
     replay_sig = SIGNATURE_DIR / f"{base}_replay.json"
 
-    record = _run_sim("record", benchmark, variant, firmware, capsule, record_sig, seed, max_cycles, debug_events, debug_dir)
+    record = _run_sim(
+        "record",
+        benchmark,
+        variant,
+        firmware,
+        capsule,
+        record_sig,
+        seed,
+        max_cycles,
+        debug_events,
+        debug_dir,
+        dump_mmio,
+        dump_property,
+        dump_pc,
+        dump_disasm_context,
+    )
+    debug_requested = debug_events or dump_mmio or dump_property or dump_pc or dump_disasm_context
     if record.returncode != 0:
-        if debug_events:
+        if debug_requested:
             _write_debug_analysis(benchmark, variant, seed, debug_dir, replay_ran=False)
-        return _failed_row(benchmark, variant, seed, "FAIL", "NA", record.stdout)
+            _write_run_debug_context(
+                benchmark,
+                variant,
+                seed,
+                firmware,
+                firmware_meta,
+                record,
+                record_sig,
+                debug_dir,
+                dump_disasm_context,
+                replay=None,
+                replay_sig=None,
+            )
+        return _failed_row(benchmark, variant, seed, "FAIL", "NA", record.stdout, firmware_meta, record_sig, capsule)
 
-    replay = _run_sim("replay", benchmark, variant, firmware, capsule, replay_sig, seed, max_cycles, debug_events, debug_dir)
+    replay = _run_sim(
+        "replay",
+        benchmark,
+        variant,
+        firmware,
+        capsule,
+        replay_sig,
+        seed,
+        max_cycles,
+        debug_events,
+        debug_dir,
+        dump_mmio,
+        dump_property,
+        dump_pc,
+        dump_disasm_context,
+    )
     record_payload = _read_json(record_sig)
     replay_payload = _read_json(replay_sig)
-    if debug_events:
+    if debug_requested:
         _write_debug_analysis(benchmark, variant, seed, debug_dir, replay_ran=True)
+        _write_run_debug_context(
+            benchmark,
+            variant,
+            seed,
+            firmware,
+            firmware_meta,
+            record,
+            record_sig,
+            debug_dir,
+            dump_disasm_context,
+            replay=replay,
+            replay_sig=replay_sig,
+        )
     event_match = "PASS" if replay.returncode == 0 else "FAIL"
     final_match = "PASS" if _sig(record_payload) == _sig(replay_payload) else "FAIL"
     property_match = "PASS" if str(record_payload.get("property_id")) == str(replay_payload.get("property_id")) else "FAIL"
@@ -326,6 +422,10 @@ def _run_sim(
     max_cycles: int,
     debug_events: bool = False,
     debug_dir: Path = DEBUG_DIR,
+    dump_mmio: bool = False,
+    dump_property: bool = False,
+    dump_pc: bool = False,
+    dump_disasm_context: bool = False,
 ) -> subprocess.CompletedProcess[str]:
     command = [
         str(_sim_path()),
@@ -348,6 +448,16 @@ def _run_sim(
     ]
     if debug_events:
         command.extend(["--debug-events", "--debug-dir", _rel(debug_dir)])
+    elif dump_mmio or dump_property or dump_pc or dump_disasm_context:
+        command.extend(["--debug-dir", _rel(debug_dir)])
+    if dump_mmio:
+        command.append("--dump-mmio")
+    if dump_property:
+        command.append("--dump-property")
+    if dump_pc:
+        command.append("--dump-pc")
+    if dump_disasm_context:
+        command.append("--dump-disasm-context")
     return subprocess.run(command, cwd=REPO_ROOT, env=_tool_env(), text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
 
 
@@ -364,6 +474,147 @@ def _write_debug_analysis(benchmark: str, variant: str, seed: int, debug_dir: Pa
     _write_trace(debug_dir / f"{base}_property_trace.txt", record, replay, {10}, "property")
     _write_trace(debug_dir / f"{base}_mmio_trace.txt", record, replay, {5, 6}, "mmio")
     _write_trace(debug_dir / f"{base}_interrupt_trace.txt", record, replay, {7, 8}, "interrupt")
+
+
+def _write_run_debug_context(
+    benchmark: str,
+    variant: str,
+    seed: int,
+    firmware: Path,
+    firmware_meta: dict[str, str],
+    record: subprocess.CompletedProcess[str],
+    record_sig: Path,
+    debug_dir: Path,
+    dump_disasm_context: bool,
+    replay: subprocess.CompletedProcess[str] | None,
+    replay_sig: Path | None,
+) -> None:
+    debug_dir.mkdir(parents=True, exist_ok=True)
+    base = f"{benchmark}_{variant}_seed{seed}"
+    record_payload = _read_json(record_sig)
+    replay_payload = _read_json(replay_sig) if replay_sig is not None else {}
+    build_row = _firmware_build_row(benchmark, variant)
+    expected_property = _expected_property(benchmark, variant)
+    observed_property = record_payload.get("property_id", "NA")
+    cycles = record_payload.get("cycles_to_failure", "NA")
+    commits = record_payload.get("commits_to_failure", "NA")
+    error_code = _extract_error_code(record.stdout)
+    first_divergence = _first_divergence_note(expected_property, observed_property, record, replay, record_payload, replay_payload)
+
+    log_lines = [
+        f"benchmark={benchmark}",
+        f"variant={variant}",
+        f"seed={seed}",
+        f"firmware_hex={_rel(firmware)}",
+        f"firmware_sha256={firmware_meta.get('firmware_sha256', 'NA')}",
+        f"firmware_source={firmware_meta.get('firmware_source', 'NA')}",
+        f"compiler_backed={firmware_meta.get('compiler_backed', 'false')}",
+        f"compiler={build_row.get('compiler', 'NA')}",
+        f"compiler_version={build_row.get('compiler_version', 'NA')}",
+        "compiler_flags=-march=rv32i -mabi=ilp32 -O2 -ffreestanding -fno-builtin -nostdlib -nostartfiles -Wall -Wextra",
+        f"expected_property_id={expected_property}",
+        f"observed_property_id={observed_property}",
+        f"record_returncode={record.returncode}",
+        f"replay_returncode={replay.returncode if replay is not None else 'NA'}",
+        f"error_code={error_code}",
+        f"cycles_reached={cycles}",
+        f"commits_reached={commits}",
+        "main_returned=unknown_from_current_symbol_set",
+        "post_main_infinite_loop=inspect_pc_trace",
+        "interrupt_events=inspect_property_trace_and_interrupt_trace",
+        "mmio_accesses=inspect_mmio_trace",
+        "property_checker_io=inspect_property_trace",
+        "record_stdout=" + _clean(record.stdout).replace("\n", "\\n"),
+    ]
+    if replay is not None:
+        log_lines.append("replay_stdout=" + _clean(replay.stdout).replace("\n", "\\n"))
+    (debug_dir / f"{base}_record.log").write_text("\n".join(log_lines) + "\n", encoding="utf-8")
+
+    if record_sig.exists():
+        shutil.copy2(record_sig, debug_dir / f"{base}_signature.json")
+    (debug_dir / f"{base}_first_divergence.txt").write_text(first_divergence + "\n", encoding="utf-8")
+    if dump_disasm_context:
+        _write_disasm_context(debug_dir / f"{base}_firmware_disasm.txt", firmware, build_row)
+
+
+def _write_disasm_context(path: Path, firmware: Path, build_row: dict[str, str]) -> None:
+    elf_value = build_row.get("elf_path", "")
+    elf = REPO_ROOT / elf_value if elf_value and elf_value != "NA" else Path()
+    elf_available = bool(elf_value and elf_value != "NA" and elf.exists() and elf.is_file())
+    compiler = build_row.get("compiler", "")
+    objdump_names = []
+    if compiler and compiler != "NA" and compiler.endswith("gcc"):
+        objdump_names.append(compiler[:-3] + "objdump")
+    objdump_names.extend(["riscv64-unknown-elf-objdump", "riscv-none-elf-objdump", "riscv32-unknown-elf-objdump"])
+    objdump = next((tool for name in objdump_names if (tool := shutil.which(name))), None)
+    lines = [
+        f"firmware_hex={_rel(firmware)}",
+        f"firmware_elf={_rel(elf) if elf_available else 'NA'}",
+    ]
+    if objdump and elf_available:
+        completed = subprocess.run([objdump, "-d", str(elf)], cwd=REPO_ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+        lines.append(f"objdump={Path(objdump).name}")
+        lines.append(_clean(completed.stdout))
+    else:
+        lines.append("objdump=NA")
+        lines.append("# HEX words")
+        if firmware.exists():
+            lines.extend(firmware.read_text(encoding="utf-8", errors="replace").splitlines())
+        else:
+            lines.append("firmware HEX missing")
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _firmware_build_row(benchmark: str, variant: str) -> dict[str, str]:
+    for row in _firmware_build_rows():
+        if row.get("benchmark") == benchmark and row.get("variant") == variant:
+            return row
+    return {}
+
+
+def _expected_property(benchmark: str, variant: str) -> int:
+    if variant in {"fixed", "no_failure_edge"}:
+        return 0
+    return EXPECTED_PROPERTIES.get(benchmark, 0)
+
+
+def _extract_error_code(output: str) -> str:
+    for line in _clean(output).splitlines():
+        if line.startswith("error_code="):
+            return line.split("=", 1)[1].strip()
+    return "NA"
+
+
+def _first_divergence_note(
+    expected_property: int,
+    observed_property: object,
+    record: subprocess.CompletedProcess[str],
+    replay: subprocess.CompletedProcess[str] | None,
+    record_payload: dict[str, object],
+    replay_payload: dict[str, object],
+) -> str:
+    lines = [
+        f"expected_property_id={expected_property}",
+        f"observed_record_property_id={observed_property}",
+        f"record_returncode={record.returncode}",
+    ]
+    if record.returncode != 0:
+        lines.append(f"first_divergence=record_failed_before_replay:{_extract_error_code(record.stdout)}")
+        lines.append("likely_root_cause=firmware execution did not produce the expected property event before max_cycles")
+        return "\n".join(lines)
+    if replay is None:
+        lines.append("first_divergence=replay_not_run")
+        return "\n".join(lines)
+    lines.append(f"replay_returncode={replay.returncode}")
+    if str(record_payload.get("property_id")) != str(replay_payload.get("property_id")):
+        lines.append("first_divergence=property_id_mismatch")
+    elif str(record_payload.get("property_signature")) != str(replay_payload.get("property_signature")):
+        lines.append("first_divergence=property_signature_mismatch")
+    elif replay.returncode != 0:
+        lines.append(f"first_divergence=replay_failed:{_extract_error_code(replay.stdout)}")
+    else:
+        lines.append("first_divergence=none")
+    return "\n".join(lines)
 
 
 def _write_json(path: Path, payload: dict[str, object]) -> None:
@@ -447,7 +698,19 @@ def _blocked_row(benchmark: str, variant: str, seed: int, notes: str) -> dict[st
     }
 
 
-def _failed_row(benchmark: str, variant: str, seed: int, record_status: str, replay_status: str, notes: str) -> dict[str, str]:
+def _failed_row(
+    benchmark: str,
+    variant: str,
+    seed: int,
+    record_status: str,
+    replay_status: str,
+    notes: str,
+    firmware_meta: dict[str, str] | None = None,
+    record_sig: Path | None = None,
+    capsule: Path | None = None,
+) -> dict[str, str]:
+    firmware_meta = firmware_meta or _empty_firmware_metadata()
+    record_payload = _read_json(record_sig) if record_sig is not None else {}
     return {
         "benchmark": benchmark,
         "variant": variant,
@@ -455,17 +718,17 @@ def _failed_row(benchmark: str, variant: str, seed: int, record_status: str, rep
         "rtl_record_status": record_status,
         "capsule_export_status": "FAIL",
         "replay_status": replay_status,
-        "property_id_record": "NA",
+        "property_id_record": str(record_payload.get("property_id", "NA")),
         "property_id_replay": "NA",
         "commit_match": "NA",
         "event_match": "NA",
         "final_signature_match": "NA",
-        "capsule_bytes": "NA",
-        "cycles_to_failure": "NA",
-        "commits_to_failure": "NA",
-        "firmware_source": "NA",
-        "firmware_sha256": "NA",
-        "compiler_backed": "false",
+        "capsule_bytes": str(record_payload.get("capsule_bytes", "NA")),
+        "cycles_to_failure": str(record_payload.get("cycles_to_failure", "NA")),
+        "commits_to_failure": str(record_payload.get("commits_to_failure", "NA")),
+        "firmware_source": firmware_meta.get("firmware_source", "NA"),
+        "firmware_sha256": firmware_meta.get("firmware_sha256", "NA"),
+        "compiler_backed": firmware_meta.get("compiler_backed", "false"),
         "notes": _clean(notes).splitlines()[-1] if _clean(notes).splitlines() else "RTL run failed",
     }
 
@@ -498,6 +761,16 @@ def _write_firmware_source_comparison(rows: list[dict[str, str]]) -> None:
 
 def _comparison_row(row: dict[str, str]) -> dict[str, str]:
     status = _case_status(row)
+    compiler_property = row.get("property_id_record", "NA")
+    compiler_cycles = row.get("cycles_to_failure", "NA")
+    compiler_commits = row.get("commits_to_failure", "NA")
+    compiler_events = _event_count_from_row(row)
+    expected_property = str(_expected_property(row["benchmark"], row["variant"]))
+    first_divergence = "NA"
+    likely_root_cause = "NA"
+    if status != "PASS":
+        first_divergence = row.get("notes", "compiler-backed row did not pass")
+        likely_root_cause = _likely_root_cause(row)
     if row.get("compiler_backed") == "true":
         return {
             "benchmark": row["benchmark"],
@@ -505,10 +778,18 @@ def _comparison_row(row: dict[str, str]) -> dict[str, str]:
             "seed": row["seed"],
             "fallback_status": "NOT_RUN",
             "compiler_status": status,
-            "same_property": "NA",
-            "same_signature": "NA",
+            "fallback_property_id": expected_property if row["variant"] not in {"fixed", "no_failure_edge"} else "0",
+            "compiler_property_id": compiler_property,
+            "fallback_cycles_to_failure": "NOT_RUN",
+            "compiler_cycles_to_failure": compiler_cycles,
+            "fallback_commits_to_failure": "NOT_RUN",
+            "compiler_commits_to_failure": compiler_commits,
+            "fallback_event_count": "NOT_RUN",
+            "compiler_event_count": compiler_events,
+            "same_property": "PASS" if compiler_property == expected_property else "FAIL",
             "same_event_count": "NA",
-            "first_divergence": "NA",
+            "first_divergence": first_divergence,
+            "likely_root_cause": likely_root_cause,
             "notes": "compiler-backed firmware row; fallback comparison not run in this invocation",
         }
     return {
@@ -517,12 +798,39 @@ def _comparison_row(row: dict[str, str]) -> dict[str, str]:
         "seed": row["seed"],
         "fallback_status": status if row.get("firmware_source") == "fallback_hex" else "NA",
         "compiler_status": "BLOCKED",
+        "fallback_property_id": row.get("property_id_record", "NA"),
+        "compiler_property_id": "NA",
+        "fallback_cycles_to_failure": row.get("cycles_to_failure", "NA"),
+        "compiler_cycles_to_failure": "NA",
+        "fallback_commits_to_failure": row.get("commits_to_failure", "NA"),
+        "compiler_commits_to_failure": "NA",
+        "fallback_event_count": _event_count_from_row(row),
+        "compiler_event_count": "NA",
         "same_property": "NA",
-        "same_signature": "NA",
         "same_event_count": "NA",
         "first_divergence": "compiler-backed firmware unavailable",
+        "likely_root_cause": "compiler-backed firmware unavailable",
         "notes": "run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed",
     }
+
+
+def _event_count_from_row(row: dict[str, str]) -> str:
+    value = row.get("capsule_bytes", "NA")
+    try:
+        return str(int(value) // 21)
+    except (TypeError, ValueError):
+        return "NA"
+
+
+def _likely_root_cause(row: dict[str, str]) -> str:
+    notes = row.get("notes", "")
+    if "NO_EXPECTED_FAILURE" in notes or row.get("property_id_record") in {"0", "NA"}:
+        return "expected property did not fire during compiler-backed record run"
+    if row.get("replay_status") == "FAIL":
+        return "record/replay divergence"
+    if row.get("final_signature_match") == "FAIL":
+        return "final signature mismatch"
+    return "row did not satisfy full replay pass criteria"
 
 
 def _case_status(row: dict[str, str]) -> str:

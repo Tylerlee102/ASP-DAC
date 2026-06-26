@@ -1,3 +1,9 @@
+    .section .text.irq, "ax"
+    .option norvc
+    .globl default_irq
+default_irq:
+    .word 0x0400000b
+
     .section .text.start, "ax"
     .option norvc
     .globl _start
@@ -14,6 +20,3 @@ _start:
     call main
 3:
     j 3b
-
-default_irq:
-    j default_irq

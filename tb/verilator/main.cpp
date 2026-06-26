@@ -35,6 +35,14 @@ bool parse_args(int argc, char** argv, HarnessOptions* options) {
       options->max_cycles = std::stoull(value);
     } else if (arg == "--debug-events") {
       options->debug_events = true;
+    } else if (arg == "--dump-mmio") {
+      options->dump_mmio = true;
+    } else if (arg == "--dump-property") {
+      options->dump_property = true;
+    } else if (arg == "--dump-pc") {
+      options->dump_pc = true;
+    } else if (arg == "--dump-disasm-context") {
+      options->dump_disasm_context = true;
     } else if (arg == "--debug-dir" && require_value(&i, argc, argv, &value)) {
       options->debug_dir = value;
     } else {
@@ -53,7 +61,9 @@ void usage(const char* argv0) {
       << "  --firmware firmware/build/<benchmark>/<variant>.hex\n"
       << "  --capsule results/raw/rtl_capsules/<name>.json\n"
       << "  --signature results/raw/rtl_signatures/<name>.json\n"
-      << "  [--seed N] [--max-cycles N] [--debug-events] [--debug-dir DIR]\n";
+      << "  [--seed N] [--max-cycles N] [--debug-events]\n"
+      << "  [--dump-mmio] [--dump-property] [--dump-pc] [--dump-disasm-context]\n"
+      << "  [--debug-dir DIR]\n";
 }
 
 }  // namespace
@@ -70,7 +80,7 @@ int main(int argc, char** argv) {
             << " benchmark=" << options.benchmark
             << " variant=" << options.variant
             << " seed=" << options.seed
-            << " property=" << result.capsule.property_id
+            << " property=" << static_cast<unsigned>(result.capsule.property_id)
             << " events=" << result.capsule.events.size()
             << " cycles=" << result.cycles_to_failure
             << " commits=" << result.commits_to_failure

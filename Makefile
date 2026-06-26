@@ -1,4 +1,4 @@
-.PHONY: test reproduce check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness full-rtl-replay full-rtl-replay-one full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
+.PHONY: test reproduce check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
 
 PYTHON ?= python3
 VERILATOR ?= verilator
@@ -11,7 +11,7 @@ VARIANT ?= failing
 SEED ?= 1
 MAX_CYCLES ?= 100000
 DEBUG ?=
-DEBUG_FLAGS = $(if $(DEBUG),--debug-events,)
+DEBUG_FLAGS = $(if $(DEBUG),--debug-events --dump-mmio --dump-property --dump-pc --dump-disasm-context,)
 REQUIRE_COMPILER ?= 0
 ALLOW_FALLBACK ?= 1
 REQUIRE_COMPILER_FLAGS = $(if $(filter 1 true yes on,$(REQUIRE_COMPILER)),--require-compiler,)
@@ -41,7 +41,7 @@ VERILATOR_ABS_SOURCES = $(foreach src,$(VERILATOR_SOURCES),$(abspath $(src)))
 test:
 	$(PYTHON) scripts/run_all_tests.py
 
-reproduce: check-toolchain firmware rtl-smoke full-rtl-replay full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact
+reproduce: check-toolchain firmware rtl-smoke full-rtl-replay firmware-source-compare full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact
 
 check-toolchain:
 	$(PYTHON) scripts/check_toolchain.py --gate reproduce
@@ -77,6 +77,9 @@ full-rtl-replay: firmware
 
 full-rtl-replay-one: firmware
 	$(PYTHON) scripts/run_full_rtl_replay.py --benchmark $(BENCH) --variant $(VARIANT) --seed $(SEED) --max-cycles $(MAX_CYCLES) $(FALLBACK_FLAGS) $(DEBUG_FLAGS)
+
+firmware-source-compare:
+	$(PYTHON) scripts/compare_firmware_sources.py
 
 full-rtl-negative: firmware
 	$(PYTHON) scripts/run_full_rtl_negative.py

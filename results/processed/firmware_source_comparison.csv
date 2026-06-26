@@ -1,46 +1,13 @@
-benchmark,variant,seed,fallback_status,compiler_status,same_property,same_signature,same_event_count,first_divergence,notes
-sensor_threshold_bug,failing,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-sensor_threshold_bug,failing,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-sensor_threshold_bug,failing,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-sensor_threshold_bug,fixed,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-sensor_threshold_bug,fixed,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-sensor_threshold_bug,fixed,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-sensor_threshold_bug,no_failure_edge,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-sensor_threshold_bug,no_failure_edge,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-sensor_threshold_bug,no_failure_edge,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-interrupt_race_bug,failing,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-interrupt_race_bug,failing,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-interrupt_race_bug,failing,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-interrupt_race_bug,fixed,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-interrupt_race_bug,fixed,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-interrupt_race_bug,fixed,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-mmio_ordering_bug,failing,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-mmio_ordering_bug,failing,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-mmio_ordering_bug,failing,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-mmio_ordering_bug,fixed,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-mmio_ordering_bug,fixed,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-mmio_ordering_bug,fixed,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-stack_corruption_bug,failing,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-stack_corruption_bug,failing,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-stack_corruption_bug,failing,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-stack_corruption_bug,fixed,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-stack_corruption_bug,fixed,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-stack_corruption_bug,fixed,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,failing,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,failing,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,failing,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,fixed,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,fixed,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,fixed,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,no_failure_edge,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,no_failure_edge,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-uart_command_bug,no_failure_edge,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,failing,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,failing,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,failing,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,fixed,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,fixed,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,fixed,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,no_failure_edge,1,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,no_failure_edge,2,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
-watchdog_timeout_bug,no_failure_edge,3,PASS,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,local run used fallback HEX because no bare-metal RISC-V compiler was available
+benchmark,variant,seed,fallback_status,compiler_status,fallback_property_id,compiler_property_id,fallback_cycles_to_failure,compiler_cycles_to_failure,fallback_commits_to_failure,compiler_commits_to_failure,fallback_event_count,compiler_event_count,same_property,same_event_count,first_divergence,likely_root_cause,notes
+interrupt_race_bug,failing,1,PASS,BLOCKED,2,NA,8,NA,4,NA,9,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=interrupt_race_bug variant=failing seed=1 property=2 events=2 cycles=22 commits=4 notes=""record/replay capsule packets match"""
+interrupt_race_bug,failing,2,PASS,BLOCKED,2,NA,8,NA,4,NA,9,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=interrupt_race_bug variant=failing seed=2 property=2 events=2 cycles=22 commits=4 notes=""record/replay capsule packets match"""
+interrupt_race_bug,failing,3,PASS,BLOCKED,2,NA,8,NA,4,NA,9,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=interrupt_race_bug variant=failing seed=3 property=2 events=2 cycles=22 commits=4 notes=""record/replay capsule packets match"""
+mmio_ordering_bug,failing,1,PASS,BLOCKED,5,NA,4,NA,2,NA,5,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=mmio_ordering_bug variant=failing seed=1 property=5 events=1 cycles=14 commits=2 notes=""record/replay capsule packets match"""
+mmio_ordering_bug,failing,2,PASS,BLOCKED,5,NA,4,NA,2,NA,5,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=mmio_ordering_bug variant=failing seed=2 property=5 events=1 cycles=14 commits=2 notes=""record/replay capsule packets match"""
+mmio_ordering_bug,failing,3,PASS,BLOCKED,5,NA,4,NA,2,NA,5,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=mmio_ordering_bug variant=failing seed=3 property=5 events=1 cycles=14 commits=2 notes=""record/replay capsule packets match"""
+stack_corruption_bug,failing,1,PASS,BLOCKED,4,NA,7,NA,5,NA,8,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=stack_corruption_bug variant=failing seed=1 property=4 events=1 cycles=23 commits=5 notes=""record/replay capsule packets match"""
+stack_corruption_bug,failing,2,PASS,BLOCKED,4,NA,7,NA,5,NA,8,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=stack_corruption_bug variant=failing seed=2 property=4 events=1 cycles=23 commits=5 notes=""record/replay capsule packets match"""
+stack_corruption_bug,failing,3,PASS,BLOCKED,4,NA,7,NA,5,NA,8,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=stack_corruption_bug variant=failing seed=3 property=4 events=1 cycles=23 commits=5 notes=""record/replay capsule packets match"""
+uart_command_bug,failing,1,PASS,BLOCKED,1,NA,10,NA,5,NA,11,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=uart_command_bug variant=failing seed=1 property=1 events=3 cycles=27 commits=5 notes=""record/replay capsule packets match"""
+uart_command_bug,failing,2,PASS,BLOCKED,1,NA,10,NA,5,NA,11,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=uart_command_bug variant=failing seed=2 property=1 events=3 cycles=27 commits=5 notes=""record/replay capsule packets match"""
+uart_command_bug,failing,3,PASS,BLOCKED,1,NA,10,NA,5,NA,11,NA,FAIL,FAIL,compiler-backed RTL row unavailable,compiler-backed firmware row unavailable in input replay CSV,"PASS replay benchmark=uart_command_bug variant=failing seed=3 property=1 events=3 cycles=27 commits=5 notes=""record/replay capsule packets match"""
