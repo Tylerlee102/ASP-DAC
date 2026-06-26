@@ -31,6 +31,18 @@ class FormalTarget:
 
 FORMAL_TARGETS = (
     FormalTarget(
+        name="replay_control_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/replay_control_bmc.sby"),
+        depth=8,
+        notes="bounded replay-control consume/inject invariants over depth 8",
+    ),
+    FormalTarget(
+        name="replay_control_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/replay_control_cover.sby"),
+        depth=8,
+        notes="bounded replay-control injection and underflow covers over depth 8",
+    ),
+    FormalTarget(
         name="capsule_buffer_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/capsule_buffer_bmc.sby"),
         depth=12,

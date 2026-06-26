@@ -6,6 +6,14 @@ small nondeterministic RV32I boundary, not to prove every processor behavior.
 
 Implemented now:
 
+- `replay_control_bmc.sby` plus `replay_control_bmc_harness.sv`: depth-8 BMC
+  over replay consume/inject behavior. The harness checks disabled and
+  time-mismatched events remain idle, MMIO/external-input packets inject data,
+  interrupt enter/exit packets inject exactly one pulse, non-injectable event
+  kinds are not consumed, and replay underflow is sticky until clear.
+- `replay_control_cover.sby`: depth-8 cover run over the same replay-control
+  harness. It checks that MMIO injection, interrupt injection, and underflow are
+  reachable.
 - `capsule_buffer_bmc.sby` plus `capsule_buffer_bmc_harness.sv`: depth-12 BMC
   over a four-entry buffer. The harness checks count bounds, failure-to-freeze,
   frozen-count stability, sticky overflow, legal write-count increments, and

@@ -1,0 +1,19 @@
+[options]
+mode bmc
+depth 8
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/event_pkg.sv
+read_verilog -formal -sv -Irtl rtl/replay_control.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/replay_control_bmc_harness.sv
+prep -top replay_control_bmc_harness
+
+[files]
+rtl/event_pkg.sv rtl/event_pkg.sv
+rtl/event_defs.svh rtl/event_defs.svh
+rtl/replay_control.sv rtl/replay_control.sv
+formal/yosys_smtbmc_scripts/replay_control_bmc_harness.sv formal/yosys_smtbmc_scripts/replay_control_bmc_harness.sv
