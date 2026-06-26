@@ -8,4 +8,4 @@ RC_CAPSULE_EVENT index=5 packet=62000000050000000b000000984000000c0000feed
 RC_CAPSULE_EVENT index=6 packet=1a000000060000000d000000940000000000000000
 RC_CAPSULE_EVENT index=7 packet=62000000070000000e000000984000000c0000feed
 RC_CAPSULE_END
-tb_picorv32_wrapper_smoke.sv:206: $finish called at 3054000 (1ps)
+tb_picorv32_wrapper_smoke.sv:<line>: $finish called at 3054000 (1ps)

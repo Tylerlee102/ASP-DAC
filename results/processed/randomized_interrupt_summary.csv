@@ -1,4 +1,5 @@
-scope,family,total_cases,pass_cases,fail_cases,todo_cases,seed_count,unique_digests,min_capsule_packets,max_capsule_packets,min_irq_pulse_cycles,max_irq_pulse_cycles,min_irq_start_cycle,max_irq_end_cycle,digest_matches,property_matches,count_matches,status,evidence_level,notes
-overall,all,13,13,0,0,13,8,3,10,24,46,20,110,13/13,13/13,13/13,PASS,rtl-smoke,All seeded RTL-smoke interrupt cases from the current campaign.
-family,fixed_irq_window,7,7,0,0,7,7,3,10,24,24,20,110,7/7,7/7,7/7,PASS,rtl-smoke,Explicit interrupt assertion-window sweep over the failing interrupt-race workload.
-family,irq_after_command,6,6,0,0,6,1,3,3,26,46,NA,NA,6/6,6/6,6/6,PASS,rtl-smoke,Seeded pulse-width jitter after the command MMIO write.
+scope,family,total_cases,pass_cases,fail_cases,todo_cases,seed_count,unique_digests,min_capsule_packets,max_capsule_packets,min_irq_pulse_cycles,max_irq_pulse_cycles,min_irq_start_cycle,max_irq_end_cycle,min_mmio_wait_cycles,max_mmio_wait_cycles,digest_matches,property_matches,count_matches,status,evidence_level,notes
+overall,all,17,17,0,0,17,8,3,10,24,48,20,110,0,4,17/17,17/17,17/17,PASS,rtl-smoke,All seeded RTL-smoke interrupt cases from the current campaign.
+family,fixed_irq_window,7,7,0,0,7,7,3,10,24,24,20,110,0,0,7/7,7/7,7/7,PASS,rtl-smoke,Explicit interrupt assertion-window sweep over the failing interrupt-race workload.
+family,irq_after_command,6,6,0,0,6,1,3,3,26,46,NA,NA,0,0,6/6,6/6,6/6,PASS,rtl-smoke,Seeded pulse-width jitter after the command MMIO write.
+family,mmio_wait_latency,4,4,0,0,4,1,3,3,38,48,NA,NA,1,4,4/4,4/4,4/4,PASS,rtl-smoke,Seeded MMIO wait-state sweep over the failing interrupt-race workload.

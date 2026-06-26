@@ -1,4 +1,4 @@
-../../rtl/rv32i_integration/replaycapsule_soc.sv:80: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
-../../rtl/rv32i_integration/replaycapsule_soc.sv:126: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
-../../rtl/rv32i_integration/replaycapsule_soc.sv:80: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
-../../rtl/rv32i_integration/replaycapsule_soc.sv:126: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
+../../rtl/rv32i_integration/replaycapsule_soc.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
+../../rtl/rv32i_integration/replaycapsule_soc.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
+../../rtl/rv32i_integration/replaycapsule_soc.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
+../../rtl/rv32i_integration/replaycapsule_soc.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.

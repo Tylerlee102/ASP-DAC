@@ -1,1 +1,1 @@
-tb_event_tap.sv:123: $finish called at 12000 (1ps)
+tb_event_tap.sv:<line>: $finish called at 12000 (1ps)

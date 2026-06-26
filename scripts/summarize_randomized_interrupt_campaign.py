@@ -31,6 +31,8 @@ SUMMARY_FIELDS = [
     "max_irq_pulse_cycles",
     "min_irq_start_cycle",
     "max_irq_end_cycle",
+    "min_mmio_wait_cycles",
+    "max_mmio_wait_cycles",
     "digest_matches",
     "property_matches",
     "count_matches",
@@ -130,6 +132,8 @@ def _summary_row(
         "max_irq_pulse_cycles": _range_value(rows, "irq_pulse_cycles", max),
         "min_irq_start_cycle": _range_value(rows, "irq_start_cycle", min),
         "max_irq_end_cycle": _range_value(rows, "irq_end_cycle", max),
+        "min_mmio_wait_cycles": _range_value(rows, "mmio_wait_cycles", min),
+        "max_mmio_wait_cycles": _range_value(rows, "mmio_wait_cycles", max),
         "digest_matches": _match_count(rows, "digest_run1", "digest_run2"),
         "property_matches": _expected_property_count(rows),
         "count_matches": _match_count(rows, "capsule_count_run1", "capsule_count_run2"),
@@ -143,6 +147,7 @@ def _coverage_rows(rows: list[dict[str, str]], corruption_rows: list[dict[str, s
     passing = [row for row in rows if row.get("status") == "PASS"]
     after_command = [row for row in passing if row.get("family") == "irq_after_command"]
     fixed_window = [row for row in passing if row.get("family") == "fixed_irq_window"]
+    mmio_wait = [row for row in passing if row.get("family") == "mmio_wait_latency"]
     corruption_passing = [row for row in corruption_rows if row.get("status") == "PASS"]
     all_pass = bool(rows) and len(passing) == len(rows)
 
@@ -197,9 +202,9 @@ def _coverage_rows(rows: list[dict[str, str]], corruption_rows: list[dict[str, s
         ),
         _coverage_row(
             "mmio_latency_randomization",
-            "TODO",
-            0,
-            "Requires an RTL harness that varies MMIO response latency independently from interrupt timing.",
+            "PASS" if mmio_wait and len(_int_values(mmio_wait, "mmio_wait_cycles")) > 1 else _derived_status(rows),
+            len(mmio_wait),
+            "Seeded MMIO wait-latency cases vary wrapper MMIO response wait cycles while reproducing the same interrupt-race property.",
         ),
         _coverage_row(
             "buffer_pressure_overflow_randomization",
@@ -338,6 +343,8 @@ def _family_notes(family: str) -> str:
         return "Seeded pulse-width jitter after the command MMIO write."
     if family == "fixed_irq_window":
         return "Explicit interrupt assertion-window sweep over the failing interrupt-race workload."
+    if family == "mmio_wait_latency":
+        return "Seeded MMIO wait-state sweep over the failing interrupt-race workload."
     return "Seeded interrupt campaign family."
 
 

@@ -577,6 +577,7 @@ def _clean_log(text: str) -> str:
         r"Walltime <time> (elab=<time>, cvt=<time>, bld=<time>); cpu <time> on \1 threads; allocated <mem> MB",
         text,
     )
+    text = re.sub(r"((?:[A-Za-z0-9_./\\-]+)\.sv):\d+:", r"\1:<line>:", text)
     lines = [line.rstrip() for line in text.splitlines()]
     return "\n".join(lines) + "\n" if lines else ""
 

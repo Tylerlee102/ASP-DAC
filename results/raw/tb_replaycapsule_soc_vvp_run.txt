@@ -1,1 +1,1 @@
-tb_replaycapsule_soc.sv:127: $finish called at 246000 (1ps)
+tb_replaycapsule_soc.sv:<line>: $finish called at 246000 (1ps)

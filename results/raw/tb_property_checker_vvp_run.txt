@@ -1,1 +1,1 @@
-tb_property_checker.sv:68: $finish called at 85000 (1ps)
+tb_property_checker.sv:<line>: $finish called at 85000 (1ps)

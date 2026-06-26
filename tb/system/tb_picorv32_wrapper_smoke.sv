@@ -52,6 +52,9 @@ module tb_picorv32_wrapper_smoke;
   integer irq_pulse_remaining;
   integer dump_capsule;
   integer cycle_index;
+  integer mmio_wait_cycles;
+  integer mmio_wait_count;
+  logic mmio_wait_access;
 
   picorv32_replaycapsule_wrapper #(
     .PROGADDR_IRQ(IRQ_VECTOR_PC),
@@ -98,6 +101,7 @@ module tb_picorv32_wrapper_smoke;
     irq_after_command = 0;
     irq_pulse_cycles = 24;
     dump_capsule = 0;
+    mmio_wait_cycles = 0;
     if (!$value$plusargs("MEMFILE=%s", memfile)) begin end
     if (!$value$plusargs("EXPECTED_PROPERTY=%d", expected_property)) begin end
     if (!$value$plusargs("SENSOR_VALUE=%d", sensor_value)) begin end
@@ -108,6 +112,7 @@ module tb_picorv32_wrapper_smoke;
     if (!$value$plusargs("IRQ_AFTER_COMMAND=%d", irq_after_command)) begin end
     if (!$value$plusargs("IRQ_PULSE_CYCLES=%d", irq_pulse_cycles)) begin end
     if (!$value$plusargs("DUMP_CAPSULE=%d", dump_capsule)) begin end
+    if (!$value$plusargs("MMIO_WAIT_CYCLES=%d", mmio_wait_cycles)) begin end
     $readmemh(memfile, imem);
   end
 
@@ -131,8 +136,20 @@ module tb_picorv32_wrapper_smoke;
     end
   endtask
 
+  assign mmio_wait_access = mem_valid && !mem_instr && (mem_addr == SENSOR_ADDR || mem_addr == COMMAND_ADDR);
+
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      mmio_wait_count <= 0;
+    end else if (!mem_valid || mem_ready) begin
+      mmio_wait_count <= 0;
+    end else if (mmio_wait_access && mmio_wait_count < mmio_wait_cycles) begin
+      mmio_wait_count <= mmio_wait_count + 1;
+    end
+  end
+
   always_comb begin
-    mem_ready = mem_valid;
+    mem_ready = mem_valid && (!mmio_wait_access || mmio_wait_count >= mmio_wait_cycles);
     mem_rdata = 32'h0000_0013;
     if (mem_valid && mem_instr) begin
       mem_rdata = imem[(mem_addr - RESET_PC) >> 2];

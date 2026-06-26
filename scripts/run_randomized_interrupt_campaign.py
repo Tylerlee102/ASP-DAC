@@ -37,6 +37,7 @@ FIXED_WINDOW_CASES = (
     (2129, 70, 100),
     (2131, 80, 110),
 )
+MMIO_WAIT_SEEDS = (3101, 3109, 3119, 3121)
 BEGIN_RE = re.compile(
     r"RC_CAPSULE_BEGIN\s+count=(?P<count>\d+)\s+property=(?P<property>\d+)\s+"
     r"signature=(?P<signature>[0-9a-fA-F]+)\s+frozen=(?P<frozen>[01])\s+overflow=(?P<overflow>[01])"
@@ -52,6 +53,7 @@ class CampaignCase:
     irq_pulse_cycles: int
     irq_start_cycle: int
     irq_end_cycle: int
+    mmio_wait_cycles: int
 
 
 def main() -> int:
@@ -103,6 +105,7 @@ def main() -> int:
                 "irq_pulse_cycles": str(case.irq_pulse_cycles),
                 "irq_start_cycle": _optional_int(case.irq_start_cycle),
                 "irq_end_cycle": _optional_int(case.irq_end_cycle),
+                "mmio_wait_cycles": str(case.mmio_wait_cycles),
                 "expected_property": "2",
                 "property_run1": first.get("property", "NA"),
                 "property_run2": second.get("property", "NA"),
@@ -133,6 +136,7 @@ def _campaign_cases() -> tuple[CampaignCase, ...]:
                 irq_pulse_cycles=rng.randint(18, 48),
                 irq_start_cycle=-1,
                 irq_end_cycle=-1,
+                mmio_wait_cycles=0,
             )
         )
     for seed, start, end in FIXED_WINDOW_CASES:
@@ -144,6 +148,20 @@ def _campaign_cases() -> tuple[CampaignCase, ...]:
                 irq_pulse_cycles=24,
                 irq_start_cycle=start,
                 irq_end_cycle=end,
+                mmio_wait_cycles=0,
+            )
+        )
+    for index, seed in enumerate(MMIO_WAIT_SEEDS, start=1):
+        rng = random.Random(seed)
+        cases.append(
+            CampaignCase(
+                seed=seed,
+                family="mmio_wait_latency",
+                irq_after_command=1,
+                irq_pulse_cycles=rng.randint(18, 48),
+                irq_start_cycle=-1,
+                irq_end_cycle=-1,
+                mmio_wait_cycles=index,
             )
         )
     return tuple(cases)
@@ -167,6 +185,7 @@ def _run_seed(
         "+MAX_CYCLES=900",
         f"+IRQ_AFTER_COMMAND={case.irq_after_command}",
         f"+IRQ_PULSE_CYCLES={case.irq_pulse_cycles}",
+        f"+MMIO_WAIT_CYCLES={case.mmio_wait_cycles}",
         "+DUMP_CAPSULE=1",
     ]
     if case.irq_start_cycle >= 0:
@@ -260,6 +279,7 @@ def _todo_row(case: CampaignCase, notes: str) -> dict[str, str]:
         "irq_pulse_cycles": str(case.irq_pulse_cycles),
         "irq_start_cycle": _optional_int(case.irq_start_cycle),
         "irq_end_cycle": _optional_int(case.irq_end_cycle),
+        "mmio_wait_cycles": str(case.mmio_wait_cycles),
         "expected_property": "2",
         "property_run1": "NA",
         "property_run2": "NA",
@@ -294,6 +314,7 @@ def _write_rows(rows: list[dict[str, str]]) -> None:
                 "irq_pulse_cycles",
                 "irq_start_cycle",
                 "irq_end_cycle",
+                "mmio_wait_cycles",
                 "expected_property",
                 "property_run1",
                 "property_run2",

@@ -1,1 +1,1 @@
-../../rtl/registers.sv:36: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
+../../rtl/registers.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
