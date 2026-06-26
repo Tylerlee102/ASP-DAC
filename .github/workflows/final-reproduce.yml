@@ -92,17 +92,6 @@ jobs:
         continue-on-error: true
         run: make artifact
 
-      - name: Upload generated evidence
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: replaycapsule-rv-final-evidence
-          if-no-files-found: warn
-          path: |
-            results/
-            paper/main.pdf
-            dist/replaycapsule-rv-artifact.zip
-
       - name: Evaluate final CI gates
         if: always()
         run: |
@@ -157,6 +146,16 @@ jobs:
           if not artifact.exists():
               failures.append("artifact zip missing")
 
+          Path("results/processed").mkdir(parents=True, exist_ok=True)
+          with open("results/processed/final_ci_gate_status.csv", "w", newline="", encoding="utf-8") as handle:
+              writer = csv.DictWriter(handle, fieldnames=["status", "blocker"])
+              writer.writeheader()
+              if failures:
+                  for failure in failures:
+                      writer.writerow({"status": "BLOCKED", "blocker": failure})
+              else:
+                  writer.writerow({"status": "PASS", "blocker": "none"})
+
           if failures:
               print("FINAL CI STATUS: NOT READY")
               for failure in failures:
@@ -165,3 +164,14 @@ jobs:
 
           print("FINAL CI STATUS: WORKSHOP-READY SOURCE EVIDENCE")
           PY
+
+      - name: Upload generated evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: replaycapsule-rv-final-evidence
+          if-no-files-found: warn
+          path: |
+            results/
+            paper/main.pdf
+            dist/replaycapsule-rv-artifact.zip
