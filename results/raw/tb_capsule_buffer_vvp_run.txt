@@ -1,1 +1,2 @@
-tb_capsule_buffer.sv:76: $finish called at 86000 (1ps)
+RC_BUFFER_OVERFLOW_CHECK first_overflow=1 sticky_overflow=1 count=4
+tb_capsule_buffer.sv:103: $finish called at 166000 (1ps)

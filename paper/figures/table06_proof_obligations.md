@@ -15,5 +15,5 @@ mechanized end-to-end replay proof.
 | PO-06 | A7 MMIO read/write contract | PASS_LOCAL | model+formal-bmc+rtl-smoke | Current checks cover local logger/control contracts and benchmark fixtures, not a complete bus-protocol proof. |
 | PO-07 | A8 external memory mutation contract | ASSUMPTION_ONLY | documentation | The current six workloads do not include DMA or external RAM mutation RTL tests; the contract is specified but not exercised. |
 | PO-08 | A9 deterministic safety property checker | PASS_LOCAL | formal-bmc+rtl-smoke+firmware-sim | Checks cover local property/signature RTL contracts and smoke alignment, not every future safety property. |
-| PO-09 | A10 finite prefix sufficiency | PASS_LOCAL | model+formal-bmc+rtl-smoke | Prefix behavior is checked for model/firmware-sim workloads and bounded recorder contracts, not a full processor/replay theorem. |
+| PO-09 | A10 finite prefix sufficiency | PASS_LOCAL | model+formal-bmc+rtl-smoke | Prefix behavior is checked for model/firmware-sim workloads, bounded recorder contracts, and local overflow contracts, not a full processor/replay theorem. |
 | PO-10 | A11 recorder noninterference separate from sufficiency theorem | ASSUMPTION_ONLY | documentation | No perturbation or runtime-overhead proof exists yet; mapped and benchmark-wide hardware results are pending. |

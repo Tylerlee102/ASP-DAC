@@ -20,6 +20,7 @@ syntax:scripts/summarize_evaluation_metrics.py,PASS,
 syntax:scripts/summarize_artifact_manifest.py,PASS,
 syntax:scripts/summarize_benchmark_coverage.py,PASS,
 syntax:scripts/summarize_proof_obligations.py,PASS,
+syntax:scripts/summarize_overflow_contracts.py,PASS,
 syntax:scripts/summarize_rtl_capsule_classes.py,PASS,
 syntax:scripts/summarize_formal_coverage.py,PASS,
 syntax:scripts/summarize_synthesis_overhead.py,PASS,
@@ -42,6 +43,7 @@ randomized_interrupt_campaign,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New p
 randomized_interrupt_summary,PASS,"WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_summary.csv, C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_coverage.csv, and C:\Users\tyboy\OneDrive\Documents\New project\results\processed\randomized_interrupt_corruption.csv"
 bounded_formal_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_checks.csv
 formal_coverage_matrix,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_coverage.csv and C:\Users\tyboy\OneDrive\Documents\New project\docs\formal_coverage_matrix.md
+overflow_contracts,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\overflow_contracts.csv
 replay_driver_demo_cycle,PASS,matched checkpoint: 0
 replay_driver_demo_commit,PASS,matched checkpoint: 0
 model_suite,PASS,WROTE results\raw\model_suite_traces.json
@@ -69,4 +71,4 @@ tool:make,TODO,external tool not found locally
 tool:cxx,TODO,"none found from: c++, g++, clang++, cl"
 tool:riscv64-unknown-elf-gcc,TODO,external tool not found locally
 toolchain_status,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\toolchain_status.csv
-artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=169 missing=0
+artifact_manifest,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\artifact_manifest.csv; present=170 missing=0

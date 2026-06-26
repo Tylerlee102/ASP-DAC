@@ -22,6 +22,7 @@ or hardware timing data and are not estimated.
 | rtl_smoke_missed_property_failures | MEASURED (rtl-smoke) | 0/6 | count | rtl-smoke | Failing RTL-smoke and firmware-sim variants align on property IDs. |
 | seeded_rtl_smoke_interrupt_reproducibility_rate | MEASURED (rtl-smoke) | 13/13 (100.0%) | percent | rtl-smoke | Seeded interrupt-race RTL-smoke cases rerun in fresh simulator invocations and compare frozen capsule digests. |
 | seeded_randomized_interrupt_coverage_item_pass_rate | MEASURED (rtl-smoke) | 8/12 (66.7%) | percent | rtl-smoke | Generated checklist over current seeded interrupt coverage, seed-specific corruption rejection, and stronger randomized RTL cases still marked TODO. |
+| bounded_buffer_overflow_contract_pass_rate | MEASURED (rtl-smoke+formal-bmc) | 4/4 (100.0%) | percent | rtl-smoke+formal-bmc | Local overflow contract evidence from directed capsule-buffer simulation, bounded formal checks, and PicoRV32 wrapper smoke no-overflow sanity; benchmark-wide runtime overflow rate remains TODO. |
 | median_firmware_sim_replaycapsule_bytes | MEASURED (firmware-sim) | 94.5 | bytes | firmware-sim | ReplayCapsule bytes over firmware-sim failing runs. |
 | median_firmware_sim_full_instruction_trace_bytes | MEASURED (firmware-sim) | 48 | bytes | firmware-sim | Full instruction-trace bytes over firmware-sim failing runs. |
 | median_firmware_sim_snapshot_bytes | MEASURED (firmware-sim) | 132 | bytes | firmware-sim | Architectural snapshot bytes over firmware-sim failing runs. |

@@ -20,6 +20,7 @@ RANDOMIZED_IRQ_CORRUPTION_CSV = REPO_ROOT / "results/processed/randomized_interr
 EVENT_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/event_sufficiency.csv"
 RTL_SMOKE_SUFFICIENCY_CSV = REPO_ROOT / "results/processed/rtl_smoke_event_sufficiency.csv"
 FORMAL_COVERAGE_CSV = REPO_ROOT / "results/processed/formal_coverage.csv"
+OVERFLOW_CONTRACTS_CSV = REPO_ROOT / "results/processed/overflow_contracts.csv"
 OUT_CSV = REPO_ROOT / "results/processed/proof_obligations.csv"
 OUT_DOC = REPO_ROOT / "docs/proof_obligation_matrix.md"
 
@@ -70,6 +71,7 @@ class EvidenceData:
         self.event_sufficiency = _read_rows(EVENT_SUFFICIENCY_CSV)
         self.rtl_smoke_sufficiency = _read_rows(RTL_SMOKE_SUFFICIENCY_CSV)
         self.formal_coverage = _read_rows(FORMAL_COVERAGE_CSV)
+        self.overflow_contracts = _read_rows(OVERFLOW_CONTRACTS_CSV)
 
     @classmethod
     def load(cls) -> "EvidenceData":
@@ -80,6 +82,10 @@ class EvidenceData:
 
     def all_status(self, rows: list[dict[str, str]], status: str = "PASS") -> bool:
         return bool(rows) and all(row.get("status") == status for row in rows)
+
+    def measured_status(self, rows: list[dict[str, str]], status: str = "PASS") -> bool:
+        measured = [row for row in rows if row.get("status") != "TODO"]
+        return bool(measured) and all(row.get("status") == status for row in measured)
 
     def replay_passes(self, evidence_level: str) -> int:
         return sum(1 for row in self.replay if row.get("status") == "PASS" and row.get("evidence_level") == evidence_level)
@@ -105,6 +111,7 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
     rtl_exports_pass = data.all_status(data.rtl_exports)
     rtl_alignment_pass = data.all_status(data.rtl_alignment)
     randomized_irq_pass = data.all_status(data.randomized_irq) and data.all_status(data.randomized_irq_corruption)
+    overflow_contracts_pass = data.measured_status(data.overflow_contracts)
     event_sufficiency_rows = len(data.event_sufficiency)
     rtl_smoke_sufficiency_rows = len(data.rtl_smoke_sufficiency)
     checked_modes = ("commit-index", "cycle-index")
@@ -204,10 +211,10 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
             "PO-09",
             "A10 finite prefix sufficiency",
             "Capsules and replay comparisons target the finite prefix through the selected property failure.",
-            "PASS_LOCAL" if replay_model == 6 and data.formal_family_passes("capsule_buffer", "replay_capsule_top") else "TODO",
+            "PASS_LOCAL" if replay_model == 6 and data.formal_family_passes("capsule_buffer", "replay_capsule_top") and overflow_contracts_pass else "TODO",
             "model+formal-bmc+rtl-smoke",
-            "results/processed/replay_experiments.csv; results/processed/formal_coverage.csv; results/processed/rtl_capsule_exports.csv",
-            "Prefix behavior is checked for model/firmware-sim workloads and bounded recorder contracts, not a full processor/replay theorem.",
+            "results/processed/replay_experiments.csv; results/processed/formal_coverage.csv; results/processed/overflow_contracts.csv; results/processed/rtl_capsule_exports.csv",
+            "Prefix behavior is checked for model/firmware-sim workloads, bounded recorder contracts, and local overflow contracts, not a full processor/replay theorem.",
         ),
         Obligation(
             "PO-10",

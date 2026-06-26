@@ -33,6 +33,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/benchmark_coverage.csv` | Yes | Per-benchmark local evidence coverage source. |
 | `../../results/processed/formal_checks.csv` | Yes | Bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, capsule-buffer, and recorder formal status source. |
 | `../../results/processed/formal_coverage.csv` | Yes | Reviewer-facing mapping from formal BMC/cover targets to RTL contract families and explicit limits. |
+| `../../results/processed/overflow_contracts.csv` | Yes | Bounded overflow contract evidence source. |
 | `../../results/raw/yosys_picorv32.txt` | Yes | Yosys generic synthesis report for the baseline PicoRV32 core. |
 | `../../results/raw/yosys_replay_capsule_top.txt` | Yes | Yosys generic synthesis report for the record-side top. |
 | `../../results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Yosys generic synthesis report for the integrated wrapper. |

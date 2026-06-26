@@ -69,6 +69,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts and gener
 - `results/processed/picorv32_smoke_summary.csv` and `results/processed/picorv32_smoke_coverage.csv`: log-level wrapper smoke checks for property IDs, capsule counts, freeze state, overflow state, failing-image capsules, fixed-image no-failure capsules, and no-failure edge capsules.
 - `results/processed/benchmark_coverage.csv`: six-benchmark local coverage ledger joining model replay, firmware-sim replay, wrapper smokes, RTL-smoke exports, alignment, and sufficiency rows while preserving full firmware-running RTL replay as TODO.
 - `results/processed/formal_checks.csv`: bounded SMTBMC event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover checks.
+- `results/processed/overflow_contracts.csv`: directed and bounded-formal overflow contract evidence plus an explicit TODO row for benchmark-wide runtime overflow rate.
 - `results/processed/synthesis.csv`: Yosys generic cell counts when available; honest TODO/NA fields for LUT/FF/BRAM/Fmax until a mapped FPGA flow exists.
 - `results/processed/synthesis_overhead.csv`: derived generic cell-overhead context between baseline PicoRV32 and the integrated wrapper; mapped fields remain `NA`.
 - `results/processed/evaluation_metrics.csv`: headline metric rollup from generated replay, trace-size, RTL-smoke, and synthesis artifacts, with hardware-dependent metrics left as `TODO`.

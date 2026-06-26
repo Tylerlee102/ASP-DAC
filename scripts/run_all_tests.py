@@ -98,6 +98,7 @@ PYTHON_FILES = [
     "scripts/summarize_artifact_manifest.py",
     "scripts/summarize_benchmark_coverage.py",
     "scripts/summarize_proof_obligations.py",
+    "scripts/summarize_overflow_contracts.py",
     "scripts/summarize_rtl_capsule_classes.py",
     "scripts/summarize_formal_coverage.py",
     "scripts/summarize_synthesis_overhead.py",
@@ -191,6 +192,12 @@ def main() -> int:
         failures,
         "formal_coverage_matrix",
         [sys.executable, "scripts/summarize_formal_coverage.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "overflow_contracts",
+        [sys.executable, "scripts/summarize_overflow_contracts.py"],
     )
     _run_subprocess(
         rows,

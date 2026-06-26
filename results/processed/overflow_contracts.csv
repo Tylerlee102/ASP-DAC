@@ -1,0 +1,6 @@
+contract,status,evidence_level,covered_cases,source,notes
+directed_capsule_buffer_first_overflow,PASS,rtl-smoke,1,results/processed/hdl_checks.csv; results/raw/tb_capsule_buffer_vvp_run.txt,"Depth-4 directed buffer simulation fills to capacity, checks first overflow, preserves count, and observes sticky overflow after freeze."
+formal_capsule_buffer_overflow_invariants,PASS,formal-bmc,1,results/processed/formal_coverage.csv,"Bounded capsule-buffer checks include count bounds, sticky overflow, and first-overflow behavior."
+formal_recorder_overflow_reachability,PASS,formal-bmc,1,results/processed/formal_coverage.csv,Bounded top-level recorder cover checks include overflow reachability.
+picorv32_wrapper_smoke_no_overflow_sanity,PASS,rtl-smoke,15,results/processed/picorv32_smoke_summary.csv,"Current PicoRV32 wrapper smoke capsules report no overflow; this is a smoke sanity check, not a benchmark-wide overflow-rate measurement."
+benchmark_runtime_overflow_rate,TODO,rtl,0,results/processed/overflow_contracts.csv,Requires benchmark-wide firmware-running RTL counters or traces under realistic buffer configurations.

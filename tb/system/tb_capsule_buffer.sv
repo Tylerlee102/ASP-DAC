@@ -57,6 +57,30 @@ module tb_capsule_buffer;
     if (write_count != 3'd1) begin
       $fatal(1, "capsule buffer did not accept first packet");
     end
+    if (overflow) begin
+      $fatal(1, "capsule buffer overflowed before reaching capacity");
+    end
+
+    push_packet(32'd1);
+    push_packet(32'd2);
+    push_packet(32'd3);
+    #1;
+    if (write_count != 3'd4) begin
+      $fatal(1, "capsule buffer did not fill to depth");
+    end
+    if (overflow) begin
+      $fatal(1, "capsule buffer overflowed while accepting the last in-depth packet");
+    end
+
+    push_packet(32'd4);
+    #1;
+    if (!overflow) begin
+      $fatal(1, "capsule buffer did not report first overflow");
+    end
+    if (write_count != 3'd4) begin
+      $fatal(1, "capsule buffer changed count after overflow");
+    end
+    $display("RC_BUFFER_OVERFLOW_CHECK first_overflow=1 sticky_overflow=%0b count=%0d", overflow, write_count);
 
     @(posedge clk);
     fail_freeze <= 1'b1;
@@ -67,10 +91,13 @@ module tb_capsule_buffer;
       $fatal(1, "capsule buffer did not freeze");
     end
 
-    push_packet(32'd1);
+    push_packet(32'd5);
     #1;
-    if (write_count != 3'd1) begin
+    if (write_count != 3'd4) begin
       $fatal(1, "frozen capsule buffer accepted a later packet");
+    end
+    if (!overflow) begin
+      $fatal(1, "capsule buffer overflow flag was not sticky after freeze");
     end
 
     $finish;

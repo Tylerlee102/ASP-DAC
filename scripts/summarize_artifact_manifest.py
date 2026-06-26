@@ -55,6 +55,7 @@ ARTIFACTS = (
     ArtifactSpec("results/processed/benchmark_coverage.csv", "scripts/summarize_benchmark_coverage.py", "per-benchmark local evidence coverage ledger"),
     ArtifactSpec("results/processed/formal_checks.csv", "scripts/run_formal_checks.py", "bounded formal check rows"),
     ArtifactSpec("results/processed/formal_coverage.csv", "scripts/summarize_formal_coverage.py", "formal coverage matrix source"),
+    ArtifactSpec("results/processed/overflow_contracts.csv", "scripts/summarize_overflow_contracts.py", "bounded overflow contract evidence"),
     ArtifactSpec("results/processed/proof_obligations.csv", "scripts/summarize_proof_obligations.py", "proof-obligation source"),
     ArtifactSpec("results/processed/synthesis.csv", "scripts/parse_synthesis_reports.py", "generic synthesis status"),
     ArtifactSpec("results/processed/synthesis_overhead.csv", "scripts/summarize_synthesis_overhead.py", "generic synthesis overhead context"),

@@ -21,6 +21,7 @@ RTL_EXPORTS_CSV = REPO_ROOT / "results/processed/rtl_capsule_exports.csv"
 RTL_ALIGNMENT_CSV = REPO_ROOT / "results/processed/rtl_firmware_alignment.csv"
 RANDOMIZED_IRQ_CSV = REPO_ROOT / "results/processed/randomized_interrupt_campaign.csv"
 RANDOMIZED_IRQ_COVERAGE_CSV = REPO_ROOT / "results/processed/randomized_interrupt_coverage.csv"
+OVERFLOW_CONTRACTS_CSV = REPO_ROOT / "results/processed/overflow_contracts.csv"
 SYNTH_OVERHEAD_CSV = REPO_ROOT / "results/processed/synthesis_overhead.csv"
 MODEL_TRACE_JSON = REPO_ROOT / "results/raw/model_suite_traces.json"
 FIRMWARE_TRACE_JSON = REPO_ROOT / "results/raw/firmware_sim_traces.json"
@@ -40,6 +41,7 @@ def main() -> int:
     rows.extend(_benchmark_coverage_metrics(_read_rows(BENCHMARK_COVERAGE_CSV)))
     rows.extend(_rtl_smoke_metrics(_read_rows(RTL_EXPORTS_CSV), _read_rows(RTL_ALIGNMENT_CSV)))
     rows.extend(_randomized_interrupt_metrics(_read_rows(RANDOMIZED_IRQ_CSV), _read_rows(RANDOMIZED_IRQ_COVERAGE_CSV)))
+    rows.extend(_overflow_contract_metrics(_read_rows(OVERFLOW_CONTRACTS_CSV)))
     rows.extend(_trace_size_metrics(trace_rows))
     rows.extend(_failure_prefix_metrics(MODEL_TRACE_JSON, "model"))
     rows.extend(_failure_prefix_metrics(FIRMWARE_TRACE_JSON, "firmware-sim"))
@@ -235,6 +237,32 @@ def _randomized_interrupt_metrics(
             "results/processed/randomized_interrupt_coverage.csv",
             "Generated checklist over current seeded interrupt coverage, seed-specific corruption rejection, and stronger randomized RTL cases still marked TODO.",
         ),
+    ]
+
+
+def _overflow_contract_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    measured = [row for row in rows if row.get("status") != "TODO"]
+    if not measured:
+        return [
+            _todo_row(
+                "bounded_buffer_overflow_contract_pass_rate",
+                "percent",
+                "rtl-smoke+formal-bmc",
+                "results/processed/overflow_contracts.csv",
+                "No bounded overflow contract rows available.",
+            )
+        ]
+    passes = sum(1 for row in measured if row.get("status") == "PASS")
+    return [
+        _metric_row(
+            "bounded_buffer_overflow_contract_pass_rate",
+            "MEASURED",
+            f"{passes}/{len(measured)} ({100.0 * passes / len(measured):.1f}%)",
+            "percent",
+            "rtl-smoke+formal-bmc",
+            "results/processed/overflow_contracts.csv",
+            "Local overflow contract evidence from directed capsule-buffer simulation, bounded formal checks, and PicoRV32 wrapper smoke no-overflow sanity; benchmark-wide runtime overflow rate remains TODO.",
+        )
     ]
 
 
