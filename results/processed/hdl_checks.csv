@@ -22,4 +22,5 @@ tb_picorv32_uart_command_fixed_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:v
 tb_picorv32_watchdog_timeout_fixed_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_watchdog_timeout_fixed_smoke_vvp_run.txt,compile and simulation passed
 verilator_lint_replay_capsule_top,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replay_capsule_top.txt,lint-only frontend check passed
 verilator_lint_picorv32_wrapper,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_picorv32_wrapper.txt,lint-only frontend check passed
+verilator_lint_replaycapsule_soc,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replaycapsule_soc.txt,lint-only frontend check passed
 verilator_lint_replay_capsule_properties,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replay_capsule_properties.txt,lint-only frontend check passed
