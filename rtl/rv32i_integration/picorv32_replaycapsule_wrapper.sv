@@ -65,9 +65,9 @@ module picorv32_replaycapsule_wrapper #(
 
   assign trace_kind = core_trace_data[35:32];
   assign trace_pc = core_trace_data[31:0];
-  assign branch_taken = core_trace_valid && trace_kind == 4'b0001;
+  assign branch_taken = core_trace_valid && trace_kind[0];
   assign jump_taken = 1'b0;
-  assign interrupt_enter = core_trace_valid && trace_kind == 4'b1000;
+  assign interrupt_enter = core_trace_valid && trace_kind[3];
   assign interrupt_exit = core_eoi != 32'h0;
   assign mem_accepted = core_mem_valid && mem_ready && !core_mem_instr;
 

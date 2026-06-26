@@ -34,6 +34,9 @@ module tb_picorv32_wrapper_smoke;
   integer sensor_value;
   integer command_value;
   integer max_cycles;
+  integer irq_start_cycle;
+  integer irq_end_cycle;
+  integer cycle_index;
 
   picorv32_replaycapsule_wrapper u_wrapper (
     .clk(clk),
@@ -72,11 +75,15 @@ module tb_picorv32_wrapper_smoke;
     sensor_value = 850;
     command_value = 0;
     max_cycles = 500;
+    irq_start_cycle = -1;
+    irq_end_cycle = -1;
     if (!$value$plusargs("MEMFILE=%s", memfile)) begin end
     if (!$value$plusargs("EXPECTED_PROPERTY=%d", expected_property)) begin end
     if (!$value$plusargs("SENSOR_VALUE=%d", sensor_value)) begin end
     if (!$value$plusargs("COMMAND_VALUE=%d", command_value)) begin end
     if (!$value$plusargs("MAX_CYCLES=%d", max_cycles)) begin end
+    if (!$value$plusargs("IRQ_START_CYCLE=%d", irq_start_cycle)) begin end
+    if (!$value$plusargs("IRQ_END_CYCLE=%d", irq_end_cycle)) begin end
     $readmemh(memfile, imem);
   end
 
@@ -97,12 +104,19 @@ module tb_picorv32_wrapper_smoke;
     clear = 1'b0;
     irq = 32'h0;
     capsule_read_addr = 8'h0;
+    cycle_index = 0;
 
     repeat (5) @(posedge clk);
     rst_n = 1'b1;
 
     repeat (max_cycles) begin
       @(posedge clk);
+      cycle_index = cycle_index + 1;
+      if (irq_start_cycle >= 0 && cycle_index >= irq_start_cycle && cycle_index < irq_end_cycle) begin
+        irq = 32'h1;
+      end else begin
+        irq = 32'h0;
+      end
       if (property_fail_valid) begin
         if (property_id != expected_property[7:0]) begin
           $fatal(1, "expected property id %0d, got id %0d", expected_property, property_id);

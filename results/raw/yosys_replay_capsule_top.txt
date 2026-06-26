@@ -2351,6 +2351,6 @@ Optimizing module event_tap.
         1   property_checker
 
 Warnings: 1 unique messages, 2 total
-End of script. Logfile hash: ce54c669df, time: 3.46s, user: 3.46s, system: 0.00s
+End of script. Logfile hash: ce54c669df, time: 2.77s, user: 2.77s, system: 0.00s
 Yosys 0.66 (git sha1 86f2ddebc, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.66]
-Time spent: 26% 1x proc_dff (0 sec), 19% 1x proc_mux (0 sec), ...
+Time spent: 24% 1x proc_mux (0 sec), 19% 1x proc_arst (0 sec), ...
