@@ -31,6 +31,10 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source with generic cells measured and mapped resource/timing fields TODO/NA. |
 | `../../results/processed/synthesis_overhead.csv` | Yes | Derived generic cell-overhead context with mapped fields kept as NA. |
 | `table01_synthesis_resources.md` | Yes | Generated Markdown source for the synthesis/resource table. |
+| `table02_replay_evidence.md` | Yes | Generated Markdown source for replay evidence status. |
+| `table03_trace_baselines.md` | Yes | Generated Markdown source for trace-size baselines. |
+| `table04_event_sufficiency.md` | Yes | Generated Markdown source for event-sufficiency ablations. |
+| `table05_formal_coverage.md` | Yes | Generated Markdown source for bounded formal coverage. |
 | `../../results/processed/summary.csv` | Yes | Provenance and missing-tool status ledger. |
 
 ## Planned Assets
@@ -45,6 +49,10 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `fig06_rtl_capsule_event_classes.svg` / `.pdf` | Status SVG generated today | `../../results/processed/rtl_capsule_event_classes.csv`, `../../results/figures/rtl_capsule_event_classes.svg` | Full benchmark-wide RTL traces required before treating this as complete baseline coverage. |
 | `fig07_randomized_interrupt_campaign.svg` / `.pdf` | Status SVG generated today | `../../results/processed/randomized_interrupt_campaign.csv`, `../../results/figures/randomized_interrupt_campaign.svg` | Full record/replay randomized RTL campaign remains pending. |
 | `table01_synthesis_resources.md` | Generated partial table today | `../../results/processed/synthesis.csv`, `../../results/processed/synthesis_overhead.csv` | Mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
+| `table02_replay_evidence.md` | Generated partial table today | `../../results/processed/replay_experiments.csv`, `../../results/processed/rtl_firmware_alignment.csv` | Full firmware-running RTL replay suite. |
+| `table03_trace_baselines.md` | Generated partial table today | `../../results/processed/trace_sizes.csv`, `../../results/processed/rtl_capsule_event_classes.csv` | Full benchmark-wide RTL trace-size rows and mapped/replay-backed reductions. |
+| `table04_event_sufficiency.md` | Generated partial table today | `../../results/processed/event_sufficiency.csv`, `../../results/processed/ablations.csv` | RTL-backed ablations. |
+| `table05_formal_coverage.md` | Generated table today | `../../results/processed/formal_coverage.csv` | End-to-end proof remains outside current bounded checks. |
 
 ## Rendering Rules
 

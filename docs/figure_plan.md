@@ -40,6 +40,10 @@ hand into captions, plots, or tables.
 | `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains measured generic cell counts plus TODO/NA mapped resource and timing fields. |
 | `results/processed/synthesis_overhead.csv` | Yes | Synthesis/resource table | Contains derived generic cell-count overhead context from measured baseline and wrapper rows, with mapped fields kept as NA. |
 | `paper/figures/table01_synthesis_resources.md` | Yes | Synthesis/resource table | Generated Markdown table source derived from the synthesis CSVs; mapped fields remain NA. |
+| `paper/figures/table02_replay_evidence.md` | Yes | Replay evidence table | Generated Markdown table source derived from replay and RTL/firmware alignment CSVs. |
+| `paper/figures/table03_trace_baselines.md` | Yes | Baseline trace-size table | Generated Markdown table source derived from trace-size and RTL-smoke capsule-class CSVs. |
+| `paper/figures/table04_event_sufficiency.md` | Yes | Ablation/sufficiency table | Generated Markdown table source derived from event-sufficiency and ablation CSVs. |
+| `paper/figures/table05_formal_coverage.md` | Yes | Formal coverage table | Generated Markdown table source derived from the formal coverage CSV. |
 | `results/processed/summary.csv` | Yes | All figure/table provenance | One-command status ledger for generated artifacts and missing tools. |
 
 ## Paper Figure and Table Manifest
@@ -53,6 +57,10 @@ hand into captions, plots, or tables.
 | Fig. 5 | RTL capsule event classes | Show packet-class composition of exported RTL-smoke capsules without treating it as full benchmark-wide trace evidence. | `paper/figures/rtl_capsule_event_classes.svg` | Yes. Generated from `results/processed/rtl_capsule_event_classes.csv`. | Yes for full benchmark-wide RTL class counts. |
 | Fig. 6 | Seeded interrupt campaign | Show seeded RTL-smoke interrupt-race reruns and frozen capsule packet counts after digest-match checks. | `paper/figures/randomized_interrupt_campaign.svg` | Yes. Generated from `results/processed/randomized_interrupt_campaign.csv`. | Yes for full record/replay randomized campaign. |
 | Table 1 | Synthesis/resource table | Report monitor/resource cost and timing only from generated synthesis outputs. | `paper/figures/table01_synthesis_resources.md` | Generated partial table today from `results/processed/synthesis.csv` and `results/processed/synthesis_overhead.csv`. | Requires mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
+| Table 2 | Replay evidence table | Summarize model, firmware-sim, and RTL-smoke alignment status by benchmark while preserving the TODO full RTL suite row. | `paper/figures/table02_replay_evidence.md` | Generated partial table today from `results/processed/replay_experiments.csv` and `results/processed/rtl_firmware_alignment.csv`. | Requires full firmware-running RTL replay for final replay claims. |
+| Table 3 | Trace-size baseline table | Summarize available firmware-sim trace-size baselines and exported RTL-smoke capsule bytes. | `paper/figures/table03_trace_baselines.md` | Generated partial table today from `results/processed/trace_sizes.csv` and `results/processed/rtl_capsule_event_classes.csv`. | Requires full benchmark-wide RTL trace-size rows. |
+| Table 4 | Event-sufficiency table | Summarize model-level event-removal ablations that break replay by benchmark. | `paper/figures/table04_event_sufficiency.md` | Generated partial table today from `results/processed/event_sufficiency.csv` and `results/processed/ablations.csv`. | Requires RTL-backed ablations. |
+| Table 5 | Formal coverage table | Summarize bounded formal contract families, depths, obligations, and explicit limits. | `paper/figures/table05_formal_coverage.md` | Generated table today from `results/processed/formal_coverage.csv`. | End-to-end processor/replay theorem remains outside current bounded checks. |
 
 ## Figure Details
 
@@ -177,6 +185,10 @@ Source material:
 - `results/processed/synthesis.csv`
 - `results/processed/synthesis_overhead.csv`
 - `paper/figures/table01_synthesis_resources.md`
+- `paper/figures/table02_replay_evidence.md`
+- `paper/figures/table03_trace_baselines.md`
+- `paper/figures/table04_event_sufficiency.md`
+- `paper/figures/table05_formal_coverage.md`
 
 Paper-readiness checks:
 - Yosys generic cells may be reported only after a real report is parsed.

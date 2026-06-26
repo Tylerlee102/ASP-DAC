@@ -41,7 +41,7 @@ ablation_suite,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\
 yosys_synthesis_probe,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\raw\yosys_picorv32_replaycapsule_wrapper.txt
 synthesis_report_parse,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis.csv
 synthesis_overhead_summary,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis_overhead.csv
-paper_table_generation,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\paper\figures\table01_synthesis_resources.md
+paper_table_generation,PASS,WROTE 5 paper table(s) under C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
 figure_generation,PASS,WROTE 8 SVG figures to C:\Users\tyboy\OneDrive\Documents\New project\results\figures and C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
 tool:verilator,PASS,workspace-local oss-cad-suite verilator_bin.exe
 tool:iverilog,PASS,workspace-local oss-cad-suite iverilog.exe

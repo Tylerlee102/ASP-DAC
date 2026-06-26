@@ -69,6 +69,10 @@ Current generic synthesis evidence:
   `NA`: `results/processed/synthesis_overhead.csv`
 - Generated paper table source for synthesis/resource reporting:
   `paper/figures/table01_synthesis_resources.md`
+- Generated paper table sources for replay evidence, trace-size baselines,
+  event-sufficiency ablations, and bounded formal coverage:
+  `paper/figures/table02_replay_evidence.md` through
+  `paper/figures/table05_formal_coverage.md`
 
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,
