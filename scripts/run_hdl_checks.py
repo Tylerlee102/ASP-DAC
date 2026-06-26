@@ -87,6 +87,12 @@ IVERILOG_TESTS = (
         include_dirs=("../../rtl",),
     ),
     IverilogTest(
+        name="tb_hash_signature",
+        workdir=Path("tb/system"),
+        sources=("tb_hash_signature.sv", "../../rtl/hash_signature.sv"),
+        include_dirs=("../../rtl",),
+    ),
+    IverilogTest(
         name="tb_picorv32_sensor_threshold_smoke",
         workdir=Path("tb/system"),
         sources=(
