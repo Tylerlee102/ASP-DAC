@@ -83,11 +83,11 @@ def main() -> int:
     yosys = _find_tool("yosys")
     rows: list[dict[str, str]] = []
     if not yosys:
-        rows = [_todo_row("ice40-hx8k", "yosys+synth_ice40+nextpnr-ice40", design, "missing yosys") for design in DESIGNS]
         rows.extend(_todo_row("ecp5-85k", "yosys+synth_ecp5+nextpnr-ecp5", design, "missing yosys") for design in _full_core_designs())
+        rows.extend(_todo_row("ice40-hx8k", "yosys+synth_ice40+nextpnr-ice40", design, "missing yosys") for design in DESIGNS)
     else:
-        rows.extend(_run_ice40_rows(yosys))
         rows.extend(_run_ecp5_rows(yosys))
+        rows.extend(_run_ice40_rows(yosys))
     _write_rows(rows)
     _write_overhead(rows)
     print(f"WROTE {_rel(OUT_CSV)}")
