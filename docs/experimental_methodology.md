@@ -55,7 +55,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts may be re
 - `results/processed/replay_experiments.csv`: six model-level commit-index replay rows.
 - `results/processed/firmware_sim_replay.csv`: six RV32I firmware-sim commit-index replay rows.
 - `results/processed/rtl_capsule_exports.csv`: twelve failing/fixed RTL-smoke capsule export parse/self-compare and missing-event negative-check rows.
-- `results/processed/trace_sizes.csv`: model-level baseline sizes and replay success.
+- `results/processed/trace_sizes.csv`: model-level and firmware-sim baseline sizes and replay success, plus RTL-smoke capsule-byte rows where exported packets exist.
 - `results/processed/ablations.csv`: model-level event removal, buffer-size, and last-K sweeps.
 - `results/processed/event_sufficiency.csv`: per-benchmark event classes whose removal breaks replay.
 - `results/processed/hdl_checks.csv`: directed Icarus simulations, twelve PicoRV32 wrapper smokes, and Verilator lint-only HDL frontend checks.

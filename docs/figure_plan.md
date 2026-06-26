@@ -22,7 +22,7 @@ hand into captions, plots, or tables.
 | --- | --- | --- | --- |
 | `results/raw/model_suite_traces.json` | Yes | Event model, replay flow, trace-size baselines | Six benchmark model-level traces. |
 | `results/processed/replay_experiments.csv` | Yes | Replay flow | Six model-level replay rows pass; firmware-running RTL suite is TODO. |
-| `results/processed/trace_sizes.csv` | Yes | Baseline trace-size figure | Contains model-level rows for six benchmarks and TODO/NA rows for unavailable baselines. |
+| `results/processed/trace_sizes.csv` | Yes | Baseline trace-size figure | Contains model-level and firmware-sim rows for six benchmarks, plus RTL-smoke capsule-byte rows for exported failing/fixed capsules. Full benchmark-wide RTL rows remain TODO/NA where unavailable. |
 | `results/figures/baseline_trace_sizes.svg` | Yes | Baseline trace-size figure | Generated from `trace_sizes.csv`. |
 | `results/figures/ablation_heatmap.svg` | Yes | Ablation heatmap | Generated from model-level ablation rows. |
 | `results/processed/ablations.csv` | Yes | Ablation heatmap | Model-level ablations are available; RTL-backed rows require firmware-running traces. |

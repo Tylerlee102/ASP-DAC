@@ -85,7 +85,7 @@ def _baseline_trace_sizes_svg(rows: list[dict[str, str]]) -> str:
         and row.get("evidence_level") in {"firmware-sim", "model"}
     ]
     if not measured:
-        return _text_svg("Baseline Trace Sizes", ["No measured model rows yet."])
+        return _text_svg("Baseline Trace Sizes", ["No measured trace-size rows yet."])
     if any(row.get("evidence_level") == "firmware-sim" for row in measured):
         measured = [row for row in measured if row.get("evidence_level") == "firmware-sim"]
     labels = sorted({row["benchmark"] for row in measured})
@@ -173,11 +173,13 @@ def _trace_status_svg(rows: list[dict[str, str]]) -> str:
     measured = sum(1 for row in rows if row.get("status") == "MEASURED")
     todo = sum(1 for row in rows if row.get("status") == "TODO")
     passes = sum(1 for row in rows if row.get("replay_success") == "True")
+    rtl_smoke = sum(1 for row in rows if row.get("evidence_level") == "rtl-smoke")
     lines = [
-        f"measured model rows: {measured}",
+        f"measured trace-size rows: {measured}",
         f"TODO rows: {todo}",
-        f"model replay-success rows: {passes}",
-        "RTL/PicoRV32 trace rows remain TODO; generic Yosys synthesis is tracked separately.",
+        f"replay-success rows: {passes}",
+        f"RTL-smoke packet-size rows: {rtl_smoke}",
+        "Full benchmark-wide RTL trace/replay rows remain TODO; generic Yosys synthesis is tracked separately.",
     ]
     return _text_svg("Trace Size Status", lines)
 

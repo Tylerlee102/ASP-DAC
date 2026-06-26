@@ -21,6 +21,7 @@ from replay_compare import compare_capsules  # noqa: E402
 
 RAW_TRACE = REPO_ROOT / "results/raw/model_suite_traces.json"
 FIRMWARE_SIM_TRACE = REPO_ROOT / "results/raw/firmware_sim_traces.json"
+RTL_CAPSULE_EXPORTS = REPO_ROOT / "results/processed/rtl_capsule_exports.csv"
 OUT_CSV = REPO_ROOT / "results/processed/trace_sizes.csv"
 
 BASELINES = [
@@ -44,12 +45,15 @@ def main() -> int:
     rows = collect(args.trace)
     if args.trace == RAW_TRACE and FIRMWARE_SIM_TRACE.exists():
         rows.extend(collect(FIRMWARE_SIM_TRACE))
+    if args.trace == RAW_TRACE and RTL_CAPSULE_EXPORTS.exists():
+        rows.extend(_collect_rtl_smoke_exports(RTL_CAPSULE_EXPORTS))
     args.out.parent.mkdir(parents=True, exist_ok=True)
     with args.out.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
             handle,
             fieldnames=[
                 "benchmark",
+                "variant",
                 "baseline",
                 "status",
                 "event_count",
@@ -79,6 +83,7 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
     for run in runs:
         benchmark = str(run.get("benchmark", "unknown"))
+        variant = str(run.get("variant", "failing"))
         evidence_level = str(run.get("evidence_level", "model"))
         events = list(run.get("events", []))
         commit_events = [event for event in events if event.get("event_type") == "EV_COMMIT"]
@@ -92,6 +97,7 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
             rows.append(
                 {
                     "benchmark": benchmark,
+                    "variant": variant,
                     "baseline": name,
                     "status": "MEASURED",
                     "event_count": str(measurement["event_count"]),
@@ -99,9 +105,41 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
                     "events_per_kinst": f"{measurement['event_count'] / kinst:.3f}",
                     "replay_success": str(replay_success),
                     "evidence_level": evidence_level,
-                    "notes": f"{measurement['notes']}; RTL trace sizes pending",
+                    "notes": (
+                        f"{measurement['notes']}; full benchmark-wide RTL trace sizes pending; "
+                        "RTL-smoke capsule bytes are reported separately when available"
+                    ),
                 }
             )
+    return rows
+
+
+def _collect_rtl_smoke_exports(export_path: Path) -> list[dict[str, str]]:
+    with export_path.open(newline="", encoding="utf-8") as handle:
+        exports = list(csv.DictReader(handle))
+
+    rows: list[dict[str, str]] = []
+    for export in exports:
+        if export.get("status") != "PASS":
+            continue
+        packet_count = int(export["rtl_packet_count"])
+        rows.append(
+            {
+                "benchmark": export["benchmark"],
+                "variant": export.get("variant", "NA"),
+                "baseline": "rtl_smoke_replaycapsule_rv",
+                "status": "MEASURED",
+                "event_count": str(packet_count),
+                "bytes": str(packet_count * 21),
+                "events_per_kinst": "NA",
+                "replay_success": "NA",
+                "evidence_level": "rtl-smoke",
+                "notes": (
+                    "RTL-smoke capsule bytes measured from exported 168-bit packets; "
+                    "not benchmark-wide firmware-running replay"
+                ),
+            }
+        )
     return rows
 
 
@@ -211,6 +249,7 @@ def _baseline_omissions(baseline: str) -> set[str]:
 def _todo_row(benchmark: str, name: str, notes: str) -> dict[str, str]:
     return {
         "benchmark": benchmark,
+        "variant": "NA",
         "baseline": name,
         "status": "TODO",
         "event_count": "NA",
