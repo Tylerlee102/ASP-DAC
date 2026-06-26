@@ -81,6 +81,7 @@ REQUIRED_TB = [
 
 PYTHON_FILES = [
     "scripts/build_firmware_images.py",
+    "scripts/check_rtl_firmware_alignment.py",
     "scripts/export_rtl_capsules.py",
     "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
@@ -126,6 +127,12 @@ def main() -> int:
         failures,
         "rtl_capsule_export_compare",
         [sys.executable, "scripts/export_rtl_capsules.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "rtl_firmware_alignment",
+        [sys.executable, "scripts/check_rtl_firmware_alignment.py"],
     )
     _run_subprocess(
         rows,

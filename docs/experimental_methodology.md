@@ -18,7 +18,7 @@ The current runnable path covers all six benchmark classes at two non-RTL eviden
 - `model`: event-boundary model from `scripts/replaycapsule_model.py`
 - `firmware-sim`: RV32I instruction interpreter from `scripts/rv32i_firmware_sim.py`
 
-Firmware-running RTL results currently include twelve PicoRV32 wrapper smokes: failing and fixed images for sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout. Full benchmark-wide RTL replay/export/compare coverage remains pending a broader PicoRV32 simulation harness, `make`/C++ support for Verilator-style builds, and a RISC-V compiler or equivalent firmware image flow.
+Firmware-running RTL results currently include twelve PicoRV32 wrapper smokes: failing and fixed images for sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout. A generated alignment table checks that failing RTL-smoke capsules agree with the RV32I firmware interpreter on property IDs and key replay-visible event values. Full benchmark-wide RTL replay/export/compare coverage remains pending a broader PicoRV32 simulation harness, `make`/C++ support for Verilator-style builds, and a RISC-V compiler or equivalent firmware image flow.
 
 ## Metrics
 
@@ -55,6 +55,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts may be re
 - `results/processed/replay_experiments.csv`: six model-level commit-index replay rows.
 - `results/processed/firmware_sim_replay.csv`: six RV32I firmware-sim commit-index replay rows.
 - `results/processed/rtl_capsule_exports.csv`: twelve failing/fixed RTL-smoke capsule export parse/self-compare, missing-event negative-check, and memory-event PC-context rows.
+- `results/processed/rtl_firmware_alignment.csv`: twelve RTL-smoke versus firmware-sim property and key-event alignment rows.
 - `results/processed/trace_sizes.csv`: model-level and firmware-sim baseline sizes and replay success, plus RTL-smoke capsule-byte rows where exported packets exist.
 - `results/processed/ablations.csv`: model-level event removal, buffer-size, and last-K sweeps.
 - `results/processed/event_sufficiency.csv`: per-benchmark event classes whose removal breaks replay.

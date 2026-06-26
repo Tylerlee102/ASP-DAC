@@ -1,0 +1,13 @@
+benchmark,variant,status,property_alignment,key_event_alignment,rtl_property_id,firmware_property_id,checked_events,notes
+sensor_threshold_bug,failing,PASS,PASS,PASS,P3_SENSOR_DEADLINE,P3_SENSOR_DEADLINE,mmio_read_sensor_high:rtl=yes;firmware=yes,RTL-smoke failing capsule aligns with firmware-sim property and required event evidence; not full replay
+sensor_threshold_bug,fixed,PASS,PASS,NA,NONE,NONE,fixed variant checks property absence only,RTL-smoke fixed capsule and firmware-sim fixed run both avoid property failure
+interrupt_race_bug,failing,PASS,PASS,PASS,P2_INTERRUPT_CRITICAL,P2_INTERRUPT_CRITICAL,mmio_write_command_one:rtl=yes;firmware=yes|interrupt_taken:rtl=yes;firmware=yes,RTL-smoke failing capsule aligns with firmware-sim property and required event evidence; not full replay
+interrupt_race_bug,fixed,PASS,PASS,NA,NONE,NONE,fixed variant checks property absence only,RTL-smoke fixed capsule and firmware-sim fixed run both avoid property failure
+mmio_ordering_bug,failing,PASS,PASS,PASS,P5_MMIO_ORDERING,P5_MMIO_ORDERING,mmio_write_actuator_25:rtl=yes;firmware=yes,RTL-smoke failing capsule aligns with firmware-sim property and required event evidence; not full replay
+mmio_ordering_bug,fixed,PASS,PASS,NA,NONE,NONE,fixed variant checks property absence only,RTL-smoke fixed capsule and firmware-sim fixed run both avoid property failure
+stack_corruption_bug,failing,PASS,PASS,PASS,P4_STACK_PROTECT,P4_STACK_PROTECT,store_protected_stack:rtl=yes;firmware=yes,RTL-smoke failing capsule aligns with firmware-sim property and required event evidence; not full replay
+stack_corruption_bug,fixed,PASS,PASS,NA,NONE,NONE,fixed variant checks property absence only,RTL-smoke fixed capsule and firmware-sim fixed run both avoid property failure
+uart_command_bug,failing,PASS,PASS,PASS,P1_ACTUATOR_LIMIT,P1_ACTUATOR_LIMIT,mmio_read_command_unsafe:rtl=yes;firmware=yes|mmio_write_actuator_unsafe:rtl=yes;firmware=yes,RTL-smoke failing capsule aligns with firmware-sim property and required event evidence; not full replay
+uart_command_bug,fixed,PASS,PASS,NA,NONE,NONE,fixed variant checks property absence only,RTL-smoke fixed capsule and firmware-sim fixed run both avoid property failure
+watchdog_timeout_bug,failing,PASS,PASS,PASS,P6_WATCHDOG_TIMEOUT,P6_WATCHDOG_TIMEOUT,mmio_read_sensor_high:rtl=yes;firmware=yes,RTL-smoke failing capsule aligns with firmware-sim property and required event evidence; not full replay
+watchdog_timeout_bug,fixed,PASS,PASS,NA,NONE,NONE,fixed variant checks property absence only,RTL-smoke fixed capsule and firmware-sim fixed run both avoid property failure

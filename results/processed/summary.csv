@@ -4,6 +4,7 @@ event_type_definitions,PASS,12 event names present
 firmware_benchmark_pairs,PASS,6 failing/fixed pairs present
 directed_sv_testbenches,PASS,10 source-present testbenches
 syntax:scripts/build_firmware_images.py,PASS,
+syntax:scripts/check_rtl_firmware_alignment.py,PASS,
 syntax:scripts/export_rtl_capsules.py,PASS,
 syntax:scripts/run_formal_checks.py,PASS,
 syntax:scripts/run_hdl_checks.py,PASS,
@@ -18,6 +19,7 @@ firmware_image_artifacts,PASS,12 image sets present
 static_rtl_contract_checks,PASS,"Summary: 43 passed, 0 failed"
 hdl_frontend_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\hdl_checks.csv
 rtl_capsule_export_compare,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_capsule_exports.csv
+rtl_firmware_alignment,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\rtl_firmware_alignment.csv
 bounded_formal_checks,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\formal_checks.csv
 replay_driver_demo_commit,PASS,matched checkpoint: 0
 model_suite,PASS,WROTE results\raw\model_suite_traces.json

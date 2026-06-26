@@ -42,6 +42,12 @@ Current non-RTL executable evidence:
 - RV32I instruction interpreter: `scripts/rv32i_firmware_sim.py`
 - deterministic benchmark image builder: `scripts/build_firmware_images.py`
 
+Current RTL-smoke evidence:
+
+- PicoRV32 wrapper and directed HDL checks: `results/processed/hdl_checks.csv`
+- RTL-smoke capsule export checks: `results/processed/rtl_capsule_exports.csv`
+- RTL-smoke versus firmware-sim alignment: `results/processed/rtl_firmware_alignment.csv`
+
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,
 `.tools/python/bin/yowasp-sby.exe`, and
