@@ -23,4 +23,4 @@ ReplayCapsule-RV must be compared against strong baselines, not strawmen.
 - failure reproduction accuracy
 - implemented hardware overhead or simulator-only overhead status
 
-`scripts/collect_trace_sizes.py` computes available trace-size metrics from generated artifacts. It reports missing baselines as TODO rather than estimating them. When RTL smoke capsule exports are available, the script also reports `rtl_smoke_replaycapsule_rv` rows from the exported 168-bit packet counts; those rows are capsule-size evidence only, not benchmark-wide replay-success evidence.
+`scripts/collect_trace_sizes.py` computes available trace-size metrics from generated artifacts. It reports missing baselines as TODO rather than estimating them. When RTL smoke capsule exports are available, the script also reports `rtl_smoke_replaycapsule_rv` rows from the exported 168-bit packet counts; those rows are capsule-size evidence only, not benchmark-wide replay-success evidence. `scripts/summarize_rtl_capsule_classes.py` decodes the same RTL-smoke packets into event-class counts for baseline transparency.

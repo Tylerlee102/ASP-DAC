@@ -52,6 +52,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Replay comparator negative tests: `results/processed/replay_negative_tests.csv`
 - Firmware-sim replay: `results/processed/firmware_sim_replay.csv`
 - RTL smoke capsule exports: `results/processed/rtl_capsule_exports.csv`
+- RTL smoke capsule event classes: `results/processed/rtl_capsule_event_classes.csv`
 - RTL/firmware-sim alignment: `results/processed/rtl_firmware_alignment.csv`
 - Seeded RTL-smoke interrupt campaign: `results/processed/randomized_interrupt_campaign.csv`
 - Firmware images: `firmware/build/`

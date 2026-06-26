@@ -49,6 +49,8 @@ Current RTL-smoke evidence:
 - Seeded interrupt reproducibility campaign:
   `results/processed/randomized_interrupt_campaign.csv`
 - RTL-smoke capsule export checks: `results/processed/rtl_capsule_exports.csv`
+- RTL-smoke capsule event-class breakdown:
+  `results/processed/rtl_capsule_event_classes.csv`
 - RTL-smoke versus firmware-sim alignment: `results/processed/rtl_firmware_alignment.csv`
 
 Current bounded formal evidence:
