@@ -1,11 +1,17 @@
-.PHONY: test reproduce check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
+.PHONY: test reproduce check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
 
 PYTHON ?= python3
 VERILATOR ?= verilator
 VERILATOR_ENV ?= env -u VERILATOR_ROOT -u VERILATOR_BIN -u OSS_CAD_SUITE
 VERILATOR_MDIR ?= build/verilator/obj_dir
 VERILATOR_OUTPUT ?= ../replaycapsule_sim
+RUNTIME_RECORDER_MDIR ?= build/verilator/runtime_recorder_obj_dir
+RUNTIME_BASELINE_MDIR ?= build/verilator/runtime_baseline_obj_dir
+RUNTIME_RECORDER_OUTPUT ?= ../runtime_recorder_sim
+RUNTIME_BASELINE_OUTPUT ?= ../runtime_baseline_sim
 VERILATOR_CFLAGS ?= -std=c++17 -O2 -I$(abspath tb/verilator)
+RUNTIME_RECORDER_CFLAGS ?= -std=c++17 -O2 -I$(abspath tb/verilator)
+RUNTIME_BASELINE_CFLAGS ?= -std=c++17 -O2 -I$(abspath tb/verilator) -DRC_RUNTIME_BASELINE
 BENCH ?= sensor_threshold_bug
 VARIANT ?= failing
 SEED ?= 1
@@ -37,6 +43,21 @@ VERILATOR_SOURCES = \
 	tb/verilator/capsule_io.cpp
 
 VERILATOR_ABS_SOURCES = $(foreach src,$(VERILATOR_SOURCES),$(abspath $(src)))
+
+RUNTIME_RECORDER_SOURCES = \
+	tb/verilator/replaycapsule_verilator_top.sv \
+	third_party/picorv32/picorv32.v \
+	$(RTL_COMMON) \
+	rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv \
+	tb/verilator/runtime_main.cpp
+
+RUNTIME_BASELINE_SOURCES = \
+	tb/verilator/picorv32_baseline_top.sv \
+	third_party/picorv32/picorv32.v \
+	tb/verilator/runtime_main.cpp
+
+RUNTIME_RECORDER_ABS_SOURCES = $(foreach src,$(RUNTIME_RECORDER_SOURCES),$(abspath $(src)))
+RUNTIME_BASELINE_ABS_SOURCES = $(foreach src,$(RUNTIME_BASELINE_SOURCES),$(abspath $(src)))
 
 test:
 	$(PYTHON) scripts/run_all_tests.py
@@ -71,6 +92,27 @@ verilator-harness:
 		-o $(VERILATOR_OUTPUT) \
 		$(VERILATOR_ABS_SOURCES) > results/raw/verilator/build.log 2>&1
 	@test -x build/verilator/replaycapsule_sim || test -x build/verilator/replaycapsule_sim.exe || (echo "ERROR: Verilator simulator binary missing. See results/raw/verilator/build.log." && exit 1)
+
+runtime-harnesses:
+	$(PYTHON) -c "from pathlib import Path; Path('build/verilator').mkdir(parents=True, exist_ok=True); Path('results/raw/runtime_overhead').mkdir(parents=True, exist_ok=True)"
+	$(VERILATOR_ENV) $(VERILATOR) --cc --exe --build --sv \
+		-Wno-TIMESCALEMOD \
+		--top-module replaycapsule_verilator_top \
+		-Irtl -Irtl/rv32i_integration -Ithird_party/picorv32 -Itb/verilator \
+		--Mdir $(RUNTIME_RECORDER_MDIR) \
+		-CFLAGS "$(RUNTIME_RECORDER_CFLAGS)" \
+		-o $(RUNTIME_RECORDER_OUTPUT) \
+		$(RUNTIME_RECORDER_ABS_SOURCES) > results/raw/runtime_overhead/recorder_build.log 2>&1
+	$(VERILATOR_ENV) $(VERILATOR) --cc --exe --build --sv \
+		-Wno-TIMESCALEMOD \
+		--top-module picorv32_baseline_top \
+		-Ithird_party/picorv32 -Itb/verilator \
+		--Mdir $(RUNTIME_BASELINE_MDIR) \
+		-CFLAGS "$(RUNTIME_BASELINE_CFLAGS)" \
+		-o $(RUNTIME_BASELINE_OUTPUT) \
+		$(RUNTIME_BASELINE_ABS_SOURCES) > results/raw/runtime_overhead/baseline_build.log 2>&1
+	@test -x build/verilator/runtime_recorder_sim || test -x build/verilator/runtime_recorder_sim.exe || (echo "ERROR: runtime recorder simulator missing. See results/raw/runtime_overhead/recorder_build.log." && exit 1)
+	@test -x build/verilator/runtime_baseline_sim || test -x build/verilator/runtime_baseline_sim.exe || (echo "ERROR: runtime baseline simulator missing. See results/raw/runtime_overhead/baseline_build.log." && exit 1)
 
 full-rtl-replay: firmware
 	$(PYTHON) scripts/run_full_rtl_replay.py $(FALLBACK_FLAGS) $(DEBUG_FLAGS)

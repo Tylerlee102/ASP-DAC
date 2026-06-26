@@ -95,6 +95,8 @@ ARTIFACTS = (
     ArtifactSpec("firmware/startup.S", "manual/firmware", "minimal RV32I startup code"),
     ArtifactSpec("tb/verilator/main.cpp", "manual/rtl-harness", "Verilator harness CLI"),
     ArtifactSpec("tb/verilator/rtl_harness.cpp", "manual/rtl-harness", "firmware-running RTL record/replay harness"),
+    ArtifactSpec("tb/verilator/runtime_main.cpp", "manual/runtime-overhead", "runtime-overhead Verilator harness CLI"),
+    ArtifactSpec("tb/verilator/picorv32_baseline_top.sv", "manual/runtime-overhead", "no-recorder PicoRV32 runtime baseline top"),
     ArtifactSpec("tb/verilator/capsule_io.cpp", "manual/rtl-harness", "capsule/signature JSON I/O"),
     ArtifactSpec("tb/verilator/README.md", "manual/rtl-harness", "RTL harness usage and limitations"),
 )
@@ -112,6 +114,7 @@ GLOBS = (
     ("results/debug/pass4/*", "scripts/run_full_rtl_replay.py", "pass-4 full RTL debug event diff or trace"),
     ("results/debug/pass5_before/*", "manual/freeze", "pass-5 frozen readiness evidence"),
     ("results/debug/pass6_before/*", "manual/freeze", "pass-6 frozen readiness evidence"),
+    ("results/debug/pass7_before/*", "manual/freeze", "pass-7 frozen CI evidence before overhead/mapping work"),
     ("results/raw/yosys_*.txt", "scripts/synth_yosys.py", "raw generic synthesis report"),
     ("results/raw/mapped_synthesis/*.txt", "scripts/run_mapped_synthesis.py", "raw mapped synthesis/place-and-route report"),
 )

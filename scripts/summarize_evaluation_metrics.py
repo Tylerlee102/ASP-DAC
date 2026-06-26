@@ -563,13 +563,13 @@ def _mapped_recorder_metrics(rows: list[dict[str, str]], overhead_rows: list[dic
 
 def _mapped_tiny_overhead_metrics(overhead_rows: list[dict[str, str]]) -> list[dict[str, str]]:
     mapping = [
-        ("mapped_tiny_lut_overhead_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_lut", "percent"),
-        ("mapped_tiny_ff_overhead_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_ff", "percent"),
-        ("mapped_tiny_bram_overhead", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_bram", "brams"),
-        ("mapped_tiny_fmax_delta_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_fmax_mhz", "percent"),
+        ("mapped_tiny_lut_overhead_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_lut", "percent", "percent_overhead"),
+        ("mapped_tiny_ff_overhead_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_ff", "percent", "percent_overhead"),
+        ("mapped_tiny_bram_overhead", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_bram", "brams", "delta"),
+        ("mapped_tiny_fmax_delta_percent", "replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_fmax_mhz", "percent", "percent_overhead"),
     ]
     rows: list[dict[str, str]] = []
-    for metric_name, source_metric, unit in mapping:
+    for metric_name, source_metric, unit, value_field in mapping:
         source_row = next((row for row in overhead_rows if row.get("metric") == source_metric), None)
         if source_row is None:
             rows.append(
@@ -582,7 +582,7 @@ def _mapped_tiny_overhead_metrics(overhead_rows: list[dict[str, str]]) -> list[d
                 )
             )
             continue
-        value = source_row.get("percent_overhead", "NA")
+        value = source_row.get(value_field, "NA")
         status = "MEASURED" if value not in {"", "NA", "TODO"} else "BLOCKED"
         rows.append(
             _metric_row(
@@ -599,44 +599,34 @@ def _mapped_tiny_overhead_metrics(overhead_rows: list[dict[str, str]]) -> list[d
 
 
 def _hardware_todo_metrics(runtime_summary: list[dict[str, str]]) -> list[dict[str, str]]:
-    cycle_overhead = _summary_metric(runtime_summary, "cycle_overhead_pct")
-    sim_wall_time_overhead = _summary_metric(runtime_summary, "sim_wall_time_overhead_pct")
+    mapped_overhead = _read_rows(MAPPED_OVERHEAD_CSV)
+    cycle_overhead = _summary_metric(runtime_summary, "cycle_overhead_pct", "recorder_enabled")
+    sim_wall_time_overhead = _summary_metric(runtime_summary, "sim_wall_time_overhead_pct", "recorder_enabled")
     rows = [
-        _metric_row(
+        _mapped_full_core_row(
+            mapped_overhead,
             "full_core_mapped_lut_overhead_percent",
-            "BLOCKED",
-            "NA",
+            "picorv32_to_picorv32_replaycapsule_wrapper_lut",
             "percent",
-            "mapped-fpga",
-            "results/processed/mapped_overhead.csv",
-            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule.",
         ),
-        _metric_row(
+        _mapped_full_core_row(
+            mapped_overhead,
             "full_core_mapped_ff_overhead_percent",
-            "BLOCKED",
-            "NA",
+            "picorv32_to_picorv32_replaycapsule_wrapper_ff",
             "percent",
-            "mapped-fpga",
-            "results/processed/mapped_overhead.csv",
-            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule.",
         ),
-        _metric_row(
+        _mapped_full_core_row(
+            mapped_overhead,
             "full_core_bram_overhead",
-            "BLOCKED",
-            "NA",
+            "picorv32_to_picorv32_replaycapsule_wrapper_bram",
             "brams",
-            "mapped-fpga",
-            "results/processed/mapped_overhead.csv",
-            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule.",
+            "delta",
         ),
-        _metric_row(
+        _mapped_full_core_row(
+            mapped_overhead,
             "full_core_fmax_delta_percent",
-            "BLOCKED",
-            "NA",
+            "picorv32_to_picorv32_replaycapsule_wrapper_fmax_mhz",
             "percent",
-            "mapped-fpga",
-            "results/processed/mapped_overhead.csv",
-            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule.",
         ),
         _todo_row(
             "buffer_overflow_rate",
@@ -649,6 +639,43 @@ def _hardware_todo_metrics(runtime_summary: list[dict[str, str]]) -> list[dict[s
     rows.append(_runtime_metric_row("cycle_overhead_pct", cycle_overhead))
     rows.append(_runtime_metric_row("sim_wall_time_overhead_pct", sim_wall_time_overhead))
     return rows
+
+
+def _mapped_full_core_row(
+    rows: list[dict[str, str]],
+    metric_name: str,
+    source_metric: str,
+    unit: str,
+    value_field: str = "percent_overhead",
+) -> dict[str, str]:
+    source_row = next(
+        (
+            row
+            for row in rows
+            if row.get("metric") == source_metric
+            and row.get(value_field) not in {"", "NA", "TODO"}
+        ),
+        None,
+    )
+    if source_row is None:
+        return _metric_row(
+            metric_name,
+            "BLOCKED",
+            "NA",
+            unit,
+            "mapped-fpga",
+            "results/processed/mapped_overhead.csv",
+            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule on the same target.",
+        )
+    return _metric_row(
+        metric_name,
+        "MEASURED",
+        source_row.get(value_field, "NA"),
+        unit,
+        "mapped-fpga",
+        "results/processed/mapped_overhead.csv",
+        source_row.get("notes", "Full-core mapped overhead from same-target PASS rows."),
+    )
 
 
 def _runtime_metric_row(metric: str, source_row: dict[str, str] | None) -> dict[str, str]:
@@ -681,8 +708,12 @@ def _runtime_metric_row(metric: str, source_row: dict[str, str] | None) -> dict[
     )
 
 
-def _summary_metric(rows: list[dict[str, str]], metric: str) -> dict[str, str] | None:
-    return next((row for row in rows if row.get("metric") == metric), None)
+def _summary_metric(rows: list[dict[str, str]], metric: str, preferred_config: str | None = None) -> dict[str, str] | None:
+    matches = [row for row in rows if row.get("metric") == metric]
+    if preferred_config is None:
+        return matches[0] if matches else None
+    preferred = next((row for row in matches if preferred_config in row.get("config", "")), None)
+    return preferred or (matches[0] if matches else None)
 
 
 def _rate_row(

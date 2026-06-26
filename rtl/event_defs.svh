@@ -20,6 +20,7 @@ localparam logic [3:0] CAPTURE_ALL              = 4'h0;
 localparam logic [3:0] CAPTURE_MMIO_INTERRUPT   = 4'h1;
 localparam logic [3:0] CAPTURE_PROPERTY_AWARE   = 4'h2;
 localparam logic [3:0] CAPTURE_REPLAYCAPSULE_RV = 4'h3;
+localparam logic [3:0] CAPTURE_DISABLED         = 4'h4;
 
 function automatic logic [RC_EVENT_WIDTH-1:0] rc_pack_event(
   input logic [RC_EVENT_TYPE_W-1:0] event_type,

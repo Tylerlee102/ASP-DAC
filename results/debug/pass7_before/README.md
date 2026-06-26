@@ -1,13 +1,13 @@
-# Pass 7 Before-State Evidence
+# Pass 7 Current Good CI Evidence
 
-Source CI run: 28268835038
+Source CI run: 28270531182
+Source commit: 2c1d080
 
 Current facts:
-- Firmware build: 15/15 compiler-backed PASS.
-- Full RTL replay: 33/45 compiler-backed PASS.
-- Failing rows: interrupt_race_bug/failing seeds 1-3; mmio_ordering_bug/failing seeds 1-3; stack_corruption_bug/failing seeds 1-3; uart_command_bug/failing seeds 1-3.
-- Error: NO_EXPECTED_FAILURE.
+- Compiler firmware: 15/15 PASS.
+- Full RTL replay: 45/45 PASS, compiler-backed, fallback used 0.
 - Negative replay: 10 replay-critical corruptions rejected, 2 NA, 0 unexpected accepts.
-- Paper PDF: built.
+- Paper PDF: built in CI.
+- Status: WORKSHOP-ONLY because true runtime overhead and full-core mapped overhead remain unresolved.
 
-This directory freezes the failed-but-useful CI evidence before the compiler-firmware semantics fix.
+This directory freezes the current good CI evidence before pass 7 overhead/mapping work.

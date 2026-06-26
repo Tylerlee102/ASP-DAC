@@ -1,0 +1,18 @@
+tool,required_for,available,version,required,source,notes
+python,"reproduce,full-rtl-replay,paper",yes,Python 3.12.3,yes,current-python,Python driver scripts; current interpreter
+make,full-rtl-replay,yes,GNU Make 4.3,no,path,top-level orchestration and Verilator build; make
+g++,full-rtl-replay,yes,g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0,no,path,C++ compiler for Verilator harness; g++
+verilator,full-rtl-replay,yes,Verilator 5.020 2024-01-01 rev (Debian 5.020-1),no,path,RTL harness build; verilator
+riscv64-unknown-elf-gcc,"firmware,full-rtl-replay",yes,riscv64-unknown-elf-gcc (13.2.0-11ubuntu1+12) 13.2.0,yes,path,preferred embedded RISC-V compiler; accepted aliases are bare-metal RV32-capable toolchains; riscv64-unknown-elf-gcc
+riscv64-unknown-elf-objcopy,firmware,yes,GNU objcopy (2.42-1ubuntu1+6) 2.42,yes,path,ELF to HEX conversion; riscv64-unknown-elf-objcopy
+riscv64-unknown-elf-size,firmware,yes,GNU size (2.42-1ubuntu1+6) 2.42,yes,path,compiler-backed firmware size accounting; riscv64-unknown-elf-size
+iverilog,rtl-smoke,no,NA,yes,missing,directed Icarus simulations; tool not found
+vvp,rtl-smoke,no,NA,yes,missing,Icarus simulation runtime; tool not found
+yosys,"mapped-synthesis,formal",yes,Yosys 0.33 (git sha1 2584903a060),yes,path,synthesis/formal frontend; yosys
+nextpnr-ice40,mapped-synthesis,yes,"""nextpnr-ice40"" -- Next Generation Place and Route (Version 0.6-3build5)",no,path,optional iCE40 mapped FPGA flow; nextpnr-ice40
+nextpnr-ecp5,mapped-synthesis,no,NA,no,missing,optional ECP5 mapped FPGA flow; tool not found
+openroad,mapped-synthesis,no,NA,no,missing,optional ASIC flow; tool not found
+latexmk,paper,yes,"Latexmk, John Collins, 31 Jan. 2024. Version 4.83",no,path,LaTeX build wrapper; latexmk
+pdflatex,paper,yes,pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian),no,path,PDF LaTeX engine; pdflatex
+lualatex,paper,yes,"This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)",no,path,fallback PDF LaTeX engine; lualatex
+firmware-hex-fallback,full-rtl-replay,yes,generated-hex,no,generated-fallback,existing generated HEX/MEM images can feed RTL when compiler is unavailable; fallback is not a compiler pass

@@ -36,6 +36,7 @@ jobs:
             verilator
             yosys
             nextpnr-ice40
+            nextpnr-ecp5
             gcc-riscv64-unknown-elf
             binutils-riscv64-unknown-elf
             latexmk

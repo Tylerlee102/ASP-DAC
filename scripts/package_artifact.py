@@ -41,6 +41,7 @@ INCLUDE_ROOTS = (
     "results/debug/pass4",
     "results/debug/pass5_before",
     "results/debug/pass6_before",
+    "results/debug/pass7_before",
 )
 
 INCLUDE_GLOBS = (

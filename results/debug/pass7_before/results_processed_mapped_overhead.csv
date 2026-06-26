@@ -1,0 +1,9 @@
+target,flow,metric,baseline,with_replaycapsule,delta,percent_overhead,notes
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_lut,NA,NA,NA,NA,scoped tiny-wrapper overhead; not a full-core overhead claim
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_ff,0,0,0.00,0.00,scoped tiny-wrapper overhead; not a full-core overhead claim
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_bram,NA,NA,NA,NA,scoped tiny-wrapper overhead; not a full-core overhead claim
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,replaycapsule_tiny_baseline_to_replaycapsule_recorder_tiny_fmax_mhz,157.48,61.38,-96.10,-61.02,scoped tiny-wrapper overhead; not a full-core overhead claim
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,picorv32_to_picorv32_replaycapsule_wrapper_lut,NA,NA,NA,NA,requires full-core mapped_synthesis.csv PASS rows
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,picorv32_to_picorv32_replaycapsule_wrapper_ff,NA,NA,NA,NA,requires full-core mapped_synthesis.csv PASS rows
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,picorv32_to_picorv32_replaycapsule_wrapper_bram,NA,NA,NA,NA,requires full-core mapped_synthesis.csv PASS rows
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,picorv32_to_picorv32_replaycapsule_wrapper_fmax_mhz,NA,NA,NA,NA,requires full-core mapped_synthesis.csv PASS rows

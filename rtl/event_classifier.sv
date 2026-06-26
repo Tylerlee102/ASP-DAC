@@ -61,6 +61,9 @@ module event_classifier (
       CAPTURE_REPLAYCAPSULE_RV: begin
         keep_event = event_valid && (event_is_nondeterministic || event_is_property_relevant || overflow_guard);
       end
+      CAPTURE_DISABLED: begin
+        keep_event = 1'b0;
+      end
       default: begin
         keep_event = event_valid;
       end
