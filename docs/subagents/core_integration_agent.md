@@ -22,5 +22,4 @@ Plan PicoRV32-first integration with a minimal embedded SoC:
 - deterministic seeded input mode
 - randomized interrupt mode
 
-Until PicoRV32 and Verilator are present, Phase 1 uses a deterministic Python event model and a synthesizable RTL boundary scaffold.
-
+Phase 1 now uses a deterministic Python event model, an RV32I firmware interpreter, a synthesizable RTL boundary scaffold, and PicoRV32 wrapper smokes. Full Verilator/C++ simulation and external RISC-V compiler paths remain future integration work.

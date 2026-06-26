@@ -22,7 +22,7 @@ ReplayCapsule-RV should contribute:
 
 ## Current Environment Finding
 
-The workspace started empty and was not a git repository; it now has local checkpoint commits. Local `verilator`, `yosys`, and `make` commands were not available at kickoff, so Phase 1/2 verification began with Python smoke tests and static RTL checks. Current runs can use workspace-local `yowasp-yosys` for generic synthesis, `yowasp-sby`/`yowasp-yosys-smtbmc` for bounded formal checks, and OSS CAD Suite for nine directed Icarus module simulations, twelve PicoRV32 wrapper firmware smokes, and Verilator lint-only checks. `make`, a C++ compiler path, and the RISC-V compiler remain unavailable locally, so full benchmark-wide firmware-running RTL replay/export simulation and mapped hardware metrics remain TODO/NA until those tools are installed or supplied by CI.
+The workspace started empty and was not a git repository; it now has local checkpoint commits. Local `verilator`, `yosys`, and `make` commands were not available at kickoff, so Phase 1/2 verification began with Python smoke tests and static RTL checks. Current runs can use workspace-local `yowasp-yosys` for generic synthesis, `yowasp-sby`/`yowasp-yosys-smtbmc` for bounded formal checks, and OSS CAD Suite for nine directed Icarus module simulations, twelve PicoRV32 wrapper firmware smokes, RTL/firmware-sim alignment checks, and Verilator lint-only checks. `make`, a C++ compiler path, and the RISC-V compiler remain unavailable locally, so full benchmark-wide firmware-running RTL replay/export simulation and mapped hardware metrics remain TODO/NA until those tools are installed or supplied by CI.
 
 ## Subagent Plan
 
@@ -68,7 +68,7 @@ Deliverables:
 - Randomized interrupt mode plan.
 - Hello-world and MMIO smoke firmware sources.
 
-Initial implementation uses a deterministic Python event model and an RTL SoC scaffold while PicoRV32/Verilator integration is pending local tool availability.
+Initial implementation uses a deterministic Python event model, an RV32I firmware interpreter, an RTL SoC scaffold, and PicoRV32 wrapper smokes while full Verilator/C++ and external RISC-V compiler paths remain unavailable locally.
 
 ## Phase 2 Gate
 
