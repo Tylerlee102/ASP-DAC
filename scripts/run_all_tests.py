@@ -176,6 +176,12 @@ def main() -> int:
     _run_subprocess(
         rows,
         failures,
+        "replay_driver_demo_cycle",
+        [sys.executable, "tb/replay_testbench/replay_driver.py", "--demo", "--mode", "cycle-index"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
         "replay_driver_demo_commit",
         [sys.executable, "tb/replay_testbench/replay_driver.py", "--demo", "--mode", "commit-index"],
     )

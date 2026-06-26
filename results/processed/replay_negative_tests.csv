@@ -7,6 +7,14 @@ duplicate_first_replay_event,sensor_threshold_bug,PASS,False,False,model,commit-
 corrupt_first_payload,sensor_threshold_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at commit 1: addr=0x40000000 value=0x353 direction='read'
 shift_first_commit_index,sensor_threshold_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at commit 2: addr=0x40000000 value=0x352 direction='read'
 swap_strict_event_order_tags,sensor_threshold_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read' order=0x0; extra observed mmio event at commit 1: addr=0x40000000 value=0x352 direction='read' order=0x1; missing interrupt event at commit 4: irq='timer0' state='taken' order=0x1
+positive_identity_control,sensor_threshold_bug,PASS,True,True,model,cycle-index,comparator accepted fixture
+property_id_mismatch,sensor_threshold_bug,PASS,False,False,model,cycle-index,"property_id mismatch: expected 'P3_SENSOR_DEADLINE', observed 'CORRUPTED_PROPERTY'"
+failure_signature_mismatch,sensor_threshold_bug,PASS,False,False,model,cycle-index,"failure_signature mismatch: expected '0x5e055494', observed '0xffffffff'"
+missing_first_replay_event,sensor_threshold_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read'
+duplicate_first_replay_event,sensor_threshold_bug,PASS,False,False,model,cycle-index,extra observed mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read'
+corrupt_first_payload,sensor_threshold_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at cycle 1: addr=0x40000000 value=0x353 direction='read'
+shift_first_cycle_index,sensor_threshold_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at cycle 2: addr=0x40000000 value=0x352 direction='read'
+swap_strict_event_order_tags,sensor_threshold_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read' order=0x0; extra observed mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read' order=0x1; missing interrupt event at cycle 5: irq='timer0' state='taken' order=0x1
 positive_identity_control,interrupt_race_bug,PASS,True,True,model,commit-index,comparator accepted fixture
 property_id_mismatch,interrupt_race_bug,PASS,False,False,model,commit-index,"property_id mismatch: expected 'P2_INTERRUPT_CRITICAL', observed 'CORRUPTED_PROPERTY'"
 failure_signature_mismatch,interrupt_race_bug,PASS,False,False,model,commit-index,"failure_signature mismatch: expected '0x5e05578a', observed '0xffffffff'"
@@ -15,6 +23,14 @@ duplicate_first_replay_event,interrupt_race_bug,PASS,False,False,model,commit-in
 corrupt_first_payload,interrupt_race_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x4000000c value=0x1 direction='write'; extra observed mmio event at commit 1: addr=0x4000000c value=0x2 direction='write'
 shift_first_commit_index,interrupt_race_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x4000000c value=0x1 direction='write'; extra observed mmio event at commit 2: addr=0x4000000c value=0x1 direction='write'
 swap_strict_event_order_tags,interrupt_race_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x4000000c value=0x1 direction='write' order=0x0; missing mmio event at commit 2: addr=0x40000008 value=0x1111 direction='write' order=0x1; extra observed mmio event at commit 1: addr=0x4000000c value=0x1 direction='write' order=0x1
+positive_identity_control,interrupt_race_bug,PASS,True,True,model,cycle-index,comparator accepted fixture
+property_id_mismatch,interrupt_race_bug,PASS,False,False,model,cycle-index,"property_id mismatch: expected 'P2_INTERRUPT_CRITICAL', observed 'CORRUPTED_PROPERTY'"
+failure_signature_mismatch,interrupt_race_bug,PASS,False,False,model,cycle-index,"failure_signature mismatch: expected '0x5e05578a', observed '0xffffffff'"
+missing_first_replay_event,interrupt_race_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x4000000c value=0x1 direction='write'
+duplicate_first_replay_event,interrupt_race_bug,PASS,False,False,model,cycle-index,extra observed mmio event at cycle 1: addr=0x4000000c value=0x1 direction='write'
+corrupt_first_payload,interrupt_race_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x4000000c value=0x1 direction='write'; extra observed mmio event at cycle 1: addr=0x4000000c value=0x2 direction='write'
+shift_first_cycle_index,interrupt_race_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x4000000c value=0x1 direction='write'; extra observed mmio event at cycle 2: addr=0x4000000c value=0x1 direction='write'
+swap_strict_event_order_tags,interrupt_race_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x4000000c value=0x1 direction='write' order=0x0; missing mmio event at cycle 3: addr=0x40000008 value=0x1111 direction='write' order=0x1; extra observed mmio event at cycle 1: addr=0x4000000c value=0x1 direction='write' order=0x1
 positive_identity_control,mmio_ordering_bug,PASS,True,True,model,commit-index,comparator accepted fixture
 property_id_mismatch,mmio_ordering_bug,PASS,False,False,model,commit-index,"property_id mismatch: expected 'P5_MMIO_ORDERING', observed 'CORRUPTED_PROPERTY'"
 failure_signature_mismatch,mmio_ordering_bug,PASS,False,False,model,commit-index,"failure_signature mismatch: expected '0x5e053e47', observed '0xffffffff'"
@@ -23,6 +39,14 @@ duplicate_first_replay_event,mmio_ordering_bug,PASS,False,False,model,commit-ind
 corrupt_first_payload,mmio_ordering_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000004 value=0x19 direction='write'; extra observed mmio event at commit 1: addr=0x40000004 value=0x1a direction='write'
 shift_first_commit_index,mmio_ordering_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000004 value=0x19 direction='write'; extra observed mmio event at commit 2: addr=0x40000004 value=0x19 direction='write'
 swap_strict_event_order_tags,mmio_ordering_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000004 value=0x19 direction='write' order=0x0; missing mmio event at commit 2: addr=0x40000008 value=0xcafe direction='write' order=0x2; extra observed mmio event at commit 1: addr=0x40000004 value=0x19 direction='write' order=0x2
+positive_identity_control,mmio_ordering_bug,PASS,True,True,model,cycle-index,comparator accepted fixture
+property_id_mismatch,mmio_ordering_bug,PASS,False,False,model,cycle-index,"property_id mismatch: expected 'P5_MMIO_ORDERING', observed 'CORRUPTED_PROPERTY'"
+failure_signature_mismatch,mmio_ordering_bug,PASS,False,False,model,cycle-index,"failure_signature mismatch: expected '0x5e053e47', observed '0xffffffff'"
+missing_first_replay_event,mmio_ordering_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000004 value=0x19 direction='write'
+duplicate_first_replay_event,mmio_ordering_bug,PASS,False,False,model,cycle-index,extra observed mmio event at cycle 1: addr=0x40000004 value=0x19 direction='write'
+corrupt_first_payload,mmio_ordering_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000004 value=0x19 direction='write'; extra observed mmio event at cycle 1: addr=0x40000004 value=0x1a direction='write'
+shift_first_cycle_index,mmio_ordering_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000004 value=0x19 direction='write'; extra observed mmio event at cycle 2: addr=0x40000004 value=0x19 direction='write'
+swap_strict_event_order_tags,mmio_ordering_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000004 value=0x19 direction='write' order=0x0; missing mmio event at cycle 4: addr=0x40000008 value=0xcafe direction='write' order=0x2; extra observed mmio event at cycle 1: addr=0x40000004 value=0x19 direction='write' order=0x2
 positive_identity_control,stack_corruption_bug,PASS,True,True,model,commit-index,comparator accepted fixture
 property_id_mismatch,stack_corruption_bug,PASS,False,False,model,commit-index,"property_id mismatch: expected 'P4_STACK_PROTECT', observed 'CORRUPTED_PROPERTY'"
 failure_signature_mismatch,stack_corruption_bug,PASS,False,False,model,commit-index,"failure_signature mismatch: expected '0x5e0548c6', observed '0xffffffff'"
@@ -31,6 +55,14 @@ duplicate_first_replay_event,stack_corruption_bug,PASS,False,False,model,commit-
 corrupt_first_payload,stack_corruption_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000008 value=0xcafe direction='write'; extra observed mmio event at commit 1: addr=0x40000008 value=0xcaff direction='write'
 shift_first_commit_index,stack_corruption_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000008 value=0xcafe direction='write'; extra observed mmio event at commit 2: addr=0x40000008 value=0xcafe direction='write'
 swap_strict_event_order_tags,stack_corruption_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000008 value=0xcafe direction='write' order=0x0; extra observed mmio event at commit 1: addr=0x40000008 value=0xcafe direction='write' order=0x1; missing store event at commit 2: pc=0xe0 addr=0x1010 value=0xdeadbeef order=0x1
+positive_identity_control,stack_corruption_bug,PASS,True,True,model,cycle-index,comparator accepted fixture
+property_id_mismatch,stack_corruption_bug,PASS,False,False,model,cycle-index,"property_id mismatch: expected 'P4_STACK_PROTECT', observed 'CORRUPTED_PROPERTY'"
+failure_signature_mismatch,stack_corruption_bug,PASS,False,False,model,cycle-index,"failure_signature mismatch: expected '0x5e0548c6', observed '0xffffffff'"
+missing_first_replay_event,stack_corruption_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000008 value=0xcafe direction='write'
+duplicate_first_replay_event,stack_corruption_bug,PASS,False,False,model,cycle-index,extra observed mmio event at cycle 1: addr=0x40000008 value=0xcafe direction='write'
+corrupt_first_payload,stack_corruption_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000008 value=0xcafe direction='write'; extra observed mmio event at cycle 1: addr=0x40000008 value=0xcaff direction='write'
+shift_first_cycle_index,stack_corruption_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000008 value=0xcafe direction='write'; extra observed mmio event at cycle 2: addr=0x40000008 value=0xcafe direction='write'
+swap_strict_event_order_tags,stack_corruption_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000008 value=0xcafe direction='write' order=0x0; extra observed mmio event at cycle 1: addr=0x40000008 value=0xcafe direction='write' order=0x1; missing store event at cycle 3: pc=0xe0 addr=0x1010 value=0xdeadbeef order=0x1
 positive_identity_control,uart_command_bug,PASS,True,True,model,commit-index,comparator accepted fixture
 property_id_mismatch,uart_command_bug,PASS,False,False,model,commit-index,"property_id mismatch: expected 'P1_ACTUATOR_LIMIT', observed 'CORRUPTED_PROPERTY'"
 failure_signature_mismatch,uart_command_bug,PASS,False,False,model,commit-index,"failure_signature mismatch: expected '0x5e053733', observed '0xffffffff'"
@@ -39,6 +71,14 @@ duplicate_first_replay_event,uart_command_bug,PASS,False,False,model,commit-inde
 corrupt_first_payload,uart_command_bug,PASS,False,False,model,commit-index,missing input event at commit 1: input_id='input1' value=0x55; extra observed input event at commit 1: input_id='input1' value=0x56
 shift_first_commit_index,uart_command_bug,PASS,False,False,model,commit-index,missing input event at commit 1: input_id='input1' value=0x55; extra observed input event at commit 2: input_id='input1' value=0x55
 swap_strict_event_order_tags,uart_command_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x4000000c value=0x55 direction='read' order=0x1; extra observed mmio event at commit 1: addr=0x4000000c value=0x55 direction='read' order=0x0; missing input event at commit 1: input_id='input1' value=0x55 order=0x0
+positive_identity_control,uart_command_bug,PASS,True,True,model,cycle-index,comparator accepted fixture
+property_id_mismatch,uart_command_bug,PASS,False,False,model,cycle-index,"property_id mismatch: expected 'P1_ACTUATOR_LIMIT', observed 'CORRUPTED_PROPERTY'"
+failure_signature_mismatch,uart_command_bug,PASS,False,False,model,cycle-index,"failure_signature mismatch: expected '0x5e053733', observed '0xffffffff'"
+missing_first_replay_event,uart_command_bug,PASS,False,False,model,cycle-index,missing input event at cycle 1: input_id='input1' value=0x55
+duplicate_first_replay_event,uart_command_bug,PASS,False,False,model,cycle-index,extra observed input event at cycle 1: input_id='input1' value=0x55
+corrupt_first_payload,uart_command_bug,PASS,False,False,model,cycle-index,missing input event at cycle 1: input_id='input1' value=0x55; extra observed input event at cycle 1: input_id='input1' value=0x56
+shift_first_cycle_index,uart_command_bug,PASS,False,False,model,cycle-index,missing input event at cycle 1: input_id='input1' value=0x55; extra observed input event at cycle 2: input_id='input1' value=0x55
+swap_strict_event_order_tags,uart_command_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 2: addr=0x4000000c value=0x55 direction='read' order=0x1; extra observed mmio event at cycle 2: addr=0x4000000c value=0x55 direction='read' order=0x0; missing input event at cycle 1: input_id='input1' value=0x55 order=0x0
 positive_identity_control,watchdog_timeout_bug,PASS,True,True,model,commit-index,comparator accepted fixture
 property_id_mismatch,watchdog_timeout_bug,PASS,False,False,model,commit-index,"property_id mismatch: expected 'P6_WATCHDOG_TIMEOUT', observed 'CORRUPTED_PROPERTY'"
 failure_signature_mismatch,watchdog_timeout_bug,PASS,False,False,model,commit-index,"failure_signature mismatch: expected '0x5e05a884', observed '0xffffffff'"
@@ -47,3 +87,11 @@ duplicate_first_replay_event,watchdog_timeout_bug,PASS,False,False,model,commit-
 corrupt_first_payload,watchdog_timeout_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at commit 1: addr=0x40000000 value=0x353 direction='read'
 shift_first_commit_index,watchdog_timeout_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at commit 2: addr=0x40000000 value=0x352 direction='read'
 swap_strict_event_order_tags,watchdog_timeout_bug,PASS,False,False,model,commit-index,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read' order=0x0; extra observed mmio event at commit 1: addr=0x40000000 value=0x352 direction='read' order=0x1; missing interrupt event at commit 6: irq='timer0' state='taken' order=0x1
+positive_identity_control,watchdog_timeout_bug,PASS,True,True,model,cycle-index,comparator accepted fixture
+property_id_mismatch,watchdog_timeout_bug,PASS,False,False,model,cycle-index,"property_id mismatch: expected 'P6_WATCHDOG_TIMEOUT', observed 'CORRUPTED_PROPERTY'"
+failure_signature_mismatch,watchdog_timeout_bug,PASS,False,False,model,cycle-index,"failure_signature mismatch: expected '0x5e05a884', observed '0xffffffff'"
+missing_first_replay_event,watchdog_timeout_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read'
+duplicate_first_replay_event,watchdog_timeout_bug,PASS,False,False,model,cycle-index,extra observed mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read'
+corrupt_first_payload,watchdog_timeout_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at cycle 1: addr=0x40000000 value=0x353 direction='read'
+shift_first_cycle_index,watchdog_timeout_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at cycle 2: addr=0x40000000 value=0x352 direction='read'
+swap_strict_event_order_tags,watchdog_timeout_bug,PASS,False,False,model,cycle-index,missing mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read' order=0x0; extra observed mmio event at cycle 1: addr=0x40000000 value=0x352 direction='read' order=0x1; missing interrupt event at cycle 7: irq='timer0' state='taken' order=0x1

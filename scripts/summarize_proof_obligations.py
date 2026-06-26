@@ -80,8 +80,14 @@ class EvidenceData:
     def replay_passes(self, evidence_level: str) -> int:
         return sum(1 for row in self.replay if row.get("status") == "PASS" and row.get("evidence_level") == evidence_level)
 
-    def negative_passes(self, test_name: str) -> int:
-        return sum(1 for row in self.replay_negative if row.get("test") == test_name and row.get("status") == "PASS")
+    def negative_passes(self, test_name: str, mode: str | None = None) -> int:
+        return sum(
+            1
+            for row in self.replay_negative
+            if row.get("test") == test_name
+            and row.get("status") == "PASS"
+            and (mode is None or row.get("mode") == mode)
+        )
 
     def formal_family_passes(self, *families: str) -> bool:
         by_family = {row.get("module_family"): row for row in self.formal_coverage}
@@ -97,11 +103,19 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
     randomized_irq_pass = data.all_status(data.randomized_irq)
     event_sufficiency_rows = len(data.event_sufficiency)
     rtl_smoke_sufficiency_rows = len(data.rtl_smoke_sufficiency)
-    order_negative_passes = data.negative_passes("swap_strict_event_order_tags")
-    missing_negative_passes = data.negative_passes("missing_first_replay_event")
-    duplicate_negative_passes = data.negative_passes("duplicate_first_replay_event")
-    payload_negative_passes = data.negative_passes("corrupt_first_payload")
-    commit_shift_passes = data.negative_passes("shift_first_commit_index")
+    checked_modes = ("commit-index", "cycle-index")
+    order_negative_passes = min(
+        data.negative_passes("swap_strict_event_order_tags", mode) for mode in checked_modes
+    )
+    missing_negative_passes = min(
+        data.negative_passes("missing_first_replay_event", mode) for mode in checked_modes
+    )
+    duplicate_negative_passes = min(
+        data.negative_passes("duplicate_first_replay_event", mode) for mode in checked_modes
+    )
+    payload_negative_passes = min(data.negative_passes("corrupt_first_payload", mode) for mode in checked_modes)
+    commit_shift_passes = data.negative_passes("shift_first_commit_index", "commit-index")
+    cycle_shift_passes = data.negative_passes("shift_first_cycle_index", "cycle-index")
 
     return [
         Obligation(
@@ -134,11 +148,17 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
         Obligation(
             "PO-04",
             "A5 commit-index and same-index ordering",
-            "Replay comparison rejects missing, duplicate, shifted, and same-commit reordered events.",
-            "PASS_LOCAL" if min(order_negative_passes, missing_negative_passes, duplicate_negative_passes, commit_shift_passes) == 6 and rtl_exports_pass else "TODO",
+            "Replay comparison rejects missing, duplicate, shifted cycle/commit indices, and same-index reordered events.",
+            "PASS_LOCAL" if min(
+                order_negative_passes,
+                missing_negative_passes,
+                duplicate_negative_passes,
+                commit_shift_passes,
+                cycle_shift_passes,
+            ) == 6 and rtl_exports_pass else "TODO",
             "model+rtl-smoke",
             "results/processed/replay_negative_tests.csv; results/processed/rtl_capsule_exports.csv",
-            "Comparator/order checks are generated fixtures and RTL-smoke export checks; full firmware-running RTL replay remains pending.",
+            "Comparator/order checks are generated cycle-index and commit-index fixtures plus RTL-smoke export checks; full firmware-running RTL replay remains pending.",
         ),
         Obligation(
             "PO-05",

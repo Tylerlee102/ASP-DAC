@@ -36,29 +36,33 @@ def main() -> int:
     failures: list[str] = []
     for benchmark in BENCHMARKS:
         base_text = capsule_fixture(run_benchmark(benchmark, failing=True))
-        for case in _cases():
-            expected_text = case.mutate_expected(base_text)
-            observed_text = case.mutate_observed(base_text)
-            compare = compare_capsules(
-                parse_capsule(expected_text, source=f"{benchmark}:{case.name}:expected"),
-                parse_capsule(observed_text, source=f"{benchmark}:{case.name}:observed"),
-                mode="commit-index",
-            )
-            status = "PASS" if compare.success == case.expected_success else "FAIL"
-            if status == "FAIL":
-                failures.append(f"{benchmark}:{case.name} expected success={case.expected_success}, got {compare.success}")
-            rows.append(
-                {
-                    "test": case.name,
-                    "benchmark": benchmark,
-                    "status": status,
-                    "expected_comparator_success": str(case.expected_success),
-                    "actual_comparator_success": str(compare.success),
-                    "evidence_level": "model",
-                    "mode": "commit-index",
-                    "notes": "; ".join(compare.errors[:3]) if compare.errors else "comparator accepted fixture",
-                }
-            )
+        for mode in ("commit-index", "cycle-index"):
+            for case in _cases(mode):
+                expected_text = case.mutate_expected(base_text)
+                observed_text = case.mutate_observed(base_text)
+                compare = compare_capsules(
+                    parse_capsule(expected_text, source=f"{benchmark}:{case.name}:{mode}:expected"),
+                    parse_capsule(observed_text, source=f"{benchmark}:{case.name}:{mode}:observed"),
+                    mode=mode,
+                )
+                status = "PASS" if compare.success == case.expected_success else "FAIL"
+                if status == "FAIL":
+                    failures.append(
+                        f"{benchmark}:{case.name}:{mode} "
+                        f"expected success={case.expected_success}, got {compare.success}"
+                    )
+                rows.append(
+                    {
+                        "test": case.name,
+                        "benchmark": benchmark,
+                        "status": status,
+                        "expected_comparator_success": str(case.expected_success),
+                        "actual_comparator_success": str(compare.success),
+                        "evidence_level": "model",
+                        "mode": mode,
+                        "notes": "; ".join(compare.errors[:3]) if compare.errors else "comparator accepted fixture",
+                    }
+                )
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(
@@ -80,8 +84,15 @@ def main() -> int:
     return 1 if failures else 0
 
 
-def _cases() -> tuple[NegativeCase, ...]:
+def _cases(mode: str) -> tuple[NegativeCase, ...]:
     identity = lambda text: text
+    if mode == "commit-index":
+        shift_case = NegativeCase("shift_first_commit_index", False, identity, _shift_first_strict_commit)
+    elif mode == "cycle-index":
+        shift_case = NegativeCase("shift_first_cycle_index", False, identity, _shift_first_strict_cycle)
+    else:
+        raise ValueError(f"unsupported replay mode {mode!r}")
+
     return (
         NegativeCase("positive_identity_control", True, identity, identity),
         NegativeCase("property_id_mismatch", False, identity, _mutate_property_id),
@@ -89,7 +100,7 @@ def _cases() -> tuple[NegativeCase, ...]:
         NegativeCase("missing_first_replay_event", False, identity, _drop_first_strict_event),
         NegativeCase("duplicate_first_replay_event", False, identity, _duplicate_first_strict_event),
         NegativeCase("corrupt_first_payload", False, identity, _corrupt_first_value),
-        NegativeCase("shift_first_commit_index", False, identity, _shift_first_strict_commit),
+        shift_case,
         NegativeCase("swap_strict_event_order_tags", False, _add_order_tags, _swap_first_two_strict_order_tags),
     )
 
@@ -125,6 +136,13 @@ def _shift_first_strict_commit(text: str) -> str:
     lines = text.splitlines()
     index = _first_line_with_token(lines, STRICT_EVENT_PREFIXES, "commit")
     lines[index] = _replace_token(lines[index], "commit", str(int(_get_token(lines[index], "commit"), 0) + 1))
+    return "\n".join(lines) + "\n"
+
+
+def _shift_first_strict_cycle(text: str) -> str:
+    lines = text.splitlines()
+    index = _first_line_with_token(lines, STRICT_EVENT_PREFIXES, "cycle")
+    lines[index] = _replace_token(lines[index], "cycle", str(int(_get_token(lines[index], "cycle"), 0) + 1))
     return "\n".join(lines) + "\n"
 
 

@@ -18,7 +18,8 @@ PC evidence is treated as checkpoint-style evidence, so extra observed PC events
 `scripts/run_replay_negative_tests.py` generates benchmark-derived positive and
 negative fixtures that must be caught by these rules. It covers property-ID
 mismatch, failure-signature mismatch, missing strict events, duplicate strict
-events, payload corruption, commit-index shifts, and explicit order-tag swaps.
+events, payload corruption, cycle-index shifts, commit-index shifts, and
+explicit order-tag swaps.
 
 ## Run
 

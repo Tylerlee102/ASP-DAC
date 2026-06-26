@@ -53,7 +53,7 @@ Unavailable measurements are `TODO` or `NA`. Yosys generic cell counts and gener
 ## Current Generated Tables
 
 - `results/processed/replay_experiments.csv`: six model-level commit-index replay rows.
-- `results/processed/replay_negative_tests.csv`: benchmark-derived replay-comparator positive and negative fixture checks.
+- `results/processed/replay_negative_tests.csv`: benchmark-derived replay-comparator positive and negative fixture checks across commit-index and cycle-index modes.
 - `results/processed/firmware_sim_replay.csv`: six RV32I firmware-sim commit-index replay rows.
 - `results/processed/rtl_capsule_exports.csv`: twelve failing/fixed RTL-smoke capsule export parse/self-compare, missing-event, duplicate-event, metadata-corruption, payload-corruption, order-corruption, and memory-event PC-context rows.
 - `results/processed/rtl_capsule_event_classes.csv`: event-class counts and packet bytes decoded from exported RTL-smoke capsules.
