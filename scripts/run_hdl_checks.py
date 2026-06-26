@@ -8,6 +8,7 @@ import os
 import shutil
 import subprocess
 from dataclasses import dataclass
+from dataclasses import field
 from pathlib import Path
 
 
@@ -31,6 +32,7 @@ class IverilogTest:
     workdir: Path
     sources: tuple[str, ...]
     include_dirs: tuple[str, ...]
+    run_args: tuple[str, ...] = field(default_factory=tuple)
 
 
 @dataclass(frozen=True)
@@ -55,7 +57,7 @@ IVERILOG_TESTS = (
         include_dirs=("../../rtl",),
     ),
     IverilogTest(
-        name="tb_picorv32_wrapper_smoke",
+        name="tb_picorv32_sensor_threshold_smoke",
         workdir=Path("tb/system"),
         sources=(
             "tb_picorv32_wrapper_smoke.sv",
@@ -70,6 +72,81 @@ IVERILOG_TESTS = (
             "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
         ),
         include_dirs=("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32"),
+        run_args=(
+            "+MEMFILE=firmware/build/sensor_threshold_bug/failing.mem",
+            "+EXPECTED_PROPERTY=3",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_mmio_ordering_smoke",
+        workdir=Path("tb/system"),
+        sources=(
+            "tb_picorv32_wrapper_smoke.sv",
+            "../../third_party/picorv32/picorv32.v",
+            "../../rtl/event_tap.sv",
+            "../../rtl/event_classifier.sv",
+            "../../rtl/capsule_buffer.sv",
+            "../../rtl/property_checker.sv",
+            "../../rtl/event_slicer.sv",
+            "../../rtl/hash_signature.sv",
+            "../../rtl/replay_capsule_top.sv",
+            "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
+        ),
+        include_dirs=("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32"),
+        run_args=(
+            "+MEMFILE=firmware/build/mmio_ordering_bug/failing.mem",
+            "+EXPECTED_PROPERTY=5",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_stack_corruption_smoke",
+        workdir=Path("tb/system"),
+        sources=(
+            "tb_picorv32_wrapper_smoke.sv",
+            "../../third_party/picorv32/picorv32.v",
+            "../../rtl/event_tap.sv",
+            "../../rtl/event_classifier.sv",
+            "../../rtl/capsule_buffer.sv",
+            "../../rtl/property_checker.sv",
+            "../../rtl/event_slicer.sv",
+            "../../rtl/hash_signature.sv",
+            "../../rtl/replay_capsule_top.sv",
+            "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
+        ),
+        include_dirs=("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32"),
+        run_args=(
+            "+MEMFILE=firmware/build/stack_corruption_bug/failing.mem",
+            "+EXPECTED_PROPERTY=4",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+        ),
+    ),
+    IverilogTest(
+        name="tb_picorv32_uart_command_smoke",
+        workdir=Path("tb/system"),
+        sources=(
+            "tb_picorv32_wrapper_smoke.sv",
+            "../../third_party/picorv32/picorv32.v",
+            "../../rtl/event_tap.sv",
+            "../../rtl/event_classifier.sv",
+            "../../rtl/capsule_buffer.sv",
+            "../../rtl/property_checker.sv",
+            "../../rtl/event_slicer.sv",
+            "../../rtl/hash_signature.sv",
+            "../../rtl/replay_capsule_top.sv",
+            "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
+        ),
+        include_dirs=("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32"),
+        run_args=(
+            "+MEMFILE=firmware/build/uart_command_bug/failing.mem",
+            "+EXPECTED_PROPERTY=1",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=85",
+        ),
     ),
 )
 
@@ -140,7 +217,7 @@ def _run_iverilog_tests(rows: list[dict[str, str]], failures: list[str]) -> None
             rows.append(_row(test.name, "FAIL", iverilog.label, str(compile_log.relative_to(REPO_ROOT)), "compile failed"))
             continue
 
-        run_cmd = [vvp.command, os.path.relpath(output_path, REPO_ROOT)]
+        run_cmd = [vvp.command, os.path.relpath(output_path, REPO_ROOT), *test.run_args]
         run_result = _run(run_cmd, cwd=REPO_ROOT, env=vvp.env)
         run_log.write_text(_clean_log(run_result.stdout), encoding="utf-8")
         if run_result.returncode != 0:

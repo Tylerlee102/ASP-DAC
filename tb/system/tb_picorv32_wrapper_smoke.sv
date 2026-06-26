@@ -4,7 +4,7 @@ module tb_picorv32_wrapper_smoke;
   localparam int MEM_WORDS = 256;
   localparam logic [31:0] RESET_PC = 32'h0000_0080;
   localparam logic [31:0] SENSOR_ADDR = 32'h4000_0000;
-  localparam logic [31:0] SENSOR_HIGH = 32'd850;
+  localparam logic [31:0] COMMAND_ADDR = 32'h4000_000c;
 
   logic clk;
   logic rst_n;
@@ -29,6 +29,11 @@ module tb_picorv32_wrapper_smoke;
   logic [7:0] property_id;
   logic [31:0] property_signature;
   logic [31:0] imem [0:MEM_WORDS-1];
+  string memfile;
+  integer expected_property;
+  integer sensor_value;
+  integer command_value;
+  integer max_cycles;
 
   picorv32_replaycapsule_wrapper u_wrapper (
     .clk(clk),
@@ -62,7 +67,17 @@ module tb_picorv32_wrapper_smoke;
   always #5 clk = ~clk;
 
   initial begin
-    $readmemh("firmware/build/sensor_threshold_bug/failing.mem", imem);
+    memfile = "firmware/build/sensor_threshold_bug/failing.mem";
+    expected_property = 3;
+    sensor_value = 850;
+    command_value = 0;
+    max_cycles = 500;
+    if (!$value$plusargs("MEMFILE=%s", memfile)) begin end
+    if (!$value$plusargs("EXPECTED_PROPERTY=%d", expected_property)) begin end
+    if (!$value$plusargs("SENSOR_VALUE=%d", sensor_value)) begin end
+    if (!$value$plusargs("COMMAND_VALUE=%d", command_value)) begin end
+    if (!$value$plusargs("MAX_CYCLES=%d", max_cycles)) begin end
+    $readmemh(memfile, imem);
   end
 
   always_comb begin
@@ -71,7 +86,9 @@ module tb_picorv32_wrapper_smoke;
     if (mem_valid && mem_instr) begin
       mem_rdata = imem[(mem_addr - RESET_PC) >> 2];
     end else if (mem_valid && mem_wstrb == 4'h0 && mem_addr == SENSOR_ADDR) begin
-      mem_rdata = SENSOR_HIGH;
+      mem_rdata = sensor_value[31:0];
+    end else if (mem_valid && mem_wstrb == 4'h0 && mem_addr == COMMAND_ADDR) begin
+      mem_rdata = command_value[31:0];
     end
   end
 
@@ -84,11 +101,11 @@ module tb_picorv32_wrapper_smoke;
     repeat (5) @(posedge clk);
     rst_n = 1'b1;
 
-    repeat (500) begin
+    repeat (max_cycles) begin
       @(posedge clk);
       if (property_fail_valid) begin
-        if (property_id != 8'd3) begin
-          $fatal(1, "expected sensor deadline property failure, got id %0d", property_id);
+        if (property_id != expected_property[7:0]) begin
+          $fatal(1, "expected property id %0d, got id %0d", expected_property, property_id);
         end
         @(posedge clk);
         #1;

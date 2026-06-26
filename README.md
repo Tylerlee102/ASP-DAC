@@ -8,9 +8,9 @@ Current status:
 
 - Phase 0 repository plan and research-lab ownership scaffold: present.
 - Phase 1 minimal SoC/event simulation: six-benchmark Python model and RV32I firmware interpreter present.
-- PicoRV32 integration: upstream source vendored, wrapper source present, and one sensor-threshold firmware smoke passes through the wrapper; full benchmark simulation pending.
+- PicoRV32 integration: upstream source vendored, wrapper source present, and four firmware smokes pass through the wrapper; interrupt-race/watchdog and full benchmark simulation remain pending.
 - Phase 2 event-stream RTL: synthesizable SystemVerilog source files, static RTL checks, directed Icarus simulations, Verilator lint, and generic Yosys synthesis evidence present.
-- Phase 3/4 property checking and capsule generation: record-side RTL modules present; one firmware-running wrapper smoke validates property failure and capsule freeze; full validation pending.
+- Phase 3/4 property checking and capsule generation: record-side RTL modules present; four firmware-running wrapper smokes validate property failure and capsule freeze; full validation pending.
 - Phase 5/6/7/8 replay, bug suite, baselines, and ablations: model-level results generated for six benchmarks; RTL-level results pending.
 - Firmware-running RTL simulation and mapped FPGA synthesis: pending local `make`/C++ build support, RISC-V compiler, and mapped flow.
 - Paper results: no fabricated numbers; result files are generated only by scripts.
@@ -27,7 +27,7 @@ On Unix-like shells:
 python3 scripts/run_all_tests.py
 ```
 
-The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including one PicoRV32 wrapper smoke, replay parsing/comparison, six model-level bug capsules, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. Full benchmark RTL simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
+The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including four PicoRV32 wrapper smokes, replay parsing/comparison, six model-level bug capsules, baseline trace sizes, ablations, generic Yosys synthesis when available, and SVG figure generation. Full benchmark RTL simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
 
 ## Research Claim
 
@@ -58,4 +58,4 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
 - Generated figures: `results/figures/` and `paper/figures/`
 
-Rows marked `model` are executable event-model evidence. Rows marked `firmware-sim` execute RV32I instruction words in the local interpreter. The current HDL rows include directed module simulations, Verilator lint, and one PicoRV32 wrapper smoke, but not the full six-benchmark RTL replay suite.
+Rows marked `model` are executable event-model evidence. Rows marked `firmware-sim` execute RV32I instruction words in the local interpreter. The current HDL rows include directed module simulations, Verilator lint, and four PicoRV32 wrapper smokes, but not the full six-benchmark RTL replay suite.
