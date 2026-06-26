@@ -143,7 +143,7 @@ def main() -> int:
         _write_firmware_source_comparison(rows)
         print(f"WROTE {_rel(OUT_CSV)}")
         print(f"BLOCKED full RTL replay: {blocker}")
-        return 0
+        return 1 if _strict_ci() else 0
 
     for benchmark in benchmarks:
         for variant in variants[benchmark]:
@@ -153,6 +153,9 @@ def main() -> int:
     _write_rows(rows)
     _write_firmware_source_comparison(rows)
     print(f"WROTE {_rel(OUT_CSV)}")
+    if _strict_ci() and rows and all(row.get("rtl_record_status") == "BLOCKED" for row in rows):
+        print("BLOCKED full RTL replay: all rows are blocked in strict CI")
+        return 1
     return 0
 
 
@@ -206,7 +209,7 @@ def _ensure_simulator() -> str | None:
         missing.append("make/gmake")
     if not gxx:
         missing.append("g++/c++/clang++")
-    if not verilator and not (REPO_ROOT / ".tools/oss-cad-suite/oss-cad-suite/bin/verilator_bin.exe").exists():
+    if not verilator:
         missing.append("verilator")
     if missing:
         return "missing " + ", ".join(missing) + "; build/verilator/replaycapsule_sim not available"
@@ -639,6 +642,10 @@ def _truthy_env(name: str) -> bool:
     return os.environ.get(name, "").strip().lower() in {"1", "true", "yes", "on"}
 
 
+def _strict_ci() -> bool:
+    return _truthy_env("REPLAYCAPSULE_STRICT_CI") or _truthy_env("CI")
+
+
 def _sanitize_file(path: Path) -> None:
     if path.exists():
         path.write_text(_clean(path.read_text(encoding="utf-8", errors="replace")), encoding="utf-8")
@@ -671,7 +678,7 @@ def _find_cxx() -> str | None:
 
 
 def _find_verilator() -> str | None:
-    for path in (OSS_CAD_SUITE / "bin/verilator_bin.exe", OSS_CAD_SUITE / "bin/verilator.exe", OSS_CAD_SUITE / "bin/verilator"):
+    for path in _existing_oss_paths("bin/verilator_bin.exe", "bin/verilator.exe", "bin/verilator"):
         if path.exists():
             return str(path)
     return shutil.which("verilator")
@@ -679,14 +686,30 @@ def _find_verilator() -> str | None:
 
 def _tool_env() -> dict[str, str]:
     env = dict(os.environ)
-    parts = [str(LOCAL_WINLIBS_BIN), str(OSS_CAD_SUITE / "bin"), str(OSS_CAD_SUITE / "lib")]
+    for key in ("VERILATOR_ROOT", "VERILATOR_BIN", "OSS_CAD_SUITE"):
+        env.pop(key, None)
+    parts = []
+    if LOCAL_WINLIBS_BIN.exists():
+        parts.append(str(LOCAL_WINLIBS_BIN))
+    if OSS_CAD_SUITE.exists():
+        for path in (OSS_CAD_SUITE / "bin", OSS_CAD_SUITE / "lib"):
+            if path.exists():
+                parts.append(str(path))
+        verilator_root = OSS_CAD_SUITE / "share" / "verilator"
+        if verilator_root.exists():
+            env["VERILATOR_ROOT"] = verilator_root.as_posix()
     git_usr_bin = _git_usr_bin()
     if git_usr_bin is not None:
         parts.append(str(git_usr_bin))
     parts.append(env.get("PATH", ""))
     env["PATH"] = os.pathsep.join(parts)
-    env["VERILATOR_ROOT"] = (OSS_CAD_SUITE / "share" / "verilator").as_posix()
     return env
+
+
+def _existing_oss_paths(*relative_paths: str) -> tuple[Path, ...]:
+    if not OSS_CAD_SUITE.exists():
+        return tuple()
+    return tuple(OSS_CAD_SUITE / relative for relative in relative_paths)
 
 
 def _git_usr_bin() -> Path | None:

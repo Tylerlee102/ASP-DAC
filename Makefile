@@ -1,7 +1,8 @@
-.PHONY: test reproduce check-toolchain firmware firmware-sim rtl-smoke verilator-harness full-rtl-replay full-rtl-replay-one full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
+.PHONY: test reproduce check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness full-rtl-replay full-rtl-replay-one full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
 
 PYTHON ?= python3
 VERILATOR ?= verilator
+VERILATOR_ENV ?= env -u VERILATOR_ROOT -u VERILATOR_BIN -u OSS_CAD_SUITE
 VERILATOR_MDIR ?= build/verilator/obj_dir
 VERILATOR_OUTPUT ?= ../replaycapsule_sim
 VERILATOR_CFLAGS ?= -std=c++17 -O2 -Itb/verilator
@@ -54,9 +55,12 @@ rtl-smoke: firmware
 	$(PYTHON) scripts/export_rtl_capsules.py
 	$(PYTHON) scripts/summarize_picorv32_smokes.py
 
+verilator-smoke:
+	$(PYTHON) scripts/check_verilator_compile.py --verilator $(VERILATOR)
+
 verilator-harness:
 	$(PYTHON) -c "from pathlib import Path; Path('build/verilator').mkdir(parents=True, exist_ok=True); Path('results/raw/verilator').mkdir(parents=True, exist_ok=True)"
-	$(VERILATOR) --cc --exe --build --sv \
+	$(VERILATOR_ENV) $(VERILATOR) --cc --exe --build --sv \
 		-Wno-TIMESCALEMOD \
 		--top-module replaycapsule_verilator_top \
 		-Irtl -Irtl/rv32i_integration -Ithird_party/picorv32 -Itb/verilator \
@@ -64,6 +68,7 @@ verilator-harness:
 		-CFLAGS "$(VERILATOR_CFLAGS)" \
 		-o $(VERILATOR_OUTPUT) \
 		$(VERILATOR_SOURCES) > results/raw/verilator/build.log 2>&1
+	@test -x build/verilator/replaycapsule_sim || test -x build/verilator/replaycapsule_sim.exe || (echo "ERROR: Verilator simulator binary missing. See results/raw/verilator/build.log." && exit 1)
 
 full-rtl-replay: firmware
 	$(PYTHON) scripts/run_full_rtl_replay.py $(FALLBACK_FLAGS) $(DEBUG_FLAGS)

@@ -14,6 +14,7 @@ jobs:
       ALLOW_FALLBACK: "0"
       REPLAYCAPSULE_REQUIRE_COMPILER: "1"
       REPLAYCAPSULE_ALLOW_FALLBACK: "0"
+      REPLAYCAPSULE_STRICT_CI: "1"
 
     steps:
       - name: Check out repository
@@ -60,17 +61,59 @@ jobs:
         continue-on-error: true
         run: make firmware
 
+      - name: Show Verilator environment
+        run: |
+          unset VERILATOR_ROOT
+          unset VERILATOR_BIN
+          unset OSS_CAD_SUITE
+          hash -r
+          echo "PATH=$PATH"
+          which -a verilator || true
+          readlink -f "$(which verilator)" || true
+          verilator --version
+          echo "VERILATOR_ROOT=${VERILATOR_ROOT:-unset}"
+          echo "VERILATOR_BIN=${VERILATOR_BIN:-unset}"
+          echo "OSS_CAD_SUITE=${OSS_CAD_SUITE:-unset}"
+          ls -l /usr/bin/verilator || true
+          ls -l /usr/share/verilator/verilator_bin || true
+          ls -l ./.tools/oss-cad-suite/oss-cad-suite/share/verilator/verilator_bin || true
+
+      - name: Run Verilator compile smoke
+        continue-on-error: true
+        run: |
+          unset VERILATOR_ROOT
+          unset VERILATOR_BIN
+          unset OSS_CAD_SUITE
+          hash -r
+          make verilator-smoke
+
       - name: Build Verilator harness
         continue-on-error: true
-        run: make verilator-harness
+        run: |
+          unset VERILATOR_ROOT
+          unset VERILATOR_BIN
+          unset OSS_CAD_SUITE
+          hash -r
+          make verilator-harness
+          test -x build/verilator/replaycapsule_sim || test -x build/verilator/replaycapsule_sim.exe || (echo "ERROR: Verilator simulator binary missing. See results/raw/verilator/build.log." && exit 1)
 
       - name: Run full RTL replay
         continue-on-error: true
-        run: make full-rtl-replay
+        run: |
+          unset VERILATOR_ROOT
+          unset VERILATOR_BIN
+          unset OSS_CAD_SUITE
+          hash -r
+          make full-rtl-replay
 
       - name: Run full RTL negative replay
         continue-on-error: true
-        run: make full-rtl-negative
+        run: |
+          unset VERILATOR_ROOT
+          unset VERILATOR_BIN
+          unset OSS_CAD_SUITE
+          hash -r
+          make full-rtl-negative
 
       - name: Measure runtime overhead
         continue-on-error: true
@@ -118,13 +161,39 @@ jobs:
           if len(compiler_rows) != 15:
               failures.append(f"compiler-backed firmware rows {len(compiler_rows)}/15")
 
+          smoke = rows("results/processed/verilator_compile_smoke.csv")
+          smoke_pass = any(row.get("status") == "PASS" for row in smoke)
+          if not smoke_pass:
+              failures.append("Verilator compile smoke test did not PASS")
+
+          sim_paths = [Path("build/verilator/replaycapsule_sim"), Path("build/verilator/replaycapsule_sim.exe")]
+          if not any(path.exists() for path in sim_paths):
+              failures.append("Verilator simulator binary missing")
+          build_log = Path("results/raw/verilator/build.log")
+          if not build_log.exists():
+              failures.append("Verilator build log missing")
+          else:
+              log_text = build_log.read_text(encoding="utf-8", errors="replace").lower()
+              fatal_needles = [
+                  "no such file or directory",
+                  "command not found",
+                  "error:",
+                  "make invocation output",
+                  "verilator harness build failed",
+              ]
+              if any(needle in log_text for needle in fatal_needles):
+                  failures.append("Verilator build log contains fatal command error")
+
           replay = rows("results/processed/full_rtl_replay.csv")
+          if len(replay) != 45:
+              failures.append(f"full RTL replay rows {len(replay)}/45")
           replay_pass = [
               row for row in replay
               if row.get("rtl_record_status") == "PASS"
               and row.get("replay_status") == "PASS"
               and row.get("final_signature_match") == "PASS"
               and row.get("compiler_backed") == "true"
+              and row.get("firmware_source") == "compiler_c"
           ]
           if len(replay_pass) != 45:
               failures.append(f"compiler-backed full RTL replay PASS rows {len(replay_pass)}/45")

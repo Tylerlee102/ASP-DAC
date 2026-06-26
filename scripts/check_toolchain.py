@@ -191,9 +191,10 @@ def _find_local_tool(name: str) -> LocatedTool | None:
         if path.exists():
             return LocatedTool(str(path), f"workspace-local {_rel(path)}", _oss_env())
     if name == "verilator":
-        path = OSS_CAD_SUITE / "bin" / "verilator_bin.exe"
-        if path.exists():
-            return LocatedTool(str(path), f"workspace-local {_rel(path)}", _oss_env(verilator=True))
+        for local_name in ("verilator_bin.exe", "verilator.exe", "verilator"):
+            path = OSS_CAD_SUITE / "bin" / local_name
+            if path.exists():
+                return LocatedTool(str(path), f"workspace-local {_rel(path)}", _oss_env(verilator=True))
     if name == "yosys":
         path = LOCAL_PYTHON_BIN / "yowasp-yosys.exe"
         if path.exists():
@@ -289,9 +290,18 @@ def _source_label(label: str) -> str:
 
 def _oss_env(verilator: bool = False) -> dict[str, str]:
     env = dict(os.environ)
-    env["PATH"] = os.pathsep.join([str(LOCAL_WINLIBS_BIN), str(OSS_CAD_SUITE / "bin"), str(OSS_CAD_SUITE / "lib"), env.get("PATH", "")])
+    parts = []
+    for path in (LOCAL_WINLIBS_BIN, OSS_CAD_SUITE / "bin", OSS_CAD_SUITE / "lib"):
+        if path.exists():
+            parts.append(str(path))
+    parts.append(env.get("PATH", ""))
+    env["PATH"] = os.pathsep.join(parts)
     if verilator:
-        env["VERILATOR_ROOT"] = str(OSS_CAD_SUITE / "share" / "verilator")
+        verilator_root = OSS_CAD_SUITE / "share" / "verilator"
+        if verilator_root.exists():
+            env["VERILATOR_ROOT"] = str(verilator_root)
+        else:
+            env.pop("VERILATOR_ROOT", None)
     return env
 
 
