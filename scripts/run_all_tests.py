@@ -75,6 +75,7 @@ REQUIRED_TB = [
     "tb/system/tb_event_tap.sv",
     "tb/system/tb_mmio_interrupt_loggers.sv",
     "tb/system/tb_registers.sv",
+    "tb/system/tb_replaycapsule_soc.sv",
     "tb/system/tb_picorv32_wrapper_smoke.sv",
 ]
 

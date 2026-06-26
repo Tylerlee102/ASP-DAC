@@ -2,7 +2,7 @@ name,status,detail
 rtl_required_files,PASS,17 files present
 event_type_definitions,PASS,12 event names present
 firmware_benchmark_pairs,PASS,6 failing/fixed pairs present
-directed_sv_testbenches,PASS,9 source-present testbenches
+directed_sv_testbenches,PASS,10 source-present testbenches
 syntax:scripts/build_firmware_images.py,PASS,
 syntax:scripts/export_rtl_capsules.py,PASS,
 syntax:scripts/run_formal_checks.py,PASS,

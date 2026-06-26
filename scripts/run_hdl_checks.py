@@ -111,6 +111,22 @@ IVERILOG_TESTS = (
         include_dirs=("../../rtl",),
     ),
     IverilogTest(
+        name="tb_replaycapsule_soc",
+        workdir=Path("tb/system"),
+        sources=(
+            "tb_replaycapsule_soc.sv",
+            "../../rtl/event_tap.sv",
+            "../../rtl/event_classifier.sv",
+            "../../rtl/capsule_buffer.sv",
+            "../../rtl/property_checker.sv",
+            "../../rtl/event_slicer.sv",
+            "../../rtl/hash_signature.sv",
+            "../../rtl/replay_capsule_top.sv",
+            "../../rtl/rv32i_integration/replaycapsule_soc.sv",
+        ),
+        include_dirs=("../../rtl", "../../rtl/rv32i_integration"),
+    ),
+    IverilogTest(
         name="tb_picorv32_sensor_threshold_smoke",
         workdir=Path("tb/system"),
         sources=(
