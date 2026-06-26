@@ -67,6 +67,7 @@ The project does not claim novelty for generic runtime monitors, trace compressi
 - Generic Yosys synthesis: `results/processed/synthesis.csv`
 - Generic cell-overhead context: `results/processed/synthesis_overhead.csv`
 - Evaluation metric rollup: `results/processed/evaluation_metrics.csv`
+- Claim audit: `results/processed/claim_audit.csv`
 - Paper synthesis/resource table: `paper/figures/table01_synthesis_resources.md`
 - Paper replay/baseline/ablation/formal/proof/metrics tables: `paper/figures/table02_replay_evidence.md` through `paper/figures/table07_evaluation_metrics.md`
 - Generated figures: `results/figures/` and `paper/figures/`

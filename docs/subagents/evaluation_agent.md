@@ -20,9 +20,8 @@ Metrics:
 - trace reduction ratio
 - LUT/FF/BRAM overhead
 - Fmax before/after
-- runtime slowdown
+- runtime slowdown, TODO until hardware or benchmark-wide RTL timing exists
 - cycles to failure
 - events per kilo-instruction
 - buffer overflow rate
 - false and missed property failures
-

@@ -80,6 +80,7 @@ REQUIRED_TB = [
 ]
 
 PYTHON_FILES = [
+    "scripts/audit_claims.py",
     "scripts/build_firmware_images.py",
     "scripts/check_rtl_firmware_alignment.py",
     "scripts/export_rtl_capsules.py",
@@ -268,6 +269,12 @@ def main() -> int:
         failures,
         "paper_table_generation",
         [sys.executable, "scripts/render_paper_tables.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "claim_audit",
+        [sys.executable, "scripts/audit_claims.py"],
     )
     _run_subprocess(
         rows,

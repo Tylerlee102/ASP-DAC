@@ -51,6 +51,7 @@ hand into captions, plots, or tables.
 | `docs/proof_obligation_matrix.md` | Yes | Proof-obligation matrix | Generated reviewer-facing theorem evidence matrix. |
 | `paper/figures/table06_proof_obligations.md` | Yes | Proof-obligation table | Generated Markdown paper table source derived from proof-obligations CSV. |
 | `paper/figures/table07_evaluation_metrics.md` | Yes | Evaluation metric table | Generated Markdown paper table source derived from evaluation metrics CSV. |
+| `results/processed/claim_audit.csv` | Yes | Honesty gate | Generated audit of high-risk claim phrases; uncaveated rows fail the local gate. |
 | `results/processed/summary.csv` | Yes | All figure/table provenance | One-command status ledger for generated artifacts and missing tools. |
 
 ## Paper Figure and Table Manifest
@@ -223,4 +224,4 @@ Use the existing pipeline as the source of truth:
 | PicoRV32 integration | Firmware-running record/replay traces for each benchmark | Full replay flow, full baseline comparison, full ablation heatmap, RTL-backed replay overhead context. |
 | Full Verilator/cocotb plus RISC-V toolchain | Reproducible RTL simulation traces and firmware images | Benchmark-wide event logs, replay success, cycles to failure, overflow checks. |
 | Yosys | Real synthesis report for baseline `picorv32`, `replay_capsule_top`, and integrated variants | Generic cell counts, generic cell-overhead context, and synthesis status. Current local flow satisfies this with `yowasp-yosys`. |
-| FPGA mapping flow | Device-mapped reports for baseline and ReplayCapsule builds | LUT, FF, BRAM, Fmax, and timing-overhead fields. |
+| FPGA mapping flow | Requires device-mapped reports for baseline and ReplayCapsule builds | LUT, FF, BRAM, Fmax, and timing-overhead fields. |

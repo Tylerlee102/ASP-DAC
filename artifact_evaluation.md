@@ -75,6 +75,8 @@ Current generic synthesis evidence:
   `NA`: `results/processed/synthesis_overhead.csv`
 - Generated metric rollup, with blocked hardware metrics preserved as `TODO`:
   `results/processed/evaluation_metrics.csv`
+- Generated claim audit for high-risk paper/reviewer wording:
+  `results/processed/claim_audit.csv`
 - Generated paper table source for synthesis/resource reporting:
   `paper/figures/table01_synthesis_resources.md`
 - Generated paper table sources for replay evidence, trace-size baselines,

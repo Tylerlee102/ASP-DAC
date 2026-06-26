@@ -3,6 +3,7 @@ rtl_required_files,PASS,17 files present
 event_type_definitions,PASS,12 event names present
 firmware_benchmark_pairs,PASS,6 failing/fixed pairs present
 directed_sv_testbenches,PASS,10 source-present testbenches
+syntax:scripts/audit_claims.py,PASS,
 syntax:scripts/build_firmware_images.py,PASS,
 syntax:scripts/check_rtl_firmware_alignment.py,PASS,
 syntax:scripts/export_rtl_capsules.py,PASS,
@@ -49,6 +50,7 @@ synthesis_report_parse,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\
 synthesis_overhead_summary,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\synthesis_overhead.csv
 evaluation_metrics_summary,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\evaluation_metrics.csv
 paper_table_generation,PASS,WROTE 7 paper table(s) under C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
+claim_audit,PASS,WROTE C:\Users\tyboy\OneDrive\Documents\New project\results\processed\claim_audit.csv; REVIEW rows=0
 figure_generation,PASS,WROTE 8 SVG figures to C:\Users\tyboy\OneDrive\Documents\New project\results\figures and C:\Users\tyboy\OneDrive\Documents\New project\paper\figures
 tool:verilator,PASS,workspace-local oss-cad-suite verilator_bin.exe
 tool:iverilog,PASS,workspace-local oss-cad-suite iverilog.exe
