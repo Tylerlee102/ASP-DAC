@@ -67,6 +67,18 @@ FORMAL_TARGETS = (
         notes="bounded property-checker failure-family covers over depth 8",
     ),
     FormalTarget(
+        name="hash_signature_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/hash_signature_bmc.sby"),
+        depth=4,
+        notes="bounded hash-signature reset/stability/update invariants over depth 4",
+    ),
+    FormalTarget(
+        name="hash_signature_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/hash_signature_cover.sby"),
+        depth=4,
+        notes="bounded hash-signature reset/stability/update covers over depth 4",
+    ),
+    FormalTarget(
         name="replay_control_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/replay_control_bmc.sby"),
         depth=8,

@@ -5,6 +5,8 @@ event_classifier_slicer_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smt
 event_classifier_slicer_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_event_classifier_slicer_cover.txt,bounded event-classifier policy and slicer context-window covers over depth 8
 property_checker_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_property_checker_bmc.txt,bounded property-checker failure-ID/signature and state-transition invariants over depth 8
 property_checker_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_property_checker_cover.txt,bounded property-checker failure-family covers over depth 8
+hash_signature_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_hash_signature_bmc.txt,bounded hash-signature reset/stability/update invariants over depth 4
+hash_signature_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_hash_signature_cover.txt,bounded hash-signature reset/stability/update covers over depth 4
 replay_control_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_control_bmc.txt,bounded replay-control consume/inject invariants over depth 8
 replay_control_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_control_cover.txt,bounded replay-control injection and underflow covers over depth 8
 capsule_buffer_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_capsule_buffer_bmc.txt,bounded capsule-buffer invariants over depth 12

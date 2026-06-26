@@ -1,0 +1,19 @@
+[options]
+mode cover
+depth 4
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/event_pkg.sv
+read_verilog -formal -sv -Irtl rtl/hash_signature.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/hash_signature_bmc_harness.sv
+prep -top hash_signature_bmc_harness
+
+[files]
+rtl/event_pkg.sv rtl/event_pkg.sv
+rtl/event_defs.svh rtl/event_defs.svh
+rtl/hash_signature.sv rtl/hash_signature.sv
+formal/yosys_smtbmc_scripts/hash_signature_bmc_harness.sv formal/yosys_smtbmc_scripts/hash_signature_bmc_harness.sv

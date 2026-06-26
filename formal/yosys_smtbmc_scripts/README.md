@@ -29,6 +29,13 @@ Implemented now:
   plus reset/clear and exposed state transitions.
 - `property_checker_cover.sby`: depth-8 cover run over the same checker
   harness. It checks that all six supported failure families are reachable.
+- `hash_signature_bmc.sby` plus `hash_signature_bmc_harness.sv`: depth-4 BMC
+  over the rolling signature accumulator. The harness checks reset/clear seed,
+  no-event stability, and the exact rotate/XOR update for accepted event
+  packets.
+- `hash_signature_cover.sby`: depth-4 cover run over the same hash-signature
+  harness. It checks that reset, clear, no-event stability, and event-update
+  states are reachable.
 - `replay_control_bmc.sby` plus `replay_control_bmc_harness.sv`: depth-8 BMC
   over replay consume/inject behavior. The harness checks disabled and
   time-mismatched events remain idle, MMIO/external-input packets inject data,
