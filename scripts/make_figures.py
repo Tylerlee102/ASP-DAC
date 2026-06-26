@@ -13,6 +13,8 @@ PAPER_FIGURES = REPO_ROOT / "paper" / "figures"
 TRACE_CSV = REPO_ROOT / "results" / "processed" / "trace_sizes.csv"
 ABLATION_CSV = REPO_ROOT / "results" / "processed" / "ablations.csv"
 SYNTH_CSV = REPO_ROOT / "results" / "processed" / "synthesis.csv"
+RTL_CLASSES_CSV = REPO_ROOT / "results" / "processed" / "rtl_capsule_event_classes.csv"
+RANDOMIZED_IRQ_CSV = REPO_ROOT / "results" / "processed" / "randomized_interrupt_campaign.csv"
 
 
 def main() -> int:
@@ -25,6 +27,8 @@ def main() -> int:
         "ablation_heatmap.svg": _ablation_heatmap_svg(_read_rows(ABLATION_CSV)),
         "synthesis_status.svg": _synthesis_status_svg(_read_rows(SYNTH_CSV)),
         "trace_size_status.svg": _trace_status_svg(_read_rows(TRACE_CSV)),
+        "rtl_capsule_event_classes.svg": _rtl_capsule_event_classes_svg(_read_rows(RTL_CLASSES_CSV)),
+        "randomized_interrupt_campaign.svg": _randomized_interrupt_campaign_svg(_read_rows(RANDOMIZED_IRQ_CSV)),
     }
     for name, svg in figures.items():
         (RESULTS_FIGURES / name).write_text(svg, encoding="utf-8")
@@ -184,6 +188,64 @@ def _trace_status_svg(rows: list[dict[str, str]]) -> str:
     return _text_svg("Trace Size Status", lines)
 
 
+def _rtl_capsule_event_classes_svg(rows: list[dict[str, str]]) -> str:
+    measured = [row for row in rows if row.get("status") == "PASS"]
+    if not measured:
+        return _text_svg("RTL Capsule Event Classes", ["No passing RTL-smoke capsule class rows yet."])
+    max_packets = max(_int(row.get("rtl_packet_count")) for row in measured) or 1
+    width = 1240
+    height = 88 + len(measured) * 36
+    parts = [_svg_open(width, height), _title("RTL-Smoke Capsule Event Classes", width)]
+    parts.append(_text(24, 58, "gray = total exported packets; green = replay-relevant packets; labels show class counts", size=12))
+    y = 86
+    for row in measured:
+        label = f"{row.get('benchmark')} {row.get('variant')}"
+        total = _int(row.get("rtl_packet_count"))
+        relevant = _int(row.get("replay_relevant_packet_count"))
+        total_w = int((total / max_packets) * 260)
+        relevant_w = int((relevant / max_packets) * 260)
+        x = 260
+        parts.append(_text(24, y + 17, label, size=11))
+        parts.append(f'<rect x="{x}" y="{y}" width="{total_w}" height="12" fill="#d8dee9"/>')
+        parts.append(f'<rect x="{x}" y="{y + 14}" width="{relevant_w}" height="12" fill="#7bd88f"/>')
+        mix = (
+            f"pkt {total}, rel {relevant}, br {row.get('branch')}, mmio "
+            f"{_int(row.get('mmio_read')) + _int(row.get('mmio_write'))}, irq "
+            f"{_int(row.get('interrupt_enter')) + _int(row.get('interrupt_exit'))}, "
+            f"store {row.get('store')}, fail {row.get('property_fail')}"
+        )
+        parts.append(_text(x + 286, y + 20, mix, size=11))
+        y += 36
+    parts.append(_svg_close())
+    return "\n".join(parts)
+
+
+def _randomized_interrupt_campaign_svg(rows: list[dict[str, str]]) -> str:
+    measured = [row for row in rows if row.get("status") == "PASS"]
+    if not measured:
+        return _text_svg("Randomized Interrupt Campaign", ["No passing seeded interrupt rows yet."])
+    max_count = max(_int(row.get("capsule_count_run1")) for row in measured) or 1
+    width = 1120
+    height = 88 + len(measured) * 34
+    parts = [_svg_open(width, height), _title("Seeded RTL-Smoke Interrupt Campaign", width)]
+    parts.append(_text(24, 58, "Each seed ran twice; bars show frozen capsule packet count from run 1 after digest match.", size=12))
+    colors = {"irq_after_command": "#8fb3ff", "fixed_irq_window": "#ffcc66"}
+    y = 86
+    for row in measured:
+        count = _int(row.get("capsule_count_run1"))
+        bar_w = int((count / max_count) * 300)
+        family = row.get("family", "family")
+        label = f"seed {row.get('seed')} {family}"
+        x = 270
+        parts.append(_text(24, y + 16, label, size=11))
+        parts.append(f'<rect x="{x}" y="{y}" width="{bar_w}" height="16" fill="{colors.get(family, "#b7a7ff")}"/>')
+        window = "after-command" if family == "irq_after_command" else f"{row.get('irq_start_cycle')}-{row.get('irq_end_cycle')}"
+        parts.append(_text(x + bar_w + 12, y + 13, f"{count} packets, window {window}, property {row.get('property_run1')}", size=11))
+        y += 34
+    parts.append(_svg_close())
+    return "\n".join(parts)
+
+
 def _diagram(title: str, boxes: list[tuple[int, int, int, int, str]], arrows: list[tuple[int, int, int, int]], width: int, height: int) -> str:
     parts = [_svg_open(width, height), _title(title, width)]
     parts.append('<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>')
@@ -213,6 +275,15 @@ def _read_rows(path: Path) -> list[dict[str, str]]:
         return []
     with path.open(newline="", encoding="utf-8") as handle:
         return list(csv.DictReader(handle))
+
+
+def _int(value: str | None) -> int:
+    if value is None:
+        return 0
+    try:
+        return int(value)
+    except ValueError:
+        return 0
 
 
 def _svg_open(width: int, height: int) -> str:

@@ -15,9 +15,13 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/raw/phase12_sensor_threshold_trace.json` | Yes | Smoke event timeline for model and replay-flow figures. |
 | `../../results/processed/replay_experiments.csv` | Yes | Replay-flow status source. |
 | `../../results/processed/rtl_capsule_exports.csv` | Yes | RTL-smoke capsule export, missing-event, metadata-corruption, payload-corruption, and PC-context source. |
+| `../../results/processed/rtl_capsule_event_classes.csv` | Yes | RTL-smoke capsule packet-class source. |
 | `../../results/processed/rtl_firmware_alignment.csv` | Yes | RTL-smoke versus firmware-sim property/key-event alignment source. |
+| `../../results/processed/randomized_interrupt_campaign.csv` | Yes | Seeded RTL-smoke interrupt campaign source. |
 | `../../results/processed/trace_sizes.csv` | Yes | Baseline trace-size data source. |
 | `../../results/figures/trace_size_status.svg` | Yes | Existing generated trace-size status figure; not final paper styling. |
+| `../../results/figures/rtl_capsule_event_classes.svg` | Yes | Existing generated RTL-smoke capsule class figure; not final paper styling. |
+| `../../results/figures/randomized_interrupt_campaign.svg` | Yes | Existing generated seeded interrupt campaign figure; not final paper styling. |
 | `../../results/processed/ablations.csv` | Yes | Ablation heatmap data source. |
 | `../../results/processed/hdl_checks.csv` | Yes | Directed HDL and PicoRV32 wrapper smoke verification source with nine directed module rows and twelve wrapper smoke rows. |
 | `../../results/processed/formal_checks.csv` | Yes | Bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, capsule-buffer, and recorder formal status source. |
@@ -36,6 +40,8 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `fig03_replay_flow.svg` / `.pdf` | Partial source generated | `../../results/processed/replay_experiments.csv`, replay testbench scripts | Full benchmark replay requires RTL/PicoRV32 traces. |
 | `fig04_baseline_trace_sizes.svg` / `.pdf` | Status SVG generated today | `../../results/processed/trace_sizes.csv`, `../../results/figures/trace_size_status.svg` | Missing baselines and replay-success fields require simulator/RTL/PicoRV32 artifacts. |
 | `fig05_ablation_heatmap.svg` / `.pdf` | CSV generated today; heatmap not generated | `../../results/processed/ablations.csv` | Full-suite rows require firmware-running RTL/PicoRV32 traces. |
+| `fig06_rtl_capsule_event_classes.svg` / `.pdf` | Status SVG generated today | `../../results/processed/rtl_capsule_event_classes.csv`, `../../results/figures/rtl_capsule_event_classes.svg` | Full benchmark-wide RTL traces required before treating this as complete baseline coverage. |
+| `fig07_randomized_interrupt_campaign.svg` / `.pdf` | Status SVG generated today | `../../results/processed/randomized_interrupt_campaign.csv`, `../../results/figures/randomized_interrupt_campaign.svg` | Full record/replay randomized RTL campaign remains pending. |
 | `table01_synthesis_resources.md` | Partial source generated today | `../../results/processed/synthesis.csv` | Mapped FPGA flow for LUT/FF/BRAM/Fmax and a matching baseline core build for core-relative overhead. |
 
 ## Rendering Rules

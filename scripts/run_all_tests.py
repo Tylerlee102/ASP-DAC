@@ -87,6 +87,7 @@ PYTHON_FILES = [
     "scripts/run_hdl_checks.py",
     "scripts/run_randomized_interrupt_campaign.py",
     "scripts/run_replay_negative_tests.py",
+    "scripts/make_figures.py",
     "scripts/summarize_rtl_capsule_classes.py",
     "scripts/summarize_formal_coverage.py",
     "scripts/replaycapsule_model.py",

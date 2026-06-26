@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="530" viewBox="0 0 1120 530">
+<rect width="1120" height="530" fill="#ffffff"/>
+<text x="560" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">Seeded RTL-Smoke Interrupt Campaign</text>
+<text x="24" y="58" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">Each seed ran twice; bars show frozen capsule packet count from run 1 after digest match.</text>
+<text x="24" y="102" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 1101 irq_after_command</text>
+<rect x="270" y="86" width="90" height="16" fill="#8fb3ff"/>
+<text x="372" y="99" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window after-command, property 2</text>
+<text x="24" y="136" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 1103 irq_after_command</text>
+<rect x="270" y="120" width="90" height="16" fill="#8fb3ff"/>
+<text x="372" y="133" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window after-command, property 2</text>
+<text x="24" y="170" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 1109 irq_after_command</text>
+<rect x="270" y="154" width="90" height="16" fill="#8fb3ff"/>
+<text x="372" y="167" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window after-command, property 2</text>
+<text x="24" y="204" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 1117 irq_after_command</text>
+<rect x="270" y="188" width="90" height="16" fill="#8fb3ff"/>
+<text x="372" y="201" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window after-command, property 2</text>
+<text x="24" y="238" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 1123 irq_after_command</text>
+<rect x="270" y="222" width="90" height="16" fill="#8fb3ff"/>
+<text x="372" y="235" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window after-command, property 2</text>
+<text x="24" y="272" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 1129 irq_after_command</text>
+<rect x="270" y="256" width="90" height="16" fill="#8fb3ff"/>
+<text x="372" y="269" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window after-command, property 2</text>
+<text x="24" y="306" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 2101 fixed_irq_window</text>
+<rect x="270" y="290" width="90" height="16" fill="#ffcc66"/>
+<text x="372" y="303" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">3 packets, window 20-50, property 2</text>
+<text x="24" y="340" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 2103 fixed_irq_window</text>
+<rect x="270" y="324" width="120" height="16" fill="#ffcc66"/>
+<text x="402" y="337" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">4 packets, window 30-60, property 2</text>
+<text x="24" y="374" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 2109 fixed_irq_window</text>
+<rect x="270" y="358" width="180" height="16" fill="#ffcc66"/>
+<text x="462" y="371" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">6 packets, window 40-70, property 2</text>
+<text x="24" y="408" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 2111 fixed_irq_window</text>
+<rect x="270" y="392" width="210" height="16" fill="#ffcc66"/>
+<text x="492" y="405" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">7 packets, window 50-80, property 2</text>
+<text x="24" y="442" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 2113 fixed_irq_window</text>
+<rect x="270" y="426" width="240" height="16" fill="#ffcc66"/>
+<text x="522" y="439" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">8 packets, window 60-90, property 2</text>
+<text x="24" y="476" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 2129 fixed_irq_window</text>
+<rect x="270" y="460" width="270" height="16" fill="#ffcc66"/>
+<text x="552" y="473" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">9 packets, window 70-100, property 2</text>
+<text x="24" y="510" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">seed 2131 fixed_irq_window</text>
+<rect x="270" y="494" width="300" height="16" fill="#ffcc66"/>
+<text x="582" y="507" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">10 packets, window 80-110, property 2</text>
+</svg>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1240" height="520" viewBox="0 0 1240 520">
+<rect width="1240" height="520" fill="#ffffff"/>
+<text x="620" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">RTL-Smoke Capsule Event Classes</text>
+<text x="24" y="58" font-family="Arial, sans-serif" font-size="12" font-weight="400" text-anchor="start" fill="#1f2933">gray = total exported packets; green = replay-relevant packets; labels show class counts</text>
+<text x="24" y="103" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">sensor_threshold_bug failing</text>
+<rect x="260" y="86" width="71" height="12" fill="#d8dee9"/>
+<rect x="260" y="100" width="67" height="12" fill="#7bd88f"/>
+<text x="546" y="106" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 16, rel 15, br 14, mmio 1, irq 0, store 0, fail 1</text>
+<text x="24" y="139" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">interrupt_race_bug failing</text>
+<rect x="260" y="122" width="13" height="12" fill="#d8dee9"/>
+<rect x="260" y="136" width="8" height="12" fill="#7bd88f"/>
+<text x="546" y="142" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 3, rel 2, br 0, mmio 1, irq 1, store 0, fail 1</text>
+<text x="24" y="175" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">mmio_ordering_bug failing</text>
+<rect x="260" y="158" width="8" height="12" fill="#d8dee9"/>
+<rect x="260" y="172" width="4" height="12" fill="#7bd88f"/>
+<text x="546" y="178" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 2, rel 1, br 0, mmio 1, irq 0, store 0, fail 1</text>
+<text x="24" y="211" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">stack_corruption_bug failing</text>
+<rect x="260" y="194" width="8" height="12" fill="#d8dee9"/>
+<rect x="260" y="208" width="4" height="12" fill="#7bd88f"/>
+<text x="546" y="214" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 2, rel 1, br 0, mmio 0, irq 0, store 1, fail 1</text>
+<text x="24" y="247" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">uart_command_bug failing</text>
+<rect x="260" y="230" width="17" height="12" fill="#d8dee9"/>
+<rect x="260" y="244" width="13" height="12" fill="#7bd88f"/>
+<text x="546" y="250" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 4, rel 3, br 1, mmio 2, irq 0, store 0, fail 1</text>
+<text x="24" y="283" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">watchdog_timeout_bug failing</text>
+<rect x="260" y="266" width="53" height="12" fill="#d8dee9"/>
+<rect x="260" y="280" width="49" height="12" fill="#7bd88f"/>
+<text x="546" y="286" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 12, rel 11, br 10, mmio 1, irq 0, store 0, fail 1</text>
+<text x="24" y="319" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">sensor_threshold_bug fixed</text>
+<rect x="260" y="302" width="17" height="12" fill="#d8dee9"/>
+<rect x="260" y="316" width="17" height="12" fill="#7bd88f"/>
+<text x="546" y="322" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 4, rel 4, br 1, mmio 3, irq 0, store 0, fail 0</text>
+<text x="24" y="355" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">interrupt_race_bug fixed</text>
+<rect x="260" y="338" width="260" height="12" fill="#d8dee9"/>
+<rect x="260" y="352" width="260" height="12" fill="#7bd88f"/>
+<text x="546" y="358" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 58, rel 58, br 53, mmio 3, irq 2, store 0, fail 0</text>
+<text x="24" y="391" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">mmio_ordering_bug fixed</text>
+<rect x="260" y="374" width="8" height="12" fill="#d8dee9"/>
+<rect x="260" y="388" width="8" height="12" fill="#7bd88f"/>
+<text x="546" y="394" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 2, rel 2, br 0, mmio 2, irq 0, store 0, fail 0</text>
+<text x="24" y="427" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">stack_corruption_bug fixed</text>
+<rect x="260" y="410" width="4" height="12" fill="#d8dee9"/>
+<rect x="260" y="424" width="4" height="12" fill="#7bd88f"/>
+<text x="546" y="430" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 1, rel 1, br 0, mmio 0, irq 0, store 1, fail 0</text>
+<text x="24" y="463" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">uart_command_bug fixed</text>
+<rect x="260" y="446" width="13" height="12" fill="#d8dee9"/>
+<rect x="260" y="460" width="13" height="12" fill="#7bd88f"/>
+<text x="546" y="466" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 3, rel 3, br 0, mmio 3, irq 0, store 0, fail 0</text>
+<text x="24" y="499" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">watchdog_timeout_bug fixed</text>
+<rect x="260" y="482" width="35" height="12" fill="#d8dee9"/>
+<rect x="260" y="496" width="35" height="12" fill="#7bd88f"/>
+<text x="546" y="502" font-family="Arial, sans-serif" font-size="11" font-weight="400" text-anchor="start" fill="#1f2933">pkt 8, rel 8, br 3, mmio 5, irq 0, store 0, fail 0</text>
+</svg>
