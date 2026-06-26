@@ -106,10 +106,6 @@ jobs:
           hash -r
           make full-rtl-replay DEBUG=1
 
-      - name: Compare fallback and compiler firmware sources
-        continue-on-error: true
-        run: make firmware-source-compare
-
       - name: Run full RTL negative replay
         continue-on-error: true
         run: |
@@ -122,6 +118,10 @@ jobs:
       - name: Measure runtime overhead
         continue-on-error: true
         run: make runtime-overhead
+
+      - name: Compare fallback and compiler firmware sources
+        continue-on-error: true
+        run: make firmware-source-compare
 
       - name: Run mapped synthesis
         continue-on-error: true

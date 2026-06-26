@@ -41,7 +41,7 @@ VERILATOR_ABS_SOURCES = $(foreach src,$(VERILATOR_SOURCES),$(abspath $(src)))
 test:
 	$(PYTHON) scripts/run_all_tests.py
 
-reproduce: check-toolchain firmware rtl-smoke full-rtl-replay firmware-source-compare full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact
+reproduce: check-toolchain firmware rtl-smoke full-rtl-replay full-rtl-negative runtime-overhead firmware-source-compare mapped-synth paper paper-audit artifact
 
 check-toolchain:
 	$(PYTHON) scripts/check_toolchain.py --gate reproduce
