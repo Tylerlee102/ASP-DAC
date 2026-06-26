@@ -1,0 +1,19 @@
+[options]
+mode cover
+depth 8
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/event_pkg.sv
+read_verilog -formal -sv -Irtl rtl/property_checker.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv
+prep -top property_checker_bmc_harness
+
+[files]
+rtl/event_pkg.sv rtl/event_pkg.sv
+rtl/event_defs.svh rtl/event_defs.svh
+rtl/property_checker.sv rtl/property_checker.sv
+formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv

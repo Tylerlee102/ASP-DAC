@@ -43,6 +43,18 @@ FORMAL_TARGETS = (
         notes="bounded event-tap priority and event-kind covers over depth 2",
     ),
     FormalTarget(
+        name="property_checker_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/property_checker_bmc.sby"),
+        depth=8,
+        notes="bounded property-checker failure-ID/signature and state-transition invariants over depth 8",
+    ),
+    FormalTarget(
+        name="property_checker_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/property_checker_cover.sby"),
+        depth=8,
+        notes="bounded property-checker failure-family covers over depth 8",
+    ),
+    FormalTarget(
         name="replay_control_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/replay_control_bmc.sby"),
         depth=8,

@@ -13,6 +13,13 @@ Implemented now:
 - `event_tap_cover.sby`: depth-2 cover run over the same event-tap harness. It
   checks that interrupt, MMIO read, store, branch, and multievent cases are
   reachable.
+- `property_checker_bmc.sby` plus `property_checker_bmc_harness.sv`: depth-8
+  BMC over reduced-deadline property-checker behavior. The harness checks
+  failure IDs and signatures for actuator-limit, interrupt-critical,
+  sensor-deadline, stack-protect, MMIO-ordering, and watchdog-timeout failures,
+  plus reset/clear and exposed state transitions.
+- `property_checker_cover.sby`: depth-8 cover run over the same checker
+  harness. It checks that all six supported failure families are reachable.
 - `replay_control_bmc.sby` plus `replay_control_bmc_harness.sv`: depth-8 BMC
   over replay consume/inject behavior. The harness checks disabled and
   time-mismatched events remain idle, MMIO/external-input packets inject data,
