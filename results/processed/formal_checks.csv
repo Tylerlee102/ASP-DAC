@@ -1,3 +1,5 @@
 check,status,tool,raw_log,notes
+capsule_buffer_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_capsule_buffer_bmc.txt,bounded capsule-buffer invariants over depth 12
+capsule_buffer_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_capsule_buffer_cover.txt,bounded capsule-buffer reachability covers over depth 12
 replay_capsule_top_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_capsule_top_bmc.txt,bounded recorder invariants over depth 16
 replay_capsule_top_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_capsule_top_cover.txt,bounded reachability covers over depth 16

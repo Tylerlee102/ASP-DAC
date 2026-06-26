@@ -2,7 +2,7 @@
 
 The evaluation will report replay success, capsule size, trace reduction, event rate, hardware overhead, Fmax loss, runtime overhead, buffer overflow rate, and false or missed property failures.
 
-Current measured local results cover six model-level benchmark capsules, six RV32I firmware-sim benchmark capsules, twelve failing/fixed RTL-smoke capsule export self/negative-checks and packet-byte size rows, the replay comparator, two directed Icarus SystemVerilog module simulations, twelve PicoRV32 wrapper firmware smokes, Verilator lint for `replay_capsule_top`, `picorv32_replaycapsule_wrapper`, and `replay_capsule_properties`, bounded SMTBMC recorder proof/cover checks, and generic Yosys synthesis cell counts for both tops. The suites exercise failing and fixed sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout images. The full six-benchmark firmware-running RTL replay/export/compare suite remains TODO because local `make`/C++ build support and a RISC-V compiler are still absent. FPGA-mapped LUT/FF/BRAM/Fmax numbers also remain TODO until an OpenROAD or vendor flow is run.
+Current measured local results cover six model-level benchmark capsules, six RV32I firmware-sim benchmark capsules, twelve failing/fixed RTL-smoke capsule export self/negative-checks and packet-byte size rows, the replay comparator, two directed Icarus SystemVerilog module simulations, twelve PicoRV32 wrapper firmware smokes, Verilator lint for `replay_capsule_top`, `picorv32_replaycapsule_wrapper`, and `replay_capsule_properties`, bounded SMTBMC recorder and capsule-buffer proof/cover checks, and generic Yosys synthesis cell counts for both tops. The suites exercise failing and fixed sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout images. The full six-benchmark firmware-running RTL replay/export/compare suite remains TODO because local `make`/C++ build support and a RISC-V compiler are still absent. FPGA-mapped LUT/FF/BRAM/Fmax numbers also remain TODO until an OpenROAD or vendor flow is run.
 
 Current generated artifacts:
 
@@ -17,7 +17,7 @@ Current generated artifacts:
 - `results/processed/synthesis.csv`
 - `results/figures/*.svg`
 
-The paper must label current replay, baseline, ablation, and event-sufficiency numbers as model-level, firmware-sim, or RTL-smoke evidence until replaced or corroborated by benchmark-wide RTL/PicoRV32 runs. Current RTL simulation evidence is twelve PicoRV32 wrapper smokes and exported smoke capsule byte counts, current formal evidence is a bounded recorder-invariant BMC plus cover target, and current synthesis evidence is limited to Yosys generic cell counts.
+The paper must label current replay, baseline, ablation, and event-sufficiency numbers as model-level, firmware-sim, or RTL-smoke evidence until replaced or corroborated by benchmark-wide RTL/PicoRV32 runs. Current RTL simulation evidence is twelve PicoRV32 wrapper smokes and exported smoke capsule byte counts, current formal evidence is bounded recorder and capsule-buffer BMC/cover targets, and current synthesis evidence is limited to Yosys generic cell counts.
 
 The result pipeline is:
 

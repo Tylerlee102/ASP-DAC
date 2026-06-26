@@ -1,0 +1,18 @@
+[options]
+mode cover
+depth 12
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/event_pkg.sv
+read_verilog -formal -sv -Irtl rtl/capsule_buffer.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/capsule_buffer_bmc_harness.sv
+prep -top capsule_buffer_bmc_harness
+
+[files]
+rtl/event_pkg.sv rtl/event_pkg.sv
+rtl/capsule_buffer.sv rtl/capsule_buffer.sv
+formal/yosys_smtbmc_scripts/capsule_buffer_bmc_harness.sv formal/yosys_smtbmc_scripts/capsule_buffer_bmc_harness.sv

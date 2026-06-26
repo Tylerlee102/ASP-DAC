@@ -31,6 +31,18 @@ class FormalTarget:
 
 FORMAL_TARGETS = (
     FormalTarget(
+        name="capsule_buffer_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/capsule_buffer_bmc.sby"),
+        depth=12,
+        notes="bounded capsule-buffer invariants over depth 12",
+    ),
+    FormalTarget(
+        name="capsule_buffer_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/capsule_buffer_cover.sby"),
+        depth=12,
+        notes="bounded capsule-buffer reachability covers over depth 12",
+    ),
+    FormalTarget(
         name="replay_capsule_top_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/replay_capsule_top_bmc.sby"),
         depth=16,

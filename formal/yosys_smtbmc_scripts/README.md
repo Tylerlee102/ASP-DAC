@@ -6,6 +6,12 @@ small nondeterministic RV32I boundary, not to prove every processor behavior.
 
 Implemented now:
 
+- `capsule_buffer_bmc.sby` plus `capsule_buffer_bmc_harness.sv`: depth-12 BMC
+  over a four-entry buffer. The harness checks count bounds, failure-to-freeze,
+  frozen-count stability, sticky overflow, legal write-count increments, and
+  first-overflow behavior.
+- `capsule_buffer_cover.sby`: depth-12 cover run over the same buffer harness.
+  It checks that one-write, frozen, and overflow states are reachable.
 - `replay_capsule_top_bmc.sby` plus `replay_capsule_top_bmc_harness.sv`: depth-16
   BMC over a four-entry recorder configuration. The harness checks event-count
   bounds, failure-to-freeze, frozen-count stability, and sticky overflow. The
