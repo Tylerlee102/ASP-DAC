@@ -8,12 +8,7 @@ MEMORY
 
 SECTIONS
 {
-  .vectors 0x00000010 :
-  {
-    KEEP(*(.vectors))
-  } > ROM
-
-  .text 0x00000080 :
+  .text 0x00000000 :
   {
     KEEP(*(.text.start))
     *(.text .text.*)

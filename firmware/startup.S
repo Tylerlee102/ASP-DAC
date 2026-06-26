@@ -1,8 +1,5 @@
-    .section .vectors, "ax"
-    .option norvc
-    j default_irq
-
     .section .text.start, "ax"
+    .option norvc
     .globl _start
 _start:
     la sp, __stack_top
@@ -19,4 +16,4 @@ _start:
     j 3b
 
 default_irq:
-    mret
+    j default_irq
