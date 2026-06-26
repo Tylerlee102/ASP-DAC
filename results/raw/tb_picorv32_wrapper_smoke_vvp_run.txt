@@ -1,0 +1,1 @@
+tb_picorv32_wrapper_smoke.sv:101: $finish called at 1366000 (1ps)

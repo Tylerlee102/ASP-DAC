@@ -69,6 +69,7 @@ BENCHMARK_IDS = [
 REQUIRED_TB = [
     "tb/system/tb_property_checker.sv",
     "tb/system/tb_capsule_buffer.sv",
+    "tb/system/tb_picorv32_wrapper_smoke.sv",
 ]
 
 PYTHON_FILES = [

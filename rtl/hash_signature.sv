@@ -13,14 +13,12 @@ module hash_signature #(
 );
   logic [31:0] folded;
 
-  always_comb begin
-    folded = event_packet[31:0] ^
-             event_packet[63:32] ^
-             event_packet[95:64] ^
-             event_packet[127:96] ^
-             event_packet[159:128] ^
-             {24'h0, event_packet[167:160]};
-  end
+  assign folded = event_packet[31:0] ^
+                  event_packet[63:32] ^
+                  event_packet[95:64] ^
+                  event_packet[127:96] ^
+                  event_packet[159:128] ^
+                  {24'h0, event_packet[167:160]};
 
   always_ff @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin

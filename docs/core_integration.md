@@ -30,6 +30,6 @@ Connect:
 ## Open Work
 
 - Add a bare-metal RISC-V compiler path.
-- Compile and simulate the PicoRV32 wrapper with Verilator or another HDL simulator.
-- Connect instruction/data memories and MMIO peripherals around the PicoRV32 wrapper.
+- Expand the current PicoRV32 wrapper smoke into all benchmark firmware images.
+- Connect fuller instruction/data memory and MMIO peripheral models around the PicoRV32 wrapper.
 - Confirm the commit pulse corresponds to architectural instruction retirement.

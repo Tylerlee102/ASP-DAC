@@ -13,5 +13,4 @@ Out of scope:
 - unsupported properties
 - unbounded firmware claims
 
-The current implementation is also an early scaffold: PicoRV32 integration, firmware-running tests, RTL simulation, and synthesis numbers remain pending.
-
+The current implementation is also an early scaffold: one PicoRV32 wrapper firmware smoke and generic synthesis numbers are measured, but benchmark-wide firmware-running tests, replay outputs, and mapped FPGA timing/resource numbers remain pending.

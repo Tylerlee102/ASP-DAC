@@ -17,7 +17,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/trace_sizes.csv` | Yes | Baseline trace-size data source. |
 | `../../results/figures/trace_size_status.svg` | Yes | Existing generated trace-size status figure; not final paper styling. |
 | `../../results/processed/ablations.csv` | Yes | Ablation heatmap data source. |
-| `../../results/processed/hdl_checks.csv` | Yes | Directed HDL frontend verification source. |
+| `../../results/processed/hdl_checks.csv` | Yes | Directed HDL and PicoRV32 wrapper smoke verification source. |
 | `../../results/raw/yosys_replay_capsule_top.txt` | Yes | Yosys generic synthesis report for the record-side top. |
 | `../../results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Yosys generic synthesis report for the integrated wrapper. |
 | `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source with generic cells measured and mapped resource/timing fields TODO/NA. |

@@ -54,6 +54,23 @@ IVERILOG_TESTS = (
         sources=("tb_capsule_buffer.sv", "../../rtl/capsule_buffer.sv"),
         include_dirs=("../../rtl",),
     ),
+    IverilogTest(
+        name="tb_picorv32_wrapper_smoke",
+        workdir=Path("tb/system"),
+        sources=(
+            "tb_picorv32_wrapper_smoke.sv",
+            "../../third_party/picorv32/picorv32.v",
+            "../../rtl/event_tap.sv",
+            "../../rtl/event_classifier.sv",
+            "../../rtl/capsule_buffer.sv",
+            "../../rtl/property_checker.sv",
+            "../../rtl/event_slicer.sv",
+            "../../rtl/hash_signature.sv",
+            "../../rtl/replay_capsule_top.sv",
+            "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
+        ),
+        include_dirs=("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32"),
+    ),
 )
 
 

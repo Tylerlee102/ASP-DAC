@@ -16,7 +16,7 @@ module event_classifier (
     event_is_nondeterministic = 1'b0;
     event_is_property_relevant = 1'b0;
 
-    unique case (event_type)
+    case (event_type)
       EV_MMIO_READ,
       EV_INTERRUPT_ENTER,
       EV_INTERRUPT_EXIT,
@@ -41,7 +41,7 @@ module event_classifier (
 
   always_comb begin
     keep_event = 1'b0;
-    unique case (capture_mode)
+    case (capture_mode)
       CAPTURE_ALL: begin
         keep_event = event_valid;
       end

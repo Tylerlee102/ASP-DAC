@@ -1,5 +1,6 @@
 check,status,tool,raw_log,notes
 tb_property_checker,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_property_checker_vvp_run.txt,compile and simulation passed
 tb_capsule_buffer,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_capsule_buffer_vvp_run.txt,compile and simulation passed
+tb_picorv32_wrapper_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_wrapper_smoke_vvp_run.txt,compile and simulation passed
 verilator_lint_replay_capsule_top,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replay_capsule_top.txt,lint-only frontend check passed
 verilator_lint_picorv32_wrapper,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_picorv32_wrapper.txt,lint-only frontend check passed
