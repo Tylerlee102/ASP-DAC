@@ -2,17 +2,17 @@
   "benchmark": "stack_corruption_bug",
   "events": [
     {
-      "commit": 6,
+      "commit": 5,
       "kind": "pc",
       "order": 0,
-      "pc": "0x00001800"
+      "pc": "0x00000098"
     },
     {
       "addr": "0x00001800",
-      "commit": 6,
+      "commit": 5,
       "kind": "store",
       "order": 0,
-      "pc": "0x00001800",
+      "pc": "0x00000098",
       "value": "0xdeadbeef"
     }
   ],

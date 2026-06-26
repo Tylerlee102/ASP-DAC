@@ -8,6 +8,13 @@ The current implementation uses a deterministic SoC scaffold in `rtl/rv32i_integ
 
 PicoRV32 has also been vendored under `third_party/picorv32`, and `rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv` instantiates the upstream core with IRQ and trace support enabled. The wrapper connects native memory transactions, trace-valid events, IRQ/EOI observations, and external inputs into `replay_capsule_top`.
 
+The current wrapper handles PicoRV32 trace classes explicitly: `TRACE_ADDR`
+records are treated as memory-address sideband rather than commit records, and
+the commit counter advances only on non-address trace records. Memory events in
+the smoke capsules use the most recent instruction-fetch address as their PC
+context, which is adequate for local smoke evidence but still below a full RVFI
+or retirement-validated integration.
+
 ## PicoRV32 Integration Target
 
 Connect:
@@ -30,6 +37,7 @@ Connect:
 ## Open Work
 
 - Add a bare-metal RISC-V compiler path.
-- Expand the current PicoRV32 wrapper smoke into all benchmark firmware images.
+- Scale the twelve current PicoRV32 wrapper smokes into full replay/export/compare
+  runs for all benchmark firmware images.
 - Connect fuller instruction/data memory and MMIO peripheral models around the PicoRV32 wrapper.
 - Confirm the commit pulse corresponds to architectural instruction retirement.

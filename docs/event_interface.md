@@ -158,6 +158,12 @@ MMIO read, MMIO write, non-MMIO store, non-MMIO load, branch, jump, commit.
 `multievent_pending` tells the top-level integration that more than one
 candidate was present in the same cycle.
 
+The PicoRV32 wrapper must normalize the upstream trace stream before driving
+this interface. In the current wrapper, PicoRV32 `TRACE_ADDR` records are memory
+address sideband and do not advance the replay commit index. Memory events use
+the most recent instruction-fetch address as smoke-level PC context until a
+full retirement/RVFI-style context source is added.
+
 ## `event_classifier`
 
 `event_classifier` receives `event_valid`, `event_type`, `capture_mode`,

@@ -2,57 +2,57 @@
   "benchmark": "uart_command_bug",
   "events": [
     {
-      "commit": 2,
+      "commit": 1,
       "kind": "pc",
       "order": 0,
-      "pc": "0x4000000c"
+      "pc": "0x00000088"
     },
     {
       "addr": "0x4000000c",
-      "commit": 2,
+      "commit": 1,
       "direction": "read",
       "kind": "mmio",
       "order": 0,
-      "pc": "0x4000000c",
+      "pc": "0x00000088",
       "value": "0x00000055"
     },
     {
-      "commit": 4,
+      "commit": 3,
       "kind": "pc",
       "order": 1,
       "pc": "0x000000a4"
     },
     {
-      "commit": 4,
+      "commit": 3,
       "kind": "branch",
       "order": 1,
       "pc": "0x000000a4",
       "value": "0x00000000"
     },
     {
-      "commit": 7,
+      "commit": 5,
       "kind": "pc",
       "order": 2,
-      "pc": "0x40000004"
+      "pc": "0x000000ac"
     },
     {
       "addr": "0x40000004",
-      "commit": 7,
+      "commit": 5,
       "direction": "write",
       "kind": "mmio",
       "order": 2,
-      "pc": "0x40000004",
+      "pc": "0x000000ac",
       "value": "0x000000fa"
     },
     {
-      "commit": 7,
+      "commit": 5,
       "kind": "pc",
       "order": 3,
-      "pc": "0x40000004"
+      "pc": "0x000000ac"
     }
   ],
   "evidence_level": "rtl-smoke",
-  "failure_signature": "0xac7000fc",
+  "failure_signature": "0xac7000fe",
   "property_id": "P1_ACTUATOR_LIMIT",
   "rtl_packet_count": 4,
   "source_log": "results\\raw\\tb_picorv32_uart_command_smoke_vvp_run.txt",

@@ -2,7 +2,7 @@
 <rect width="980" height="194" fill="#ffffff"/>
 <text x="490" y="30" font-family="Arial, sans-serif" font-size="18" font-weight="700" text-anchor="middle" fill="#1f2933">Synthesis Status</text>
 <text x="28" y="62" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">Synthesis/resource status</text>
-<text x="28" y="88" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">picorv32_replaycapsule_wrapper (yowasp-yosys): MEASURED cells=2015 LUT=NA FF=NA Fmax=NA</text>
+<text x="28" y="88" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">picorv32_replaycapsule_wrapper (yowasp-yosys): MEASURED cells=2023 LUT=NA FF=NA Fmax=NA</text>
 <text x="28" y="114" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow</text>
 <text x="28" y="140" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">replay_capsule_top (yowasp-yosys): MEASURED cells=1292 LUT=NA FF=NA Fmax=NA</text>
 <text x="28" y="166" font-family="Arial, sans-serif" font-size="13" font-weight="400" text-anchor="start" fill="#1f2933">Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow</text>

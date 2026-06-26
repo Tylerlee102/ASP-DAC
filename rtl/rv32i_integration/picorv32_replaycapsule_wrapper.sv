@@ -50,13 +50,20 @@ module picorv32_replaycapsule_wrapper #(
   logic core_trace_valid;
   logic [35:0] core_trace_data;
   logic [31:0] commit_index;
-  logic [31:0] trace_pc;
+  logic [31:0] fetch_context_pc;
+  logic [31:0] trace_payload;
+  logic [31:0] trace_context_pc;
   logic [3:0] trace_kind;
+  logic trace_is_branch;
+  logic trace_is_addr;
   logic branch_taken;
   logic jump_taken;
   logic interrupt_enter;
   logic interrupt_exit;
   logic mem_accepted;
+
+  localparam logic [3:0] TRACE_BRANCH_FLAG = 4'b0001;
+  localparam logic [3:0] TRACE_ADDR_FLAG   = 4'b0010;
 
   assign mem_valid = core_mem_valid;
   assign mem_instr = core_mem_instr;
@@ -66,8 +73,11 @@ module picorv32_replaycapsule_wrapper #(
   assign eoi = core_eoi;
 
   assign trace_kind = core_trace_data[35:32];
-  assign trace_pc = core_trace_data[31:0];
-  assign branch_taken = core_trace_valid && trace_kind[0];
+  assign trace_payload = core_trace_data[31:0];
+  assign trace_is_branch = (trace_kind & TRACE_BRANCH_FLAG) != 4'h0;
+  assign trace_is_addr = (trace_kind & TRACE_ADDR_FLAG) != 4'h0;
+  assign trace_context_pc = trace_is_branch ? trace_payload : fetch_context_pc;
+  assign branch_taken = core_trace_valid && trace_is_branch;
   assign jump_taken = 1'b0;
   assign interrupt_enter = core_eoi != 32'h0 && core_eoi_q == 32'h0;
   assign interrupt_exit = core_eoi == 32'h0 && core_eoi_q != 32'h0;
@@ -78,8 +88,18 @@ module picorv32_replaycapsule_wrapper #(
       commit_index <= 32'h0;
     end else if (clear) begin
       commit_index <= 32'h0;
-    end else if (core_trace_valid) begin
+    end else if (core_trace_valid && !trace_is_addr) begin
       commit_index <= commit_index + 32'h1;
+    end
+  end
+
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      fetch_context_pc <= PROGADDR_RESET;
+    end else if (clear) begin
+      fetch_context_pc <= PROGADDR_RESET;
+    end else if (core_mem_valid && mem_ready && core_mem_instr) begin
+      fetch_context_pc <= core_mem_addr;
     end
   end
 
@@ -159,8 +179,8 @@ module picorv32_replaycapsule_wrapper #(
     .rst_n(rst_n),
     .clear(clear),
     .capture_mode(capture_mode),
-    .commit_valid(core_trace_valid),
-    .commit_pc(trace_pc),
+    .commit_valid(core_trace_valid && !trace_is_addr),
+    .commit_pc(trace_context_pc),
     .commit_instr(32'h0),
     .commit_index(commit_index),
     .branch_taken(branch_taken),

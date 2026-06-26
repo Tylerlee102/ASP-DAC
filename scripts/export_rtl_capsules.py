@@ -62,14 +62,18 @@ def main() -> int:
             parsed = parse_capsule(json.dumps(payload), source=f"{benchmark}:rtl")
             compare = compare_capsules(parsed, parsed, mode="commit-index")
             negative_check = _negative_check(parsed, payload, benchmark)
-            status = "PASS" if compare.success and negative_check in {"PASS", "NA"} else "FAIL"
+            pc_context_check = _pc_context_check(packets)
+            status = "PASS" if compare.success and negative_check in {"PASS", "NA"} and pc_context_check in {"PASS", "NA"} else "FAIL"
             if status == "PASS":
                 if negative_check == "PASS":
-                    notes = "RTL smoke capsule export parsed, self-compared, and missing-event negative check failed as expected; not full replay"
+                    notes = "RTL smoke capsule export parsed, self-compared, and missing-event negative check failed as expected; PC context checked; not full replay"
                 else:
-                    notes = "RTL smoke capsule export parsed and self-compared; no replay-relevant event available for negative check"
+                    notes = "RTL smoke capsule export parsed and self-compared; PC context checked; no replay-relevant event available for negative check"
             elif compare.success:
-                notes = "missing-event negative check unexpectedly matched"
+                if negative_check == "FAIL":
+                    notes = "missing-event negative check unexpectedly matched"
+                else:
+                    notes = "memory event PC context unexpectedly points into the MMIO aperture"
             else:
                 notes = "; ".join(compare.errors)
         except Exception as exc:  # noqa: BLE001 - report all export failures in the CSV
@@ -85,6 +89,7 @@ def main() -> int:
                     "property_id": "NA",
                     "failure_signature": "NA",
                     "negative_check": "NA",
+                    "pc_context_check": "NA",
                     "raw_log": str(log_path.relative_to(REPO_ROOT)),
                     "capsule_json": "NA",
                     "notes": str(exc),
@@ -104,6 +109,7 @@ def main() -> int:
                 "property_id": str(payload["property_id"]),
                 "failure_signature": str(payload["failure_signature"]),
                 "negative_check": negative_check,
+                "pc_context_check": pc_context_check,
                 "raw_log": str(log_path.relative_to(REPO_ROOT)),
                 "capsule_json": str(json_path.relative_to(REPO_ROOT)),
                 "notes": notes,
@@ -123,6 +129,7 @@ def main() -> int:
                 "property_id",
                 "failure_signature",
                 "negative_check",
+                "pc_context_check",
                 "raw_log",
                 "capsule_json",
                 "notes",
@@ -246,6 +253,17 @@ def _event_payload(packet: dict[str, int]) -> dict[str, object] | None:
     if event_type == 0xB:
         return {**base, "kind": "checkpoint", "value": f"0x{packet['data']:08x}"}
     return None
+
+
+def _pc_context_check(packets: list[dict[str, int]]) -> str:
+    checked = 0
+    for packet in packets:
+        if packet["event_type"] not in {0x3, 0x5, 0x6}:
+            continue
+        checked += 1
+        if (packet["pc"] & 0xFFFF_0000) == 0x4000_0000:
+            return "FAIL"
+    return "PASS" if checked else "NA"
 
 
 def _drop_one_replay_event(payload: dict[str, object]) -> dict[str, object]:

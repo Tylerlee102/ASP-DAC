@@ -15,7 +15,13 @@ The scaffold drives:
 
 The deterministic scaffold is not claimed as a PicoRV32 integration result. It exists so the event tap, property checker, and capsule buffer can be developed before Verilator and a RISC-V compiler are available locally.
 
-PicoRV32 is now vendored under `third_party/picorv32`. The wrapper is source-present but has not been compiled or simulated locally because Verilator/Yosys are unavailable.
+PicoRV32 is now vendored under `third_party/picorv32`. The wrapper is exercised
+by Icarus smoke tests for all six failing/fixed benchmark images and by
+Verilator lint. The wrapper treats PicoRV32 `TRACE_ADDR` records as
+memory-address sideband rather than architectural commits, and uses the most
+recent instruction-fetch address as the memory-event PC context for smoke-level
+capsules. Full benchmark-wide RTL replay/export/compare simulation remains
+pending.
 
 ## MMIO Map
 

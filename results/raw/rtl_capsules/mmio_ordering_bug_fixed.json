@@ -2,33 +2,33 @@
   "benchmark": "mmio_ordering_bug",
   "events": [
     {
-      "commit": 4,
+      "commit": 3,
       "kind": "pc",
       "order": 0,
-      "pc": "0x40000008"
+      "pc": "0x00000090"
     },
     {
       "addr": "0x40000008",
-      "commit": 4,
+      "commit": 3,
       "direction": "write",
       "kind": "mmio",
       "order": 0,
-      "pc": "0x40000008",
+      "pc": "0x00000090",
       "value": "0x0000cafe"
     },
     {
-      "commit": 7,
+      "commit": 5,
       "kind": "pc",
       "order": 1,
-      "pc": "0x40000004"
+      "pc": "0x00000098"
     },
     {
       "addr": "0x40000004",
-      "commit": 7,
+      "commit": 5,
       "direction": "write",
       "kind": "mmio",
       "order": 1,
-      "pc": "0x40000004",
+      "pc": "0x00000098",
       "value": "0x00000019"
     }
   ],

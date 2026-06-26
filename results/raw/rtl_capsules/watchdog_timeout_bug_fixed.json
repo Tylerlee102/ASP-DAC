@@ -2,117 +2,117 @@
   "benchmark": "watchdog_timeout_bug",
   "events": [
     {
-      "commit": 2,
+      "commit": 1,
       "kind": "pc",
       "order": 0,
-      "pc": "0x40000000"
+      "pc": "0x00000088"
     },
     {
       "addr": "0x40000000",
-      "commit": 2,
+      "commit": 1,
       "direction": "read",
       "kind": "mmio",
       "order": 0,
-      "pc": "0x40000000",
+      "pc": "0x00000088",
       "value": "0x0000012c"
     },
     {
-      "commit": 7,
+      "commit": 5,
       "kind": "pc",
       "order": 1,
-      "pc": "0x4000000c"
+      "pc": "0x00000098"
     },
     {
       "addr": "0x4000000c",
-      "commit": 7,
+      "commit": 5,
       "direction": "write",
       "kind": "mmio",
       "order": 1,
-      "pc": "0x4000000c",
+      "pc": "0x00000098",
       "value": "0x0000feed"
     },
     {
-      "commit": 9,
+      "commit": 7,
       "kind": "pc",
       "order": 2,
       "pc": "0x00000094"
     },
     {
-      "commit": 9,
+      "commit": 7,
       "kind": "branch",
       "order": 2,
+      "pc": "0x00000094",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 8,
+      "kind": "pc",
+      "order": 3,
+      "pc": "0x00000098"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 8,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 3,
+      "pc": "0x00000098",
+      "value": "0x0000feed"
+    },
+    {
+      "commit": 10,
+      "kind": "pc",
+      "order": 4,
+      "pc": "0x00000094"
+    },
+    {
+      "commit": 10,
+      "kind": "branch",
+      "order": 4,
       "pc": "0x00000094",
       "value": "0x00000000"
     },
     {
       "commit": 11,
       "kind": "pc",
-      "order": 3,
-      "pc": "0x4000000c"
+      "order": 5,
+      "pc": "0x00000098"
     },
     {
       "addr": "0x4000000c",
       "commit": 11,
       "direction": "write",
       "kind": "mmio",
-      "order": 3,
-      "pc": "0x4000000c",
+      "order": 5,
+      "pc": "0x00000098",
       "value": "0x0000feed"
     },
     {
       "commit": 13,
-      "kind": "pc",
-      "order": 4,
-      "pc": "0x00000094"
-    },
-    {
-      "commit": 13,
-      "kind": "branch",
-      "order": 4,
-      "pc": "0x00000094",
-      "value": "0x00000000"
-    },
-    {
-      "commit": 15,
-      "kind": "pc",
-      "order": 5,
-      "pc": "0x4000000c"
-    },
-    {
-      "addr": "0x4000000c",
-      "commit": 15,
-      "direction": "write",
-      "kind": "mmio",
-      "order": 5,
-      "pc": "0x4000000c",
-      "value": "0x0000feed"
-    },
-    {
-      "commit": 17,
       "kind": "pc",
       "order": 6,
       "pc": "0x00000094"
     },
     {
-      "commit": 17,
+      "commit": 13,
       "kind": "branch",
       "order": 6,
       "pc": "0x00000094",
       "value": "0x00000000"
     },
     {
-      "commit": 19,
+      "commit": 14,
       "kind": "pc",
       "order": 7,
-      "pc": "0x4000000c"
+      "pc": "0x00000098"
     },
     {
       "addr": "0x4000000c",
-      "commit": 19,
+      "commit": 14,
       "direction": "write",
       "kind": "mmio",
       "order": 7,
-      "pc": "0x4000000c",
+      "pc": "0x00000098",
       "value": "0x0000feed"
     }
   ],

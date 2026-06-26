@@ -2,24 +2,24 @@
   "benchmark": "stack_corruption_bug",
   "events": [
     {
-      "commit": 6,
+      "commit": 5,
       "kind": "pc",
       "order": 0,
-      "pc": "0x00001010"
+      "pc": "0x00000098"
     },
     {
       "addr": "0x00001010",
-      "commit": 6,
+      "commit": 5,
       "kind": "store",
       "order": 0,
-      "pc": "0x00001010",
+      "pc": "0x00000098",
       "value": "0xdeadbeef"
     },
     {
-      "commit": 6,
+      "commit": 5,
       "kind": "pc",
       "order": 1,
-      "pc": "0x00001010"
+      "pc": "0x00000098"
     }
   ],
   "evidence_level": "rtl-smoke",

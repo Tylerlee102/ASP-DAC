@@ -28,7 +28,7 @@ hand into captions, plots, or tables.
 | `results/processed/ablations.csv` | Yes | Ablation heatmap | Model-level ablations are available; RTL-backed rows require firmware-running traces. |
 | `results/processed/hdl_checks.csv` | Yes | Verification status | Nine directed Icarus module simulations, twelve PicoRV32 wrapper smokes, and Verilator lint-only checks pass. |
 | `results/processed/formal_checks.csv` | Yes | Verification status | Depth-8 replay-control, depth-12 capsule-buffer, and depth-16 recorder SMTBMC BMC/cover targets pass. |
-| `results/processed/rtl_capsule_exports.csv` | Yes | RTL capsule export status | Failing and fixed RTL smoke capsules decode to JSON, self-compare, and fail missing-event negative checks through the replay comparator. |
+| `results/processed/rtl_capsule_exports.csv` | Yes | RTL capsule export status | Failing and fixed RTL smoke capsules decode to JSON, self-compare, fail missing-event negative checks through the replay comparator, and pass memory-event PC-context checks. |
 | `results/raw/yosys_replay_capsule_top.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the record-side top. |
 | `results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the integrated wrapper. |
 | `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains measured generic cell counts plus TODO/NA mapped resource and timing fields. |

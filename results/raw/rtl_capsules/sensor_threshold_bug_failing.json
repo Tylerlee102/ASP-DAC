@@ -2,211 +2,211 @@
   "benchmark": "sensor_threshold_bug",
   "events": [
     {
-      "commit": 2,
+      "commit": 1,
       "kind": "pc",
       "order": 0,
-      "pc": "0x40000000"
+      "pc": "0x00000088"
     },
     {
       "addr": "0x40000000",
-      "commit": 2,
+      "commit": 1,
       "direction": "read",
       "kind": "mmio",
       "order": 0,
-      "pc": "0x40000000",
+      "pc": "0x00000088",
       "value": "0x00000352"
     },
     {
-      "commit": 4,
+      "commit": 3,
       "kind": "pc",
       "order": 1,
       "pc": "0x00000094"
     },
     {
-      "commit": 4,
+      "commit": 3,
       "kind": "branch",
       "order": 1,
       "pc": "0x00000094",
       "value": "0x00000000"
     },
     {
-      "commit": 7,
+      "commit": 6,
       "kind": "pc",
       "order": 2,
       "pc": "0x00000098"
     },
     {
-      "commit": 7,
+      "commit": 6,
       "kind": "branch",
       "order": 2,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 9,
+      "commit": 8,
       "kind": "pc",
       "order": 3,
       "pc": "0x00000098"
     },
     {
-      "commit": 9,
+      "commit": 8,
       "kind": "branch",
       "order": 3,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 11,
+      "commit": 10,
       "kind": "pc",
       "order": 4,
       "pc": "0x00000098"
     },
     {
-      "commit": 11,
+      "commit": 10,
       "kind": "branch",
       "order": 4,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 13,
+      "commit": 12,
       "kind": "pc",
       "order": 5,
       "pc": "0x00000098"
     },
     {
-      "commit": 13,
+      "commit": 12,
       "kind": "branch",
       "order": 5,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 15,
+      "commit": 14,
       "kind": "pc",
       "order": 6,
       "pc": "0x00000098"
     },
     {
-      "commit": 15,
+      "commit": 14,
       "kind": "branch",
       "order": 6,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 17,
+      "commit": 16,
       "kind": "pc",
       "order": 7,
       "pc": "0x00000098"
     },
     {
-      "commit": 17,
+      "commit": 16,
       "kind": "branch",
       "order": 7,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 19,
+      "commit": 18,
       "kind": "pc",
       "order": 8,
       "pc": "0x00000098"
     },
     {
-      "commit": 19,
+      "commit": 18,
       "kind": "branch",
       "order": 8,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 21,
+      "commit": 20,
       "kind": "pc",
       "order": 9,
       "pc": "0x00000098"
     },
     {
-      "commit": 21,
+      "commit": 20,
       "kind": "branch",
       "order": 9,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 23,
+      "commit": 22,
       "kind": "pc",
       "order": 10,
       "pc": "0x00000098"
     },
     {
-      "commit": 23,
+      "commit": 22,
       "kind": "branch",
       "order": 10,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 25,
+      "commit": 24,
       "kind": "pc",
       "order": 11,
       "pc": "0x00000098"
     },
     {
-      "commit": 25,
+      "commit": 24,
       "kind": "branch",
       "order": 11,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 27,
+      "commit": 26,
       "kind": "pc",
       "order": 12,
       "pc": "0x00000098"
     },
     {
-      "commit": 27,
+      "commit": 26,
       "kind": "branch",
       "order": 12,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 29,
+      "commit": 28,
       "kind": "pc",
       "order": 13,
       "pc": "0x00000098"
     },
     {
-      "commit": 29,
+      "commit": 28,
       "kind": "branch",
       "order": 13,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 31,
+      "commit": 30,
       "kind": "pc",
       "order": 14,
       "pc": "0x00000098"
     },
     {
-      "commit": 31,
+      "commit": 30,
       "kind": "branch",
       "order": 14,
       "pc": "0x00000098",
       "value": "0x00000000"
     },
     {
-      "commit": 32,
+      "commit": 31,
       "kind": "pc",
       "order": 15,
-      "pc": "0x00000008"
+      "pc": "0x0000009c"
     }
   ],
   "evidence_level": "rtl-smoke",
-  "failure_signature": "0x5e05002b",
+  "failure_signature": "0x5e050080",
   "property_id": "P3_SENSOR_DEADLINE",
   "rtl_packet_count": 16,
   "source_log": "results\\raw\\tb_picorv32_sensor_threshold_smoke_vvp_run.txt",

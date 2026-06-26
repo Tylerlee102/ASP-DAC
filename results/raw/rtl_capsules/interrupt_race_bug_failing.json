@@ -2,44 +2,44 @@
   "benchmark": "interrupt_race_bug",
   "events": [
     {
-      "commit": 4,
+      "commit": 3,
       "kind": "pc",
       "order": 0,
-      "pc": "0x4000000c"
+      "pc": "0x00000090"
     },
     {
       "addr": "0x4000000c",
-      "commit": 4,
+      "commit": 3,
       "direction": "write",
       "kind": "mmio",
       "order": 0,
-      "pc": "0x4000000c",
+      "pc": "0x00000090",
       "value": "0x00000001"
     },
     {
-      "commit": 5,
+      "commit": 4,
       "kind": "pc",
       "order": 1,
-      "pc": "0x00000001"
+      "pc": "0x00000090"
     },
     {
-      "commit": 5,
+      "commit": 4,
       "irq": "line0",
       "kind": "interrupt",
       "order": 1,
-      "pc": "0x00000001",
+      "pc": "0x00000090",
       "state": "taken",
       "value": 1
     },
     {
-      "commit": 5,
+      "commit": 4,
       "kind": "pc",
       "order": 2,
-      "pc": "0x00000001"
+      "pc": "0x00000090"
     }
   ],
   "evidence_level": "rtl-smoke",
-  "failure_signature": "0x1a1e0006",
+  "failure_signature": "0x1a1e0096",
   "property_id": "P2_INTERRUPT_CRITICAL",
   "rtl_packet_count": 3,
   "source_log": "results\\raw\\tb_picorv32_interrupt_race_smoke_vvp_run.txt",
