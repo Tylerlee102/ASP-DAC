@@ -1,0 +1,162 @@
+{
+  "benchmark": "watchdog_timeout_bug",
+  "events": [
+    {
+      "commit": 2,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x40000000"
+    },
+    {
+      "addr": "0x40000000",
+      "commit": 2,
+      "direction": "read",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x40000000",
+      "value": "0x00000352"
+    },
+    {
+      "commit": 5,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 5,
+      "kind": "branch",
+      "order": 1,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 7,
+      "kind": "pc",
+      "order": 2,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 7,
+      "kind": "branch",
+      "order": 2,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 9,
+      "kind": "pc",
+      "order": 3,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 9,
+      "kind": "branch",
+      "order": 3,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 11,
+      "kind": "pc",
+      "order": 4,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 11,
+      "kind": "branch",
+      "order": 4,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 13,
+      "kind": "pc",
+      "order": 5,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 13,
+      "kind": "branch",
+      "order": 5,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 15,
+      "kind": "pc",
+      "order": 6,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 15,
+      "kind": "branch",
+      "order": 6,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 17,
+      "kind": "pc",
+      "order": 7,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 17,
+      "kind": "branch",
+      "order": 7,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 19,
+      "kind": "pc",
+      "order": 8,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 19,
+      "kind": "branch",
+      "order": 8,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 21,
+      "kind": "pc",
+      "order": 9,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 21,
+      "kind": "branch",
+      "order": 9,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 23,
+      "kind": "pc",
+      "order": 10,
+      "pc": "0x0000008c"
+    },
+    {
+      "commit": 23,
+      "kind": "branch",
+      "order": 10,
+      "pc": "0x0000008c",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 24,
+      "kind": "pc",
+      "order": 11,
+      "pc": "0x00000007"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "0xfeed0019",
+  "property_id": "P6_WATCHDOG_TIMEOUT",
+  "rtl_packet_count": 12,
+  "source_log": "results\\raw\\tb_picorv32_watchdog_timeout_smoke_vvp_run.txt",
+  "variant": "failing"
+}

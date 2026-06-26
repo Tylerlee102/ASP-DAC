@@ -1,0 +1,214 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "events": [
+    {
+      "commit": 2,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x40000000"
+    },
+    {
+      "addr": "0x40000000",
+      "commit": 2,
+      "direction": "read",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x40000000",
+      "value": "0x00000352"
+    },
+    {
+      "commit": 4,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x00000094"
+    },
+    {
+      "commit": 4,
+      "kind": "branch",
+      "order": 1,
+      "pc": "0x00000094",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 7,
+      "kind": "pc",
+      "order": 2,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 7,
+      "kind": "branch",
+      "order": 2,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 9,
+      "kind": "pc",
+      "order": 3,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 9,
+      "kind": "branch",
+      "order": 3,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 11,
+      "kind": "pc",
+      "order": 4,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 11,
+      "kind": "branch",
+      "order": 4,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 13,
+      "kind": "pc",
+      "order": 5,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 13,
+      "kind": "branch",
+      "order": 5,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 15,
+      "kind": "pc",
+      "order": 6,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 15,
+      "kind": "branch",
+      "order": 6,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 17,
+      "kind": "pc",
+      "order": 7,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 17,
+      "kind": "branch",
+      "order": 7,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 19,
+      "kind": "pc",
+      "order": 8,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 19,
+      "kind": "branch",
+      "order": 8,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 21,
+      "kind": "pc",
+      "order": 9,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 21,
+      "kind": "branch",
+      "order": 9,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 23,
+      "kind": "pc",
+      "order": 10,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 23,
+      "kind": "branch",
+      "order": 10,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 25,
+      "kind": "pc",
+      "order": 11,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 25,
+      "kind": "branch",
+      "order": 11,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 27,
+      "kind": "pc",
+      "order": 12,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 27,
+      "kind": "branch",
+      "order": 12,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 29,
+      "kind": "pc",
+      "order": 13,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 29,
+      "kind": "branch",
+      "order": 13,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 31,
+      "kind": "pc",
+      "order": 14,
+      "pc": "0x00000098"
+    },
+    {
+      "commit": 31,
+      "kind": "branch",
+      "order": 14,
+      "pc": "0x00000098",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 32,
+      "kind": "pc",
+      "order": 15,
+      "pc": "0x00000008"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "0x5e05002b",
+  "property_id": "P3_SENSOR_DEADLINE",
+  "rtl_packet_count": 16,
+  "source_log": "results\\raw\\tb_picorv32_sensor_threshold_smoke_vvp_run.txt",
+  "variant": "failing"
+}

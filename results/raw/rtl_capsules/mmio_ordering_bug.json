@@ -1,0 +1,32 @@
+{
+  "benchmark": "mmio_ordering_bug",
+  "events": [
+    {
+      "commit": 3,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x40000004"
+    },
+    {
+      "addr": "0x40000004",
+      "commit": 3,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x40000004",
+      "value": "0x00000019"
+    },
+    {
+      "commit": 3,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x40000004"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "0x0d0e001f",
+  "property_id": "P5_MMIO_ORDERING",
+  "rtl_packet_count": 2,
+  "source_log": "results\\raw\\tb_picorv32_mmio_ordering_smoke_vvp_run.txt",
+  "variant": "failing"
+}

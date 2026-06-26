@@ -1,0 +1,31 @@
+{
+  "benchmark": "stack_corruption_bug",
+  "events": [
+    {
+      "commit": 6,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x00001010"
+    },
+    {
+      "addr": "0x00001010",
+      "commit": 6,
+      "kind": "store",
+      "order": 0,
+      "pc": "0x00001010",
+      "value": "0xdeadbeef"
+    },
+    {
+      "commit": 6,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x00001010"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "0x8901aefb",
+  "property_id": "P4_STACK_PROTECT",
+  "rtl_packet_count": 2,
+  "source_log": "results\\raw\\tb_picorv32_stack_corruption_smoke_vvp_run.txt",
+  "variant": "failing"
+}

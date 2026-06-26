@@ -1,0 +1,60 @@
+{
+  "benchmark": "uart_command_bug",
+  "events": [
+    {
+      "commit": 2,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x4000000c"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 2,
+      "direction": "read",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x4000000c",
+      "value": "0x00000055"
+    },
+    {
+      "commit": 4,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x000000a4"
+    },
+    {
+      "commit": 4,
+      "kind": "branch",
+      "order": 1,
+      "pc": "0x000000a4",
+      "value": "0x00000000"
+    },
+    {
+      "commit": 7,
+      "kind": "pc",
+      "order": 2,
+      "pc": "0x40000004"
+    },
+    {
+      "addr": "0x40000004",
+      "commit": 7,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 2,
+      "pc": "0x40000004",
+      "value": "0x000000fa"
+    },
+    {
+      "commit": 7,
+      "kind": "pc",
+      "order": 3,
+      "pc": "0x40000004"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "0xac7000fc",
+  "property_id": "P1_ACTUATOR_LIMIT",
+  "rtl_packet_count": 4,
+  "source_log": "results\\raw\\tb_picorv32_uart_command_smoke_vvp_run.txt",
+  "variant": "failing"
+}

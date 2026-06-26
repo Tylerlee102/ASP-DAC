@@ -1,0 +1,47 @@
+{
+  "benchmark": "interrupt_race_bug",
+  "events": [
+    {
+      "commit": 4,
+      "kind": "pc",
+      "order": 0,
+      "pc": "0x4000000c"
+    },
+    {
+      "addr": "0x4000000c",
+      "commit": 4,
+      "direction": "write",
+      "kind": "mmio",
+      "order": 0,
+      "pc": "0x4000000c",
+      "value": "0x00000001"
+    },
+    {
+      "commit": 5,
+      "kind": "pc",
+      "order": 1,
+      "pc": "0x00000001"
+    },
+    {
+      "commit": 5,
+      "irq": "line0",
+      "kind": "interrupt",
+      "order": 1,
+      "pc": "0x00000001",
+      "state": "taken",
+      "value": 1
+    },
+    {
+      "commit": 5,
+      "kind": "pc",
+      "order": 2,
+      "pc": "0x00000001"
+    }
+  ],
+  "evidence_level": "rtl-smoke",
+  "failure_signature": "0x1a1e0006",
+  "property_id": "P2_INTERRUPT_CRITICAL",
+  "rtl_packet_count": 3,
+  "source_log": "results\\raw\\tb_picorv32_interrupt_race_smoke_vvp_run.txt",
+  "variant": "failing"
+}

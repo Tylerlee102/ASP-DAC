@@ -50,6 +50,7 @@ module tb_picorv32_wrapper_smoke;
   integer irq_after_command;
   integer irq_pulse_cycles;
   integer irq_pulse_remaining;
+  integer dump_capsule;
   integer cycle_index;
 
   picorv32_replaycapsule_wrapper #(
@@ -96,6 +97,7 @@ module tb_picorv32_wrapper_smoke;
     irq_end_cycle = -1;
     irq_after_command = 0;
     irq_pulse_cycles = 24;
+    dump_capsule = 0;
     if (!$value$plusargs("MEMFILE=%s", memfile)) begin end
     if (!$value$plusargs("EXPECTED_PROPERTY=%d", expected_property)) begin end
     if (!$value$plusargs("SENSOR_VALUE=%d", sensor_value)) begin end
@@ -105,8 +107,29 @@ module tb_picorv32_wrapper_smoke;
     if (!$value$plusargs("IRQ_END_CYCLE=%d", irq_end_cycle)) begin end
     if (!$value$plusargs("IRQ_AFTER_COMMAND=%d", irq_after_command)) begin end
     if (!$value$plusargs("IRQ_PULSE_CYCLES=%d", irq_pulse_cycles)) begin end
+    if (!$value$plusargs("DUMP_CAPSULE=%d", dump_capsule)) begin end
     $readmemh(memfile, imem);
   end
+
+  task automatic dump_capsule_events;
+    integer dump_index;
+    begin
+      $display(
+        "RC_CAPSULE_BEGIN count=%0d property=%0d signature=%08x frozen=%0b overflow=%0b",
+        capsule_event_count,
+        property_id,
+        property_signature,
+        capsule_frozen,
+        capsule_overflow
+      );
+      for (dump_index = 0; dump_index < capsule_event_count; dump_index = dump_index + 1) begin
+        capsule_read_addr = dump_index[7:0];
+        #1;
+        $display("RC_CAPSULE_EVENT index=%0d packet=%042h", dump_index, capsule_read_data);
+      end
+      $display("RC_CAPSULE_END");
+    end
+  endtask
 
   always_comb begin
     mem_ready = mem_valid;
@@ -166,6 +189,9 @@ module tb_picorv32_wrapper_smoke;
         if (capsule_event_count == 9'h0) begin
           $fatal(1, "capsule did not record any events");
         end
+        if (dump_capsule != 0) begin
+          dump_capsule_events();
+        end
         $finish;
       end
     end
@@ -173,6 +199,9 @@ module tb_picorv32_wrapper_smoke;
     if (expected_property == 0) begin
       if (capsule_event_count == 9'h0) begin
         $fatal(1, "no-failure smoke did not record any events");
+      end
+      if (dump_capsule != 0) begin
+        dump_capsule_events();
       end
       $finish;
     end
@@ -186,7 +215,6 @@ module tb_picorv32_wrapper_smoke;
   logic [167:0] unused_capsule_read_data;
   logic unused_capsule_overflow;
   logic [31:0] unused_running_signature;
-  logic [31:0] unused_property_signature;
 
   assign unused_trap = trap;
   assign unused_mem_wdata = mem_wdata;
@@ -194,5 +222,4 @@ module tb_picorv32_wrapper_smoke;
   assign unused_capsule_read_data = capsule_read_data;
   assign unused_capsule_overflow = capsule_overflow;
   assign unused_running_signature = running_signature;
-  assign unused_property_signature = property_signature;
 endmodule
