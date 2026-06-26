@@ -91,6 +91,18 @@ FORMAL_TARGETS = (
         notes="bounded MMIO event-routing and interrupt depth/unpaired-exit covers over depth 6",
     ),
     FormalTarget(
+        name="registers_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/registers_bmc.sby"),
+        depth=6,
+        notes="bounded register decode/readback/control-write invariants over depth 6",
+    ),
+    FormalTarget(
+        name="registers_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/registers_cover.sby"),
+        depth=6,
+        notes="bounded register decode/readback/control-write covers over depth 6",
+    ),
+    FormalTarget(
         name="replay_control_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/replay_control_bmc.sby"),
         depth=8,

@@ -1,0 +1,16 @@
+[options]
+mode bmc
+depth 6
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/registers.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/registers_bmc_harness.sv
+prep -top registers_bmc_harness
+
+[files]
+rtl/registers.sv rtl/registers.sv
+formal/yosys_smtbmc_scripts/registers_bmc_harness.sv formal/yosys_smtbmc_scripts/registers_bmc_harness.sv

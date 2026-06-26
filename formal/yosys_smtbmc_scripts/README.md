@@ -44,6 +44,13 @@ Implemented now:
 - `mmio_interrupt_loggers_cover.sby`: depth-6 cover run over the same
   logger harness. It checks that MMIO read/write events, paired interrupt
   enter/exit, and unpaired interrupt exit cases are reachable.
+- `registers_bmc.sby` plus `registers_bmc_harness.sv`: depth-6 BMC over the
+  MMIO-visible control/status register block. The harness checks address decode,
+  readback muxing, reset defaults, global clear behavior, control writes, and
+  one-cycle `capsule_clear` pulse behavior.
+- `registers_cover.sby`: depth-6 cover run over the same register harness. It
+  checks status/count readback, control writes, and global clear pulse
+  reachability.
 - `replay_control_bmc.sby` plus `replay_control_bmc_harness.sv`: depth-8 BMC
   over replay consume/inject behavior. The harness checks disabled and
   time-mismatched events remain idle, MMIO/external-input packets inject data,

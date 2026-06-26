@@ -9,6 +9,8 @@ hash_signature_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,resul
 hash_signature_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_hash_signature_cover.txt,bounded hash-signature reset/stability/update covers over depth 4
 mmio_interrupt_loggers_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_mmio_interrupt_loggers_bmc.txt,bounded MMIO event-routing and interrupt depth/unpaired-exit invariants over depth 6
 mmio_interrupt_loggers_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_mmio_interrupt_loggers_cover.txt,bounded MMIO event-routing and interrupt depth/unpaired-exit covers over depth 6
+registers_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_registers_bmc.txt,bounded register decode/readback/control-write invariants over depth 6
+registers_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_registers_cover.txt,bounded register decode/readback/control-write covers over depth 6
 replay_control_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_control_bmc.txt,bounded replay-control consume/inject invariants over depth 8
 replay_control_cover,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_replay_control_cover.txt,bounded replay-control injection and underflow covers over depth 8
 capsule_buffer_bmc,PASS,yowasp-sby+oss-cad-suite:yosys+yowasp-yosys-smtbmc,results\raw\formal_capsule_buffer_bmc.txt,bounded capsule-buffer invariants over depth 12
