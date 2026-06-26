@@ -48,6 +48,10 @@ Current RTL-smoke evidence:
 - RTL-smoke capsule export checks: `results/processed/rtl_capsule_exports.csv`
 - RTL-smoke versus firmware-sim alignment: `results/processed/rtl_firmware_alignment.csv`
 
+Current bounded formal evidence:
+
+- Event-tap, replay-control, capsule-buffer, and recorder checks: `results/processed/formal_checks.csv`
+
 If these tools are absent, scripts must report unavailable steps as TODO/NA.
 The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,
 `.tools/python/bin/yowasp-sby.exe`, and

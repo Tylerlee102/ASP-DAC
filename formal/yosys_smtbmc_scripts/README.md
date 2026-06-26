@@ -6,6 +6,13 @@ small nondeterministic RV32I boundary, not to prove every processor behavior.
 
 Implemented now:
 
+- `event_tap_bmc.sby` plus `event_tap_bmc_harness.sv`: depth-2 BMC over the
+  event-tap priority encoder and field routing. The harness checks the
+  interrupt, external-input, MMIO, load/store, branch/jump, and commit priority
+  order, verifies key payload fields, and checks `multievent_pending`.
+- `event_tap_cover.sby`: depth-2 cover run over the same event-tap harness. It
+  checks that interrupt, MMIO read, store, branch, and multievent cases are
+  reachable.
 - `replay_control_bmc.sby` plus `replay_control_bmc_harness.sv`: depth-8 BMC
   over replay consume/inject behavior. The harness checks disabled and
   time-mismatched events remain idle, MMIO/external-input packets inject data,

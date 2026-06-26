@@ -1,0 +1,62 @@
+SBY [.tools\formal_checks\event_tap_cover] Removing directory '<repo>\.tools\formal_checks\event_tap_cover'.
+SBY [.tools\formal_checks\event_tap_cover] Copy '<repo>\rtl\event_pkg.sv' to '<repo>\.tools\formal_checks\event_tap_cover\src\rtl\event_pkg.sv'.
+SBY [.tools\formal_checks\event_tap_cover] Copy '<repo>\rtl\event_defs.svh' to '<repo>\.tools\formal_checks\event_tap_cover\src\rtl\event_defs.svh'.
+SBY [.tools\formal_checks\event_tap_cover] Copy '<repo>\rtl\event_tap.sv' to '<repo>\.tools\formal_checks\event_tap_cover\src\rtl\event_tap.sv'.
+SBY [.tools\formal_checks\event_tap_cover] Copy '<repo>\formal\yosys_smtbmc_scripts\event_tap_bmc_harness.sv' to '<repo>\.tools\formal_checks\event_tap_cover\src\formal\yosys_smtbmc_scripts\event_tap_bmc_harness.sv'.
+SBY [.tools\formal_checks\event_tap_cover] engine_0: smtbmc
+SBY [.tools\formal_checks\event_tap_cover] base: starting process "cd .tools\formal_checks\event_tap_cover/src& yosys -ql ../model/design.log ../model/design.ys"
+SBY [.tools\formal_checks\event_tap_cover] base: finished (returncode=0)
+SBY [.tools\formal_checks\event_tap_cover] prep: starting process "cd .tools\formal_checks\event_tap_cover/model& yosys -ql design_prep.log design_prep.ys"
+SBY [.tools\formal_checks\event_tap_cover] prep: finished (returncode=0)
+SBY [.tools\formal_checks\event_tap_cover] smt2: starting process "cd .tools\formal_checks\event_tap_cover/model& yosys -ql design_smt2.log design_smt2.ys"
+SBY [.tools\formal_checks\event_tap_cover] smt2: finished (returncode=0)
+SBY [.tools\formal_checks\event_tap_cover] engine_0: starting process "cd .tools\formal_checks\event_tap_cover& yosys-smtbmc --presat --unroll -c --noprogress -t 2  --append 0 --dump-vcd engine_0/trace%.vcd --dump-yw engine_0/trace%.yw --dump-vlogtb engine_0/trace%_tb.v --dump-smtc engine_0/trace%.smtc model/design_smt2.smt2"
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Solver: yices
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Checking cover reachability in step 0..
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Checking cover reachability in step 1..
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Reached cover statement in step 1 at event_tap_bmc_harness: formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:138.5-138.30 (_witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_138_168)
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace0.vcd
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace0_tb.v
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace0.smtc
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace0.yw
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Checking cover reachability in step 1..
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Reached cover statement in step 1 at event_tap_bmc_harness: formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:137.5-137.82 (_witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_137_163)
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace1.vcd
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace1_tb.v
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace1.smtc
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace1.yw
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Checking cover reachability in step 1..
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Reached cover statement in step 1 at event_tap_bmc_harness: formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:135.5-135.91 (_witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_135_149)
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace2.vcd
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace2_tb.v
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace2.smtc
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace2.yw
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Checking cover reachability in step 1..
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Reached cover statement in step 1 at event_tap_bmc_harness: formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:136.5-136.87 (_witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_136_156)
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace3.vcd
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace3_tb.v
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace3.smtc
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace3.yw
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Checking cover reachability in step 1..
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Reached cover statement in step 1 at event_tap_bmc_harness: formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:134.5-134.78 (_witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_134_145)
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace4.vcd
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace4_tb.v
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace4.smtc
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace4.yw
+SBY [.tools\formal_checks\event_tap_cover] engine_0: ## <time> Status: passed
+SBY [.tools\formal_checks\event_tap_cover] engine_0: finished (returncode=0)
+SBY [.tools\formal_checks\event_tap_cover] engine_0: Status returned by engine: pass
+SBY [.tools\formal_checks\event_tap_cover] summary: Elapsed clock time <time>
+SBY [.tools\formal_checks\event_tap_cover] summary: Elapsed process time unvailable on Windows
+SBY [.tools\formal_checks\event_tap_cover] summary: engine_0 (smtbmc) returned pass
+SBY [.tools\formal_checks\event_tap_cover] summary: cover trace: .tools\formal_checks\event_tap_cover\engine_0\trace0.vcd
+SBY [.tools\formal_checks\event_tap_cover] summary:   reached cover statement event_tap_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_138_168 at formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:138.5-138.30 step 1
+SBY [.tools\formal_checks\event_tap_cover] summary: cover trace: .tools\formal_checks\event_tap_cover\engine_0\trace1.vcd
+SBY [.tools\formal_checks\event_tap_cover] summary:   reached cover statement event_tap_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_137_163 at formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:137.5-137.82 step 1
+SBY [.tools\formal_checks\event_tap_cover] summary: cover trace: .tools\formal_checks\event_tap_cover\engine_0\trace2.vcd
+SBY [.tools\formal_checks\event_tap_cover] summary:   reached cover statement event_tap_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_135_149 at formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:135.5-135.91 step 1
+SBY [.tools\formal_checks\event_tap_cover] summary: cover trace: .tools\formal_checks\event_tap_cover\engine_0\trace3.vcd
+SBY [.tools\formal_checks\event_tap_cover] summary:   reached cover statement event_tap_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_136_156 at formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:136.5-136.87 step 1
+SBY [.tools\formal_checks\event_tap_cover] summary: cover trace: .tools\formal_checks\event_tap_cover\engine_0\trace4.vcd
+SBY [.tools\formal_checks\event_tap_cover] summary:   reached cover statement event_tap_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_event_tap_bmc_harness_sv_134_145 at formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv:134.5-134.78 step 1
+SBY [.tools\formal_checks\event_tap_cover] DONE (PASS, rc=0)

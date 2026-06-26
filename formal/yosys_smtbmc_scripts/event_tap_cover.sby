@@ -1,0 +1,19 @@
+[options]
+mode cover
+depth 2
+expect pass
+
+[engines]
+smtbmc
+
+[script]
+read_verilog -formal -sv -Irtl rtl/event_pkg.sv
+read_verilog -formal -sv -Irtl rtl/event_tap.sv
+read_verilog -formal -sv -Irtl formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv
+prep -top event_tap_bmc_harness
+
+[files]
+rtl/event_pkg.sv rtl/event_pkg.sv
+rtl/event_defs.svh rtl/event_defs.svh
+rtl/event_tap.sv rtl/event_tap.sv
+formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv formal/yosys_smtbmc_scripts/event_tap_bmc_harness.sv

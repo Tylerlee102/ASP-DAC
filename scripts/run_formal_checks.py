@@ -31,6 +31,18 @@ class FormalTarget:
 
 FORMAL_TARGETS = (
     FormalTarget(
+        name="event_tap_bmc",
+        sby_file=Path("formal/yosys_smtbmc_scripts/event_tap_bmc.sby"),
+        depth=2,
+        notes="bounded event-tap priority and field-routing invariants over depth 2",
+    ),
+    FormalTarget(
+        name="event_tap_cover",
+        sby_file=Path("formal/yosys_smtbmc_scripts/event_tap_cover.sby"),
+        depth=2,
+        notes="bounded event-tap priority and event-kind covers over depth 2",
+    ),
+    FormalTarget(
         name="replay_control_bmc",
         sby_file=Path("formal/yosys_smtbmc_scripts/replay_control_bmc.sby"),
         depth=8,
