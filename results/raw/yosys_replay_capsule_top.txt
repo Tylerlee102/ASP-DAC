@@ -2379,6 +2379,6 @@ Optimizing module event_tap.
         1   event_tap
 
 Warnings: 1 unique messages, 2 total
-End of script. Logfile hash: 97d846b90d, time: 2.83s, user: 2.84s, system: 0.00s
+End of script. Logfile hash: 97d846b90d, time: 2.78s, user: 2.78s, system: 0.00s
 Yosys 0.66 (git sha1 86f2ddebc, ccache clang++  -O3 -fwasm-exceptions -mllvm) [yowasp/yosys at release-0.66]
-Time spent: 24% 1x proc_mux (0 sec), 21% 1x proc_arst (0 sec), ...
+Time spent: 24% 1x proc_mux (0 sec), 19% 1x proc_arst (0 sec), ...

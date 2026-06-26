@@ -104,6 +104,33 @@ IVERILOG_TESTS = (
         ),
     ),
     IverilogTest(
+        name="tb_picorv32_interrupt_race_smoke",
+        workdir=Path("tb/system"),
+        sources=(
+            "tb_picorv32_wrapper_smoke.sv",
+            "../../third_party/picorv32/picorv32.v",
+            "../../rtl/event_tap.sv",
+            "../../rtl/event_classifier.sv",
+            "../../rtl/capsule_buffer.sv",
+            "../../rtl/property_checker.sv",
+            "../../rtl/event_slicer.sv",
+            "../../rtl/hash_signature.sv",
+            "../../rtl/replay_capsule_top.sv",
+            "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
+        ),
+        include_dirs=("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32"),
+        run_args=(
+            "+MEMFILE=firmware/build/interrupt_race_bug/failing.mem",
+            "+EXPECTED_PROPERTY=2",
+            "+SENSOR_VALUE=850",
+            "+COMMAND_VALUE=0",
+            "+MAX_CYCLES=900",
+            "+IRQ_AFTER_COMMAND=1",
+            "+IRQ_PULSE_CYCLES=24",
+        ),
+        defines=("RC_IRQ_VECTOR_WORD_INDEX=12",),
+    ),
+    IverilogTest(
         name="tb_picorv32_stack_corruption_smoke",
         workdir=Path("tb/system"),
         sources=(

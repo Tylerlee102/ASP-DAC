@@ -3,6 +3,7 @@ tb_property_checker,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb
 tb_capsule_buffer,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_capsule_buffer_vvp_run.txt,compile and simulation passed
 tb_picorv32_sensor_threshold_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_sensor_threshold_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_mmio_ordering_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_mmio_ordering_smoke_vvp_run.txt,compile and simulation passed
+tb_picorv32_interrupt_race_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_interrupt_race_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_stack_corruption_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_stack_corruption_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_uart_command_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_uart_command_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_watchdog_timeout_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_watchdog_timeout_smoke_vvp_run.txt,compile and simulation passed

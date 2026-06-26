@@ -143,6 +143,7 @@ class RV32IFirmwareSim:
         self.dmem: dict[int, int] = {}
         self.safe_config_seen = False
         self.critical_section_active = False
+        self.irq_mask = WORD_MASK
         self.sensor_deadline: int | None = None
         self.watchdog_deadline: int | None = None
         self.failed = False
@@ -227,6 +228,10 @@ class RV32IFirmwareSim:
             self._event(EventType.EV_JUMP, pc_before, data=1)
         elif opcode == 0x33 and funct3 == 0 and funct7 == 0:
             self.regs[rd] = (self.regs[rs1] + self.regs[rs2]) & WORD_MASK
+        elif opcode == 0x0B and funct7 == 0x03:
+            next_irq_mask = self.regs[rs1] & WORD_MASK
+            self.regs[rd] = self.irq_mask
+            self.irq_mask = next_irq_mask
         else:
             raise RuntimeError(f"unsupported instruction 0x{inst:08x} at 0x{pc_before:08x}")
 
@@ -278,6 +283,8 @@ class RV32IFirmwareSim:
 
     def _maybe_interrupt(self) -> None:
         if self.program.interrupt_commit is None or self.commit != self.program.interrupt_commit:
+            return
+        if self.irq_mask & 0x1:
             return
         if any(event.event_type == EventType.EV_INTERRUPT_ENTER and event.commit == self.commit for event in self.events):
             return
@@ -350,13 +357,21 @@ def build_program(benchmark: str, failing: bool) -> EncodedProgram:
             builder.emit("sw", 0, 4, 1)
         builder.emit("ebreak")
     elif benchmark == "interrupt_race_bug":
+        builder.emit("maskirq", 0, 0)
         builder.li(2, 1)
         builder.emit("sw", 2, 12, 1)
-        interrupt_commit = 3 if failing else None
+        interrupt_commit = 4 if failing else None
+        if failing:
+            builder.li(6, 8)
+            builder.label("irq_window")
+            builder.emit("addi", 6, 6, -1)
+            builder.emit("bne", 6, 0, "irq_window")
         builder.li(3, 0x1111 if failing else CONFIG_MAGIC)
         builder.emit("sw", 3, 8, 1)
         builder.emit("sw", 0, 12, 1)
         builder.emit("ebreak")
+        builder.label("irq_handler")
+        builder.emit("retirq")
     elif benchmark == "mmio_ordering_bug":
         if failing:
             builder.li(2, 25)
@@ -546,6 +561,11 @@ def _encode(op: str, args: tuple[object, ...], pc: int, labels: dict[str, int]) 
     if op == "jal":
         rd, label = args
         return _j_type(labels[str(label)] - pc, int(rd), 0x6F)
+    if op == "maskirq":
+        rd, rs1 = args
+        return (0x03 << 25) | (int(rs1) << 15) | (int(rd) << 7) | 0x0B
+    if op == "retirq":
+        return 0x0400_000B
     if op == "ebreak":
         return 0x0010_0073
     raise ValueError(f"unknown op {op}")

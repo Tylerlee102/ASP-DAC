@@ -30,7 +30,7 @@ Fix plan: add SV assertions and bounded formal checks for recorder invariants.
 
 Required evidence: novelty matrix and theorem that identify event sufficiency as the contribution.
 
-Current weakness: PicoRV32 has five wrapper smokes, not benchmark-wide integration evidence.
+Current weakness: PicoRV32 has six wrapper smokes, not benchmark-wide replay/export evidence.
 
 Fix plan: scale the PicoRV32 wrapper harness across the benchmark suite and keep the same event interface.
 
@@ -38,7 +38,7 @@ Fix plan: scale the PicoRV32 wrapper harness across the benchmark suite and keep
 
 Required evidence: realistic embedded bug mechanics, failing/fixed firmware, randomized interrupt/input campaigns.
 
-Current weakness: five firmware-running RTL smokes exist; the full benchmark suite is not running on RTL yet.
+Current weakness: six firmware-running RTL smokes exist; the full failing/fixed benchmark suite is not running on RTL yet.
 
 Fix plan: implement all six failing/fixed firmware images.
 

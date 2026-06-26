@@ -9,6 +9,11 @@ module tb_picorv32_wrapper_smoke;
 
   localparam int MEM_WORDS = 256;
   localparam logic [31:0] RESET_PC = 32'h0000_0080;
+`ifdef RC_IRQ_VECTOR_WORD_INDEX
+  localparam logic [31:0] IRQ_VECTOR_PC = RESET_PC + (`RC_IRQ_VECTOR_WORD_INDEX * 32'd4);
+`else
+  localparam logic [31:0] IRQ_VECTOR_PC = 32'h0000_0010;
+`endif
   localparam logic [31:0] SENSOR_ADDR = 32'h4000_0000;
   localparam logic [31:0] COMMAND_ADDR = 32'h4000_000c;
 
@@ -42,9 +47,13 @@ module tb_picorv32_wrapper_smoke;
   integer max_cycles;
   integer irq_start_cycle;
   integer irq_end_cycle;
+  integer irq_after_command;
+  integer irq_pulse_cycles;
+  integer irq_pulse_remaining;
   integer cycle_index;
 
   picorv32_replaycapsule_wrapper #(
+    .PROGADDR_IRQ(IRQ_VECTOR_PC),
     .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
   ) u_wrapper (
     .clk(clk),
@@ -85,6 +94,8 @@ module tb_picorv32_wrapper_smoke;
     max_cycles = 500;
     irq_start_cycle = -1;
     irq_end_cycle = -1;
+    irq_after_command = 0;
+    irq_pulse_cycles = 24;
     if (!$value$plusargs("MEMFILE=%s", memfile)) begin end
     if (!$value$plusargs("EXPECTED_PROPERTY=%d", expected_property)) begin end
     if (!$value$plusargs("SENSOR_VALUE=%d", sensor_value)) begin end
@@ -92,6 +103,8 @@ module tb_picorv32_wrapper_smoke;
     if (!$value$plusargs("MAX_CYCLES=%d", max_cycles)) begin end
     if (!$value$plusargs("IRQ_START_CYCLE=%d", irq_start_cycle)) begin end
     if (!$value$plusargs("IRQ_END_CYCLE=%d", irq_end_cycle)) begin end
+    if (!$value$plusargs("IRQ_AFTER_COMMAND=%d", irq_after_command)) begin end
+    if (!$value$plusargs("IRQ_PULSE_CYCLES=%d", irq_pulse_cycles)) begin end
     $readmemh(memfile, imem);
   end
 
@@ -112,6 +125,7 @@ module tb_picorv32_wrapper_smoke;
     clear = 1'b0;
     irq = 32'h0;
     capsule_read_addr = 8'h0;
+    irq_pulse_remaining = 0;
     cycle_index = 0;
 
     repeat (5) @(posedge clk);
@@ -119,8 +133,20 @@ module tb_picorv32_wrapper_smoke;
 
     repeat (max_cycles) begin
       @(posedge clk);
+      #1;
       cycle_index = cycle_index + 1;
-      if (irq_start_cycle >= 0 && cycle_index >= irq_start_cycle && cycle_index < irq_end_cycle) begin
+      if (irq_after_command != 0 && mem_valid && mem_ready && !mem_instr && mem_wstrb != 4'h0 &&
+          mem_addr == COMMAND_ADDR && mem_wdata[0]) begin
+        irq_pulse_remaining = irq_pulse_cycles;
+      end
+      if (irq_after_command != 0) begin
+        if (irq_pulse_remaining > 0) begin
+          irq = 32'h1;
+          irq_pulse_remaining = irq_pulse_remaining - 1;
+        end else begin
+          irq = 32'h0;
+        end
+      end else if (irq_start_cycle >= 0 && cycle_index >= irq_start_cycle && cycle_index < irq_end_cycle) begin
         irq = 32'h1;
       end else begin
         irq = 32'h0;

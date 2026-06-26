@@ -46,6 +46,7 @@ module picorv32_replaycapsule_wrapper #(
   logic core_mem_valid;
   logic core_mem_instr;
   logic [31:0] core_eoi;
+  logic [31:0] core_eoi_q;
   logic core_trace_valid;
   logic [35:0] core_trace_data;
   logic [31:0] commit_index;
@@ -68,8 +69,8 @@ module picorv32_replaycapsule_wrapper #(
   assign trace_pc = core_trace_data[31:0];
   assign branch_taken = core_trace_valid && trace_kind[0];
   assign jump_taken = 1'b0;
-  assign interrupt_enter = core_trace_valid && trace_kind[3];
-  assign interrupt_exit = core_eoi != 32'h0;
+  assign interrupt_enter = core_eoi != 32'h0 && core_eoi_q == 32'h0;
+  assign interrupt_exit = core_eoi == 32'h0 && core_eoi_q != 32'h0;
   assign mem_accepted = core_mem_valid && mem_ready && !core_mem_instr;
 
   always_ff @(posedge clk or negedge rst_n) begin
@@ -79,6 +80,16 @@ module picorv32_replaycapsule_wrapper #(
       commit_index <= 32'h0;
     end else if (core_trace_valid) begin
       commit_index <= commit_index + 32'h1;
+    end
+  end
+
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      core_eoi_q <= 32'h0;
+    end else if (clear) begin
+      core_eoi_q <= 32'h0;
+    end else begin
+      core_eoi_q <= core_eoi;
     end
   end
 

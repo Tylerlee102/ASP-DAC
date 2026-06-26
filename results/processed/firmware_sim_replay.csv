@@ -1,7 +1,7 @@
 benchmark,status,mode,property_id,failure_signature,instruction_words,event_count,evidence_level,notes
 sensor_threshold_bug,PASS,commit-index,P3_SENSOR_DEADLINE,0x5e0554cd,9,27,firmware-sim,RV32I instruction interpreter replay evidence matched
-interrupt_race_bug,PASS,commit-index,P2_INTERRUPT_CRITICAL,0x5e0546c4,8,8,firmware-sim,RV32I instruction interpreter replay evidence matched
+interrupt_race_bug,PASS,commit-index,P2_INTERRUPT_CRITICAL,0x5e0546d8,13,9,firmware-sim,RV32I instruction interpreter replay evidence matched
 mmio_ordering_bug,PASS,commit-index,P5_MMIO_ORDERING,0x5e053e7f,7,5,firmware-sim,RV32I instruction interpreter replay evidence matched
 stack_corruption_bug,PASS,commit-index,P4_STACK_PROTECT,0x5e0548b4,7,8,firmware-sim,RV32I instruction interpreter replay evidence matched
 uart_command_bug,PASS,commit-index,P1_ACTUATOR_LIMIT,0x5e05372a,12,11,firmware-sim,RV32I instruction interpreter replay evidence matched
-watchdog_timeout_bug,PASS,commit-index,P6_WATCHDOG_TIMEOUT,0x5e05a910,6,23,firmware-sim,RV32I instruction interpreter replay evidence matched
+watchdog_timeout_bug,PASS,commit-index,P6_WATCHDOG_TIMEOUT,0x5e05a910,6,21,firmware-sim,RV32I instruction interpreter replay evidence matched
