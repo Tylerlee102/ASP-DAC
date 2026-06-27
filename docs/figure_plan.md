@@ -1,6 +1,6 @@
 # ReplayCapsule-RV Figure and Table Plan
 
-Status date: 2026-06-26.
+Status date: 2026-06-27.
 
 This plan is a paper-facing manifest for figures and tables. Numeric values must
 flow from generated artifacts under `results/`; do not type measurements by
@@ -12,8 +12,8 @@ hand into captions, plots, or tables.
 | --- | --- |
 | Generated today | A real artifact exists in `results/` or `paper/figures/` with today's run output and can be used as source evidence. |
 | Partial today | A source artifact exists today, but the final paper figure/table has not been rendered or the artifact only covers the smoke path. |
-| Requires RTL/PicoRV32 | Needs firmware-running RTL traces from the PicoRV32 integration, Verilator/cocotb, and a RISC-V toolchain before paper claims can be filled. |
-| Requires mapped FPGA flow | Needs OpenROAD or vendor mapping for LUT/FF/BRAM/Fmax fields. |
+| Requires expanded RTL/PicoRV32 evidence | Needs additional firmware-running RTL traces beyond the locked host-driven Verilator replay suite before broader paper claims can be filled. |
+| Requires expanded mapped FPGA flow | Needs another mapped target, ASIC flow, or optimized implementation beyond the locked same-target ECP5 evidence. |
 | Spec only | The figure can be drawn from the architecture/model docs, but no generated paper asset exists yet. |
 
 ## Generated Artifact Snapshot
@@ -21,8 +21,8 @@ hand into captions, plots, or tables.
 | Artifact | Generated today? | Used by | Current honesty status |
 | --- | --- | --- | --- |
 | `results/raw/model_suite_traces.json` | Yes | Event model, replay flow, trace-size baselines | Six benchmark model-level traces. |
-| `results/processed/replay_experiments.csv` | Yes | Replay flow | Six model-level replay rows pass; firmware-running RTL suite is TODO. |
-| `results/processed/trace_sizes.csv` | Yes | Baseline trace-size figure | Contains model-level and firmware-sim rows for six benchmarks, plus RTL-smoke capsule-byte rows for exported failing/fixed capsules. Full benchmark-wide RTL rows remain TODO/NA where unavailable. |
+| `results/processed/replay_experiments.csv` | Yes | Replay flow | Six model-level and firmware-sim replay rows pass; full host-driven RTL replay is reported in `results/processed/full_rtl_replay.csv`. |
+| `results/processed/trace_sizes.csv` | Yes | Baseline trace-size figure | Contains model-level and firmware-sim rows for six benchmarks, plus RTL-smoke capsule-byte rows for exported failing/fixed capsules. Full RTL trace-size reductions remain future work where unavailable. |
 | `results/figures/baseline_trace_sizes.svg` | Yes | Baseline trace-size figure | Generated from `trace_sizes.csv`. |
 | `results/figures/ablation_heatmap.svg` | Yes | Ablation heatmap | Generated from model-level ablation rows. |
 | `results/processed/ablations.csv` | Yes | Ablation heatmap | Model-level ablations are available; RTL-backed rows require firmware-running traces. |
@@ -36,7 +36,7 @@ hand into captions, plots, or tables.
 | `results/processed/hdl_checks.csv` | Yes | Verification status | Nine directed Icarus module simulations, fifteen PicoRV32 wrapper smokes, and Verilator lint-only checks pass. |
 | `results/processed/picorv32_smoke_summary.csv` | Yes | Wrapper smoke observations | Parses PicoRV32 smoke logs for property IDs, capsule counts, freeze state, and overflow state. |
 | `results/processed/picorv32_smoke_coverage.csv` | Yes | Wrapper smoke coverage | Summarizes failing-image, fixed-image, no-failure edge, and benchmark-family wrapper coverage. |
-| `results/processed/benchmark_coverage.csv` | Yes | Benchmark coverage | Joins model, firmware-sim, wrapper-smoke, export, alignment, and sufficiency evidence by benchmark while keeping full RTL replay TODO. |
+| `results/processed/benchmark_coverage.csv` | Yes | Benchmark coverage | Joins model, firmware-sim, wrapper-smoke, export, alignment, and sufficiency evidence by benchmark; full RTL replay is reported separately in `results/processed/full_rtl_replay.csv`. |
 | `results/processed/formal_checks.csv` | Yes | Verification status | Depth-2 event-tap, depth-8 event-classifier/slicer, depth-8 property-checker, depth-4 hash-signature, depth-6 MMIO/interrupt loggers, depth-6 registers, depth-8 replay-control, depth-14 replay-mismatch, depth-12 capsule-buffer, and depth-16 recorder SMTBMC BMC/cover targets pass. |
 | `results/processed/overflow_contracts.csv` | Yes | Evaluation metric table | Separates local overflow contract evidence from the TODO benchmark-wide runtime overflow-rate metric. |
 | `results/processed/rtl_capsule_exports.csv` | Yes | RTL capsule export status | Failing and fixed RTL smoke capsules decode to JSON, self-compare, fail missing-event, duplicate-event, metadata-corruption, payload-corruption, and order-corruption negative checks through the replay comparator, and pass memory-event PC-context checks. |
@@ -44,10 +44,10 @@ hand into captions, plots, or tables.
 | `results/raw/yosys_picorv32.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the baseline PicoRV32 core. |
 | `results/raw/yosys_replay_capsule_top.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the record-side top. |
 | `results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Synthesis/resource table | Real Yosys generic synthesis report for the integrated wrapper. |
-| `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains measured generic cell counts plus TODO/NA mapped resource and timing fields. |
-| `results/processed/synthesis_overhead.csv` | Yes | Synthesis/resource table | Contains derived generic cell-count overhead context from measured baseline and wrapper rows, with mapped fields kept as NA. |
-| `results/processed/evaluation_metrics.csv` | Yes | Evaluation metric table | Rolls up generated success rates, sizes, reduction ratios, cycles-to-failure, generic synthesis context, and explicit hardware TODOs. |
-| `paper/figures/table01_synthesis_resources.md` | Yes | Synthesis/resource table | Generated Markdown table source derived from the synthesis CSVs; mapped fields remain NA. |
+| `results/processed/synthesis.csv` | Yes | Synthesis/resource table | Contains measured generic cell counts; mapped ECP5 resource/timing evidence is reported separately in `mapped_synthesis.csv` and `mapped_overhead.csv`. |
+| `results/processed/synthesis_overhead.csv` | Yes | Synthesis/resource table | Contains derived generic cell-count overhead context from measured baseline and wrapper rows. |
+| `results/processed/evaluation_metrics.csv` | Yes | Evaluation metric table | Rolls up generated success rates, sizes, reduction ratios, cycles-to-failure, runtime summaries, generic synthesis context, same-target mapped overhead, and explicit unsupported TODO/NA rows. |
+| `paper/figures/table01_synthesis_resources.md` | Yes | Synthesis/resource table | Generated Markdown table source derived from generic synthesis and mapped ECP5 CSVs. |
 | `paper/figures/table02_replay_evidence.md` | Yes | Replay evidence table | Generated Markdown table source derived from replay and RTL/firmware alignment CSVs. |
 | `paper/figures/table03_trace_baselines.md` | Yes | Baseline trace-size table | Generated Markdown table source derived from trace-size and RTL-smoke capsule-class CSVs. |
 | `paper/figures/table04_event_sufficiency.md` | Yes | Ablation/sufficiency table | Generated Markdown table source derived from event-sufficiency and ablation CSVs. |
@@ -70,13 +70,13 @@ hand into captions, plots, or tables.
 | Fig. 4 | Ablation heatmap | Show which omitted event classes break replay for each benchmark and which omissions are benign for the observed fixture. | `paper/figures/ablation_heatmap.svg` | Yes. Generated from `results/processed/ablations.csv`. | Yes for buffer-size sweeps, last-K context-window sweeps, and RTL-backed ablations. |
 | Fig. 5 | RTL capsule event classes | Show packet-class composition of exported RTL-smoke capsules without treating it as full benchmark-wide trace evidence. | `paper/figures/rtl_capsule_event_classes.svg` | Yes. Generated from `results/processed/rtl_capsule_event_classes.csv`. | Yes for full benchmark-wide RTL class counts. |
 | Fig. 6 | Seeded interrupt campaign | Show seeded RTL-smoke interrupt-race reruns and frozen capsule packet counts after digest-match checks. | `paper/figures/randomized_interrupt_campaign.svg` | Yes. Generated from `results/processed/randomized_interrupt_campaign.csv`. | Yes for full record/replay randomized campaign. |
-| Table 1 | Synthesis/resource table | Report monitor/resource cost and timing only from generated synthesis outputs. | `paper/figures/table01_synthesis_resources.md` | Generated partial table today from `results/processed/synthesis.csv` and `results/processed/synthesis_overhead.csv`. | Requires mapped FPGA flow for LUT/FF/BRAM/Fmax and mapped core-relative overhead. |
-| Table 2 | Replay evidence table | Summarize model, firmware-sim, and RTL-smoke alignment status by benchmark while preserving the TODO full RTL suite row. | `paper/figures/table02_replay_evidence.md` | Generated partial table today from `results/processed/replay_experiments.csv` and `results/processed/rtl_firmware_alignment.csv`. | Requires full firmware-running RTL replay for final replay claims. |
+| Table 1 | Synthesis/resource table | Report monitor/resource cost and timing only from generated synthesis outputs. | `paper/figures/table01_synthesis_resources.md` | Generated table from `synthesis.csv`, `synthesis_overhead.csv`, and `mapped_synthesis.csv`. | Further optimization or non-ECP5 targets are future work. |
+| Table 2 | Replay evidence table | Summarize model, firmware-sim, RTL-smoke alignment, and host-driven full RTL replay status. | `paper/figures/table02_replay_evidence.md` | Generated table from `replay_experiments.csv`, `rtl_firmware_alignment.csv`, and `full_rtl_replay.csv`. | Hardware replay-consume datapath remains out of scope. |
 | Table 3 | Trace-size baseline table | Summarize available firmware-sim trace-size baselines and exported RTL-smoke capsule bytes. | `paper/figures/table03_trace_baselines.md` | Generated partial table today from `results/processed/trace_sizes.csv` and `results/processed/rtl_capsule_event_classes.csv`. | Requires full benchmark-wide RTL trace-size rows. |
 | Table 4 | Event-sufficiency table | Summarize model-level and RTL-smoke event-removal ablations that break replay by benchmark. | `paper/figures/table04_event_sufficiency.md` | Generated partial table today from `results/processed/event_sufficiency.csv`, `results/processed/ablations.csv`, and `results/processed/rtl_smoke_event_sufficiency.csv`. | Requires full benchmark-wide RTL-backed ablations. |
 | Table 5 | Formal coverage table | Summarize bounded formal contract families, depths, obligations, and explicit limits. | `paper/figures/table05_formal_coverage.md` | Generated table today from `results/processed/formal_coverage.csv`. | End-to-end processor/replay theorem remains outside current bounded checks. |
 | Table 6 | Proof-obligation table | Link replay-sufficiency theorem assumptions to current generated evidence and remaining limits. | `paper/figures/table06_proof_obligations.md` | Generated partial table today from `results/processed/proof_obligations.csv`. | End-to-end mechanized theorem remains outside current bounded checks. |
-| Table 7 | Evaluation metric rollup | Summarize headline measured metrics and explicit hardware-dependent TODOs. | `paper/figures/table07_evaluation_metrics.md` | Generated partial table today from `results/processed/evaluation_metrics.csv`. | Requires benchmark-wide RTL replay, mapped FPGA resources/Fmax, runtime slowdown, and overflow counters. |
+| Table 7 | Evaluation metric rollup | Summarize headline measured metrics and explicit unsupported TODO/NA rows. | `paper/figures/table07_evaluation_metrics.md` | Generated table from `results/processed/evaluation_metrics.csv`. | Runtime overflow counters and broader benchmark expansions remain future work. |
 
 ## Figure Details
 
@@ -103,8 +103,8 @@ Source material:
 Paper-readiness checks:
 - Label the core side as "RV32I boundary" unless PicoRV32 integration artifacts
   are present.
-- Show `replay_control` as present but not overclaim full end-to-end RTL replay
-  until firmware-running traces exist.
+- Show `replay_control` as present but do not overclaim a synthesized
+  replay-consume datapath.
 - Avoid area/timing callouts in this figure.
 
 ### Fig. 2: Event Model
@@ -142,8 +142,9 @@ Source material:
 - `results/processed/replay_experiments.csv`
 
 Paper-readiness checks:
-- Distinguish the current Python smoke replay from future RTL replay.
-- Full benchmark claims require firmware-running RTL/PicoRV32 artifacts.
+- Distinguish model/firmware-sim replay, RTL-smoke alignment, and the
+  host-driven full RTL Verilator replay suite.
+- Full benchmark claims must cite `results/processed/full_rtl_replay.csv`.
 
 ### Fig. 4: Baseline Trace Sizes
 
@@ -188,8 +189,8 @@ Paper-readiness checks:
 
 Caption draft:
 Resource and timing results are generated from synthesis reports. Generic Yosys
-cell counts can be reported from the current local run. Mapped resource and
-timing fields remain TODO/NA until the mapped tool flow exists.
+cell counts and same-target ECP5 mapped resource/timing fields can be reported
+when the corresponding generated CSV rows pass.
 
 Source material:
 - `scripts/synth_yosys.py`
@@ -206,9 +207,9 @@ Paper-readiness checks:
 - Yosys generic cells may be reported only after a real report is parsed.
 - Generic cell deltas may be reported only from `synthesis_overhead.csv` and
   must be labeled as generic Yosys context.
-- LUT/FF/BRAM/Fmax require a mapped FPGA flow, not the generic Yosys report.
-- Core-relative overhead may be discussed only as generic Yosys cell-count
-  context until a mapped baseline and mapped ReplayCapsule build exist.
+- LUT/FF/BRAM/Fmax require the mapped FPGA CSVs, not the generic Yosys report.
+- Core-relative mapped overhead may be discussed only from same-target passing
+  baseline and ReplayCapsule rows.
 
 ## Regeneration Order
 
@@ -227,7 +228,7 @@ Use the existing pipeline as the source of truth:
 
 | Gate | Needed artifacts | Unlocks |
 | --- | --- | --- |
-| PicoRV32 integration | Firmware-running record/replay traces for each benchmark | Full replay flow, full baseline comparison, full ablation heatmap, RTL-backed replay overhead context. |
-| Full Verilator/cocotb plus RISC-V toolchain | Reproducible RTL simulation traces and firmware images | Benchmark-wide event logs, replay success, cycles to failure, overflow checks. |
+| Expanded PicoRV32 integration | Additional firmware-running trace exports for each benchmark | Full RTL-backed trace-size comparison and full ablation heatmap. |
+| Expanded Verilator/cocotb campaigns | Additional reproducible RTL simulation traces and firmware images | Broader benchmark event logs, runtime overflow counters, and stress coverage. |
 | Yosys | Real synthesis report for baseline `picorv32`, `replay_capsule_top`, and integrated variants | Generic cell counts, generic cell-overhead context, and synthesis status. Current local flow satisfies this with `yowasp-yosys`. |
-| FPGA mapping flow | Requires device-mapped reports for baseline and ReplayCapsule builds | LUT, FF, BRAM, Fmax, and timing-overhead fields. |
+| Expanded FPGA mapping flow | Requires additional device-mapped or optimized reports beyond the current ECP5 rows | Cross-target comparison, optimized LUT/FF/BRAM/Fmax, and timing-overhead fields. |

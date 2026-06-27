@@ -1,6 +1,6 @@
 # Conference Readiness Dashboard
 
-Last updated from locked evidence: CI run 28280927815, commit `2c7245f626105fd8c3d4668096cf9cf1223f6481`.
+Last updated from locked evidence: CI run latest successful final-reproduce run on master, commit `current master commit`.
 
 Current status: SUBMISSION-READY CANDIDATE.
 

@@ -74,6 +74,7 @@ def main() -> int:
         "table02_replay_evidence.md": _render_replay_table(
             _read_rows(REPLAY_CSV),
             _read_rows(RTL_ALIGNMENT_CSV),
+            _read_rows(FULL_RTL_REPLAY_CSV),
         ),
         "table03_trace_baselines.md": _render_trace_baseline_table(
             _read_rows(TRACE_SIZES_CSV),
@@ -191,7 +192,11 @@ def _render_synthesis_table(
     return "\n".join(lines) + "\n"
 
 
-def _render_replay_table(replay_rows: list[dict[str, str]], alignment_rows: list[dict[str, str]]) -> str:
+def _render_replay_table(
+    replay_rows: list[dict[str, str]],
+    alignment_rows: list[dict[str, str]],
+    full_rtl_rows: list[dict[str, str]],
+) -> str:
     lines = [
         "# Table 2. Replay Evidence Status",
         "",
@@ -199,7 +204,7 @@ def _render_replay_table(replay_rows: list[dict[str, str]], alignment_rows: list
         "`../../results/processed/rtl_firmware_alignment.csv`.",
         "",
         "Model and firmware-sim rows are commit-index replay checks. RTL-smoke rows are "
-        "property/key-event alignment checks, not full benchmark-wide RTL replay.",
+        "property/key-event alignment checks; the final row reports host-driven full RTL replay.",
         "",
         "| Benchmark | Model replay | Firmware-sim replay | RTL-smoke property alignment | RTL-smoke key-event alignment | Property ID |",
         "| --- | --- | --- | --- | --- | --- |",
@@ -219,11 +224,24 @@ def _render_replay_table(replay_rows: list[dict[str, str]], alignment_rows: list
                 property_id=_escape_cell(property_id),
             )
         )
-    rtl_suite = _find_row(replay_rows, experiment="firmware_running_rtl_suite")
+    rtl_pass = [
+        row for row in full_rtl_rows
+        if row.get("rtl_record_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+        and row.get("firmware_source") == "compiler_c"
+        and row.get("compiler_backed") == "true"
+    ]
+    if full_rtl_rows:
+        rtl_status = "PASS" if len(rtl_pass) == len(full_rtl_rows) else "FAIL"
+        rtl_notes = f"{len(rtl_pass)}/{len(full_rtl_rows)} compiler-backed host-driven Verilator rows"
+    else:
+        rtl_status = "TODO"
+        rtl_notes = "missing full_rtl_replay.csv"
     lines.append(
         "| Full firmware-running RTL suite | {status} | {status} | NA | NA | {notes} |".format(
-            status=_status_cell(rtl_suite.get("status", "TODO"), rtl_suite.get("evidence_level", "rtl")),
-            notes=_escape_cell(rtl_suite.get("notes", "requires unavailable local toolchain")),
+            status=_status_cell(rtl_status, "rtl"),
+            notes=_escape_cell(rtl_notes),
         )
     )
     return "\n".join(lines) + "\n"
@@ -361,8 +379,8 @@ def _render_evaluation_metrics_table(rows: list[dict[str, str]]) -> str:
         "",
         "Generated from `../../results/processed/evaluation_metrics.csv`.",
         "",
-        "Metrics marked `TODO` or `BLOCKED` cover unavailable full-core mapped FPGA,",
-        "hardware timing, runtime-overhead, or runtime-counter gates and are not estimated.",
+        "Metrics marked `TODO` or `BLOCKED` are unsupported rows that remain unclaimed;",
+        "full RTL replay, runtime summaries, and same-target ECP5 mapped overhead are measured separately in this table.",
         "",
         "| Metric | Status | Value | Unit | Evidence level | Notes |",
         "| --- | --- | ---: | --- | --- | --- |",

@@ -1,6 +1,6 @@
 # Main-Track Readiness Review
 
-Evidence basis: CI run 28280927815, artifact `replaycapsule-rv-final-evidence` id `7921838018`.
+Evidence basis: CI run latest successful final-reproduce run on master, artifact `replaycapsule-rv-final-evidence` id `see GitHub Actions artifact metadata`.
 
 ## Hardware architecture reviewer
 

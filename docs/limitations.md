@@ -26,8 +26,8 @@ ReplayCapsule-RV v1 is intentionally narrow.
 
 ## Current Implementation Limits
 
-- The local executable path includes a deterministic Python event model, an RV32I firmware interpreter, directed HDL checks, fifteen PicoRV32 wrapper firmware smokes, a seeded RTL-smoke interrupt reproducibility campaign, RTL-smoke capsule export self-compare, missing-event, duplicate-event, metadata-corruption, payload-corruption, order-corruption, and PC-context checks, bounded overflow contract checks, RTL/firmware-sim alignment rows, and generic Yosys synthesis.
-- The SoC RTL integration has fifteen firmware smokes, not a completed benchmark-wide PicoRV32 replay/export system.
-- `make`, C++ build support for full Verilator simulations, and a RISC-V cross compiler are not available locally.
-- Mapped FPGA LUT/FF/BRAM/Fmax rows are TODO until a real mapped flow is run.
-- Model-level and firmware-sim replay are measured for six benchmarks; RTL firmware-running evidence is currently limited to fifteen wrapper smokes, twelve failing/fixed smoke-level capsule export self-compare, missing-event, duplicate-event, metadata-corruption, payload-corruption, order-corruption, and PC-context checks, bounded overflow contract checks, and RTL/firmware-sim alignment rows.
+- The locked Linux CI path includes compiler-backed firmware builds, host-driven full RTL record/replay, negative corrupted-capsule checks, runtime summaries, same-target ECP5 place-and-route rows, paper build/audits, and artifact packaging.
+- The replay-consume path is host-driven in the Verilator harness; no synthesizable replay-consume datapath is claimed.
+- Runtime overhead rows report Verilator cycle, commit, and simulator wall-clock measurements; they are not hardware runtime, energy, or power claims.
+- The ECP5 mapped implementation is a board-level feasibility and overhead measurement, not an area-optimized implementation and not an ASIC result.
+- Full RTL-backed trace-size reductions and full RTL ablation variants beyond the current model/RTL-smoke evidence remain future work.

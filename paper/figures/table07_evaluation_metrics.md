@@ -2,8 +2,8 @@
 
 Generated from `../../results/processed/evaluation_metrics.csv`.
 
-Metrics marked `TODO` or `BLOCKED` cover unavailable full-core mapped FPGA,
-hardware timing, runtime-overhead, or runtime-counter gates and are not estimated.
+Metrics marked `TODO` or `BLOCKED` are unsupported rows that remain unclaimed;
+full RTL replay, runtime summaries, and same-target ECP5 mapped overhead are measured separately in this table.
 
 | Metric | Status | Value | Unit | Evidence level | Notes |
 | --- | --- | ---: | --- | --- | --- |

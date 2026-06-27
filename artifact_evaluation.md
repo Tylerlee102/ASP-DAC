@@ -1,6 +1,6 @@
 # Artifact Evaluation Notes
 
-Artifact evidence is locked to GitHub Actions run `28280927815`, commit `2c7245f626105fd8c3d4668096cf9cf1223f6481`, artifact `replaycapsule-rv-final-evidence` id `7921838018`.
+Artifact evidence is locked by the latest successful `ReplayCapsule-RV Final Reproduction` GitHub Actions run on `master`. Download the workflow artifact named `replaycapsule-rv-final-evidence`, or use the checked-in `dist/replaycapsule-rv-artifact.zip` package and evidence CSVs listed below.
 
 The package is intentionally conservative: unsupported claims stay out of the paper and docs, and generated CSVs are the authority for numeric results.
 
@@ -117,7 +117,7 @@ python3 scripts/package_artifact.py
 - Full-core mapped overhead is claimable only when both full-core board rows PASS on the same target and `mapped_recorder_presence.csv` is PASS.
 - `paper/main.pdf` must exist and `paper_build_status.csv` must report PASS.
 - Claim, number, and TODO audits must report zero failing rows.
-- `final_ci_verification.csv` must explain any green-run warning or annotation, including the legacy exit-code-2 annotation.
+- `final_ci_verification.csv` must explain any green-run warning or annotation. The previous exit-code-2 annotation was traced to the old installer loop and fixed; current expected warnings are limited to non-critical GitHub Actions runner/action deprecation notices.
 - `artifact_manifest.csv` must have zero required missing files.
 
 ## Known Limitations

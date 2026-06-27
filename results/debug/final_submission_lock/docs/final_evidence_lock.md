@@ -4,11 +4,11 @@ This document locks the evidence used for the main-track submission polish pass.
 
 ## CI And Artifact
 
-- CI run: 28280927815
-- Commit: `2c7245f626105fd8c3d4668096cf9cf1223f6481`
+- CI run: latest successful final-reproduce run on master
+- Commit: `current master commit`
 - Artifact: `replaycapsule-rv-final-evidence`
-- Artifact id: `7921838018`
-- Artifact digest: `sha256:32eabb8eedadae9dfa1b72383ef9fee56d26de3874107ff2a510776e02d8ee1d`
+- Artifact id: `see GitHub Actions artifact metadata`
+- Artifact digest: `see GitHub Actions artifact metadata`
 - Final CI gate: PASS (none)
 - Final CI verification: PASS
 

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import csv
+import os
 import shutil
 from pathlib import Path
 
@@ -13,11 +14,11 @@ PROCESSED = REPO_ROOT / "results/processed"
 DOCS = REPO_ROOT / "docs"
 LOCK_DIR = REPO_ROOT / "results/debug/final_submission_lock"
 
-CI_RUN = "28280927815"
-CI_COMMIT = "2c7245f626105fd8c3d4668096cf9cf1223f6481"
 CI_ARTIFACT = "replaycapsule-rv-final-evidence"
-CI_ARTIFACT_ID = "7921838018"
-CI_ARTIFACT_DIGEST = "sha256:32eabb8eedadae9dfa1b72383ef9fee56d26de3874107ff2a510776e02d8ee1d"
+CI_RUN = os.environ.get("GITHUB_RUN_ID", "latest successful final-reproduce run on master")
+CI_COMMIT = os.environ.get("GITHUB_SHA", "current master commit")
+CI_ARTIFACT_ID = os.environ.get("FINAL_EVIDENCE_ARTIFACT_ID", "see GitHub Actions artifact metadata")
+CI_ARTIFACT_DIGEST = os.environ.get("FINAL_EVIDENCE_ARTIFACT_DIGEST", "see GitHub Actions artifact metadata")
 
 
 def main() -> int:

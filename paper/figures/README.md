@@ -37,8 +37,10 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/raw/yosys_picorv32.txt` | Yes | Yosys generic synthesis report for the baseline PicoRV32 core. |
 | `../../results/raw/yosys_replay_capsule_top.txt` | Yes | Yosys generic synthesis report for the record-side top. |
 | `../../results/raw/yosys_picorv32_replaycapsule_wrapper.txt` | Yes | Yosys generic synthesis report for the integrated wrapper. |
-| `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source with generic cells measured and mapped resource/timing fields TODO/NA. |
-| `../../results/processed/synthesis_overhead.csv` | Yes | Derived generic cell-overhead context with mapped fields kept as NA. |
+| `../../results/processed/synthesis.csv` | Yes | Synthesis/resource table source with generic cells measured. |
+| `../../results/processed/synthesis_overhead.csv` | Yes | Derived generic cell-overhead context. |
+| `../../results/processed/mapped_synthesis.csv` | Yes | Same-target mapped FPGA resource/timing source. |
+| `../../results/processed/mapped_overhead.csv` | Yes | Same-target mapped FPGA overhead source. |
 | `table01_synthesis_resources.md` | Yes | Generated Markdown source for the synthesis/resource table. |
 | `table02_replay_evidence.md` | Yes | Generated Markdown source for replay evidence status. |
 | `table03_trace_baselines.md` | Yes | Generated Markdown source for trace-size baselines. |
@@ -47,7 +49,7 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `../../results/processed/proof_obligations.csv` | Yes | Replay-sufficiency proof-obligation source. |
 | `../../docs/proof_obligation_matrix.md` | Yes | Reviewer-facing proof-obligation matrix. |
 | `table06_proof_obligations.md` | Yes | Generated Markdown source for replay-sufficiency proof obligations. |
-| `../../results/processed/evaluation_metrics.csv` | Yes | Headline evaluation metric rollup source with TODO hardware rows. |
+| `../../results/processed/evaluation_metrics.csv` | Yes | Headline evaluation metric rollup source with measured replay, runtime, mapped overhead, and explicit unsupported TODO/NA rows. |
 | `table07_evaluation_metrics.md` | Yes | Generated Markdown source for evaluation metric rollup. |
 | `../../results/processed/claim_audit.csv` | Yes | Claim-audit source for honesty-gate review. |
 | `../../results/processed/toolchain_status.csv` | Yes | Tool availability and missing-blocker ledger. |
@@ -71,14 +73,14 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 | `table04_event_sufficiency.md` | Generated partial table today | `../../results/processed/event_sufficiency.csv`, `../../results/processed/ablations.csv`, `../../results/processed/rtl_smoke_event_sufficiency.csv` | Full benchmark-wide RTL-backed ablations. |
 | `table05_formal_coverage.md` | Generated table today | `../../results/processed/formal_coverage.csv` | End-to-end proof remains outside current bounded checks. |
 | `table06_proof_obligations.md` | Generated partial table today | `../../results/processed/proof_obligations.csv` | End-to-end mechanized theorem remains outside current bounded checks. |
-| `table07_evaluation_metrics.md` | Generated partial table today | `../../results/processed/evaluation_metrics.csv` | Benchmark-wide RTL replay, mapped FPGA resources/Fmax, runtime slowdown, and overflow counters. |
+| `table07_evaluation_metrics.md` | Generated table today | `../../results/processed/evaluation_metrics.csv` | Runtime overflow counters and broader benchmark expansions. |
 
 ## Rendering Rules
 
 - Keep final plot data in `../../results/processed/*`.
 - Keep raw logs and traces in `../../results/raw/*`.
-- Treat `TODO` and `NA` as first-class paper states until the missing tool or
-  RTL artifact exists.
+- Treat `TODO` and `NA` as first-class paper states for unsupported rows, not
+  as permission to estimate missing numbers.
 - Captions may describe the measurement method, but must not introduce numbers
   that are absent from the source artifacts.
 - If a final figure is restyled for publication, record the exact source CSV or
@@ -88,8 +90,8 @@ content must come from generated CSV, JSON, SVG, or synthesis-report artifacts.
 
 | Requirement | Applies to |
 | --- | --- |
-| Firmware-running PicoRV32 traces for all listed benchmarks | Replay flow, baseline sizes, ablation heatmap. |
-| Full Verilator or cocotb RTL simulation outputs | Replay success, cycles to failure, overflow behavior. |
+| Additional firmware-running PicoRV32 trace exports | Full RTL-backed baseline sizes and ablation heatmap. |
+| Expanded Verilator or cocotb RTL campaigns | Broader event logs, runtime overflow counters, and stress coverage. |
 | Yosys reports parsed into `synthesis.csv` and `synthesis_overhead.csv` | Synthesis/resource table. |
 | Proof-obligation matrix generated from theorem assumptions and result artifacts | Formal/replay-sufficiency table. |
-| Mapped FPGA report for both baseline and ReplayCapsule builds | LUT/FF/BRAM/Fmax and overhead fields. |
+| Additional mapped FPGA reports beyond the current ECP5 rows | Cross-target or optimized LUT/FF/BRAM/Fmax and overhead fields. |

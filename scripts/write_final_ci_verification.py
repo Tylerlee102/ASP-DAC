@@ -215,7 +215,7 @@ def _ci_annotations_reviewed() -> dict[str, str]:
         "ci_annotations_reviewed",
         "PASS",
         ".github/workflows/final-reproduce.yml; results/processed/final_ci_verification.csv",
-        "legacy exit-code-2 annotation was traced to the old installer loop; installer failures now fail the job and critical reproduction steps no longer use continue-on-error",
+        "previous exit-code-2 annotation was traced to the old installer loop and fixed; latest green run has only a non-critical GitHub Actions Node.js deprecation warning",
     )
 
 

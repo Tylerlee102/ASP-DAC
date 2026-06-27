@@ -2,7 +2,7 @@
 
 ReplayCapsule-RV is a research prototype for event-sufficient hardware failure capsules for replaying embedded single-hart RV32I interrupt/MMIO bugs.
 
-The current locked evidence comes from GitHub Actions run `28280927815`, commit `2c7245f626105fd8c3d4668096cf9cf1223f6481`, artifact `replaycapsule-rv-final-evidence` id `7921838018`.
+The current locked evidence is produced by the latest successful `ReplayCapsule-RV Final Reproduction` GitHub Actions run on `master`. Download the workflow artifact named `replaycapsule-rv-final-evidence`, or inspect the checked-in evidence CSVs listed below.
 
 ## Main Evidence
 
@@ -27,7 +27,7 @@ The current locked evidence comes from GitHub Actions run `28280927815`, commit 
 - Artifact manifest: `results/processed/artifact_manifest.csv`
 - Packaged artifact: `dist/replaycapsule-rv-artifact.zip`
 
-The final CI verification CSV documents the green CI run, artifact id, non-critical runner warning, and the legacy exit-code-2 annotation. The workflow now exits nonzero if any required package install fails.
+The final CI verification CSV documents the green CI run and any non-critical runner warning. The previous exit-code-2 annotation was traced to the old installer loop and fixed; the workflow now exits nonzero if any required package install fails.
 
 ## Quick Start
 

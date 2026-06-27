@@ -22,7 +22,7 @@ ReplayCapsule-RV should contribute:
 
 ## Current Environment Finding
 
-The workspace started empty and was not a git repository; it now has local checkpoint commits. Local `verilator`, `yosys`, and `make` commands were not available at kickoff, so Phase 1/2 verification began with Python smoke tests and static RTL checks. Current runs can use workspace-local `yowasp-yosys` for generic synthesis, `yowasp-sby`/`yowasp-yosys-smtbmc` for bounded formal checks, OSS CAD Suite for nine directed Icarus module simulations and Verilator lint-only checks, and workspace-local `make`/C++ for host-driven Verilator full RTL replay. The current full RTL replay/export ledger reports 45/45 evaluated PASS rows; the RISC-V compiler, compiler-backed firmware builds, mapped hardware metrics, and hardware timing/runtime measurements remain TODO/NA.
+The workspace started empty and was not a git repository; it now has local checkpoint commits and a locked CI reproduction path. Early Phase 1/2 verification began with Python smoke tests and static RTL checks because local `verilator`, `yosys`, and `make` commands were not available at kickoff. The current evidence includes compiler-backed firmware builds, 45/45 host-driven Verilator full RTL replay PASS rows, negative corrupted-capsule rejection, runtime summaries, generic Yosys context, bounded formal checks, and same-target ECP5 85K mapped place-and-route overhead. Remaining limits are scope limits: host-driven replay consume, no ASIC power/area, no multicore/DMA/cache-coherence claim, and no full RTL-backed trace-size or ablation expansion beyond the generated evidence.
 
 ## Subagent Plan
 
