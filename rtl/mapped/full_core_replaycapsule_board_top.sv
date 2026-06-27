@@ -1,6 +1,6 @@
 module full_core_replaycapsule_board_top #(
   parameter int          MEM_WORDS      = 2048,
-  parameter int          CAPSULE_DEPTH  = 64,
+  parameter int          CAPSULE_DEPTH  = 16,
   parameter int          CAPSULE_ADDR_W = $clog2(CAPSULE_DEPTH),
   parameter logic [31:0] PROGADDR_RESET = 32'h0000_0080,
   parameter logic [31:0] PROGADDR_IRQ   = 32'h0000_0010,
