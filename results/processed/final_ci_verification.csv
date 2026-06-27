@@ -1,16 +1,13 @@
 check,status,evidence,notes
-workflow_conclusion,PASS,https://github.com/Tylerlee102/ASP-DAC/actions/runs/28280927815,Run 28280927815 completed with conclusion=success on commit 2c7245f626105fd8c3d4668096cf9cf1223f6481.
-final_reproduce_job,PASS,job 83796413572 final-reproduce completed success,All critical final reproduction steps completed with conclusion=success.
-critical_steps,PASS,steps 3-18 completed success,Install tools through final CI gates all completed success in the final-reproduce job.
-artifact_available,PASS,artifact 7921838018 replaycapsule-rv-final-evidence digest sha256:32eabb8eedadae9dfa1b72383ef9fee56d26de3874107ff2a510776e02d8ee1d,Artifact is not expired; API-reported size is 5198431 bytes.
-compiler_backed_firmware,PASS,results/processed/firmware_build.csv has 15/15 compiler_c PASS rows,Fallback firmware rows are not used for the locked full RTL evidence.
-full_rtl_replay,PASS,results/processed/full_rtl_replay.csv has 45/45 PASS rows,Rows pass record status replay status final signature match and compiler-backed checks.
-negative_replay,PASS,results/processed/full_rtl_replay_negative.csv has 10 rejects 0 unexpected accepts 2 NA,Replay-critical corrupted capsules are rejected.
-runtime_overhead,PASS,results/processed/runtime_overhead.csv and runtime_overhead_summary.csv,Measured baseline recorder-present-disabled and recorder-enabled rows are present.
-mapped_overhead,PASS,results/processed/full_core_mapped_summary.csv PASS on ecp5-85k,Same-target board-level overhead is LUT 143.75 percent FF 341.79 percent BRAM 0.00 percent Fmax delta -20.12 percent.
-recorder_presence,PASS,results/processed/mapped_recorder_presence.csv PASS,Recorder hierarchy capsule buffer status logic and top outputs are present in mapped artifacts.
-paper_build_and_audits,PASS,results/processed/paper_build_status.csv claim_audit.csv paper_number_audit.csv todo_audit.csv,Paper PDF builds and claim/number/TODO audits pass.
-artifact_package,PASS,dist/replaycapsule-rv-artifact.zip and results/processed/artifact_manifest.csv,Artifact package is generated from scripts/package_artifact.py and excludes build/ and local caches.
-node20_runner_annotation,WARN,check-run annotation .github:2,GitHub runner platform warning for actions/checkout@v4 and upload-artifact@v4 being forced from Node 20 to Node 24; job conclusion remained success.
-legacy_installer_annotation,WARN,check-run annotation .github:32 Process completed with exit code 2,The old green run carried an install-loop annotation despite the install step succeeding; the workflow now exits nonzero if any required package install fails.
-private_path_and_directive_scan,PASS,git grep for local profile paths and Codex git directive tokens returns no tracked-file matches,Final scan covers local Windows profile/workspace markers and Codex git directive tokens without storing those markers in this CSV.
+workflow_status,PASS,local-preflight,final-reproduce verification for branch master commit c23202ef1ae754d26cebd645df12d118ee5c3b0f
+critical_steps_no_continue_on_error,PASS,.github/workflows/final-reproduce.yml,critical reproduction steps are not marked continue-on-error
+firmware_gate,PASS,results/processed/firmware_build.csv,compiler-backed PASS rows 15/15; fallback rows 0
+rtl_replay_gate,PASS,results/processed/full_rtl_replay.csv,compiler-backed full RTL replay PASS rows 45/45
+negative_replay_gate,PASS,results/processed/full_rtl_replay_negative.csv,rejects=10 unexpected_accepts=0 failures=0 na=2
+runtime_overhead_gate,PASS,results/processed/runtime_overhead_summary.csv,observed runtime summary configs 5; required configs present=True
+mapped_synth_gate,PASS,results/processed/full_core_mapped_summary.csv; results/processed/mapped_recorder_presence.csv,target=ecp5-85k flow=yosys+synth_ecp5+nextpnr-ecp5 recorder_presence=PASS
+paper_gate,PASS,paper/main.pdf; results/processed/*audit.csv,pdf_exists=True claim_review=0 number_fail=0 todo_fail=0
+artifact_gate,PASS,dist/replaycapsule-rv-artifact.zip; results/processed/artifact_manifest.csv,manifest_missing=0 required_zip_absent=0 build_entries=0
+public_readme_updated,PASS,README.md,stale_patterns=0 missing_required_terms=0
+private_path_scan,PASS,repo text scan,private path or automation marker hits=0
+ci_annotations_reviewed,PASS,.github/workflows/final-reproduce.yml; results/processed/final_ci_verification.csv,legacy exit-code-2 annotation was traced to the old installer loop; installer failures now fail the job and critical reproduction steps no longer use continue-on-error

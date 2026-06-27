@@ -61,11 +61,9 @@ jobs:
           fi
 
       - name: Check reproduction toolchain
-        continue-on-error: true
         run: make check-toolchain
 
       - name: Build compiler-backed firmware
-        continue-on-error: true
         run: make firmware
 
       - name: Show Verilator environment
@@ -86,7 +84,6 @@ jobs:
           ls -l ./.tools/oss-cad-suite/oss-cad-suite/share/verilator/verilator_bin || true
 
       - name: Run Verilator compile smoke
-        continue-on-error: true
         run: |
           unset VERILATOR_ROOT
           unset VERILATOR_BIN
@@ -95,7 +92,6 @@ jobs:
           make verilator-smoke
 
       - name: Build Verilator harness
-        continue-on-error: true
         run: |
           unset VERILATOR_ROOT
           unset VERILATOR_BIN
@@ -105,7 +101,6 @@ jobs:
           test -x build/verilator/replaycapsule_sim || test -x build/verilator/replaycapsule_sim.exe || (echo "ERROR: Verilator simulator binary missing. See results/raw/verilator/build.log." && exit 1)
 
       - name: Run full RTL replay
-        continue-on-error: true
         run: |
           unset VERILATOR_ROOT
           unset VERILATOR_BIN
@@ -114,7 +109,6 @@ jobs:
           make full-rtl-replay DEBUG=1
 
       - name: Run full RTL negative replay
-        continue-on-error: true
         run: |
           unset VERILATOR_ROOT
           unset VERILATOR_BIN
@@ -123,28 +117,25 @@ jobs:
           make full-rtl-negative
 
       - name: Measure runtime overhead
-        continue-on-error: true
         run: make runtime-overhead
 
       - name: Compare fallback and compiler firmware sources
-        continue-on-error: true
         run: make firmware-source-compare
 
       - name: Run mapped synthesis
-        continue-on-error: true
         run: make mapped-synth
 
       - name: Build paper
-        continue-on-error: true
         run: make paper
 
       - name: Audit paper claims
-        continue-on-error: true
         run: make paper-audit
 
       - name: Package artifact
-        continue-on-error: true
         run: make artifact
+
+      - name: Write final CI verification
+        run: python3 scripts/write_final_ci_verification.py
 
       - name: Run final script package checks
         run: |

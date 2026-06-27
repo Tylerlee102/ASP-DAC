@@ -10,7 +10,7 @@ This document locks the evidence used for the main-track submission polish pass.
 - Artifact id: `7921838018`
 - Artifact digest: `sha256:32eabb8eedadae9dfa1b72383ef9fee56d26de3874107ff2a510776e02d8ee1d`
 - Final CI gate: PASS (none)
-- Final CI verification: PASS with 2 documented non-critical warning row(s)
+- Final CI verification: PASS
 
 ## Firmware And Replay
 
