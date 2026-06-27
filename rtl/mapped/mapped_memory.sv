@@ -79,7 +79,7 @@ module mapped_memory #(
             gpio_out <= gpio_out ^ mem_wdata[7:0];
             uart_tx <= uart_tx ^ mem_wdata[8];
           end
-        end
+        endcase
       end
     end
   end
