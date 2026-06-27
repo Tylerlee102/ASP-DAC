@@ -62,6 +62,7 @@ On the Linux CI image, the final reproduction run completed in a few minutes. Fu
 - `results/processed/claim_audit.csv`
 - `results/processed/paper_number_audit.csv`
 - `results/processed/todo_audit.csv`
+- `results/processed/final_ci_verification.csv`
 - `results/processed/artifact_manifest.csv`
 - `docs/final_evidence_lock.md`
 - `results/debug/final_submission_lock/`
@@ -116,6 +117,7 @@ python3 scripts/package_artifact.py
 - Full-core mapped overhead is claimable only when both full-core board rows PASS on the same target and `mapped_recorder_presence.csv` is PASS.
 - `paper/main.pdf` must exist and `paper_build_status.csv` must report PASS.
 - Claim, number, and TODO audits must report zero failing rows.
+- `final_ci_verification.csv` must explain any green-run warning or annotation, including the legacy exit-code-2 annotation.
 - `artifact_manifest.csv` must have zero required missing files.
 
 ## Known Limitations

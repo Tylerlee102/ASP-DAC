@@ -15,6 +15,20 @@ The current locked evidence comes from GitHub Actions run `28280927815`, commit 
 - Paper build and audits: PASS in `results/processed/paper_build_status.csv`, `claim_audit.csv`, `paper_number_audit.csv`, and `todo_audit.csv`.
 - Artifact package: `dist/replaycapsule-rv-artifact.zip`.
 
+## Final Evidence Quick Links
+
+- Paper PDF: `paper/main.pdf`
+- Final CI verification: `results/processed/final_ci_verification.csv`
+- Firmware build evidence: `results/processed/firmware_build.csv`
+- Full RTL replay evidence: `results/processed/full_rtl_replay.csv`
+- Negative replay evidence: `results/processed/full_rtl_replay_negative.csv`
+- Runtime overhead evidence: `results/processed/runtime_overhead.csv` and `results/processed/runtime_overhead_summary.csv`
+- Mapped ECP5 evidence: `results/processed/mapped_synthesis.csv`, `results/processed/mapped_overhead.csv`, `results/processed/mapped_recorder_presence.csv`, and `results/processed/full_core_mapped_summary.csv`
+- Artifact manifest: `results/processed/artifact_manifest.csv`
+- Packaged artifact: `dist/replaycapsule-rv-artifact.zip`
+
+The final CI verification CSV documents the green CI run, artifact id, non-critical runner warning, and the legacy exit-code-2 annotation. The workflow now exits nonzero if any required package install fails.
+
 ## Quick Start
 
 Full reproduction path:
@@ -75,6 +89,7 @@ powershell -ExecutionPolicy Bypass -File scripts\reproduce_all.ps1
 - `results/processed/mapped_overhead.csv`
 - `results/processed/mapped_recorder_presence.csv`
 - `results/processed/full_core_mapped_summary.csv`
+- `results/processed/final_ci_verification.csv`
 - `results/processed/artifact_manifest.csv`
 - `docs/final_evidence_lock.md`
 - `results/debug/final_submission_lock/`
