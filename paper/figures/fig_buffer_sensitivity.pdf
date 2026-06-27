@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 254 >>
+<< /Length 399 >>
 stream
 BT
 /F1 15 Tf
@@ -20,19 +20,19 @@ BT
 (Buffer Depth Sensitivity) Tj
 /F1 10 Tf
 0 -24 Td
-(depth 4: NA) Tj
+(depth 4: median overflow 100.00%) Tj
 0 -16 Td
-(depth 8: NA) Tj
+(depth 8: median overflow 100.00%) Tj
 0 -16 Td
-(depth 16: NA) Tj
+(depth 16: median overflow 100.00%) Tj
 0 -16 Td
-(depth 32: NA) Tj
+(depth 32: median overflow 100.00%) Tj
 0 -16 Td
-(depth 64: NA) Tj
+(depth 64: median overflow 100.00%) Tj
 0 -16 Td
-(depth 128: NA) Tj
+(depth 128: median overflow 100.00%) Tj
 0 -16 Td
-(depth 256: NA) Tj
+(depth 256: median overflow 0.00%) Tj
 ET
 endstream
 endobj
@@ -46,5 +46,5 @@ xref
 0000000311 00000 n
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-616
+761
 %%EOF

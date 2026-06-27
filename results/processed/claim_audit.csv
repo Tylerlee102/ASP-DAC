@@ -1,4 +1,9 @@
 claim_type,status,file,line,matched_text,excerpt,guidance
+asic_power_claim,CAVEATED,README.md,100,ASIC,"- ASIC implementation, timing, or energy results.",ASIC and power wording is only allowed when stating that no ASIC/power claim is made.
+unsupported_scope,CAVEATED,README.md,102,Multicore,"- Multicore, DMA, cache-coherent, or broad platform support.",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
+unsupported_scope,CAVEATED,README.md,102,DMA,"- Multicore, DMA, cache-coherent, or broad platform support.",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
+unsupported_scope,CAVEATED,README.md,102,cache-coherent,"- Multicore, DMA, cache-coherent, or broad platform support.",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
+trace_replacement_claim,CAVEATED,README.md,103,Replacement for RISC-V trace,- Replacement for RISC-V trace/debug standards.,Do not claim replacement for trace/debug standards.
 unsupported_scope,CAVEATED,artifact_evaluation.md,127,DMA,"- DMA, multicore ordering, cache-coherence behavior, analog device state, and broad platform replay are not claimed.",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
 unsupported_scope,CAVEATED,artifact_evaluation.md,127,multicore,"- DMA, multicore ordering, cache-coherence behavior, analog device state, and broad platform replay are not claimed.",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
 asic_power_claim,CAVEATED,artifact_evaluation.md,128,ASIC,- No ASIC area or power claim is made.,ASIC and power wording is only allowed when stating that no ASIC/power claim is made.
@@ -170,8 +175,3 @@ asic_power_claim,CAVEATED,paper/tables/table_limitations.tex,8,ASIC,"no\_asic\_p
 asic_power_claim,CAVEATED,paper/tables/table_limitations.tex,8,power,"no\_asic\_power & ASIC area, timing, and power are not evaluated. \\",ASIC and power wording is only allowed when stating that no ASIC/power claim is made.
 unsupported_scope,CAVEATED,paper/tables/table_limitations.tex,9,multicore,"single\_hart\_scope & Evaluation is single-hart RV32I and excludes multicore, DMA, caches/coherence, and arbitrary peripherals. \\",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
 unsupported_scope,CAVEATED,paper/tables/table_limitations.tex,9,DMA,"single\_hart\_scope & Evaluation is single-hart RV32I and excludes multicore, DMA, caches/coherence, and arbitrary peripherals. \\",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
-asic_power_claim,CAVEATED,README.md,100,ASIC,"- ASIC implementation, timing, or energy results.",ASIC and power wording is only allowed when stating that no ASIC/power claim is made.
-unsupported_scope,CAVEATED,README.md,102,Multicore,"- Multicore, DMA, cache-coherent, or broad platform support.",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
-unsupported_scope,CAVEATED,README.md,102,DMA,"- Multicore, DMA, cache-coherent, or broad platform support.",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
-unsupported_scope,CAVEATED,README.md,102,cache-coherent,"- Multicore, DMA, cache-coherent, or broad platform support.",Scope expansion terms are only allowed in explicit limitation or do-not-claim contexts.
-trace_replacement_claim,CAVEATED,README.md,103,Replacement for RISC-V trace,- Replacement for RISC-V trace/debug standards.,Do not claim replacement for trace/debug standards.

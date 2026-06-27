@@ -20,11 +20,11 @@ BT
 (Mapped Memory Scaling) Tj
 /F1 10 Tf
 0 -24 Td
-(memory_words 1024: lut 122.66%, ff 341.79%, bram 0.00%, fmax_mhz -21.22%) Tj
+(memory_words 1024: lut 124.66%, ff 341.79%, bram 0.00%, fmax_mhz -20.81%) Tj
 0 -16 Td
-(memory_words 2048: lut 137.08%, ff 341.79%, bram 0.00%, fmax_mhz -19.73%, lut 202.36%, ff 646.43%, bram 0.00%,) Tj
+(memory_words 2048: lut 125.36%, ff 341.79%, bram 0.00%, fmax_mhz -25.48%, lut 182.55%, ff 646.43%, bram 0.00%,) Tj
 0 -16 Td
-(memory_words 4096: lut 205.11%, ff 646.43%, bram 0.00%, fmax_mhz -14.16%) Tj
+(memory_words 4096: lut 182.06%, ff 646.43%, bram 0.00%, fmax_mhz -17.53%) Tj
 ET
 endstream
 endobj

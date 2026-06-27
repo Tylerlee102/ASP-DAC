@@ -1,10 +1,10 @@
 # Top-Conference Reviewer Audit
 
-Overall status: **WORKSHOP-ONLY**
+Overall status: **BORDERLINE SUBMISSION-READY**
 
 ## Hardware architecture reviewer
 
-rating: weak reject
+rating: borderline
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -16,7 +16,7 @@ top weaknesses:
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
-fatal blockers: mapped/scaling data remains too thin for top-conference strength
+fatal blockers: none after scoped wording
 
 likely reviewer questions:
 - How does overhead scale beyond the demonstrated FPGA points?
@@ -28,11 +28,11 @@ required paper wording changes:
 - avoid low-overhead language for area
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
-final recommendation: submit workshop or gather more mapped/scaling data first
+final recommendation: submit main-track with scoped claims
 
 ## EDA/synthesis reviewer
 
-rating: weak reject
+rating: borderline
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -44,7 +44,7 @@ top weaknesses:
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
-fatal blockers: mapped/scaling data remains too thin for top-conference strength
+fatal blockers: none after scoped wording
 
 likely reviewer questions:
 - How does overhead scale beyond the demonstrated FPGA points?
@@ -56,11 +56,11 @@ required paper wording changes:
 - avoid low-overhead language for area
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
-final recommendation: submit workshop or gather more mapped/scaling data first
+final recommendation: submit main-track with scoped claims
 
 ## Systems/debug reviewer
 
-rating: weak reject
+rating: borderline
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -72,7 +72,7 @@ top weaknesses:
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
-fatal blockers: mapped/scaling data remains too thin for top-conference strength
+fatal blockers: none after scoped wording
 
 likely reviewer questions:
 - How does overhead scale beyond the demonstrated FPGA points?
@@ -84,11 +84,11 @@ required paper wording changes:
 - avoid low-overhead language for area
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
-final recommendation: submit workshop or gather more mapped/scaling data first
+final recommendation: submit main-track with scoped claims
 
 ## Formal/replay-model reviewer
 
-rating: weak reject
+rating: borderline
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -100,7 +100,7 @@ top weaknesses:
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
-fatal blockers: mapped/scaling data remains too thin for top-conference strength
+fatal blockers: none after scoped wording
 
 likely reviewer questions:
 - How does overhead scale beyond the demonstrated FPGA points?
@@ -112,11 +112,11 @@ required paper wording changes:
 - avoid low-overhead language for area
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
-final recommendation: submit workshop or gather more mapped/scaling data first
+final recommendation: submit main-track with scoped claims
 
 ## Artifact evaluation reviewer
 
-rating: weak reject
+rating: borderline
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -128,7 +128,7 @@ top weaknesses:
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
-fatal blockers: mapped/scaling data remains too thin for top-conference strength
+fatal blockers: none after scoped wording
 
 likely reviewer questions:
 - How does overhead scale beyond the demonstrated FPGA points?
@@ -140,11 +140,11 @@ required paper wording changes:
 - avoid low-overhead language for area
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
-final recommendation: submit workshop or gather more mapped/scaling data first
+final recommendation: submit main-track with scoped claims
 
 ## Skeptical novelty reviewer
 
-rating: weak reject
+rating: borderline
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -156,7 +156,7 @@ top weaknesses:
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
-fatal blockers: mapped/scaling data remains too thin for top-conference strength
+fatal blockers: none after scoped wording
 
 likely reviewer questions:
 - How does overhead scale beyond the demonstrated FPGA points?
@@ -168,11 +168,11 @@ required paper wording changes:
 - avoid low-overhead language for area
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
-final recommendation: submit workshop or gather more mapped/scaling data first
+final recommendation: submit main-track with scoped claims
 
 ## Quantitative evaluation reviewer
 
-rating: weak reject
+rating: borderline
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -184,7 +184,7 @@ top weaknesses:
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
-fatal blockers: mapped/scaling data remains too thin for top-conference strength
+fatal blockers: none after scoped wording
 
 likely reviewer questions:
 - How does overhead scale beyond the demonstrated FPGA points?
@@ -196,4 +196,4 @@ required paper wording changes:
 - avoid low-overhead language for area
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
-final recommendation: submit workshop or gather more mapped/scaling data first
+final recommendation: submit main-track with scoped claims

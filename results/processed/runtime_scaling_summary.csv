@@ -1,10 +1,16 @@
 workload_scale,config,median_cycle_overhead_pct,mean_cycle_overhead_pct,median_commit_overhead_pct,mean_commit_overhead_pct,median_sim_wall_time_overhead_pct,mean_sim_wall_time_overhead_pct,median_events,median_capsule_bytes,iqr_sim_wall_time_overhead_pct,n,notes
-medium,baseline_no_recorder,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-medium,recorder_enabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-medium,recorder_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-smoke,baseline_no_recorder,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-smoke,recorder_enabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-smoke,recorder_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-stress,baseline_no_recorder,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-stress,recorder_enabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-stress,recorder_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+long,baseline_no_recorder,NA,NA,NA,NA,NA,NA,0.000000,0.000000,NA,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+long,recorder_enabled,0.000000,0.000000,0.000000,0.000000,34.800000,34.685733,256.000000,5376.000000,6.890000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+long,recorder_present_disabled,0.000000,0.000000,0.000000,0.000000,33.200000,31.800533,0.000000,0.000000,6.740000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+medium,baseline_no_recorder,NA,NA,NA,NA,NA,NA,0.000000,0.000000,NA,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+medium,recorder_enabled,0.000000,0.000000,0.000000,0.000000,30.970000,25.285067,256.000000,5376.000000,17.270000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+medium,recorder_present_disabled,0.000000,0.000000,0.000000,0.000000,30.080000,24.378400,0.000000,0.000000,17.040000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+short,baseline_no_recorder,NA,NA,NA,NA,NA,NA,0.000000,0.000000,NA,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+short,recorder_enabled,0.000000,0.000000,0.000000,0.000000,16.300000,13.440533,256.000000,5376.000000,13.020000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+short,recorder_present_disabled,0.000000,0.000000,0.000000,0.000000,16.110000,12.538533,0.000000,0.000000,13.600000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+smoke,baseline_no_recorder,NA,NA,NA,NA,NA,NA,0.000000,0.000000,NA,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+smoke,recorder_enabled,0.000000,0.000000,0.000000,0.000000,6.990000,3.854400,256.000000,5376.000000,11.610000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+smoke,recorder_present_disabled,0.000000,0.000000,0.000000,0.000000,8.170000,4.652400,0.000000,0.000000,12.510000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+stress,baseline_no_recorder,NA,NA,NA,NA,NA,NA,0.000000,0.000000,NA,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+stress,recorder_enabled,0.000000,0.000000,0.000000,0.000000,38.850000,38.358000,256.000000,5376.000000,1.620000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+stress,recorder_present_disabled,0.000000,0.000000,0.000000,0.000000,37.280000,36.765067,0.000000,0.000000,1.560000,75,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation

@@ -4,11 +4,10 @@ make,PASS,installed by apt-get
 git,PASS,installed by apt-get
 python3,PASS,installed by apt-get
 python3-pip,PASS,installed by apt-get
-cmake,PASS,installed by apt-get
 verilator,PASS,installed by apt-get
 yosys,PASS,installed by apt-get
-nextpnr-ice40,PASS,installed by apt-get
 nextpnr-ecp5,PASS,installed by apt-get
+nextpnr-ice40,PASS,installed by apt-get
 gcc-riscv64-unknown-elf,PASS,installed by apt-get
 binutils-riscv64-unknown-elf,PASS,installed by apt-get
 latexmk,PASS,installed by apt-get
@@ -16,4 +15,7 @@ texlive-latex-base,PASS,installed by apt-get
 texlive-latex-extra,PASS,installed by apt-get
 texlive-fonts-recommended,PASS,installed by apt-get
 texlive-publishers,PASS,installed by apt-get
+cmake,PASS,installed by apt-get
+iverilog,PASS,installed by apt-get
 zip,PASS,installed by apt-get
+unzip,PASS,installed by apt-get

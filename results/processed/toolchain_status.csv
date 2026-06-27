@@ -6,8 +6,8 @@ verilator,full-rtl-replay,yes,Verilator 5.020 2024-01-01 rev (Debian 5.020-1),no
 riscv64-unknown-elf-gcc,"firmware,full-rtl-replay",yes,riscv64-unknown-elf-gcc (13.2.0-11ubuntu1+12) 13.2.0,yes,path,preferred embedded RISC-V compiler; accepted aliases are bare-metal RV32-capable toolchains; riscv64-unknown-elf-gcc
 riscv64-unknown-elf-objcopy,firmware,yes,GNU objcopy (2.42-1ubuntu1+6) 2.42,yes,path,ELF to HEX conversion; riscv64-unknown-elf-objcopy
 riscv64-unknown-elf-size,firmware,yes,GNU size (2.42-1ubuntu1+6) 2.42,yes,path,compiler-backed firmware size accounting; riscv64-unknown-elf-size
-iverilog,rtl-smoke,no,NA,yes,missing,directed Icarus simulations; tool not found
-vvp,rtl-smoke,no,NA,yes,missing,Icarus simulation runtime; tool not found
+iverilog,rtl-smoke,yes,Icarus Verilog version 12.0 (stable) (),yes,path,directed Icarus simulations; iverilog
+vvp,rtl-smoke,yes,Icarus Verilog runtime version 12.0 (stable) (),yes,path,Icarus simulation runtime; vvp
 yosys,"mapped-synthesis,formal",yes,Yosys 0.33 (git sha1 2584903a060),yes,path,synthesis/formal frontend; yosys
 nextpnr-ice40,mapped-synthesis,yes,"""nextpnr-ice40"" -- Next Generation Place and Route (Version 0.6-3build5)",no,path,optional iCE40 mapped FPGA flow; nextpnr-ice40
 nextpnr-ecp5,mapped-synthesis,yes,"""nextpnr-ecp5"" -- Next Generation Place and Route (Version 0.6-3build5)",no,path,optional ECP5 mapped FPGA flow; nextpnr-ecp5

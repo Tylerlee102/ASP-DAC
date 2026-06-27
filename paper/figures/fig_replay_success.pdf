@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 165 >>
+<< /Length 234 >>
 stream
 BT
 /F1 15 Tf
@@ -20,11 +20,15 @@ BT
 (Replay Success By Workload Scale) Tj
 /F1 10 Tf
 0 -24 Td
-(medium: 0/6 PASS) Tj
+(long: 25/75 PASS) Tj
 0 -16 Td
-(smoke: 0/6 PASS) Tj
+(medium: 25/75 PASS) Tj
 0 -16 Td
-(stress: 0/6 PASS) Tj
+(short: 75/75 PASS) Tj
+0 -16 Td
+(smoke: 75/75 PASS) Tj
+0 -16 Td
+(stress: 25/75 PASS) Tj
 ET
 endstream
 endobj
@@ -38,5 +42,5 @@ xref
 0000000311 00000 n
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-527
+596
 %%EOF
