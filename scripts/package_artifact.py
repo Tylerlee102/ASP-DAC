@@ -24,6 +24,7 @@ INCLUDE_ROOTS = (
     ".devcontainer",
     "requirements.txt",
     "scripts",
+    "constraints",
     "docs",
     "formal",
     "firmware",
@@ -47,6 +48,9 @@ INCLUDE_ROOTS = (
 INCLUDE_GLOBS = (
     "results/raw/verilator/build.log",
     "results/raw/mapped_synthesis/*.txt",
+    "results/raw/mapped_synthesis/*.json",
+    "results/raw/mapped_synthesis/*.config",
+    "results/raw/mapped_synthesis/*.asc",
 )
 
 EXCLUDE_PARTS = {

@@ -414,7 +414,7 @@ def _synthesis_metrics(rows: list[dict[str, str]]) -> list[dict[str, str]]:
             "percent",
             "generic-yosys",
             "results/processed/synthesis_overhead.csv",
-            "Generic unmapped cell-count overhead; full-core mapped FPGA overhead remains blocked.",
+            "Generic unmapped cell-count overhead; mapped FPGA overhead is reported separately when same-target P&R rows pass.",
         ),
     ]
 
@@ -606,26 +606,26 @@ def _hardware_todo_metrics(runtime_summary: list[dict[str, str]]) -> list[dict[s
         _mapped_full_core_row(
             mapped_overhead,
             "full_core_mapped_lut_overhead_percent",
-            "picorv32_to_picorv32_replaycapsule_wrapper_lut",
+            "full_core_baseline_board_to_full_core_replaycapsule_board_lut",
             "percent",
         ),
         _mapped_full_core_row(
             mapped_overhead,
             "full_core_mapped_ff_overhead_percent",
-            "picorv32_to_picorv32_replaycapsule_wrapper_ff",
+            "full_core_baseline_board_to_full_core_replaycapsule_board_ff",
             "percent",
         ),
         _mapped_full_core_row(
             mapped_overhead,
             "full_core_bram_overhead",
-            "picorv32_to_picorv32_replaycapsule_wrapper_bram",
+            "full_core_baseline_board_to_full_core_replaycapsule_board_bram",
             "brams",
             "delta",
         ),
         _mapped_full_core_row(
             mapped_overhead,
             "full_core_fmax_delta_percent",
-            "picorv32_to_picorv32_replaycapsule_wrapper_fmax_mhz",
+            "full_core_baseline_board_to_full_core_replaycapsule_board_fmax_mhz",
             "percent",
         ),
         _todo_row(
@@ -665,7 +665,7 @@ def _mapped_full_core_row(
             unit,
             "mapped-fpga",
             "results/processed/mapped_overhead.csv",
-            "Requires full-core mapped_synthesis.csv PASS rows for both baseline PicoRV32 and PicoRV32+ReplayCapsule on the same target.",
+            "Requires full-core board-level mapped_synthesis.csv PASS rows for both baseline and ReplayCapsule designs on the same target.",
         )
     return _metric_row(
         metric_name,

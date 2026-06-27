@@ -73,6 +73,8 @@ ARTIFACTS = (
     ArtifactSpec("results/processed/synthesis_overhead.csv", "scripts/summarize_synthesis_overhead.py", "generic synthesis overhead context"),
     ArtifactSpec("results/processed/mapped_synthesis.csv", "scripts/run_mapped_synthesis.py", "mapped synthesis status ledger"),
     ArtifactSpec("results/processed/mapped_overhead.csv", "scripts/run_mapped_synthesis.py", "mapped overhead status ledger"),
+    ArtifactSpec("results/processed/mapped_recorder_presence.csv", "scripts/check_mapped_recorder_presence.py", "mapped recorder presence check"),
+    ArtifactSpec("results/processed/full_core_mapped_summary.csv", "scripts/run_mapped_synthesis.py", "full-core same-target mapped summary"),
     ArtifactSpec("results/processed/evaluation_metrics.csv", "scripts/summarize_evaluation_metrics.py", "headline metric rollup"),
     ArtifactSpec("results/processed/paper_build_status.csv", "scripts/build_paper.py", "paper PDF build status"),
     ArtifactSpec("results/processed/claim_audit.csv", "scripts/audit_claims.py", "claim honesty audit rows"),
@@ -99,6 +101,7 @@ ARTIFACTS = (
     ArtifactSpec("tb/verilator/picorv32_baseline_top.sv", "manual/runtime-overhead", "no-recorder PicoRV32 runtime baseline top"),
     ArtifactSpec("tb/verilator/capsule_io.cpp", "manual/rtl-harness", "capsule/signature JSON I/O"),
     ArtifactSpec("tb/verilator/README.md", "manual/rtl-harness", "RTL harness usage and limitations"),
+    ArtifactSpec("constraints/ecp5_board.lpf", "manual/mapped-synthesis", "board-level ECP5 IO and clock constraints"),
 )
 
 GLOBS = (
@@ -117,6 +120,9 @@ GLOBS = (
     ("results/debug/pass7_before/*", "manual/freeze", "pass-7 frozen CI evidence before overhead/mapping work"),
     ("results/raw/yosys_*.txt", "scripts/synth_yosys.py", "raw generic synthesis report"),
     ("results/raw/mapped_synthesis/*.txt", "scripts/run_mapped_synthesis.py", "raw mapped synthesis/place-and-route report"),
+    ("results/raw/mapped_synthesis/*.json", "scripts/run_mapped_synthesis.py", "raw mapped synthesis JSON netlist"),
+    ("results/raw/mapped_synthesis/*.config", "scripts/run_mapped_synthesis.py", "raw mapped ECP5 configuration text"),
+    ("results/raw/mapped_synthesis/*.asc", "scripts/run_mapped_synthesis.py", "raw mapped iCE40 ASCII bitstream"),
 )
 
 
