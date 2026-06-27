@@ -179,9 +179,13 @@ def _public_readme_updated() -> dict[str, str]:
         "Full-core mapped overhead: PASS",
         "paper/main.pdf",
         "dist/replaycapsule-rv-artifact.zip",
-        "143.75%",
+        "dist/replaycapsule-rv-topconf-artifact.zip",
+        "mapped_scaling_summary.csv",
+        "mapped_scaling_overhead.csv",
+        "124.66%",
+        "182.55%",
         "341.79%",
-        "-20.12%",
+        "646.43%",
     ]
     stale = [pattern.pattern for pattern in STALE_README_PATTERNS if pattern.search(text)]
     missing = [needle for needle in required if needle not in text]

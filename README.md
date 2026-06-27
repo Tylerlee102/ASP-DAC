@@ -8,7 +8,7 @@ ReplayCapsule-RV captures event-sufficient hardware failure capsules for replayi
 - Full RTL replay: `45/45` PASS in `results/processed/full_rtl_replay.csv`.
 - Full RTL negative replay: `10` replay-critical corruptions rejected, `0` unexpected accepts, `2` not-applicable rows in `results/processed/full_rtl_replay_negative.csv`.
 - Runtime overhead: measured for the fixed workload set in `results/processed/runtime_overhead.csv` and `results/processed/runtime_overhead_summary.csv`.
-- Mapped FPGA evidence: same-target ECP5 full-core overhead points in `results/processed/mapped_scaling.csv`, `results/processed/mapped_scaling_overhead.csv`, `results/processed/mapped_scaling_summary.csv`, and `results/processed/full_core_mapped_summary.csv`.
+- Full-core mapped overhead: PASS for same-target ECP5 claim-allowed points in `results/processed/full_core_mapped_summary.csv`; mapped scaling has 9 PASS rows and 1 visible P&R timeout row in `results/processed/mapped_scaling.csv`.
 - Paper: `paper/main.pdf` builds, with audits in `results/processed/claim_audit.csv`, `results/processed/paper_number_audit.csv`, and `results/processed/todo_audit.csv`.
 - Artifact: `dist/replaycapsule-rv-artifact.zip` and `dist/replaycapsule-rv-topconf-artifact.zip`.
 
@@ -83,6 +83,8 @@ make topconf-artifact
 The full-core mapped rows use realistic board-level I/O and do not expose internal debug buses as top-level FPGA pins. The allowed top-level pins are `clk`, `rst_n`, `uart_rx`, `uart_tx`, `gpio_in[3:0]`, `gpio_out[7:0]`, `status_led[3:0]`, `capsule_event_seen`, `recorder_overflow_seen`, and `recorder_status_xor`.
 
 The checked-in ECP5 scaling evidence preserves same-target PASS rows and the visible P&R timeout row. Overhead claims are allowed only for rows where both baseline and ReplayCapsule place-and-route pass on the same target and recorder presence is confirmed.
+
+Claim-allowed ECP5 overhead ranges are reported in `results/processed/mapped_scaling_summary.csv`: LUT `+124.66%` to `+182.55%`, FF `+341.79%` to `+646.43%`, BRAM `+0.00%`, and Fmax `-25.70%` to `-17.53%`. These are high area overheads, not low-overhead results.
 
 ## Scope And Limitations
 
