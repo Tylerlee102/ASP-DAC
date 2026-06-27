@@ -1,0 +1,2 @@
+status,target,flow,baseline_design,replay_design,baseline_status,replay_status,recorder_presence_status,memory_words,capsule_depth,overhead_claim_allowed,first_blocker,notes
+PASS,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,full_core_replaycapsule_board,PASS,PASS,PASS,2048,16,yes,none,same-target full-core board-level mapped overhead is available

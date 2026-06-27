@@ -1,4 +1,4 @@
-.PHONY: test reproduce check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
+.PHONY: test reproduce quickcheck check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
 
 PYTHON ?= python3
 VERILATOR ?= verilator
@@ -62,7 +62,9 @@ RUNTIME_BASELINE_ABS_SOURCES = $(foreach src,$(RUNTIME_BASELINE_SOURCES),$(abspa
 test:
 	$(PYTHON) scripts/run_all_tests.py
 
-reproduce: check-toolchain firmware rtl-smoke full-rtl-replay full-rtl-negative runtime-overhead firmware-source-compare mapped-synth paper paper-audit artifact
+reproduce: check-toolchain firmware verilator-harness full-rtl-replay full-rtl-negative runtime-overhead firmware-source-compare mapped-synth paper paper-audit artifact
+
+quickcheck: check-toolchain firmware verilator-smoke paper-audit
 
 check-toolchain:
 	$(PYTHON) scripts/check_toolchain.py --gate reproduce
@@ -135,6 +137,7 @@ mapped-synth:
 paper:
 	$(PYTHON) scripts/generate_conference_evidence_tables.py
 	$(PYTHON) scripts/render_paper_tables.py
+	$(PYTHON) scripts/make_figures.py
 	$(PYTHON) scripts/build_paper.py
 
 paper-audit:
@@ -143,6 +146,7 @@ paper-audit:
 	$(PYTHON) scripts/audit_todos.py
 
 artifact:
+	$(PYTHON) scripts/generate_submission_docs.py
 	$(PYTHON) scripts/summarize_artifact_manifest.py
 	$(PYTHON) scripts/package_artifact.py
 

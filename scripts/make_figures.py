@@ -15,6 +15,10 @@ ABLATION_CSV = REPO_ROOT / "results" / "processed" / "ablations.csv"
 SYNTH_CSV = REPO_ROOT / "results" / "processed" / "synthesis.csv"
 RTL_CLASSES_CSV = REPO_ROOT / "results" / "processed" / "rtl_capsule_event_classes.csv"
 RANDOMIZED_IRQ_CSV = REPO_ROOT / "results" / "processed" / "randomized_interrupt_campaign.csv"
+FULL_RTL_REPLAY_CSV = REPO_ROOT / "results" / "processed" / "full_rtl_replay.csv"
+FULL_RTL_NEGATIVE_CSV = REPO_ROOT / "results" / "processed" / "full_rtl_replay_negative.csv"
+RUNTIME_OVERHEAD_SUMMARY_CSV = REPO_ROOT / "results" / "processed" / "runtime_overhead_summary.csv"
+MAPPED_OVERHEAD_CSV = REPO_ROOT / "results" / "processed" / "mapped_overhead.csv"
 
 
 def main() -> int:
@@ -29,6 +33,9 @@ def main() -> int:
         "trace_size_status.svg": _trace_status_svg(_read_rows(TRACE_CSV)),
         "rtl_capsule_event_classes.svg": _rtl_capsule_event_classes_svg(_read_rows(RTL_CLASSES_CSV)),
         "randomized_interrupt_campaign.svg": _randomized_interrupt_campaign_svg(_read_rows(RANDOMIZED_IRQ_CSV)),
+        "replay_success_summary.svg": _replay_success_summary_svg(_read_rows(FULL_RTL_REPLAY_CSV), _read_rows(FULL_RTL_NEGATIVE_CSV)),
+        "runtime_overhead_summary.svg": _runtime_overhead_summary_svg(_read_rows(RUNTIME_OVERHEAD_SUMMARY_CSV)),
+        "mapped_overhead_summary.svg": _mapped_overhead_summary_svg(_read_rows(MAPPED_OVERHEAD_CSV)),
     }
     for name, svg in figures.items():
         (RESULTS_FIGURES / name).write_text(svg, encoding="utf-8")
@@ -246,6 +253,89 @@ def _randomized_interrupt_campaign_svg(rows: list[dict[str, str]]) -> str:
     return "\n".join(parts)
 
 
+def _replay_success_summary_svg(replay_rows: list[dict[str, str]], negative_rows: list[dict[str, str]]) -> str:
+    total = len(replay_rows)
+    passes = sum(
+        1 for row in replay_rows
+        if row.get("rtl_record_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+    )
+    rejects = sum(1 for row in negative_rows if row.get("actual_result") == "REJECT")
+    accepts = sum(1 for row in negative_rows if row.get("actual_result") == "ACCEPT")
+    na_rows = sum(1 for row in negative_rows if row.get("actual_result") == "NA")
+    lines = [
+        f"Full RTL replay PASS rows: {passes}/{total}",
+        f"Replay-critical corruptions rejected: {rejects}",
+        f"Unexpected accepts: {accepts}",
+        f"Not-applicable corruption rows: {na_rows}",
+        "Source: full_rtl_replay.csv and full_rtl_replay_negative.csv",
+    ]
+    return _text_svg("Replay Success Summary", lines)
+
+
+def _runtime_overhead_summary_svg(rows: list[dict[str, str]]) -> str:
+    if not rows:
+        return _text_svg("Runtime Overhead Summary", ["No runtime-overhead summary rows yet."])
+    width = 980
+    height = 250
+    parts = [_svg_open(width, height), _title("Runtime Overhead Summary", width)]
+    wanted = [
+        ("recorder_present_disabled_vs_baseline_no_recorder", "cycle_overhead_pct", "#8fb3ff"),
+        ("recorder_enabled_vs_baseline_no_recorder", "cycle_overhead_pct", "#7bd88f"),
+        ("recorder_enabled_vs_baseline_no_recorder", "sim_wall_time_overhead_pct", "#ffcc66"),
+    ]
+    values = []
+    for config, metric, color in wanted:
+        row = next((item for item in rows if item.get("config") == config and item.get("metric") == metric), {})
+        values.append((config, metric, _float(row.get("median")), row.get("n", "NA"), color))
+    max_abs = max(abs(value[2]) for value in values) or 1.0
+    x0 = 300
+    y = 78
+    for config, metric, value, n, color in values:
+        bar_w = int((abs(value) / max_abs) * 360)
+        label = f"{config.replace('_', ' ')} / {metric.replace('_', ' ')}"
+        parts.append(_text(24, y + 18, label, size=11))
+        parts.append(f'<rect x="{x0}" y="{y}" width="{bar_w}" height="18" fill="{color}"/>')
+        parts.append(_text(x0 + bar_w + 12, y + 15, f"median {value:.2f}% n={n}", size=11))
+        y += 45
+    parts.append(_text(24, height - 24, "Simulator wall-clock rows are reported separately from cycle/commit counts.", size=11))
+    parts.append(_svg_close())
+    return "\n".join(parts)
+
+
+def _mapped_overhead_summary_svg(rows: list[dict[str, str]]) -> str:
+    full_core = [row for row in rows if row.get("target") == "ecp5-85k" and row.get("metric", "").startswith("full_core_baseline")]
+    if not full_core:
+        return _text_svg("Mapped Overhead Summary", ["No same-target full-core mapped overhead rows yet."])
+    width = 980
+    height = 270
+    parts = [_svg_open(width, height), _title("Full-Core ECP5 Mapped Overhead", width)]
+    colors = {"lut": "#8fb3ff", "ff": "#7bd88f", "bram": "#d8dee9", "fmax": "#ffcc66"}
+    labels = [
+        ("LUT", "full_core_baseline_board_to_full_core_replaycapsule_board_lut", "percent_overhead", "lut"),
+        ("FF", "full_core_baseline_board_to_full_core_replaycapsule_board_ff", "percent_overhead", "ff"),
+        ("BRAM", "full_core_baseline_board_to_full_core_replaycapsule_board_bram", "percent_overhead", "bram"),
+        ("Fmax delta", "full_core_baseline_board_to_full_core_replaycapsule_board_fmax_mhz", "percent_overhead", "fmax"),
+    ]
+    values = []
+    for label, metric, field, color_key in labels:
+        row = next((item for item in full_core if item.get("metric") == metric), {})
+        values.append((label, _float(row.get(field)), color_key))
+    max_abs = max(abs(value[1]) for value in values) or 1.0
+    x0 = 220
+    y = 78
+    for label, value, color_key in values:
+        bar_w = int((abs(value) / max_abs) * 420)
+        parts.append(_text(44, y + 17, label, size=12))
+        parts.append(f'<rect x="{x0}" y="{y}" width="{bar_w}" height="18" fill="{colors[color_key]}"/>')
+        parts.append(_text(x0 + bar_w + 12, y + 15, f"{value:.2f}%", size=12))
+        y += 42
+    parts.append(_text(24, height - 24, "Source: mapped_overhead.csv; same target ecp5-85k, yosys+synth_ecp5+nextpnr-ecp5.", size=11))
+    parts.append(_svg_close())
+    return "\n".join(parts)
+
+
 def _diagram(title: str, boxes: list[tuple[int, int, int, int, str]], arrows: list[tuple[int, int, int, int]], width: int, height: int) -> str:
     parts = [_svg_open(width, height), _title(title, width)]
     parts.append('<defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#555"/></marker></defs>')
@@ -284,6 +374,15 @@ def _int(value: str | None) -> int:
         return int(value)
     except ValueError:
         return 0
+
+
+def _float(value: str | None) -> float:
+    if value is None:
+        return 0.0
+    try:
+        return float(value)
+    except ValueError:
+        return 0.0
 
 
 def _svg_open(width: int, height: int) -> str:

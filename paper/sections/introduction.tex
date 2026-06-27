@@ -1,14 +1,14 @@
 \section{Introduction}
 
-Embedded safety failures are often detected after the decisive nondeterministic event has already passed: a timer interrupt lands inside a critical region, a sensor read crosses a threshold, or a command register returns an unsafe value. A debug trace can preserve the whole execution, but the trace is usually much larger than the failure cause. A runtime monitor can flag the violation, but the monitor alone does not provide the replay-driving facts needed to reconstruct the same firmware-visible path.
+Embedded firmware often fails because the external world arrives at the wrong architectural moment. A sensor value crosses a threshold, an interrupt lands inside a short critical section, or a command register is sampled before firmware has restored an invariant. These failures are difficult to reproduce after the fact because the decisive facts are boundary events: interrupt delivery and return, MMIO values, and property context. Full instruction or processor-trace mechanisms can preserve far richer execution histories, but many firmware validation failures need a narrower replay object: the events that drive the same firmware-visible path to the same violation.
 
-ReplayCapsule-RV studies a narrower point in this design space. For a deterministic single-hart RV32I platform with the same firmware image and initial architectural state, the recorder captures the boundary events that can change the firmware-visible trace: MMIO read values, MMIO write observations, interrupt delivery/return facts, selected control-flow context, property-failure metadata, and optional diagnostic context. Events are ordered by commit index, so replay can consume each required event exactly once at the architectural boundary.
+ReplayCapsule-RV studies that point in the design space. For a deterministic single-hart RV32I platform with the same firmware image and initial architectural state, the recorder captures commit-indexed interrupt/MMIO events, selected boundary observations, and property-failure metadata. The replay harness consumes those events at the same commit boundary and checks property metadata, event payloads, and final signatures. The design is deliberately scoped: it records replay-driving facts for a defined class of embedded failures rather than attempting to replace full trace, snapshots, or platform-wide debug infrastructure.
 
 This paper makes three contributions:
 \begin{itemize}
-  \item an event-sufficient replay model for interrupt/MMIO-induced RV32I failures under explicit single-hart assumptions;
-  \item record-side RTL and replay-comparator infrastructure that share one event stream for property checking and capsule export;
-  \item an artifact-backed evaluation that separates model, firmware-sim, RTL-smoke, formal, synthesis, and unavailable full-hardware gates.
+  \item an event-sufficient capsule model for single-hart RV32I interrupt/MMIO failures;
+  \item a ReplayCapsule-RV hardware recorder and host-driven RTL replay harness;
+  \item an artifact-backed evaluation across compiler-backed firmware, corruption tests, runtime overhead, and mapped full-core FPGA evidence.
 \end{itemize}
 
-The contribution is intentionally scoped. ReplayCapsule-RV is not a replacement for RISC-V trace standards, post-silicon debug fabrics, snapshots, or full-system deterministic replay.
+The evaluation is intentionally audit-oriented. The artifact reports compiler-backed firmware builds, \rcFullReplayPass/\rcFullReplayTotal\ full RTL replay PASS rows, full RTL corrupted-capsule checks, runtime overhead summaries across baseline and recorder configurations, and full-core ECP5 mapped results. Claims outside this scope are treated as limitations rather than inferred results.

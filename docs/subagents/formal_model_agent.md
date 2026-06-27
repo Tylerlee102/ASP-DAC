@@ -54,7 +54,8 @@ Recorder and runtime work should preserve these contracts:
 - MMIO writes are deterministic observations that replay validates.
 - Device responses to writes must appear later as explicit events if firmware or
   the safety checker can observe them.
-- DMA or other external RAM mutations are explicit events.
+- DMA-like external RAM mutations are out of scope for the current prototype
+  unless future work models them as explicit boundary events.
 - Timer/counter/random observations are deterministic only if the platform says
   so; otherwise they are events.
 

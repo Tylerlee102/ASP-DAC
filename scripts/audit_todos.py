@@ -24,6 +24,9 @@ EXPECTED_ASSETS = (
     "paper/figures/baseline_trace_sizes.svg",
     "paper/figures/ablation_heatmap.svg",
     "paper/figures/synthesis_status.svg",
+    "paper/figures/replay_success_summary.svg",
+    "paper/figures/runtime_overhead_summary.svg",
+    "paper/figures/mapped_overhead_summary.svg",
     "paper/figures/table_event_sufficiency.md",
 )
 

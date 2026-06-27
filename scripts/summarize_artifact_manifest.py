@@ -82,6 +82,9 @@ ARTIFACTS = (
     ArtifactSpec("results/processed/todo_audit.csv", "scripts/audit_todos.py", "paper TODO/citation/asset audit rows"),
     ArtifactSpec("results/processed/toolchain_status.csv", "scripts/run_all_tests.py", "local tool availability and blocker ledger"),
     ArtifactSpec("results/processed/final_ci_gate_status.csv", ".github/workflows/final-reproduce.yml", "final GitHub Actions gate status", required=False, notes="generated only by final CI"),
+    ArtifactSpec("docs/final_evidence_lock.md", "scripts/generate_submission_docs.py", "final locked evidence summary"),
+    ArtifactSpec("docs/reviewer_attack_responses.md", "scripts/generate_submission_docs.py", "reviewer objection responses grounded in generated evidence"),
+    ArtifactSpec("docs/main_track_submission_review.md", "scripts/generate_submission_docs.py", "simulated main-track reviewer panel"),
     ArtifactSpec("paper/figures/table_event_sufficiency.md", "scripts/generate_conference_evidence_tables.py", "conference event-sufficiency table"),
     ArtifactSpec("Dockerfile", "manual/reproducibility", "container reproduction recipe"),
     ArtifactSpec(".dockerignore", "manual/reproducibility", "container context exclusions"),
@@ -118,6 +121,7 @@ GLOBS = (
     ("results/debug/pass5_before/*", "manual/freeze", "pass-5 frozen readiness evidence"),
     ("results/debug/pass6_before/*", "manual/freeze", "pass-6 frozen readiness evidence"),
     ("results/debug/pass7_before/*", "manual/freeze", "pass-7 frozen CI evidence before overhead/mapping work"),
+    ("results/debug/final_submission_lock/**/*", "scripts/generate_submission_docs.py", "final submission evidence lock copy"),
     ("results/raw/yosys_*.txt", "scripts/synth_yosys.py", "raw generic synthesis report"),
     ("results/raw/mapped_synthesis/*.txt", "scripts/run_mapped_synthesis.py", "raw mapped synthesis/place-and-route report"),
     ("results/raw/mapped_synthesis/*.json", "scripts/run_mapped_synthesis.py", "raw mapped synthesis JSON netlist"),
@@ -135,6 +139,8 @@ def main() -> int:
         seen.add(path)
     for pattern, producer, role in GLOBS:
         for path in sorted(REPO_ROOT.glob(pattern)):
+            if path.is_dir():
+                continue
             if path in seen or path == OUT_CSV:
                 continue
             rows.append(_row(path, producer, role, True, "discovered by manifest glob"))

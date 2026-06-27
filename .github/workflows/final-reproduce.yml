@@ -140,6 +140,12 @@ jobs:
         continue-on-error: true
         run: make artifact
 
+      - name: Run final script package checks
+        run: |
+          python3 scripts/run_all_tests.py
+          python3 scripts/summarize_artifact_manifest.py
+          python3 scripts/package_artifact.py
+
       - name: Evaluate final CI gates
         if: always()
         run: |

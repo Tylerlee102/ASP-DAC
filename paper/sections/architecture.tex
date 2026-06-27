@@ -9,4 +9,4 @@ ReplayCapsule-RV instruments the processor boundary rather than replacing the co
 \label{fig:architecture}
 \end{figure}
 
-The design keeps resource claims separate from functionality claims. Generic Yosys cell-count evidence is available for the baseline core, the recorder top, and the integrated wrapper. Scoped tiny iCE40 mapped rows are generated for a tiny baseline and recorder configuration; full-core FPGA or ASIC area/timing overhead claims are not made because comparable full-core mapped PASS reports are not present in the artifact.
+The board-level mapped wrappers expose only clock, reset, UART, GPIO, status LEDs, and three recorder-status pins. Large debug and internal buses remain inside the FPGA design. The prototype prioritizes replay fidelity and auditability over area minimization; Section~\ref{sec:evaluation} reports the generated same-target ECP5 mapped overhead rather than presenting the recorder as an optimized implementation.

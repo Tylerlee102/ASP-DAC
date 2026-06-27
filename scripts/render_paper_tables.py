@@ -21,7 +21,15 @@ RTL_CLASSES_CSV = REPO_ROOT / "results/processed/rtl_capsule_event_classes.csv"
 FORMAL_COVERAGE_CSV = REPO_ROOT / "results/processed/formal_coverage.csv"
 PROOF_OBLIGATIONS_CSV = REPO_ROOT / "results/processed/proof_obligations.csv"
 EVALUATION_METRICS_CSV = REPO_ROOT / "results/processed/evaluation_metrics.csv"
+FIRMWARE_BUILD_CSV = REPO_ROOT / "results/processed/firmware_build.csv"
+FULL_RTL_REPLAY_CSV = REPO_ROOT / "results/processed/full_rtl_replay.csv"
+FULL_RTL_NEGATIVE_CSV = REPO_ROOT / "results/processed/full_rtl_replay_negative.csv"
+RUNTIME_OVERHEAD_SUMMARY_CSV = REPO_ROOT / "results/processed/runtime_overhead_summary.csv"
+MAPPED_OVERHEAD_CSV = REPO_ROOT / "results/processed/mapped_overhead.csv"
+MAPPED_RECORDER_PRESENCE_CSV = REPO_ROOT / "results/processed/mapped_recorder_presence.csv"
+FULL_CORE_MAPPED_SUMMARY_CSV = REPO_ROOT / "results/processed/full_core_mapped_summary.csv"
 PAPER_FIGURES = REPO_ROOT / "paper/figures"
+PAPER_SECTIONS = REPO_ROOT / "paper/sections"
 
 SYNTHESIS_ORDER = [
     "picorv32",
@@ -56,6 +64,7 @@ BENCHMARK_DISPLAY_NAMES = {
 
 def main() -> int:
     PAPER_FIGURES.mkdir(parents=True, exist_ok=True)
+    PAPER_SECTIONS.mkdir(parents=True, exist_ok=True)
     outputs = {
         "table01_synthesis_resources.md": _render_synthesis_table(
             _ordered_synthesis_rows(_read_rows(SYNTHESIS_CSV)),
@@ -81,7 +90,11 @@ def main() -> int:
     }
     for name, content in outputs.items():
         (PAPER_FIGURES / name).write_text(content, encoding="utf-8")
+    (PAPER_SECTIONS / "generated_numbers.tex").write_text(_render_generated_numbers(), encoding="utf-8")
+    (PAPER_SECTIONS / "generated_tables.tex").write_text(_render_generated_tables(), encoding="utf-8")
     print(f"WROTE {len(outputs)} paper table(s) under {PAPER_FIGURES}")
+    print(f"WROTE {PAPER_SECTIONS / 'generated_numbers.tex'}")
+    print(f"WROTE {PAPER_SECTIONS / 'generated_tables.tex'}")
     return 0
 
 
@@ -370,6 +383,238 @@ def _render_evaluation_metrics_table(rows: list[dict[str, str]]) -> str:
     return "\n".join(lines) + "\n"
 
 
+def _render_generated_numbers() -> str:
+    firmware_rows = _read_rows(FIRMWARE_BUILD_CSV)
+    replay_rows = _read_rows(FULL_RTL_REPLAY_CSV)
+    negative_rows = _read_rows(FULL_RTL_NEGATIVE_CSV)
+    runtime_rows = _read_rows(RUNTIME_OVERHEAD_SUMMARY_CSV)
+    mapped_rows = _read_rows(MAPPED_SYNTHESIS_CSV)
+    mapped_overhead = _read_rows(MAPPED_OVERHEAD_CSV)
+    mapped_summary = _read_rows(FULL_CORE_MAPPED_SUMMARY_CSV)
+
+    replay_pass = [
+        row for row in replay_rows
+        if row.get("rtl_record_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+    ]
+    compiler_firmware = [
+        row for row in firmware_rows
+        if row.get("build_status") == "PASS"
+        and row.get("firmware_source") == "compiler_c"
+    ]
+    rejected = [row for row in negative_rows if row.get("actual_result") == "REJECT"]
+    unexpected_accepts = [row for row in negative_rows if row.get("actual_result") == "ACCEPT"]
+    na_rows = [row for row in negative_rows if row.get("actual_result") == "NA"]
+    baseline = _find_design(mapped_rows, "full_core_baseline_board")
+    replay = _find_design(mapped_rows, "full_core_replaycapsule_board")
+
+    commands = {
+        "rcBenchmarks": str(len({row.get("benchmark", "") for row in firmware_rows if row.get("benchmark")})),
+        "rcFirmwareImages": str(len(compiler_firmware)),
+        "rcFullReplayPass": str(len(replay_pass)),
+        "rcFullReplayTotal": str(len(replay_rows)),
+        "rcNegativeReject": str(len(rejected)),
+        "rcNegativeTotal": str(len(negative_rows)),
+        "rcNegativeUnexpectedAccept": str(len(unexpected_accepts)),
+        "rcNegativeNA": str(len(na_rows)),
+        "rcRuntimeCycleMedian": _runtime_value(runtime_rows, "cycle_overhead_pct", "recorder_enabled_vs_baseline_no_recorder", "median"),
+        "rcRuntimeCommitMedian": _runtime_value(runtime_rows, "commit_overhead_pct", "recorder_enabled_vs_baseline_no_recorder", "median"),
+        "rcRuntimeWallMedian": _runtime_value(runtime_rows, "sim_wall_time_overhead_pct", "recorder_enabled_vs_baseline_no_recorder", "median"),
+        "rcMappedTarget": (mapped_summary[0].get("target") if mapped_summary else "NA"),
+        "rcMappedFlow": (mapped_summary[0].get("flow") if mapped_summary else "NA"),
+        "rcBaselineLUT": baseline.get("lut", "NA"),
+        "rcBaselineFF": baseline.get("ff", "NA"),
+        "rcBaselineBRAM": baseline.get("bram", "NA"),
+        "rcBaselineFmax": baseline.get("fmax_mhz", "NA"),
+        "rcReplayLUT": replay.get("lut", "NA"),
+        "rcReplayFF": replay.get("ff", "NA"),
+        "rcReplayBRAM": replay.get("bram", "NA"),
+        "rcReplayFmax": replay.get("fmax_mhz", "NA"),
+        "rcMappedLUTOverhead": _overhead_value(mapped_overhead, "full_core_baseline_board_to_full_core_replaycapsule_board_lut", "percent_overhead"),
+        "rcMappedFFOverhead": _overhead_value(mapped_overhead, "full_core_baseline_board_to_full_core_replaycapsule_board_ff", "percent_overhead"),
+        "rcMappedBRAMOverhead": _overhead_value(mapped_overhead, "full_core_baseline_board_to_full_core_replaycapsule_board_bram", "percent_overhead"),
+        "rcMappedFmaxDelta": _overhead_value(mapped_overhead, "full_core_baseline_board_to_full_core_replaycapsule_board_fmax_mhz", "percent_overhead"),
+    }
+    lines = [
+        "% Auto-generated by scripts/render_paper_tables.py from results/processed/*.csv.",
+        "% Do not edit numeric values here by hand.",
+    ]
+    for key, value in commands.items():
+        lines.append(f"\\newcommand{{\\{key}}}{{{_latex_escape_value(value)}}}")
+    return "\n".join(lines) + "\n"
+
+
+def _render_generated_tables() -> str:
+    return "\n\n".join(
+        [
+            "% Auto-generated by scripts/render_paper_tables.py from results/processed/*.csv.",
+            _latex_benchmark_table(_read_rows(FIRMWARE_BUILD_CSV)),
+            _latex_replay_success_table(_read_rows(FULL_RTL_REPLAY_CSV)),
+            _latex_negative_table(_read_rows(FULL_RTL_NEGATIVE_CSV)),
+            _latex_runtime_table(_read_rows(RUNTIME_OVERHEAD_SUMMARY_CSV)),
+            _latex_mapped_table(_read_rows(MAPPED_SYNTHESIS_CSV), _read_rows(MAPPED_OVERHEAD_CSV)),
+            _latex_limitations_table(),
+        ]
+    ) + "\n"
+
+
+def _latex_benchmark_table(rows: list[dict[str, str]]) -> str:
+    by_benchmark: dict[str, set[str]] = {}
+    for row in rows:
+        if row.get("build_status") != "PASS":
+            continue
+        by_benchmark.setdefault(row.get("benchmark", "unknown"), set()).add(row.get("variant", "unknown"))
+    lines = [
+        "\\begin{table}[t]",
+        "\\caption{Compiler-backed firmware benchmark suite. Source: \\texttt{results/processed/firmware\\_build.csv}.}",
+        "\\label{tab:benchmarks}",
+        "\\centering",
+        "\\begin{tabular}{lll}",
+        "\\toprule",
+        "Family & Variants & Failure mechanism \\\\",
+        "\\midrule",
+    ]
+    mechanisms = {
+        "sensor_threshold_bug": "MMIO sensor threshold and deadline check",
+        "interrupt_race_bug": "interrupt delivery inside a critical window",
+        "mmio_ordering_bug": "unsafe command/output MMIO ordering",
+        "stack_corruption_bug": "protected-store observation reaches checker",
+        "uart_command_bug": "unsafe UART command drives actuator write",
+        "watchdog_timeout_bug": "missed heartbeat under long-running path",
+    }
+    for benchmark in BENCHMARK_ORDER:
+        variants = ", ".join(sorted(by_benchmark.get(benchmark, set()))) or "NA"
+        lines.append(f"{_latex_escape(_benchmark_name(benchmark))} & {_latex_escape(variants)} & {_latex_escape(mechanisms[benchmark])} \\\\")
+    lines.extend(["\\bottomrule", "\\end{tabular}", "\\end{table}"])
+    return "\n".join(lines)
+
+
+def _latex_replay_success_table(rows: list[dict[str, str]]) -> str:
+    pass_rows = [
+        row for row in rows
+        if row.get("rtl_record_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+    ]
+    compiler_rows = [row for row in rows if row.get("firmware_source") == "compiler_c" and row.get("compiler_backed") == "true"]
+    lines = [
+        "\\begin{table}[t]",
+        "\\caption{Host-driven full RTL replay success. Source: \\texttt{results/processed/full\\_rtl\\_replay.csv}.}",
+        "\\label{tab:replay-success}",
+        "\\centering",
+        "\\begin{tabular}{lrrl}",
+        "\\toprule",
+        "Evidence & Pass & Total & Firmware source \\\\",
+        "\\midrule",
+        f"Record/replay/signature match & {len(pass_rows)} & {len(rows)} & compiler C \\\\",
+        f"Compiler-backed rows & {len(compiler_rows)} & {len(rows)} & compiler C \\\\",
+        "\\bottomrule",
+        "\\end{tabular}",
+        "\\end{table}",
+    ]
+    return "\n".join(lines)
+
+
+def _latex_negative_table(rows: list[dict[str, str]]) -> str:
+    counts: dict[str, int] = {}
+    for row in rows:
+        counts[row.get("actual_result", "NA")] = counts.get(row.get("actual_result", "NA"), 0) + 1
+    lines = [
+        "\\begin{table}[t]",
+        "\\caption{Full RTL corrupted-capsule behavior. Source: \\texttt{results/processed/full\\_rtl\\_replay\\_negative.csv}.}",
+        "\\label{tab:negative}",
+        "\\centering",
+        "\\begin{tabular}{lr}",
+        "\\toprule",
+        "Result & Rows \\\\",
+        "\\midrule",
+    ]
+    for result in ("REJECT", "ACCEPT", "NA"):
+        lines.append(f"{result} & {counts.get(result, 0)} \\\\")
+    lines.extend(["\\bottomrule", "\\end{tabular}", "\\end{table}"])
+    return "\n".join(lines)
+
+
+def _latex_runtime_table(rows: list[dict[str, str]]) -> str:
+    wanted = [
+        ("baseline_no_recorder", "sim_wall_time_sec"),
+        ("recorder_present_disabled", "sim_wall_time_sec"),
+        ("recorder_enabled", "sim_wall_time_sec"),
+        ("recorder_present_disabled_vs_baseline_no_recorder", "cycle_overhead_pct"),
+        ("recorder_enabled_vs_baseline_no_recorder", "cycle_overhead_pct"),
+        ("recorder_enabled_vs_baseline_no_recorder", "sim_wall_time_overhead_pct"),
+    ]
+    lines = [
+        "\\begin{table}[t]",
+        "\\caption{Runtime and simulator-overhead summary. Source: \\texttt{results/processed/runtime\\_overhead\\_summary.csv}. Simulator wall time is not a hardware timing claim.}",
+        "\\label{tab:runtime}",
+        "\\centering",
+        "\\begin{tabular}{llrr}",
+        "\\toprule",
+        "Config & Metric & Median & N \\\\",
+        "\\midrule",
+    ]
+    for config, metric in wanted:
+        row = _find_row(rows, config=config, metric=metric)
+        lines.append(
+            f"{_latex_escape(config.replace('_', ' '))} & {_latex_escape(metric.replace('_', ' '))} & {row.get('median', 'NA')} & {row.get('n', 'NA')} \\\\"
+        )
+    lines.extend(["\\bottomrule", "\\end{tabular}", "\\end{table}"])
+    return "\n".join(lines)
+
+
+def _latex_mapped_table(mapped_rows: list[dict[str, str]], overhead_rows: list[dict[str, str]]) -> str:
+    baseline = _find_design(mapped_rows, "full_core_baseline_board")
+    replay = _find_design(mapped_rows, "full_core_replaycapsule_board")
+    lines = [
+        "\\begin{table}[t]",
+        "\\caption{Full-core mapped ECP5 overhead. Sources: \\texttt{results/processed/mapped\\_synthesis.csv} and \\texttt{results/processed/mapped\\_overhead.csv}.}",
+        "\\label{tab:mapped-overhead}",
+        "\\centering",
+        "\\begin{tabular}{lrrrr}",
+        "\\toprule",
+        "Design/metric & LUT & FF & BRAM & Fmax MHz \\\\",
+        "\\midrule",
+        f"Baseline board & {baseline.get('lut', 'NA')} & {baseline.get('ff', 'NA')} & {baseline.get('bram', 'NA')} & {baseline.get('fmax_mhz', 'NA')} \\\\",
+        f"ReplayCapsule board & {replay.get('lut', 'NA')} & {replay.get('ff', 'NA')} & {replay.get('bram', 'NA')} & {replay.get('fmax_mhz', 'NA')} \\\\",
+        (
+            "Overhead "
+            f"& {_overhead_value(overhead_rows, 'full_core_baseline_board_to_full_core_replaycapsule_board_lut', 'percent_overhead')}\\% "
+            f"& {_overhead_value(overhead_rows, 'full_core_baseline_board_to_full_core_replaycapsule_board_ff', 'percent_overhead')}\\% "
+            f"& {_overhead_value(overhead_rows, 'full_core_baseline_board_to_full_core_replaycapsule_board_bram', 'percent_overhead')}\\% "
+            f"& {_overhead_value(overhead_rows, 'full_core_baseline_board_to_full_core_replaycapsule_board_fmax_mhz', 'percent_overhead')}\\% \\\\"
+        ),
+        "\\bottomrule",
+        "\\end{tabular}",
+        "\\end{table}",
+    ]
+    return "\n".join(lines)
+
+
+def _latex_limitations_table() -> str:
+    lines = [
+        "\\begin{table}[t]",
+        "\\caption{Scope and limitations.}",
+        "\\label{tab:limitations}",
+        "\\centering",
+        "\\begin{tabular}{ll}",
+        "\\toprule",
+        "Topic & Current scope \\\\",
+        "\\midrule",
+        "Processor & single-hart RV32I/PicoRV32 \\\\",
+        "Nondeterminism & commit-indexed interrupt/MMIO boundary events \\\\",
+        "Replay engine & host-driven Verilator harness \\\\",
+        "Replay hardware & record-side recorder only; no replay-consume datapath \\\\",
+        "Memory system & no multicore, DMA, cache-coherence, or analog-device model \\\\",
+        "Optimization & fidelity and auditability prioritized over area minimization \\\\",
+        "\\bottomrule",
+        "\\end{tabular}",
+        "\\end{table}",
+    ]
+    return "\n".join(lines)
+
+
 def _ordered_synthesis_rows(rows: list[dict[str, str]]) -> list[dict[str, str]]:
     by_top = {row.get("top", ""): row for row in rows}
     ordered = [by_top[top] for top in SYNTHESIS_ORDER if top in by_top]
@@ -395,6 +640,34 @@ def _percent_cell(value: str) -> str:
 
 def _find_row(rows: list[dict[str, str]], **criteria: str) -> dict[str, str]:
     return next((row for row in rows if all(row.get(key) == value for key, value in criteria.items())), {})
+
+
+def _find_design(rows: list[dict[str, str]], design: str) -> dict[str, str]:
+    return next((row for row in rows if row.get("design") == design and row.get("status") == "PASS"), {})
+
+
+def _runtime_value(rows: list[dict[str, str]], metric: str, config: str, field: str) -> str:
+    return _find_row(rows, metric=metric, config=config).get(field, "NA")
+
+
+def _overhead_value(rows: list[dict[str, str]], metric: str, field: str) -> str:
+    return next((row.get(field, "NA") for row in rows if row.get("metric") == metric), "NA")
+
+
+def _latex_escape(value: str) -> str:
+    return (
+        value.replace("\\", "\\textbackslash{}")
+        .replace("_", "\\_")
+        .replace("&", "\\&")
+        .replace("%", "\\%")
+        .replace("#", "\\#")
+    )
+
+
+def _latex_escape_value(value: str) -> str:
+    if value == "NA":
+        return value
+    return _latex_escape(value)
 
 
 def _trace_row(rows: list[dict[str, str]], benchmark: str, baseline: str, evidence_level: str) -> dict[str, str]:

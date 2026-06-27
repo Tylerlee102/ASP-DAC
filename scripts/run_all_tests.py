@@ -93,6 +93,7 @@ PYTHON_FILES = [
     "scripts/check_toolchain.py",
     "scripts/export_rtl_capsules.py",
     "scripts/generate_conference_evidence_tables.py",
+    "scripts/generate_submission_docs.py",
     "scripts/package_artifact.py",
     "scripts/parse_synthesis_reports.py",
     "scripts/run_ablations.py",
@@ -362,6 +363,18 @@ def main() -> int:
     _run_subprocess(
         rows,
         failures,
+        "figure_generation",
+        [sys.executable, "scripts/make_figures.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "submission_doc_generation",
+        [sys.executable, "scripts/generate_submission_docs.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
         "claim_audit",
         [sys.executable, "scripts/audit_claims.py"],
     )
@@ -376,12 +389,6 @@ def main() -> int:
         failures,
         "todo_audit",
         [sys.executable, "scripts/audit_todos.py"],
-    )
-    _run_subprocess(
-        rows,
-        failures,
-        "figure_generation",
-        [sys.executable, "scripts/make_figures.py"],
     )
     _record_tool_availability(rows, "verilator")
     _record_tool_availability(rows, "iverilog")

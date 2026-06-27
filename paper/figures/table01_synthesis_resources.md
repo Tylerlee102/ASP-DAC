@@ -20,8 +20,7 @@ Generic Yosys cell counts are measured from real local reports. Mapped rows are 
 
 | Target | Flow | Design | Status | LUTs | FFs | BRAMs | Fmax MHz | Notes |
 | --- | --- | --- | --- | ---: | ---: | --- | --- | --- |
-| ice40-hx8k | yosys+synth_ice40+nextpnr-ice40 | replaycapsule_tiny_baseline | PASS | 46 | 32 | NA | 157.51 | real mapped iCE40 place-and-route completed |
-| ice40-hx8k | yosys+synth_ice40+nextpnr-ice40 | replaycapsule_recorder_tiny | PASS | 372 | 205 | NA | 77.40 | real mapped iCE40 place-and-route completed |
-| ice40-hx8k | yosys+synth_ice40+nextpnr-ice40 | picorv32 | FAIL | NA | NA | NA | NA | nextpnr-ice40 place-and-route failed: ERROR: Unable to find a placement location for cell 'pcpi_insn[7]$sb_io' |
-| ice40-hx8k | yosys+synth_ice40+nextpnr-ice40 | replay_capsule_top | FAIL | NA | NA | NA | NA | nextpnr-ice40 place-and-route failed: ERROR: Unable to place cell 'u_capsule_buffer.mem[47]_SB_DFFE_Q_92_DFFLC', no BELs remaining to implement cell type 'ICESTORM_LC' |
-| ice40-hx8k | yosys+synth_ice40+nextpnr-ice40 | picorv32_replaycapsule_wrapper | FAIL | NA | NA | NA | NA | nextpnr-ice40 place-and-route failed: ERROR: Unable to place cell 'u_replay_capsule_top.u_capsule_buffer.mem[37]_SB_DFFE_Q_144_DFFLC', no BELs remaining to implement cell type 'ICESTORM_LC' |
+| ecp5-85k | yosys+synth_ecp5+nextpnr-ecp5 | full_core_baseline_board | PASS | 2814 | 883 | 6 | 63.47 | real mapped ecp5-85k board-level place-and-route completed; memory_words=2048; allowed top-level IO only |
+| ecp5-85k | yosys+synth_ecp5+nextpnr-ecp5 | full_core_replaycapsule_board | PASS | 6859 | 3901 | 6 | 50.70 | real mapped ecp5-85k board-level place-and-route completed; memory_words=2048; allowed top-level IO only |
+| ice40-hx8k | yosys+synth_ice40+nextpnr-ice40 | replaycapsule_tiny_baseline | PASS | 46 | 32 | NA | 157.48 | real mapped ice40-hx8k place-and-route completed |
+| ice40-hx8k | yosys+synth_ice40+nextpnr-ice40 | replaycapsule_recorder_tiny | PASS | 365 | 205 | NA | 63.93 | real mapped ice40-hx8k place-and-route completed |

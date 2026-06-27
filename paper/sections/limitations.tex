@@ -4,21 +4,4 @@ The scope is single-hart RV32I firmware with deterministic core semantics, the s
 
 MMIO side effects are modeled only at the replay-visible boundary. Interrupts are injected at an architectural boundary. Replay consumes every required event exactly once; missing, duplicate, reordered, or corrupted events must fail comparison. Capsule overflow invalidates replay availability.
 
-The strongest generated evidence today is model, firmware-sim, RTL-smoke, host-driven full RTL replay, bounded local formal, generic synthesis, and scoped tiny iCE40 mapped evidence. Compiler-backed firmware, full-core mapped FPGA or ASIC overhead, and true runtime perturbation measurements are not claimed because the required generated reports do not exist in this artifact.
-
-\begin{table}[t]
-\caption{Limitations and scope. The full gate ledger is \texttt{docs/conference\_readiness\_dashboard.md}.}
-\label{tab:limits}
-\centering
-\begin{tabular}{ll}
-\toprule
-Topic & Current scope \\
-\midrule
-Processor & single-hart RV32I \\
-Nondeterminism & commit-indexed interrupt/MMIO boundary events \\
-Replay horizon & finite prefix through selected failure \\
-Device model & replay-visible effects only \\
-Hardware evidence & RTL-smoke, generic synthesis, and scoped tiny iCE40 mapping; not full-core mapped overhead \\
-\bottomrule
-\end{tabular}
-\end{table}
+The strongest generated evidence today is compiler-backed firmware, host-driven full RTL replay, full RTL corrupted-capsule rejection, runtime summaries, bounded local formal checks, generic synthesis context, and same-target full-core ECP5 mapped evidence. The artifact does not claim ASIC area or power, multi-hart behavior, DMA behavior, cache-coherence behavior, or a hardware replay-consume datapath.
