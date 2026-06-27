@@ -1,0 +1,1 @@
+recorder_config,benchmark,variant,seed,workload_scale,cycles,commits,sim_wall_time_sec,cycle_overhead_pct,commit_overhead_pct,sim_wall_time_overhead_pct,notes

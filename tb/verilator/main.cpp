@@ -33,6 +33,8 @@ bool parse_args(int argc, char** argv, HarnessOptions* options) {
       options->seed = std::stoi(value);
     } else if (arg == "--max-cycles" && require_value(&i, argc, argv, &value)) {
       options->max_cycles = std::stoull(value);
+    } else if (arg == "--capture-mode" && require_value(&i, argc, argv, &value)) {
+      options->capture_mode = static_cast<uint32_t>(std::stoul(value, nullptr, 0));
     } else if (arg == "--debug-events") {
       options->debug_events = true;
     } else if (arg == "--dump-mmio") {
@@ -62,6 +64,7 @@ void usage(const char* argv0) {
       << "  --capsule results/raw/rtl_capsules/<name>.json\n"
       << "  --signature results/raw/rtl_signatures/<name>.json\n"
       << "  [--seed N] [--max-cycles N] [--debug-events]\n"
+      << "  [--capture-mode N]\n"
       << "  [--dump-mmio] [--dump-property] [--dump-pc] [--dump-disasm-context]\n"
       << "  [--debug-dir DIR]\n";
 }

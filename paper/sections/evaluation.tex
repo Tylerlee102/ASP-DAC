@@ -15,6 +15,26 @@ Table~\ref{tab:runtime} reports measured cycle, commit, and simulator wall-time 
 
 Table~\ref{tab:mapped-overhead} reports same-target ECP5 place-and-route for the board-scoped baseline and ReplayCapsule designs. The full-core mapped rows use the same \rcMappedTarget\ target, the same Yosys synth\_ecp5 plus nextpnr-ecp5 flow, the same memory size, and the same board-level I/O assumptions. The recorder presence check passes on the mapped ReplayCapsule netlist.
 
+\subsection{Expanded Scaling Package}
+
+The expanded artifact adds workload scaling, capsule baseline comparisons, buffer-depth sensitivity, recorder-configuration sensitivity, runtime scaling, mapped memory/buffer/configuration scaling, event-sufficiency ablations, and mapped-failure diagnosis. These results are generated from \texttt{results/processed/workload\_scaling.csv}, \texttt{capsule\_baseline\_comparison.csv}, \texttt{buffer\_sensitivity.csv}, \texttt{runtime\_scaling.csv}, \texttt{mapped\_scaling.csv}, \texttt{mapped\_scaling\_overhead.csv}, \texttt{recorder\_config\_replay.csv}, and \texttt{event\_ablation\_scaling.csv}. Trace-baseline rows that are not directly emitted by the RTL are labeled as estimated in their CSV notes.
+
+The mapped scaling data must be interpreted as FPGA recorder/instrumented-wrapper evidence. It does not claim ASIC area or power, and it does not implement an autonomous synthesizable replay-consume datapath. Simulator wall time is reported separately from architectural cycle and commit counts.
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_capsule_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_capsule_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/capsule\_baseline\_summary.csv}}}}
+\caption{Capsule size scaling and trace-baseline comparison. Estimated trace baselines are labeled in the source CSV.}
+\label{fig:topconf-capsule-scaling}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_mapped_memory_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_mapped_memory_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/mapped\_scaling\_overhead.csv}}}}
+\caption{Same-target mapped overhead by memory size for rows where both baseline and ReplayCapsule place-and-route pass.}
+\label{fig:topconf-mapped-memory}
+\end{figure}
+
 \begin{figure}[t]
 \centering
 \IfFileExists{figures/replay_success_summary.pdf}{\includegraphics[width=\linewidth]{figures/replay_success_summary.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{paper/figures/replay\_success\_summary.svg}}}}

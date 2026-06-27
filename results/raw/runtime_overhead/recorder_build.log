@@ -1,0 +1,36 @@
+﻿%Error: Cannot find verilated_std_waiver.vlt containing built-in lint waivers: '/yosyshq/share/verilator\include\verilated_std_waiver.vlt'
+        ... See the manual at https://verilator.org/verilator_doc.html?v=5.049 for more assistance.
+        ... Looked in:
+             rtl\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
+             rtl\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
+             rtl\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
+             rtl/rv32i_integration\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
+             rtl/rv32i_integration\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
+             rtl/rv32i_integration\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
+             third_party/picorv32\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
+             third_party/picorv32\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
+             third_party/picorv32\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
+             tb/verilator\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
+             tb/verilator\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
+             tb/verilator\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
+             /yosyshq/share/verilator\include\verilated_std_waiver.vlt
+             /yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
+             /yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
+             build/verilator/runtime_recorder_obj_dir\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
+             build/verilator/runtime_recorder_obj_dir\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
+             build/verilator/runtime_recorder_obj_dir\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
+        ... With current working directory '.'
+%Error: Cannot find verilated_std.sv containing built-in std:: definitions: '/yosyshq/share/verilator\include\verilated_std.sv'
+%Error: Cannot find file containing module: 'C:/Users/tyboy/OneDrive/Documents/New'
+%Error: Cannot find file containing module: 'project/tb/verilator/replaycapsule_verilator_top.sv'
+%Error: Cannot find file containing module: 'project/third_party/picorv32/picorv32.v'
+%Error: Cannot find file containing module: 'project/rtl/event_pkg.sv'
+%Error: Cannot find file containing module: 'project/rtl/event_tap.sv'
+%Error: Cannot find file containing module: 'project/rtl/event_classifier.sv'
+%Error: Cannot find file containing module: 'project/rtl/capsule_buffer.sv'
+%Error: Cannot find file containing module: 'project/rtl/property_checker.sv'
+%Error: Cannot find file containing module: 'project/rtl/event_slicer.sv'
+%Error: Cannot find file containing module: 'project/rtl/hash_signature.sv'
+%Error: Cannot find file containing module: 'project/rtl/replay_capsule_top.sv'
+%Error: Cannot find file containing module: 'project/rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv'
+%Error: Exiting due to 14 error(s)

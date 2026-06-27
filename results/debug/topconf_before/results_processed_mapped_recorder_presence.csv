@@ -1,0 +1,2 @@
+target,flow,design,mapped_status,recorder_module_seen,capsule_buffer_seen,status_logic_seen,top_outputs_seen,status,report_path,notes
+ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_replaycapsule_board,PASS,yes,yes,yes,yes,PASS,results/raw/mapped_synthesis/full_core_replaycapsule_board_ecp5_85k.json,recorder hierarchy and status-connected outputs found in mapped artifacts

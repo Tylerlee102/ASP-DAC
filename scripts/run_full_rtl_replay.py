@@ -255,6 +255,7 @@ def _ensure_simulator() -> str | None:
         "verilator-harness",
         f"PYTHON={Path(sys.executable).as_posix()}",
         f"VERILATOR={Path(verilator).name}",
+        "VERILATOR_ENV=",
     ]
     if os.name == "nt":
         shutil.rmtree(LOCAL_BUILD_ROOT / "obj_dir", ignore_errors=True)

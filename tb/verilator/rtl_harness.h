@@ -17,6 +17,7 @@ struct HarnessOptions {
   std::string debug_dir = "results/debug/pass4";
   int seed = 1;
   uint64_t max_cycles = 100000;
+  uint32_t capture_mode = 3;
   bool debug_events = false;
   bool dump_mmio = false;
   bool dump_property = false;

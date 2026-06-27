@@ -1,0 +1,22 @@
+buffer_depth,workload_scale,overflow_rate_pct,replay_success_rate_pct,median_capsule_bytes,median_events,n,notes
+4,medium,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+4,smoke,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+4,stress,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+8,medium,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+8,smoke,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+8,stress,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+16,medium,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+16,smoke,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+16,stress,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+32,medium,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+32,smoke,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+32,stress,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+64,medium,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+64,smoke,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+64,stress,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+128,medium,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+128,smoke,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+128,stress,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+256,medium,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+256,smoke,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts
+256,stress,NA,NA,NA,NA,6,summary of analytic overflow/replay availability against measured event counts

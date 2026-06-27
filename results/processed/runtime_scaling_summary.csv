@@ -1,0 +1,10 @@
+workload_scale,config,median_cycle_overhead_pct,mean_cycle_overhead_pct,median_commit_overhead_pct,mean_commit_overhead_pct,median_sim_wall_time_overhead_pct,mean_sim_wall_time_overhead_pct,median_events,median_capsule_bytes,iqr_sim_wall_time_overhead_pct,n,notes
+medium,baseline_no_recorder,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+medium,recorder_enabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+medium,recorder_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+smoke,baseline_no_recorder,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+smoke,recorder_enabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+smoke,recorder_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+stress,baseline_no_recorder,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+stress,recorder_enabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+stress,recorder_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,0,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation

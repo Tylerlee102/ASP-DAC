@@ -263,7 +263,7 @@ HarnessResult run_harness(const HarnessOptions& options) {
   top.clk = 0;
   top.rst_n = 0;
   top.clear = 0;
-  top.capture_mode = 3;
+  top.capture_mode = options.capture_mode & 0xfu;
   top.mem_ready = 0;
   top.mem_rdata = 0;
   top.irq = 0;

@@ -1,0 +1,19 @@
+benchmark,variant,workload_scale,delay_iters,max_cycles,hex_path,elf_path,build_status,firmware_source,compiler,sha256_hex,notes
+sensor_threshold_bug,failing,smoke,0,5000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+sensor_threshold_bug,failing,medium,256,50000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+sensor_threshold_bug,failing,stress,4096,200000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+interrupt_race_bug,failing,smoke,0,5000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+interrupt_race_bug,failing,medium,256,50000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+interrupt_race_bug,failing,stress,4096,200000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+mmio_ordering_bug,failing,smoke,0,5000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+mmio_ordering_bug,failing,medium,256,50000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+mmio_ordering_bug,failing,stress,4096,200000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+stack_corruption_bug,failing,smoke,0,5000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+stack_corruption_bug,failing,medium,256,50000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+stack_corruption_bug,failing,stress,4096,200000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+uart_command_bug,failing,smoke,0,5000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+uart_command_bug,failing,medium,256,50000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+uart_command_bug,failing,stress,4096,200000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+watchdog_timeout_bug,failing,smoke,0,5000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+watchdog_timeout_bug,failing,medium,256,50000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy
+watchdog_timeout_bug,failing,stress,4096,200000,NA,NA,BLOCKED,compiler_required,NA,NA,missing RISC-V compiler or objcopy

@@ -11,6 +11,16 @@
 #define RC_ACTUATOR_SAFE     0u
 #define RC_SENSOR_THRESHOLD  700u
 
+#ifndef RC_WORKLOAD_DELAY_ITERS
+#define RC_WORKLOAD_DELAY_ITERS 0u
+#endif
+
+static inline void rc_workload_delay(void) {
+    for (volatile uint32_t i = 0; i < RC_WORKLOAD_DELAY_ITERS; ++i) {
+        __asm__ volatile("" ::: "memory");
+    }
+}
+
 static inline uint32_t rc_read_sensor(void) {
     return *RC_MMIO_SENSOR;
 }
@@ -28,4 +38,3 @@ static inline uint32_t rc_read_command(void) {
 }
 
 #endif
-

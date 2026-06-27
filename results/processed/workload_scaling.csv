@@ -1,0 +1,19 @@
+benchmark,variant,seed,workload_scale,firmware_source,compiler_backed,cycles,commits,events,capsule_bytes,event_rate_per_kinst,cycles_to_failure,commits_to_failure,property_id,replay_status,final_signature_match,event_match,overflow,notes
+sensor_threshold_bug,failing,1,smoke,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+sensor_threshold_bug,failing,1,medium,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+sensor_threshold_bug,failing,1,stress,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+interrupt_race_bug,failing,1,smoke,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+interrupt_race_bug,failing,1,medium,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+interrupt_race_bug,failing,1,stress,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+mmio_ordering_bug,failing,1,smoke,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+mmio_ordering_bug,failing,1,medium,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+mmio_ordering_bug,failing,1,stress,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+stack_corruption_bug,failing,1,smoke,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+stack_corruption_bug,failing,1,medium,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+stack_corruption_bug,failing,1,stress,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+uart_command_bug,failing,1,smoke,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+uart_command_bug,failing,1,medium,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+uart_command_bug,failing,1,stress,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+watchdog_timeout_bug,failing,1,smoke,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+watchdog_timeout_bug,failing,1,medium,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy
+watchdog_timeout_bug,failing,1,stress,compiler_required,false,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,NA,NA,missing RISC-V compiler or objcopy

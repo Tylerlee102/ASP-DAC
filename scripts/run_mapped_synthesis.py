@@ -543,10 +543,10 @@ def _ice40_metrics(text: str) -> dict[str, str]:
 
 
 def _ecp5_metrics(text: str) -> dict[str, str]:
-    lut = _last_cell_count("LUT4", text) or _last_cell_count("TRELLIS_SLICE", text)
-    ff = _last_cell_count("TRELLIS_FF", text) or 0
-    bram = _last_cell_count("DP16KD", text)
-    dsp = _last_cell_count("MULT18X18D", text)
+    lut = _last_int(r"Total LUT4s:\s+(\d+)\s*/", text) or _last_cell_count("LUT4", text) or _last_cell_count("TRELLIS_SLICE", text)
+    ff = _last_int(r"TRELLIS_FF:\s+(\d+)\s*/", text) or _last_cell_count("TRELLIS_FF", text) or 0
+    bram = _last_int(r"DP16KD:\s+(\d+)\s*/", text) or _last_cell_count("DP16KD", text)
+    dsp = _last_int(r"MULT18X18D:\s+(\d+)\s*/", text) or _last_cell_count("MULT18X18D", text)
     fmax = _last_float(r"Max frequency for clock.*?:\s+([0-9.]+)", text)
     cells = _last_float(r"Number of cells:\s+([0-9.]+)", text)
     return {
@@ -598,6 +598,11 @@ def _last_cell_count(cell_name: str, text: str) -> int | None:
 def _last_float(pattern: str, text: str) -> float | None:
     matches = re.findall(pattern, text)
     return float(matches[-1]) if matches else None
+
+
+def _last_int(pattern: str, text: str) -> int | None:
+    matches = re.findall(pattern, text)
+    return int(matches[-1]) if matches else None
 
 
 def _last_error_line(path: Path) -> str:

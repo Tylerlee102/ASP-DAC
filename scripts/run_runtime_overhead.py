@@ -131,7 +131,7 @@ def _ensure_runtime_sims() -> str | None:
         return "missing " + ", ".join(missing) + "; runtime baseline/recorder simulators not available"
 
     completed = subprocess.run(
-        [make, "runtime-harnesses", f"PYTHON={Path(sys.executable).as_posix()}", f"VERILATOR={Path(verilator).name}"],
+        [make, "runtime-harnesses", f"PYTHON={Path(sys.executable).as_posix()}", f"VERILATOR={Path(verilator).name}", "VERILATOR_ENV="],
         cwd=REPO_ROOT,
         env=_tool_env(),
         text=True,

@@ -1,0 +1,12 @@
+make[1]: Entering directory '.'
+./.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe -c "from pathlib import Path; Path('build/verilator').mkdir(parents=True, exist_ok=True); Path('results/raw/runtime_overhead').mkdir(parents=True, exist_ok=True)"
+verilator_bin.exe --cc --exe --build --sv \
+	-Wno-TIMESCALEMOD \
+	--top-module replaycapsule_verilator_top \
+	-Irtl -Irtl/rv32i_integration -Ithird_party/picorv32 -Itb/verilator \
+	--Mdir build/verilator/runtime_recorder_obj_dir \
+	-CFLAGS "-std=c++17 -O2 -I./tb/verilator" \
+	-o ../runtime_recorder_sim \
+	./tb/verilator/replaycapsule_verilator_top.sv ./third_party/picorv32/picorv32.v ./rtl/event_pkg.sv ./rtl/event_tap.sv ./rtl/event_classifier.sv ./rtl/capsule_buffer.sv ./rtl/property_checker.sv ./rtl/event_slicer.sv ./rtl/hash_signature.sv ./rtl/replay_capsule_top.sv ./rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv ./tb/verilator/runtime_main.cpp > results/raw/runtime_overhead/recorder_build.log 2>&1
+make[1]: *** [makefile:100: runtime-harnesses] Error 1
+make[1]: Leaving directory '.'

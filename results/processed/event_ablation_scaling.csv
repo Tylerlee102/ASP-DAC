@@ -1,0 +1,1 @@
+benchmark,variant,seed,workload_scale,removed_or_corrupted_event_class,replay_status,property_match,final_signature_match,event_match,rejected,required_for_replay,diagnostic_only,notes

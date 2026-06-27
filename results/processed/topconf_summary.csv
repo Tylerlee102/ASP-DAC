@@ -1,0 +1,65 @@
+group,metric,value,n,evidence,notes
+replay_correctness,pass_rate_by_benchmark:interrupt_race_bug,0.000000,3,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:mmio_ordering_bug,0.000000,3,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:sensor_threshold_bug,0.000000,3,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:stack_corruption_bug,0.000000,3,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:uart_command_bug,0.000000,3,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:watchdog_timeout_bug,0.000000,3,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:medium,0.000000,6,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:smoke,0.000000,6,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:stress,0.000000,6,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+negative_replay,rejected,10,12,results/processed/full_rtl_replay_negative.csv,corrupted capsule rejection count
+negative_replay,unexpected_accepted,0,12,results/processed/full_rtl_replay_negative.csv,unexpected accepts remain visible
+negative_replay,na,2,12,results/processed/full_rtl_replay_negative.csv,not-applicable negative rows
+runtime_scaling,median_cycle_overhead_pct:medium,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_commit_overhead_pct:medium,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_sim_wall_time_overhead_pct:medium,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_cycle_overhead_pct:smoke,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_commit_overhead_pct:smoke,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_sim_wall_time_overhead_pct:smoke,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_cycle_overhead_pct:stress,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_commit_overhead_pct:stress,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_sim_wall_time_overhead_pct:stress,NA,0,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+capsule_scaling,median_bytes:medium,NA,6,results/processed/capsule_baseline_summary.csv,measured capsule bytes
+capsule_scaling,median_reduction_vs_full_instruction:medium,NA,6,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
+capsule_scaling,median_bytes:smoke,NA,6,results/processed/capsule_baseline_summary.csv,measured capsule bytes
+capsule_scaling,median_reduction_vs_full_instruction:smoke,NA,6,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
+capsule_scaling,median_bytes:stress,NA,6,results/processed/capsule_baseline_summary.csv,measured capsule bytes
+capsule_scaling,median_reduction_vs_full_instruction:stress,NA,6,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
+buffer_sensitivity,depth_4_medium_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_4_smoke_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_4_stress_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_8_medium_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_8_smoke_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_8_stress_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_16_medium_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_16_smoke_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_16_stress_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_32_medium_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_32_smoke_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_32_stress_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_64_medium_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_64_smoke_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_64_stress_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_128_medium_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_128_smoke_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_128_stress_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_256_medium_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_256_smoke_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_256_stress_overflow_pct,NA,6,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+mapped_scaling,lut:mem1024:buf16:core,122.66,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem1024:buf16:core,341.79,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,bram:mem1024:buf16:core,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem1024:buf16:core,-21.22,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem2048:buf16:core,137.08,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem2048:buf16:core,341.79,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,bram:mem2048:buf16:core,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem2048:buf16:core,-19.73,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem2048:buf32:full,202.36,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem2048:buf32:full,646.43,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,bram:mem2048:buf32:full,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem2048:buf32:full,-16.08,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem4096:buf32:full,205.11,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem4096:buf32:full,646.43,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,bram:mem4096:buf32:full,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem4096:buf32:full,-14.16,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead

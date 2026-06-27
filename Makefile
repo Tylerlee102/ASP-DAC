@@ -1,4 +1,4 @@
-.PHONY: test reproduce quickcheck check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth paper paper-audit artifact replay-demo phase12-smoke
+.PHONY: test reproduce quickcheck check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth workload-scaling-quick workload-scaling-full runtime-scaling-quick runtime-scaling-full capsule-baselines buffer-sensitivity recorder-config-quick recorder-config-full mapped-scaling-quick mapped-scaling-full event-ablation-scaling topconf-matrix topconf-tables topconf-figures topconf-artifact topconf-quick topconf-full paper paper-audit artifact replay-demo phase12-smoke
 
 PYTHON ?= python3
 VERILATOR ?= verilator
@@ -93,7 +93,7 @@ verilator-harness:
 		-CFLAGS "$(VERILATOR_CFLAGS)" \
 		-o $(VERILATOR_OUTPUT) \
 		$(VERILATOR_ABS_SOURCES) > results/raw/verilator/build.log 2>&1
-	@test -x build/verilator/replaycapsule_sim || test -x build/verilator/replaycapsule_sim.exe || (echo "ERROR: Verilator simulator binary missing. See results/raw/verilator/build.log." && exit 1)
+	@test -x build/verilator/replaycapsule_sim || test -x build/verilator/replaycapsule_sim.exe || test -x "$(VERILATOR_OUTPUT)" || test -x "$(VERILATOR_OUTPUT).exe" || (echo "ERROR: Verilator simulator binary missing. See results/raw/verilator/build.log." && exit 1)
 
 runtime-harnesses:
 	$(PYTHON) -c "from pathlib import Path; Path('build/verilator').mkdir(parents=True, exist_ok=True); Path('results/raw/runtime_overhead').mkdir(parents=True, exist_ok=True)"
@@ -113,8 +113,8 @@ runtime-harnesses:
 		-CFLAGS "$(RUNTIME_BASELINE_CFLAGS)" \
 		-o $(RUNTIME_BASELINE_OUTPUT) \
 		$(RUNTIME_BASELINE_ABS_SOURCES) > results/raw/runtime_overhead/baseline_build.log 2>&1
-	@test -x build/verilator/runtime_recorder_sim || test -x build/verilator/runtime_recorder_sim.exe || (echo "ERROR: runtime recorder simulator missing. See results/raw/runtime_overhead/recorder_build.log." && exit 1)
-	@test -x build/verilator/runtime_baseline_sim || test -x build/verilator/runtime_baseline_sim.exe || (echo "ERROR: runtime baseline simulator missing. See results/raw/runtime_overhead/baseline_build.log." && exit 1)
+	@test -x build/verilator/runtime_recorder_sim || test -x build/verilator/runtime_recorder_sim.exe || test -x "$(RUNTIME_RECORDER_OUTPUT)" || test -x "$(RUNTIME_RECORDER_OUTPUT).exe" || (echo "ERROR: runtime recorder simulator missing. See results/raw/runtime_overhead/recorder_build.log." && exit 1)
+	@test -x build/verilator/runtime_baseline_sim || test -x build/verilator/runtime_baseline_sim.exe || test -x "$(RUNTIME_BASELINE_OUTPUT)" || test -x "$(RUNTIME_BASELINE_OUTPUT).exe" || (echo "ERROR: runtime baseline simulator missing. See results/raw/runtime_overhead/baseline_build.log." && exit 1)
 
 full-rtl-replay: firmware
 	$(PYTHON) scripts/run_full_rtl_replay.py $(FALLBACK_FLAGS) $(DEBUG_FLAGS)
@@ -133,6 +133,60 @@ runtime-overhead: full-rtl-replay
 
 mapped-synth:
 	$(PYTHON) scripts/run_mapped_synthesis.py
+
+topconf-matrix:
+	$(PYTHON) scripts/generate_topconf_matrix.py
+
+workload-scaling-quick: firmware
+	$(PYTHON) scripts/generate_scaled_workloads.py --mode quick
+	$(PYTHON) scripts/run_workload_scaling.py --mode quick
+
+workload-scaling-full: firmware
+	$(PYTHON) scripts/generate_scaled_workloads.py --mode full
+	$(PYTHON) scripts/run_workload_scaling.py --mode full
+
+runtime-scaling-quick: firmware
+	$(PYTHON) scripts/run_runtime_scaling.py --mode quick
+
+runtime-scaling-full: firmware
+	$(PYTHON) scripts/run_runtime_scaling.py --mode full
+
+capsule-baselines:
+	$(PYTHON) scripts/run_capsule_baselines.py
+
+buffer-sensitivity:
+	$(PYTHON) scripts/run_buffer_sensitivity.py
+
+recorder-config-quick: firmware
+	$(PYTHON) scripts/recorder_config_matrix.py --mode quick
+
+recorder-config-full: firmware
+	$(PYTHON) scripts/recorder_config_matrix.py --mode full
+
+mapped-scaling-quick:
+	$(PYTHON) scripts/run_mapped_scaling.py --mode quick
+	$(PYTHON) scripts/diagnose_mapped_failures.py
+
+mapped-scaling-full:
+	$(PYTHON) scripts/run_mapped_scaling.py --mode full
+	$(PYTHON) scripts/diagnose_mapped_failures.py
+
+event-ablation-scaling:
+	$(PYTHON) scripts/run_event_ablation_scaling.py
+
+topconf-tables:
+	$(PYTHON) scripts/generate_topconf_tables.py
+
+topconf-figures:
+	$(PYTHON) scripts/generate_topconf_figures.py
+
+topconf-artifact:
+	$(PYTHON) scripts/generate_topconf_reviewer_audit.py
+	$(PYTHON) scripts/package_topconf_artifact.py
+
+topconf-quick: topconf-matrix firmware full-rtl-replay full-rtl-negative runtime-overhead workload-scaling-quick capsule-baselines buffer-sensitivity runtime-scaling-quick mapped-scaling-quick event-ablation-scaling recorder-config-quick topconf-tables topconf-figures paper paper-audit artifact topconf-artifact
+
+topconf-full: topconf-matrix firmware full-rtl-replay full-rtl-negative runtime-overhead workload-scaling-full capsule-baselines buffer-sensitivity runtime-scaling-full mapped-scaling-full event-ablation-scaling recorder-config-full topconf-tables topconf-figures paper paper-audit artifact topconf-artifact
 
 paper:
 	$(PYTHON) scripts/generate_conference_evidence_tables.py
