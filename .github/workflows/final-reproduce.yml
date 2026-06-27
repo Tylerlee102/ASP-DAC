@@ -142,7 +142,7 @@ jobs:
 
       - name: Run final script package checks
         run: |
-          python3 scripts/run_all_tests.py
+          python3 scripts/run_all_tests.py --final-package
           python3 scripts/summarize_artifact_manifest.py
           python3 scripts/package_artifact.py
 
