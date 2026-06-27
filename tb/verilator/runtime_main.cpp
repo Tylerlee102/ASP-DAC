@@ -224,24 +224,26 @@ void write_word(std::map<uint32_t, uint32_t>* memory, uint32_t addr, uint32_t da
 }
 
 uint32_t capsule_count(const RuntimeTop& top) {
-  if constexpr (kHasRecorder) {
-    return top.capsule_event_count;
-  }
+#ifdef RC_RUNTIME_BASELINE
+  (void)top;
   return 0u;
+#else
+  return top.capsule_event_count;
+#endif
 }
 
 void configure_recorder(RuntimeTop* top, const Options& options) {
-  if constexpr (kHasRecorder) {
-    top->clear = 0;
-    top->capture_mode = options.capture_mode;
-    top->watchdog_enable = options.benchmark == "watchdog_timeout_bug" ? 1 : 0;
-    top->external_input_valid = 0;
-    top->external_input_value = 0;
-    top->capsule_read_addr = 0;
-  } else {
-    (void)top;
-    (void)options;
-  }
+#ifdef RC_RUNTIME_BASELINE
+  (void)top;
+  (void)options;
+#else
+  top->clear = 0;
+  top->capture_mode = options.capture_mode;
+  top->watchdog_enable = options.benchmark == "watchdog_timeout_bug" ? 1 : 0;
+  top->external_input_valid = 0;
+  top->external_input_value = 0;
+  top->capsule_read_addr = 0;
+#endif
 }
 
 uint32_t top_commit_count(const RuntimeTop& top) {

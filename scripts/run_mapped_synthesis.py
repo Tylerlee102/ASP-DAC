@@ -384,7 +384,12 @@ def _tool_env() -> dict[str, str]:
 
 
 def _last_cell_count(cell_name: str, text: str) -> int | None:
-    matches = re.findall(rf"^\s+(\d+)\s+{re.escape(cell_name)}\s*$", text, flags=re.MULTILINE)
+    matches = re.findall(rf"^\s+(?:{re.escape(cell_name)}\s+(\d+)|(\d+)\s+{re.escape(cell_name)})\s*$", text, flags=re.MULTILINE)
+    if matches:
+        last = matches[-1]
+        value = last[0] or last[1]
+        return int(value)
+    matches = re.findall(rf"{re.escape(cell_name)}:\s+(\d+)\s*/", text)
     return int(matches[-1]) if matches else None
 
 
