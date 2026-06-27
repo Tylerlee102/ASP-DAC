@@ -35,6 +35,7 @@ jobs:
             python3-pip
             cmake
             verilator
+            iverilog
             yosys
             nextpnr-ice40
             nextpnr-ecp5
