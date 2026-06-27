@@ -1,0 +1,15 @@
+\section{Related Work}
+
+RISC-V E-Trace, N-Trace, and external debug specifications target processor observability, control-flow reconstruction, and standardized debug transport~\cite{riscvTrace,riscvDebug}. ReplayCapsule-RV is complementary: it records commit-indexed replay-driving interrupt/MMIO events for a scoped single-hart RV32I failure class. It does not attempt to provide architectural trace coverage or debug interoperability.
+
+Post-silicon trace compression reduces trace bandwidth and storage by exploiting structure in instruction or control-flow streams. ReplayCapsule-RV makes a different tradeoff. It records the boundary events needed by the replay harness, not a compressed representation of the full executed instruction stream.
+
+Deterministic replay systems record nondeterministic inputs and ordering so an execution can be reconstructed~\cite{leblanc1987debugging,dunlap2002revirt}. ReplayCapsule-RV borrows that replay discipline but narrows the target to embedded interrupt/MMIO failures, uses commit-indexed hardware capsules, and evaluates a PicoRV32 RTL harness rather than an operating-system or virtual-machine replay substrate.
+
+Runtime verification and assertion monitors detect violations close to the hardware/software boundary~\cite{runtimeVerification}. ReplayCapsule-RV uses property checking as the capsule trigger, but its contribution is the replay-driving event stream and the evidence that corrupted capsules fail comparison.
+
+Embedded event logs are widely used to explain firmware failures after deployment. ReplayCapsule-RV differs by making event ordering architectural through commit indices and by validating the capsule through replay comparison instead of presenting the log only as diagnostic text.
+
+FPGA/emulation debugging and checkpointing can capture broad hardware state and rerun workloads under controlled conditions. Snapshot and time-travel systems similarly preserve enough state to resume or inspect execution~\cite{king2005debugging}. ReplayCapsule-RV is narrower: it keeps the same initial state and firmware image, then records the boundary events needed for a selected failure prefix.
+
+The implementation builds on PicoRV32, Verilator, Icarus Verilog, Yosys, nextpnr, and bounded formal tooling~\cite{picorv32,verilator,icarus,yosys,nextpnr,symbiyosys}. These tools support reproducibility; the claimed research object is the scoped capsule model, recorder, replay harness, and evidence package.

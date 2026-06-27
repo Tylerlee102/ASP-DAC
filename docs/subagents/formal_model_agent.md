@@ -54,17 +54,18 @@ Recorder and runtime work should preserve these contracts:
 - MMIO writes are deterministic observations that replay validates.
 - Device responses to writes must appear later as explicit events if firmware or
   the safety checker can observe them.
-- DMA or other external RAM mutations are explicit events.
+- DMA-like external RAM mutations are out of scope for the current prototype
+  unless future work models them as explicit boundary events.
 - Timer/counter/random observations are deterministic only if the platform says
   so; otherwise they are events.
 
 ## Open Questions For Other Agents
 
-- Which exact CSR subset is supported in the first RV32I profile?
+- Which exact CSR subset is supported in the initial RV32I profile?
 - Are `cycle`, `time`, and `instret` exposed to firmware? If yes, are they
   deterministic commit-index functions or logged inputs?
 - Is executable RAM supported in the initial implementation?
-- Are DMA or other external memory writers in scope for the first prototype?
+- Are DMA or other external memory writers in scope for the initial prototype?
 - Does the recorder log interrupt line state, interrupt delivery, or both?
 - What canonical binary format will represent `(commit_index, order, kind,
   payload)`?

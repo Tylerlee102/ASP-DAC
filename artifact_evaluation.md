@@ -1,112 +1,127 @@
 # Artifact Evaluation Notes
 
-## One-command Path
+Artifact evidence is locked to GitHub Actions run `28280927815`, commit `2c7245f626105fd8c3d4668096cf9cf1223f6481`, artifact `replaycapsule-rv-final-evidence` id `7921838018`.
 
-The current local entry point is:
+The package is intentionally conservative: unsupported claims stay out of the paper and docs, and generated CSVs are the authority for numeric results.
+
+## One-Command Paths
+
+Full path:
 
 ```sh
-python scripts/run_all_tests.py
+make reproduce
 ```
 
-`scripts/reproduce_all.sh` wraps the same flow for Unix-like shells.
-On Windows, use:
+Short smoke path:
 
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts\reproduce_all.ps1
+```sh
+make quickcheck
 ```
 
-The PowerShell wrapper falls back to the bundled Codex Python runtime when the
-ordinary `python` command is only the Windows Store alias.
+The strict CI path is `.github/workflows/final-reproduce.yml`.
 
-## Expected Tooling
+## Commands Run By `make reproduce`
 
-Required now:
+```sh
+make firmware
+make verilator-harness
+make full-rtl-replay
+make full-rtl-negative
+make runtime-overhead
+make mapped-synth
+make paper
+make paper-audit
+make artifact
+```
 
-- Python 3.9 or newer
+Additional final checks:
 
-Used when available for generic synthesis and bounded formal evidence:
+```sh
+python3 scripts/run_all_tests.py
+python3 scripts/summarize_artifact_manifest.py
+python3 scripts/package_artifact.py
+```
 
-- Yosys, including workspace-local `yowasp-yosys`
-- OSS CAD Suite, including workspace-local Icarus Verilog, `vvp`, and Verilator lint
-- SymbiYosys/SMTBMC, including workspace-local `yowasp-sby` and `yowasp-yosys-smtbmc`
+## Expected Runtime
 
-Required for later RTL/synthesis gates:
+On the Linux CI image, the final reproduction run completed in a few minutes. Full Verilator replay and mapped synthesis dominate runtime. Local Windows runs may rely on the bundled Python runtime and may not have the same Verilator/Yosys/nextpnr dynamic libraries.
 
-- `make` and a C++ compiler for full Verilator builds
-- a RISC-V bare-metal compiler toolchain
-- optionally OpenROAD or vendor FPGA tools
+## Expected Outputs
 
-Current non-RTL executable evidence:
+- `paper/main.pdf`
+- `dist/replaycapsule-rv-artifact.zip`
+- `results/processed/firmware_build.csv`
+- `results/processed/full_rtl_replay.csv`
+- `results/processed/full_rtl_replay_negative.csv`
+- `results/processed/runtime_overhead.csv`
+- `results/processed/runtime_overhead_summary.csv`
+- `results/processed/mapped_synthesis.csv`
+- `results/processed/mapped_overhead.csv`
+- `results/processed/mapped_recorder_presence.csv`
+- `results/processed/full_core_mapped_summary.csv`
+- `results/processed/claim_audit.csv`
+- `results/processed/paper_number_audit.csv`
+- `results/processed/todo_audit.csv`
+- `results/processed/artifact_manifest.csv`
+- `docs/final_evidence_lock.md`
+- `results/debug/final_submission_lock/`
 
-- event-boundary model: `scripts/replaycapsule_model.py`
-- RV32I instruction interpreter: `scripts/rv32i_firmware_sim.py`
-- deterministic benchmark image builder: `scripts/build_firmware_images.py`
-- replay-comparator negative fixtures: `scripts/run_replay_negative_tests.py`
+## Regenerating Evidence
 
-Current RTL-smoke evidence:
+Firmware and replay:
 
-- PicoRV32 wrapper and directed HDL checks: `results/processed/hdl_checks.csv`
-- PicoRV32 wrapper smoke observed capsule summaries:
-  `results/processed/picorv32_smoke_summary.csv` and
-  `results/processed/picorv32_smoke_coverage.csv`
-- Seeded interrupt reproducibility campaign:
-  `results/processed/randomized_interrupt_campaign.csv`
-- Seeded interrupt campaign summary and coverage checklist:
-  `results/processed/randomized_interrupt_summary.csv` and
-  `results/processed/randomized_interrupt_coverage.csv`
-- Seeded interrupt corruption-rejection checks:
-  `results/processed/randomized_interrupt_corruption.csv`
-- RTL-smoke capsule export checks: `results/processed/rtl_capsule_exports.csv`
-- RTL-smoke capsule event-class breakdown:
-  `results/processed/rtl_capsule_event_classes.csv`
-- RTL-smoke event-class ablations:
-  `results/processed/rtl_smoke_ablations.csv` and
-  `results/processed/rtl_smoke_event_sufficiency.csv`
-- RTL-smoke versus firmware-sim alignment: `results/processed/rtl_firmware_alignment.csv`
+```sh
+make firmware
+make verilator-harness
+make full-rtl-replay
+make full-rtl-negative
+```
 
-Current bounded formal evidence:
+Runtime summaries:
 
-- Event-tap, event-classifier/slicer, property-checker, hash-signature,
-  MMIO/interrupt logger, register block, replay-control, replay-mismatch,
-  capsule-buffer, and recorder checks: `results/processed/formal_checks.csv`
-- Reviewer-facing formal coverage packaging:
-  `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
-- Replay-sufficiency proof-obligation packaging:
-  `results/processed/proof_obligations.csv` and
-  `docs/proof_obligation_matrix.md`
-- Bounded overflow contract packaging:
-  `results/processed/overflow_contracts.csv`
+```sh
+make runtime-overhead
+```
 
-Current generic synthesis evidence:
+Mapped synthesis and recorder-presence verification:
 
-- Baseline core, record-side top, and integrated wrapper generic cell counts:
-  `results/processed/synthesis.csv`
-- Derived generic cell-overhead context, with mapped FPGA fields preserved as
-  `NA`: `results/processed/synthesis_overhead.csv`
-- Generated metric rollup, with blocked hardware metrics preserved as `TODO`:
-  `results/processed/evaluation_metrics.csv`
-- Generated per-benchmark local evidence coverage ledger:
-  `results/processed/benchmark_coverage.csv`
-- Generated claim audit for high-risk paper/reviewer wording:
-  `results/processed/claim_audit.csv`
-- Generated toolchain status ledger:
-  `results/processed/toolchain_status.csv`
-- Generated artifact hash manifest for the main local evidence files:
-  `results/processed/artifact_manifest.csv`
-- Generated paper table source for synthesis/resource reporting:
-  `paper/figures/table01_synthesis_resources.md`
-- Generated paper table sources for replay evidence, trace-size baselines,
-  event-sufficiency ablations, bounded formal coverage, proof obligations, and
-  metric rollup:
-  `paper/figures/table02_replay_evidence.md` through
-  `paper/figures/table07_evaluation_metrics.md`
+```sh
+make mapped-synth
+python3 scripts/check_mapped_recorder_presence.py
+```
 
-If these tools are absent, scripts must report unavailable steps as TODO/NA.
-The current local flow can use `.tools/python/bin/yowasp-yosys.exe`,
-`.tools/python/bin/yowasp-sby.exe`, and
-`.tools/python/bin/yowasp-yosys-smtbmc.exe` when installed outside git tracking,
-plus `.tools/oss-cad-suite/oss-cad-suite/` when extracted outside git tracking.
+Paper, tables, figures, and audits:
 
-## Result Integrity
+```sh
+python3 scripts/generate_conference_evidence_tables.py
+python3 scripts/summarize_evaluation_metrics.py
+python3 scripts/render_paper_tables.py
+python3 scripts/make_figures.py
+make paper
+make paper-audit
+```
 
-No paper result should be manually typed into a figure or summary table. Results must flow from generated raw artifacts to `results/processed/summary.csv`, `results/processed/artifact_manifest.csv`, and then to figures.
+Artifact package:
+
+```sh
+python3 scripts/summarize_artifact_manifest.py
+python3 scripts/package_artifact.py
+```
+
+## Verifying Results
+
+- Firmware rows must be compiler-backed: `firmware_source=compiler_c`.
+- Full RTL replay must have `rtl_record_status=PASS`, `replay_status=PASS`, and `final_signature_match=PASS`.
+- Negative replay must report `0` unexpected accepts.
+- Full-core mapped overhead is claimable only when both full-core board rows PASS on the same target and `mapped_recorder_presence.csv` is PASS.
+- `paper/main.pdf` must exist and `paper_build_status.csv` must report PASS.
+- Claim, number, and TODO audits must report zero failing rows.
+- `artifact_manifest.csv` must have zero required missing files.
+
+## Known Limitations
+
+- Replay consume is host-driven in the Verilator harness; no hardware replay-consume datapath is claimed.
+- The scope is single-hart RV32I interrupt/MMIO failures.
+- DMA, multicore ordering, cache-coherence behavior, analog device state, and broad platform replay are not claimed.
+- No ASIC area or power claim is made.
+- The ECP5 implementation is evidence of place-and-route feasibility and overhead, not an area-optimized design.

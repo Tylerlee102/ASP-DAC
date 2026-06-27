@@ -1,82 +1,118 @@
 # ReplayCapsule-RV
 
-Event-sufficient hardware failure capsules for deterministic replay of embedded RV32I systems.
+ReplayCapsule-RV is a research prototype for event-sufficient hardware failure capsules for replaying embedded single-hart RV32I interrupt/MMIO bugs.
 
-This repository is a research prototype scaffold. It is intentionally honest about what is implemented now versus what requires external tools or later phases.
+The current locked evidence comes from GitHub Actions run `28280927815`, commit `2c7245f626105fd8c3d4668096cf9cf1223f6481`, artifact `replaycapsule-rv-final-evidence` id `7921838018`.
 
-Current status:
+## Main Evidence
 
-- Phase 0 repository plan and research-lab ownership scaffold: present.
-- Phase 1 minimal SoC/event simulation: six-benchmark Python model and RV32I firmware interpreter present.
-- PicoRV32 integration: upstream source vendored, wrapper source present, and fifteen firmware smokes pass through the wrapper; full replay/export/compare simulation remains pending.
-- Phase 2 event-stream RTL: synthesizable SystemVerilog source files, static RTL checks, directed Icarus simulations, Verilator lint, bounded formal checks, and generic Yosys synthesis evidence present.
-- Phase 3/4 property checking and capsule generation: record-side RTL modules present; fifteen firmware-running wrapper smokes validate failing, fixed, and no-failure edge images; full validation pending.
-- Phase 5/6/7/8 replay, bug suite, baselines, and ablations: model-level results generated for six benchmarks; RTL smoke capsule export self-compare, missing/duplicate-event, metadata/payload/order-corruption, and PC-context checks plus RTL/firmware-sim alignment rows present; full RTL replay metrics pending.
-- Firmware-running RTL simulation and mapped FPGA synthesis: pending local `make`/C++ build support, RISC-V compiler, and mapped flow.
-- Paper results: no fabricated numbers; result files are generated only by scripts.
+- Compiler-backed firmware: `15/15` PASS in `results/processed/firmware_build.csv`.
+- Full RTL replay: `45/45` PASS in `results/processed/full_rtl_replay.csv`.
+- Full RTL negative replay: `10` replay-critical corruptions rejected, `0` unexpected accepts, `2` not-applicable rows in `results/processed/full_rtl_replay_negative.csv`.
+- Runtime summaries: baseline, recorder-present-disabled, and recorder-enabled rows in `results/processed/runtime_overhead_summary.csv`.
+- Full-core mapped overhead: PASS on `ecp5-85k` using `yosys+synth_ecp5+nextpnr-ecp5`.
+- Recorder presence: PASS in `results/processed/mapped_recorder_presence.csv`.
+- Paper build and audits: PASS in `results/processed/paper_build_status.csv`, `claim_audit.csv`, `paper_number_audit.csv`, and `todo_audit.csv`.
+- Artifact package: `dist/replaycapsule-rv-artifact.zip`.
 
 ## Quick Start
 
-```powershell
-.\scripts\reproduce_all.ps1
-```
-
-On Unix-like shells:
+Full reproduction path:
 
 ```sh
-python3 scripts/run_all_tests.py
+make reproduce
 ```
 
-The local gate checks repository structure, event definitions, firmware benchmark pairs, static RTL contracts, directed HDL checks including fifteen PicoRV32 wrapper smokes with generated log-level capsule sanity summaries, a seeded RTL-smoke interrupt reproducibility campaign with generated summary/coverage/corruption ledgers and MMIO wait-state cases, bounded formal event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt loggers, registers, replay-control, replay-mismatch, capsule-buffer, and recorder proof/cover targets when local SMTBMC tools are available, a generated formal coverage matrix, a bounded overflow contract ledger, replay parsing/comparison, six model-level bug capsules, replay-comparator negative fixtures, baseline trace sizes, ablations, generic Yosys synthesis and derived generic cell-overhead context when available, SVG figure generation, and a hash manifest for the main generated artifacts. Full benchmark RTL replay/export/compare simulation and mapped FPGA synthesis are reported as unavailable when the required tools are not installed.
+Short smoke path:
 
-## Research Claim
+```sh
+make quickcheck
+```
 
-ReplayCapsule-RV defines and implements a minimal event-sufficiency model for deterministic replay of embedded RV32I failures caused by asynchronous interrupts and memory-mapped I/O. The same lightweight hardware event stream drives runtime safety checking and compact replay-capsule generation without relying on full instruction traces or full-system snapshots.
+The strict CI path is `.github/workflows/final-reproduce.yml`. It installs the compiler, Verilator, Yosys, nextpnr, LaTeX, and packaging tools, then runs the final evidence flow.
 
-The project does not claim novelty for generic runtime monitors, trace compression, post-silicon debug tracing, snapshots, or deterministic replay in general.
+## Reproduction Targets
+
+`make reproduce` calls:
+
+- `make firmware`
+- `make verilator-harness`
+- `make full-rtl-replay`
+- `make full-rtl-negative`
+- `make runtime-overhead`
+- `make mapped-synth`
+- `make paper`
+- `make paper-audit`
+- `make artifact`
+
+Useful focused commands:
+
+```sh
+make mapped-synth
+make paper
+make paper-audit
+make artifact
+python3 scripts/run_all_tests.py
+python3 scripts/summarize_artifact_manifest.py
+python3 scripts/package_artifact.py
+```
+
+On Windows, the PowerShell wrapper can use the bundled Codex Python runtime when the ordinary `python` command is only the Windows Store alias:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File scripts\reproduce_all.ps1
+```
+
+## Expected Outputs
+
+- `paper/main.pdf`
+- `dist/replaycapsule-rv-artifact.zip`
+- `results/processed/full_rtl_replay.csv`
+- `results/processed/full_rtl_replay_negative.csv`
+- `results/processed/runtime_overhead.csv`
+- `results/processed/runtime_overhead_summary.csv`
+- `results/processed/mapped_synthesis.csv`
+- `results/processed/mapped_overhead.csv`
+- `results/processed/mapped_recorder_presence.csv`
+- `results/processed/full_core_mapped_summary.csv`
+- `results/processed/artifact_manifest.csv`
+- `docs/final_evidence_lock.md`
+- `results/debug/final_submission_lock/`
+
+## Mapped FPGA Evidence
+
+The full-core board-level mapped rows use the same target, flow, memory size, clock/reset assumptions, and realistic board-level I/O.
+
+| Design | Target | LUT | FF | BRAM | Fmax MHz |
+| --- | --- | ---: | ---: | ---: | ---: |
+| `full_core_baseline_board` | `ecp5-85k` | 2814 | 883 | 6 | 63.47 |
+| `full_core_replaycapsule_board` | `ecp5-85k` | 6859 | 3901 | 6 | 50.70 |
+
+The measured full-core mapped overhead is LUT `143.75%`, FF `341.79%`, BRAM `0.00%`, and Fmax delta `-20.12%`. The prototype prioritizes replay fidelity and auditability over area minimization.
+
+## Scope
+
+Allowed claims:
+
+- Event-sufficient capsules for scoped single-hart RV32I interrupt/MMIO failures.
+- Compiler-backed host-driven full RTL replay for the generated benchmark suite.
+- Full RTL corrupted-capsule rejection for replay-critical corruption classes.
+- Runtime summaries and same-target full-core ECP5 mapped overhead.
+
+Forbidden claims:
+
+- ASIC area or power.
+- Hardware replay-consume datapath.
+- Multicore, DMA, cache-coherent, or broad platform support.
+- Replacement for RISC-V trace/debug standards.
+- Globally smallest trace or universal deterministic replay.
 
 ## Main Directories
 
-- `rtl/`: Replay capsule hardware modules.
-- `rtl/rv32i_integration/`: SoC integration scaffold.
-- `firmware/`: Embedded firmware examples and bug benchmark descriptions.
-- `tb/`: System, replay, and future Verilator/cocotb tests.
-- `formal/`: assumptions, theorem, SVA checks, and bounded SMTBMC harnesses.
-- `scripts/`: reproducible experiment and test drivers.
-- `docs/`: architecture, model, novelty, methodology, and reviewer materials.
-- `paper/`: paper draft package.
-
-## Current Evidence
-
-- Model-level replay: `results/processed/replay_experiments.csv`
-- Replay comparator negative tests: `results/processed/replay_negative_tests.csv`
-- Firmware-sim replay: `results/processed/firmware_sim_replay.csv`
-- RTL smoke capsule exports: `results/processed/rtl_capsule_exports.csv`
-- RTL smoke capsule event classes: `results/processed/rtl_capsule_event_classes.csv`
-- RTL/firmware-sim alignment: `results/processed/rtl_firmware_alignment.csv`
-- Seeded RTL-smoke interrupt campaign: `results/processed/randomized_interrupt_campaign.csv`
-- Seeded interrupt campaign summary/coverage: `results/processed/randomized_interrupt_summary.csv` and `results/processed/randomized_interrupt_coverage.csv`
-- Seeded interrupt corruption checks: `results/processed/randomized_interrupt_corruption.csv`
-- Firmware images: `firmware/build/`
-- Baseline sizes and replay success: `results/processed/trace_sizes.csv`
-- Model ablations: `results/processed/ablations.csv`
-- RTL-smoke ablations: `results/processed/rtl_smoke_ablations.csv` and `results/processed/rtl_smoke_event_sufficiency.csv`
-- Static RTL check summary: `scripts/static_rtl_checks.py`
-- Directed HDL checks: `results/processed/hdl_checks.csv`
-- PicoRV32 smoke log summaries: `results/processed/picorv32_smoke_summary.csv` and `results/processed/picorv32_smoke_coverage.csv`
-- Bounded formal checks: `results/processed/formal_checks.csv`
-- Formal coverage matrix: `results/processed/formal_coverage.csv` and `docs/formal_coverage_matrix.md`
-- Overflow contract ledger: `results/processed/overflow_contracts.csv`
-- Proof obligation matrix: `results/processed/proof_obligations.csv` and `docs/proof_obligation_matrix.md`
-- Generic Yosys synthesis: `results/processed/synthesis.csv`
-- Generic cell-overhead context: `results/processed/synthesis_overhead.csv`
-- Evaluation metric rollup: `results/processed/evaluation_metrics.csv`
-- Per-benchmark local coverage: `results/processed/benchmark_coverage.csv`
-- Claim audit: `results/processed/claim_audit.csv`
-- Toolchain status: `results/processed/toolchain_status.csv`
-- Artifact hash manifest: `results/processed/artifact_manifest.csv`
-- Paper synthesis/resource table: `paper/figures/table01_synthesis_resources.md`
-- Paper replay/baseline/ablation/formal/proof/metrics tables: `paper/figures/table02_replay_evidence.md` through `paper/figures/table07_evaluation_metrics.md`
-- Generated figures: `results/figures/` and `paper/figures/`
-
-Rows marked `model` are executable event-model evidence. Rows marked `firmware-sim` execute RV32I instruction words in the local interpreter. The current HDL rows include directed module simulations, Verilator lint, and fifteen PicoRV32 wrapper smokes, but not the full six-benchmark RTL replay suite.
+- `rtl/`: ReplayCapsule RTL modules and mapped board wrappers.
+- `firmware/`: compiler-built firmware benchmarks.
+- `tb/`: Verilator and replay-comparator harnesses.
+- `scripts/`: reproduction, audit, table, figure, synthesis, and packaging scripts.
+- `paper/`: IEEE-style paper source and generated table/figure assets.
+- `docs/`: reviewer-facing model, evidence, limitation, and submission docs.
+- `results/processed/`: generated CSV evidence.

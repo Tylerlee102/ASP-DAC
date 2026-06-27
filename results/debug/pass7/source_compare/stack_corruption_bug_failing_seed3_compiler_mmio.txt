@@ -1,0 +1,1 @@
+compiler MMIO trace not available; rerun full RTL replay with --dump-mmio

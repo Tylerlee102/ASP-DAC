@@ -1,0 +1,80 @@
+name: ReplayCapsule-RV Reproduction
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  reproduce:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Install HDL, firmware, and paper tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ca-certificates \
+            git \
+            make \
+            g++ \
+            clang \
+            cmake \
+            python3 \
+            python3-pip \
+            verilator \
+            iverilog \
+            yosys \
+            gcc-riscv64-unknown-elf \
+            binutils-riscv64-unknown-elf \
+            texlive-latex-base \
+            texlive-latex-extra \
+            texlive-fonts-recommended \
+            texlive-publishers \
+            latexmk \
+            zip
+          sudo apt-get install -y --no-install-recommends nextpnr-ice40 nextpnr-ecp5 || true
+          python3 -m pip install --break-system-packages yowasp-yosys
+
+      - name: Check reproduction toolchain
+        run: make check-toolchain PYTHON=python3
+
+      - name: Build compiler-backed firmware
+        run: make firmware PYTHON=python3
+
+      - name: Build Verilator harness
+        run: make verilator-harness PYTHON=python3
+
+      - name: Run full RTL replay
+        run: make full-rtl-replay PYTHON=python3
+
+      - name: Run full RTL negative replay
+        run: make full-rtl-negative PYTHON=python3
+
+      - name: Measure runtime overhead
+        run: make runtime-overhead PYTHON=python3
+
+      - name: Run mapped synthesis
+        run: make mapped-synth PYTHON=python3
+
+      - name: Build paper
+        run: make paper PYTHON=python3
+
+      - name: Audit paper claims
+        run: make paper-audit PYTHON=python3
+
+      - name: Package artifact
+        run: make artifact PYTHON=python3
+
+      - name: Upload generated evidence
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: replaycapsule-rv-evidence
+          path: |
+            results/processed
+            results/figures
+            paper/figures
+            dist

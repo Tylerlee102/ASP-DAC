@@ -1,0 +1,2 @@
+target,status,tool,output,notes
+paper/main.pdf,TODO,pdflatex/latexmk,NA,LaTeX toolchain not found locally

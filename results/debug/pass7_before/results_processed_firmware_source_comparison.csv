@@ -1,0 +1,46 @@
+benchmark,variant,seed,fallback_status,compiler_status,same_property,same_signature,same_event_count,first_divergence,notes
+sensor_threshold_bug,failing,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+sensor_threshold_bug,failing,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+sensor_threshold_bug,failing,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+sensor_threshold_bug,fixed,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+sensor_threshold_bug,fixed,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+sensor_threshold_bug,fixed,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+sensor_threshold_bug,no_failure_edge,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+sensor_threshold_bug,no_failure_edge,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+sensor_threshold_bug,no_failure_edge,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+interrupt_race_bug,failing,1,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+interrupt_race_bug,failing,2,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+interrupt_race_bug,failing,3,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+interrupt_race_bug,fixed,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+interrupt_race_bug,fixed,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+interrupt_race_bug,fixed,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+mmio_ordering_bug,failing,1,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+mmio_ordering_bug,failing,2,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+mmio_ordering_bug,failing,3,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+mmio_ordering_bug,fixed,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+mmio_ordering_bug,fixed,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+mmio_ordering_bug,fixed,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+stack_corruption_bug,failing,1,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+stack_corruption_bug,failing,2,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+stack_corruption_bug,failing,3,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+stack_corruption_bug,fixed,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+stack_corruption_bug,fixed,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+stack_corruption_bug,fixed,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+uart_command_bug,failing,1,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+uart_command_bug,failing,2,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+uart_command_bug,failing,3,NA,BLOCKED,NA,NA,NA,compiler-backed firmware unavailable,run used fallback HEX because compiler-backed firmware was unavailable and fallback was explicitly allowed
+uart_command_bug,fixed,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+uart_command_bug,fixed,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+uart_command_bug,fixed,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+uart_command_bug,no_failure_edge,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+uart_command_bug,no_failure_edge,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+uart_command_bug,no_failure_edge,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,failing,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,failing,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,failing,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,fixed,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,fixed,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,fixed,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,no_failure_edge,1,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,no_failure_edge,2,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,no_failure_edge,3,NOT_RUN,PASS,NA,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation

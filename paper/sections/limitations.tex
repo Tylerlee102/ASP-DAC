@@ -1,0 +1,7 @@
+\section{Limitations}
+
+The scope is single-hart RV32I firmware with deterministic core semantics, the same program image, the same initial architectural state, and modeled external events. The current theorem excludes multicore interleavings, DMA unless modeled, cache/coherence effects unless modeled, analog nondeterminism, and claims about undefined C behavior.
+
+MMIO side effects are modeled only at the replay-visible boundary. Interrupts are injected at an architectural boundary. Replay consumes every required event exactly once; missing, duplicate, reordered, or corrupted events must fail comparison. Capsule overflow invalidates replay availability.
+
+The strongest generated evidence today is compiler-backed firmware, host-driven full RTL replay, full RTL corrupted-capsule rejection, runtime summaries, bounded local formal checks, generic synthesis context, and same-target full-core ECP5 mapped evidence. The artifact does not claim ASIC area or power, multi-hart behavior, DMA behavior, cache-coherence behavior, or a hardware replay-consume datapath.

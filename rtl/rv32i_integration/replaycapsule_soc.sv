@@ -161,6 +161,7 @@ module replaycapsule_soc #(
     .clk(clk),
     .rst_n(rst_n),
     .clear(1'b0),
+    .watchdog_enable(1'b0),
     .capture_mode(CAPTURE_REPLAYCAPSULE_RV),
     .commit_valid(commit_valid),
     .commit_pc(commit_pc),

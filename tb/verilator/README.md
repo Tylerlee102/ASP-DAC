@@ -1,88 +1,47 @@
-# Verilator Verification Strategy
+# Verilator Firmware-Running Harness
 
-The Verilator harness should provide fast cycle-level regression for record,
-freeze, replay, and deterministic rerun checks. It should be small enough to run
-often and strict enough to catch event-sufficiency regressions.
+This directory contains the firmware-running RTL harness for the PicoRV32
+ReplayCapsule wrapper.
 
-## Harness Responsibilities
+Build:
 
-- build the ReplayCapsule RTL with a compact RV32I or boundary-level test core
-- drive deterministic clocks, resets, interrupts, and MMIO responses
-- load short embedded programs or instruction traces
-- dump capsule events in a stable machine-readable format
-- compute capsule and replay digests
-- run record then replay in one invocation when possible
-- emit a reproduction line with test name, seed, binary identity, and plusargs
-
-## Core Scenarios
-
-Record/replay smoke:
-
-- no interrupt and no MMIO
-- one MMIO read
-- one interrupt
-- one MMIO read followed by one interrupt
-- one interrupt followed by one MMIO read
-
-Freeze and overflow:
-
-- freeze before any event
-- freeze after each event count from 1 through buffer depth
-- exact full buffer replay
-- first over-capacity event sets overflow
-- overflowed capsule refuses replay
-
-Replay injection:
-
-- replay consumes all captured events in order
-- replay returns captured MMIO values despite changed live MMIO values
-- replay injects captured interrupts at the expected boundaries
-- replay reports mismatch on corrupted event kind, payload, or address
-
-Deterministic rerun:
-
-- same seed produces identical capsule digest
-- same seed produces identical replay digest
-- different live MMIO values during replay do not change architectural signature
-  when values are captured in the capsule
-
-## Trace Format
-
-Prefer a line-oriented trace that is easy for property tests and CI to parse:
-
-```text
-event commit_index=<n> order=<n> kind=<kind> pc=<hex> addr=<hex> data=<hex> irq=<id> flags=<bits>
-digest capsule=<hex> replay=<hex>
-result status=<pass|fail> seed=<n> test=<name>
+```sh
+make verilator-harness
 ```
 
-The trace should avoid simulator-specific formatting for fields that are compared
-across runs.
+Record example:
 
-## Negative Tests
+```sh
+./build/verilator/replaycapsule_sim \
+  --mode record \
+  --benchmark sensor_threshold_bug \
+  --variant failing \
+  --firmware firmware/build/sensor_threshold_bug/failing.hex \
+  --capsule results/raw/rtl_capsules/sensor_threshold_bug_failing_seed1.json \
+  --signature results/raw/rtl_signatures/sensor_threshold_bug_failing_seed1_record.json \
+  --seed 1 \
+  --max-cycles 100000
+```
 
-The harness should include a way to replay intentionally corrupted capsules:
+Replay example:
 
-- swap adjacent events
-- drop the final event
-- duplicate an interrupt
-- flip one bit in MMIO data
-- change MMIO address
-- change interrupt cause
-- clear overflow while leaving an overfull capsule image
+```sh
+./build/verilator/replaycapsule_sim \
+  --mode replay \
+  --benchmark sensor_threshold_bug \
+  --variant failing \
+  --firmware firmware/build/sensor_threshold_bug/failing.hex \
+  --capsule results/raw/rtl_capsules/sensor_threshold_bug_failing_seed1.json \
+  --signature results/raw/rtl_signatures/sensor_threshold_bug_failing_seed1_replay.json \
+  --seed 1 \
+  --max-cycles 100000
+```
 
-Each corruption mode should produce a specific failure reason instead of a
-generic timeout.
+Current limitation:
 
-## CI Expectations
-
-The fast Verilator lane should run:
-
-- smoke tests on every change
-- directed freeze, overflow, MMIO, and interrupt tests on every verification
-  change
-- seeded deterministic replay tests with a small fixed seed list
-- a nightly or manual extended seed sweep
-
-When a Verilator failure occurs, keep the generated trace and seed artifact long
-enough for local replay.
+- The existing RTL exports record-side capsules but does not yet contain a
+  standalone hardware replay-consume datapath. Replay mode therefore uses the
+  host harness to drive MMIO/IRQ stimulus from the saved capsule and compares
+  the newly exported RTL capsule against the record capsule.
+- If replay comparison fails, the harness exits nonzero and writes the mismatch
+  into the signature JSON.

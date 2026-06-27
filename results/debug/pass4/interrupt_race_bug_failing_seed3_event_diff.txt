@@ -1,0 +1,7 @@
+record_property_id=2
+replay_property_id=2
+record_property_signature=0x1a1e0096
+replay_property_signature=0x1a1e0096
+record_event_count=2
+replay_event_count=2
+first_divergence=none

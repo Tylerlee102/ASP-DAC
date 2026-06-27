@@ -18,6 +18,7 @@ module property_checker #(
   input  logic        clk,
   input  logic        rst_n,
   input  logic        clear,
+  input  logic        watchdog_enable,
 
   input  logic        event_valid,
   input  logic [3:0]  event_type,
@@ -48,8 +49,11 @@ module property_checker #(
   logic detected_fail;
   logic [7:0] detected_property_id;
   logic [31:0] detected_signature;
+  logic watchdog_enabled;
   localparam logic [7:0] RESPONSE_DEADLINE_VALUE = RESPONSE_DEADLINE;
   localparam logic [7:0] WATCHDOG_TIMEOUT_VALUE = WATCHDOG_TIMEOUT;
+
+  assign watchdog_enabled = ENABLE_WATCHDOG || watchdog_enable;
 
   always_comb begin
     detected_fail = 1'b0;
@@ -65,7 +69,7 @@ module property_checker #(
         detected_fail = 1'b1;
         detected_property_id = PROP_INTERRUPT_CRIT;
         detected_signature = event_pc ^ event_commit_index ^ 32'h1a1e_0002;
-      end else if (ENABLE_WATCHDOG && event_type == EV_COMMIT && watchdog_active && watchdog_count == 8'd0) begin
+      end else if (watchdog_enabled && event_type == EV_COMMIT && watchdog_active && watchdog_count == 8'd0) begin
         detected_fail = 1'b1;
         detected_property_id = PROP_WATCHDOG_TIMEOUT;
         detected_signature = event_pc ^ event_commit_index ^ 32'hfeed_0006;
@@ -125,7 +129,7 @@ module property_checker #(
         if (event_type == EV_MMIO_READ && event_addr == SENSOR_ADDR && event_data > SENSOR_THRESHOLD) begin
           sensor_deadline_active <= 1'b1;
           deadline_count <= RESPONSE_DEADLINE_VALUE;
-          if (ENABLE_WATCHDOG) begin
+          if (watchdog_enabled) begin
             watchdog_active <= 1'b1;
             watchdog_count <= WATCHDOG_TIMEOUT_VALUE;
           end

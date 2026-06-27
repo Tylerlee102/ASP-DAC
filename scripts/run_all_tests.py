@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import argparse
 import csv
 import os
 import shutil
@@ -13,6 +14,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 TOOLCHAIN_CSV = REPO_ROOT / "results/processed/toolchain_status.csv"
+LOCAL_WINLIBS_BIN = REPO_ROOT / ".tools" / "winlibs" / "mingw64" / "bin"
 
 REQUIRED_RTL = [
     "rtl/event_pkg.sv",
@@ -82,16 +84,33 @@ REQUIRED_TB = [
 
 PYTHON_FILES = [
     "scripts/audit_claims.py",
+    "scripts/audit_paper_numbers.py",
+    "scripts/audit_todos.py",
+    "scripts/build_firmware.py",
+    "scripts/build_paper.py",
     "scripts/build_firmware_images.py",
+    "scripts/collect_trace_sizes.py",
     "scripts/check_rtl_firmware_alignment.py",
+    "scripts/check_toolchain.py",
     "scripts/export_rtl_capsules.py",
+    "scripts/generate_conference_evidence_tables.py",
+    "scripts/generate_submission_docs.py",
+    "scripts/package_artifact.py",
+    "scripts/parse_synthesis_reports.py",
+    "scripts/run_ablations.py",
+    "scripts/run_full_rtl_replay.py",
+    "scripts/run_full_rtl_negative.py",
+    "scripts/run_runtime_overhead.py",
     "scripts/run_formal_checks.py",
     "scripts/run_hdl_checks.py",
+    "scripts/run_mapped_synthesis.py",
     "scripts/summarize_picorv32_smokes.py",
     "scripts/run_randomized_interrupt_campaign.py",
     "scripts/summarize_randomized_interrupt_campaign.py",
     "scripts/run_replay_negative_tests.py",
+    "scripts/run_replay_experiments.py",
     "scripts/run_rtl_smoke_ablations.py",
+    "scripts/synth_yosys.py",
     "scripts/make_figures.py",
     "scripts/render_paper_tables.py",
     "scripts/summarize_evaluation_metrics.py",
@@ -112,6 +131,16 @@ PYTHON_FILES = [
 
 
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--final-package",
+        action="store_true",
+        help="verify final generated evidence/package outputs without rerunning the full toolchain",
+    )
+    args = parser.parse_args()
+    if args.final_package:
+        return _run_final_package_checks()
+
     rows: list[dict[str, str]] = []
     failures: list[str] = []
 
@@ -125,6 +154,12 @@ def main() -> int:
         failures,
         "firmware_image_build",
         [sys.executable, "scripts/build_firmware_images.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "firmware_build",
+        [sys.executable, "scripts/build_firmware.py"],
     )
     _check_firmware_images(rows, failures)
     _run_subprocess(
@@ -254,6 +289,24 @@ def main() -> int:
     _run_subprocess(
         rows,
         failures,
+        "full_rtl_replay_status",
+        [sys.executable, "scripts/run_full_rtl_replay.py", "--allow-fallback"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "full_rtl_negative_status",
+        [sys.executable, "scripts/run_full_rtl_negative.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "runtime_overhead_status",
+        [sys.executable, "scripts/run_runtime_overhead.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
         "trace_size_collection",
         [sys.executable, "scripts/collect_trace_sizes.py"],
     )
@@ -262,6 +315,18 @@ def main() -> int:
         failures,
         "ablation_suite",
         [sys.executable, "scripts/run_ablations.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "conference_evidence_tables",
+        [sys.executable, "scripts/generate_conference_evidence_tables.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "mapped_synthesis",
+        [sys.executable, "scripts/run_mapped_synthesis.py"],
     )
     _run_subprocess(
         rows,
@@ -303,14 +368,38 @@ def main() -> int:
     _run_subprocess(
         rows,
         failures,
-        "claim_audit",
-        [sys.executable, "scripts/audit_claims.py"],
+        "paper_build_status",
+        [sys.executable, "scripts/build_paper.py"],
     )
     _run_subprocess(
         rows,
         failures,
         "figure_generation",
         [sys.executable, "scripts/make_figures.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "submission_doc_generation",
+        [sys.executable, "scripts/generate_submission_docs.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "claim_audit",
+        [sys.executable, "scripts/audit_claims.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "paper_number_audit",
+        [sys.executable, "scripts/audit_paper_numbers.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "todo_audit",
+        [sys.executable, "scripts/audit_todos.py"],
     )
     _record_tool_availability(rows, "verilator")
     _record_tool_availability(rows, "iverilog")
@@ -322,12 +411,23 @@ def main() -> int:
     _record_any_tool_availability(rows, "cxx", ["c++", "g++", "clang++", "cl"])
     _record_tool_availability(rows, "riscv64-unknown-elf-gcc")
     _write_toolchain_status(rows)
-    rows.append(_row("toolchain_status", "PASS", f"WROTE {TOOLCHAIN_CSV}"))
+    rows.append(_row("toolchain_status", "PASS", f"WROTE {_rel(TOOLCHAIN_CSV)}"))
+    _run_subprocess_status_only(
+        rows,
+        "toolchain_check_full_rtl",
+        [sys.executable, "scripts/check_toolchain.py", "--gate", "full-rtl-replay"],
+    )
     _run_subprocess(
         rows,
         failures,
         "artifact_manifest",
         [sys.executable, "scripts/summarize_artifact_manifest.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "artifact_package",
+        [sys.executable, "scripts/package_artifact.py"],
     )
     _write_summary(rows)
 
@@ -342,6 +442,137 @@ def main() -> int:
             print(f"  - {failure}")
         return 1
     return 0
+
+
+def _run_final_package_checks() -> int:
+    rows: list[dict[str, str]] = []
+    failures: list[str] = []
+
+    firmware = _read_csv("results/processed/firmware_build.csv", rows, failures)
+    compiler_pass = [
+        row
+        for row in firmware
+        if row.get("build_status") == "PASS" and row.get("firmware_source") == "compiler_c"
+    ]
+    _expect(rows, failures, "final:compiler_firmware", len(compiler_pass) == 15, f"{len(compiler_pass)}/15 compiler-backed rows PASS")
+
+    replay = _read_csv("results/processed/full_rtl_replay.csv", rows, failures)
+    replay_pass = [
+        row
+        for row in replay
+        if row.get("rtl_record_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+        and row.get("compiler_backed") == "true"
+        and row.get("firmware_source") == "compiler_c"
+    ]
+    _expect(rows, failures, "final:full_rtl_replay", len(replay_pass) == 45, f"{len(replay_pass)}/45 compiler-backed replay rows PASS")
+
+    negative = _read_csv("results/processed/full_rtl_replay_negative.csv", rows, failures)
+    unexpected = [row for row in negative if row.get("actual_result") in {"ACCEPT", "FAIL"}]
+    rejected = [row for row in negative if row.get("actual_result") == "REJECT"]
+    not_applicable = [row for row in negative if row.get("actual_result") == "NA"]
+    _expect(
+        rows,
+        failures,
+        "final:negative_replay",
+        not unexpected and len(rejected) == 10 and len(not_applicable) == 2,
+        f"rejected={len(rejected)} unexpected={len(unexpected)} na={len(not_applicable)}",
+    )
+
+    runtime = _read_csv("results/processed/runtime_overhead_summary.csv", rows, failures)
+    measured_runtime = [row for row in runtime if row.get("status") == "MEASURED"]
+    _expect(rows, failures, "final:runtime_overhead", len(measured_runtime) >= 9, f"{len(measured_runtime)} measured summary rows")
+
+    mapped_summary = _read_csv("results/processed/full_core_mapped_summary.csv", rows, failures)
+    mapped_pass = any(
+        row.get("status") == "PASS"
+        and row.get("target") == "ecp5-85k"
+        and row.get("overhead_claim_allowed") == "yes"
+        and row.get("baseline_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("recorder_presence_status") == "PASS"
+        for row in mapped_summary
+    )
+    _expect(rows, failures, "final:mapped_same_target", mapped_pass, "ECP5-85K same-target mapped overhead row")
+
+    mapped_synth = _read_csv("results/processed/mapped_synthesis.csv", rows, failures)
+    mapped_designs = {row.get("design"): row for row in mapped_synth if row.get("status") == "PASS" and row.get("target") == "ecp5-85k"}
+    _expect(
+        rows,
+        failures,
+        "final:mapped_design_rows",
+        {"full_core_baseline_board", "full_core_replaycapsule_board"}.issubset(mapped_designs),
+        ", ".join(sorted(mapped_designs)) or "no PASS rows",
+    )
+
+    presence = _read_csv("results/processed/mapped_recorder_presence.csv", rows, failures)
+    _expect(rows, failures, "final:recorder_presence", any(row.get("status") == "PASS" for row in presence), "recorder presence PASS")
+
+    paper_status = _read_csv("results/processed/paper_build_status.csv", rows, failures)
+    paper_pass = any(row.get("target") == "paper/main.pdf" and row.get("status") == "PASS" for row in paper_status)
+    _expect(rows, failures, "final:paper_pdf", paper_pass and (REPO_ROOT / "paper/main.pdf").exists(), "paper/main.pdf PASS and present")
+
+    claim_audit = _read_csv("results/processed/claim_audit.csv", rows, failures)
+    claim_reviews = [row for row in claim_audit if row.get("status") == "REVIEW"]
+    _expect(rows, failures, "final:claim_audit", not claim_reviews, f"REVIEW rows={len(claim_reviews)}")
+
+    number_audit = _read_csv("results/processed/paper_number_audit.csv", rows, failures)
+    number_failures = [row for row in number_audit if row.get("status") == "FAIL"]
+    _expect(rows, failures, "final:number_audit", not number_failures, f"FAIL rows={len(number_failures)}")
+
+    todo_audit = _read_csv("results/processed/todo_audit.csv", rows, failures)
+    todo_failures = [row for row in todo_audit if row.get("status") == "FAIL"]
+    _expect(rows, failures, "final:todo_audit", not todo_failures, f"FAIL rows={len(todo_failures)}")
+
+    manifest = _read_csv("results/processed/artifact_manifest.csv", rows, failures)
+    missing_manifest = [
+        row
+        for row in manifest
+        if row.get("required_for_local_gate") == "yes" and row.get("status") == "MISSING"
+    ]
+    _expect(rows, failures, "final:artifact_manifest", not missing_manifest, f"missing required rows={len(missing_manifest)}")
+
+    artifact_zip = REPO_ROOT / "dist/replaycapsule-rv-artifact.zip"
+    _expect(rows, failures, "final:artifact_zip", artifact_zip.exists(), _rel(artifact_zip) if artifact_zip.exists() else "missing")
+
+    final_lock = REPO_ROOT / "results/debug/final_submission_lock"
+    _expect(rows, failures, "final:evidence_lock", final_lock.exists(), _rel(final_lock) if final_lock.exists() else "missing")
+
+    _write_summary(rows)
+    for row in rows:
+        detail = f" - {row['detail']}" if row["detail"] else ""
+        print(f"{row['status']}: {row['name']}{detail}")
+    if failures:
+        print("\nFailures:")
+        for failure in failures:
+            print(f"  - {failure}")
+        return 1
+    return 0
+
+
+def _read_csv(rel: str, rows: list[dict[str, str]], failures: list[str]) -> list[dict[str, str]]:
+    path = REPO_ROOT / rel
+    if not path.exists():
+        rows.append(_row(f"input:{rel}", "FAIL", "missing"))
+        failures.append(f"missing {rel}")
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        data = list(csv.DictReader(handle))
+    rows.append(_row(f"input:{rel}", "PASS", f"{len(data)} rows"))
+    return data
+
+
+def _expect(
+    rows: list[dict[str, str]],
+    failures: list[str],
+    name: str,
+    condition: bool,
+    detail: str,
+) -> None:
+    rows.append(_row(name, "PASS" if condition else "FAIL", detail))
+    if not condition:
+        failures.append(f"{name}: {detail}")
 
 
 def _check_required_files(rows: list[dict[str, str]], failures: list[str]) -> None:
@@ -436,10 +667,29 @@ def _run_subprocess(
         rows.append(_row(name, "FAIL", _last_line(completed.stdout)))
 
 
+def _run_subprocess_status_only(
+    rows: list[dict[str, str]],
+    name: str,
+    command: list[str],
+) -> None:
+    completed = subprocess.run(
+        command,
+        cwd=REPO_ROOT,
+        env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    rows.append(_row(name, "PASS" if completed.returncode == 0 else "BLOCKED", _last_line(completed.stdout)))
+
+
 def _record_tool_availability(rows: list[dict[str, str]], tool: str) -> None:
     found = shutil.which(tool)
     if found:
         rows.append(_row(f"tool:{tool}", "PASS", found))
+    elif tool == "make" and (local_tool := _local_winlibs_tool(["make.exe", "mingw32-make.exe"])):
+        rows.append(_row("tool:make", "PASS", f"workspace-local winlibs {local_tool.name}"))
     elif tool == "sby" and _local_yowasp_tool("yowasp-sby.exe"):
         rows.append(_row("tool:sby", "PASS", "workspace-local yowasp-sby"))
     elif tool == "yosys-smtbmc" and _local_yowasp_tool("yowasp-yosys-smtbmc.exe"):
@@ -458,6 +708,9 @@ def _record_any_tool_availability(rows: list[dict[str, str]], name: str, candida
         if found:
             rows.append(_row(f"tool:{name}", "PASS", f"{tool}: {found}"))
             return
+    if name == "cxx" and (local_tool := _local_winlibs_tool(["g++.exe", "c++.exe", "clang++.exe"])):
+        rows.append(_row("tool:cxx", "PASS", f"workspace-local winlibs {local_tool.name}"))
+        return
     rows.append(_row(f"tool:{name}", "TODO", f"none found from: {', '.join(candidates)}"))
 
 
@@ -466,6 +719,14 @@ def _local_oss_cad_tool(tool: str) -> Path | None:
     local_name = "verilator_bin.exe" if tool == "verilator" else f"{tool}.exe"
     local_tool = suite / "bin" / local_name
     return local_tool if local_tool.exists() else None
+
+
+def _local_winlibs_tool(names: list[str]) -> Path | None:
+    for name in names:
+        candidate = LOCAL_WINLIBS_BIN / name
+        if candidate.exists():
+            return candidate
+    return None
 
 
 def _local_yowasp_yosys() -> bool:
@@ -524,12 +785,23 @@ def _tool_needed_for(tool: str) -> str:
 
 
 def _row(name: str, status: str, detail: str) -> dict[str, str]:
-    return {"name": name, "status": status, "detail": detail}
+    return {"name": name, "status": status, "detail": _repo_relative_text(detail)}
 
 
 def _last_line(output: str) -> str:
     lines = [line.strip() for line in output.splitlines() if line.strip()]
-    return lines[-1] if lines else ""
+    return _repo_relative_text(lines[-1]) if lines else ""
+
+
+def _repo_relative_text(text: str) -> str:
+    return text.replace(str(REPO_ROOT), ".").replace(str(REPO_ROOT).replace("\\", "/"), ".")
+
+
+def _rel(path: Path) -> str:
+    try:
+        return path.resolve().relative_to(REPO_ROOT.resolve()).as_posix()
+    except ValueError:
+        return path.as_posix()
 
 
 if __name__ == "__main__":

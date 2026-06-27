@@ -1,0 +1,14 @@
+\section{Introduction}
+
+Embedded firmware often fails because the external world arrives at the wrong architectural moment. A sensor value crosses a threshold, an interrupt lands inside a short critical section, or a command register is sampled before firmware has restored an invariant. These failures are difficult to reproduce after the fact because the decisive facts are boundary events: interrupt delivery and return, MMIO values, and property context. Full instruction or processor-trace mechanisms can preserve far richer execution histories, but many firmware validation failures need a narrower replay object: the events that drive the same firmware-visible path to the same violation.
+
+ReplayCapsule-RV studies that point in the design space. For a deterministic single-hart RV32I platform with the same firmware image and initial architectural state, the recorder captures commit-indexed interrupt/MMIO events, selected boundary observations, and property-failure metadata. The replay harness consumes those events at the same commit boundary and checks property metadata, event payloads, and final signatures. The design is deliberately scoped: it records replay-driving facts for a defined class of embedded failures rather than attempting to replace full trace, snapshots, or platform-wide debug infrastructure.
+
+This paper makes three contributions:
+\begin{itemize}
+  \item an event-sufficient capsule model for single-hart RV32I interrupt/MMIO failures;
+  \item a ReplayCapsule-RV hardware recorder and host-driven RTL replay harness;
+  \item an artifact-backed evaluation across compiler-backed firmware, corruption tests, runtime overhead, and mapped full-core FPGA evidence.
+\end{itemize}
+
+The evaluation is intentionally audit-oriented. The artifact reports compiler-backed firmware builds, \rcFullReplayPass/\rcFullReplayTotal\ full RTL replay PASS rows, full RTL corrupted-capsule checks, runtime overhead summaries across baseline and recorder configurations, and full-core ECP5 mapped results. Claims outside this scope are treated as limitations rather than inferred results.

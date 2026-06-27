@@ -1,0 +1,5 @@
+# mmio trace
+[record]
+{"addr": "0x4000000c", "commit": 3, "commit_index": 3, "cycle": null, "data": "0x00000001", "diagnostic_only": false, "event_id": 0, "event_type": 6, "index": 0, "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "mmio_address": "0x4000000c", "mmio_value": "0x00000001", "notes": "replay-critical", "packet": "620000000000000003000000904000000c00000001", "payload_hash": "0xdbe9e117", "pc": "0x00000090", "property_id": 2, "replay_required": true, "source": "record"}
+[replay]
+{"addr": "0x4000000c", "commit": 3, "commit_index": 3, "cycle": null, "data": "0x00000001", "diagnostic_only": false, "event_id": 0, "event_type": 6, "index": 0, "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "mmio_address": "0x4000000c", "mmio_value": "0x00000001", "notes": "replay-critical", "packet": "620000000000000003000000904000000c00000001", "payload_hash": "0xdbe9e117", "pc": "0x00000090", "property_id": 2, "replay_required": true, "source": "replay"}

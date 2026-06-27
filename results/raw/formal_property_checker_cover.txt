@@ -16,26 +16,26 @@ SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking c
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 1..
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 2..
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 3..
-SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 3 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:285.7-285.94 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_285_259)
+SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 3 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:286.7-286.94 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_286_260)
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace0.vcd
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace0_tb.v
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace0.smtc
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace0.yw
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 3..
-SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 3 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:286.7-286.94 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_286_263)
+SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 3 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:287.7-287.94 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_287_264)
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace1.vcd
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace1_tb.v
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace1.smtc
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace1.yw
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 3..
-SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 3 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:287.7-287.102 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_287_267)
+SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 3 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:288.7-288.102 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_288_268)
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace2.vcd
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace2_tb.v
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace2.smtc
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace2.yw
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 3..
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 4..
-SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 4 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:288.7-288.108 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_288_271)
+SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 4 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:289.7-289.108 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_289_272)
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace3.vcd
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace3_tb.v
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace3.smtc
@@ -43,14 +43,14 @@ SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing tr
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 4..
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 5..
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 6..
-SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 6 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:289.7-289.100 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_289_275)
+SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 6 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:290.7-290.100 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_290_276)
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace4.vcd
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace4_tb.v
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace4.smtc
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Yosys witness file: engine_0/trace4.yw
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 6..
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Checking cover reachability in step 7..
-SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 7 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:290.7-290.106 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_290_279)
+SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Reached cover statement in step 7 at property_checker_bmc_harness: formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:291.7-291.106 (_witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_291_280)
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to VCD file: engine_0/trace5.vcd
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to Verilog testbench: engine_0/trace5_tb.v
 SBY [.tools\formal_checks\property_checker_cover] engine_0: ## <time> Writing trace to constraints file: engine_0/trace5.smtc
@@ -62,15 +62,15 @@ SBY [.tools\formal_checks\property_checker_cover] summary: Elapsed clock time <t
 SBY [.tools\formal_checks\property_checker_cover] summary: Elapsed process time unvailable on Windows
 SBY [.tools\formal_checks\property_checker_cover] summary: engine_0 (smtbmc) returned pass
 SBY [.tools\formal_checks\property_checker_cover] summary: cover trace: .tools\formal_checks\property_checker_cover\engine_0\trace0.vcd
-SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_285_259 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:285.7-285.94 step 3
+SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_286_260 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:286.7-286.94 step 3
 SBY [.tools\formal_checks\property_checker_cover] summary: cover trace: .tools\formal_checks\property_checker_cover\engine_0\trace1.vcd
-SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_286_263 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:286.7-286.94 step 3
+SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_287_264 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:287.7-287.94 step 3
 SBY [.tools\formal_checks\property_checker_cover] summary: cover trace: .tools\formal_checks\property_checker_cover\engine_0\trace2.vcd
-SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_287_267 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:287.7-287.102 step 3
+SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_288_268 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:288.7-288.102 step 3
 SBY [.tools\formal_checks\property_checker_cover] summary: cover trace: .tools\formal_checks\property_checker_cover\engine_0\trace3.vcd
-SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_288_271 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:288.7-288.108 step 4
+SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_289_272 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:289.7-289.108 step 4
 SBY [.tools\formal_checks\property_checker_cover] summary: cover trace: .tools\formal_checks\property_checker_cover\engine_0\trace4.vcd
-SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_289_275 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:289.7-289.100 step 6
+SBY [.tools\formal_checks\property_checker_cover] summary:   reached cover statement property_checker_bmc_harness._witness_.check_cover_formal_yosys_smtbmc_scripts_property_checker_bmc_harness_sv_290_276 at formal/yosys_smtbmc_scripts/property_checker_bmc_harness.sv:290.7-290.100 step 6
 SBY [.tools\formal_checks\property_checker_cover] summary: and 1 further trace
 SBY [.tools\formal_checks\property_checker_cover] summary: see .tools\formal_checks\property_checker_cover/PASS for a complete summary
 SBY [.tools\formal_checks\property_checker_cover] DONE (PASS, rc=0)

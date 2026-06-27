@@ -63,6 +63,7 @@ module tb_picorv32_wrapper_smoke;
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),
+    .watchdog_enable(ENABLE_WATCHDOG),
     .capture_mode(4'h3),
     .trap(trap),
     .mem_valid(mem_valid),

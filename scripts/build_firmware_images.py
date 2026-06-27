@@ -59,10 +59,13 @@ def main() -> int:
                 encoding="utf-8",
             )
             count += 1
-    print(f"WROTE {count} firmware image sets under {args.out_dir}")
+    try:
+        out_dir = args.out_dir.resolve().relative_to(REPO_ROOT.resolve()).as_posix()
+    except ValueError:
+        out_dir = args.out_dir.as_posix()
+    print(f"WROTE {count} firmware image sets under {out_dir}")
     return 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

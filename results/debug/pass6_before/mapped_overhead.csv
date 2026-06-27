@@ -1,0 +1,5 @@
+target,flow,metric,baseline,with_replaycapsule,delta,percent_overhead,notes
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,lut,NA,NA,NA,NA,requires mapped_synthesis.csv PASS rows
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,ff,NA,NA,NA,NA,requires mapped_synthesis.csv PASS rows
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,bram,NA,NA,NA,NA,requires mapped_synthesis.csv PASS rows
+ice40-hx8k,yosys+synth_ice40+nextpnr-ice40,fmax_mhz,NA,NA,NA,NA,requires mapped_synthesis.csv PASS rows

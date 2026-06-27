@@ -1,0 +1,400 @@
+Warning: No PCF file specified; IO pins will be placed automatically
+
+Info: Packing constants..
+Info: Packing IOs..
+Info: Packing LUT-FFs..
+Info:      232 LCs used as LUT4 only
+Info:      140 LCs used as LUT4 and DFF
+Info: Packing non-LUT FFs..
+Info:       65 LCs used as DFF only
+Info: Packing carries..
+Info:       31 LCs used as CARRY only
+Info: Packing indirect carry+LUT pairs...
+Info:       16 LUTs merged into carry LCs
+Info: Packing RAMs..
+Info: Placing PLLs..
+Info: Packing special functions..
+Info: Packing PLLs..
+Info: Promoting globals..
+Info: promoting clk$SB_IO_IN (fanout 205)
+Info: promoting rst_n_SB_LUT4_I3_O [reset] (fanout 205)
+Info: promoting captured_event_valid [cen] (fanout 32)
+Info: promoting capsule_frozen_SB_LUT4_I2_O[1] [cen] (fanout 32)
+Info: Constraining chains...
+Info:        8 LCs used to legalise carry chains.
+Info: Checksum: 0xfb6aa9e8
+
+Info: Device utilisation:
+Info: 	         ICESTORM_LC:     462/   7680     6%
+Info: 	        ICESTORM_RAM:       0/     32     0%
+Info: 	               SB_IO:      44/    206    21%
+Info: 	               SB_GB:       4/      8    50%
+Info: 	        ICESTORM_PLL:       0/      2     0%
+Info: 	         SB_WARMBOOT:       0/      1     0%
+
+Info: Placed 0 cells based on constraints.
+Info: Creating initial analytic placement for 338 cells, random placement wirelen = 12751.
+Info:     at initial placer iter 0, wirelen = 1057
+Info:     at initial placer iter 1, wirelen = 990
+Info:     at initial placer iter 2, wirelen = 1008
+Info:     at initial placer iter 3, wirelen = 993
+Info: Running main analytical placer, max placement attempts per cell = 32512.
+Info:     at iteration #1, type ALL: wirelen solved = 991, spread = 2327, legal = 2503; time = 0.00s
+Info:     at iteration #2, type ALL: wirelen solved = 1077, spread = 2316, legal = 2455; time = 0.01s
+Info:     at iteration #3, type ALL: wirelen solved = 1079, spread = 2281, legal = 2416; time = 0.01s
+Info:     at iteration #4, type ALL: wirelen solved = 1102, spread = 2293, legal = 2470; time = 0.01s
+Info:     at iteration #5, type ALL: wirelen solved = 1160, spread = 2211, legal = 2401; time = 0.01s
+Info:     at iteration #6, type ALL: wirelen solved = 1162, spread = 2108, legal = 2265; time = 0.01s
+Info:     at iteration #7, type ALL: wirelen solved = 1229, spread = 2059, legal = 2233; time = 0.01s
+Info:     at iteration #8, type ALL: wirelen solved = 1274, spread = 2078, legal = 2212; time = 0.01s
+Info:     at iteration #9, type ALL: wirelen solved = 1305, spread = 2126, legal = 2316; time = 0.01s
+Info:     at iteration #10, type ALL: wirelen solved = 1336, spread = 2097, legal = 2237; time = 0.01s
+Info:     at iteration #11, type ALL: wirelen solved = 1351, spread = 2121, legal = 2350; time = 0.00s
+Info:     at iteration #12, type ALL: wirelen solved = 1413, spread = 2035, legal = 2214; time = 0.01s
+Info:     at iteration #13, type ALL: wirelen solved = 1419, spread = 2009, legal = 2256; time = 0.01s
+Info: HeAP Placer Time: 0.09s
+Info:   of which solving equations: 0.06s
+Info:   of which spreading cells: 0.01s
+Info:   of which strict legalisation: 0.00s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 68, wirelen = 2212
+Info:   at iteration #5: temp = 0.000000, timing cost = 37, wirelen = 1762
+Info:   at iteration #10: temp = 0.000000, timing cost = 45, wirelen = 1655
+Info:   at iteration #15: temp = 0.000000, timing cost = 43, wirelen = 1624
+Info:   at iteration #20: temp = 0.000000, timing cost = 42, wirelen = 1579
+Info:   at iteration #25: temp = 0.000000, timing cost = 42, wirelen = 1566
+Info:   at iteration #26: temp = 0.000000, timing cost = 42, wirelen = 1565
+Info: SA placement time 0.17s
+
+Info: Max frequency for clock 'clk$SB_IO_IN_$glb_clk': 72.44 MHz (PASS at 12.00 MHz)
+
+Info: Max delay <async>                       -> posedge clk$SB_IO_IN_$glb_clk: 5.31 ns
+Info: Max delay posedge clk$SB_IO_IN_$glb_clk -> <async>                      : 3.58 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 1 endpoint(s)
+Info:          + represents [1,1) endpoint(s)
+Info: [ 69529,  70150) |************+
+Info: [ 70150,  70771) |********+
+Info: [ 70771,  71392) |**************************************+
+Info: [ 71392,  72013) |*******+
+Info: [ 72013,  72634) |
+Info: [ 72634,  73255) |*****+
+Info: [ 73255,  73876) |
+Info: [ 73876,  74497) |************************+
+Info: [ 74497,  75118) |************+
+Info: [ 75118,  75739) |***********+
+Info: [ 75739,  76360) |************************+
+Info: [ 76360,  76981) |****************************+
+Info: [ 76981,  77602) |*********************************+
+Info: [ 77602,  78223) |***************************+
+Info: [ 78223,  78844) |**************************+
+Info: [ 78844,  79465) |****************+
+Info: [ 79465,  80086) |********************+
+Info: [ 80086,  80707) |*******************************************************+
+Info: [ 80707,  81328) |************************************************************
+Info: [ 81328,  81949) |***********************************************************+
+Info: Checksum: 0x5b4cbbe7
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 1568 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:       1000 |       82        815 |   82   815 |       684|       0.08       0.08|
+Info:       1993 |      330       1552 |  248   737 |         0|       0.12       0.21|
+Info: Routing complete.
+Info: Router1 time 0.21s
+Info: Checksum: 0xb763a8e5
+
+Info: Critical path report for clock 'clk$SB_IO_IN_$glb_clk' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  0.54  0.54 Source u_replay_capsule_top.branch_taken_SB_LUT4_I2_O_SB_LUT4_O_12_LC.O
+Info:    routing  0.59  1.13 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_3_I2_SB_LUT4_I2_I3_SB_LUT4_O_I1[2] (4,8) -> (5,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_1_LC.I0
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:25.23-25.41
+Info:      logic  0.45  1.58 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_1_LC.O
+Info:    routing  0.59  2.16 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I2_SB_LUT4_O_I3_SB_LUT4_O_I3[3] (5,8) -> (5,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I2_SB_LUT4_O_I3_SB_LUT4_O_LC.I3
+Info:                          Defined in:
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.31  2.48 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I2_SB_LUT4_O_I3_SB_LUT4_O_LC.O
+Info:    routing  0.59  3.07 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I2_SB_LUT4_O_I1[2] (5,8) -> (5,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I2_SB_LUT4_O_LC.I3
+Info:                          Defined in:
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.31  3.38 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I2_SB_LUT4_O_LC.O
+Info:    routing  0.59  3.97 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_I0[2] (5,8) -> (5,9)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_LC.I2
+Info:                          Defined in:
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.38  4.35 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_LUT4_O_LC.O
+Info:    routing  1.27  5.62 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3[1] (5,9) -> (2,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0$CARRY.I1
+Info:                          Defined in:
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.26  5.88 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  5.88 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO (2,8) -> (2,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  6.01 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  6.01 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO (2,8) -> (2,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  6.13 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  6.13 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (2,8) -> (2,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  6.26 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  6.26 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (2,8) -> (2,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  6.39 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  6.39 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (2,8) -> (2,8)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  6.51 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.20  6.71 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (2,8) -> (2,9)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  6.83 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  6.83 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (2,9) -> (2,9)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  6.96 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  6.96 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (2,9) -> (2,9)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  7.09 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  7.09 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_LUT4_O_1_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO_SB_CARRY_CI_CO (2,9) -> (2,9)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_15_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  7.21 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_15_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  7.21 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_15_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,9) -> (2,9)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_14_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  7.34 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_14_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  7.34 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_14_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,9) -> (2,9)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_4_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  7.46 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_4_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  7.46 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_4_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,9) -> (2,9)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_17_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  7.59 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_17_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  7.59 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_17_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,9) -> (2,9)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_17_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  7.72 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_17_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.20  7.91 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_27_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0_CI (2,9) -> (2,10)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_27_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  8.04 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I1_SB_LUT4_I2_O_SB_LUT4_O_27_I2_SB_LUT4_I2_O_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  8.04 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_4_I3_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI (2,10) -> (2,10)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_4_I3_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  8.16 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_4_I3_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  8.16 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO_CI (2,10) -> (2,10)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  8.29 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO$CARRY.COUT
+Info:    routing  0.00  8.29 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI (2,10) -> (2,10)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  8.41 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  8.41 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,10) -> (2,10)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  8.54 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  8.54 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_7_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO (2,10) -> (2,10)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_6_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  8.67 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_6_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  8.67 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_6_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,10) -> (2,10)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_6_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  8.79 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_6_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  8.79 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_6_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI_CO (2,10) -> (2,10)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_18_I2_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  8.92 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_18_I2_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO$CARRY.COUT
+Info:    routing  0.20  9.11 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_18_I2_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI (2,10) -> (2,11)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_18_I2_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  9.24 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_18_I2_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  9.24 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_18_I2_SB_LUT4_O_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,11) -> (2,11)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_4_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  9.37 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_4_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO$CARRY.COUT
+Info:    routing  0.00  9.37 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_4_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI (2,11) -> (2,11)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_4_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  9.49 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_4_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.00  9.49 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_4_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,11) -> (2,11)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_4_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  9.62 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_4_I2_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO_SB_CARRY_CI$CARRY.COUT
+Info:    routing  0.00  9.62 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO_CI (2,11) -> (2,11)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  9.74 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI_SB_CARRY_CO$CARRY.COUT
+Info:    routing  0.00  9.74 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CI (2,11) -> (2,11)
+Info:                          Sink capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.CIN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:129.72-129.101
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/arith_map.v:62.5-70.4
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/abc9_model.v:4.9-4.11
+Info:      logic  0.13  9.87 Source capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0$CARRY.COUT
+Info:    routing  0.26  10.13 Net $nextpnr_ICESTORM_LC_3$I3 (2,11) -> (2,11)
+Info:                          Sink $nextpnr_ICESTORM_LC_3.I3
+Info:      logic  0.31  10.44 Source $nextpnr_ICESTORM_LC_3.O
+Info:    routing  0.59  11.03 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_O_SB_LUT4_I3_O_SB_LUT4_O_9_I3_SB_LUT4_O_1_I3_SB_LUT4_O_I3_SB_CARRY_I0_CO (2,11) -> (3,11)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_DFFER_Q_E_SB_LUT4_O_LC.I3
+Info:                          Defined in:
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/cells_map.v:6.21-6.22
+Info:      logic  0.31  11.35 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_DFFER_Q_E_SB_LUT4_O_LC.O
+Info:    routing  1.47  12.82 Net u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_DFFER_Q_E (3,11) -> (3,12)
+Info:                          Sink u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_DFFER_Q_DFFLC.CEN
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:92.3-151.6
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/ff_map.v:14.63-14.116
+Info:                               .\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/ice40/cells_sim.v:656.8-656.9
+Info:      setup  0.10  12.92 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_I3_SB_LUT4_O_I3_SB_LUT4_O_I3_SB_LUT4_I3_O_SB_DFFER_Q_DFFLC.CEN
+Info: 6.39 ns logic, 6.53 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> 'posedge clk$SB_IO_IN_$glb_clk':
+Info:       type curr  total name
+Info:     source  0.00  0.00 Source rst_n$sb_io.D_IN_0
+Info:    routing  0.59  0.59 Net rst_n$SB_IO_IN (17,0) -> (17,1)
+Info:                          Sink rst_n_SB_LUT4_I3_LC.I3
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:19.23-19.28
+Info:      logic  0.31  0.90 Source rst_n_SB_LUT4_I3_LC.O
+Info:    routing  0.33  1.23 Net rst_n_SB_LUT4_I3_O (17,1) -> (17,0)
+Info:                          Sink $gbuf_rst_n_SB_LUT4_I3_O_$glb_sr.USER_SIGNAL_TO_GLOBAL_BUFFER
+Info:      logic  0.62  1.85 Source $gbuf_rst_n_SB_LUT4_I3_O_$glb_sr.GLOBAL_BUFFER_OUTPUT
+Info:    routing  0.46  2.31 Net rst_n_SB_LUT4_I3_O_$glb_sr (17,0) -> (7,13)
+Info:                          Sink capsule_frozen_SB_DFFER_Q_DFFLC.SR
+Info:      setup  0.10  2.41 Source capsule_frozen_SB_DFFER_Q_DFFLC.SR
+Info: 1.03 ns logic, 1.38 ns routing
+
+Info: Critical path report for cross-domain path 'posedge clk$SB_IO_IN_$glb_clk' -> '<async>':
+Info:       type curr  total name
+Info:   clk-to-q  0.54  0.54 Source u_replay_capsule_top.kept_event_valid_SB_LUT4_O_I3_SB_LUT4_I2_O_SB_LUT4_O_10_LC.O
+Info:    routing  3.54  4.07 Net capsule_overflow_SB_LUT4_I0_O_SB_LUT4_I3_I0[0] (5,16) -> (33,12)
+Info:                          Sink running_signature[29]$sb_io.D_OUT_0
+Info:                          Defined in:
+Info:                               rtl/hash_signature.sv:12.34-12.43
+Info: 0.54 ns logic, 3.54 ns routing
+
+Info: Max frequency for clock 'clk$SB_IO_IN_$glb_clk': 77.40 MHz (PASS at 12.00 MHz)
+
+Info: Max delay <async>                       -> posedge clk$SB_IO_IN_$glb_clk: 2.41 ns
+Info: Max delay posedge clk$SB_IO_IN_$glb_clk -> <async>                      : 4.07 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 1 endpoint(s)
+Info:          + represents [1,1) endpoint(s)
+Info: [ 70413,  70986) |+
+Info: [ 70986,  71559) |****+
+Info: [ 71559,  72132) |**+
+Info: [ 72132,  72705) |*******************+
+Info: [ 72705,  73278) |******************+
+Info: [ 73278,  73851) |
+Info: [ 73851,  74424) |***+
+Info: [ 74424,  74997) |***************+
+Info: [ 74997,  75570) |*******+
+Info: [ 75570,  76143) |****+
+Info: [ 76143,  76716) |***********+
+Info: [ 76716,  77289) |*************************+
+Info: [ 77289,  77862) |******************+
+Info: [ 77862,  78435) |*******************+
+Info: [ 78435,  79008) |******************+
+Info: [ 79008,  79581) |********+
+Info: [ 79581,  80154) |**************+
+Info: [ 80154,  80727) |**************+
+Info: [ 80727,  81300) |************************************************************
+Info: [ 81300,  81873) |**********************************+
+1 warning, 0 errors
+
+Info: Program finished normally.

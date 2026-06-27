@@ -1,0 +1,37 @@
+\section{Evaluation}
+\label{sec:evaluation}
+
+All tables in this section are generated from processed CSV files by \texttt{scripts/render\_paper\_tables.py}. The paper-number audit checks that numeric claims in the paper appear in generated CSVs or generated table sources.
+
+\input{sections/generated_tables}
+
+\subsection{Replay and Corruption Results}
+
+Table~\ref{tab:replay-success} reports \rcFullReplayPass/\rcFullReplayTotal\ compiler-backed host-driven full RTL replay rows. Table~\ref{tab:negative} reports \rcNegativeReject\ corrupted-capsule rows rejected, \rcNegativeUnexpectedAccept\ unexpected accepts, and \rcNegativeNA\ not-applicable rows for corruption classes outside the current commit-index harness.
+
+\subsection{Runtime and Mapping}
+
+Table~\ref{tab:runtime} reports measured cycle, commit, and simulator wall-time summaries for \texttt{baseline\_no\_recorder}, \texttt{recorder\_present\_disabled}, and \texttt{recorder\_enabled}. Cycle and commit medians are separate from simulator wall-clock measurements.
+
+Table~\ref{tab:mapped-overhead} reports same-target ECP5 place-and-route for the board-scoped baseline and ReplayCapsule designs. The full-core mapped rows use the same \rcMappedTarget\ target, the same Yosys synth\_ecp5 plus nextpnr-ecp5 flow, the same memory size, and the same board-level I/O assumptions. The recorder presence check passes on the mapped ReplayCapsule netlist.
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/replay_success_summary.pdf}{\includegraphics[width=\linewidth]{figures/replay_success_summary.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{paper/figures/replay\_success\_summary.svg}}}}
+\caption{Replay success summary generated from the full RTL replay and corruption ledgers.}
+\label{fig:replay-summary}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/runtime_overhead_summary.pdf}{\includegraphics[width=\linewidth]{figures/runtime_overhead_summary.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{paper/figures/runtime\_overhead\_summary.svg}}}}
+\caption{Runtime summary generated from \texttt{runtime\_overhead\_summary.csv}.}
+\label{fig:runtime-summary}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/mapped_overhead_summary.pdf}{\includegraphics[width=\linewidth]{figures/mapped_overhead_summary.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{paper/figures/mapped\_overhead\_summary.svg}}}}
+\caption{Full-core mapped overhead summary generated from \texttt{mapped\_overhead.csv}.}
+\label{fig:mapped-summary}
+\end{figure}

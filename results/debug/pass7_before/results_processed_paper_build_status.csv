@@ -1,0 +1,2 @@
+target,status,tool,output,notes
+paper/main.pdf,PASS,latexmk,paper/main.pdf,PDF built locally

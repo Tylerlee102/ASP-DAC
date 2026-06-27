@@ -26,7 +26,8 @@ package replaycapsule_event_pkg;
     CAPTURE_ALL              = 4'h0,
     CAPTURE_MMIO_INTERRUPT   = 4'h1,
     CAPTURE_PROPERTY_AWARE   = 4'h2,
-    CAPTURE_REPLAYCAPSULE_RV = 4'h3
+    CAPTURE_REPLAYCAPSULE_RV = 4'h3,
+    CAPTURE_DISABLED         = 4'h4
   } rc_capture_mode_e;
 
   function automatic logic [RC_EVENT_WIDTH-1:0] rc_pack_event(

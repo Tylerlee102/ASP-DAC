@@ -1,0 +1,241 @@
+benchmark,evidence_level,baseline,bytes,events,replay_success,property_match,final_signature_match,reduction_vs_full_instruction,reduction_vs_snapshot,notes
+sensor_threshold_bug,model,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,model,Full commit trace,304,19,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,model,Branch/control-flow trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,model,Store/output trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,model,MMIO-only trace,16,1,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,model,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,model,Interrupt+MMIO trace,48,3,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,model,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,model,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,model,ReplayCapsule-RV property-aware capsule,84,4,PASS,PASS,PASS,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,firmware-sim,Full instruction trace,144,18,FAIL,FAIL,FAIL,1.000x,0.917x,PC+instruction bytes measured from firmware-sim commits; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,firmware-sim,Full commit trace,288,18,FAIL,FAIL,FAIL,0.500x,0.458x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,firmware-sim,Branch/control-flow trace,112,7,FAIL,FAIL,FAIL,1.286x,1.179x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,firmware-sim,Store/output trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,firmware-sim,MMIO-only trace,16,1,FAIL,FAIL,FAIL,9.000x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,firmware-sim,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,firmware-sim,Interrupt+MMIO trace,16,1,FAIL,FAIL,FAIL,9.000x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,firmware-sim,Snapshot-on-failure,132,1,FAIL,FAIL,FAIL,1.091x,1.000x,architectural snapshot bytes measured from firmware-sim final state; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,firmware-sim,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,firmware-sim,ReplayCapsule-RV property-aware capsule,189,9,PASS,PASS,PASS,0.762x,0.698x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+sensor_threshold_bug,rtl-smoke,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,rtl-smoke,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+sensor_threshold_bug,full-rtl,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,full-rtl,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,model,Full commit trace,48,3,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,model,Branch/control-flow trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,model,Store/output trace,32,2,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,model,MMIO-only trace,32,2,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,model,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,model,Interrupt+MMIO trace,64,4,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,model,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,model,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,model,ReplayCapsule-RV property-aware capsule,105,5,PASS,PASS,PASS,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,firmware-sim,Full instruction trace,40,5,FAIL,FAIL,FAIL,1.000x,3.300x,PC+instruction bytes measured from firmware-sim commits; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,firmware-sim,Full commit trace,80,5,FAIL,FAIL,FAIL,0.500x,1.650x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,firmware-sim,Branch/control-flow trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,firmware-sim,Store/output trace,16,1,FAIL,FAIL,FAIL,2.500x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,firmware-sim,MMIO-only trace,16,1,FAIL,FAIL,FAIL,2.500x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,firmware-sim,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,firmware-sim,Interrupt+MMIO trace,48,3,FAIL,FAIL,FAIL,0.833x,2.750x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,firmware-sim,Snapshot-on-failure,132,1,FAIL,FAIL,FAIL,0.303x,1.000x,architectural snapshot bytes measured from firmware-sim final state; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,firmware-sim,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,firmware-sim,ReplayCapsule-RV property-aware capsule,84,4,PASS,PASS,PASS,0.476x,1.571x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+interrupt_race_bug,rtl-smoke,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,rtl-smoke,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+interrupt_race_bug,full-rtl,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,full-rtl,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,model,Full commit trace,48,3,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,model,Branch/control-flow trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,model,Store/output trace,32,2,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,model,MMIO-only trace,32,2,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,model,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,model,Interrupt+MMIO trace,32,2,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,model,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,model,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,model,ReplayCapsule-RV property-aware capsule,63,3,PASS,PASS,PASS,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,firmware-sim,Full instruction trace,24,3,FAIL,FAIL,FAIL,1.000x,5.500x,PC+instruction bytes measured from firmware-sim commits; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,firmware-sim,Full commit trace,48,3,FAIL,FAIL,FAIL,0.500x,2.750x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,firmware-sim,Branch/control-flow trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,firmware-sim,Store/output trace,16,1,FAIL,FAIL,FAIL,1.500x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,firmware-sim,MMIO-only trace,16,1,FAIL,FAIL,FAIL,1.500x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,firmware-sim,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,firmware-sim,Interrupt+MMIO trace,16,1,FAIL,FAIL,FAIL,1.500x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,firmware-sim,Snapshot-on-failure,132,1,FAIL,FAIL,FAIL,0.182x,1.000x,architectural snapshot bytes measured from firmware-sim final state; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,firmware-sim,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,firmware-sim,ReplayCapsule-RV property-aware capsule,42,2,PASS,PASS,PASS,0.571x,3.143x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+mmio_ordering_bug,rtl-smoke,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,rtl-smoke,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+mmio_ordering_bug,full-rtl,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,full-rtl,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,model,Full commit trace,48,3,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,model,Branch/control-flow trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,model,Store/output trace,32,2,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,model,MMIO-only trace,16,1,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,model,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,model,Interrupt+MMIO trace,16,1,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,model,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,model,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,model,ReplayCapsule-RV property-aware capsule,63,3,PASS,PASS,PASS,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,firmware-sim,Full instruction trace,48,6,FAIL,FAIL,FAIL,1.000x,2.917x,PC+instruction bytes measured from firmware-sim commits; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,firmware-sim,Full commit trace,96,6,FAIL,FAIL,FAIL,0.500x,1.458x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,firmware-sim,Branch/control-flow trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,firmware-sim,Store/output trace,16,1,FAIL,FAIL,FAIL,3.000x,8.750x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,firmware-sim,MMIO-only trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,firmware-sim,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,firmware-sim,Interrupt+MMIO trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,firmware-sim,Snapshot-on-failure,140,1,FAIL,FAIL,FAIL,0.343x,1.000x,architectural snapshot bytes measured from firmware-sim final state; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,firmware-sim,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,firmware-sim,ReplayCapsule-RV property-aware capsule,42,2,PASS,PASS,PASS,1.143x,3.333x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+stack_corruption_bug,rtl-smoke,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,rtl-smoke,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+stack_corruption_bug,full-rtl,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,full-rtl,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,model,Full commit trace,64,4,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,model,Branch/control-flow trace,16,1,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,model,Store/output trace,16,1,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,model,MMIO-only trace,32,2,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,model,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,model,Interrupt+MMIO trace,32,2,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,model,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,model,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,model,ReplayCapsule-RV property-aware capsule,105,5,PASS,PASS,PASS,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,firmware-sim,Full instruction trace,48,6,FAIL,FAIL,FAIL,1.000x,2.750x,PC+instruction bytes measured from firmware-sim commits; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,firmware-sim,Full commit trace,96,6,FAIL,FAIL,FAIL,0.500x,1.375x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,firmware-sim,Branch/control-flow trace,16,1,FAIL,FAIL,FAIL,3.000x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,firmware-sim,Store/output trace,16,1,FAIL,FAIL,FAIL,3.000x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,firmware-sim,MMIO-only trace,32,2,FAIL,FAIL,FAIL,1.500x,4.125x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,firmware-sim,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,firmware-sim,Interrupt+MMIO trace,32,2,FAIL,FAIL,FAIL,1.500x,4.125x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,firmware-sim,Snapshot-on-failure,132,1,FAIL,FAIL,FAIL,0.364x,1.000x,architectural snapshot bytes measured from firmware-sim final state; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,firmware-sim,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,firmware-sim,ReplayCapsule-RV property-aware capsule,105,5,PASS,PASS,PASS,0.457x,1.257x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+uart_command_bug,rtl-smoke,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,rtl-smoke,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+uart_command_bug,full-rtl,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+uart_command_bug,full-rtl,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,model,Full commit trace,352,22,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,model,Branch/control-flow trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,model,Store/output trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,model,MMIO-only trace,16,1,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,model,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,model,Interrupt+MMIO trace,48,3,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,model,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,model,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,model,ReplayCapsule-RV property-aware capsule,84,4,PASS,PASS,PASS,NA,NA,size and replay success measured from model evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,firmware-sim,Full instruction trace,112,14,FAIL,FAIL,FAIL,1.000x,1.179x,PC+instruction bytes measured from firmware-sim commits; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,firmware-sim,Full commit trace,224,14,FAIL,FAIL,FAIL,0.500x,0.589x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,firmware-sim,Branch/control-flow trace,80,5,FAIL,FAIL,FAIL,1.400x,1.650x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,firmware-sim,Store/output trace,0,0,FAIL,FAIL,FAIL,NA,NA,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,firmware-sim,MMIO-only trace,16,1,FAIL,FAIL,FAIL,7.000x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,firmware-sim,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,firmware-sim,Interrupt+MMIO trace,16,1,FAIL,FAIL,FAIL,7.000x,8.250x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,firmware-sim,Snapshot-on-failure,132,1,FAIL,FAIL,FAIL,0.848x,1.000x,architectural snapshot bytes measured from firmware-sim final state; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,firmware-sim,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,firmware-sim,ReplayCapsule-RV property-aware capsule,147,7,PASS,PASS,PASS,0.762x,0.898x,size and replay success measured from firmware-sim evidence; full benchmark-wide RTL trace sizes pending; RTL-smoke capsule bytes are reported separately when available
+watchdog_timeout_bug,rtl-smoke,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,rtl-smoke,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated row for this baseline/evidence level
+watchdog_timeout_bug,full-rtl,Full instruction trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,Full commit trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,Branch/control-flow trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,Store/output trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,MMIO-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,Interrupt-only trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,Interrupt+MMIO trace,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,Snapshot-on-failure,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,ReplayCapsule-RV core-only capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,full-rtl,ReplayCapsule-RV property-aware capsule,NA,NA,TODO,NA,NA,NA,NA,no generated full RTL baseline trace row; see full_rtl_replay.csv for record/replay status

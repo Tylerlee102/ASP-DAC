@@ -1,0 +1,17 @@
+tool,required_for,available,version,required,notes
+python,"reproduce,full-rtl-replay,paper",yes,Python 3.12.13,yes,Python driver scripts; current interpreter
+make,full-rtl-replay,yes,GNU Make 4.4.1,no,top-level orchestration and Verilator build; workspace-local .tools/winlibs/mingw64/bin/make.exe
+g++,full-rtl-replay,yes,"g++.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r2) 16.1.0",no,C++ compiler for Verilator harness; workspace-local .tools/winlibs/mingw64/bin/g++.exe
+verilator,full-rtl-replay,yes,Verilator 5.049 devel rev v5.048-331-g0ebae4371 (mod),no,RTL harness build; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/verilator_bin.exe
+riscv64-unknown-elf-gcc,"firmware,full-rtl-replay",no,NA,no,preferred embedded RISC-V compiler; accepted aliases are bare-metal RV32-capable toolchains; tool not found; firmware-hex-fallback is available for selected gate
+riscv64-unknown-elf-objcopy,firmware,no,NA,no,ELF to HEX conversion; tool not found; firmware-hex-fallback is available for selected gate
+iverilog,rtl-smoke,yes,Icarus Verilog version 14.0 (devel) (s20260301-220-g78750c51d-dirty),yes,directed Icarus simulations; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/iverilog.exe
+vvp,rtl-smoke,yes,version probe produced no output,yes,Icarus simulation runtime; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/vvp.exe
+yosys,"mapped-synthesis,formal",yes,version probe produced no output,yes,synthesis/formal frontend; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/yosys.exe
+nextpnr-ice40,mapped-synthesis,yes,version probe produced no output,no,optional iCE40 mapped FPGA flow; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/nextpnr-ice40.exe
+nextpnr-ecp5,mapped-synthesis,yes,version probe produced no output,no,optional ECP5 mapped FPGA flow; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/nextpnr-ecp5.exe
+openroad,mapped-synthesis,no,NA,no,optional ASIC flow; tool not found
+latexmk,paper,no,NA,no,LaTeX build wrapper; tool not found
+pdflatex,paper,no,NA,no,PDF LaTeX engine; tool not found
+lualatex,paper,no,NA,no,fallback PDF LaTeX engine; tool not found
+firmware-hex-fallback,full-rtl-replay,yes,generated-hex,yes,existing generated HEX/MEM images can feed RTL when compiler is unavailable; fallback is not a compiler pass

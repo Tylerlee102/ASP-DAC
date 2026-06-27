@@ -1,0 +1,13 @@
+benchmark,variant,seed,corruption_type,expected_result,actual_result,rejected,error_code,notes
+sensor_threshold_bug,failing,1,missing event,REJECT,REJECT,True,REPLAY_STIMULUS,removed first event
+sensor_threshold_bug,failing,1,duplicate event,REJECT,REJECT,True,EVENT_MISMATCH,duplicated first event
+sensor_threshold_bug,failing,1,reordered event,REJECT,REJECT,True,EVENT_MISMATCH,swapped first two events
+sensor_threshold_bug,failing,1,metadata corruption,REJECT,REJECT,True,EVENT_MISMATCH,changed property_id
+sensor_threshold_bug,failing,1,payload corruption,REJECT,REJECT,True,CAPSULE_LOAD,mutated packet for payload corruption
+sensor_threshold_bug,failing,1,wrong interrupt cause,NA,NA,NA,NA,no applicable event for wrong interrupt cause
+sensor_threshold_bug,failing,1,wrong MMIO address,REJECT,REJECT,True,CAPSULE_LOAD,mutated packet for wrong MMIO address
+sensor_threshold_bug,failing,1,wrong MMIO value,REJECT,REJECT,True,CAPSULE_LOAD,mutated packet for wrong MMIO value
+sensor_threshold_bug,failing,1,shifted commit index,REJECT,REJECT,True,CAPSULE_LOAD,mutated packet for shifted commit index
+sensor_threshold_bug,failing,1,shifted cycle delta,NA,NA,NA,NA,current full RTL harness uses commit-index replay only
+sensor_threshold_bug,failing,1,truncated capsule,REJECT,REJECT,True,EVENT_MISMATCH,truncated event list
+sensor_threshold_bug,failing,1,overflowed incomplete capsule,REJECT,REJECT,True,EVENT_MISMATCH,set overflow and removed final event

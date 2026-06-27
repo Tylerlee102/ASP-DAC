@@ -1,0 +1,10 @@
+metric,config,median,mean,min,max,n,status,notes
+sim_wall_time_sec,baseline_no_recorder,0.018194,0.011891,0.001932,0.018573,45,MEASURED,simulator wall-clock time; not hardware runtime
+sim_wall_time_sec,recorder_present_disabled,0.024409,0.015599,0.001959,0.024905,45,MEASURED,simulator wall-clock time; not hardware runtime
+sim_wall_time_sec,recorder_enabled,0.024731,0.016031,0.001958,0.030852,45,MEASURED,simulator wall-clock time; not hardware runtime
+cycle_overhead_pct,recorder_present_disabled_vs_baseline_no_recorder,0.000000,0.000000,0.000000,0.000000,45,MEASURED,relative to baseline_no_recorder with same firmware/stimulus
+commit_overhead_pct,recorder_present_disabled_vs_baseline_no_recorder,0.000000,0.000000,0.000000,0.000000,45,MEASURED,relative to baseline_no_recorder with same firmware/stimulus
+sim_wall_time_overhead_pct,recorder_present_disabled_vs_baseline_no_recorder,32.550000,18.978000,-13.340000,37.080000,45,MEASURED,relative to baseline_no_recorder with same firmware/stimulus
+cycle_overhead_pct,recorder_enabled_vs_baseline_no_recorder,0.000000,0.000000,0.000000,0.000000,45,MEASURED,relative to baseline_no_recorder with same firmware/stimulus
+commit_overhead_pct,recorder_enabled_vs_baseline_no_recorder,0.000000,0.000000,0.000000,0.000000,45,MEASURED,relative to baseline_no_recorder with same firmware/stimulus
+sim_wall_time_overhead_pct,recorder_enabled_vs_baseline_no_recorder,33.950000,20.656889,-15.370000,69.570000,45,MEASURED,relative to baseline_no_recorder with same firmware/stimulus

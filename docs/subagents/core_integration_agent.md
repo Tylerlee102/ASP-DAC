@@ -9,7 +9,7 @@ Owned files:
 
 Mission:
 
-Plan PicoRV32-first integration with a minimal embedded SoC:
+Plan PicoRV32-centered integration with a compact embedded SoC:
 
 - RV32I core
 - instruction memory

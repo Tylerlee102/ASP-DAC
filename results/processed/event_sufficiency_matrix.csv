@@ -1,0 +1,265 @@
+benchmark,evidence_level,removed_event_class,replay_result,property_match,final_signature_match,required_for_replay,notes
+sensor_threshold_bug,model,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+sensor_threshold_bug,firmware-sim,commit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+sensor_threshold_bug,full-rtl,commit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,branch/jump,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+sensor_threshold_bug,firmware-sim,branch/jump,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,branch/jump,FAIL,PASS,PASS,yes,missing branch event at commit 3: pc=0x94 value=0x0 order=0x1; missing branch event at commit 6: pc=0x98 value=0x0 order=0x2; missing branch event at commit 8: pc=0x98 value=0x0 order=0x3; missing branch event at commit 10: pc=0x98 value=0x0 order=0x4; missing branch event at commit 12: pc=0x98 value=0x0 order=0x5; missing branch event at commit 14: pc=0x98 value=0x0 order=0x6; missing branch event at commit 16: pc=0x98 value=0x0 order=0x7; missing branch event at commit 18: pc=0x98 value=0x0 order=0x8; missing branch event at commit 20: pc=0x98 value=0x0 order=0x9; missing branch event at commit 22: pc=0x98 value=0x0 order=0xa; missing branch event at commit 24: pc=0x98 value=0x0 order=0xb; missing branch event at commit 26: pc=0x98 value=0x0 order=0xc; missing branch event at commit 28: pc=0x98 value=0x0 order=0xd; missing branch event at commit 30: pc=0x98 value=0x0 order=0xe
+sensor_threshold_bug,full-rtl,branch/jump,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,load/store,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+sensor_threshold_bug,firmware-sim,load/store,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,load/store,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+sensor_threshold_bug,full-rtl,load/store,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,MMIO read,FAIL,PASS,PASS,yes,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at commit 1: addr=0x40000000 value=0x0 direction='read'
+sensor_threshold_bug,firmware-sim,MMIO read,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,MMIO read,FAIL,PASS,PASS,yes,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read' order=0x0
+sensor_threshold_bug,full-rtl,MMIO read,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,MMIO write,TODO,NA,NA,unknown,no generated ablation row for this event class
+sensor_threshold_bug,firmware-sim,MMIO write,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,MMIO write,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+sensor_threshold_bug,full-rtl,MMIO write,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,interrupt enter,FAIL,PASS,PASS,yes,missing interrupt event at commit 4: irq='timer0' state='taken'; missing interrupt event at commit 4: irq='timer0' state='return'
+sensor_threshold_bug,firmware-sim,interrupt enter,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,interrupt enter,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+sensor_threshold_bug,full-rtl,interrupt enter,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+sensor_threshold_bug,firmware-sim,interrupt exit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+sensor_threshold_bug,full-rtl,interrupt exit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,external input,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+sensor_threshold_bug,firmware-sim,external input,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,external input,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+sensor_threshold_bug,full-rtl,external input,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+sensor_threshold_bug,firmware-sim,property fail,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+sensor_threshold_bug,full-rtl,property fail,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,checkpoint/hash,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+sensor_threshold_bug,firmware-sim,checkpoint/hash,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,checkpoint/hash,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+sensor_threshold_bug,full-rtl,checkpoint/hash,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+sensor_threshold_bug,model,diagnostic PC context,TODO,NA,NA,unknown,no generated ablation row for this event class
+sensor_threshold_bug,firmware-sim,diagnostic PC context,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+sensor_threshold_bug,rtl-smoke,diagnostic PC context,FAIL,PASS,PASS,yes,missing pc event at commit 1: pc=0x88 order=0x0; missing pc event at commit 3: pc=0x94 order=0x1; missing pc event at commit 6: pc=0x98 order=0x2; missing pc event at commit 8: pc=0x98 order=0x3; missing pc event at commit 10: pc=0x98 order=0x4; missing pc event at commit 12: pc=0x98 order=0x5; missing pc event at commit 14: pc=0x98 order=0x6; missing pc event at commit 16: pc=0x98 order=0x7; missing pc event at commit 18: pc=0x98 order=0x8; missing pc event at commit 20: pc=0x98 order=0x9; missing pc event at commit 22: pc=0x98 order=0xa; missing pc event at commit 24: pc=0x98 order=0xb; missing pc event at commit 26: pc=0x98 order=0xc; missing pc event at commit 28: pc=0x98 order=0xd; missing pc event at commit 30: pc=0x98 order=0xe; missing pc event at commit 31: pc=0x9c order=0xf
+sensor_threshold_bug,full-rtl,diagnostic PC context,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+interrupt_race_bug,firmware-sim,commit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+interrupt_race_bug,full-rtl,commit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,branch/jump,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+interrupt_race_bug,firmware-sim,branch/jump,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,branch/jump,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+interrupt_race_bug,full-rtl,branch/jump,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,load/store,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+interrupt_race_bug,firmware-sim,load/store,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,load/store,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+interrupt_race_bug,full-rtl,load/store,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,MMIO read,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+interrupt_race_bug,firmware-sim,MMIO read,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,MMIO read,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+interrupt_race_bug,full-rtl,MMIO read,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,MMIO write,TODO,NA,NA,unknown,no generated ablation row for this event class
+interrupt_race_bug,firmware-sim,MMIO write,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,MMIO write,FAIL,PASS,PASS,yes,missing mmio event at commit 3: addr=0x4000000c value=0x1 direction='write' order=0x0
+interrupt_race_bug,full-rtl,MMIO write,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,interrupt enter,FAIL,PASS,PASS,yes,missing interrupt event at commit 3: irq='timer0' state='taken'; missing interrupt event at commit 3: irq='timer0' state='return'
+interrupt_race_bug,firmware-sim,interrupt enter,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,interrupt enter,FAIL,PASS,PASS,yes,missing interrupt event at commit 4: irq='line0' state='taken' value=0x1 order=0x1
+interrupt_race_bug,full-rtl,interrupt enter,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+interrupt_race_bug,firmware-sim,interrupt exit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+interrupt_race_bug,full-rtl,interrupt exit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,external input,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+interrupt_race_bug,firmware-sim,external input,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,external input,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+interrupt_race_bug,full-rtl,external input,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+interrupt_race_bug,firmware-sim,property fail,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+interrupt_race_bug,full-rtl,property fail,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,checkpoint/hash,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+interrupt_race_bug,firmware-sim,checkpoint/hash,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,checkpoint/hash,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+interrupt_race_bug,full-rtl,checkpoint/hash,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+interrupt_race_bug,model,diagnostic PC context,TODO,NA,NA,unknown,no generated ablation row for this event class
+interrupt_race_bug,firmware-sim,diagnostic PC context,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+interrupt_race_bug,rtl-smoke,diagnostic PC context,FAIL,PASS,PASS,yes,missing pc event at commit 3: pc=0x90 order=0x0; missing pc event at commit 4: pc=0x90 order=0x1; missing pc event at commit 4: pc=0x90 order=0x2
+interrupt_race_bug,full-rtl,diagnostic PC context,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+mmio_ordering_bug,firmware-sim,commit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+mmio_ordering_bug,full-rtl,commit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,branch/jump,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+mmio_ordering_bug,firmware-sim,branch/jump,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,branch/jump,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+mmio_ordering_bug,full-rtl,branch/jump,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,load/store,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+mmio_ordering_bug,firmware-sim,load/store,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,load/store,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+mmio_ordering_bug,full-rtl,load/store,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,MMIO read,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+mmio_ordering_bug,firmware-sim,MMIO read,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,MMIO read,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+mmio_ordering_bug,full-rtl,MMIO read,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,MMIO write,TODO,NA,NA,unknown,no generated ablation row for this event class
+mmio_ordering_bug,firmware-sim,MMIO write,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,MMIO write,FAIL,PASS,PASS,yes,missing mmio event at commit 2: addr=0x40000004 value=0x19 direction='write' order=0x0
+mmio_ordering_bug,full-rtl,MMIO write,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,interrupt enter,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+mmio_ordering_bug,firmware-sim,interrupt enter,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,interrupt enter,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+mmio_ordering_bug,full-rtl,interrupt enter,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+mmio_ordering_bug,firmware-sim,interrupt exit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+mmio_ordering_bug,full-rtl,interrupt exit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,external input,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+mmio_ordering_bug,firmware-sim,external input,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,external input,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+mmio_ordering_bug,full-rtl,external input,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+mmio_ordering_bug,firmware-sim,property fail,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+mmio_ordering_bug,full-rtl,property fail,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,checkpoint/hash,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+mmio_ordering_bug,firmware-sim,checkpoint/hash,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,checkpoint/hash,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+mmio_ordering_bug,full-rtl,checkpoint/hash,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+mmio_ordering_bug,model,diagnostic PC context,TODO,NA,NA,unknown,no generated ablation row for this event class
+mmio_ordering_bug,firmware-sim,diagnostic PC context,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+mmio_ordering_bug,rtl-smoke,diagnostic PC context,FAIL,PASS,PASS,yes,missing pc event at commit 2: pc=0x8c order=0x0; missing pc event at commit 2: pc=0x8c order=0x1
+mmio_ordering_bug,full-rtl,diagnostic PC context,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+stack_corruption_bug,firmware-sim,commit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+stack_corruption_bug,full-rtl,commit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,branch/jump,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+stack_corruption_bug,firmware-sim,branch/jump,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,branch/jump,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+stack_corruption_bug,full-rtl,branch/jump,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,load/store,FAIL,PASS,PASS,yes,missing store event at commit 2: pc=0xe0 addr=0x1010 value=0xdeadbeef
+stack_corruption_bug,firmware-sim,load/store,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,load/store,FAIL,PASS,PASS,yes,missing store event at commit 5: pc=0x98 addr=0x1010 value=0xdeadbeef order=0x0
+stack_corruption_bug,full-rtl,load/store,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,MMIO read,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+stack_corruption_bug,firmware-sim,MMIO read,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,MMIO read,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+stack_corruption_bug,full-rtl,MMIO read,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,MMIO write,TODO,NA,NA,unknown,no generated ablation row for this event class
+stack_corruption_bug,firmware-sim,MMIO write,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,MMIO write,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+stack_corruption_bug,full-rtl,MMIO write,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,interrupt enter,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+stack_corruption_bug,firmware-sim,interrupt enter,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,interrupt enter,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+stack_corruption_bug,full-rtl,interrupt enter,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+stack_corruption_bug,firmware-sim,interrupt exit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+stack_corruption_bug,full-rtl,interrupt exit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,external input,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+stack_corruption_bug,firmware-sim,external input,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,external input,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+stack_corruption_bug,full-rtl,external input,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+stack_corruption_bug,firmware-sim,property fail,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+stack_corruption_bug,full-rtl,property fail,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,checkpoint/hash,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+stack_corruption_bug,firmware-sim,checkpoint/hash,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,checkpoint/hash,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+stack_corruption_bug,full-rtl,checkpoint/hash,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+stack_corruption_bug,model,diagnostic PC context,TODO,NA,NA,unknown,no generated ablation row for this event class
+stack_corruption_bug,firmware-sim,diagnostic PC context,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+stack_corruption_bug,rtl-smoke,diagnostic PC context,FAIL,PASS,PASS,yes,missing pc event at commit 5: pc=0x98 order=0x0; missing pc event at commit 5: pc=0x98 order=0x1
+stack_corruption_bug,full-rtl,diagnostic PC context,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+uart_command_bug,firmware-sim,commit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+uart_command_bug,full-rtl,commit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,branch/jump,FAIL,PASS,PASS,yes,missing branch event at commit 2: pc=0xf0 value=0x1
+uart_command_bug,firmware-sim,branch/jump,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,branch/jump,FAIL,PASS,PASS,yes,missing branch event at commit 3: pc=0xa4 value=0x0 order=0x1
+uart_command_bug,full-rtl,branch/jump,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,load/store,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+uart_command_bug,firmware-sim,load/store,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,load/store,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+uart_command_bug,full-rtl,load/store,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,MMIO read,FAIL,PASS,PASS,yes,missing mmio event at commit 1: addr=0x4000000c value=0x55 direction='read'; extra observed mmio event at commit 1: addr=0x4000000c value=0x0 direction='read'
+uart_command_bug,firmware-sim,MMIO read,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,MMIO read,FAIL,PASS,PASS,yes,missing mmio event at commit 1: addr=0x4000000c value=0x55 direction='read' order=0x0
+uart_command_bug,full-rtl,MMIO read,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,MMIO write,TODO,NA,NA,unknown,no generated ablation row for this event class
+uart_command_bug,firmware-sim,MMIO write,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,MMIO write,FAIL,PASS,PASS,yes,missing mmio event at commit 5: addr=0x40000004 value=0xfa direction='write' order=0x2
+uart_command_bug,full-rtl,MMIO write,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,interrupt enter,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+uart_command_bug,firmware-sim,interrupt enter,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,interrupt enter,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+uart_command_bug,full-rtl,interrupt enter,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+uart_command_bug,firmware-sim,interrupt exit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+uart_command_bug,full-rtl,interrupt exit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,external input,FAIL,PASS,PASS,yes,missing input event at commit 1: input_id='input1' value=0x55; extra observed input event at commit 1: input_id='input1' value=0x0
+uart_command_bug,firmware-sim,external input,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,external input,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+uart_command_bug,full-rtl,external input,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+uart_command_bug,firmware-sim,property fail,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+uart_command_bug,full-rtl,property fail,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,checkpoint/hash,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+uart_command_bug,firmware-sim,checkpoint/hash,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,checkpoint/hash,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+uart_command_bug,full-rtl,checkpoint/hash,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+uart_command_bug,model,diagnostic PC context,TODO,NA,NA,unknown,no generated ablation row for this event class
+uart_command_bug,firmware-sim,diagnostic PC context,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+uart_command_bug,rtl-smoke,diagnostic PC context,FAIL,PASS,PASS,yes,missing pc event at commit 1: pc=0x88 order=0x0; missing pc event at commit 3: pc=0xa4 order=0x1; missing pc event at commit 5: pc=0xac order=0x2; missing pc event at commit 5: pc=0xac order=0x3
+uart_command_bug,full-rtl,diagnostic PC context,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+watchdog_timeout_bug,firmware-sim,commit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,commit,TODO,NA,NA,unknown,no generated ablation row for this event class
+watchdog_timeout_bug,full-rtl,commit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,branch/jump,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+watchdog_timeout_bug,firmware-sim,branch/jump,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,branch/jump,FAIL,PASS,PASS,yes,missing branch event at commit 4: pc=0x8c value=0x0 order=0x1; missing branch event at commit 6: pc=0x8c value=0x0 order=0x2; missing branch event at commit 8: pc=0x8c value=0x0 order=0x3; missing branch event at commit 10: pc=0x8c value=0x0 order=0x4; missing branch event at commit 12: pc=0x8c value=0x0 order=0x5; missing branch event at commit 14: pc=0x8c value=0x0 order=0x6; missing branch event at commit 16: pc=0x8c value=0x0 order=0x7; missing branch event at commit 18: pc=0x8c value=0x0 order=0x8; missing branch event at commit 20: pc=0x8c value=0x0 order=0x9; missing branch event at commit 22: pc=0x8c value=0x0 order=0xa
+watchdog_timeout_bug,full-rtl,branch/jump,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,load/store,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+watchdog_timeout_bug,firmware-sim,load/store,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,load/store,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+watchdog_timeout_bug,full-rtl,load/store,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,MMIO read,FAIL,PASS,PASS,yes,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read'; extra observed mmio event at commit 1: addr=0x40000000 value=0x0 direction='read'
+watchdog_timeout_bug,firmware-sim,MMIO read,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,MMIO read,FAIL,PASS,PASS,yes,missing mmio event at commit 1: addr=0x40000000 value=0x352 direction='read' order=0x0
+watchdog_timeout_bug,full-rtl,MMIO read,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,MMIO write,TODO,NA,NA,unknown,no generated ablation row for this event class
+watchdog_timeout_bug,firmware-sim,MMIO write,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,MMIO write,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+watchdog_timeout_bug,full-rtl,MMIO write,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,interrupt enter,FAIL,PASS,PASS,yes,missing interrupt event at commit 6: irq='timer0' state='taken'; missing interrupt event at commit 6: irq='timer0' state='return'
+watchdog_timeout_bug,firmware-sim,interrupt enter,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,interrupt enter,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+watchdog_timeout_bug,full-rtl,interrupt enter,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+watchdog_timeout_bug,firmware-sim,interrupt exit,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,interrupt exit,TODO,NA,NA,unknown,no generated ablation row for this event class
+watchdog_timeout_bug,full-rtl,interrupt exit,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,external input,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+watchdog_timeout_bug,firmware-sim,external input,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,external input,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+watchdog_timeout_bug,full-rtl,external input,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+watchdog_timeout_bug,firmware-sim,property fail,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,property fail,TODO,NA,NA,unknown,no generated ablation row for this event class
+watchdog_timeout_bug,full-rtl,property fail,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,checkpoint/hash,PASS,PASS,PASS,no,no replay mismatch observed for this model benchmark
+watchdog_timeout_bug,firmware-sim,checkpoint/hash,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,checkpoint/hash,PASS,PASS,PASS,no,event class absent from this RTL-smoke capsule
+watchdog_timeout_bug,full-rtl,checkpoint/hash,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status
+watchdog_timeout_bug,model,diagnostic PC context,TODO,NA,NA,unknown,no generated ablation row for this event class
+watchdog_timeout_bug,firmware-sim,diagnostic PC context,TODO,NA,NA,unknown,firmware-sim event-removal ablation is not implemented yet
+watchdog_timeout_bug,rtl-smoke,diagnostic PC context,FAIL,PASS,PASS,yes,missing pc event at commit 1: pc=0x88 order=0x0; missing pc event at commit 4: pc=0x8c order=0x1; missing pc event at commit 6: pc=0x8c order=0x2; missing pc event at commit 8: pc=0x8c order=0x3; missing pc event at commit 10: pc=0x8c order=0x4; missing pc event at commit 12: pc=0x8c order=0x5; missing pc event at commit 14: pc=0x8c order=0x6; missing pc event at commit 16: pc=0x8c order=0x7; missing pc event at commit 18: pc=0x8c order=0x8; missing pc event at commit 20: pc=0x8c order=0x9; missing pc event at commit 22: pc=0x8c order=0xa; missing pc event at commit 23: pc=0x90 order=0xb
+watchdog_timeout_bug,full-rtl,diagnostic PC context,TODO,NA,NA,unknown,full RTL event-removal ablation is not implemented; see full_rtl_replay.csv for record/replay status

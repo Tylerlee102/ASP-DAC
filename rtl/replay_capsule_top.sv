@@ -8,6 +8,7 @@ module replay_capsule_top #(
   input  logic        clk,
   input  logic        rst_n,
   input  logic        clear,
+  input  logic        watchdog_enable,
   input  logic [3:0]  capture_mode,
 
   input  logic        commit_valid,
@@ -109,6 +110,7 @@ module replay_capsule_top #(
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),
+    .watchdog_enable(watchdog_enable),
     .event_valid(raw_event_valid),
     .event_type(raw_event_type),
     .event_commit_index(raw_event_commit_index),

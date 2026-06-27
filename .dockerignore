@@ -1,0 +1,9 @@
+.git
+.tools
+dist
+__pycache__
+*.pyc
+.pytest_cache
+.mypy_cache
+paper/main.pdf
+paper/main_build.log

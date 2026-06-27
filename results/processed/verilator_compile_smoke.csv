@@ -1,0 +1,2 @@
+tool,status,verilator_path,version,output,notes
+verilator,PASS,/usr/bin/verilator,Verilator 5.020 2024-01-01 rev (Debian 5.020-1),results/raw/verilator/compile_smoke.log,tiny SystemVerilog compile/build succeeded

@@ -1,0 +1,5 @@
+# interrupt trace
+[record]
+{"addr": "0x00000000", "commit": 4, "commit_index": 4, "cycle": null, "data": "0x00000001", "diagnostic_only": false, "event_id": 1, "event_type": 7, "index": 1, "interrupt_cause": 1, "interrupt_pending": true, "interrupt_taken": true, "mmio_address": "0x00000000", "mmio_value": "0x00000001", "notes": "replay-critical", "packet": "760000000100000004000000900000000000000001", "payload_hash": "0xb3ddad11", "pc": "0x00000090", "property_id": 2, "replay_required": true, "source": "record"}
+[replay]
+{"addr": "0x00000000", "commit": 4, "commit_index": 4, "cycle": null, "data": "0x00000001", "diagnostic_only": false, "event_id": 1, "event_type": 7, "index": 1, "interrupt_cause": 1, "interrupt_pending": true, "interrupt_taken": true, "mmio_address": "0x00000000", "mmio_value": "0x00000001", "notes": "replay-critical", "packet": "760000000100000004000000900000000000000001", "payload_hash": "0xb3ddad11", "pc": "0x00000090", "property_id": 2, "replay_required": true, "source": "replay"}

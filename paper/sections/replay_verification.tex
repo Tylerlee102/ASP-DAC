@@ -1,0 +1,7 @@
+\section{Record/Replay Implementation}
+
+The replay comparator consumes an expected capsule and an observed replay trace. A passing comparison requires matching property metadata, the required event classes at the selected commit or cycle index, exact payload equality for replay-driving events, and no extra replay-driving events. Negative tests corrupt metadata, remove events, duplicate events, shift indices, swap order tags, and perturb payloads. The same comparator is used for model fixtures and exported RTL-smoke capsules.
+
+The current replay-consume path is host-driven. The Verilator harness records a capsule from the instrumented PicoRV32 wrapper, reruns the same compiler-backed firmware under replay control, injects the recorded interrupt/MMIO boundary facts, and checks the resulting trace. This is strong evidence for the event stream and RTL integration, but it is not a synthesizable replay-consume datapath.
+
+Bounded local checks cover recorder and control contracts such as event classification, buffer behavior, property signatures, replay mismatch handling, register access, hash/signature update, and MMIO/interrupt logging. These checks support local RTL obligations; they are not a mechanized end-to-end processor theorem.

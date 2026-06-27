@@ -11,6 +11,7 @@ module picorv32_replaycapsule_wrapper #(
   input  logic        clk,
   input  logic        rst_n,
   input  logic        clear,
+  input  logic        watchdog_enable,
   input  logic [3:0]  capture_mode,
 
   output logic        trap,
@@ -178,6 +179,7 @@ module picorv32_replaycapsule_wrapper #(
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),
+    .watchdog_enable(watchdog_enable),
     .capture_mode(capture_mode),
     .commit_valid(core_trace_valid && !trace_is_addr),
     .commit_pc(trace_context_pc),
