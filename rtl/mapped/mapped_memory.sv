@@ -26,7 +26,7 @@ module mapped_memory #(
   logic [31:0] status_counter;
 
   assign word_addr = mem_addr[ADDR_W+1:2];
-  assign is_memory_access = (mem_addr[31:2] < WORDS);
+  assign is_memory_access = (mem_addr[31:ADDR_W+2] == '0);
   assign is_io_access = (mem_addr[31:8] == 24'h1000_00);
 
   always_comb begin
@@ -59,10 +59,7 @@ module mapped_memory #(
       if (mem_valid) begin
         if (is_memory_access) begin
           mem_rdata <= mem[word_addr];
-          if (mem_wstrb[0]) mem[word_addr][7:0] <= mem_wdata[7:0];
-          if (mem_wstrb[1]) mem[word_addr][15:8] <= mem_wdata[15:8];
-          if (mem_wstrb[2]) mem[word_addr][23:16] <= mem_wdata[23:16];
-          if (mem_wstrb[3]) mem[word_addr][31:24] <= mem_wdata[31:24];
+          if (|mem_wstrb) mem[word_addr] <= mem_wdata;
         end else begin
           mem_rdata <= io_read_value;
           if (is_io_access && |mem_wstrb) begin
