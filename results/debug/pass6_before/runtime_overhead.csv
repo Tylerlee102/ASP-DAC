@@ -1,0 +1,136 @@
+benchmark,variant,seed,config,cycles_to_completion,cycles_to_failure,commits_to_completion,commits_to_failure,event_count,capsule_bytes,sim_wall_time_sec,slowdown_vs_baseline_pct,cycle_overhead_pct,commit_overhead_pct,status,notes
+sensor_threshold_bug,failing,1,with_replaycapsule_recorder,NA,131,NA,32,15,315,0.131335,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,failing,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,failing,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+sensor_threshold_bug,failing,2,with_replaycapsule_recorder,NA,131,NA,32,15,315,0.009628,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,failing,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,failing,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+sensor_threshold_bug,failing,3,with_replaycapsule_recorder,NA,131,NA,32,15,315,0.009021,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,failing,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,failing,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+sensor_threshold_bug,fixed,1,with_replaycapsule_recorder,100000,NA,8,NA,4,84,0.027855,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,fixed,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,fixed,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+sensor_threshold_bug,fixed,2,with_replaycapsule_recorder,100000,NA,8,NA,4,84,0.028567,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,fixed,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,fixed,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+sensor_threshold_bug,fixed,3,with_replaycapsule_recorder,100000,NA,8,NA,4,84,0.027828,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,fixed,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,fixed,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+sensor_threshold_bug,no_failure_edge,1,with_replaycapsule_recorder,100000,NA,4,NA,1,21,0.029538,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,no_failure_edge,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,no_failure_edge,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+sensor_threshold_bug,no_failure_edge,2,with_replaycapsule_recorder,100000,NA,4,NA,1,21,0.028634,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,no_failure_edge,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,no_failure_edge,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+sensor_threshold_bug,no_failure_edge,3,with_replaycapsule_recorder,100000,NA,4,NA,1,21,0.028263,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+sensor_threshold_bug,no_failure_edge,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+sensor_threshold_bug,no_failure_edge,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+interrupt_race_bug,failing,1,with_replaycapsule_recorder,NA,22,NA,4,2,42,0.010999,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+interrupt_race_bug,failing,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+interrupt_race_bug,failing,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+interrupt_race_bug,failing,2,with_replaycapsule_recorder,NA,22,NA,4,2,42,0.010199,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+interrupt_race_bug,failing,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+interrupt_race_bug,failing,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+interrupt_race_bug,failing,3,with_replaycapsule_recorder,NA,22,NA,4,2,42,0.127328,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+interrupt_race_bug,failing,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+interrupt_race_bug,failing,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+interrupt_race_bug,fixed,1,with_replaycapsule_recorder,100000,NA,45,NA,7,147,0.028123,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+interrupt_race_bug,fixed,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+interrupt_race_bug,fixed,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+interrupt_race_bug,fixed,2,with_replaycapsule_recorder,100000,NA,45,NA,7,147,0.027993,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+interrupt_race_bug,fixed,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+interrupt_race_bug,fixed,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+interrupt_race_bug,fixed,3,with_replaycapsule_recorder,100000,NA,45,NA,7,147,0.028799,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+interrupt_race_bug,fixed,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+interrupt_race_bug,fixed,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+mmio_ordering_bug,failing,1,with_replaycapsule_recorder,NA,14,NA,2,1,21,0.010540,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+mmio_ordering_bug,failing,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+mmio_ordering_bug,failing,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+mmio_ordering_bug,failing,2,with_replaycapsule_recorder,NA,14,NA,2,1,21,0.009429,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+mmio_ordering_bug,failing,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+mmio_ordering_bug,failing,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+mmio_ordering_bug,failing,3,with_replaycapsule_recorder,NA,14,NA,2,1,21,0.010669,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+mmio_ordering_bug,failing,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+mmio_ordering_bug,failing,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+mmio_ordering_bug,fixed,1,with_replaycapsule_recorder,100000,NA,6,NA,2,42,0.028430,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+mmio_ordering_bug,fixed,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+mmio_ordering_bug,fixed,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+mmio_ordering_bug,fixed,2,with_replaycapsule_recorder,100000,NA,6,NA,2,42,0.028226,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+mmio_ordering_bug,fixed,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+mmio_ordering_bug,fixed,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+mmio_ordering_bug,fixed,3,with_replaycapsule_recorder,100000,NA,6,NA,2,42,0.027437,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+mmio_ordering_bug,fixed,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+mmio_ordering_bug,fixed,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+stack_corruption_bug,failing,1,with_replaycapsule_recorder,NA,23,NA,5,1,21,0.011503,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+stack_corruption_bug,failing,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+stack_corruption_bug,failing,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+stack_corruption_bug,failing,2,with_replaycapsule_recorder,NA,23,NA,5,1,21,0.135363,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+stack_corruption_bug,failing,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+stack_corruption_bug,failing,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+stack_corruption_bug,failing,3,with_replaycapsule_recorder,NA,23,NA,5,1,21,0.009902,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+stack_corruption_bug,failing,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+stack_corruption_bug,failing,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+stack_corruption_bug,fixed,1,with_replaycapsule_recorder,100000,NA,6,NA,1,21,0.029448,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+stack_corruption_bug,fixed,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+stack_corruption_bug,fixed,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+stack_corruption_bug,fixed,2,with_replaycapsule_recorder,100000,NA,6,NA,1,21,0.029888,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+stack_corruption_bug,fixed,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+stack_corruption_bug,fixed,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+stack_corruption_bug,fixed,3,with_replaycapsule_recorder,100000,NA,6,NA,1,21,0.028862,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+stack_corruption_bug,fixed,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+stack_corruption_bug,fixed,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,failing,1,with_replaycapsule_recorder,NA,27,NA,5,3,63,0.010993,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,failing,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,failing,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,failing,2,with_replaycapsule_recorder,NA,27,NA,5,3,63,0.011747,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,failing,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,failing,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,failing,3,with_replaycapsule_recorder,NA,27,NA,5,3,63,0.010204,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,failing,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,failing,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,fixed,1,with_replaycapsule_recorder,100000,NA,8,NA,3,63,0.154702,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,fixed,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,fixed,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,fixed,2,with_replaycapsule_recorder,100000,NA,8,NA,3,63,0.027039,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,fixed,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,fixed,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,fixed,3,with_replaycapsule_recorder,100000,NA,8,NA,3,63,0.027792,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,fixed,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,fixed,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,no_failure_edge,1,with_replaycapsule_recorder,100000,NA,8,NA,3,63,0.027117,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,no_failure_edge,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,no_failure_edge,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,no_failure_edge,2,with_replaycapsule_recorder,100000,NA,8,NA,3,63,0.027504,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,no_failure_edge,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,no_failure_edge,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+uart_command_bug,no_failure_edge,3,with_replaycapsule_recorder,100000,NA,8,NA,3,63,0.030057,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+uart_command_bug,no_failure_edge,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+uart_command_bug,no_failure_edge,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,failing,1,with_replaycapsule_recorder,NA,99,NA,24,11,231,0.010714,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,failing,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,failing,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,failing,2,with_replaycapsule_recorder,NA,99,NA,24,11,231,0.010771,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,failing,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,failing,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,failing,3,with_replaycapsule_recorder,NA,99,NA,24,11,231,0.009429,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,failing,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,failing,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,fixed,1,with_replaycapsule_recorder,100000,NA,17,NA,8,168,0.146081,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,fixed,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,fixed,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,fixed,2,with_replaycapsule_recorder,100000,NA,17,NA,8,168,0.027595,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,fixed,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,fixed,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,fixed,3,with_replaycapsule_recorder,100000,NA,17,NA,8,168,0.027622,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,fixed,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,fixed,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,no_failure_edge,1,with_replaycapsule_recorder,100000,NA,39,NA,18,378,0.027362,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,no_failure_edge,1,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,no_failure_edge,1,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,no_failure_edge,2,with_replaycapsule_recorder,100000,NA,39,NA,18,378,0.027614,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,no_failure_edge,2,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,no_failure_edge,2,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control
+watchdog_timeout_bug,no_failure_edge,3,with_replaycapsule_recorder,100000,NA,39,NA,18,378,0.027038,NA,NA,NA,MEASURED,measured current recorder-enabled host-driven Verilator run; no baseline overhead computed
+watchdog_timeout_bug,no_failure_edge,3,baseline_no_replaycapsule,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,no baseline core wrapper without ReplayCapsule instrumentation exists
+watchdog_timeout_bug,no_failure_edge,3,replaycapsule_present_disabled,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,current Verilator top has no runtime recorder-disable control

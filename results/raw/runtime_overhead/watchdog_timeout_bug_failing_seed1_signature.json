@@ -1,0 +1,15 @@
+{
+  "benchmark": "watchdog_timeout_bug",
+  "variant": "failing",
+  "seed": 1,
+  "mode": "record",
+  "property_id": 6,
+  "property_signature": "0xfeed0081",
+  "cycles_to_failure": 99,
+  "commits_to_failure": 24,
+  "event_count": 11,
+  "capsule_bytes": 231,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "property failure observed"
+}

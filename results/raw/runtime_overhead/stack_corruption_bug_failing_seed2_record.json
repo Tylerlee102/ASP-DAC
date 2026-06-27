@@ -1,0 +1,12 @@
+{
+  "benchmark": "stack_corruption_bug",
+  "variant": "failing",
+  "seed": 2,
+  "mode": "record",
+  "property_id": 4,
+  "property_signature": "0x8901aefb",
+  "overflow": false,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "3200000000000000050000009800001010deadbeef", "event_type": 3, "event_id": 0, "commit": 5, "commit_index": 5, "pc": "0x00000098", "addr": "0x00001010", "data": "0xdeadbeef", "mmio_address": "0x00001010", "mmio_value": "0xdeadbeef", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 4, "payload_hash": "0x570befda", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"}
+  ]
+}

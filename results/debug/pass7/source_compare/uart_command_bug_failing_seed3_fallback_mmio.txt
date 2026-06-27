@@ -1,0 +1,2 @@
+{"addr": "0x4000000c", "commit": 1, "cycle": 2, "data": "0x00000055", "event_type": "EV_MMIO_READ", "pc": "0x00000084", "seq": 2}
+{"addr": "0x40000004", "commit": 5, "cycle": 8, "data": "0x000000fa", "event_type": "EV_MMIO_WRITE", "pc": "0x000000a8", "seq": 8}

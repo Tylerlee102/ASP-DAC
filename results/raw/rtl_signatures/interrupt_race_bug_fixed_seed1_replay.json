@@ -1,0 +1,15 @@
+{
+  "benchmark": "interrupt_race_bug",
+  "variant": "fixed",
+  "seed": 1,
+  "mode": "replay",
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 100000,
+  "commits_to_failure": 45,
+  "event_count": 7,
+  "capsule_bytes": 147,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "record/replay capsule packets match"
+}

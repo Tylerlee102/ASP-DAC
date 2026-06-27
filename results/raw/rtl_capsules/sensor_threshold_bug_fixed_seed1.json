@@ -1,0 +1,15 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "variant": "fixed",
+  "seed": 1,
+  "mode": "record",
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "overflow": false,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "560000000000000001000000884000000000000352", "event_type": 5, "event_id": 0, "commit": 1, "commit_index": 1, "pc": "0x00000088", "addr": "0x40000000", "data": "0x00000352", "mmio_address": "0x40000000", "mmio_value": "0x00000352", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x79759847", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 1, "cycle": null, "packet": "1a0000000100000003000000940000000000000000", "event_type": 1, "event_id": 1, "commit": 3, "commit_index": 3, "pc": "0x00000094", "addr": "0x00000000", "data": "0x00000000", "mmio_address": "0x00000000", "mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x3c8b25e0", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 2, "cycle": null, "packet": "620000000200000006000000a0400000080000cafe", "event_type": 6, "event_id": 2, "commit": 6, "commit_index": 6, "pc": "0x000000a0", "addr": "0x40000008", "data": "0x0000cafe", "mmio_address": "0x40000008", "mmio_value": "0x0000cafe", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0xf3eba765", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 3, "cycle": null, "packet": "620000000300000007000000a44000000400000000", "event_type": 6, "event_id": 3, "commit": 7, "commit_index": 7, "pc": "0x000000a4", "addr": "0x40000004", "data": "0x00000000", "mmio_address": "0x40000004", "mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x1b7a38e0", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"}
+  ]
+}
