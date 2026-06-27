@@ -136,7 +136,7 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
             "PARTIAL" if summary_ready else "TODO",
             "documentation+firmware-artifact",
             "formal/assumptions.md; docs/capsule_format.md; firmware/build/; results/processed/summary.csv",
-            "Identity fields are specified and generated firmware artifacts exist, but there is no external compiler or full RTL replay identity check.",
+            "Identity fields and compiler-built firmware artifacts exist; this is still an evidence check rather than a mechanized platform-identity proof.",
         ),
         Obligation(
             "PO-02",
@@ -154,7 +154,7 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
             "PARTIAL" if event_sufficiency_rows == 6 and rtl_smoke_sufficiency_rows == 6 and rtl_exports_pass else "TODO",
             "model+rtl-smoke",
             "results/processed/event_sufficiency.csv; results/processed/rtl_smoke_event_sufficiency.csv; results/processed/rtl_capsule_exports.csv; results/processed/rtl_capsule_event_classes.csv",
-            "Completeness is exercised for six model benchmarks and twelve RTL-smoke capsules, not for arbitrary firmware or full benchmark-wide RTL traces.",
+            "Completeness is exercised for the scoped benchmark suite and RTL-smoke capsules, not for arbitrary firmware.",
         ),
         Obligation(
             "PO-04",
@@ -167,9 +167,9 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
                 commit_shift_passes,
                 cycle_shift_passes,
             ) == 6 and rtl_exports_pass else "TODO",
-            "model+rtl-smoke",
-            "results/processed/replay_negative_tests.csv; results/processed/rtl_capsule_exports.csv",
-            "Comparator/order checks are generated cycle-index and commit-index fixtures plus RTL-smoke export checks; full firmware-running RTL replay remains pending.",
+            "model+rtl-smoke+full-rtl",
+            "results/processed/replay_negative_tests.csv; results/processed/rtl_capsule_exports.csv; results/processed/full_rtl_replay_negative.csv",
+            "Comparator/order checks are generated cycle-index, commit-index, RTL-smoke, and full RTL replay-critical corruption fixtures.",
         ),
         Obligation(
             "PO-05",
@@ -221,9 +221,9 @@ def _build_obligations(data: EvidenceData) -> list[Obligation]:
             "A11 recorder noninterference separate from sufficiency theorem",
             "The theorem applies to the recorded execution and does not itself prove instrumentation noninterference.",
             "ASSUMPTION_ONLY",
-            "documentation",
-            "formal/assumptions.md; docs/replay_sufficiency_theorem.md; paper/limitations.md",
-            "No perturbation or runtime-overhead proof exists yet; mapped and benchmark-wide hardware results are pending.",
+            "documentation+measurement",
+            "formal/assumptions.md; docs/replay_sufficiency_theorem.md; paper/limitations.md; results/processed/runtime_overhead_summary.csv; results/processed/mapped_overhead.csv",
+            "Runtime and mapped-overhead measurements exist, but they are measurements rather than a noninterference proof.",
         ),
     ]
 

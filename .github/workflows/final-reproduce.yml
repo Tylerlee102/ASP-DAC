@@ -22,10 +22,11 @@ jobs:
 
       - name: Install final reproduction tools
         run: |
-          set -uo pipefail
+          set -euo pipefail
           mkdir -p results/processed
           echo "package,status,notes" > results/processed/apt_install_status.csv
           sudo apt-get update
+          install_failures=0
           packages=(
             build-essential
             make
@@ -51,8 +52,13 @@ jobs:
               echo "$package,PASS,installed by apt-get" >> results/processed/apt_install_status.csv
             else
               echo "$package,FAIL,apt-get install failed; see workflow log and toolchain_status.csv" >> results/processed/apt_install_status.csv
+              install_failures=$((install_failures + 1))
             fi
           done
+          if [ "$install_failures" -ne 0 ]; then
+            echo "ERROR: $install_failures required package install(s) failed"
+            exit 1
+          fi
 
       - name: Check reproduction toolchain
         continue-on-error: true
@@ -242,7 +248,7 @@ jobs:
                   print(f"BLOCKER: {failure}")
               sys.exit(1)
 
-          print("FINAL CI STATUS: WORKSHOP-READY SOURCE EVIDENCE")
+          print("FINAL CI STATUS: SUBMISSION-READY SOURCE EVIDENCE")
           PY
 
       - name: Upload generated evidence

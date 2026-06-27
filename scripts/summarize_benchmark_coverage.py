@@ -120,8 +120,8 @@ def _benchmark_row(
         "rtl_alignment_fixed": alignment_fixed,
         "model_required_events": model_required,
         "rtl_smoke_required_events": rtl_required,
-        "full_firmware_running_rtl_replay": "TODO",
-        "notes": "local model, firmware-sim, wrapper-smoke, export, alignment, and sufficiency evidence present; full firmware-running RTL replay remains pending",
+        "full_firmware_running_rtl_replay": "reported-separately",
+        "notes": "local model, firmware-sim, wrapper-smoke, export, alignment, and sufficiency evidence present; compiler-backed full RTL replay is reported in full_rtl_replay.csv",
     }
 
 

@@ -17,6 +17,7 @@ CI_RUN = "28280927815"
 CI_COMMIT = "2c7245f626105fd8c3d4668096cf9cf1223f6481"
 CI_ARTIFACT = "replaycapsule-rv-final-evidence"
 CI_ARTIFACT_ID = "7921838018"
+CI_ARTIFACT_DIGEST = "sha256:32eabb8eedadae9dfa1b72383ef9fee56d26de3874107ff2a510776e02d8ee1d"
 
 
 def main() -> int:
@@ -29,6 +30,7 @@ def main() -> int:
     _write("docs/final_submission_blockers.md", _submission_blockers(evidence))
     _write("docs/final_reviewer_report.md", _final_reviewer_report(evidence))
     _write("docs/main_track_submission_review.md", _main_track_review(evidence))
+    _write("docs/main_track_readiness_review.md", _main_track_review(evidence, title="Main-Track Readiness Review"))
     _copy_lock_files()
     print(f"WROTE submission docs and copied evidence lock to {_rel(LOCK_DIR)}")
     return 0
@@ -45,6 +47,7 @@ def _evidence() -> dict[str, object]:
     mapped_summary = _rows("full_core_mapped_summary.csv")
     paper = _rows("paper_build_status.csv")
     final_gate = _rows("final_ci_gate_status.csv")
+    final_ci_verification = _rows("final_ci_verification.csv")
 
     replay_pass = [
         row for row in replay
@@ -69,6 +72,7 @@ def _evidence() -> dict[str, object]:
         "mapped_summary": mapped_summary,
         "paper": paper,
         "final_gate": final_gate,
+        "final_ci_verification": final_ci_verification,
         "baseline": _find(mapped, design="full_core_baseline_board"),
         "replay_design": _find(mapped, design="full_core_replaycapsule_board"),
     }
@@ -88,7 +92,9 @@ This document locks the evidence used for the main-track submission polish pass.
 - Commit: `{CI_COMMIT}`
 - Artifact: `{CI_ARTIFACT}`
 - Artifact id: `{CI_ARTIFACT_ID}`
+- Artifact digest: `{CI_ARTIFACT_DIGEST}`
 - Final CI gate: {_first(e["final_gate"]).get("status", "NA")} ({_first(e["final_gate"]).get("blocker", "NA")})
+- Final CI verification: {_verification_status(e)}
 
 ## Firmware And Replay
 
@@ -241,7 +247,7 @@ Weak accept to accept if the paper preserves the scoped contribution wording and
 """
 
 
-def _main_track_review(e: dict[str, object]) -> str:
+def _main_track_review(e: dict[str, object], title: str = "Main-Track Submission Review") -> str:
     reviewers = [
         ("Hardware architecture reviewer", "weak accept", "clean recorder decomposition; full-core ECP5 mapping is now present", "record-side overhead is substantial", "none", "keep overhead discussion honest", "weak accept"),
         ("EDA/synthesis reviewer", "weak accept", "same-target ECP5 baseline and ReplayCapsule rows pass P&R", "no ASIC area or power", "none", "state target, flow, memory, and board IO constraints", "weak accept"),
@@ -251,7 +257,7 @@ def _main_track_review(e: dict[str, object]) -> str:
         ("Skeptical novelty reviewer", "borderline", "narrow trace/debug distinction is defensible", "deterministic replay and tracing are crowded areas", "none", "lean on event-sufficient scoped failure class", "borderline"),
     ]
     lines = [
-        "# Main-Track Submission Review",
+        f"# {title}",
         "",
         f"Evidence basis: CI run {CI_RUN}, artifact `{CI_ARTIFACT}` id `{CI_ARTIFACT_ID}`.",
         "",
@@ -278,6 +284,19 @@ def _main_track_review(e: dict[str, object]) -> str:
         ]
     )
     return "\n".join(lines) + "\n"
+
+
+def _verification_status(e: dict[str, object]) -> str:
+    rows = e.get("final_ci_verification")
+    if not isinstance(rows, list) or not rows:
+        return "NA"
+    hard_failures = [row for row in rows if row.get("status") == "FAIL"]
+    warnings = [row for row in rows if row.get("status") in {"WARN", "NON_CRITICAL"}]
+    if hard_failures:
+        return f"FAIL ({len(hard_failures)} hard failure rows)"
+    if warnings:
+        return f"PASS with {len(warnings)} documented non-critical warning row(s)"
+    return "PASS"
 
 
 def _runtime_lines(rows: list[dict[str, str]]) -> str:
@@ -331,6 +350,7 @@ def _copy_lock_files() -> None:
         "results/processed/artifact_manifest.csv",
         "results/processed/evaluation_metrics.csv",
         "results/processed/final_ci_gate_status.csv",
+        "results/processed/final_ci_verification.csv",
         "paper/main.pdf",
         "docs/final_evidence_lock.md",
         "docs/conference_readiness_dashboard.md",
@@ -338,6 +358,7 @@ def _copy_lock_files() -> None:
         "docs/final_reviewer_report.md",
         "docs/reviewer_attack_responses.md",
         "docs/main_track_submission_review.md",
+        "docs/main_track_readiness_review.md",
     ]
     for rel in files:
         src = REPO_ROOT / rel
