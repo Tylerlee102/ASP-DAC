@@ -1,4 +1,4 @@
-.PHONY: test reproduce quickcheck check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth workload-scaling-quick workload-scaling-full runtime-scaling-quick runtime-scaling-full capsule-baselines buffer-sensitivity recorder-config-quick recorder-config-full mapped-scaling-quick mapped-scaling-full event-ablation-scaling topconf-matrix topconf-tables topconf-figures topconf-artifact topconf-quick topconf-full paper paper-audit artifact replay-demo phase12-smoke
+.PHONY: test reproduce quickcheck check-toolchain firmware firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth workload-scaling-quick workload-scaling-full runtime-scaling-quick runtime-scaling-full capsule-baselines capsule-baselines-full buffer-sensitivity buffer-sensitivity-full recorder-config-quick recorder-config-full mapped-scaling-quick mapped-scaling-full event-ablation-scaling event-ablation-scaling-full topconf-matrix topconf-tables topconf-figures topconf-artifact private-marker-scan topconf-quick topconf-full paper paper-audit artifact replay-demo phase12-smoke
 
 PYTHON ?= python3
 VERILATOR ?= verilator
@@ -154,8 +154,12 @@ runtime-scaling-full: firmware
 capsule-baselines:
 	$(PYTHON) scripts/run_capsule_baselines.py
 
+capsule-baselines-full: capsule-baselines
+
 buffer-sensitivity:
 	$(PYTHON) scripts/run_buffer_sensitivity.py
+
+buffer-sensitivity-full: buffer-sensitivity
 
 recorder-config-quick: firmware
 	$(PYTHON) scripts/recorder_config_matrix.py --mode quick
@@ -168,11 +172,13 @@ mapped-scaling-quick:
 	$(PYTHON) scripts/diagnose_mapped_failures.py
 
 mapped-scaling-full:
-	$(PYTHON) scripts/run_mapped_scaling.py --mode full
+	$(PYTHON) scripts/run_mapped_scaling.py --mode representative
 	$(PYTHON) scripts/diagnose_mapped_failures.py
 
 event-ablation-scaling:
 	$(PYTHON) scripts/run_event_ablation_scaling.py
+
+event-ablation-scaling-full: event-ablation-scaling
 
 topconf-tables:
 	$(PYTHON) scripts/generate_topconf_tables.py
@@ -184,9 +190,12 @@ topconf-artifact:
 	$(PYTHON) scripts/generate_topconf_reviewer_audit.py
 	$(PYTHON) scripts/package_topconf_artifact.py
 
-topconf-quick: topconf-matrix firmware full-rtl-replay full-rtl-negative runtime-overhead workload-scaling-quick capsule-baselines buffer-sensitivity runtime-scaling-quick mapped-scaling-quick event-ablation-scaling recorder-config-quick topconf-tables topconf-figures paper paper-audit artifact topconf-artifact
+private-marker-scan:
+	$(PYTHON) scripts/scan_private_markers.py
 
-topconf-full: topconf-matrix firmware full-rtl-replay full-rtl-negative runtime-overhead workload-scaling-full capsule-baselines buffer-sensitivity runtime-scaling-full mapped-scaling-full event-ablation-scaling recorder-config-full topconf-tables topconf-figures paper paper-audit artifact topconf-artifact
+topconf-quick: topconf-matrix firmware full-rtl-replay full-rtl-negative runtime-overhead workload-scaling-quick capsule-baselines buffer-sensitivity runtime-scaling-quick mapped-scaling-quick event-ablation-scaling recorder-config-quick topconf-tables topconf-figures paper paper-audit artifact topconf-artifact private-marker-scan
+
+topconf-full: topconf-matrix firmware full-rtl-replay full-rtl-negative runtime-overhead workload-scaling-full capsule-baselines-full buffer-sensitivity-full runtime-scaling-full mapped-scaling-full event-ablation-scaling-full recorder-config-full topconf-tables topconf-figures paper paper-audit artifact topconf-artifact private-marker-scan
 
 paper:
 	$(PYTHON) scripts/generate_conference_evidence_tables.py

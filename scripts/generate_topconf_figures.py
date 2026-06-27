@@ -17,8 +17,10 @@ def main() -> int:
     _pdf("fig_capsule_scaling.pdf", "Capsule Size Scaling", _capsule_lines())
     _pdf("fig_runtime_scaling.pdf", "Runtime Scaling", _runtime_lines())
     _pdf("fig_buffer_sensitivity.pdf", "Buffer Depth Sensitivity", _buffer_lines())
+    _pdf("fig_mapped_scaling.pdf", "Mapped Scaling", _mapped_scaling_lines())
     _pdf("fig_mapped_memory_scaling.pdf", "Mapped Memory Scaling", _mapped_lines("memory_words"))
     _pdf("fig_mapped_buffer_scaling.pdf", "Mapped Buffer Scaling", _mapped_lines("buffer_depth"))
+    _pdf("fig_event_ablation_scaling.pdf", "Event Ablation Scaling", _event_ablation_lines())
     _pdf("fig_recorder_config_tradeoff.pdf", "Recorder Config Tradeoff", _recorder_lines())
     print("WROTE paper/figures/fig_*.pdf")
     return 0
@@ -74,6 +76,39 @@ def _mapped_lines(axis: str) -> list[str]:
         metrics = ", ".join(f"{row.get('metric')} {row.get('percent_overhead')}%" for row in subset)
         lines.append(f"{axis} {key}: {metrics}")
     return lines or ["No mapped scaling overhead rows available."]
+
+
+def _mapped_scaling_lines() -> list[str]:
+    rows = read_csv(REPO_ROOT / "results/processed/mapped_scaling_overhead.csv")
+    lines = []
+    for config in sorted({row.get("recorder_config", "NA") for row in rows}):
+        subset = [
+            row
+            for row in rows
+            if row.get("recorder_config") == config
+            and row.get("claim_allowed") == "yes"
+            and row.get("metric") in {"lut", "ff", "bram", "fmax_mhz"}
+        ]
+        if not subset:
+            lines.append(f"{config}: no same-target PASS overhead row")
+            continue
+        metrics = ", ".join(f"{row.get('metric')} {row.get('percent_overhead')}%" for row in subset)
+        lines.append(f"{config}: {metrics}")
+    return lines or ["No mapped scaling overhead rows available."]
+
+
+def _event_ablation_lines() -> list[str]:
+    rows = read_csv(REPO_ROOT / "results/processed/event_ablation_scaling.csv")
+    lines = []
+    for event_class in sorted({row.get("removed_or_corrupted_event_class", "NA") for row in rows}):
+        subset = [row for row in rows if row.get("removed_or_corrupted_event_class") == event_class]
+        if not subset:
+            continue
+        rejected = sum(1 for row in subset if row.get("rejected") in {"true", "True", "1", True})
+        diagnostic = sum(1 for row in subset if row.get("diagnostic_only") in {"true", "True", "1", True})
+        blocked = sum(1 for row in subset if row.get("replay_status") == "BLOCKED")
+        lines.append(f"{event_class}: rejected {rejected}/{len(subset)}, diagnostic-only {diagnostic}, blocked {blocked}")
+    return lines or ["No event ablation rows available."]
 
 
 def _recorder_lines() -> list[str]:

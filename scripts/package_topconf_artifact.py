@@ -40,6 +40,7 @@ INCLUDE_ROOTS = (
     "results/raw/workload_scaling",
     "results/raw/recorder_config",
     "results/raw/event_ablation_scaling",
+    "results/raw/topconf_ci",
     "results/debug/topconf_before",
 )
 

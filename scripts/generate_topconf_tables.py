@@ -24,6 +24,7 @@ def main() -> int:
     summary.extend(_capsule_summary())
     summary.extend(_buffer_summary())
     summary.extend(_mapped_summary())
+    summary.extend(_event_ablation_summary())
     summary.extend(_recorder_config_summary())
     write_csv(SUMMARY_CSV, SUMMARY_FIELDS, summary)
     _write_tables()
@@ -96,6 +97,18 @@ def _mapped_summary() -> list[dict[str, object]]:
     return out
 
 
+def _event_ablation_summary() -> list[dict[str, object]]:
+    rows = read_csv(REPO_ROOT / "results/processed/event_ablation_scaling.csv")
+    out = []
+    for event_class in sorted({row.get("removed_or_corrupted_event_class", "NA") for row in rows}):
+        subset = [row for row in rows if row.get("removed_or_corrupted_event_class") == event_class]
+        rejected = [row for row in subset if row.get("rejected") in {"true", "True", "1"}]
+        diagnostic = [row for row in subset if row.get("diagnostic_only") in {"true", "True", "1"}]
+        out.append(_summary("event_ablation", f"{event_class}_reject_rate", _pct_count(rejected, subset), len(subset), "results/processed/event_ablation_scaling.csv", "event-sufficiency ablation rows; diagnostic-only rows are labeled separately"))
+        out.append(_summary("event_ablation", f"{event_class}_diagnostic_only_rows", len(diagnostic), len(subset), "results/processed/event_ablation_scaling.csv", "diagnostic-only corruption may accept if final replay properties still match"))
+    return out
+
+
 def _recorder_config_summary() -> list[dict[str, object]]:
     rows = read_csv(REPO_ROOT / "results/processed/recorder_config_replay.csv")
     out = []
@@ -113,10 +126,13 @@ def _recorder_config_summary() -> list[dict[str, object]]:
 def _write_tables() -> None:
     _write_table("table_replay_success.tex", ["benchmark", "workload_scale", "pass", "total"], _replay_table_rows())
     _write_table("table_negative_replay.tex", ["result", "count"], _count_rows(read_csv(REPO_ROOT / "results/processed/full_rtl_replay_negative.csv"), "actual_result"))
-    _write_table("table_runtime_overhead.tex", ["workload_scale", "config", "median_cycle", "median_commit", "median_wall", "n"], _runtime_table_rows())
+    runtime_rows = _runtime_table_rows()
+    _write_table("table_runtime_overhead.tex", ["workload_scale", "config", "median_cycle", "median_commit", "median_wall", "n"], runtime_rows)
+    _write_table("table_runtime_scaling.tex", ["workload_scale", "config", "median_cycle", "median_commit", "median_wall", "n"], runtime_rows)
     _write_table("table_capsule_baselines.tex", ["baseline", "workload_scale", "median_bytes", "median_reduction_vs_full_instruction_pct", "n"], _select_fields(read_csv(REPO_ROOT / "results/processed/capsule_baseline_summary.csv"), ["baseline", "workload_scale", "median_bytes", "median_reduction_vs_full_instruction_pct", "n"]))
     _write_table("table_buffer_sensitivity.tex", ["buffer_depth", "workload_scale", "overflow_rate_pct", "replay_success_rate_pct", "n"], _select_fields(read_csv(REPO_ROOT / "results/processed/buffer_sensitivity_summary.csv"), ["buffer_depth", "workload_scale", "overflow_rate_pct", "replay_success_rate_pct", "n"]))
     _write_table("table_mapped_scaling.tex", ["memory_words", "buffer_depth", "recorder_config", "metric", "percent_overhead", "claim_allowed"], _select_fields(read_csv(REPO_ROOT / "results/processed/mapped_scaling_overhead.csv"), ["memory_words", "buffer_depth", "recorder_config", "metric", "percent_overhead", "claim_allowed"]))
+    _write_table("table_event_ablation.tex", ["event_class", "rejected", "diagnostic_only", "blocked", "total"], _event_ablation_table_rows())
     _write_table("table_recorder_config_tradeoff.tex", ["recorder_config", "replay_pass_rate_pct", "median_capsule_bytes"], _recorder_table_rows())
     _write_table("table_limitations.tex", ["limitation", "paper_wording"], _limitations())
 
@@ -157,6 +173,23 @@ def _recorder_table_rows() -> list[dict[str, object]]:
                 "recorder_config": config,
                 "replay_pass_rate_pct": _pct_count([row for row in subset if row.get("replay_status") == "PASS"], subset),
                 "median_capsule_bytes": f"{median(bytes_values):.6f}" if bytes_values else "NA",
+            }
+        )
+    return out
+
+
+def _event_ablation_table_rows() -> list[dict[str, object]]:
+    rows = read_csv(REPO_ROOT / "results/processed/event_ablation_scaling.csv")
+    out = []
+    for event_class in sorted({row.get("removed_or_corrupted_event_class", "NA") for row in rows}):
+        subset = [row for row in rows if row.get("removed_or_corrupted_event_class") == event_class]
+        out.append(
+            {
+                "event_class": event_class,
+                "rejected": sum(1 for row in subset if row.get("rejected") in {"true", "True", "1"}),
+                "diagnostic_only": sum(1 for row in subset if row.get("diagnostic_only") in {"true", "True", "1"}),
+                "blocked": sum(1 for row in subset if row.get("replay_status") == "BLOCKED"),
+                "total": len(subset),
             }
         )
     return out

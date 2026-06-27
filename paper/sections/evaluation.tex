@@ -17,9 +17,18 @@ Table~\ref{tab:mapped-overhead} reports same-target ECP5 place-and-route for the
 
 \subsection{Expanded Scaling Package}
 
-The expanded artifact adds workload scaling, capsule baseline comparisons, buffer-depth sensitivity, recorder-configuration sensitivity, runtime scaling, mapped memory/buffer/configuration scaling, event-sufficiency ablations, and mapped-failure diagnosis. These results are generated from \texttt{results/processed/workload\_scaling.csv}, \texttt{capsule\_baseline\_comparison.csv}, \texttt{buffer\_sensitivity.csv}, \texttt{runtime\_scaling.csv}, \texttt{mapped\_scaling.csv}, \texttt{mapped\_scaling\_overhead.csv}, \texttt{recorder\_config\_replay.csv}, and \texttt{event\_ablation\_scaling.csv}. Trace-baseline rows that are not directly emitted by the RTL are labeled as estimated in their CSV notes.
+The top-conference artifact adds workload scaling, capsule baseline comparisons, buffer-depth sensitivity, runtime scaling by workload length, event-class ablations, recorder-configuration sensitivity, and mapped memory/buffer/configuration scaling. These results are generated from \texttt{results/processed/workload\_scaling.csv}, \texttt{capsule\_baseline\_comparison.csv}, \texttt{capsule\_baseline\_summary.csv}, \texttt{buffer\_sensitivity.csv}, \texttt{buffer\_sensitivity\_summary.csv}, \texttt{runtime\_scaling.csv}, \texttt{runtime\_scaling\_summary.csv}, \texttt{event\_ablation\_scaling.csv}, \texttt{mapped\_scaling.csv}, \texttt{mapped\_scaling\_overhead.csv}, and \texttt{mapped\_scaling\_summary.csv}. Trace-baseline rows that are not directly emitted by the RTL are labeled as estimated in their CSV notes.
 
-The mapped scaling data must be interpreted as FPGA recorder/instrumented-wrapper evidence. It does not claim ASIC area or power, and it does not implement an autonomous synthesizable replay-consume datapath. Simulator wall time is reported separately from architectural cycle and commit counts.
+The evaluation answers eight scoped questions. First, replay works across the generated benchmark suite in Table~\ref{tab:replay-success}. Second, replay across workload scales is reported in \texttt{workload\_scaling.csv} and Figure~\ref{fig:topconf-replay-scaling}; PASS requires record, replay, final-signature, and event matching. Third, capsule-size scaling and reductions against trace baselines are reported in \texttt{capsule\_baseline\_summary.csv} and Figure~\ref{fig:topconf-capsule-scaling}; estimated baselines remain labeled as estimated. Fourth, buffer-depth sensitivity is reported in \texttt{buffer\_sensitivity\_summary.csv} and Figure~\ref{fig:topconf-buffer-sensitivity}; no buffer depth is called sufficient unless measured rows support it. Fifth, runtime scaling separates architectural cycle and commit counts from simulator wall-clock time in \texttt{runtime\_scaling\_summary.csv} and Figure~\ref{fig:topconf-runtime-scaling}. Sixth, event-class ablations in \texttt{event\_ablation\_scaling.csv} and Figure~\ref{fig:topconf-event-ablation} distinguish replay-critical corruption from diagnostic-only context. Seventh, mapped scaling in \texttt{mapped\_scaling\_overhead.csv} and Figure~\ref{fig:topconf-mapped-scaling} reports only same-target place-and-route PASS comparisons. Eighth, Table~\ref{tab:limitations} states the exact limits.
+
+The mapped scaling data is FPGA recorder/instrumented-wrapper evidence. It is not ASIC area or power evidence, and it is not an autonomous synthesizable replay-consume datapath. Simulator wall time is reported separately from architectural cycle and commit counts.
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_replay_success.pdf}{\includegraphics[width=\linewidth]{figures/fig_replay_success.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/workload\_scaling.csv}}}}
+\caption{Replay success by workload scale. Missing, blocked, timeout, and failing rows remain visible in the source CSV.}
+\label{fig:topconf-replay-scaling}
+\end{figure}
 
 \begin{figure}[t]
 \centering
@@ -30,9 +39,30 @@ The mapped scaling data must be interpreted as FPGA recorder/instrumented-wrappe
 
 \begin{figure}[t]
 \centering
-\IfFileExists{figures/fig_mapped_memory_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_mapped_memory_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/mapped\_scaling\_overhead.csv}}}}
-\caption{Same-target mapped overhead by memory size for rows where both baseline and ReplayCapsule place-and-route pass.}
-\label{fig:topconf-mapped-memory}
+\IfFileExists{figures/fig_runtime_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_runtime_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/runtime\_scaling\_summary.csv}}}}
+\caption{Runtime scaling by workload length. Simulator wall time is not a hardware runtime claim.}
+\label{fig:topconf-runtime-scaling}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_buffer_sensitivity.pdf}{\includegraphics[width=\linewidth]{figures/fig_buffer_sensitivity.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/buffer\_sensitivity\_summary.csv}}}}
+\caption{Buffer-depth sensitivity from measured event counts.}
+\label{fig:topconf-buffer-sensitivity}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_event_ablation_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_event_ablation_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/event\_ablation\_scaling.csv}}}}
+\caption{Event-class ablation results. Replay-critical and diagnostic-only rows are labeled separately in the source CSV.}
+\label{fig:topconf-event-ablation}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_mapped_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_mapped_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/mapped\_scaling\_overhead.csv}}}}
+\caption{Same-target mapped overhead for rows where both baseline and ReplayCapsule place-and-route pass and recorder presence is confirmed.}
+\label{fig:topconf-mapped-scaling}
 \end{figure}
 
 \begin{figure}[t]

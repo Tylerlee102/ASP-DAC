@@ -9,11 +9,13 @@ import math
 from pathlib import Path
 
 import run_mapped_synthesis
-from topconf_eval_common import MAPPED_BUFFER_DEPTHS, MAPPED_CONFIGS, MAPPED_MEMORY_WORDS, RECORDER_CONFIGS, REPO_ROOT, pct_delta, rel, safe_float, write_csv
+from topconf_eval_common import MAPPED_BUFFER_DEPTHS, MAPPED_CONFIGS, MAPPED_MEMORY_WORDS, RECORDER_CONFIGS, REPO_ROOT, pct_delta, read_csv, rel, safe_float, write_csv
 
 
 OUT_CSV = REPO_ROOT / "results/processed/mapped_scaling.csv"
 OVERHEAD_CSV = REPO_ROOT / "results/processed/mapped_scaling_overhead.csv"
+SUMMARY_CSV = REPO_ROOT / "results/processed/mapped_scaling_summary.csv"
+FULL_CORE_SUMMARY_CSV = run_mapped_synthesis.SUMMARY_CSV
 PRESENCE_CSV = REPO_ROOT / "results/processed/mapped_recorder_presence.csv"
 RAW_DIR = REPO_ROOT / "results/raw/mapped_scaling"
 
@@ -67,6 +69,30 @@ PRESENCE_FIELDS = [
     "notes",
 ]
 
+SUMMARY_FIELDS = [
+    "status",
+    "target",
+    "flow",
+    "total_rows",
+    "pass_rows",
+    "fail_rows",
+    "blocked_rows",
+    "claim_allowed_points",
+    "valid_memory_words",
+    "valid_buffer_depths",
+    "valid_recorder_configs",
+    "lut_overhead_min_pct",
+    "lut_overhead_max_pct",
+    "ff_overhead_min_pct",
+    "ff_overhead_max_pct",
+    "bram_overhead_min_pct",
+    "bram_overhead_max_pct",
+    "fmax_overhead_min_pct",
+    "fmax_overhead_max_pct",
+    "first_blocker",
+    "notes",
+]
+
 TARGET = run_mapped_synthesis.FULL_CORE_TARGETS[0]
 BASELINE_DESIGN = run_mapped_synthesis.DESIGNS["full_core_baseline_board"]
 REPLAY_DESIGN = run_mapped_synthesis.DESIGNS["full_core_replaycapsule_board"]
@@ -76,7 +102,18 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--mode", choices=("quick", "full", "representative"), default="quick")
     parser.add_argument("--max-replay-points", type=int, default=0, help="optional cap for full/representative debugging")
+    parser.add_argument("--summarize-only", action="store_true", help="write summary CSVs from existing mapped_scaling evidence")
     args = parser.parse_args()
+
+    if args.summarize_only:
+        rows = read_csv(OUT_CSV)
+        overhead_rows = read_csv(OVERHEAD_CSV)
+        presence_rows = read_csv(PRESENCE_CSV)
+        write_csv(SUMMARY_CSV, SUMMARY_FIELDS, [_scaling_summary(rows, overhead_rows)])
+        write_csv(FULL_CORE_SUMMARY_CSV, run_mapped_synthesis.SUMMARY_FIELDS, [_full_core_summary(rows, presence_rows, overhead_rows)])
+        print("WROTE results/processed/mapped_scaling_summary.csv")
+        print("WROTE results/processed/full_core_mapped_summary.csv")
+        return 0
 
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     yosys = run_mapped_synthesis._find_tool("yosys")
@@ -100,9 +137,13 @@ def main() -> int:
     overhead_rows = _overheads(rows, presence_rows)
     write_csv(OUT_CSV, FIELDS, rows)
     write_csv(OVERHEAD_CSV, OVERHEAD_FIELDS, overhead_rows)
+    write_csv(SUMMARY_CSV, SUMMARY_FIELDS, [_scaling_summary(rows, overhead_rows)])
+    write_csv(FULL_CORE_SUMMARY_CSV, run_mapped_synthesis.SUMMARY_FIELDS, [_full_core_summary(rows, presence_rows, overhead_rows)])
     write_csv(PRESENCE_CSV, PRESENCE_FIELDS, presence_rows)
     print("WROTE results/processed/mapped_scaling.csv")
     print("WROTE results/processed/mapped_scaling_overhead.csv")
+    print("WROTE results/processed/mapped_scaling_summary.csv")
+    print("WROTE results/processed/full_core_mapped_summary.csv")
     print("WROTE results/processed/mapped_recorder_presence.csv")
     return 0
 
@@ -298,6 +339,90 @@ def _overheads(rows: list[dict[str, object]], presence_rows: list[dict[str, obje
                 }
             )
     return out
+
+
+def _scaling_summary(rows: list[dict[str, object]], overhead_rows: list[dict[str, object]]) -> dict[str, object]:
+    claim_rows = [row for row in overhead_rows if row.get("claim_allowed") == "yes"]
+    claim_points = {
+        (row.get("memory_words"), row.get("buffer_depth"), row.get("recorder_config"))
+        for row in claim_rows
+    }
+    blocker = _first_blocker(rows)
+    return {
+        "status": "PASS" if claim_points else "BLOCKED",
+        "target": TARGET.name,
+        "flow": TARGET.flow,
+        "total_rows": len(rows),
+        "pass_rows": sum(1 for row in rows if row.get("status") == "PASS"),
+        "fail_rows": sum(1 for row in rows if row.get("status") == "FAIL"),
+        "blocked_rows": sum(1 for row in rows if row.get("status") == "BLOCKED"),
+        "claim_allowed_points": len(claim_points),
+        "valid_memory_words": _csv_list(sorted({point[0] for point in claim_points}, key=lambda value: int(value))),
+        "valid_buffer_depths": _csv_list(sorted({point[1] for point in claim_points}, key=lambda value: int(value))),
+        "valid_recorder_configs": _csv_list(sorted({str(point[2]) for point in claim_points})),
+        "lut_overhead_min_pct": _metric_range(claim_rows, "lut")[0],
+        "lut_overhead_max_pct": _metric_range(claim_rows, "lut")[1],
+        "ff_overhead_min_pct": _metric_range(claim_rows, "ff")[0],
+        "ff_overhead_max_pct": _metric_range(claim_rows, "ff")[1],
+        "bram_overhead_min_pct": _metric_range(claim_rows, "bram")[0],
+        "bram_overhead_max_pct": _metric_range(claim_rows, "bram")[1],
+        "fmax_overhead_min_pct": _metric_range(claim_rows, "fmax_mhz")[0],
+        "fmax_overhead_max_pct": _metric_range(claim_rows, "fmax_mhz")[1],
+        "first_blocker": blocker,
+        "notes": "same-target ECP5 mapped scaling; failed/timeout rows remain in mapped_scaling.csv",
+    }
+
+
+def _full_core_summary(
+    rows: list[dict[str, object]],
+    presence_rows: list[dict[str, object]],
+    overhead_rows: list[dict[str, object]],
+) -> dict[str, object]:
+    claim_rows = [row for row in overhead_rows if row.get("claim_allowed") == "yes"]
+    claim_points = {
+        (row.get("memory_words"), row.get("buffer_depth"), row.get("recorder_config"))
+        for row in claim_rows
+    }
+    baseline_pass = any(row.get("design") == BASELINE_DESIGN.name and row.get("status") == "PASS" for row in rows)
+    replay_pass = any(row.get("design") == REPLAY_DESIGN.name and row.get("status") == "PASS" for row in rows)
+    presence_pass = any(row.get("status") == "PASS" for row in presence_rows)
+    return {
+        "status": "PASS" if claim_points else "BLOCKED",
+        "target": TARGET.name,
+        "flow": TARGET.flow,
+        "baseline_design": BASELINE_DESIGN.name,
+        "replay_design": REPLAY_DESIGN.name,
+        "baseline_status": "PASS" if baseline_pass else "BLOCKED",
+        "replay_status": "PASS" if replay_pass else "BLOCKED",
+        "recorder_presence_status": "PASS" if presence_pass else "BLOCKED",
+        "memory_words": _csv_list(sorted({point[0] for point in claim_points}, key=lambda value: int(value))) or "NA",
+        "capsule_depth": _csv_list(sorted({point[1] for point in claim_points}, key=lambda value: int(value))) or "NA",
+        "overhead_claim_allowed": "yes" if claim_points else "no",
+        "first_blocker": _first_blocker(rows),
+        "notes": f"same-target full-core mapped overhead points={len(claim_points)}; overhead ranges are in results/processed/mapped_scaling_summary.csv",
+    }
+
+
+def _metric_range(rows: list[dict[str, object]], metric: str) -> tuple[str, str]:
+    values = [
+        value
+        for value in (safe_float(row.get("percent_overhead")) for row in rows if row.get("metric") == metric)
+        if value is not None
+    ]
+    if not values:
+        return "NA", "NA"
+    return f"{min(values):.2f}", f"{max(values):.2f}"
+
+
+def _first_blocker(rows: list[dict[str, object]]) -> str:
+    for row in rows:
+        if row.get("status") != "PASS":
+            return str(row.get("notes", "same-target mapped scaling row did not pass"))
+    return "none"
+
+
+def _csv_list(values: list[object]) -> str:
+    return ";".join(str(value) for value in values)
 
 
 def _find(rows: list[dict[str, object]], design: str, memory_words: object, buffer_depth: object, config: object) -> dict[str, object] | None:
