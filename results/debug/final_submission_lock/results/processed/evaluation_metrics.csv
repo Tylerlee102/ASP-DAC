@@ -43,4 +43,4 @@ full_core_bram_overhead,MEASURED,0.00,brams,mapped-fpga,results/processed/mapped
 full_core_fmax_delta_percent,MEASURED,-20.12,percent,mapped-fpga,results/processed/mapped_overhead.csv,full-core board-level mapped overhead from same-target place-and-route PASS rows
 buffer_overflow_rate,TODO,TODO,percent,rtl,results/processed/rtl_capsule_exports.csv,Requires benchmark-wide runtime overflow counters; bounded buffer checks exist separately.
 cycle_overhead_pct,MEASURED,0.000000,percent,rtl,results/processed/runtime_overhead_summary.csv,relative to baseline_no_recorder with same firmware/stimulus
-sim_wall_time_overhead_pct,MEASURED,33.710000,percent,rtl,results/processed/runtime_overhead_summary.csv,relative to baseline_no_recorder with same firmware/stimulus
+sim_wall_time_overhead_pct,MEASURED,33.950000,percent,rtl,results/processed/runtime_overhead_summary.csv,relative to baseline_no_recorder with same firmware/stimulus

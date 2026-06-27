@@ -2,7 +2,7 @@
 
 ReplayCapsule-RV is a research prototype for event-sufficient hardware failure capsules for replaying embedded single-hart RV32I interrupt/MMIO bugs.
 
-The current locked evidence comes from GitHub Actions run `28278972828`, commit `6b5bf98676e62bc39ddcecaf0d543f8a2a9dc1ad`, artifact `replaycapsule-rv-final-evidence` id `7921197214`.
+The current locked evidence comes from GitHub Actions run `28280927815`, commit `2c7245f626105fd8c3d4668096cf9cf1223f6481`, artifact `replaycapsule-rv-final-evidence` id `7921838018`.
 
 ## Main Evidence
 

@@ -4,10 +4,10 @@ This document locks the evidence used for the main-track submission polish pass.
 
 ## CI And Artifact
 
-- CI run: 28278972828
-- Commit: `6b5bf98676e62bc39ddcecaf0d543f8a2a9dc1ad`
+- CI run: 28280927815
+- Commit: `2c7245f626105fd8c3d4668096cf9cf1223f6481`
 - Artifact: `replaycapsule-rv-final-evidence`
-- Artifact id: `7921197214`
+- Artifact id: `7921838018`
 - Final CI gate: PASS (none)
 
 ## Firmware And Replay
@@ -19,15 +19,15 @@ This document locks the evidence used for the main-track submission polish pass.
 
 ## Runtime Overhead Summary
 
-- baseline_no_recorder / sim_wall_time_sec: median 0.017615, n=45, status MEASURED; simulator wall-clock time; not hardware runtime
-- recorder_present_disabled / sim_wall_time_sec: median 0.023679, n=45, status MEASURED; simulator wall-clock time; not hardware runtime
-- recorder_enabled / sim_wall_time_sec: median 0.023820, n=45, status MEASURED; simulator wall-clock time; not hardware runtime
+- baseline_no_recorder / sim_wall_time_sec: median 0.018194, n=45, status MEASURED; simulator wall-clock time; not hardware runtime
+- recorder_present_disabled / sim_wall_time_sec: median 0.024409, n=45, status MEASURED; simulator wall-clock time; not hardware runtime
+- recorder_enabled / sim_wall_time_sec: median 0.024731, n=45, status MEASURED; simulator wall-clock time; not hardware runtime
 - recorder_present_disabled_vs_baseline_no_recorder / cycle_overhead_pct: median 0.000000, n=45, status MEASURED; relative to baseline_no_recorder with same firmware/stimulus
 - recorder_present_disabled_vs_baseline_no_recorder / commit_overhead_pct: median 0.000000, n=45, status MEASURED; relative to baseline_no_recorder with same firmware/stimulus
-- recorder_present_disabled_vs_baseline_no_recorder / sim_wall_time_overhead_pct: median 33.030000, n=45, status MEASURED; relative to baseline_no_recorder with same firmware/stimulus
+- recorder_present_disabled_vs_baseline_no_recorder / sim_wall_time_overhead_pct: median 32.550000, n=45, status MEASURED; relative to baseline_no_recorder with same firmware/stimulus
 - recorder_enabled_vs_baseline_no_recorder / cycle_overhead_pct: median 0.000000, n=45, status MEASURED; relative to baseline_no_recorder with same firmware/stimulus
 - recorder_enabled_vs_baseline_no_recorder / commit_overhead_pct: median 0.000000, n=45, status MEASURED; relative to baseline_no_recorder with same firmware/stimulus
-- recorder_enabled_vs_baseline_no_recorder / sim_wall_time_overhead_pct: median 33.710000, n=45, status MEASURED; relative to baseline_no_recorder with same firmware/stimulus
+- recorder_enabled_vs_baseline_no_recorder / sim_wall_time_overhead_pct: median 33.950000, n=45, status MEASURED; relative to baseline_no_recorder with same firmware/stimulus
 
 ## Mapped Overhead Summary
 

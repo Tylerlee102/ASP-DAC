@@ -21,7 +21,7 @@ input:results/processed/paper_number_audit.csv,PASS,1 rows
 final:number_audit,PASS,FAIL rows=0
 input:results/processed/todo_audit.csv,PASS,1 rows
 final:todo_audit,PASS,FAIL rows=0
-input:results/processed/artifact_manifest.csv,PASS,456 rows
+input:results/processed/artifact_manifest.csv,PASS,320 rows
 final:artifact_manifest,PASS,missing required rows=0
 final:artifact_zip,PASS,dist/replaycapsule-rv-artifact.zip
 final:evidence_lock,PASS,results/debug/final_submission_lock

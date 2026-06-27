@@ -13,10 +13,10 @@ PROCESSED = REPO_ROOT / "results/processed"
 DOCS = REPO_ROOT / "docs"
 LOCK_DIR = REPO_ROOT / "results/debug/final_submission_lock"
 
-CI_RUN = "28278972828"
-CI_COMMIT = "6b5bf98676e62bc39ddcecaf0d543f8a2a9dc1ad"
+CI_RUN = "28280927815"
+CI_COMMIT = "2c7245f626105fd8c3d4668096cf9cf1223f6481"
 CI_ARTIFACT = "replaycapsule-rv-final-evidence"
-CI_ARTIFACT_ID = "7921197214"
+CI_ARTIFACT_ID = "7921838018"
 
 
 def main() -> int:

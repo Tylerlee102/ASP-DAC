@@ -1,6 +1,6 @@
 # Artifact Evaluation Notes
 
-Artifact evidence is locked to GitHub Actions run `28278972828`, commit `6b5bf98676e62bc39ddcecaf0d543f8a2a9dc1ad`, artifact `replaycapsule-rv-final-evidence` id `7921197214`.
+Artifact evidence is locked to GitHub Actions run `28280927815`, commit `2c7245f626105fd8c3d4668096cf9cf1223f6481`, artifact `replaycapsule-rv-final-evidence` id `7921838018`.
 
 The package is intentionally conservative: unsupported claims stay out of the paper and docs, and generated CSVs are the authority for numeric results.
 

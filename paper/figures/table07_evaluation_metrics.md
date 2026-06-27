@@ -51,4 +51,4 @@ hardware timing, runtime-overhead, or runtime-counter gates and are not estimate
 | full_core_fmax_delta_percent | MEASURED (mapped-fpga) | -20.12 | percent | mapped-fpga | full-core board-level mapped overhead from same-target place-and-route PASS rows |
 | buffer_overflow_rate | TODO (rtl) | TODO | percent | rtl | Requires benchmark-wide runtime overflow counters; bounded buffer checks exist separately. |
 | cycle_overhead_pct | MEASURED (rtl) | 0.000000 | percent | rtl | relative to baseline_no_recorder with same firmware/stimulus |
-| sim_wall_time_overhead_pct | MEASURED (rtl) | 33.710000 | percent | rtl | relative to baseline_no_recorder with same firmware/stimulus |
+| sim_wall_time_overhead_pct | MEASURED (rtl) | 33.950000 | percent | rtl | relative to baseline_no_recorder with same firmware/stimulus |
