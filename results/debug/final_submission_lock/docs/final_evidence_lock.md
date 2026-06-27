@@ -8,7 +8,9 @@ This document locks the evidence used for the main-track submission polish pass.
 - Commit: `2c7245f626105fd8c3d4668096cf9cf1223f6481`
 - Artifact: `replaycapsule-rv-final-evidence`
 - Artifact id: `7921838018`
+- Artifact digest: `sha256:32eabb8eedadae9dfa1b72383ef9fee56d26de3874107ff2a510776e02d8ee1d`
 - Final CI gate: PASS (none)
+- Final CI verification: PASS with 2 documented non-critical warning row(s)
 
 ## Firmware And Replay
 
@@ -41,8 +43,8 @@ This document locks the evidence used for the main-track submission polish pass.
 
 - Paper target: `paper/main.pdf`
 - Status: PASS
-- Tool: latexmk
-- Output: `paper/main.pdf`
+- Tool: locked-ci-artifact
+- Output: `paper\main.pdf`
 
 ## Locked Copy Directory
 

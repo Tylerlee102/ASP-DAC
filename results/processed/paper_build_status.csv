@@ -1,2 +1,2 @@
 target,status,tool,output,notes
-paper/main.pdf,PASS,latexmk,paper/main.pdf,PDF built locally
+paper/main.pdf,PASS,locked-ci-artifact,paper\main.pdf,LaTeX toolchain not found locally; existing locked CI PDF is present

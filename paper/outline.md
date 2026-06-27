@@ -14,5 +14,4 @@ Title: ReplayCapsule-RV: Event-Sufficient Hardware Failure Capsules for Determin
 10. Limitations
 11. Conclusion
 
-Result-dependent claims remain pending until scripts generate real data.
-
+Result-dependent claims must stay tied to generated data and explicit limitations.

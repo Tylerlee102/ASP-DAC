@@ -1,8 +1,8 @@
 # Evaluation
 
-The evaluation will report replay success, capsule size, trace reduction, event rate, hardware overhead, Fmax loss, runtime overhead, buffer overflow rate, and false or missed property failures.
+The evaluation reports replay success, capsule size, trace reduction, event rate, hardware overhead, Fmax loss, runtime overhead, buffer overflow rate, and false or missed property failures.
 
-Current measured local results cover six model-level benchmark capsules, six RV32I firmware-sim benchmark capsules, a generated six-benchmark local coverage ledger, benchmark-derived replay-comparator negative fixtures across commit-index and cycle-index modes, twelve failing/fixed RTL-smoke capsule export self/missing-event/duplicate-event/metadata-corruption/payload-corruption/order-corruption/PC-context checks and packet-byte size rows, RTL-smoke capsule event-class counts, twelve RTL-smoke versus firmware-sim alignment rows, a seeded RTL-smoke interrupt-race reproducibility campaign with generated family summary, MMIO wait-state latency cases, coverage/TODO, and seed-specific corruption-rejection ledgers, a bounded overflow contract ledger, the replay comparator, nine directed Icarus SystemVerilog module simulations, fifteen PicoRV32 wrapper firmware smokes with generated log-level capsule sanity summaries, Verilator lint for `replay_capsule_top`, `picorv32_replaycapsule_wrapper`, `replaycapsule_soc`, and `replay_capsule_properties`, bounded SMTBMC event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, recorder, and capsule-buffer proof/cover checks, and generic Yosys synthesis cell counts for baseline `picorv32`, `replay_capsule_top`, and `picorv32_replaycapsule_wrapper`. The suites exercise failing, fixed, and selected no-failure edge sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout images. The full six-benchmark firmware-running RTL replay/export/compare suite remains TODO because local `make`/C++ build support and a RISC-V compiler are still absent. FPGA-mapped LUT/FF/BRAM/Fmax numbers also remain TODO until an OpenROAD or vendor flow is run.
+Current measured results cover six model-level benchmark capsules, six RV32I firmware-sim benchmark capsules, a generated six-benchmark local coverage ledger, benchmark-derived replay-comparator negative fixtures across commit-index and cycle-index modes, full compiler-backed firmware-running RTL replay rows, full RTL replay-critical corruption checks, a bounded overflow contract ledger, the replay comparator, directed Icarus SystemVerilog module simulations, fifteen PicoRV32 wrapper firmware smokes with generated log-level capsule sanity summaries, Verilator lint for `replay_capsule_top`, `picorv32_replaycapsule_wrapper`, `replaycapsule_soc`, and `replay_capsule_properties`, bounded SMTBMC event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, recorder, and capsule-buffer proof/cover checks, runtime-overhead summaries, generic Yosys synthesis context, and same-target full-core ECP5 mapped LUT/FF/BRAM/Fmax numbers. The suites exercise failing, fixed, and selected no-failure edge sensor-threshold, interrupt-race, MMIO-ordering, stack-corruption, UART-command, and watchdog-timeout images.
 
 Current generated artifacts:
 
@@ -31,6 +31,12 @@ Current generated artifacts:
 - `results/processed/proof_obligations.csv`
 - `results/processed/synthesis.csv`
 - `results/processed/synthesis_overhead.csv`
+- `results/processed/mapped_synthesis.csv`
+- `results/processed/mapped_overhead.csv`
+- `results/processed/mapped_recorder_presence.csv`
+- `results/processed/full_core_mapped_summary.csv`
+- `results/processed/runtime_overhead.csv`
+- `results/processed/runtime_overhead_summary.csv`
 - `results/processed/evaluation_metrics.csv`
 - `results/processed/claim_audit.csv`
 - `results/processed/toolchain_status.csv`
@@ -44,7 +50,7 @@ Current generated artifacts:
 - `paper/figures/table06_proof_obligations.md`
 - `paper/figures/table07_evaluation_metrics.md`
 
-The paper must label current replay, baseline, ablation, interrupt-campaign, and event-sufficiency numbers as model-level, firmware-sim, or RTL-smoke evidence until replaced or corroborated by benchmark-wide RTL/PicoRV32 runs. Current RTL simulation evidence is fifteen PicoRV32 wrapper smokes with generated log-level capsule sanity checks, exported smoke capsule byte counts, exported-capsule event-class ablations, and seeded interrupt rerun digest checks; current formal evidence is bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, recorder, and capsule-buffer BMC/cover targets plus a generated theorem proof-obligation matrix, and current synthesis evidence is limited to Yosys generic cell counts and derived generic cell-overhead context.
+The paper labels replay, baseline, ablation, interrupt-campaign, and event-sufficiency numbers as model-level, firmware-sim, RTL-smoke, or full RTL evidence according to their source CSVs. Current full RTL evidence is compiler-backed host-driven record/replay and replay-critical corruption rejection; current formal evidence is bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, recorder, and capsule-buffer BMC/cover targets plus a generated theorem proof-obligation matrix. Current mapped evidence is same-target ECP5 place-and-route for board-level full-core baseline and ReplayCapsule wrappers.
 
 The result pipeline is:
 
@@ -54,6 +60,7 @@ The result pipeline is:
 4. `scripts/run_ablations.py`
 5. `scripts/synth_yosys.py`
 6. `scripts/parse_synthesis_reports.py`
-7. `scripts/make_figures.py`
+7. `scripts/run_mapped_synthesis.py`
+8. `scripts/make_figures.py`
 
 The one-command local gate is `scripts/run_all_tests.py`, wrapped by `scripts/reproduce_all.ps1` on Windows and `scripts/reproduce_all.sh` on Unix-like shells.

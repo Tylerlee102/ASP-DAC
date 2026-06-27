@@ -106,7 +106,7 @@ def collect(trace_path: Path) -> list[dict[str, str]]:
                     "replay_success": str(replay_success),
                     "evidence_level": evidence_level,
                     "notes": (
-                        f"{measurement['notes']}; full benchmark-wide RTL trace sizes pending; "
+                        f"{measurement['notes']}; full RTL replay success is reported separately; "
                         "RTL-smoke capsule bytes are reported separately when available"
                     ),
                 }

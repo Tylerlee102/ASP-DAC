@@ -14,9 +14,9 @@ Fix plan: run all six firmware benchmarks on RTL traces and show per-bug minimal
 
 Required evidence: same events drive both checking and replay capsules; replay must reproduce failures, not only detect them.
 
-Current weakness: property checker RTL exists, but full firmware replay is pending.
+Current weakness: replay consume is host-driven rather than a deployed hardware replay datapath.
 
-Fix plan: connect replay driver to RTL-generated capsules.
+Fix plan: keep the host-driven replay scope explicit and avoid claiming a synthesizable replay-consume path.
 
 ## 3. "This is just deterministic replay."
 
@@ -30,17 +30,17 @@ Fix plan: connect the written theorem to the checked local contracts and add bro
 
 Required evidence: novelty matrix and theorem that identify event sufficiency as the contribution.
 
-Current weakness: PicoRV32 has fifteen wrapper smokes, not benchmark-wide replay/export evidence.
+Current weakness: the novelty argument must stay focused on event sufficiency, not broad trace replacement.
 
-Fix plan: scale the PicoRV32 wrapper harness across the benchmark suite and keep the same event interface.
+Fix plan: keep the event interface and same-target mapped evidence tied to the scoped contribution.
 
 ## 5. "The benchmarks are toy examples."
 
 Required evidence: realistic embedded bug mechanics, failing/fixed firmware, randomized interrupt/input campaigns.
 
-Current weakness: fifteen firmware-running RTL smokes exist; the full RTL replay/export suite is not running yet.
+Current weakness: the benchmark suite is generated and scoped, even though compiler-backed full RTL replay now passes.
 
-Fix plan: implement all six failing/fixed firmware images.
+Fix plan: present the six generated families as focused embedded bug mechanics, not complete embedded-system coverage.
 
 ## 6. "The proof is too weak."
 
@@ -54,15 +54,15 @@ Fix plan: strengthen theorem with invariants linked to the checked formal/SVA co
 
 Required evidence: LUT/FF/BRAM/Fmax from a real synthesis flow.
 
-Current weakness: generic Yosys cell counts and a derived generic cell-overhead row exist, but mapped FPGA resources and timing do not.
+Current weakness: full-core mapped ECP5 overhead is high.
 
-Fix plan: run at least one mapped FPGA flow and report LUT/FF/BRAM/Fmax from generated reports.
+Fix plan: report the same-target ECP5 LUT/FF/BRAM/Fmax rows exactly and state that this prototype is not area-optimized.
 
 ## 8. "The capsule is not actually minimal."
 
 Required evidence: ablations and per-bug minimum event set table.
 
-Current weakness: default capture currently includes property context beyond strict nondeterminism. Model-level and exported RTL-smoke event-class ablations now exist, but full RTL replay ablations are still pending.
+Current weakness: default capture includes property context beyond strict nondeterminism. Model-level and exported RTL-smoke event-class ablations now exist; full RTL ablation variants are future work.
 
 Fix plan: distinguish sufficiency core from diagnostic context and quantify both.
 
@@ -86,7 +86,7 @@ Fix plan: implement trace-size baselines and discuss adapter feasibility.
 
 Required evidence: snapshot-on-failure baseline showing inability to replay pre-failure nondeterministic path without event history.
 
-Current weakness: model-level and firmware-sim snapshot sizes are measured, but RTL replay-success and RTL snapshot comparisons are still pending.
+Current weakness: model-level and firmware-sim snapshot sizes are measured, while RTL snapshot-size baselines remain future work.
 
 Fix plan: implement RTL snapshot-size and replay-success baseline rows once firmware-running RTL traces are available.
 
@@ -94,7 +94,7 @@ Fix plan: implement RTL snapshot-size and replay-success baseline rows once firm
 
 Required evidence: hardware sees exact interrupt/MMIO timing and can freeze on failure with low perturbation.
 
-Current weakness: runtime-overhead numbers missing.
+Current weakness: runtime-overhead numbers are measured in the current harness, but software-only perturbation is not fully quantified.
 
 Fix plan: quantify software-only instrumentation perturbation versus RTL capture.
 
@@ -102,6 +102,6 @@ Fix plan: quantify software-only instrumentation perturbation versus RTL capture
 
 Required evidence: formal model, synthesizable design, FPGA/synthesis evaluation, and reproducible artifact.
 
-Current weakness: the artifact has local RTL, formal, firmware-sim, and generic synthesis evidence, but still lacks benchmark-wide RTL replay and mapped hardware measurements.
+Current weakness: the artifact now has full RTL replay and mapped hardware measurements; the main risk is overclaiming beyond the scoped prototype.
 
 Fix plan: complete gates before making a venue-ready claim.
