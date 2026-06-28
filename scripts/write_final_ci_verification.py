@@ -124,7 +124,11 @@ def _runtime_overhead_gate() -> dict[str, str]:
 
 def _mapped_synth_gate() -> dict[str, str]:
     summary = _first(_rows("results/processed/full_core_mapped_summary.csv"))
-    presence = _first(_rows("results/processed/mapped_recorder_presence.csv"))
+    presence = _matching_target_flow(
+        _rows("results/processed/mapped_recorder_presence.csv"),
+        summary.get("target", ""),
+        summary.get("flow", ""),
+    )
     status = "PASS" if summary.get("status") == "PASS" and presence.get("status") == "PASS" else "FAIL"
     return _row(
         "mapped_synth_gate",
@@ -237,6 +241,10 @@ def _rows(path: str) -> list[dict[str, str]]:
 
 def _first(rows: list[dict[str, str]]) -> dict[str, str]:
     return rows[0] if rows else {}
+
+
+def _matching_target_flow(rows: list[dict[str, str]], target: str, flow: str) -> dict[str, str]:
+    return next((row for row in rows if row.get("target") == target and row.get("flow") == flow), {})
 
 
 def _text_files() -> list[Path]:
