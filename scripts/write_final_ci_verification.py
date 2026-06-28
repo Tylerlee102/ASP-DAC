@@ -46,6 +46,11 @@ def main() -> int:
         writer.writeheader()
         writer.writerows(rows)
     failures = [row for row in rows if row["status"] == "FAIL"]
+    for row in failures:
+        message = f"{row['check']}: {row['notes']} evidence={row['evidence']}"
+        print(f"FINAL_CI_VERIFICATION_FAIL {message}")
+        if os.environ.get("GITHUB_ACTIONS") == "true":
+            print(f"::error title=Final CI verification failed::{_gha_escape(message)}")
     print(f"WROTE {_rel(OUT_CSV)}; FAIL rows={len(failures)}")
     return 1 if failures else 0
 
@@ -280,6 +285,10 @@ def _git_branch() -> str:
 
 def _row(check: str, status: str, evidence: str, notes: str) -> dict[str, str]:
     return {"check": check, "status": status, "evidence": evidence, "notes": notes}
+
+
+def _gha_escape(text: str) -> str:
+    return text.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
 
 
 def _rel(path: Path) -> str:
