@@ -2,6 +2,10 @@
 
 Last inspected: 2026-06-27.
 
+v2 update inspected: 2026-06-28. The measured v2 zero-fail gate is summarized
+in `docs/v2_zero_fail_status.md` and audited by the empty
+`results/processed/v2_zero_fail_bug_inventory.csv`.
+
 ## Scope and Evidence Rules
 
 This file tracks the ten top-conference acceptance gates from the original

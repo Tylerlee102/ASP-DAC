@@ -13,6 +13,8 @@ module picorv32_replaycapsule_wrapper #(
   input  logic        clear,
   input  logic        watchdog_enable,
   input  logic [3:0]  capture_mode,
+  input  logic [1:0]  arch_select,
+  input  logic [1:0]  recorder_config_select,
 
   output logic        trap,
   output logic        mem_valid,
@@ -62,6 +64,43 @@ module picorv32_replaycapsule_wrapper #(
   logic interrupt_enter;
   logic interrupt_exit;
   logic mem_accepted;
+  logic [167:0] v1_capsule_read_data;
+  logic v1_capsule_frozen;
+  logic v1_capsule_overflow;
+  logic [CAPSULE_ADDR_W:0] v1_capsule_event_count;
+  logic [31:0] v1_running_signature;
+  logic v1_property_fail_valid;
+  logic [7:0] v1_property_id;
+  logic [31:0] v1_property_signature;
+  logic [63:0] v2_core_capsule_read_data;
+  logic v2_core_capsule_frozen;
+  logic v2_core_capsule_overflow;
+  logic [CAPSULE_ADDR_W:0] v2_core_capsule_event_count;
+  logic [31:0] v2_core_running_signature;
+  logic v2_core_property_fail_valid;
+  logic [7:0] v2_core_property_id;
+  logic [31:0] v2_core_property_signature;
+  logic [31:0] v2_core_dropped_diagnostic_count;
+  logic [63:0] v2_hashed_capsule_read_data;
+  logic v2_hashed_capsule_frozen;
+  logic v2_hashed_capsule_overflow;
+  logic [CAPSULE_ADDR_W:0] v2_hashed_capsule_event_count;
+  logic [31:0] v2_hashed_running_signature;
+  logic v2_hashed_property_fail_valid;
+  logic [7:0] v2_hashed_property_id;
+  logic [31:0] v2_hashed_property_signature;
+  logic [31:0] v2_hashed_dropped_diagnostic_count;
+  logic [63:0] v2_full_capsule_read_data;
+  logic v2_full_capsule_frozen;
+  logic v2_full_capsule_overflow;
+  logic [CAPSULE_ADDR_W:0] v2_full_capsule_event_count;
+  logic [31:0] v2_full_running_signature;
+  logic v2_full_property_fail_valid;
+  logic [7:0] v2_full_property_id;
+  logic [31:0] v2_full_property_signature;
+  logic [31:0] v2_full_dropped_diagnostic_count;
+  logic use_v2;
+  logic v2_capture_enabled;
 
   localparam logic [3:0] TRACE_BRANCH_FLAG = 4'b0001;
   localparam logic [3:0] TRACE_ADDR_FLAG   = 4'b0010;
@@ -198,15 +237,208 @@ module picorv32_replaycapsule_wrapper #(
     .interrupt_exit(interrupt_exit),
     .checkpoint_hash_req(1'b0),
     .capsule_read_addr(capsule_read_addr),
-    .capsule_read_data(capsule_read_data),
-    .capsule_frozen(capsule_frozen),
-    .capsule_overflow(capsule_overflow),
-    .capsule_event_count(capsule_event_count),
-    .running_signature(running_signature),
-    .property_fail_valid(property_fail_valid),
-    .property_id(property_id),
-    .property_signature(property_signature),
+    .capsule_read_data(v1_capsule_read_data),
+    .capsule_frozen(v1_capsule_frozen),
+    .capsule_overflow(v1_capsule_overflow),
+    .capsule_event_count(v1_capsule_event_count),
+    .running_signature(v1_running_signature),
+    .property_fail_valid(v1_property_fail_valid),
+    .property_id(v1_property_id),
+    .property_signature(v1_property_signature),
     .captured_event_valid(),
     .captured_event_type()
   );
+
+  rcv2_recorder #(
+    .REPLAYCAPSULE_CONFIG(1),
+    .BUFFER_DEPTH(CAPSULE_DEPTH),
+    .MEMORY_WORDS(CAPSULE_DEPTH),
+    .MEMORY_ADDR_W(CAPSULE_ADDR_W),
+    .ENABLE_DIAGNOSTICS(1'b1),
+    .ENABLE_PAYLOAD_HASH(1'b1),
+    .ENABLE_ADDRESS_DICTIONARY(1'b1),
+    .ENABLE_BRam_FIFO(1'b1),
+    .ENABLE_ADAPTIVE_WINDOW(1'b1),
+    .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
+  ) u_rcv2_core (
+    .clk(clk),
+    .rst_n(rst_n),
+    .clear(clear),
+    .watchdog_enable(watchdog_enable),
+    .commit_valid(v2_capture_enabled && core_trace_valid && !trace_is_addr),
+    .commit_pc(trace_context_pc),
+    .commit_instr(32'h0),
+    .commit_index(commit_index),
+    .branch_taken(branch_taken),
+    .jump_taken(jump_taken),
+    .mem_valid(v2_capture_enabled && mem_accepted),
+    .mem_write(core_mem_wstrb != 4'h0),
+    .mem_addr(core_mem_addr),
+    .mem_wdata(core_mem_wdata),
+    .mem_rdata(mem_rdata),
+    .external_input_valid(v2_capture_enabled && external_input_valid),
+    .external_input_value(external_input_value),
+    .interrupt_enter(v2_capture_enabled && interrupt_enter),
+    .interrupt_exit(v2_capture_enabled && interrupt_exit),
+    .checkpoint_hash_req(1'b0),
+    .capsule_read_addr(capsule_read_addr),
+    .capsule_read_data(v2_core_capsule_read_data),
+    .capsule_frozen(v2_core_capsule_frozen),
+    .capsule_overflow(v2_core_capsule_overflow),
+    .capsule_event_count(v2_core_capsule_event_count),
+    .running_signature(v2_core_running_signature),
+    .property_fail_valid(v2_core_property_fail_valid),
+    .property_id(v2_core_property_id),
+    .property_signature(v2_core_property_signature),
+    .captured_event_valid(),
+    .captured_event_type(),
+    .dropped_diagnostic_count(v2_core_dropped_diagnostic_count)
+  );
+
+  rcv2_recorder #(
+    .REPLAYCAPSULE_CONFIG(2),
+    .BUFFER_DEPTH(CAPSULE_DEPTH),
+    .MEMORY_WORDS(CAPSULE_DEPTH),
+    .MEMORY_ADDR_W(CAPSULE_ADDR_W),
+    .ENABLE_DIAGNOSTICS(1'b1),
+    .ENABLE_PAYLOAD_HASH(1'b1),
+    .ENABLE_ADDRESS_DICTIONARY(1'b1),
+    .ENABLE_BRam_FIFO(1'b1),
+    .ENABLE_ADAPTIVE_WINDOW(1'b1),
+    .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
+  ) u_rcv2_hashed (
+    .clk(clk),
+    .rst_n(rst_n),
+    .clear(clear),
+    .watchdog_enable(watchdog_enable),
+    .commit_valid(v2_capture_enabled && core_trace_valid && !trace_is_addr),
+    .commit_pc(trace_context_pc),
+    .commit_instr(32'h0),
+    .commit_index(commit_index),
+    .branch_taken(branch_taken),
+    .jump_taken(jump_taken),
+    .mem_valid(v2_capture_enabled && mem_accepted),
+    .mem_write(core_mem_wstrb != 4'h0),
+    .mem_addr(core_mem_addr),
+    .mem_wdata(core_mem_wdata),
+    .mem_rdata(mem_rdata),
+    .external_input_valid(v2_capture_enabled && external_input_valid),
+    .external_input_value(external_input_value),
+    .interrupt_enter(v2_capture_enabled && interrupt_enter),
+    .interrupt_exit(v2_capture_enabled && interrupt_exit),
+    .checkpoint_hash_req(1'b0),
+    .capsule_read_addr(capsule_read_addr),
+    .capsule_read_data(v2_hashed_capsule_read_data),
+    .capsule_frozen(v2_hashed_capsule_frozen),
+    .capsule_overflow(v2_hashed_capsule_overflow),
+    .capsule_event_count(v2_hashed_capsule_event_count),
+    .running_signature(v2_hashed_running_signature),
+    .property_fail_valid(v2_hashed_property_fail_valid),
+    .property_id(v2_hashed_property_id),
+    .property_signature(v2_hashed_property_signature),
+    .captured_event_valid(),
+    .captured_event_type(),
+    .dropped_diagnostic_count(v2_hashed_dropped_diagnostic_count)
+  );
+
+  rcv2_recorder #(
+    .REPLAYCAPSULE_CONFIG(4),
+    .BUFFER_DEPTH(CAPSULE_DEPTH),
+    .MEMORY_WORDS(CAPSULE_DEPTH),
+    .MEMORY_ADDR_W(CAPSULE_ADDR_W),
+    .ENABLE_DIAGNOSTICS(1'b1),
+    .ENABLE_PAYLOAD_HASH(1'b1),
+    .ENABLE_ADDRESS_DICTIONARY(1'b1),
+    .ENABLE_BRam_FIFO(1'b1),
+    .ENABLE_ADAPTIVE_WINDOW(1'b1),
+    .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
+  ) u_rcv2_full (
+    .clk(clk),
+    .rst_n(rst_n),
+    .clear(clear),
+    .watchdog_enable(watchdog_enable),
+    .commit_valid(v2_capture_enabled && core_trace_valid && !trace_is_addr),
+    .commit_pc(trace_context_pc),
+    .commit_instr(32'h0),
+    .commit_index(commit_index),
+    .branch_taken(branch_taken),
+    .jump_taken(jump_taken),
+    .mem_valid(v2_capture_enabled && mem_accepted),
+    .mem_write(core_mem_wstrb != 4'h0),
+    .mem_addr(core_mem_addr),
+    .mem_wdata(core_mem_wdata),
+    .mem_rdata(mem_rdata),
+    .external_input_valid(v2_capture_enabled && external_input_valid),
+    .external_input_value(external_input_value),
+    .interrupt_enter(v2_capture_enabled && interrupt_enter),
+    .interrupt_exit(v2_capture_enabled && interrupt_exit),
+    .checkpoint_hash_req(1'b0),
+    .capsule_read_addr(capsule_read_addr),
+    .capsule_read_data(v2_full_capsule_read_data),
+    .capsule_frozen(v2_full_capsule_frozen),
+    .capsule_overflow(v2_full_capsule_overflow),
+    .capsule_event_count(v2_full_capsule_event_count),
+    .running_signature(v2_full_running_signature),
+    .property_fail_valid(v2_full_property_fail_valid),
+    .property_id(v2_full_property_id),
+    .property_signature(v2_full_property_signature),
+    .captured_event_valid(),
+    .captured_event_type(),
+    .dropped_diagnostic_count(v2_full_dropped_diagnostic_count)
+  );
+
+  assign use_v2 = arch_select == 2'd2;
+  assign v2_capture_enabled = capture_mode != 4'h4;
+
+  always_comb begin
+    capsule_read_data = v1_capsule_read_data;
+    capsule_frozen = v1_capsule_frozen;
+    capsule_overflow = v1_capsule_overflow;
+    capsule_event_count = v1_capsule_event_count;
+    running_signature = v1_running_signature;
+    property_fail_valid = v1_property_fail_valid;
+    property_id = v1_property_id;
+    property_signature = v1_property_signature;
+
+    if (use_v2) begin
+      case (recorder_config_select)
+        2'd1: begin
+          capsule_read_data = {104'h0, v2_hashed_capsule_read_data};
+          capsule_frozen = v2_hashed_capsule_frozen;
+          capsule_overflow = v2_hashed_capsule_overflow;
+          capsule_event_count = v2_hashed_capsule_event_count;
+          running_signature = v2_hashed_running_signature;
+          property_fail_valid = v2_hashed_property_fail_valid;
+          property_id = v2_hashed_property_id;
+          property_signature = v2_hashed_property_signature;
+        end
+        2'd2: begin
+          capsule_read_data = {104'h0, v2_full_capsule_read_data};
+          capsule_frozen = v2_full_capsule_frozen;
+          capsule_overflow = v2_full_capsule_overflow;
+          capsule_event_count = v2_full_capsule_event_count;
+          running_signature = v2_full_running_signature;
+          property_fail_valid = v2_full_property_fail_valid;
+          property_id = v2_full_property_id;
+          property_signature = v2_full_property_signature;
+        end
+        default: begin
+          capsule_read_data = {104'h0, v2_core_capsule_read_data};
+          capsule_frozen = v2_core_capsule_frozen;
+          capsule_overflow = v2_core_capsule_overflow;
+          capsule_event_count = v2_core_capsule_event_count;
+          running_signature = v2_core_running_signature;
+          property_fail_valid = v2_core_property_fail_valid;
+          property_id = v2_core_property_id;
+          property_signature = v2_core_property_signature;
+        end
+      endcase
+    end
+  end
+
+  logic unused_v2_dropped;
+  assign unused_v2_dropped =
+    (|v2_core_dropped_diagnostic_count) |
+    (|v2_hashed_dropped_diagnostic_count) |
+    (|v2_full_dropped_diagnostic_count);
 endmodule

@@ -1,0 +1,14 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "command_value": 0,
+  "hex": "firmware/build_expanded/sensor_threshold_bug/fixed.hex",
+  "interrupt_commit": null,
+  "labels": {
+    "respond": "0x00000094"
+  },
+  "mem": "firmware/build_expanded/sensor_threshold_bug/fixed.mem",
+  "reset_pc": "0x00000080",
+  "sensor_value": 300,
+  "variant": "fixed",
+  "word_count": 10
+}

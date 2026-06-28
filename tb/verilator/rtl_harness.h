@@ -15,6 +15,8 @@ struct HarnessOptions {
   std::string capsule_path;
   std::string signature_path;
   std::string debug_dir = "results/debug/pass4";
+  std::string arch = "v1";
+  std::string recorder_config = "core";
   int seed = 1;
   uint64_t max_cycles = 100000;
   uint32_t capture_mode = 3;

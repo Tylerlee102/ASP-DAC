@@ -1,0 +1,33 @@
+architecture,recorder_config,target,flow,memory_words,buffer_depth,metric,baseline,with_replaycapsule,delta,percent_overhead,claim_allowed,notes
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,lut,3342,7508,4166.00,124.66,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,ff,883,3901,3018.00,341.79,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,bram,4,4,0.00,0.00,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,fmax_mhz,65.07,51.53,-13.54,-20.81,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,lut,3359,7570,4211.00,125.36,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,ff,883,3901,3018.00,341.79,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,bram,6,6,0.00,0.00,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,fmax_mhz,68.06,50.72,-17.34,-25.48,yes,same-target mapped overhead
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,lut,3359,9491,6132.00,182.55,yes,same-target mapped overhead
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,ff,883,6591,5708.00,646.43,yes,same-target mapped overhead
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,bram,6,6,0.00,0.00,yes,same-target mapped overhead
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,fmax_mhz,68.06,50.57,-17.49,-25.70,yes,same-target mapped overhead
+v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,lut,3359,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
+v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,ff,883,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
+v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,bram,6,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
+v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,fmax_mhz,68.06,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,lut,3367,9497,6130.00,182.06,yes,same-target mapped overhead
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,ff,883,6591,5708.00,646.43,yes,same-target mapped overhead
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,bram,10,10,0.00,0.00,yes,same-target mapped overhead
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,fmax_mhz,63.10,52.04,-11.06,-17.53,yes,same-target mapped overhead
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,lut,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,ff,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,bram,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,fmax_mhz,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,lut,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,ff,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,bram,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,fmax_mhz,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,lut,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,ff,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,bram,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,fmax_mhz,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists

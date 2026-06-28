@@ -1,35 +1,31 @@
-﻿%Error: Cannot find verilated_std_waiver.vlt containing built-in lint waivers: '/yosyshq/share/verilator\include\verilated_std_waiver.vlt'
-        ... See the manual at https://verilator.org/verilator_doc.html?v=5.049 for more assistance.
-        ... Looked in:
-             rtl\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
-             rtl\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
-             rtl\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
-             rtl/rv32i_integration\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
-             rtl/rv32i_integration\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
-             rtl/rv32i_integration\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
-             third_party/picorv32\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
-             third_party/picorv32\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
-             third_party/picorv32\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
-             tb/verilator\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
-             tb/verilator\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
-             tb/verilator\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
-             /yosyshq/share/verilator\include\verilated_std_waiver.vlt
-             /yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
-             /yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
-             build/verilator/runtime_recorder_obj_dir\/yosyshq/share/verilator\include\verilated_std_waiver.vlt
-             build/verilator/runtime_recorder_obj_dir\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.v
-             build/verilator/runtime_recorder_obj_dir\/yosyshq/share/verilator\include\verilated_std_waiver.vlt.sv
-        ... With current working directory '.'
-%Error: Cannot find verilated_std.sv containing built-in std:: definitions: '/yosyshq/share/verilator\include\verilated_std.sv'
-%Error: Cannot find file containing module: './tb/verilator/replaycapsule_verilator_top.sv'
-%Error: Cannot find file containing module: './third_party/picorv32/picorv32.v'
-%Error: Cannot find file containing module: './rtl/event_pkg.sv'
-%Error: Cannot find file containing module: './rtl/event_tap.sv'
-%Error: Cannot find file containing module: './rtl/event_classifier.sv'
-%Error: Cannot find file containing module: './rtl/capsule_buffer.sv'
-%Error: Cannot find file containing module: './rtl/property_checker.sv'
-%Error: Cannot find file containing module: './rtl/event_slicer.sv'
-%Error: Cannot find file containing module: './rtl/hash_signature.sv'
-%Error: Cannot find file containing module: './rtl/replay_capsule_top.sv'
-%Error: Cannot find file containing module: './rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv'
-%Error: Exiting due to 14 error(s)
+make[1]: Entering directory 'R:/build/verilator/runtime_recorder_obj_dir'
+g++  -I.  -MMD -IR:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include -IR:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -std=c++17 -O2 -IR:/tb/verilator   -Os  -c -o runtime_main.o R:/tb/verilator/runtime_main.cpp
+g++ -Os  -I.  -MMD -IR:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include -IR:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -std=c++17 -O2 -IR:/tb/verilator   -c -o verilated.o R:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/verilated.cpp
+R:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/verilated.cpp:78:10: warning: 'STDOUT_FILENO' redefined
+   78 | # define STDOUT_FILENO _fileno(stdout)
+      |          ^~~~~~~~~~~~~
+In file included from C:/Users/tyboy/OneDrive/Documents/New project/.tools/winlibs/mingw64/x86_64-w64-mingw32/include/locale.h:12,
+                 from C:/Users/tyboy/OneDrive/Documents/New project/.tools/winlibs/mingw64/include/c++/16.1.0/clocale:47,
+                 from C:/Users/tyboy/OneDrive/Documents/New project/.tools/winlibs/mingw64/include/c++/16.1.0/x86_64-w64-mingw32/bits/c++locale.h:41,
+                 from C:/Users/tyboy/OneDrive/Documents/New project/.tools/winlibs/mingw64/include/c++/16.1.0/bits/localefwd.h:42,
+                 from C:/Users/tyboy/OneDrive/Documents/New project/.tools/winlibs/mingw64/include/c++/16.1.0/string:48,
+                 from R:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/verilatedos.h:653,
+                 from R:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/verilated.cpp:51:
+C:/Users/tyboy/OneDrive/Documents/New project/.tools/winlibs/mingw64/x86_64-w64-mingw32/include/stdio.h:75:9: note: this is the location of the previous definition
+   75 | #define STDOUT_FILENO   1
+      |         ^~~~~~~~~~~~~
+R:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/verilated.cpp:79:10: warning: 'STDERR_FILENO' redefined
+   79 | # define STDERR_FILENO _fileno(stderr)
+      |          ^~~~~~~~~~~~~
+C:/Users/tyboy/OneDrive/Documents/New project/.tools/winlibs/mingw64/x86_64-w64-mingw32/include/stdio.h:76:9: note: this is the location of the previous definition
+   76 | #define STDERR_FILENO   2
+      |         ^~~~~~~~~~~~~
+g++ -Os  -I.  -MMD -IR:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include -IR:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -std=c++17 -O2 -IR:/tb/verilator   -c -o verilated_threads.o R:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/verilated_threads.cpp
+python3 R:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/bin/verilator_includer -DVL_INCLUDE_OPT=include Vreplaycapsule_verilator_top.cpp Vreplaycapsule_verilator_top___024root__0.cpp Vreplaycapsule_verilator_top___024root__Slow.cpp Vreplaycapsule_verilator_top___024root__0__Slow.cpp Vreplaycapsule_verilator_top__Syms__Slow.cpp > Vreplaycapsule_verilator_top__ALL.cpp
+g++ -Os  -I.  -MMD -IR:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include -IR:/.tools/oss-cad-suite/oss-cad-suite/share/verilator/include/vltstd -DVERILATOR=1 -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TIMING=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -DVM_TRACE_SAIF=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-int-in-bool-context -Wno-shadow -Wno-sign-compare -Wno-subobject-linkage -Wno-tautological-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable    -std=c++17 -O2 -IR:/tb/verilator   -c -o Vreplaycapsule_verilator_top__ALL.o Vreplaycapsule_verilator_top__ALL.cpp
+g++    runtime_main.o verilated.o verilated_threads.o Vreplaycapsule_verilator_top__ALL.a    -pthread -lpthread -latomic   -o ../runtime_recorder_sim
+rm Vreplaycapsule_verilator_top__ALL.verilator_deplist.tmp
+make[1]: Leaving directory 'R:/build/verilator/runtime_recorder_obj_dir'
+- V e r i l a t i o n   R e p o r t: Verilator 5.049 devel rev v5.048-331-g0ebae4371 (mod)
+- Verilator: Built from 2.452 MB sources in 25 modules, into 0.753 MB in 5 C++ files needing 0.001 MB
+- Verilator: Walltime 10.862 s (elab=0.016, cvt=0.119, bld=10.664); cpu 0.000 s on 1 threads; allocated 31.727 MB

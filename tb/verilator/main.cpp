@@ -29,6 +29,10 @@ bool parse_args(int argc, char** argv, HarnessOptions* options) {
       options->capsule_path = value;
     } else if (arg == "--signature" && require_value(&i, argc, argv, &value)) {
       options->signature_path = value;
+    } else if (arg == "--arch" && require_value(&i, argc, argv, &value)) {
+      options->arch = value;
+    } else if (arg == "--recorder-config" && require_value(&i, argc, argv, &value)) {
+      options->recorder_config = value;
     } else if (arg == "--seed" && require_value(&i, argc, argv, &value)) {
       options->seed = std::stoi(value);
     } else if (arg == "--max-cycles" && require_value(&i, argc, argv, &value)) {
@@ -54,7 +58,10 @@ bool parse_args(int argc, char** argv, HarnessOptions* options) {
   }
   return !options->benchmark.empty() && !options->variant.empty() && !options->firmware.empty() &&
          !options->capsule_path.empty() && !options->signature_path.empty() &&
-         (options->mode == "record" || options->mode == "replay");
+         (options->mode == "record" || options->mode == "replay") &&
+         (options->arch == "v1" || options->arch == "v2") &&
+         (options->recorder_config == "core" || options->recorder_config == "hashed" ||
+          options->recorder_config == "full");
 }
 
 void usage(const char* argv0) {
@@ -64,7 +71,7 @@ void usage(const char* argv0) {
       << "  --capsule results/raw/rtl_capsules/<name>.json\n"
       << "  --signature results/raw/rtl_signatures/<name>.json\n"
       << "  [--seed N] [--max-cycles N] [--debug-events]\n"
-      << "  [--capture-mode N]\n"
+      << "  [--capture-mode N] [--arch v1|v2] [--recorder-config core|hashed|full]\n"
       << "  [--dump-mmio] [--dump-property] [--dump-pc] [--dump-disasm-context]\n"
       << "  [--debug-dir DIR]\n";
 }
@@ -83,6 +90,8 @@ int main(int argc, char** argv) {
             << " benchmark=" << options.benchmark
             << " variant=" << options.variant
             << " seed=" << options.seed
+            << " arch=" << options.arch
+            << " recorder_config=" << options.recorder_config
             << " property=" << static_cast<unsigned>(result.capsule.property_id)
             << " events=" << result.capsule.events.size()
             << " cycles=" << result.cycles_to_failure

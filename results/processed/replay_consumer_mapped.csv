@@ -1,0 +1,2 @@
+target,flow,design,lut,ff,bram,fmax_mhz,status,report_path,notes
+ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,rcv2_replay_consumer,787,75,0,87.51,PASS,results/raw/replay_consumer_mapping/rcv2_replay_consumer_ecp5-85k_nextpnr.txt,real ECP5 mapping of replay-consume controller prototype only; not full-core autonomous replay

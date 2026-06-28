@@ -1,0 +1,4 @@
+architecture,recorder_config,design,target,flow,memory_words,buffer_depth,recorder_present,evidence,status,notes
+v2,core,full_core_v2_core_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,16,true,results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf16_ecp5_85k_yosys.txt,PASS,full-core v2 recorder hierarchy found in mapped netlist/log
+v2,hashed,full_core_v2_hashed_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,16,true,results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf16_ecp5_85k_yosys.txt,PASS,full-core v2 recorder hierarchy found in mapped netlist/log
+v2,full,full_core_v2_full_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,16,true,results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf16_ecp5_85k_yosys.txt,PASS,full-core v2 recorder hierarchy found in mapped netlist/log

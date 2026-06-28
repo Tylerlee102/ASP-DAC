@@ -1,0 +1,16 @@
+architecture,recorder_config,workload_scale,pass_count,fail_count,timeout_count,blocked_count,replay_success_rate_pct,overflow_rate_pct,median_events,median_capsule_bytes,n,notes
+v2,core,long,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,core,medium,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,core,short,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,core,smoke,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,core,stress,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,full,long,75,0,0,0,100.000000,0.000000,241.000000,1928.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,full,medium,75,0,0,0,100.000000,0.000000,241.000000,1928.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,full,short,75,0,0,0,100.000000,0.000000,241.000000,1928.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,full,smoke,75,0,0,0,100.000000,0.000000,240.000000,1920.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,full,stress,75,0,0,0,100.000000,0.000000,241.000000,1928.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,hashed,long,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,hashed,medium,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,hashed,short,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,hashed,smoke,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained
+v2,hashed,stress,75,0,0,0,100.000000,0.000000,1.000000,8.000000,75,all v2 rows are simulator-measured; FAIL rows are retained

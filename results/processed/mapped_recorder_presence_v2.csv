@@ -1,0 +1,9 @@
+architecture,recorder_config,design,target,flow,memory_words,buffer_depth,recorder_present,evidence,status,notes
+v1,core,full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,yes,results/raw/mapped_scaling/full_core_replaycapsule_board_mem1024_buf16_core_ecp5_85k_yosys.txt,PASS,recorder hierarchy/status evidence found
+v1,core,full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,yes,results/raw/mapped_scaling/full_core_replaycapsule_board_mem2048_buf16_core_ecp5_85k_yosys.txt,PASS,recorder hierarchy/status evidence found
+v1,full,full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,yes,results/raw/mapped_scaling/full_core_replaycapsule_board_mem2048_buf32_full_ecp5_85k_yosys.txt,PASS,recorder hierarchy/status evidence found
+v1,full,full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,yes,results/raw/mapped_scaling/full_core_replaycapsule_board_mem4096_buf32_full_ecp5_85k_yosys.txt,PASS,recorder hierarchy/status evidence found
+v1,hashed,full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,no,results/raw/mapped_scaling/full_core_replaycapsule_board_mem2048_buf64_hashed_ecp5_85k_yosys.txt,NA,recorder presence not claimable for this row
+v2,core,full_core_replaycapsule_v2_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,NA,NA,BLOCKED,full-core v2 board wrapper not integrated yet
+v2,hashed,full_core_replaycapsule_v2_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,NA,NA,BLOCKED,full-core v2 board wrapper not integrated yet
+v2,full,full_core_replaycapsule_v2_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,NA,NA,BLOCKED,full-core v2 board wrapper not integrated yet

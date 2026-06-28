@@ -1,0 +1,21 @@
+architecture,recorder_config,workload_scale,pass_count,fail_count,timeout_count,blocked_count,replay_success_rate_pct,overflow_rate_pct,median_events,median_capsule_bytes,n,notes
+v1,full,long,25,50,0,0,33.333333,100.000000,256.000000,5376.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v1,full,medium,25,50,0,0,33.333333,100.000000,256.000000,5376.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v1,full,short,75,0,0,0,100.000000,60.000000,256.000000,5376.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v1,full,smoke,75,0,0,0,100.000000,60.000000,256.000000,5376.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v1,full,stress,25,50,0,0,33.333333,100.000000,256.000000,5376.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,core,long,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,core,medium,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,core,short,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,core,smoke,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,core,stress,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,full,long,0,0,0,75,0.000000,0.000000,256.000000,4112.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,full,medium,0,0,0,75,0.000000,0.000000,256.000000,4112.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,full,short,0,0,0,75,0.000000,0.000000,256.000000,4112.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,full,smoke,0,0,0,75,0.000000,0.000000,256.000000,4112.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,full,stress,0,0,0,75,0.000000,0.000000,256.000000,4112.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,hashed,long,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,hashed,medium,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,hashed,short,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,hashed,smoke,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated
+v2,hashed,stress,0,0,0,75,0.000000,0.000000,90.000000,736.000000,75,v2 rows are capacity estimates and remain BLOCKED until full-core v2 replay is integrated

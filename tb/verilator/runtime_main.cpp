@@ -41,6 +41,8 @@ struct Options {
   int seed = 1;
   uint64_t max_cycles = 100000;
   uint32_t capture_mode = CAPTURE_REPLAYCAPSULE_RV;
+  uint32_t arch_select = 1u;
+  uint32_t recorder_config_select = 0u;
 };
 
 struct Stimulus {
@@ -239,6 +241,8 @@ void configure_recorder(RuntimeTop* top, const Options& options) {
 #else
   top->clear = 0;
   top->capture_mode = options.capture_mode;
+  top->arch_select = options.arch_select;
+  top->recorder_config_select = options.recorder_config_select;
   top->watchdog_enable = options.benchmark == "watchdog_timeout_bug" ? 1 : 0;
   top->external_input_valid = 0;
   top->external_input_value = 0;
@@ -248,6 +252,10 @@ void configure_recorder(RuntimeTop* top, const Options& options) {
 
 uint32_t top_commit_count(const RuntimeTop& top) {
   return top.commit_count;
+}
+
+uint32_t capsule_bytes(uint32_t events, const Options& options) {
+  return events * (options.arch_select == 2u ? 8u : 21u);
 }
 
 void usage(const char* argv0) {
@@ -267,6 +275,22 @@ int main(int argc, char** argv) {
   if (options.config == "recorder_present_disabled") {
     options.capture_mode = CAPTURE_DISABLED;
   } else if (options.config == "recorder_enabled") {
+    options.capture_mode = CAPTURE_REPLAYCAPSULE_RV;
+  } else if (options.config == "v2_recorder_present_disabled") {
+    options.arch_select = 2u;
+    options.recorder_config_select = 0u;
+    options.capture_mode = CAPTURE_DISABLED;
+  } else if (options.config == "v2_recorder_enabled_core") {
+    options.arch_select = 2u;
+    options.recorder_config_select = 0u;
+    options.capture_mode = CAPTURE_REPLAYCAPSULE_RV;
+  } else if (options.config == "v2_recorder_enabled_hashed") {
+    options.arch_select = 2u;
+    options.recorder_config_select = 1u;
+    options.capture_mode = CAPTURE_REPLAYCAPSULE_RV;
+  } else if (options.config == "v2_recorder_enabled_full") {
+    options.arch_select = 2u;
+    options.recorder_config_select = 2u;
     options.capture_mode = CAPTURE_REPLAYCAPSULE_RV;
   }
 
@@ -371,7 +395,7 @@ int main(int argc, char** argv) {
   }
 
   const uint32_t events = capsule_count(top);
-  const uint32_t bytes = events * 21u;
+  const uint32_t bytes = capsule_bytes(events, options);
   std::cout << (ok ? "PASS" : "FAIL")
             << " runtime config=" << options.config
             << " benchmark=" << options.benchmark

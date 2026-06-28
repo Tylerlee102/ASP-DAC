@@ -1,5 +1,5 @@
 check,status,evidence,notes
-workflow_status,PASS,local-preflight,final-reproduce verification for branch master commit 48c0294002ebdbbb0592d8112b9f93f26bc4e085
+workflow_status,PASS,local-preflight,final-reproduce verification for branch master commit a764aee1cff0f2f561d459f344d5a2f8463b79f8
 critical_steps_no_continue_on_error,PASS,.github/workflows/final-reproduce.yml,critical reproduction steps are not marked continue-on-error
 firmware_gate,PASS,results/processed/firmware_build.csv,compiler-backed PASS rows 15/15; fallback rows 0
 rtl_replay_gate,PASS,results/processed/full_rtl_replay.csv,compiler-backed full RTL replay PASS rows 45/45

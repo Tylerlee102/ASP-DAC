@@ -1,0 +1,26 @@
+workload_scale,config,measured_rows,blocked_rows,notes
+long,baseline_no_recorder,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+long,v2_recorder_enabled_core,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+long,v2_recorder_enabled_full,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+long,v2_recorder_enabled_hashed,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+long,v2_recorder_present_disabled,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+medium,baseline_no_recorder,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+medium,v2_recorder_enabled_core,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+medium,v2_recorder_enabled_full,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+medium,v2_recorder_enabled_hashed,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+medium,v2_recorder_present_disabled,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+short,baseline_no_recorder,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+short,v2_recorder_enabled_core,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+short,v2_recorder_enabled_full,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+short,v2_recorder_enabled_hashed,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+short,v2_recorder_present_disabled,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+smoke,baseline_no_recorder,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+smoke,v2_recorder_enabled_core,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+smoke,v2_recorder_enabled_full,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+smoke,v2_recorder_enabled_hashed,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+smoke,v2_recorder_present_disabled,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+stress,baseline_no_recorder,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+stress,v2_recorder_enabled_core,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+stress,v2_recorder_enabled_full,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+stress,v2_recorder_enabled_hashed,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero
+stress,v2_recorder_present_disabled,1,0,measured v2 runtime rows use the integrated runtime harness; blocked_rows should be zero

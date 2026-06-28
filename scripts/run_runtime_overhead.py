@@ -14,7 +14,7 @@ from pathlib import Path
 from statistics import mean, median
 
 
-REPO_ROOT = Path(__file__).resolve().parents[1]
+REPO_ROOT = Path(os.environ.get("REPLAYCAPSULE_REPO_ROOT", Path(__file__).resolve().parents[1]))
 FULL_RTL_CSV = REPO_ROOT / "results/processed/full_rtl_replay.csv"
 OUT_CSV = REPO_ROOT / "results/processed/runtime_overhead.csv"
 SUMMARY_CSV = REPO_ROOT / "results/processed/runtime_overhead_summary.csv"
@@ -36,6 +36,12 @@ RUNTIME_DEPENDENCY_PATHS = (
     "rtl/event_slicer.sv",
     "rtl/hash_signature.sv",
     "rtl/replay_capsule_top.sv",
+    "rtl/replaycapsule_v2/rcv2_payload_hasher.sv",
+    "rtl/replaycapsule_v2/rcv2_address_dictionary.sv",
+    "rtl/replaycapsule_v2/rcv2_adaptive_window.sv",
+    "rtl/replaycapsule_v2/rcv2_event_packer.sv",
+    "rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv",
+    "rtl/replaycapsule_v2/rcv2_recorder.sv",
     "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
     "tb/verilator/runtime_main.cpp",
     "Makefile",
@@ -113,6 +119,9 @@ def main() -> int:
 
 
 def _ensure_runtime_sims() -> str | None:
+    subst_blocker = _ensure_runtime_sims_without_space_import()
+    if subst_blocker is not None:
+        return subst_blocker
     baseline = _sim_path(BASELINE_SIM)
     recorder = _sim_path(RECORDER_SIM)
     if baseline.exists() and recorder.exists() and not _runtime_sim_needs_rebuild(baseline, recorder):
@@ -147,6 +156,54 @@ def _ensure_runtime_sims() -> str | None:
     if not _sim_path(RECORDER_SIM).exists():
         return "runtime recorder simulator missing after build"
     return None
+
+
+def _ensure_runtime_sims_without_space_import() -> str | None:
+    if os.name != "nt" or os.environ.get("REPLAYCAPSULE_NO_SUBST") == "1":
+        return None
+    if " " not in str(REPO_ROOT):
+        return None
+    baseline = _sim_path(BASELINE_SIM)
+    recorder = _sim_path(RECORDER_SIM)
+    if baseline.exists() and recorder.exists() and not _runtime_sim_needs_rebuild(baseline, recorder):
+        return None
+
+    for letter in ("R", "X", "Y", "Z"):
+        drive = f"{letter}:"
+        if not Path(drive + "\\").exists():
+            break
+    else:
+        return None
+
+    created = subprocess.run(["subst", drive, str(REPO_ROOT)], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    if created.returncode != 0:
+        return None
+    env = dict(os.environ)
+    env["REPLAYCAPSULE_NO_SUBST"] = "1"
+    env["REPLAYCAPSULE_REPO_ROOT"] = drive + "\\"
+    env["REPLAYCAPSULE_OSS_CAD_SUITE"] = drive + "\\.tools\\oss-cad-suite\\oss-cad-suite"
+    code = (
+        "import sys; "
+        "import scripts.run_runtime_overhead as r; "
+        "blocker = r._ensure_runtime_sims(); "
+        "print(blocker or 'OK'); "
+        "sys.exit(1 if blocker else 0)"
+    )
+    try:
+        completed = subprocess.run(
+            [sys.executable, "-c", code],
+            cwd=drive + "\\",
+            env=env,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+        )
+        if completed.returncode == 0 and _sim_path(BASELINE_SIM).exists() and _sim_path(RECORDER_SIM).exists():
+            return None
+        return _clean(completed.stdout).strip().splitlines()[-1] if completed.stdout.strip() else "runtime harness build failed under subst path"
+    finally:
+        subprocess.run(["subst", drive, "/D"], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
 
 
 def _runtime_sim_needs_rebuild(baseline: Path, recorder: Path) -> bool:
@@ -388,6 +445,9 @@ def _tool_env() -> dict[str, str]:
         for path in (OSS_CAD_SUITE / "bin", OSS_CAD_SUITE / "lib"):
             if path.exists():
                 parts.append(str(path))
+        verilator_root = OSS_CAD_SUITE / "share" / "verilator"
+        if verilator_root.exists():
+            env["VERILATOR_ROOT"] = verilator_root.as_posix()
     git_usr_bin = _git_usr_bin()
     if git_usr_bin is not None:
         parts.append(str(git_usr_bin))

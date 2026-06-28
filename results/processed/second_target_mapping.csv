@@ -1,0 +1,2 @@
+target,flow,architecture,recorder_config,design,memory_words,buffer_depth,lut,ff,bram,area_um2,fmax_mhz,status,report_path,notes
+ecp5-45k,yosys+synth_ecp5+nextpnr-ecp5,v2,replay_consumer,rcv2_replay_consumer,NA,NA,NA,NA,NA,NA,NA,FAIL,results/raw/replay_consumer_mapping/rcv2_replay_consumer_ecp5-45k_nextpnr.txt,"nextpnr place-and-route failed: ERROR: Unable to place cell 'mmio_replay_value[7]$tr_io', no BELs remaining to implement cell type 'TRELLIS_IO'; second target is prototype-only, not full-core evidence"

@@ -1,0 +1,9 @@
+test_name,capsule_source,expected_result,actual_result,passed,error_code,notes
+valid_capsule_consumes_all_events,tb/replay_consumer/tb_rcv2_replay_consumer.sv,PASS,PASS,true,0,RTL testbench execution
+missing_event_rejects,tb/replay_consumer/tb_rcv2_replay_consumer.sv,REJECT,REJECT,true,1,RTL testbench execution
+duplicate_event_rejects,tb/replay_consumer/tb_rcv2_replay_consumer.sv,REJECT,REJECT,true,2,RTL testbench execution
+reordered_event_rejects,tb/replay_consumer/tb_rcv2_replay_consumer.sv,REJECT,REJECT,true,3,RTL testbench execution
+wrong_mmio_value_rejects,tb/replay_consumer/tb_rcv2_replay_consumer.sv,REJECT,REJECT,true,4,RTL testbench execution
+wrong_interrupt_cause_rejects,tb/replay_consumer/tb_rcv2_replay_consumer.sv,REJECT,REJECT,true,5,RTL testbench execution
+wrong_payload_hash_rejects,tb/replay_consumer/tb_rcv2_replay_consumer.sv,REJECT,REJECT,true,6,RTL testbench execution
+truncated_capsule_rejects,tb/replay_consumer/tb_rcv2_replay_consumer.sv,REJECT,REJECT,true,7,RTL testbench execution

@@ -39,6 +39,16 @@ bool wants_debug_trace(const HarnessOptions& options) {
   return options.debug_events || options.dump_mmio || options.dump_property || options.dump_pc;
 }
 
+uint32_t arch_select_for(const std::string& arch) {
+  return arch == "v2" ? 2u : 1u;
+}
+
+uint32_t recorder_config_select_for(const std::string& recorder_config) {
+  if (recorder_config == "hashed") return 1u;
+  if (recorder_config == "full") return 2u;
+  return 0u;
+}
+
 std::filesystem::path debug_stem(const HarnessOptions& options) {
   std::ostringstream out;
   out << options.benchmark << "_" << options.variant << "_seed" << options.seed;
@@ -81,6 +91,11 @@ Stimulus stimulus_for(const std::string& benchmark, const std::string& variant) 
   } else if (benchmark == "watchdog_timeout_bug") {
     s.sensor = (fixed || edge) ? 300 : 850;
     s.expected_property = (fixed || edge) ? 0 : 6;
+  } else if (benchmark == "commanded_actuator_limit_bug") {
+    s.command = 0x55;
+    s.expected_property = fixed ? 0 : 1;
+  } else if (benchmark == "late_config_sequence_bug") {
+    s.expected_property = fixed ? 0 : 5;
   }
   return s;
 }
@@ -145,6 +160,27 @@ bool compare_events(const Capsule& expected, const Capsule& observed, std::strin
     return false;
   }
   for (size_t i = 0; i < expected.events.size(); ++i) {
+    if (expected.architecture == "v2" || observed.architecture == "v2") {
+      const CapsuleEvent& lhs = expected.events[i];
+      const CapsuleEvent& rhs = observed.events[i];
+      if (lhs.event_type != rhs.event_type || lhs.commit != rhs.commit ||
+          lhs.addr != rhs.addr || lhs.data != rhs.data ||
+          lhs.payload_hash != rhs.payload_hash ||
+          lhs.replay_required != rhs.replay_required ||
+          lhs.diagnostic_only != rhs.diagnostic_only) {
+        std::ostringstream out;
+        out << "canonical event mismatch at index " << i
+            << " expected type=" << lhs.event_type << " commit=" << lhs.commit
+            << " addr=" << hex32(lhs.addr) << " data=" << hex32(lhs.data)
+            << " hash=" << hex32(lhs.payload_hash)
+            << " observed type=" << rhs.event_type << " commit=" << rhs.commit
+            << " addr=" << hex32(rhs.addr) << " data=" << hex32(rhs.data)
+            << " hash=" << hex32(rhs.payload_hash);
+        *notes = out.str();
+        return false;
+      }
+      continue;
+    }
     if (expected.events[i].packet_hex != observed.events[i].packet_hex) {
       std::ostringstream out;
       out << "event packet mismatch at index " << i;
@@ -152,7 +188,7 @@ bool compare_events(const Capsule& expected, const Capsule& observed, std::strin
       return false;
     }
   }
-  *notes = "record/replay capsule packets match";
+  *notes = expected.architecture == "v2" ? "record/replay canonical events match" : "record/replay capsule packets match";
   return true;
 }
 
@@ -192,6 +228,9 @@ Capsule read_capsule_from_dut(Vreplaycapsule_verilator_top* top, const HarnessOp
   capsule.variant = options.variant;
   capsule.seed = options.seed;
   capsule.mode = options.mode;
+  capsule.architecture = options.arch;
+  capsule.recorder_config = options.recorder_config;
+  capsule.packet_width_bits = options.arch == "v2" ? 64 : 168;
   capsule.property_id = top->property_id;
   capsule.property_signature = top->property_signature;
   capsule.overflow = top->capsule_overflow;
@@ -199,15 +238,21 @@ Capsule read_capsule_from_dut(Vreplaycapsule_verilator_top* top, const HarnessOp
   for (uint32_t i = 0; i < count; ++i) {
     top->capsule_read_addr = i;
     top->eval();
-    std::string packet = packet_hex_from_words(
-        top->capsule_word0,
-        top->capsule_word1,
-        top->capsule_word2,
-        top->capsule_word3,
-        top->capsule_word4,
-        top->capsule_word5);
-    capsule.events.push_back(decode_packet_hex(packet));
+    std::string packet;
+    if (options.arch == "v2") {
+      packet = packet_hex_from_v2_words(top->capsule_word0, top->capsule_word1);
+    } else {
+      packet = packet_hex_from_words(
+          top->capsule_word0,
+          top->capsule_word1,
+          top->capsule_word2,
+          top->capsule_word3,
+          top->capsule_word4,
+          top->capsule_word5);
+    }
+    capsule.events.push_back(decode_packet_hex(packet, options.arch));
   }
+  apply_v2_commit_deltas(&capsule);
   return capsule;
 }
 
@@ -232,6 +277,9 @@ HarnessResult run_harness(const HarnessOptions& options) {
   result.capsule.variant = options.variant;
   result.capsule.seed = options.seed;
   result.capsule.mode = options.mode;
+  result.capsule.architecture = options.arch;
+  result.capsule.recorder_config = options.recorder_config;
+  result.capsule.packet_width_bits = options.arch == "v2" ? 64 : 168;
 
   std::map<uint32_t, uint32_t> memory;
   std::string error;
@@ -264,6 +312,8 @@ HarnessResult run_harness(const HarnessOptions& options) {
   top.rst_n = 0;
   top.clear = 0;
   top.capture_mode = options.capture_mode & 0xfu;
+  top.arch_select = arch_select_for(options.arch);
+  top.recorder_config_select = recorder_config_select_for(options.recorder_config);
   top.mem_ready = 0;
   top.mem_rdata = 0;
   top.irq = 0;

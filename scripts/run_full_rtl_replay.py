@@ -17,17 +17,24 @@ from pathlib import Path
 
 REPO_ROOT = Path(os.environ.get("REPLAYCAPSULE_REPO_ROOT", Path(__file__).resolve().parents[1]))
 SIM = REPO_ROOT / "build/verilator/replaycapsule_sim"
-OUT_CSV = REPO_ROOT / "results/processed/full_rtl_replay.csv"
-FIRMWARE_BUILD_CSV = REPO_ROOT / "results/processed/firmware_build.csv"
+OUT_CSV = Path(os.environ.get("REPLAYCAPSULE_FULL_RTL_REPLAY_CSV", REPO_ROOT / "results/processed/full_rtl_replay.csv"))
+OUT_CSV_V2 = Path(os.environ.get("REPLAYCAPSULE_FULL_RTL_REPLAY_CSV_V2", REPO_ROOT / "results/processed/full_rtl_replay_v2.csv"))
+FIRMWARE_BUILD_CSV = Path(os.environ.get("REPLAYCAPSULE_FIRMWARE_BUILD_CSV", REPO_ROOT / "results/processed/firmware_build.csv"))
 FIRMWARE_COMPARISON_CSV = REPO_ROOT / "results/processed/firmware_source_comparison.csv"
+FIRMWARE_COMPARISON_CSV_V2 = REPO_ROOT / "results/processed/firmware_source_comparison_v2.csv"
 CAPSULE_DIR = REPO_ROOT / "results/raw/rtl_capsules"
 SIGNATURE_DIR = REPO_ROOT / "results/raw/rtl_signatures"
+CAPSULE_DIR_V2 = REPO_ROOT / "results/raw/rtl_capsules_v2"
+SIGNATURE_DIR_V2 = REPO_ROOT / "results/raw/rtl_signatures_v2"
 DEBUG_DIR = REPO_ROOT / "results/debug/pass7"
+DEBUG_DIR_V2_FIRST_ROW = REPO_ROOT / "results/debug/v2_first_row"
 LOCAL_WINLIBS_BIN = REPO_ROOT / ".tools/winlibs/mingw64/bin"
 OSS_CAD_SUITE = Path(os.environ.get("REPLAYCAPSULE_OSS_CAD_SUITE", REPO_ROOT / ".tools/oss-cad-suite/oss-cad-suite"))
 LOCAL_BUILD_ROOT = Path(os.environ.get("REPLAYCAPSULE_LOCAL_BUILD_ROOT", Path.home() / ".cache/replaycapsule-rv/verilator"))
 
-BENCHMARKS = (
+EXPANDED_BENCHMARKS_ENABLED = os.environ.get("REPLAYCAPSULE_ENABLE_EXPANDED_BENCHMARKS", "").lower() in {"1", "true", "yes", "on"}
+
+BASE_BENCHMARKS = (
     "sensor_threshold_bug",
     "interrupt_race_bug",
     "mmio_ordering_bug",
@@ -36,6 +43,13 @@ BENCHMARKS = (
     "watchdog_timeout_bug",
 )
 
+EXPANDED_BENCHMARKS = (
+    "commanded_actuator_limit_bug",
+    "late_config_sequence_bug",
+)
+
+BENCHMARKS = BASE_BENCHMARKS + (EXPANDED_BENCHMARKS if EXPANDED_BENCHMARKS_ENABLED else ())
+
 VARIANTS = {
     "sensor_threshold_bug": ("failing", "fixed", "no_failure_edge"),
     "interrupt_race_bug": ("failing", "fixed"),
@@ -43,6 +57,8 @@ VARIANTS = {
     "stack_corruption_bug": ("failing", "fixed"),
     "uart_command_bug": ("failing", "fixed", "no_failure_edge"),
     "watchdog_timeout_bug": ("failing", "fixed", "no_failure_edge"),
+    "commanded_actuator_limit_bug": ("failing", "fixed"),
+    "late_config_sequence_bug": ("failing", "fixed"),
 }
 
 VERILATOR_SOURCE_PATHS = (
@@ -56,6 +72,12 @@ VERILATOR_SOURCE_PATHS = (
     "rtl/event_slicer.sv",
     "rtl/hash_signature.sv",
     "rtl/replay_capsule_top.sv",
+    "rtl/replaycapsule_v2/rcv2_payload_hasher.sv",
+    "rtl/replaycapsule_v2/rcv2_address_dictionary.sv",
+    "rtl/replaycapsule_v2/rcv2_adaptive_window.sv",
+    "rtl/replaycapsule_v2/rcv2_event_packer.sv",
+    "rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv",
+    "rtl/replaycapsule_v2/rcv2_recorder.sv",
     "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
     "tb/verilator/main.cpp",
     "tb/verilator/rtl_harness.cpp",
@@ -83,9 +105,34 @@ FIELDS = [
     "capsule_bytes",
     "cycles_to_failure",
     "commits_to_failure",
+    "overflow",
     "firmware_source",
     "firmware_sha256",
     "compiler_backed",
+    "notes",
+]
+
+FIELDS_V2 = [
+    "architecture",
+    "recorder_config",
+    "benchmark",
+    "variant",
+    "seed",
+    "firmware_source",
+    "compiler_backed",
+    "firmware_sha256",
+    "rtl_record_status",
+    "capsule_export_status",
+    "replay_status",
+    "property_id_record",
+    "property_id_replay",
+    "commit_match",
+    "event_match",
+    "final_signature_match",
+    "capsule_bytes",
+    "cycles_to_failure",
+    "commits_to_failure",
+    "overflow",
     "notes",
 ]
 
@@ -117,6 +164,8 @@ EXPECTED_PROPERTIES = {
     "stack_corruption_bug": 4,
     "uart_command_bug": 1,
     "watchdog_timeout_bug": 6,
+    "commanded_actuator_limit_bug": 1,
+    "late_config_sequence_bug": 5,
 }
 
 
@@ -139,15 +188,31 @@ def main() -> int:
     parser.add_argument("--dump-disasm-context", action="store_true", help="write firmware disassembly or HEX context")
     parser.add_argument("--debug-dir", default=str(DEBUG_DIR), help="directory for --debug-events outputs")
     parser.add_argument("--allow-fallback", action="store_true", help="permit non-compiler fallback HEX rows")
+    parser.add_argument("--arch", choices=("v1", "v2"), default=os.environ.get("ARCH", "v1"))
+    parser.add_argument("--recorder-config", choices=("core", "hashed", "full"), default=os.environ.get("RECORDER_CONFIG", "core"))
     args = parser.parse_args()
     if args.variant and not args.benchmark:
         parser.error("--variant requires --benchmark")
     if args.benchmark and args.variant and args.variant not in VARIANTS[args.benchmark]:
         parser.error(f"{args.variant} is not a known variant for {args.benchmark}")
 
-    OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
-    CAPSULE_DIR.mkdir(parents=True, exist_ok=True)
-    SIGNATURE_DIR.mkdir(parents=True, exist_ok=True)
+    out_csv = OUT_CSV_V2 if args.arch == "v2" else OUT_CSV
+    comparison_csv = FIRMWARE_COMPARISON_CSV_V2 if args.arch == "v2" else FIRMWARE_COMPARISON_CSV
+    fields = FIELDS_V2 if args.arch == "v2" else FIELDS
+    capsule_dir = CAPSULE_DIR_V2 if args.arch == "v2" else CAPSULE_DIR
+    signature_dir = SIGNATURE_DIR_V2 if args.arch == "v2" else SIGNATURE_DIR
+    debug_dir = Path(args.debug_dir)
+    single_case = args.benchmark is not None and args.variant is not None and args.seed is not None
+    if args.arch == "v2" and single_case:
+        args.debug_events = True
+        args.dump_mmio = True
+        args.dump_property = True
+        if args.debug_dir == str(DEBUG_DIR):
+            debug_dir = DEBUG_DIR_V2_FIRST_ROW
+
+    out_csv.parent.mkdir(parents=True, exist_ok=True)
+    capsule_dir.mkdir(parents=True, exist_ok=True)
+    signature_dir.mkdir(parents=True, exist_ok=True)
 
     seeds = [args.seed] if args.seed is not None else [1] if args.quick else [1, 2, 3]
     benchmarks = [args.benchmark] if args.benchmark else list(BENCHMARKS)
@@ -159,10 +224,13 @@ def main() -> int:
         for benchmark in benchmarks:
             for variant in variants[benchmark]:
                 for seed in seeds:
-                    rows.append(_blocked_row(benchmark, variant, seed, blocker))
-        _write_rows(rows)
-        _write_firmware_source_comparison(rows)
-        print(f"WROTE {_rel(OUT_CSV)}")
+                    rows.append(_tag_row(_blocked_row(benchmark, variant, seed, blocker), args.arch, args.recorder_config))
+        if args.arch == "v2" and single_case:
+            _write_v2_first_row_debug_files(args.benchmark, args.variant, args.seed, debug_dir, capsule_dir, signature_dir, args.recorder_config, blocker)
+        output_rows = _merge_v2_rows(out_csv, rows) if args.arch == "v2" else rows
+        _write_rows(output_rows, out_csv, fields)
+        _write_firmware_source_comparison(output_rows, comparison_csv)
+        print(f"WROTE {_rel(out_csv)}")
         print(f"BLOCKED full RTL replay: {blocker}")
         return 1 if _strict_ci() else 0
 
@@ -176,8 +244,12 @@ def main() -> int:
                         seed,
                         args.max_cycles,
                         allow_fallback,
+                        args.arch,
+                        args.recorder_config,
+                        capsule_dir,
+                        signature_dir,
                         args.debug_events,
-                        Path(args.debug_dir),
+                        debug_dir,
                         args.dump_mmio,
                         args.dump_property,
                         args.dump_pc,
@@ -185,9 +257,13 @@ def main() -> int:
                     )
                 )
 
-    _write_rows(rows)
-    _write_firmware_source_comparison(rows)
-    print(f"WROTE {_rel(OUT_CSV)}")
+    if args.arch == "v2" and single_case:
+        blocker_note = rows[0].get("notes") if len(rows) == 1 and rows[0].get("rtl_record_status") == "BLOCKED" else None
+        _write_v2_first_row_debug_files(args.benchmark, args.variant, args.seed, debug_dir, capsule_dir, signature_dir, args.recorder_config, blocker_note)
+    output_rows = _merge_v2_rows(out_csv, rows) if args.arch == "v2" else rows
+    _write_rows(output_rows, out_csv, fields)
+    _write_firmware_source_comparison(output_rows, comparison_csv)
+    print(f"WROTE {_rel(out_csv)}")
     if _strict_ci() and rows and all(row.get("rtl_record_status") == "BLOCKED" for row in rows):
         print("BLOCKED full RTL replay: all rows are blocked in strict CI")
         return 1
@@ -232,6 +308,9 @@ def _maybe_reexec_without_space(argv: list[str]) -> int | None:
 
 
 def _ensure_simulator() -> str | None:
+    subst_blocker = _ensure_simulator_without_space_import()
+    if subst_blocker is not None:
+        return subst_blocker
     log = REPO_ROOT / "results/raw/verilator/build.log"
     if _sim_path().exists() and not _sim_needs_rebuild():
         _sanitize_file(log)
@@ -249,7 +328,9 @@ def _ensure_simulator() -> str | None:
     if missing:
         return "missing " + ", ".join(missing) + "; build/verilator/replaycapsule_sim not available"
 
-    cache_sim = LOCAL_BUILD_ROOT / "replaycapsule_sim.exe"
+    capsule_depth = _capsule_depth()
+    sim_base = _sim_base()
+    cache_sim = LOCAL_BUILD_ROOT / f"{sim_base.name}.exe"
     build_args = [
         make,
         "verilator-harness",
@@ -258,18 +339,20 @@ def _ensure_simulator() -> str | None:
         "VERILATOR_ENV=",
     ]
     if os.name == "nt":
-        shutil.rmtree(LOCAL_BUILD_ROOT / "obj_dir", ignore_errors=True)
+        shutil.rmtree(LOCAL_BUILD_ROOT / f"obj_dir_depth{capsule_depth}", ignore_errors=True)
         if cache_sim.exists():
             cache_sim.unlink()
         LOCAL_BUILD_ROOT.mkdir(parents=True, exist_ok=True)
         build_args.extend(
             [
-                f"VERILATOR_MDIR={LOCAL_BUILD_ROOT.as_posix()}/obj_dir",
+                f"VERILATOR_MDIR={LOCAL_BUILD_ROOT.as_posix()}/obj_dir_depth{capsule_depth}",
                 f"VERILATOR_OUTPUT={cache_sim.as_posix()}",
                 f"VERILATOR_CFLAGS=-std=c++17 -O2 -I{(REPO_ROOT / 'tb/verilator').as_posix()}",
                 "VERILATOR_SOURCES=" + " ".join((REPO_ROOT / path).as_posix() for path in VERILATOR_SOURCE_PATHS),
             ]
         )
+    if capsule_depth != 256:
+        build_args.append(f"VERILATOR_EXTRA_FLAGS=-GCAPSULE_DEPTH={capsule_depth}")
     completed = subprocess.run(
         build_args,
         cwd=REPO_ROOT,
@@ -288,12 +371,59 @@ def _ensure_simulator() -> str | None:
         existing = completed.stdout
     log.write_text(_clean(existing), encoding="utf-8")
     if os.name == "nt" and cache_sim.exists():
-        target = SIM.with_suffix(".exe")
+        target = sim_base.with_suffix(".exe")
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(cache_sim, target)
     if completed.returncode != 0 or not _sim_path().exists():
         return f"verilator harness build failed; see {_rel(log)}"
     return None
+
+
+def _ensure_simulator_without_space_import() -> str | None:
+    if os.name != "nt" or os.environ.get("REPLAYCAPSULE_NO_SUBST") == "1":
+        return None
+    if " " not in str(REPO_ROOT):
+        return None
+    if _sim_path().exists() and not _sim_needs_rebuild():
+        return None
+
+    for letter in ("R", "X", "Y", "Z"):
+        drive = f"{letter}:"
+        if not Path(drive + "\\").exists():
+            break
+    else:
+        return None
+
+    created = subprocess.run(["subst", drive, str(REPO_ROOT)], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    if created.returncode != 0:
+        return None
+    env = dict(os.environ)
+    env["REPLAYCAPSULE_NO_SUBST"] = "1"
+    env["REPLAYCAPSULE_ORIGINAL_REPO_ROOT"] = str(REPO_ROOT)
+    env["REPLAYCAPSULE_REPO_ROOT"] = drive + "\\"
+    env["REPLAYCAPSULE_OSS_CAD_SUITE"] = drive + "\\.tools\\oss-cad-suite\\oss-cad-suite"
+    code = (
+        "import sys; "
+        "import scripts.run_full_rtl_replay as r; "
+        "blocker = r._ensure_simulator(); "
+        "print(blocker or 'OK'); "
+        "sys.exit(1 if blocker else 0)"
+    )
+    try:
+        completed = subprocess.run(
+            [sys.executable, "-c", code],
+            cwd=drive + "\\",
+            env=env,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+        )
+        if completed.returncode == 0 and _sim_path().exists():
+            return None
+        return _clean(completed.stdout).strip().splitlines()[-1] if completed.stdout.strip() else "verilator harness build failed under subst path"
+    finally:
+        subprocess.run(["subst", drive, "/D"], text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
 
 
 def _run_case(
@@ -302,6 +432,10 @@ def _run_case(
     seed: int,
     max_cycles: int,
     allow_fallback: bool,
+    arch: str,
+    recorder_config: str,
+    capsule_dir: Path,
+    signature_dir: Path,
     debug_events: bool = False,
     debug_dir: Path = DEBUG_DIR,
     dump_mmio: bool = False,
@@ -309,14 +443,31 @@ def _run_case(
     dump_pc: bool = False,
     dump_disasm_context: bool = False,
 ) -> dict[str, str]:
-    firmware, firmware_meta, firmware_blocker = _select_firmware(benchmark, variant, allow_fallback)
-    if firmware_blocker is not None or firmware is None:
-        return _blocked_row(benchmark, variant, seed, firmware_blocker or "compiler-backed firmware unavailable")
+    if arch == "v2":
+        firmware_gate_blocker = _v2_compiler_firmware_blocker(benchmark, variant)
+        if firmware_gate_blocker is not None:
+            return _tag_row(
+                _blocked_row(
+                    benchmark,
+                    variant,
+                    seed,
+                    "v2 measured PASS requires compiler-backed firmware; " + firmware_gate_blocker,
+                ),
+                arch,
+                recorder_config,
+            )
 
-    base = f"{benchmark}_{variant}_seed{seed}"
-    capsule = CAPSULE_DIR / f"{base}.json"
-    record_sig = SIGNATURE_DIR / f"{base}_record.json"
-    replay_sig = SIGNATURE_DIR / f"{base}_replay.json"
+    firmware, firmware_meta, firmware_blocker = _select_firmware(benchmark, variant, allow_fallback if arch != "v2" else False)
+    if firmware_blocker is not None or firmware is None:
+        notes = firmware_blocker or "compiler-backed firmware unavailable"
+        if arch == "v2":
+            notes = "v2 measured PASS requires compiler-backed firmware; " + notes
+        return _tag_row(_blocked_row(benchmark, variant, seed, notes), arch, recorder_config)
+
+    base = f"{benchmark}_{variant}_seed{seed}" if arch == "v1" else f"{arch}_{recorder_config}_{benchmark}_{variant}_seed{seed}"
+    capsule = capsule_dir / f"{base}.json"
+    record_sig = signature_dir / f"{base}_record.json"
+    replay_sig = signature_dir / f"{base}_replay.json"
 
     record = _run_sim(
         "record",
@@ -327,6 +478,8 @@ def _run_case(
         record_sig,
         seed,
         max_cycles,
+        arch,
+        recorder_config,
         debug_events,
         debug_dir,
         dump_mmio,
@@ -350,8 +503,8 @@ def _run_case(
                 dump_disasm_context,
                 replay=None,
                 replay_sig=None,
-            )
-        return _failed_row(benchmark, variant, seed, "FAIL", "NA", record.stdout, firmware_meta, record_sig, capsule)
+        )
+        return _tag_row(_failed_row(benchmark, variant, seed, "FAIL", "NA", record.stdout, firmware_meta, record_sig, capsule), arch, recorder_config)
 
     replay = _run_sim(
         "replay",
@@ -362,6 +515,8 @@ def _run_case(
         replay_sig,
         seed,
         max_cycles,
+        arch,
+        recorder_config,
         debug_events,
         debug_dir,
         dump_mmio,
@@ -371,6 +526,7 @@ def _run_case(
     )
     record_payload = _read_json(record_sig)
     replay_payload = _read_json(replay_sig)
+    capsule_payload = _read_json(capsule)
     if debug_requested:
         _write_debug_analysis(benchmark, variant, seed, debug_dir, replay_ran=True)
         _write_run_debug_context(
@@ -390,7 +546,7 @@ def _run_case(
     final_match = "PASS" if _sig(record_payload) == _sig(replay_payload) else "FAIL"
     property_match = "PASS" if str(record_payload.get("property_id")) == str(replay_payload.get("property_id")) else "FAIL"
     replay_status = "PASS" if replay.returncode == 0 and final_match == "PASS" and property_match == "PASS" else "FAIL"
-    return {
+    return _tag_row({
         "benchmark": benchmark,
         "variant": variant,
         "seed": str(seed),
@@ -405,11 +561,12 @@ def _run_case(
         "capsule_bytes": str(record_payload.get("capsule_bytes", "NA")),
         "cycles_to_failure": str(record_payload.get("cycles_to_failure", "NA")),
         "commits_to_failure": str(record_payload.get("commits_to_failure", "NA")),
+        "overflow": _csv_bool(capsule_payload.get("overflow", "NA")),
         "firmware_source": firmware_meta["firmware_source"],
         "firmware_sha256": firmware_meta["firmware_sha256"],
         "compiler_backed": firmware_meta["compiler_backed"],
         "notes": _clean(replay.stdout).splitlines()[-1] if replay.stdout.splitlines() else "record/replay complete",
-    }
+    }, arch, recorder_config)
 
 
 def _run_sim(
@@ -421,6 +578,8 @@ def _run_sim(
     signature: Path,
     seed: int,
     max_cycles: int,
+    arch: str = "v1",
+    recorder_config: str = "core",
     debug_events: bool = False,
     debug_dir: Path = DEBUG_DIR,
     dump_mmio: bool = False,
@@ -446,6 +605,10 @@ def _run_sim(
         str(seed),
         "--max-cycles",
         str(max_cycles),
+        "--arch",
+        arch,
+        "--recorder-config",
+        recorder_config,
     ]
     if debug_events:
         command.extend(["--debug-events", "--debug-dir", _rel(debug_dir)])
@@ -538,6 +701,132 @@ def _write_run_debug_context(
         _write_disasm_context(debug_dir / f"{base}_firmware_disasm.txt", firmware, build_row)
 
 
+def _write_v2_first_row_debug_files(
+    benchmark: str,
+    variant: str,
+    seed: int,
+    debug_dir: Path,
+    capsule_dir: Path,
+    signature_dir: Path,
+    recorder_config: str,
+    blocker: str | None = None,
+) -> None:
+    debug_dir.mkdir(parents=True, exist_ok=True)
+    base = f"{benchmark}_{variant}_seed{seed}"
+    artifact_base = f"v2_{recorder_config}_{base}"
+    record_events = debug_dir / f"{base}_record_events.json"
+    replay_events = debug_dir / f"{base}_replay_events.json"
+    event_diff = debug_dir / f"{base}_event_diff.txt"
+    property_trace = debug_dir / f"{base}_property_trace.txt"
+    capsule_packets = capsule_dir / f"{artifact_base}.json"
+    record_sig = signature_dir / f"{artifact_base}_record.json"
+    replay_sig = signature_dir / f"{artifact_base}_replay.json"
+
+    _copy_json_or_placeholder(
+        record_events,
+        debug_dir / "record_events.json",
+        {
+            "architecture": "v2",
+            "recorder_config": recorder_config,
+            "benchmark": benchmark,
+            "variant": variant,
+            "seed": seed,
+            "mode": "record",
+            "events": [],
+            "notes": blocker or "record events were not produced",
+        },
+        force_placeholder=blocker is not None,
+    )
+    _copy_json_or_placeholder(
+        replay_events,
+        debug_dir / "replay_events.json",
+        {
+            "architecture": "v2",
+            "recorder_config": recorder_config,
+            "benchmark": benchmark,
+            "variant": variant,
+            "seed": seed,
+            "mode": "replay",
+            "events": [],
+            "notes": blocker or "replay events were not produced",
+        },
+        force_placeholder=blocker is not None,
+    )
+    _copy_json_or_placeholder(
+        capsule_packets,
+        debug_dir / "capsule_packets.json",
+        {
+            "architecture": "v2",
+            "recorder_config": recorder_config,
+            "benchmark": benchmark,
+            "variant": variant,
+            "seed": seed,
+            "events": [],
+            "notes": blocker or "capsule packet export was not produced",
+        },
+        force_placeholder=blocker is not None,
+    )
+    _copy_text_or_placeholder(
+        event_diff,
+        debug_dir / "event_diff.txt",
+        "\n".join(
+            [
+                "record_property_id=NA",
+                "replay_property_id=NA",
+                "record_event_count=0",
+                "replay_event_count=0",
+                f"first_divergence={blocker or 'event diff was not produced'}",
+            ]
+        )
+        + "\n",
+        force_placeholder=blocker is not None,
+    )
+    _copy_text_or_placeholder(
+        property_trace,
+        debug_dir / "property_trace.txt",
+        f"# property trace\n[v2]\n{blocker or 'property trace was not produced'}\n",
+        force_placeholder=blocker is not None,
+    )
+
+    capsule_payload = {} if blocker else _read_json(capsule_packets)
+    record_payload = {} if blocker else _read_json(record_sig)
+    replay_payload = {} if blocker else _read_json(replay_sig)
+    overflow_lines = [
+        f"architecture=v2",
+        f"recorder_config={recorder_config}",
+        f"benchmark={benchmark}",
+        f"variant={variant}",
+        f"seed={seed}",
+        f"capsule_path={_rel(capsule_packets)}",
+        f"record_signature_path={_rel(record_sig)}",
+        f"replay_signature_path={_rel(replay_sig)}",
+        f"capsule_exists={str(capsule_packets.exists() and blocker is None).lower()}",
+        f"record_signature_exists={str(record_sig.exists() and blocker is None).lower()}",
+        f"replay_signature_exists={str(replay_sig.exists() and blocker is None).lower()}",
+        f"capsule_overflow={capsule_payload.get('overflow', 'NA')}",
+        f"capsule_event_count={len(_events(capsule_payload))}",
+        f"record_replay_ok={record_payload.get('replay_ok', 'NA')}",
+        f"replay_replay_ok={replay_payload.get('replay_ok', 'NA')}",
+    ]
+    if blocker:
+        overflow_lines.append(f"blocker={blocker}")
+    (debug_dir / "overflow_trace.txt").write_text("\n".join(overflow_lines) + "\n", encoding="utf-8")
+
+
+def _copy_json_or_placeholder(src: Path, dst: Path, placeholder: dict[str, object], force_placeholder: bool = False) -> None:
+    if src.exists() and not force_placeholder:
+        shutil.copy2(src, dst)
+    else:
+        _write_json(dst, placeholder)
+
+
+def _copy_text_or_placeholder(src: Path, dst: Path, placeholder: str, force_placeholder: bool = False) -> None:
+    if src.exists() and not force_placeholder:
+        shutil.copy2(src, dst)
+    else:
+        dst.write_text(placeholder, encoding="utf-8")
+
+
 def _write_disasm_context(path: Path, firmware: Path, build_row: dict[str, str]) -> None:
     elf_value = build_row.get("elf_path", "")
     elf = REPO_ROOT / elf_value if elf_value and elf_value != "NA" else Path()
@@ -571,6 +860,30 @@ def _firmware_build_row(benchmark: str, variant: str) -> dict[str, str]:
         if row.get("benchmark") == benchmark and row.get("variant") == variant:
             return row
     return {}
+
+
+def _v2_compiler_firmware_blocker(benchmark: str, variant: str) -> str | None:
+    row = _firmware_build_row(benchmark, variant)
+    if not row:
+        return f"missing firmware_build.csv entry for {benchmark}/{variant}"
+    required = {
+        "build_status": "PASS",
+        "firmware_source": "compiler_c",
+        "status": "PASS",
+        "build_source": "compiler_c",
+        "compiler_available": "true",
+        "fallback_used": "false",
+        "artifact_sanity": "PASS",
+    }
+    mismatches = [f"{field}={row.get(field, 'MISSING')}" for field, expected in required.items() if row.get(field) != expected]
+    if mismatches:
+        return "firmware_build.csv row failed compiler gate: " + "; ".join(mismatches)
+    firmware = _row_hex_path(row, benchmark, variant)
+    if not firmware.exists():
+        return f"compiler-backed firmware HEX is missing: {_rel(firmware)}"
+    if row.get("sha256_hex") and row.get("sha256_hex") != _sha256(firmware):
+        return "firmware_build.csv sha256_hex does not match current HEX artifact"
+    return None
 
 
 def _expected_property(benchmark: str, variant: str) -> int:
@@ -692,6 +1005,7 @@ def _blocked_row(benchmark: str, variant: str, seed: int, notes: str) -> dict[st
         "capsule_bytes": "NA",
         "cycles_to_failure": "NA",
         "commits_to_failure": "NA",
+        "overflow": "NA",
         "firmware_source": "NA",
         "firmware_sha256": "NA",
         "compiler_backed": "false",
@@ -712,6 +1026,7 @@ def _failed_row(
 ) -> dict[str, str]:
     firmware_meta = firmware_meta or _empty_firmware_metadata()
     record_payload = _read_json(record_sig) if record_sig is not None else {}
+    capsule_payload = _read_json(capsule) if capsule is not None else {}
     return {
         "benchmark": benchmark,
         "variant": variant,
@@ -727,6 +1042,7 @@ def _failed_row(
         "capsule_bytes": str(record_payload.get("capsule_bytes", "NA")),
         "cycles_to_failure": str(record_payload.get("cycles_to_failure", "NA")),
         "commits_to_failure": str(record_payload.get("commits_to_failure", "NA")),
+        "overflow": _csv_bool(capsule_payload.get("overflow", "NA")),
         "firmware_source": firmware_meta.get("firmware_source", "NA"),
         "firmware_sha256": firmware_meta.get("firmware_sha256", "NA"),
         "compiler_backed": firmware_meta.get("compiler_backed", "false"),
@@ -740,21 +1056,55 @@ def _read_json(path: Path) -> dict[str, object]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _csv_bool(value: object) -> str:
+    if isinstance(value, bool):
+        return str(value).lower()
+    return str(value)
+
+
 def _sig(payload: dict[str, object]) -> tuple[object, object]:
     return payload.get("property_id"), payload.get("property_signature")
 
 
-def _write_rows(rows: list[dict[str, str]]) -> None:
-    with OUT_CSV.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=FIELDS)
+def _tag_row(row: dict[str, str], arch: str, recorder_config: str) -> dict[str, str]:
+    row["architecture"] = arch
+    row["recorder_config"] = recorder_config
+    return row
+
+
+def _merge_v2_rows(out_csv: Path, rows: list[dict[str, str]]) -> list[dict[str, str]]:
+    if not out_csv.exists():
+        return rows
+    with out_csv.open(newline="", encoding="utf-8") as handle:
+        existing = list(csv.DictReader(handle))
+    existing = [row for row in existing if row.get("architecture") != "v2" or row.get("compiler_backed") == "true"]
+    new_keys = {_row_key(row) for row in rows}
+    merged = [row for row in existing if _row_key(row) not in new_keys]
+    merged.extend(rows)
+    return merged
+
+
+def _row_key(row: dict[str, str]) -> tuple[str, str, str, str, str]:
+    return (
+        row.get("architecture", ""),
+        row.get("recorder_config", ""),
+        row.get("benchmark", ""),
+        row.get("variant", ""),
+        row.get("seed", ""),
+    )
+
+
+def _write_rows(rows: list[dict[str, str]], out_csv: Path, fields: list[str]) -> None:
+    with out_csv.open("w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=fields, extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
 
 
-def _write_firmware_source_comparison(rows: list[dict[str, str]]) -> None:
-    FIRMWARE_COMPARISON_CSV.parent.mkdir(parents=True, exist_ok=True)
+def _write_firmware_source_comparison(rows: list[dict[str, str]], comparison_csv: Path) -> None:
+    comparison_csv.parent.mkdir(parents=True, exist_ok=True)
     comparison_rows = [_comparison_row(row) for row in rows]
-    with FIRMWARE_COMPARISON_CSV.open("w", newline="", encoding="utf-8") as handle:
+    with comparison_csv.open("w", newline="", encoding="utf-8") as handle:
         writer = csv.DictWriter(handle, fieldnames=COMPARISON_FIELDS)
         writer.writeheader()
         writer.writerows(comparison_rows)
@@ -818,7 +1168,8 @@ def _comparison_row(row: dict[str, str]) -> dict[str, str]:
 def _event_count_from_row(row: dict[str, str]) -> str:
     value = row.get("capsule_bytes", "NA")
     try:
-        return str(int(value) // 21)
+        bytes_per_event = 8 if row.get("architecture") == "v2" else 21
+        return str(int(value) // bytes_per_event)
     except (TypeError, ValueError):
         return "NA"
 
@@ -848,7 +1199,7 @@ def _case_status(row: dict[str, str]) -> str:
 
 def _select_firmware(benchmark: str, variant: str, allow_fallback: bool) -> tuple[Path | None, dict[str, str], str | None]:
     rows = [row for row in _firmware_build_rows() if row.get("benchmark") == benchmark and row.get("variant") == variant]
-    compiler_rows = [row for row in rows if row.get("build_status") == "PASS" and row.get("firmware_source") == "compiler_c"]
+    compiler_rows = [row for row in rows if _is_compiler_firmware_row(row)]
     if compiler_rows:
         firmware = _row_hex_path(compiler_rows[0], benchmark, variant)
         if firmware.exists():
@@ -880,6 +1231,17 @@ def _select_firmware(benchmark: str, variant: str, allow_fallback: bool) -> tupl
     return None, _empty_firmware_metadata(), f"missing compiler-backed firmware metadata for {benchmark}/{variant}"
 
 
+def _is_compiler_firmware_row(row: dict[str, str]) -> bool:
+    return (
+        row.get("build_status") == "PASS"
+        and row.get("firmware_source") == "compiler_c"
+        and row.get("status", "PASS") == "PASS"
+        and row.get("build_source", "compiler_c") == "compiler_c"
+        and row.get("fallback_used", "false") == "false"
+        and row.get("artifact_sanity", "PASS") == "PASS"
+    )
+
+
 def _row_hex_path(row: dict[str, str], benchmark: str, variant: str) -> Path:
     hex_path = row.get("hex_path", "")
     if hex_path and hex_path != "NA":
@@ -892,6 +1254,8 @@ def _metadata_from_row(row: dict[str, str], firmware: Path, compiler_backed: boo
         "firmware_source": row.get("firmware_source") or ("compiler_c" if compiler_backed else "fallback_hex"),
         "firmware_sha256": row.get("sha256_hex") or _sha256(firmware),
         "compiler_backed": "true" if compiler_backed else "false",
+        "build_source": row.get("build_source", "compiler_c" if compiler_backed else "fallback_hex"),
+        "fallback_used": row.get("fallback_used", "false" if compiler_backed else "true"),
     }
 
 
@@ -979,6 +1343,20 @@ def _sim_needs_rebuild() -> bool:
     return False
 
 
+def _capsule_depth() -> int:
+    try:
+        return int(os.environ.get("REPLAYCAPSULE_CAPSULE_DEPTH", "256"))
+    except ValueError:
+        return 256
+
+
+def _sim_base() -> Path:
+    depth = _capsule_depth()
+    if depth == 256:
+        return SIM
+    return REPO_ROOT / f"build/verilator/replaycapsule_sim_depth{depth}"
+
+
 def _find_cxx() -> str | None:
     for path in (LOCAL_WINLIBS_BIN / "g++.exe", LOCAL_WINLIBS_BIN / "c++.exe", LOCAL_WINLIBS_BIN / "clang++.exe"):
         if path.exists():
@@ -1041,12 +1419,13 @@ def _rel(path: Path) -> str:
 
 
 def _sim_path() -> Path:
-    if SIM.exists():
-        return SIM
-    exe = SIM.with_suffix(".exe")
+    sim = _sim_base()
+    if sim.exists():
+        return sim
+    exe = sim.with_suffix(".exe")
     if exe.exists():
         return exe
-    return SIM
+    return sim
 
 
 if __name__ == "__main__":

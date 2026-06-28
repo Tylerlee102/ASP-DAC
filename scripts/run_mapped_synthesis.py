@@ -91,6 +91,12 @@ RTL_COMMON = (
     "rtl/event_slicer.sv",
     "rtl/hash_signature.sv",
     "rtl/replay_capsule_top.sv",
+    "rtl/replaycapsule_v2/rcv2_payload_hasher.sv",
+    "rtl/replaycapsule_v2/rcv2_address_dictionary.sv",
+    "rtl/replaycapsule_v2/rcv2_adaptive_window.sv",
+    "rtl/replaycapsule_v2/rcv2_event_packer.sv",
+    "rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv",
+    "rtl/replaycapsule_v2/rcv2_recorder.sv",
 )
 
 DESIGNS = {

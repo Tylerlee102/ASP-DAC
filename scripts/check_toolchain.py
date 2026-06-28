@@ -19,6 +19,7 @@ OSS_CAD_SUITE = Path(os.environ.get("REPLAYCAPSULE_OSS_CAD_SUITE", REPO_ROOT / "
 LOCAL_PYTHON = REPO_ROOT / ".tools/python"
 LOCAL_PYTHON_BIN = LOCAL_PYTHON / "bin"
 LOCAL_WINLIBS_BIN = REPO_ROOT / ".tools/winlibs/mingw64/bin"
+LOCAL_TOOLCHAINS = REPO_ROOT / ".tools/toolchains"
 
 FIELDNAMES = ["tool", "required_for", "available", "version", "required", "source", "notes"]
 
@@ -186,6 +187,11 @@ def _find_local_tool(name: str) -> LocatedTool | None:
             path = LOCAL_WINLIBS_BIN / local_name
             if path.exists():
                 return LocatedTool(str(path), f"workspace-local {_rel(path)}", _winlibs_env())
+    if name in {"riscv64-unknown-elf-gcc", "riscv64-unknown-elf-objcopy", "riscv64-unknown-elf-size"}:
+        suffix = name.rsplit("-", 1)[1]
+        local = _find_local_riscv_tool(suffix)
+        if local is not None:
+            return local
     if name in {"iverilog", "vvp", "nextpnr-ice40", "nextpnr-ecp5", "yosys"}:
         path = OSS_CAD_SUITE / "bin" / f"{name}.exe"
         if path.exists():
@@ -199,6 +205,16 @@ def _find_local_tool(name: str) -> LocatedTool | None:
         path = LOCAL_PYTHON_BIN / "yowasp-yosys.exe"
         if path.exists():
             return LocatedTool(str(path), f"workspace-local {_rel(path)}", _yowasp_env())
+    return None
+
+
+def _find_local_riscv_tool(suffix: str) -> LocatedTool | None:
+    for bin_dir in sorted(LOCAL_TOOLCHAINS.glob("**/bin")):
+        for prefix in ("riscv-none-elf-", "riscv64-unknown-elf-", "riscv64-elf-", "riscv32-unknown-elf-"):
+            for ext in (".exe", ""):
+                path = bin_dir / f"{prefix}{suffix}{ext}"
+                if path.exists():
+                    return LocatedTool(str(path), f"workspace-local {_rel(path)}", _toolchain_env(bin_dir))
     return None
 
 
@@ -263,7 +279,13 @@ def _preferred_firmware_toolchain_available() -> bool:
 
 
 def _any_available(names: tuple[str, ...]) -> bool:
-    return any(shutil.which(name) is not None for name in names)
+    for name in names:
+        if shutil.which(name) is not None:
+            return True
+        suffix = name.rsplit("-", 1)[1]
+        if _find_local_riscv_tool(suffix) is not None:
+            return True
+    return False
 
 
 def _require_compiler() -> bool:
@@ -308,6 +330,12 @@ def _oss_env(verilator: bool = False) -> dict[str, str]:
 def _winlibs_env() -> dict[str, str]:
     env = dict(os.environ)
     env["PATH"] = os.pathsep.join([str(LOCAL_WINLIBS_BIN), env.get("PATH", "")])
+    return env
+
+
+def _toolchain_env(bin_dir: Path) -> dict[str, str]:
+    env = dict(os.environ)
+    env["PATH"] = os.pathsep.join([str(bin_dir), env.get("PATH", "")])
     return env
 
 

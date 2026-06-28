@@ -1,0 +1,1 @@
+bug_id,area,architecture,recorder_config,benchmark,variant,seed,workload_scale,memory_words,buffer_depth,target,flow,current_status,error_code,first_failure_stage,root_cause,evidence_file,required_for_zero_fail,fix_status,notes

@@ -13,6 +13,8 @@ module replaycapsule_verilator_top #(
   input  logic        clear,
   input  logic        watchdog_enable,
   input  logic [3:0]  capture_mode,
+  input  logic [1:0]  arch_select,
+  input  logic [1:0]  recorder_config_select,
 
   output logic        trap,
   output logic        mem_valid,
@@ -60,6 +62,8 @@ module replaycapsule_verilator_top #(
     .clear(clear),
     .watchdog_enable(watchdog_enable),
     .capture_mode(capture_mode),
+    .arch_select(arch_select),
+    .recorder_config_select(recorder_config_select),
     .trap(trap),
     .mem_valid(mem_valid),
     .mem_instr(mem_instr),

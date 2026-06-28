@@ -3,6 +3,8 @@ module full_core_replaycapsule_board_top #(
   parameter int          CAPSULE_DEPTH  = 16,
   parameter int          CAPSULE_ADDR_W = $clog2(CAPSULE_DEPTH),
   parameter logic [3:0]  CAPTURE_MODE   = 4'h3,
+  parameter logic [1:0]  ARCH_SELECT    = 2'd1,
+  parameter logic [1:0]  RECORDER_CONFIG_SELECT = 2'd0,
   parameter logic [31:0] PROGADDR_RESET = 32'h0000_0080,
   parameter logic [31:0] PROGADDR_IRQ   = 32'h0000_0010,
   parameter logic [31:0] STACKADDR      = 32'h0000_2000
@@ -72,6 +74,8 @@ module full_core_replaycapsule_board_top #(
     .clear(clear),
     .watchdog_enable(watchdog_enable),
     .capture_mode(CAPTURE_MODE),
+    .arch_select(ARCH_SELECT),
+    .recorder_config_select(RECORDER_CONFIG_SELECT),
     .trap(trap),
     .mem_valid(mem_valid),
     .mem_instr(mem_instr),

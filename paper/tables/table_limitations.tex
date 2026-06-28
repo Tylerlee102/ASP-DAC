@@ -1,11 +1,11 @@
-\begin{tabular}{ll}
- \hline
-limitation & paper\_wording \\
- \hline
-host\_driven\_replay & Replay consume is host-driven in the Verilator harness. \\
-mapped\_scope & Mapped data measures the recorder/instrumented full-core wrapper, not an autonomous replay-consume engine. \\
-high\_area\_overhead & FF/LUT overhead remains an optimization target. \\
-no\_asic\_power & ASIC area, timing, and power are not evaluated. \\
-single\_hart\_scope & Evaluation is single-hart RV32I and excludes multicore, DMA, caches/coherence, and arbitrary peripherals. \\
- \hline
+\begin{tabular}{lp{0.58\linewidth}}
+\toprule
+Topic & Current scope \\
+\midrule
+Core scope & Single-hart RV32I only \\
+Replay consume & v2 synthesizable prototype; full-core integration blocked \\
+v2 workload replay & Analytic capacity estimates only; no PASS claim \\
+Mapped overhead & v1 full-core measured; v2 full-core blocked \\
+ASIC/power & Not measured \\
+\bottomrule
 \end{tabular}

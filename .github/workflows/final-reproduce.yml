@@ -67,6 +67,9 @@ jobs:
       - name: Build compiler-backed firmware
         run: make firmware
 
+      - name: Verify deterministic firmware build
+        run: make verify-deterministic-firmware
+
       - name: Show Verilator environment
         run: |
           unset VERILATOR_ROOT
@@ -108,6 +111,9 @@ jobs:
           unset OSS_CAD_SUITE
           hash -r
           make full-rtl-replay DEBUG=1
+
+      - name: Check replay firmware evidence
+        run: make check-evidence
 
       - name: Run full RTL negative replay
         run: |

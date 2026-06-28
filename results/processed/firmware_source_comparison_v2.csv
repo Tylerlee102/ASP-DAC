@@ -1,0 +1,13 @@
+benchmark,variant,seed,fallback_status,compiler_status,fallback_property_id,compiler_property_id,fallback_cycles_to_failure,compiler_cycles_to_failure,fallback_commits_to_failure,compiler_commits_to_failure,fallback_event_count,compiler_event_count,same_property,same_event_count,first_divergence,likely_root_cause,notes
+commanded_actuator_limit_bug,failing,1,NOT_RUN,PASS,1,1,NOT_RUN,69,NOT_RUN,17,NOT_RUN,2,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+commanded_actuator_limit_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33326,NOT_RUN,3,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+late_config_sequence_bug,failing,1,NOT_RUN,PASS,5,5,NOT_RUN,59,NOT_RUN,15,NOT_RUN,1,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+late_config_sequence_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33328,NOT_RUN,2,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+commanded_actuator_limit_bug,failing,1,NOT_RUN,PASS,1,1,NOT_RUN,69,NOT_RUN,17,NOT_RUN,2,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+commanded_actuator_limit_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33326,NOT_RUN,3,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+late_config_sequence_bug,failing,1,NOT_RUN,PASS,5,5,NOT_RUN,59,NOT_RUN,15,NOT_RUN,1,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+late_config_sequence_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33328,NOT_RUN,2,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+commanded_actuator_limit_bug,failing,1,NOT_RUN,PASS,1,1,NOT_RUN,69,NOT_RUN,17,NOT_RUN,21,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+commanded_actuator_limit_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33326,NOT_RUN,240,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+late_config_sequence_bug,failing,1,NOT_RUN,PASS,5,5,NOT_RUN,59,NOT_RUN,15,NOT_RUN,18,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+late_config_sequence_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33328,NOT_RUN,240,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation

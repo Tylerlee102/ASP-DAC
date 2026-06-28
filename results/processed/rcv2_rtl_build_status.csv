@@ -1,0 +1,2 @@
+"target","flow","status","report_path","notes"
+"replaycapsule_v2_recorder_wrapper","yosys_frontend_hierarchy_check","PASS","results/raw/replay_consumer_mapping/rcv2_recorder_wrapper_yosys_check.txt","v2 recorder and mapped wrapper elaborated with hierarchy -check; not a full-core replay integration test"

@@ -15,9 +15,13 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 OUT_CSV = REPO_ROOT / "results/processed/firmware_build.csv"
-BUILD_ROOT = REPO_ROOT / "firmware/build"
+OUT_CSV = Path(os.environ.get("REPLAYCAPSULE_FIRMWARE_BUILD_CSV", OUT_CSV))
+BUILD_ROOT = Path(os.environ.get("REPLAYCAPSULE_FIRMWARE_BUILD_ROOT", REPO_ROOT / "firmware/build"))
 LINKER = REPO_ROOT / "firmware/linker.ld"
 STARTUP = REPO_ROOT / "firmware/startup.S"
+RISCV_ARCH = "rv32i"
+RISCV_ABI = "ilp32"
+SOURCE_DATE_EPOCH = "1704067200"
 
 BENCHMARK_DIRS = {
     "sensor_threshold_bug": "bug_sensor_threshold",
@@ -26,6 +30,11 @@ BENCHMARK_DIRS = {
     "stack_corruption_bug": "bug_stack_corruption",
     "uart_command_bug": "bug_uart_command",
     "watchdog_timeout_bug": "bug_watchdog_timeout",
+}
+
+EXPANDED_BENCHMARK_DIRS = {
+    "commanded_actuator_limit_bug": "bug_commanded_actuator_limit",
+    "late_config_sequence_bug": "bug_late_config_sequence",
 }
 
 VARIANTS = {
@@ -37,6 +46,11 @@ VARIANTS = {
     "watchdog_timeout_bug": ("failing", "fixed", "no_failure_edge"),
 }
 
+EXPANDED_VARIANTS = {
+    "commanded_actuator_limit_bug": ("failing", "fixed"),
+    "late_config_sequence_bug": ("failing", "fixed"),
+}
+
 FIELDNAMES = [
     "benchmark",
     "variant",
@@ -45,7 +59,15 @@ FIELDNAMES = [
     "map_path",
     "build_status",
     "firmware_source",
+    "status",
+    "build_source",
+    "compiler_available",
+    "fallback_used",
+    "objcopy_ok",
+    "artifact_sanity",
     "compiler",
+    "compiler_path",
+    "objcopy_path",
     "compiler_version",
     "size_text",
     "size_data",
@@ -71,15 +93,18 @@ def main() -> int:
 
     # Keep generated fallback HEX files on disk for local/debug use, but never
     # label them as compiler-backed rows.
-    _run_python([sys.executable, "scripts/build_firmware_images.py"])
+    _run_python([sys.executable, "scripts/build_firmware_images.py", "--out-dir", str(BUILD_ROOT)])
+
+    benchmark_dirs = _benchmark_dirs()
+    variants = _variants()
 
     if tools["compiler"] and tools["objcopy"] and tools["size"]:
-        for benchmark in BENCHMARK_DIRS:
-            for variant in VARIANTS[benchmark]:
+        for benchmark in benchmark_dirs:
+            for variant in variants[benchmark]:
                 rows.append(_build_with_gcc(benchmark, variant, tools))
     else:
-        for benchmark in BENCHMARK_DIRS:
-            for variant in VARIANTS[benchmark]:
+        for benchmark in benchmark_dirs:
+            for variant in variants[benchmark]:
                 rows.append(_fallback_row(benchmark, variant, tools))
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
@@ -89,7 +114,15 @@ def main() -> int:
         writer.writerows(rows)
     print(f"WROTE {_rel(OUT_CSV)}")
     if require_compiler:
-        non_compiler = [row for row in rows if row["build_status"] != "PASS" or row["firmware_source"] != "compiler_c"]
+        non_compiler = [
+            row
+            for row in rows
+            if row["build_status"] != "PASS"
+            or row["firmware_source"] != "compiler_c"
+            or row["status"] != "PASS"
+            or row["build_source"] != "compiler_c"
+            or row["fallback_used"] != "false"
+        ]
         if non_compiler:
             print(f"FAIL: compiler-backed firmware required but {len(non_compiler)}/{len(rows)} rows are not compiler PASS")
             return 1
@@ -102,7 +135,7 @@ def _build_with_gcc(
     tools: dict[str, str | None],
 ) -> dict[str, str]:
     source_variant = "failing" if variant == "no_failure_edge" else variant
-    source = REPO_ROOT / "firmware" / BENCHMARK_DIRS[benchmark] / f"{source_variant}.c"
+    source = REPO_ROOT / "firmware" / _benchmark_dirs()[benchmark] / f"{source_variant}.c"
     out_dir = BUILD_ROOT / benchmark
     out_dir.mkdir(parents=True, exist_ok=True)
     elf = out_dir / f"{variant}.elf"
@@ -123,14 +156,18 @@ def _build_with_gcc(
         "-fno-builtin",
         "-nostdlib",
         "-nostartfiles",
+        "-static",
+        "-fno-pic",
+        "-fno-pie",
         "-Wall",
         "-Wextra",
+        f"-ffile-prefix-map={REPO_ROOT}=.",
         f"-I{REPO_ROOT / 'firmware/common'}",
         str(STARTUP),
         str(source),
-        "-T",
-        str(LINKER),
+        f"-Wl,-T,{LINKER}",
         f"-Wl,-Map,{map_path}",
+        "-Wl,--build-id=none",
         "-o",
         str(elf),
     ]
@@ -142,6 +179,9 @@ def _build_with_gcc(
     if objcopy_result.returncode != 0:
         return _fail_row(benchmark, variant, elf, hex_path, map_path, objcopy_result.stdout)
     _normalize_objcopy_hex(verilog_hex, hex_path)
+    artifact_sanity, artifact_note = _artifact_sanity(hex_path)
+    if artifact_sanity != "PASS":
+        return _fail_row(benchmark, variant, elf, hex_path, map_path, artifact_note)
 
     text, data, bss = _sizes(tools["size"], elf)
     entry = _entry_point(tools["readelf"], elf)
@@ -154,14 +194,22 @@ def _build_with_gcc(
         "map_path": _rel(map_path),
         "build_status": "PASS",
         "firmware_source": "compiler_c",
+        "status": "PASS",
+        "build_source": "compiler_c",
+        "compiler_available": "true",
+        "fallback_used": "false",
+        "objcopy_ok": "true",
+        "artifact_sanity": artifact_sanity,
         "compiler": Path(compiler).name,
+        "compiler_path": _rel(Path(compiler)),
+        "objcopy_path": _rel(Path(objcopy)),
         "compiler_version": _tool_version(compiler),
         "size_text": text,
         "size_data": data,
         "size_bss": bss,
         "entry_point": entry,
         "sha256_hex": digest,
-        "notes": f"built with {Path(compiler).name}",
+        "notes": f"built with {Path(compiler).name}; {artifact_note}",
     }
 
 
@@ -197,7 +245,15 @@ def _fallback_row(benchmark: str, variant: str, tools: dict[str, str | None]) ->
         "map_path": "NA",
         "build_status": status,
         "firmware_source": "fallback_hex" if status == "FALLBACK" else "missing",
+        "status": "BLOCKED",
+        "build_source": "fallback_hex" if status == "FALLBACK" else "missing",
+        "compiler_available": "false",
+        "fallback_used": "true" if status == "FALLBACK" else "false",
+        "objcopy_ok": "false",
+        "artifact_sanity": "PASS" if hex_path.exists() else "NA",
         "compiler": "NA",
+        "compiler_path": "NA",
+        "objcopy_path": "NA",
         "compiler_version": "NA",
         "size_text": "NA",
         "size_data": "NA",
@@ -206,6 +262,20 @@ def _fallback_row(benchmark: str, variant: str, tools: dict[str, str | None]) ->
         "sha256_hex": digest if hex_path.exists() else "NA",
         "notes": notes,
     }
+
+
+def _benchmark_dirs() -> dict[str, str]:
+    dirs = dict(BENCHMARK_DIRS)
+    if _truthy_env("REPLAYCAPSULE_ENABLE_EXPANDED_BENCHMARKS"):
+        dirs.update(EXPANDED_BENCHMARK_DIRS)
+    return dirs
+
+
+def _variants() -> dict[str, tuple[str, ...]]:
+    variants = dict(VARIANTS)
+    if _truthy_env("REPLAYCAPSULE_ENABLE_EXPANDED_BENCHMARKS"):
+        variants.update(EXPANDED_VARIANTS)
+    return variants
 
 
 def _normalize_objcopy_hex(source: Path, dest: Path) -> None:
@@ -263,7 +333,15 @@ def _fail_row(benchmark: str, variant: str, elf: Path, hex_path: Path, map_path:
         "map_path": _rel(map_path),
         "build_status": "FAIL",
         "firmware_source": "compiler_failed",
+        "status": "FAIL",
+        "build_source": "compiler_failed",
+        "compiler_available": "true",
+        "fallback_used": "false",
+        "objcopy_ok": "false",
+        "artifact_sanity": "FAIL",
         "compiler": "NA",
+        "compiler_path": "NA",
+        "objcopy_path": "NA",
         "compiler_version": "NA",
         "size_text": "NA",
         "size_data": "NA",
@@ -279,6 +357,13 @@ def _find_toolchain() -> dict[str, str | None]:
     env_prefix = os.environ.get("RISCV_PREFIX")
     if env_prefix:
         prefixes.append(env_prefix)
+    env_bin = os.environ.get("RISCV_TOOLCHAIN_BIN")
+    if env_bin:
+        for name in ("riscv-none-elf-", "riscv64-unknown-elf-", "riscv64-elf-", "riscv32-unknown-elf-"):
+            prefixes.append(str(Path(env_bin) / name))
+    for bin_dir in sorted((REPO_ROOT / ".tools/toolchains").glob("**/bin")):
+        for name in ("riscv-none-elf-", "riscv64-unknown-elf-", "riscv64-elf-", "riscv32-unknown-elf-"):
+            prefixes.append(str(bin_dir / name))
     prefixes.extend(
         [
             "riscv64-unknown-elf-",
@@ -298,6 +383,8 @@ def _find_toolchain() -> dict[str, str | None]:
         objcopy = shutil.which(prefix + "objcopy")
         size = shutil.which(prefix + "size")
         readelf = shutil.which(prefix + "readelf")
+        if compiler and _run([compiler, "--version"]).returncode != 0:
+            compiler = None
         if compiler or objcopy or size:
             best = {
                 "compiler": compiler,
@@ -311,7 +398,9 @@ def _find_toolchain() -> dict[str, str | None]:
 
 
 def _run(command: list[str]) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(command, cwd=REPO_ROOT, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    env = dict(os.environ)
+    env.setdefault("SOURCE_DATE_EPOCH", SOURCE_DATE_EPOCH)
+    return subprocess.run(command, cwd=REPO_ROOT, env=env, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
 
 
 def _run_python(command: list[str]) -> None:
@@ -328,6 +417,25 @@ def _clean(text: str) -> str:
 
 def _sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def _artifact_sanity(path: Path) -> tuple[str, str]:
+    if not path.exists():
+        return "FAIL", "compiled HEX artifact missing"
+    text = path.read_text(encoding="utf-8", errors="replace").strip()
+    if not text:
+        return "FAIL", "compiled HEX artifact is empty"
+    words = [token for token in text.split() if not token.startswith("@")]
+    if not words:
+        return "FAIL", "compiled HEX artifact has no data words"
+    try:
+        for token in words:
+            int(token, 16)
+    except ValueError:
+        return "FAIL", "compiled HEX artifact contains a non-hex word"
+    if len(words) > 16384:
+        return "FAIL", f"compiled HEX artifact too large for ROM: {len(words)} words"
+    return "PASS", f"artifact_sanity=PASS words={len(words)}"
 
 
 def _tool_version(tool: str) -> str:

@@ -80,8 +80,14 @@ jobs:
       - name: Build compiler-backed firmware
         run: make firmware
 
+      - name: Verify deterministic firmware build
+        run: make verify-deterministic-firmware
+
       - name: Run full RTL replay
         run: make full-rtl-replay
+
+      - name: Check replay firmware evidence
+        run: make check-evidence
 
       - name: Run full RTL negative replay
         run: make full-rtl-negative

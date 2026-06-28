@@ -1,0 +1,13 @@
+benchmark,benchmark_family,new_or_existing,variants,deterministic_seed_support,compiler_backed_firmware,property_id,model_support,rtl_replay_support,notes
+sensor_threshold_bug,sensor_threshold,existing,failing;fixed;no_failure_edge,true,true,3,true,true,existing benchmark family with current replay evidence
+interrupt_race_bug,interrupt_race,existing,failing;fixed,true,true,2,true,true,existing benchmark family with current replay evidence
+mmio_ordering_bug,mmio_ordering,existing,failing;fixed,true,true,5,true,true,existing benchmark family with current replay evidence
+stack_corruption_bug,stack_corruption,existing,failing;fixed,true,true,4,true,true,existing benchmark family with current replay evidence
+uart_command_bug,uart_command,existing,failing;fixed;no_failure_edge,true,true,1,true,true,existing benchmark family with current replay evidence
+watchdog_timeout_bug,watchdog_timeout,existing,failing;fixed;no_failure_edge,true,true,6,true,true,existing benchmark family with current replay evidence
+commanded_actuator_limit_bug,commanded_actuator_limit,new_measured,failing;fixed,true,true,1,not_claimed,true,new compiler-backed firmware family with measured v2 full RTL replay evidence
+late_config_sequence_bug,late_config_sequence,new_measured,failing;fixed,true,true,5,not_claimed,true,new compiler-backed firmware family with measured v2 full RTL replay evidence
+timer_jitter_bug,timer_jitter_bug,candidate,failing;fixed,planned,not_integrated,7,not_integrated,not_integrated,"candidate added to diversity plan; not counted as replay evidence until property checker, firmware build, and RTL harness support land"
+nested_interrupt_bug,nested_interrupt_bug,candidate,failing;fixed,planned,not_integrated,8,not_integrated,not_integrated,"candidate added to diversity plan; not counted as replay evidence until property checker, firmware build, and RTL harness support land"
+multi_mmio_peripheral_bug,multi_mmio_peripheral_bug,candidate,failing;fixed,planned,not_integrated,9,not_integrated,not_integrated,"candidate added to diversity plan; not counted as replay evidence until property checker, firmware build, and RTL harness support land"
+dma_like_mmio_burst_bug_without_real_dma,dma_like_mmio_burst_bug_without_real_dma,candidate,failing;fixed,planned,not_integrated,10,not_integrated,not_integrated,"candidate added to diversity plan; not counted as replay evidence until property checker, firmware build, and RTL harness support land"

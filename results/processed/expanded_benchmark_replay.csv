@@ -1,0 +1,58 @@
+benchmark,variant,seed,benchmark_family,new_or_existing,firmware_status,rtl_replay_status,property_match,event_match,final_signature_match,notes
+sensor_threshold_bug,failing,1,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+sensor_threshold_bug,failing,2,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+sensor_threshold_bug,failing,3,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+sensor_threshold_bug,fixed,1,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+sensor_threshold_bug,fixed,2,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+sensor_threshold_bug,fixed,3,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+sensor_threshold_bug,no_failure_edge,1,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+sensor_threshold_bug,no_failure_edge,2,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+sensor_threshold_bug,no_failure_edge,3,sensor_threshold,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+interrupt_race_bug,failing,1,interrupt_race,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+interrupt_race_bug,failing,2,interrupt_race,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+interrupt_race_bug,failing,3,interrupt_race,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+interrupt_race_bug,fixed,1,interrupt_race,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+interrupt_race_bug,fixed,2,interrupt_race,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+interrupt_race_bug,fixed,3,interrupt_race,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+mmio_ordering_bug,failing,1,mmio_ordering,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+mmio_ordering_bug,failing,2,mmio_ordering,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+mmio_ordering_bug,failing,3,mmio_ordering,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+mmio_ordering_bug,fixed,1,mmio_ordering,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+mmio_ordering_bug,fixed,2,mmio_ordering,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+mmio_ordering_bug,fixed,3,mmio_ordering,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+stack_corruption_bug,failing,1,stack_corruption,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+stack_corruption_bug,failing,2,stack_corruption,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+stack_corruption_bug,failing,3,stack_corruption,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+stack_corruption_bug,fixed,1,stack_corruption,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+stack_corruption_bug,fixed,2,stack_corruption,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+stack_corruption_bug,fixed,3,stack_corruption,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,failing,1,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,failing,2,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,failing,3,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,fixed,1,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,fixed,2,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,fixed,3,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,no_failure_edge,1,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,no_failure_edge,2,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+uart_command_bug,no_failure_edge,3,uart_command,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,failing,1,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,failing,2,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,failing,3,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,fixed,1,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,fixed,2,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,fixed,3,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,no_failure_edge,1,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,no_failure_edge,2,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+watchdog_timeout_bug,no_failure_edge,3,watchdog_timeout,existing,PASS,PASS,PASS,PASS,PASS,existing measured full RTL replay row
+commanded_actuator_limit_bug,failing,1,commanded_actuator_limit,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+commanded_actuator_limit_bug,fixed,1,commanded_actuator_limit,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+late_config_sequence_bug,failing,1,late_config_sequence,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+late_config_sequence_bug,fixed,1,late_config_sequence,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+commanded_actuator_limit_bug,failing,1,commanded_actuator_limit,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+commanded_actuator_limit_bug,fixed,1,commanded_actuator_limit,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+late_config_sequence_bug,failing,1,late_config_sequence,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+late_config_sequence_bug,fixed,1,late_config_sequence,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+commanded_actuator_limit_bug,failing,1,commanded_actuator_limit,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+commanded_actuator_limit_bug,fixed,1,commanded_actuator_limit,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+late_config_sequence_bug,failing,1,late_config_sequence,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row
+late_config_sequence_bug,fixed,1,late_config_sequence,new_measured,PASS,PASS,PASS,PASS,PASS,new measured v2 full RTL replay row

@@ -1,18 +1,18 @@
 tool,required_for,available,version,required,source,notes
-python,"reproduce,full-rtl-replay,paper",yes,Python 3.12.3,yes,current-python,Python driver scripts; current interpreter
-make,full-rtl-replay,yes,GNU Make 4.3,no,path,top-level orchestration and Verilator build; make
-g++,full-rtl-replay,yes,g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0,no,path,C++ compiler for Verilator harness; g++
-verilator,full-rtl-replay,yes,Verilator 5.020 2024-01-01 rev (Debian 5.020-1),no,path,RTL harness build; verilator
-riscv64-unknown-elf-gcc,"firmware,full-rtl-replay",yes,riscv64-unknown-elf-gcc (13.2.0-11ubuntu1+12) 13.2.0,yes,path,preferred embedded RISC-V compiler; accepted aliases are bare-metal RV32-capable toolchains; riscv64-unknown-elf-gcc
-riscv64-unknown-elf-objcopy,firmware,yes,GNU objcopy (2.42-1ubuntu1+6) 2.42,yes,path,ELF to HEX conversion; riscv64-unknown-elf-objcopy
-riscv64-unknown-elf-size,firmware,yes,GNU size (2.42-1ubuntu1+6) 2.42,yes,path,compiler-backed firmware size accounting; riscv64-unknown-elf-size
-iverilog,rtl-smoke,yes,Icarus Verilog version 12.0 (stable) (),yes,path,directed Icarus simulations; iverilog
-vvp,rtl-smoke,yes,Icarus Verilog runtime version 12.0 (stable) (),yes,path,Icarus simulation runtime; vvp
-yosys,"mapped-synthesis,formal",yes,Yosys 0.33 (git sha1 2584903a060),yes,path,synthesis/formal frontend; yosys
-nextpnr-ice40,mapped-synthesis,yes,"""nextpnr-ice40"" -- Next Generation Place and Route (Version 0.6-3build5)",no,path,optional iCE40 mapped FPGA flow; nextpnr-ice40
-nextpnr-ecp5,mapped-synthesis,yes,"""nextpnr-ecp5"" -- Next Generation Place and Route (Version 0.6-3build5)",no,path,optional ECP5 mapped FPGA flow; nextpnr-ecp5
+python,"reproduce,full-rtl-replay,paper",yes,Python 3.12.13,yes,current-python,Python driver scripts; current interpreter
+make,full-rtl-replay,yes,GNU Make 4.4.1,no,workspace-local,top-level orchestration and Verilator build; workspace-local .tools/winlibs/mingw64/bin/make.exe
+g++,full-rtl-replay,yes,"g++.exe (MinGW-W64 x86_64-ucrt-posix-seh, built by Brecht Sanders, r2) 16.1.0",no,workspace-local,C++ compiler for Verilator harness; workspace-local .tools/winlibs/mingw64/bin/g++.exe
+verilator,full-rtl-replay,yes,Verilator 5.049 devel rev v5.048-331-g0ebae4371 (mod),no,workspace-local,RTL harness build; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/verilator_bin.exe
+riscv64-unknown-elf-gcc,"firmware,full-rtl-replay",yes,riscv-none-elf-gcc.exe (xPack GNU RISC-V Embedded GCC x86_64) 15.2.0,yes,workspace-local,preferred embedded RISC-V compiler; accepted aliases are bare-metal RV32-capable toolchains; workspace-local .tools/toolchains/riscv-none-elf-gcc/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-gcc.exe
+riscv64-unknown-elf-objcopy,firmware,yes,GNU objcopy (xPack GNU RISC-V Embedded GCC x86_64) 2.45,yes,workspace-local,ELF to HEX conversion; workspace-local .tools/toolchains/riscv-none-elf-gcc/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-objcopy.exe
+riscv64-unknown-elf-size,firmware,yes,GNU size (xPack GNU RISC-V Embedded GCC x86_64) 2.45,yes,workspace-local,compiler-backed firmware size accounting; workspace-local .tools/toolchains/riscv-none-elf-gcc/xpack-riscv-none-elf-gcc-15.2.0-1/bin/riscv-none-elf-size.exe
+iverilog,rtl-smoke,yes,Icarus Verilog version 14.0 (devel) (s20260301-220-g78750c51d-dirty),yes,workspace-local,directed Icarus simulations; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/iverilog.exe
+vvp,rtl-smoke,yes,version probe produced no output,yes,workspace-local,Icarus simulation runtime; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/vvp.exe
+yosys,"mapped-synthesis,formal",yes,version probe produced no output,yes,workspace-local,synthesis/formal frontend; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/yosys.exe
+nextpnr-ice40,mapped-synthesis,yes,version probe produced no output,no,workspace-local,optional iCE40 mapped FPGA flow; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/nextpnr-ice40.exe
+nextpnr-ecp5,mapped-synthesis,yes,version probe produced no output,no,workspace-local,optional ECP5 mapped FPGA flow; workspace-local .tools/oss-cad-suite/oss-cad-suite/bin/nextpnr-ecp5.exe
 openroad,mapped-synthesis,no,NA,no,missing,optional ASIC flow; tool not found
-latexmk,paper,yes,"Latexmk, John Collins, 31 Jan. 2024. Version 4.83",no,path,LaTeX build wrapper; latexmk
-pdflatex,paper,yes,pdfTeX 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian),no,path,PDF LaTeX engine; pdflatex
-lualatex,paper,yes,"This is LuaHBTeX, Version 1.17.0 (TeX Live 2023/Debian)",no,path,fallback PDF LaTeX engine; lualatex
+latexmk,paper,no,NA,no,missing,LaTeX build wrapper; tool not found
+pdflatex,paper,no,NA,no,missing,PDF LaTeX engine; tool not found
+lualatex,paper,no,NA,no,missing,fallback PDF LaTeX engine; tool not found
 firmware-hex-fallback,full-rtl-replay,yes,generated-hex,no,generated-fallback,existing generated HEX/MEM images can feed RTL when compiler is unavailable; fallback is not a compiler pass

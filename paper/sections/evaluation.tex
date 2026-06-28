@@ -23,6 +23,38 @@ The evaluation answers eight scoped questions. First, replay works across the ge
 
 The mapped scaling data is FPGA recorder/instrumented-wrapper evidence. It is not ASIC area or power evidence, and it is not an autonomous synthesizable replay-consume datapath. Simulator wall time is reported separately from architectural cycle and commit counts.
 
+\subsection{ReplayCapsule-RV v2 Evidence}
+
+The v2 pass adds generated CSVs for workload-failure diagnosis, v2 buffer capacity estimates, v2 capsule-size estimates, replay-consume RTL tests, replay-consume mapping, second-target mapping attempts, and benchmark diversity status. The workload-failure diagnosis classifies all 150 v1 workload-scaling FAIL rows as buffer overflow. The v2 buffer and capsule CSVs are explicitly labeled analytic where they estimate compressed storage from measured v1 rows; they do not convert any unmeasured v2 full-core replay case into a PASS. The replay-consume controller is tested as a synthesizable prototype: valid capsules consume all events, and missing, duplicate, reordered, wrong-MMIO, wrong-interrupt, wrong-hash, and truncated streams are rejected. The mapped replay-consumer row is standalone prototype evidence and is not a full-core autonomous replay claim.
+
+\begin{table}[t]
+\centering
+\caption{Replay-consume controller prototype tests.}
+\label{tab:replay-consumer-v2}
+\input{tables/table_replay_consumer_tests}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_replay_consumer_controller.pdf}{\includegraphics[width=\linewidth]{figures/fig_replay_consumer_controller.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/replay\_consumer\_tests.csv}}}}
+\caption{Replay-consume controller prototype status.}
+\label{fig:replay-consumer-v2}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_workload_scaling_v2.pdf}{\includegraphics[width=\linewidth]{figures/fig_workload_scaling_v2.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/workload\_scaling\_v2.csv}}}}
+\caption{v2 workload-scaling status. v2 rows are blocked until full-core v2 replay is integrated.}
+\label{fig:workload-v2}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\IfFileExists{figures/fig_mapped_overhead_v2.pdf}{\includegraphics[width=\linewidth]{figures/fig_mapped_overhead_v2.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/replay\_consumer\_mapped.csv}}}}
+\caption{v2 mapping status. The mapped replay consumer is a standalone prototype, not full-core overhead evidence.}
+\label{fig:mapped-v2}
+\end{figure}
+
 \begin{figure}[t]
 \centering
 \IfFileExists{figures/fig_replay_success.pdf}{\includegraphics[width=\linewidth]{figures/fig_replay_success.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/workload\_scaling.csv}}}}

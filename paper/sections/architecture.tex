@@ -10,3 +10,9 @@ ReplayCapsule-RV instruments the processor boundary rather than replacing the co
 \end{figure}
 
 The board-level mapped wrappers expose only clock, reset, UART, GPIO, status LEDs, and three recorder-status pins. Large debug and internal buses remain inside the FPGA design. The prototype prioritizes replay fidelity and auditability over area minimization; Section~\ref{sec:evaluation} reports the generated same-target ECP5 mapped overhead rather than presenting the recorder as an optimized implementation.
+
+\subsection{ReplayCapsule-RV v2 Prototype}
+
+ReplayCapsule-RV v2 keeps the v1 recorder intact and adds a separately selectable compressed recorder prototype. The v2 path packs replay-critical event class, commit-delta, address-token, payload-hash, and limited debug context into 64-bit capsule words; repeated MMIO addresses can use a small dictionary, and diagnostic context can be dropped under adaptive buffer pressure while replay-critical MMIO, interrupt, property-fail, and checkpoint-hash events remain capturable. The v2 implementation also includes a synthesizable replay-consume controller prototype that validates event type, commit order, MMIO value, interrupt cause, and payload hash before reporting that all capsule events were consumed.
+
+The v2 recorder and replay consumer are not presented as a replacement for the measured v1 full RTL replay flow. In this artifact, v2 recorder RTL elaborates through a Yosys hierarchy check, and the replay-consume controller has directed RTL corruption tests plus standalone ECP5 prototype mapping. Full-core v2 record/replay and same-target full-core v2 overhead remain future integration work.
