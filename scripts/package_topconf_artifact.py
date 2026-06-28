@@ -45,7 +45,7 @@ INCLUDE_ROOTS = (
 )
 
 EXCLUDE_PARTS = {".git", ".tools", "dist", "__pycache__", ".pytest_cache", ".mypy_cache"}
-EXCLUDE_SUFFIXES = (".pyc", ".vvp", ".vcd")
+EXCLUDE_SUFFIXES = (".pyc", ".vvp", ".vcd", ".map", ".log")
 
 
 def main() -> int:
@@ -83,6 +83,8 @@ def _iter_files():
 
 
 def _skip(path: Path) -> bool:
+    if path.relative_to(REPO_ROOT).as_posix() == "results/processed/private_marker_scan.csv":
+        return True
     rel_parts = set(path.relative_to(REPO_ROOT).parts)
     if rel_parts & EXCLUDE_PARTS:
         return True

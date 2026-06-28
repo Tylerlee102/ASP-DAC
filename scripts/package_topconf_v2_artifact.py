@@ -26,6 +26,8 @@ def main() -> int:
                 continue
             if rel(path) == "results/processed/private_marker_scan.csv":
                 continue
+            if path.suffix.lower() == ".map":
+                continue
             if path.suffix.lower() in {".vvp", ".exe", ".dll", ".json", ".config"} and category == "raw":
                 continue
             arcname = rel(path)

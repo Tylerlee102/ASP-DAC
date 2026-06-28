@@ -67,7 +67,7 @@ EXCLUDE_PARTS = {
     ".mypy_cache",
 }
 
-EXCLUDE_SUFFIXES = (".pyc", ".vvp", ".vcd", ".log")
+EXCLUDE_SUFFIXES = (".pyc", ".vvp", ".vcd", ".log", ".map")
 
 
 def main() -> int:
@@ -123,6 +123,8 @@ def _iter_files():
 
 
 def _skip(path: Path) -> bool:
+    if path.relative_to(REPO_ROOT).as_posix() == "results/processed/private_marker_scan.csv":
+        return True
     if path.relative_to(REPO_ROOT).as_posix() == "results/raw/verilator/build.log":
         return False
     rel_parts = set(path.relative_to(REPO_ROOT).parts)
