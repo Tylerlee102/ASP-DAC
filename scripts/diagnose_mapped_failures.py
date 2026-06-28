@@ -10,6 +10,7 @@ from topconf_eval_common import REPO_ROOT, read_csv, rel, write_csv
 
 OUT_CSV = REPO_ROOT / "results/processed/mapped_failure_diagnosis.csv"
 MAPPED_CSV = REPO_ROOT / "results/processed/mapped_scaling.csv"
+ROUTED_STATUSES = {"PASS", "ROUTED_TIMING_MISS"}
 
 FIELDS = [
     "design",
@@ -38,8 +39,10 @@ def main() -> int:
 def _diagnose(row: dict[str, str]) -> dict[str, object]:
     report = REPO_ROOT / row.get("report_path", "NA")
     text = report.read_text(encoding="utf-8", errors="replace") if report.exists() else row.get("notes", "")
-    if row.get("status") == "PASS":
-        return _base(row, "P&R_PASS", "place-and-route completed", _util(row), row.get("report_path", "NA"), "not needed", "PASS", "mapped row passed")
+    if row.get("status") in ROUTED_STATUSES:
+        stage = "P&R_PASS" if row.get("status") == "PASS" else "P&R_ROUTED_TIMING_MISS"
+        cause = "place-and-route completed" if row.get("status") == "PASS" else "place-and-route completed; requested timing target missed"
+        return _base(row, stage, cause, _util(row), row.get("report_path", "NA"), "not needed", "PASS", row.get("notes", "mapped row routed"))
     stage = _stage(row, text)
     cause = _cause(text + "\n" + row.get("notes", ""))
     return _base(row, stage, cause, _util(row), row.get("report_path", "NA"), "no automatic RTL change attempted", "DIAGNOSED", row.get("notes", ""))

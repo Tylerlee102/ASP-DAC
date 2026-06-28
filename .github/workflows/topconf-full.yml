@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install top-conference tools
         run: |
@@ -130,105 +130,10 @@ jobs:
         run: make private-marker-scan
 
       - name: Evaluate top-conference CI gates
-        run: |
-          python3 - <<'PY'
-          import csv
-          import sys
-          from pathlib import Path
-
-          failures = []
-
-          def rows(path):
-              p = Path(path)
-              if not p.exists():
-                  failures.append(f"missing {path}")
-                  return []
-              with p.open(newline="", encoding="utf-8") as handle:
-                  return list(csv.DictReader(handle))
-
-          firmware = rows("results/processed/firmware_build.csv")
-          compiler_fw = [
-              row for row in firmware
-              if row.get("build_status") == "PASS" and row.get("firmware_source") == "compiler_c"
-          ]
-          if len(compiler_fw) != 15:
-              failures.append(f"compiler-backed firmware {len(compiler_fw)}/15")
-
-          replay = rows("results/processed/full_rtl_replay.csv")
-          replay_pass = [
-              row for row in replay
-              if row.get("rtl_record_status") == "PASS"
-              and row.get("replay_status") == "PASS"
-              and row.get("final_signature_match") == "PASS"
-              and row.get("compiler_backed") == "true"
-          ]
-          if len(replay_pass) != 45:
-              failures.append(f"full RTL replay PASS {len(replay_pass)}/45")
-
-          negative = rows("results/processed/full_rtl_replay_negative.csv")
-          unexpected = [row for row in negative if row.get("actual_result") == "ACCEPT"]
-          if unexpected:
-              failures.append(f"negative replay unexpected accepts={len(unexpected)}")
-
-          workload = rows("results/processed/workload_scaling.csv")
-          workload_scales = {row.get("workload_scale") for row in workload}
-          required_scales = {"smoke", "short", "medium", "long", "stress"}
-          if not required_scales.issubset(workload_scales):
-              failures.append(f"workload scales missing {sorted(required_scales - workload_scales)}")
-          blocked_workload = [row for row in workload if row.get("replay_status") == "BLOCKED"]
-          if blocked_workload:
-              failures.append(f"workload scaling BLOCKED rows={len(blocked_workload)}")
-
-          capsule = rows("results/processed/capsule_baseline_summary.csv")
-          if not any(row.get("baseline") == "replaycapsule_core" and row.get("median_bytes") != "NA" for row in capsule):
-              failures.append("capsule baseline reductions unavailable")
-
-          buffer_summary = rows("results/processed/buffer_sensitivity_summary.csv")
-          if not any(row.get("overflow_rate_pct") != "NA" and row.get("replay_success_rate_pct") != "NA" for row in buffer_summary):
-              failures.append("buffer sensitivity trends unavailable")
-
-          runtime = rows("results/processed/runtime_scaling.csv")
-          blocked_runtime = [row for row in runtime if row.get("status") == "BLOCKED"]
-          if blocked_runtime:
-              failures.append(f"runtime scaling BLOCKED rows={len(blocked_runtime)}")
-
-          event = rows("results/processed/event_ablation_scaling.csv")
-          if not event:
-              failures.append("event ablation scaling has no rows")
-
-          mapped = rows("results/processed/mapped_scaling_summary.csv")
-          mapped_ok = any(row.get("claim_allowed_points") not in {"", "0", "NA"} for row in mapped)
-          if not mapped_ok:
-              failures.append("mapped scaling has no claim-allowed same-target points")
-
-          paper_status = rows("results/processed/paper_build_status.csv")
-          if not Path("paper/main.pdf").exists() or not any(row.get("status") == "PASS" for row in paper_status):
-              failures.append("paper/main.pdf not built")
-
-          if not Path("dist/replaycapsule-rv-artifact.zip").exists():
-              failures.append("main artifact missing")
-          if not Path("dist/replaycapsule-rv-topconf-artifact.zip").exists():
-              failures.append("topconf artifact missing")
-
-          Path("results/processed").mkdir(parents=True, exist_ok=True)
-          with open("results/processed/topconf_ci_gate_status.csv", "w", newline="", encoding="utf-8") as handle:
-              writer = csv.DictWriter(handle, fieldnames=["status", "blocker"])
-              writer.writeheader()
-              if failures:
-                  for failure in failures:
-                      writer.writerow({"status": "BLOCKED", "blocker": failure})
-              else:
-                  writer.writerow({"status": "PASS", "blocker": "none"})
-
-          if failures:
-              for failure in failures:
-                  print(f"TOPCONF_BLOCKER: {failure}")
-              sys.exit(1)
-          print("TOPCONF_FULL_CI_STATUS PASS")
-          PY
+        run: python3 scripts/evaluate_topconf_ci_gates.py
 
       - name: Upload generated evidence
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: always()
         with:
           name: replaycapsule-rv-topconf-full-evidence

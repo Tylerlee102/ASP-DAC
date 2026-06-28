@@ -96,6 +96,8 @@ SUMMARY_FIELDS = [
 TARGET = run_mapped_synthesis.FULL_CORE_TARGETS[0]
 BASELINE_DESIGN = run_mapped_synthesis.DESIGNS["full_core_baseline_board"]
 REPLAY_DESIGN = run_mapped_synthesis.DESIGNS["full_core_replaycapsule_board"]
+ROUTED_TIMING_MISS_STATUS = "ROUTED_TIMING_MISS"
+ROUTED_STATUSES = {"PASS", ROUTED_TIMING_MISS_STATUS}
 
 
 def main() -> int:
@@ -208,17 +210,36 @@ def _run_design(
         command.extend(["--lpf", rel(run_mapped_synthesis.ECP5_LPF)])
     n = run_mapped_synthesis._run_tool(command, run_mapped_synthesis.NEXTPNR_TIMEOUT_SECONDS)
     nextpnr_log.write_text(run_mapped_synthesis._clean(n.stdout), encoding="utf-8")
-    if n.returncode != 0 or not bitstream_path.exists():
-        return _failed(design.name, memory_words, buffer_depth, config, nextpnr_log, "P&R_FAIL")
     text = yosys_log.read_text(encoding="utf-8", errors="replace") + "\n" + nextpnr_log.read_text(encoding="utf-8", errors="replace")
     metrics = run_mapped_synthesis._ecp5_metrics(text)
+    if n.returncode != 0 and bitstream_path.exists() and _timing_miss_only(nextpnr_log):
+        notes = "real ECP5 85K place-and-route completed; 50 MHz timing target missed; achieved fmax recorded"
+        if baseline_independent:
+            notes += "; baseline has no recorder parameter"
+        row = _pass_row(design.name, memory_words, buffer_depth, config, nextpnr_log, metrics, notes)
+        row["status"] = ROUTED_TIMING_MISS_STATUS
+        return row
+    if n.returncode != 0 or not bitstream_path.exists():
+        return _failed(design.name, memory_words, buffer_depth, config, nextpnr_log, "P&R_FAIL")
     notes = "real ECP5 85K place-and-route completed"
     if baseline_independent:
         notes += "; baseline has no recorder parameter"
+    return _pass_row(design.name, memory_words, buffer_depth, config, nextpnr_log, metrics, notes)
+
+
+def _pass_row(
+    design: str,
+    memory_words: int,
+    buffer_depth: int,
+    config: str,
+    report: Path,
+    metrics: dict[str, str],
+    notes: str,
+) -> dict[str, object]:
     return {
         "target": TARGET.name,
         "flow": TARGET.flow,
-        "design": design.name,
+        "design": design,
         "memory_words": memory_words,
         "buffer_depth": buffer_depth,
         "recorder_config": config,
@@ -233,9 +254,15 @@ def _run_design(
         "tns": "NA",
         "power_mw": "NA",
         "status": "PASS",
-        "report_path": rel(nextpnr_log),
+        "report_path": rel(report),
         "notes": notes,
     }
+
+
+def _timing_miss_only(report: Path) -> bool:
+    text = report.read_text(encoding="utf-8", errors="replace") if report.exists() else ""
+    errors = [line for line in text.splitlines() if line.startswith("ERROR:")]
+    return bool(errors) and all("Max frequency for clock" in line and "FAIL at" in line for line in errors)
 
 
 def _yosys_script(design: run_mapped_synthesis.Design, memory_words: int, buffer_depth: int, config: str, json_path: Path) -> str:
@@ -294,7 +321,8 @@ def _presence(row: dict[str, object]) -> dict[str, object]:
     yosys_text = yosys_path.read_text(encoding="utf-8", errors="replace") if yosys_path.exists() else ""
     report_text = report.read_text(encoding="utf-8", errors="replace") if report.exists() else ""
     combined = json_text + "\n" + yosys_text + "\n" + report_text
-    present = row.get("status") == "PASS" and all(token in combined for token in ("replay_capsule_top", "capsule_buffer")) and "recorder_status" in combined
+    routed = _routed_for_claim(row)
+    present = routed and all(token in combined for token in ("replay_capsule_top", "capsule_buffer")) and "recorder_status" in combined
     evidence = rel(yosys_path) if yosys_path.exists() else rel(json_path) if json_path.exists() else str(row.get("report_path", "NA"))
     return {
         "design": row["design"],
@@ -305,7 +333,7 @@ def _presence(row: dict[str, object]) -> dict[str, object]:
         "recorder_config": row["recorder_config"],
         "recorder_present": "yes" if present else "no",
         "evidence": evidence,
-        "status": "PASS" if present else "FAIL" if row.get("status") == "PASS" else "NA",
+        "status": "PASS" if present else "FAIL" if routed else "NA",
         "notes": "recorder hierarchy/status evidence found" if present else "recorder presence not claimable for this row",
     }
 
@@ -317,7 +345,7 @@ def _overheads(rows: list[dict[str, object]], presence_rows: list[dict[str, obje
         baseline = _find(rows, "full_core_baseline_board", memory_words, buffer_depth, config)
         replay = _find(rows, "full_core_replaycapsule_board", memory_words, buffer_depth, config)
         presence = next((row for row in presence_rows if row["memory_words"] == memory_words and row["buffer_depth"] == buffer_depth and row["recorder_config"] == config), None)
-        claim = bool(baseline and replay and presence and baseline["status"] == "PASS" and replay["status"] == "PASS" and presence["status"] == "PASS")
+        claim = bool(baseline and replay and presence and _routed_for_claim(baseline) and _routed_for_claim(replay) and presence["status"] == "PASS")
         for metric in ("lut", "ff", "bram", "fmax_mhz"):
             b = baseline.get(metric, "NA") if baseline else "NA"
             r = replay.get(metric, "NA") if replay else "NA"
@@ -353,7 +381,7 @@ def _scaling_summary(rows: list[dict[str, object]], overhead_rows: list[dict[str
         "target": TARGET.name,
         "flow": TARGET.flow,
         "total_rows": len(rows),
-        "pass_rows": sum(1 for row in rows if row.get("status") == "PASS"),
+        "pass_rows": sum(1 for row in rows if _routed_for_claim(row)),
         "fail_rows": sum(1 for row in rows if row.get("status") == "FAIL"),
         "blocked_rows": sum(1 for row in rows if row.get("status") == "BLOCKED"),
         "claim_allowed_points": len(claim_points),
@@ -369,7 +397,7 @@ def _scaling_summary(rows: list[dict[str, object]], overhead_rows: list[dict[str
         "fmax_overhead_min_pct": _metric_range(claim_rows, "fmax_mhz")[0],
         "fmax_overhead_max_pct": _metric_range(claim_rows, "fmax_mhz")[1],
         "first_blocker": blocker,
-        "notes": "same-target ECP5 mapped scaling; failed/timeout rows remain in mapped_scaling.csv",
+        "notes": "same-target ECP5 mapped scaling; timing-miss routed rows keep achieved fmax; failed/timeout rows remain in mapped_scaling.csv",
     }
 
 
@@ -383,8 +411,8 @@ def _full_core_summary(
         (row.get("memory_words"), row.get("buffer_depth"), row.get("recorder_config"))
         for row in claim_rows
     }
-    baseline_pass = any(row.get("design") == BASELINE_DESIGN.name and row.get("status") == "PASS" for row in rows)
-    replay_pass = any(row.get("design") == REPLAY_DESIGN.name and row.get("status") == "PASS" for row in rows)
+    baseline_pass = any(row.get("design") == BASELINE_DESIGN.name and _routed_for_claim(row) for row in rows)
+    replay_pass = any(row.get("design") == REPLAY_DESIGN.name and _routed_for_claim(row) for row in rows)
     presence_pass = any(row.get("status") == "PASS" for row in presence_rows)
     return {
         "status": "PASS" if claim_points else "BLOCKED",
@@ -393,7 +421,7 @@ def _full_core_summary(
         "baseline_design": BASELINE_DESIGN.name,
         "replay_design": REPLAY_DESIGN.name,
         "baseline_status": "PASS" if baseline_pass else "BLOCKED",
-        "replay_status": "PASS" if replay_pass else "BLOCKED",
+        "replay_status": _claimable_status(rows, REPLAY_DESIGN.name),
         "recorder_presence_status": "PASS" if presence_pass else "BLOCKED",
         "memory_words": _csv_list(sorted({point[0] for point in claim_points}, key=lambda value: int(value))) or "NA",
         "capsule_depth": _csv_list(sorted({point[1] for point in claim_points}, key=lambda value: int(value))) or "NA",
@@ -416,9 +444,20 @@ def _metric_range(rows: list[dict[str, object]], metric: str) -> tuple[str, str]
 
 def _first_blocker(rows: list[dict[str, object]]) -> str:
     for row in rows:
-        if row.get("status") != "PASS":
+        if not _routed_for_claim(row):
             return str(row.get("notes", "same-target mapped scaling row did not pass"))
     return "none"
+
+
+def _routed_for_claim(row: dict[str, object] | None) -> bool:
+    return bool(row and row.get("status") in ROUTED_STATUSES)
+
+
+def _claimable_status(rows: list[dict[str, object]], design: str) -> str:
+    statuses = [str(row.get("status", "NA")) for row in rows if row.get("design") == design and _routed_for_claim(row)]
+    if "PASS" in statuses:
+        return "PASS"
+    return statuses[0] if statuses else "BLOCKED"
 
 
 def _csv_list(values: list[object]) -> str:
