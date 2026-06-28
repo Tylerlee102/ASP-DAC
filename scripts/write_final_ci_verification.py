@@ -134,12 +134,22 @@ def _mapped_synth_gate() -> dict[str, str]:
         summary.get("target", ""),
         summary.get("flow", ""),
     )
-    status = "PASS" if summary.get("status") == "PASS" and presence.get("status") == "PASS" else "FAIL"
+    legacy_pass = summary.get("status") == "PASS" and presence.get("status") == "PASS"
+    v2_pass, v2_notes = _v2_measured_mapped_status()
+    status = "PASS" if legacy_pass or v2_pass else "FAIL"
     return _row(
         "mapped_synth_gate",
         status,
-        "results/processed/full_core_mapped_summary.csv; results/processed/mapped_recorder_presence.csv",
-        f"target={summary.get('target', 'NA')} flow={summary.get('flow', 'NA')} recorder_presence={presence.get('status', 'NA')}",
+        (
+            "results/processed/full_core_mapped_summary.csv; results/processed/mapped_recorder_presence.csv; "
+            "results/processed/mapped_scaling_v2_measured.csv; "
+            "results/processed/mapped_recorder_presence_v2_measured.csv; "
+            "results/processed/mapped_scaling_overhead_v2_measured.csv"
+        ),
+        (
+            f"legacy target={summary.get('target', 'NA')} flow={summary.get('flow', 'NA')} "
+            f"summary={summary.get('status', 'NA')} recorder_presence={presence.get('status', 'NA')}; {v2_notes}"
+        ),
     )
 
 
@@ -250,6 +260,42 @@ def _first(rows: list[dict[str, str]]) -> dict[str, str]:
 
 def _matching_target_flow(rows: list[dict[str, str]], target: str, flow: str) -> dict[str, str]:
     return next((row for row in rows if row.get("target") == target and row.get("flow") == flow), {})
+
+
+def _v2_measured_mapped_status() -> tuple[bool, str]:
+    scaling = _rows("results/processed/mapped_scaling_v2_measured.csv")
+    presence = _rows("results/processed/mapped_recorder_presence_v2_measured.csv")
+    overhead = _rows("results/processed/mapped_scaling_overhead_v2_measured.csv")
+    required_configs = {"core", "hashed", "full"}
+    baseline_pass = any(
+        row.get("architecture") == "baseline"
+        and row.get("target") == "ecp5-85k"
+        and row.get("status") == "PASS"
+        for row in scaling
+    )
+    mapped_configs = {
+        row.get("recorder_config")
+        for row in scaling
+        if row.get("architecture") == "v2" and row.get("target") == "ecp5-85k" and row.get("status") == "PASS"
+    }
+    presence_configs = {
+        row.get("recorder_config")
+        for row in presence
+        if row.get("target") == "ecp5-85k"
+        and row.get("status") == "PASS"
+        and row.get("recorder_present") == "true"
+    }
+    overhead_configs = {
+        row.get("recorder_config")
+        for row in overhead
+        if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"
+    }
+    passed = baseline_pass and required_configs <= mapped_configs and required_configs <= presence_configs and required_configs <= overhead_configs
+    notes = (
+        f"v2_measured baseline={baseline_pass} mapped={len(mapped_configs & required_configs)}/3 "
+        f"presence={len(presence_configs & required_configs)}/3 overhead={len(overhead_configs & required_configs)}/3"
+    )
+    return passed, notes
 
 
 def _text_files() -> list[Path]:

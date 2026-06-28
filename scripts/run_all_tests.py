@@ -494,20 +494,36 @@ def _run_final_package_checks() -> int:
         and row.get("recorder_presence_status") == "PASS"
         for row in mapped_summary
     )
-    _expect(rows, failures, "final:mapped_same_target", mapped_pass, "ECP5-85K same-target mapped overhead row")
+    v2_mapped_pass, v2_mapped_detail = _v2_measured_mapped_status(rows, failures)
+    _expect(
+        rows,
+        failures,
+        "final:mapped_same_target",
+        mapped_pass or v2_mapped_pass,
+        "legacy ECP5-85K same-target mapped overhead row or " + v2_mapped_detail,
+    )
 
     mapped_synth = _read_csv("results/processed/mapped_synthesis.csv", rows, failures)
     mapped_designs = {row.get("design"): row for row in mapped_synth if row.get("status") == "PASS" and row.get("target") == "ecp5-85k"}
+    v2_designs = _v2_measured_designs()
     _expect(
         rows,
         failures,
         "final:mapped_design_rows",
-        {"full_core_baseline_board", "full_core_replaycapsule_board"}.issubset(mapped_designs),
-        ", ".join(sorted(mapped_designs)) or "no PASS rows",
+        {"full_core_baseline_board", "full_core_replaycapsule_board"}.issubset(mapped_designs)
+        or {"full_core_baseline_board", "full_core_v2_core_board", "full_core_v2_hashed_board", "full_core_v2_full_board"}.issubset(v2_designs),
+        ", ".join(sorted(mapped_designs)) or ", ".join(sorted(v2_designs)) or "no PASS rows",
     )
 
     presence = _read_csv("results/processed/mapped_recorder_presence.csv", rows, failures)
-    _expect(rows, failures, "final:recorder_presence", any(row.get("status") == "PASS" for row in presence), "recorder presence PASS")
+    v2_presence = _v2_measured_presence_configs()
+    _expect(
+        rows,
+        failures,
+        "final:recorder_presence",
+        any(row.get("status") == "PASS" for row in presence) or {"core", "hashed", "full"} <= v2_presence,
+        "legacy recorder presence PASS or v2 presence configs=" + ",".join(sorted(v2_presence)),
+    )
 
     paper_status = _read_csv("results/processed/paper_build_status.csv", rows, failures)
     paper_pass = any(row.get("target") == "paper/main.pdf" and row.get("status") == "PASS" for row in paper_status)
@@ -549,6 +565,64 @@ def _run_final_package_checks() -> int:
             print(f"  - {failure}")
         return 1
     return 0
+
+
+def _v2_measured_mapped_status(rows: list[dict[str, str]], failures: list[str]) -> tuple[bool, str]:
+    scaling = _read_csv("results/processed/mapped_scaling_v2_measured.csv", rows, failures)
+    presence = _read_csv("results/processed/mapped_recorder_presence_v2_measured.csv", rows, failures)
+    overhead = _read_csv("results/processed/mapped_scaling_overhead_v2_measured.csv", rows, failures)
+    required_configs = {"core", "hashed", "full"}
+    baseline_pass = any(
+        row.get("architecture") == "baseline"
+        and row.get("target") == "ecp5-85k"
+        and row.get("status") == "PASS"
+        for row in scaling
+    )
+    mapped_configs = {
+        row.get("recorder_config")
+        for row in scaling
+        if row.get("architecture") == "v2" and row.get("target") == "ecp5-85k" and row.get("status") == "PASS"
+    }
+    presence_configs = {
+        row.get("recorder_config")
+        for row in presence
+        if row.get("target") == "ecp5-85k"
+        and row.get("status") == "PASS"
+        and row.get("recorder_present") == "true"
+    }
+    overhead_configs = {
+        row.get("recorder_config")
+        for row in overhead
+        if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"
+    }
+    passed = baseline_pass and required_configs <= mapped_configs and required_configs <= presence_configs and required_configs <= overhead_configs
+    detail = (
+        f"v2 measured mapped baseline={baseline_pass} mapped={len(mapped_configs & required_configs)}/3 "
+        f"presence={len(presence_configs & required_configs)}/3 overhead={len(overhead_configs & required_configs)}/3"
+    )
+    return passed, detail
+
+
+def _v2_measured_designs() -> set[str]:
+    path = REPO_ROOT / "results/processed/mapped_scaling_v2_measured.csv"
+    if not path.exists():
+        return set()
+    with path.open(newline="", encoding="utf-8") as handle:
+        return {row.get("design", "") for row in csv.DictReader(handle) if row.get("target") == "ecp5-85k" and row.get("status") == "PASS"}
+
+
+def _v2_measured_presence_configs() -> set[str]:
+    path = REPO_ROOT / "results/processed/mapped_recorder_presence_v2_measured.csv"
+    if not path.exists():
+        return set()
+    with path.open(newline="", encoding="utf-8") as handle:
+        return {
+            row.get("recorder_config", "")
+            for row in csv.DictReader(handle)
+            if row.get("target") == "ecp5-85k"
+            and row.get("status") == "PASS"
+            and row.get("recorder_present") == "true"
+        }
 
 
 def _read_csv(rel: str, rows: list[dict[str, str]], failures: list[str]) -> list[dict[str, str]]:
