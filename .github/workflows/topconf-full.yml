@@ -19,7 +19,7 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Install top-conference tools
         run: |
@@ -133,7 +133,7 @@ jobs:
         run: python3 scripts/evaluate_topconf_ci_gates.py
 
       - name: Upload generated evidence
-        uses: actions/upload-artifact@v5
+        uses: actions/upload-artifact@v7
         if: always()
         with:
           name: replaycapsule-rv-topconf-full-evidence
