@@ -1,2 +1,2 @@
 target,flow,attempted,pass_count,fail_count,blocked_count,notes
-ecp5-45k,yosys+synth_ecp5+nextpnr-ecp5,1,0,1,0,second-target evidence is scoped to replay-consume prototype unless full-core row exists
+ecp5-45k,yosys+synth_ecp5+nextpnr-ecp5,1,1,0,0,second-target evidence is scoped to replay-consume prototype unless full-core row exists

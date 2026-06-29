@@ -1,0 +1,299 @@
+
+
+Info: Logic utilisation before packing:
+Info:     Total LUT4s:       665/43848     1%
+Info:         logic LUTs:    573/43848     1%
+Info:         carry LUTs:     92/43848     0%
+Info:           RAM LUTs:      0/ 5481     0%
+Info:          RAMW LUTs:      0/10962     0%
+
+Info:      Total DFFs:        75/43848     0%
+
+Info: Packing IOs..
+Info: Packing constants..
+Info: Packing carries...
+Info: Packing LUTs...
+Info: Packing LUT5-7s...
+Info: Packing FFs...
+Info:     1 FFs paired with LUTs.
+Info: Generating derived timing constraints...
+Info: Promoting globals...
+Info:     promoting clock net clk$TRELLIS_IO_IN to global network
+Info: Checksum: 0xf493787a
+
+Info: Device utilisation:
+Info: 	          TRELLIS_IO:     238/    245    97%
+Info: 	                DCCA:       1/     56     1%
+Info: 	              DP16KD:       0/    108     0%
+Info: 	          MULT18X18D:       0/     72     0%
+Info: 	              ALU54B:       0/     36     0%
+Info: 	             EHXPLLL:       0/      4     0%
+Info: 	             EXTREFB:       0/      2     0%
+Info: 	                DCUA:       0/      2     0%
+Info: 	           PCSCLKDIV:       0/      2     0%
+Info: 	             IOLOGIC:       0/    160     0%
+Info: 	            SIOLOGIC:       0/     85     0%
+Info: 	                 GSR:       0/      1     0%
+Info: 	               JTAGG:       0/      1     0%
+Info: 	                OSCG:       0/      1     0%
+Info: 	               SEDGA:       0/      1     0%
+Info: 	                 DTR:       0/      1     0%
+Info: 	             USRMCLK:       0/      1     0%
+Info: 	             CLKDIVF:       0/      4     0%
+Info: 	           ECLKSYNCB:       0/     10     0%
+Info: 	             DLLDELD:       0/      8     0%
+Info: 	              DDRDLL:       0/      4     0%
+Info: 	             DQSBUFM:       0/     10     0%
+Info: 	     TRELLIS_ECLKBUF:       0/      8     0%
+Info: 	        ECLKBRIDGECS:       0/      2     0%
+Info: 	                DCSC:       0/      2     0%
+Info: 	          TRELLIS_FF:      75/  43848     0%
+Info: 	        TRELLIS_COMB:     679/  43848     1%
+Info: 	        TRELLIS_RAMW:       0/   5481     0%
+
+Info: Placed 0 cells based on constraints.
+Info: Creating initial analytic placement for 344 cells, random placement wirelen = 43106.
+Info:     at initial placer iter 0, wirelen = 14886
+Info:     at initial placer iter 1, wirelen = 14234
+Info:     at initial placer iter 2, wirelen = 14139
+Info:     at initial placer iter 3, wirelen = 14112
+Info: Running main analytical placer, max placement attempts per cell = 123256.
+Info:     at iteration #1, type ALL: wirelen solved = 14114, spread = 15352, legal = 15379; time = 0.02s
+Info: HeAP Placer Time: 0.06s
+Info:   of which solving equations: 0.02s
+Info:   of which spreading cells: 0.00s
+Info:   of which strict legalisation: 0.00s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 358, wirelen = 15379
+Info:   at iteration #5: temp = 0.000000, timing cost = 244, wirelen = 14534
+Info:   at iteration #10: temp = 0.000000, timing cost = 201, wirelen = 14286
+Info:   at iteration #11: temp = 0.000000, timing cost = 230, wirelen = 14288
+Info: SA placement time 0.19s
+
+Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 83.02 MHz (PASS at 50.00 MHz)
+
+Info: Max delay <async>                           -> <async>                          : 18.08 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 22.60 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 10.53 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 1 endpoint(s)
+Info:          + represents [1,1) endpoint(s)
+Info: [  7954,   8031) |*
+Info: [  8031,   8108) |*
+Info: [  8108,   8185) |**
+Info: [  8185,   8262) |**
+Info: [  8262,   8339) |*
+Info: [  8339,   8416) |******
+Info: [  8416,   8493) |***
+Info: [  8493,   8570) |*************
+Info: [  8570,   8647) |
+Info: [  8647,   8724) |**************
+Info: [  8724,   8801) |
+Info: [  8801,   8878) |***************
+Info: [  8878,   8955) |
+Info: [  8955,   9032) |**********
+Info: [  9032,   9109) |
+Info: [  9109,   9186) |****
+Info: [  9186,   9263) |
+Info: [  9263,   9340) |*
+Info: [  9340,   9417) |
+Info: [  9417,   9494) |*
+Info: Checksum: 0x4d7fc7c5
+Info: Routing globals...
+Info:     routing clock net $glbnet$clk$TRELLIS_IO_IN using global 0
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 2776 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:       1000 |      204        761 |  204   761 |      2003|       0.12       0.12|
+Info:       2000 |      270       1490 |   66   729 |      1076|       0.07       0.19|
+Info:       3000 |      315       2423 |   45   933 |       126|       0.21       0.40|
+Info:       3139 |      329       2545 |   14   122 |         0|       0.03       0.42|
+Info: Routing complete.
+Info: Router1 time 0.42s
+Info: Checksum: 0xe621bc18
+
+Info: Critical path report for clock '$glbnet$clk$TRELLIS_IO_IN' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_TRELLIS_FF_Q.Q
+Info:    routing  0.83  1.36 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0[0] (30,27) -> (30,27)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT$CCU2_COMB0.B
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  1.59 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT$CCU2_COMB0.F
+Info:    routing  0.68  2.27 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0[3] (30,27) -> (30,28)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_LUT4_D.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  2.50 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_LUT4_D.F
+Info:    routing  0.43  2.93 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_LUT4_D_Z[3] (30,28) -> (30,28)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_Z_B_LUT4_Z_1.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  3.16 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_Z_B_LUT4_Z_1.F
+Info:    routing  0.86  4.02 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_Z_B[2] (30,28) -> (28,28)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_B_Z_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  4.26 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_B_Z_LUT4_Z.F
+Info:    routing  1.00  5.26 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_B_Z[0] (28,28) -> (32,29)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z.A
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.40  5.67 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.00  5.67 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D0 (32,29) -> (32,29)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:141.34-141.36
+Info:      logic  0.24  5.91 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  1.09  6.99 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z[3] (32,29) -> (34,28)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_LUT4_D.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  7.23 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_LUT4_D.F
+Info:    routing  0.79  8.02 Net capsule_valid_LUT4_D_Z_LUT4_B_D[5] (34,28) -> (36,26)
+Info:                          Sink capsule_valid_LUT4_C_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  8.28 Source capsule_valid_LUT4_C_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  1.20  9.48 Net capsule_valid_LUT4_C_Z[6] (36,26) -> (28,25)
+Info:                          Sink consumed_all_events_LUT4_C_Z_LUT4_Z_D_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_A0_LUT4_D_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z_L6MUX21_Z_28_D1_PFUMX_Z_ALUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  9.73 Source consumed_all_events_LUT4_C_Z_LUT4_Z_D_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_A0_LUT4_D_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z_L6MUX21_Z_28_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  0.46  10.19 Net consumed_all_events_LUT4_C_Z_LUT4_Z_D_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_A0_LUT4_D_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z[5] (28,25) -> (28,25)
+Info:                          Sink consumed_count_low_TRELLIS_FF_Q_11.M
+Info:      setup  0.00  10.19 Source consumed_count_low_TRELLIS_FF_Q_11.M
+Info: 2.86 ns logic, 7.34 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> '<async>':
+Info:       type curr  total name
+Info:     source  0.00  0.00 Source capsule_word[33]$tr_io.O
+Info:    routing  5.97  5.97 Net capsule_word[33]$TRELLIS_IO_IN (85,0) -> (32,35)
+Info:                          Sink replay_digest_LUT4_Z_D_LUT4_Z_D_LUT4_Z_1.C
+Info:                          Defined in:
+Info:                               rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv:16.16-16.23
+Info:      logic  0.24  6.21 Source replay_digest_LUT4_Z_D_LUT4_Z_D_LUT4_Z_1.F
+Info:    routing  1.26  7.47 Net replay_digest_LUT4_Z_D_LUT4_Z_D[2] (32,35) -> (34,31)
+Info:                          Sink replay_digest_LUT4_Z_D_LUT4_Z.C
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  7.70 Source replay_digest_LUT4_Z_D_LUT4_Z.F
+Info:    routing  0.77  8.47 Net replay_digest_LUT4_Z_D[3] (34,31) -> (29,31)
+Info:                          Sink replay_digest_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  8.71 Source replay_digest_LUT4_Z.F
+Info:    routing  3.71  12.42 Net replay_digest[6]$TRELLIS_IO_OUT (29,31) -> (0,56)
+Info:                          Sink replay_digest[6]$tr_io.I
+Info:                          Defined in:
+Info:                               rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv:22.23-22.36
+Info: 0.71 ns logic, 11.71 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> 'posedge $glbnet$clk$TRELLIS_IO_IN':
+Info:       type curr  total name
+Info:     source  0.00  0.00 Source capsule_word[63]$tr_io.O
+Info:    routing  5.99  5.99 Net capsule_word[63]$TRELLIS_IO_IN (90,56) -> (31,16)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_LUT4_Z.A
+Info:                          Defined in:
+Info:                               rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv:3.23-3.33
+Info:      logic  0.24  6.23 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_LUT4_Z.F
+Info:    routing  2.02  8.24 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C[3] (31,16) -> (36,31)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_LUT4_D_Z_LUT4_Z_1.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  8.48 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_LUT4_D_Z_LUT4_Z_1.F
+Info:    routing  1.73  10.21 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_S0_CCU2C_S1_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_S0_LUT4_D_Z[1] (36,31) -> (31,28)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_B_Z_LUT4_Z_3.B
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  10.44 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_B_Z_LUT4_Z_3.F
+Info:    routing  1.04  11.49 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_B_Z[3] (31,28) -> (32,29)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.40  11.89 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.00  11.89 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D0 (32,29) -> (32,29)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:141.34-141.36
+Info:      logic  0.24  12.13 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  1.09  13.21 Net observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z[3] (32,29) -> (34,28)
+Info:                          Sink observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_LUT4_D.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  13.45 Source observed_event_type_LUT4_B_2_Z_PFUMX_ALUT_C0_LUT4_Z_C_CCU2C_S1_COUT_CCU2C_CIN_S1_LUT4_Z_1_C_LUT4_C_Z_LUT4_D_Z_LUT4_D.F
+Info:    routing  0.79  14.24 Net capsule_valid_LUT4_D_Z_LUT4_B_D[5] (34,28) -> (36,26)
+Info:                          Sink capsule_valid_LUT4_C_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  14.50 Source capsule_valid_LUT4_C_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  1.20  15.70 Net capsule_valid_LUT4_C_Z[6] (36,26) -> (28,25)
+Info:                          Sink consumed_all_events_LUT4_C_Z_LUT4_Z_D_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_A0_LUT4_D_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z_L6MUX21_Z_28_D1_PFUMX_Z_ALUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  15.95 Source consumed_all_events_LUT4_C_Z_LUT4_Z_D_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_A0_LUT4_D_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z_L6MUX21_Z_28_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  0.46  16.42 Net consumed_all_events_LUT4_C_Z_LUT4_Z_D_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_CIN_CCU2C_COUT_A0_LUT4_D_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z[5] (28,25) -> (28,25)
+Info:                          Sink consumed_count_low_TRELLIS_FF_Q_11.M
+Info:      setup  0.00  16.42 Source consumed_count_low_TRELLIS_FF_Q_11.M
+Info: 2.10 ns logic, 14.32 ns routing
+
+Info: Critical path report for cross-domain path 'posedge $glbnet$clk$TRELLIS_IO_IN' -> '<async>':
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source capsule_ready_LUT4_Z_B_TRELLIS_FF_Q.Q
+Info:    routing  0.95  1.48 Net capsule_ready_LUT4_Z_B[0] (40,29) -> (41,29)
+Info:                          Sink capsule_ready_LUT4_Z.B
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  1.72 Source capsule_ready_LUT4_Z.F
+Info:    routing  0.43  2.14 Net capsule_ready$TRELLIS_IO_OUT (41,29) -> (41,29)
+Info:                          Sink capsule_valid_LUT4_C.D
+Info:                          Defined in:
+Info:                               rtl/replaycapsule_v2/rcv2_replay_consumer.sv:12.23-12.36
+Info:      logic  0.24  2.38 Source capsule_valid_LUT4_C.F
+Info:    routing  0.99  3.37 Net capsule_valid_LUT4_C_Z[4] (41,29) -> (33,29)
+Info:                          Sink mmio_replay_valid_PFUMX_Z_BLUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  3.62 Source mmio_replay_valid_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  4.63  8.26 Net mmio_replay_valid (33,29) -> (6,71)
+Info:                          Sink replay_digest[4]$tr_io.I
+Info:                          Defined in:
+Info:                               rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv:7.23-7.40
+Info: 1.25 ns logic, 7.00 ns routing
+
+Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 98.10 MHz (PASS at 50.00 MHz)
+
+Info: Max delay <async>                           -> <async>                          : 12.42 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 16.42 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 8.26 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 1 endpoint(s)
+Info:          + represents [1,1) endpoint(s)
+Info: [  9806,   9859) |***
+Info: [  9859,   9912) |*****
+Info: [  9912,   9965) |
+Info: [  9965,  10018) |*
+Info: [ 10018,  10071) |*
+Info: [ 10071,  10124) |**
+Info: [ 10124,  10177) |***********
+Info: [ 10177,  10230) |*****
+Info: [ 10230,  10283) |********
+Info: [ 10283,  10336) |***
+Info: [ 10336,  10389) |****
+Info: [ 10389,  10442) |******
+Info: [ 10442,  10495) |********
+Info: [ 10495,  10548) |*****
+Info: [ 10548,  10601) |******
+Info: [ 10601,  10654) |**
+Info: [ 10654,  10707) |*
+Info: [ 10707,  10760) |*
+Info: [ 10760,  10813) |*
+Info: [ 10813,  10866) |*
+
+Info: Program finished normally.

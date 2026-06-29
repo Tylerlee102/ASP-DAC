@@ -1,2 +1,2 @@
 status,target,flow,baseline_design,replay_design,baseline_status,replay_status,recorder_presence_status,memory_words,capsule_depth,overhead_claim_allowed,first_blocker,notes
-PASS,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,full_core_replaycapsule_board,PASS,PASS,PASS,1024;2048;4096,16;32,yes,P&R_FAIL: TIMEOUT after 240 seconds,same-target full-core mapped overhead points=4; overhead ranges are in results/processed/mapped_scaling_summary.csv
+PASS,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,full_core_replaycapsule_board,PASS,PASS,PASS,512;1024;2048;4096,8;16;32,yes,P&R_FAIL: TIMEOUT after 240 seconds,same-target full-core mapped overhead points=5; overhead ranges are in results/processed/mapped_scaling_summary.csv

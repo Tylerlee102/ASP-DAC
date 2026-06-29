@@ -39,23 +39,37 @@ def main() -> int:
     return 0 if rows[0]["status"] == "PASS" else 1
 
 
-def _run_mapping(yosys: str, nextpnr: str, target: str, nextpnr_args: tuple[str, ...]) -> dict[str, object]:
-    json_path = RAW_DIR / f"rcv2_replay_consumer_{target}.json"
-    config_path = RAW_DIR / f"rcv2_replay_consumer_{target}.config"
-    yosys_log = RAW_DIR / f"rcv2_replay_consumer_{target}_yosys.txt"
-    nextpnr_log = RAW_DIR / f"rcv2_replay_consumer_{target}_nextpnr.txt"
+def _run_mapping(
+    yosys: str,
+    nextpnr: str,
+    target: str,
+    nextpnr_args: tuple[str, ...],
+    *,
+    top: str = "rcv2_replay_consumer",
+    sources: tuple[str, ...] | None = None,
+    notes: str | None = None,
+) -> dict[str, object]:
+    design = top
+    json_path = RAW_DIR / f"{design}_{target}.json"
+    config_path = RAW_DIR / f"{design}_{target}.config"
+    yosys_log = RAW_DIR / f"{design}_{target}_yosys.txt"
+    nextpnr_log = RAW_DIR / f"{design}_{target}_nextpnr.txt"
+    source_list = sources or (
+        "rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv",
+        "rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv",
+        "rtl/replaycapsule_v2/rcv2_replay_consumer.sv",
+    )
     script = (
         "read_verilog -sv -Irtl -Irtl/replaycapsule_v2 "
-        "rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv "
-        "rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv "
-        "rtl/replaycapsule_v2/rcv2_replay_consumer.sv; "
-        "chparam -set EVENT_COUNT 8 rcv2_replay_consumer; "
-        f"synth_ecp5 -top rcv2_replay_consumer -json {rel(json_path)}"
+        + " ".join(source_list)
+        + "; "
+        f"chparam -set EVENT_COUNT 8 {top}; "
+        f"synth_ecp5 -top {top} -json {rel(json_path)}"
     )
     y = _run([yosys, "-p", script], 120)
     yosys_log.write_text(_clean(y.stdout), encoding="utf-8")
     if y.returncode != 0 or not json_path.exists():
-        return _row(target, "yosys+synth_ecp5+nextpnr-ecp5", "rcv2_replay_consumer", "FAIL", rel(yosys_log), "Yosys synthesis failed")
+        return _row(target, "yosys+synth_ecp5+nextpnr-ecp5", design, "FAIL", rel(yosys_log), "Yosys synthesis failed")
     run_mapped_synthesis._sanitize_file(json_path)
 
     n = _run([nextpnr, *nextpnr_args, "--json", rel(json_path), "--textcfg", rel(config_path)], 180)
@@ -63,21 +77,22 @@ def _run_mapping(yosys: str, nextpnr: str, target: str, nextpnr_args: tuple[str,
     if n.returncode != 0 or not config_path.exists():
         detail = _last_error(n.stdout)
         notes = "nextpnr place-and-route failed" + (f": {detail}" if detail else "")
-        return _row(target, "yosys+synth_ecp5+nextpnr-ecp5", "rcv2_replay_consumer", "FAIL", rel(nextpnr_log), notes)
+        return _row(target, "yosys+synth_ecp5+nextpnr-ecp5", design, "FAIL", rel(nextpnr_log), notes)
+    _sanitize_generated_text_file(config_path)
 
     text = yosys_log.read_text(encoding="utf-8", errors="replace") + "\n" + nextpnr_log.read_text(encoding="utf-8", errors="replace")
     metrics = _metrics(text)
     return {
         "target": target,
         "flow": "yosys+synth_ecp5+nextpnr-ecp5",
-        "design": "rcv2_replay_consumer",
+        "design": design,
         "lut": metrics.get("lut", "NA"),
         "ff": metrics.get("ff", "NA"),
         "bram": metrics.get("bram", "NA"),
         "fmax_mhz": metrics.get("fmax_mhz", "NA"),
         "status": "PASS",
         "report_path": rel(nextpnr_log),
-        "notes": "real ECP5 mapping of replay-consume controller prototype only; not full-core autonomous replay",
+        "notes": notes or "real ECP5 mapping of replay-consume controller prototype only; not full-core autonomous replay",
     }
 
 
@@ -165,7 +180,16 @@ def _clean(text: str) -> str:
     cleaned = re.sub(r"\.?[/\\]?" + cloud_dir + r"[/\\]DOCUME~1[/\\]NEWPRO~1[/\\]TOOLS~1[/\\]OSS-CA~1[/\\]OSS-CA~1", ".tools/oss-cad-suite/oss-cad-suite", cleaned)
     cleaned = cleaned.replace(cloud_dir, "WORKSPACE")
     cleaned = re.sub(r"[A-Za-z]:[/\\]Users[/\\][^/\\\s]+", ".", cleaned)
-    return cleaned
+    lines = [line.rstrip() for line in cleaned.splitlines()]
+    while lines and not lines[-1]:
+        lines.pop()
+    return "\n".join(lines) + ("\n" if lines else "")
+
+
+def _sanitize_generated_text_file(path: Path) -> None:
+    if not path.exists():
+        return
+    path.write_text(_clean(path.read_text(encoding="utf-8", errors="replace")), encoding="utf-8")
 
 
 def _last_error(text: str) -> str:

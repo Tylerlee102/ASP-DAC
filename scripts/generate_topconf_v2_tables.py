@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 from pathlib import Path
+from statistics import median
 
 from topconf_eval_common import REPO_ROOT, read_csv
 
@@ -59,9 +60,10 @@ def _write_table_buffer_sensitivity_v2() -> None:
         if row.get("workload_scale") == "stress" and row.get("buffer_depth") in v1_depths
     )
     v2_depths = {"64", "256", "2048"}
+    measured_buffer = _preferred_csv("buffer_sensitivity_v2_measured_summary.csv", "buffer_sensitivity_v2_summary.csv")
     rows.extend(
         row
-        for row in read_csv(REPO_ROOT / "results/processed/buffer_sensitivity_v2_measured_summary.csv")
+        for row in measured_buffer
         if row.get("workload_scale") == "stress"
         and row.get("recorder_config") in {"core", "full"}
         and row.get("buffer_depth") in v2_depths
@@ -80,26 +82,35 @@ def _write_table_buffer_sensitivity_v2() -> None:
 def _write_table_capsule_baselines_v2() -> None:
     rows = [
         row
-        for row in read_csv(REPO_ROOT / "results/processed/capsule_baseline_summary_v2.csv")
+        for row in _preferred_csv("capsule_baseline_summary_v2_measured.csv", "capsule_baseline_summary_v2.csv")
         if row.get("workload_scale") == "stress"
-        and row.get("baseline") in {"full_instruction_trace", "full_commit_trace", "v1_replaycapsule_full", "v2_core", "v2_hashed", "v2_full"}
+        and row.get("baseline") in {"full_instruction_trace", "full_commit_trace", "v1_replaycapsule_full", "v1_full", "v2_core", "v2_hashed", "v2_full"}
     ]
-    lines = [r"\begin{tabular}{llrr}", r"\toprule", r"Baseline & Config & Median bytes & N \\", r"\midrule"]
+    lines = [r"\begin{tabular}{llrrr}", r"\toprule", r"Baseline & Config & Median bytes & Pass & N \\", r"\midrule"]
     for row in rows:
-        lines.append(f"{_esc(row['baseline'])} & {_esc(row['recorder_config'])} & {row['median_bytes']} & {row['n']} " + r"\\")
+        lines.append(
+            f"{_esc(row['baseline'])} & {_esc(row['recorder_config'])} & {row['median_bytes']} & "
+            f"{_esc(row.get('pass_count', 'NA'))} & {row['n']} " + r"\\"
+        )
     lines.extend([r"\bottomrule", r"\end{tabular}"])
     _write_tex(TABLE_DIR / "table_capsule_baselines_v2.tex", lines)
 
 
 def _write_table_runtime_scaling_v2() -> None:
-    rows = read_csv(REPO_ROOT / "results/processed/runtime_scaling_summary.csv")
-    lines = [r"\begin{tabular}{lrrr}", r"\toprule", r"Config & Cycle overhead & Commit overhead & Notes \\", r"\midrule"]
-    for row in rows[:6]:
+    rows = _preferred_csv("runtime_scaling_v2_measured.csv", "runtime_scaling.csv")
+    configs = [
+        "v2_recorder_present_disabled",
+        "v2_recorder_enabled_core",
+        "v2_recorder_enabled_hashed",
+        "v2_recorder_enabled_full",
+    ]
+    lines = [r"\begin{tabular}{lrrr}", r"\toprule", r"Config & Cycle overhead & Commit overhead & Wall overhead \\", r"\midrule"]
+    for config in configs:
+        subset = [row for row in rows if row.get("config") == config and row.get("status", "MEASURED") == "MEASURED"]
         lines.append(
-            f"{_esc(row.get('config', 'NA'))} & {_esc(row.get('median_cycle_overhead_pct', row.get('cycle_overhead_pct', 'NA')))} & "
-            f"{_esc(row.get('median_commit_overhead_pct', row.get('commit_overhead_pct', 'NA')))} & v1 measured " + r"\\"
+            f"{_esc(config)} & {_median_field(subset, 'cycle_overhead_pct')} & "
+            f"{_median_field(subset, 'commit_overhead_pct')} & {_median_field(subset, 'sim_wall_time_overhead_pct')} " + r"\\"
         )
-    lines.append(r"v2 & NA & NA & blocked until full-core v2 runtime harness \\")
     lines.extend([r"\bottomrule", r"\end{tabular}"])
     _write_tex(TABLE_DIR / "table_runtime_scaling_v2.tex", lines)
 
@@ -107,16 +118,25 @@ def _write_table_runtime_scaling_v2() -> None:
 def _write_table_mapped_scaling_v2() -> None:
     consumer = read_csv(REPO_ROOT / "results/processed/replay_consumer_mapped.csv")
     mapped = consumer[0] if consumer else {}
+    full_core_rows = [
+        row
+        for row in _preferred_csv("mapped_scaling_v2_measured.csv", "mapped_scaling_v2.csv")
+        if row.get("status") == "PASS"
+    ]
     lines = [
         r"\begin{tabular}{lrrrrl}",
         r"\toprule",
         r"Design & LUT & FF & BRAM & Fmax MHz & Scope \\",
         r"\midrule",
         f"v2 replay consumer & {_esc(mapped.get('lut', 'NA'))} & {_esc(mapped.get('ff', 'NA'))} & {_esc(mapped.get('bram', 'NA'))} & {_esc(mapped.get('fmax_mhz', 'NA'))} & standalone prototype " + r"\\",
-        r"full-core v2 & NA & NA & NA & NA & blocked \\",
-        r"\bottomrule",
-        r"\end{tabular}",
     ]
+    for row in full_core_rows:
+        scope = "baseline full-core mapping" if row.get("architecture") == "baseline" else "full-core recorder mapping"
+        lines.append(
+            f"{_esc(row.get('design', 'NA'))} & {_esc(row.get('lut', 'NA'))} & {_esc(row.get('ff', 'NA'))} & "
+            f"{_esc(row.get('bram', 'NA'))} & {_esc(row.get('fmax_mhz', 'NA'))} & {scope} " + r"\\"
+        )
+    lines.extend([r"\bottomrule", r"\end{tabular}"])
     _write_tex(TABLE_DIR / "table_mapped_scaling_v2.tex", lines)
 
 
@@ -129,9 +149,9 @@ def _write_limitations_table() -> None:
             r"Topic & Current scope \\",
             r"\midrule",
             r"Core scope & Single-hart RV32I only \\",
-            r"Replay consume & v2 synthesizable prototype; full-core integration blocked \\",
-            r"v2 workload replay & Analytic capacity estimates only; no PASS claim \\",
-            r"Mapped overhead & v1 full-core measured; v2 full-core blocked \\",
+            r"Replay consume & v2 synthesizable prototype; autonomous full-core consume not integrated \\",
+            r"v2 workload replay & Measured full-core host-driven record/replay rows \\",
+            r"Mapped overhead & v1 and representative v2 full-core ECP5 rows measured \\",
             r"ASIC/power & Not measured \\",
             r"\bottomrule",
             r"\end{tabular}",
@@ -144,9 +164,9 @@ def _write_figures() -> None:
         "fig_workload_scaling_v2.pdf": _workload_lines(),
         "fig_capsule_scaling_v2.pdf": _capsule_lines(),
         "fig_buffer_sensitivity_v2.pdf": _buffer_lines(),
-        "fig_runtime_scaling_v2.pdf": ["Runtime scaling v2", "v1 runtime scaling exists.", "v2 full-core runtime is blocked."],
+        "fig_runtime_scaling_v2.pdf": _runtime_lines(),
         "fig_mapped_overhead_v2.pdf": _mapped_lines(),
-        "fig_recorder_config_tradeoff_v2.pdf": ["Recorder config tradeoff v2", "minimal/core/hashed/diagnostic/full are represented in analytic CSVs.", "Replay PASS requires future full-core v2 harness."],
+        "fig_recorder_config_tradeoff_v2.pdf": _recorder_config_lines(),
         "fig_replay_consumer_controller.pdf": _consumer_lines(),
     }
     for name, lines in summaries.items():
@@ -154,34 +174,84 @@ def _write_figures() -> None:
 
 
 def _workload_lines() -> list[str]:
-    rows = read_csv(REPO_ROOT / "results/processed/workload_scaling_v2_summary.csv")
-    v1_fail = sum(int(row["fail_count"]) for row in rows if row["architecture"] == "v1")
-    v2_blocked = sum(int(row["blocked_count"]) for row in rows if row["architecture"] == "v2")
-    return ["Workload scaling v2", f"v1 FAIL rows: {v1_fail}", f"v2 full-core rows blocked: {v2_blocked}", "No v2 replay PASS is claimed."]
+    rows = _preferred_csv("workload_scaling_v2_measured_summary.csv", "workload_scaling_v2_summary.csv")
+    v2_pass = sum(_int(row.get("pass_count")) for row in rows if row.get("architecture") == "v2")
+    v2_total = sum(_int(row.get("n")) for row in rows if row.get("architecture") == "v2")
+    blocked = sum(_int(row.get("blocked_count")) for row in rows if row.get("architecture") == "v2")
+    return ["Workload scaling v2", f"Measured v2 PASS rows: {v2_pass}/{v2_total}", f"Blocked rows: {blocked}", "Scope: host-driven full-core record/replay."]
 
 
 def _capsule_lines() -> list[str]:
-    rows = read_csv(REPO_ROOT / "results/processed/capsule_baseline_summary_v2.csv")
+    rows = _preferred_csv("capsule_baseline_summary_v2_measured.csv", "capsule_baseline_summary_v2.csv")
     stress = {row["baseline"]: row["median_bytes"] for row in rows if row.get("workload_scale") == "stress"}
-    return ["Capsule scaling v2", f"v1 full median stress bytes: {stress.get('v1_replaycapsule_full', 'NA')}", f"v2 core estimated median stress bytes: {stress.get('v2_core', 'NA')}", "v2 sizes are estimates."]
+    return ["Capsule scaling v2", f"v1 full median stress bytes: {stress.get('v1_full', stress.get('v1_replaycapsule_full', 'NA'))}", f"v2 core measured median stress bytes: {stress.get('v2_core', 'NA')}", "Rows preserve measured/estimated labels in CSV."]
 
 
 def _buffer_lines() -> list[str]:
-    rows = read_csv(REPO_ROOT / "results/processed/buffer_sensitivity_v2_summary.csv")
+    rows = _preferred_csv("buffer_sensitivity_v2_measured_summary.csv", "buffer_sensitivity_v2_summary.csv")
     core = [row for row in rows if row.get("recorder_config") == "core" and row.get("workload_scale") == "stress" and row.get("buffer_depth") == "256"]
-    return ["Buffer sensitivity v2", f"v2 core stress overflow at depth 256: {core[0]['overflow_rate_pct'] if core else 'NA'}%", "Replay success is NA for v2 until measured."]
+    return ["Buffer sensitivity v2", f"v2 core stress overflow at depth 256: {core[0]['overflow_rate_pct'] if core else 'NA'}%", f"Replay success at depth 256: {core[0]['replay_success_rate_pct'] if core else 'NA'}%"]
+
+
+def _runtime_lines() -> list[str]:
+    rows = _preferred_csv("runtime_scaling_v2_measured.csv", "runtime_scaling.csv")
+    core = [row for row in rows if row.get("config") == "v2_recorder_enabled_core" and row.get("status", "MEASURED") == "MEASURED"]
+    full = [row for row in rows if row.get("config") == "v2_recorder_enabled_full" and row.get("status", "MEASURED") == "MEASURED"]
+    return [
+        "Runtime scaling v2",
+        f"Core median cycle overhead: {_median_field(core, 'cycle_overhead_pct')}%",
+        f"Full median wall overhead: {_median_field(full, 'sim_wall_time_overhead_pct')}%",
+        "Simulator wall time is not hardware timing.",
+    ]
 
 
 def _mapped_lines() -> list[str]:
     rows = read_csv(REPO_ROOT / "results/processed/replay_consumer_mapped.csv")
     row = rows[0] if rows else {}
-    return ["Mapped overhead v2", f"Replay consumer ECP5-85k status: {row.get('status', 'NA')}", f"LUT={row.get('lut', 'NA')} FF={row.get('ff', 'NA')} Fmax={row.get('fmax_mhz', 'NA')} MHz", "Full-core v2 overhead is blocked."]
+    overhead_rows = _preferred_csv("mapped_scaling_overhead_v2_measured.csv", "mapped_scaling_overhead_v2.csv")
+    core_lut = next((item.get("percent_overhead", "NA") for item in overhead_rows if item.get("recorder_config") == "core" and item.get("metric") == "lut"), "NA")
+    return ["Mapped overhead v2", f"Replay consumer ECP5-85k status: {row.get('status', 'NA')}", f"Standalone LUT={row.get('lut', 'NA')} FF={row.get('ff', 'NA')}", f"Full-core v2 core LUT overhead: {core_lut}%"]
+
+
+def _recorder_config_lines() -> list[str]:
+    rows = _preferred_csv("workload_scaling_v2_measured_summary.csv", "workload_scaling_v2_summary.csv")
+    configs = sorted({row.get("recorder_config", "NA") for row in rows if row.get("architecture") == "v2"})
+    pass_rates = [
+        f"{config}: {next((row.get('replay_success_rate_pct', 'NA') for row in rows if row.get('recorder_config') == config and row.get('workload_scale') == 'stress'), 'NA')}%"
+        for config in configs
+    ]
+    return ["Recorder config tradeoff v2", *pass_rates[:3], "All claims remain scoped to host-driven replay."]
 
 
 def _consumer_lines() -> list[str]:
     tests = read_csv(REPO_ROOT / "results/processed/replay_consumer_tests.csv")
     passed = sum(1 for row in tests if row.get("passed") == "true")
     return ["Replay-consume controller", f"RTL tests passed: {passed}/{len(tests)}", "Scope: synthesizable prototype, not full-core autonomous replay."]
+
+
+def _preferred_csv(preferred: str, fallback: str) -> list[dict[str, str]]:
+    preferred_path = REPO_ROOT / "results/processed" / preferred
+    rows = read_csv(preferred_path)
+    if rows:
+        return rows
+    return read_csv(REPO_ROOT / "results/processed" / fallback)
+
+
+def _median_field(rows: list[dict[str, str]], field: str) -> str:
+    values = []
+    for row in rows:
+        try:
+            values.append(float(row.get(field, "NA")))
+        except ValueError:
+            continue
+    return f"{median(values):.2f}" if values else "NA"
+
+
+def _int(value: object) -> int:
+    try:
+        return int(str(value))
+    except (TypeError, ValueError):
+        return 0
 
 
 def _write_tex(path: Path, lines: list[str]) -> None:

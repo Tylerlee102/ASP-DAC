@@ -60,7 +60,7 @@ Info:     at initial placer iter 3, wirelen = 22470
 Info: Running main analytical placer, max placement attempts per cell = 174936.
 Info:     at iteration #1, type ALL: wirelen solved = 22453, spread = 23763, legal = 23781; time = 0.02s
 Info: HeAP Placer Time: 0.09s
-Info:   of which solving equations: 0.03s
+Info:   of which solving equations: 0.02s
 Info:   of which spreading cells: 0.00s
 Info:   of which strict legalisation: 0.00s
 
@@ -68,8 +68,8 @@ Info: Running simulated annealing placer for refinement.
 Info:   at iteration #1: temp = 0.000000, timing cost = 101, wirelen = 23781
 Info:   at iteration #5: temp = 0.000000, timing cost = 348, wirelen = 21068
 Info:   at iteration #10: temp = 0.000000, timing cost = 354, wirelen = 20768
-Info:   at iteration #13: temp = 0.000000, timing cost = 362, wirelen = 20718 
-Info: SA placement time 0.25s
+Info:   at iteration #13: temp = 0.000000, timing cost = 362, wirelen = 20718
+Info: SA placement time 0.26s
 
 Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 75.88 MHz (PASS at 50.00 MHz)
 
@@ -80,26 +80,26 @@ Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                    
 Info: Slack histogram:
 Info:  legend: * represents 1 endpoint(s)
 Info:          + represents [1,1) endpoint(s)
-Info: [  6821,   6912) |**** 
-Info: [  6912,   7003) |***** 
-Info: [  7003,   7094) |** 
-Info: [  7094,   7185) |*** 
-Info: [  7185,   7276) |************ 
-Info: [  7276,   7367) | 
-Info: [  7367,   7458) |***** 
-Info: [  7458,   7549) |***** 
-Info: [  7549,   7640) |**** 
-Info: [  7640,   7731) |**** 
-Info: [  7731,   7822) |**** 
-Info: [  7822,   7913) |******** 
-Info: [  7913,   8004) | 
-Info: [  8004,   8095) |***** 
-Info: [  8095,   8186) | 
-Info: [  8186,   8277) |***** 
-Info: [  8277,   8368) | 
-Info: [  8368,   8459) |***** 
-Info: [  8459,   8550) |** 
-Info: [  8550,   8641) |* 
+Info: [  6821,   6912) |****
+Info: [  6912,   7003) |*****
+Info: [  7003,   7094) |**
+Info: [  7094,   7185) |***
+Info: [  7185,   7276) |************
+Info: [  7276,   7367) |
+Info: [  7367,   7458) |*****
+Info: [  7458,   7549) |*****
+Info: [  7549,   7640) |****
+Info: [  7640,   7731) |****
+Info: [  7731,   7822) |****
+Info: [  7822,   7913) |********
+Info: [  7913,   8004) |
+Info: [  8004,   8095) |*****
+Info: [  8095,   8186) |
+Info: [  8186,   8277) |*****
+Info: [  8277,   8368) |
+Info: [  8368,   8459) |*****
+Info: [  8459,   8550) |**
+Info: [  8550,   8641) |*
 Info: Checksum: 0x5c84e06d
 Info: Routing globals...
 Info:     routing clock net $glbnet$clk$TRELLIS_IO_IN using global 0
@@ -111,10 +111,10 @@ Info:            |   (re-)routed arcs  |   delta    | remaining|       time spen
 Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
 Info:       1000 |      249        750 |  249   750 |      2353|       0.16       0.16|
 Info:       2000 |      472       1425 |  223   675 |      1634|       0.08       0.24|
-Info:       3000 |      535       2200 |   63   775 |       697|       0.34       0.58|
-Info:       3818 |      625       2903 |   90   703 |         0|       0.23       0.81|
+Info:       3000 |      535       2200 |   63   775 |       697|       0.15       0.38|
+Info:       3818 |      625       2903 |   90   703 |         0|       0.20       0.58|
 Info: Routing complete.
-Info: Router1 time 0.81s
+Info: Router1 time 0.58s
 Info: Checksum: 0x0da9498c
 
 Info: Critical path report for clock '$glbnet$clk$TRELLIS_IO_IN' (posedge -> posedge):
@@ -294,25 +294,25 @@ Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                    
 Info: Slack histogram:
 Info:  legend: * represents 1 endpoint(s)
 Info:          + represents [1,1) endpoint(s)
-Info: [  8573,   8672) |** 
-Info: [  8672,   8771) |*** 
-Info: [  8771,   8870) |** 
-Info: [  8870,   8969) |****** 
-Info: [  8969,   9068) |* 
-Info: [  9068,   9167) |******* 
-Info: [  9167,   9266) |************ 
-Info: [  9266,   9365) |**** 
-Info: [  9365,   9464) |************ 
-Info: [  9464,   9563) |******* 
-Info: [  9563,   9662) |**** 
-Info: [  9662,   9761) |** 
-Info: [  9761,   9860) |** 
-Info: [  9860,   9959) |*** 
-Info: [  9959,  10058) |* 
-Info: [ 10058,  10157) |* 
-Info: [ 10157,  10256) |* 
-Info: [ 10256,  10355) |*** 
-Info: [ 10355,  10454) | 
-Info: [ 10454,  10553) |* 
+Info: [  8573,   8672) |**
+Info: [  8672,   8771) |***
+Info: [  8771,   8870) |**
+Info: [  8870,   8969) |******
+Info: [  8969,   9068) |*
+Info: [  9068,   9167) |*******
+Info: [  9167,   9266) |************
+Info: [  9266,   9365) |****
+Info: [  9365,   9464) |************
+Info: [  9464,   9563) |*******
+Info: [  9563,   9662) |****
+Info: [  9662,   9761) |**
+Info: [  9761,   9860) |**
+Info: [  9860,   9959) |***
+Info: [  9959,  10058) |*
+Info: [ 10058,  10157) |*
+Info: [ 10157,  10256) |*
+Info: [ 10256,  10355) |***
+Info: [ 10355,  10454) |
+Info: [ 10454,  10553) |*
 
 Info: Program finished normally.

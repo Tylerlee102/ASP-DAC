@@ -37,7 +37,23 @@ def main() -> int:
     if not yosys or not nextpnr:
         rows = [_blocked("missing yosys or nextpnr-ecp5")]
     else:
-        mapped = run_replay_consumer_mapping._run_mapping(yosys, nextpnr, "ecp5-45k", ("--45k", "--package", "CABGA381", "--freq", "50"))
+        mapped = run_replay_consumer_mapping._run_mapping(
+            yosys,
+            nextpnr,
+            "ecp5-45k",
+            ("--45k", "--package", "CABGA381", "--freq", "50"),
+            top="rcv2_replay_consumer_pin_limited_wrapper",
+            sources=(
+                "rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv",
+                "rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv",
+                "rtl/replaycapsule_v2/rcv2_replay_consumer.sv",
+                "rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv",
+            ),
+            notes=(
+                "real ECP5-45k mapping of a pin-limited wrapper around the same replay-consume "
+                "controller; package IO limits prevent direct wide-port top-level mapping"
+            ),
+        )
         rows = [
             {
                 "target": mapped["target"],

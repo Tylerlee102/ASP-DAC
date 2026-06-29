@@ -12,16 +12,20 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 206 >>
+<< /Length 218 >>
 stream
 BT
 /F1 16 Tf
 72 740 Td
 (Recorder config tradeoff v2) Tj
 0 -24 Td
-(minimal/core/hashed/diagnostic/full are represented in analytic CSVs.) Tj
+(core: 100.000000%) Tj
 0 -24 Td
-(Replay PASS requires future full-core v2 harness.) Tj
+(full: 100.000000%) Tj
+0 -24 Td
+(hashed: 100.000000%) Tj
+0 -24 Td
+(All claims remain scoped to host-driven replay.) Tj
 ET
 endstream
 endobj
@@ -35,5 +39,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-568
+580
 %%EOF

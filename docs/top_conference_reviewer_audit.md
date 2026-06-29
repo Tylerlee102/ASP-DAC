@@ -1,10 +1,10 @@
 # Top-Conference Reviewer Audit
 
-Overall status: **BORDERLINE SUBMISSION-READY**
+Overall status: **SUBMISSION-READY**
 
 ## Hardware architecture reviewer
 
-rating: borderline
+rating: weak accept
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -32,7 +32,7 @@ final recommendation: submit main-track with scoped claims
 
 ## EDA/synthesis reviewer
 
-rating: borderline
+rating: weak accept
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -60,7 +60,7 @@ final recommendation: submit main-track with scoped claims
 
 ## Systems/debug reviewer
 
-rating: borderline
+rating: weak accept
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -88,7 +88,7 @@ final recommendation: submit main-track with scoped claims
 
 ## Formal/replay-model reviewer
 
-rating: borderline
+rating: weak accept
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -116,7 +116,7 @@ final recommendation: submit main-track with scoped claims
 
 ## Artifact evaluation reviewer
 
-rating: borderline
+rating: weak accept
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -144,7 +144,7 @@ final recommendation: submit main-track with scoped claims
 
 ## Skeptical novelty reviewer
 
-rating: borderline
+rating: weak accept
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong
@@ -172,7 +172,7 @@ final recommendation: submit main-track with scoped claims
 
 ## Quantitative evaluation reviewer
 
-rating: borderline
+rating: weak accept
 
 top strengths:
 - compiler-backed firmware and full RTL replay evidence are strong

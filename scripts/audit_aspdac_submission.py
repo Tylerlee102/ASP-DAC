@@ -67,6 +67,7 @@ def main() -> int:
     ))
     rows.extend(_private_marker_rows())
     rows.extend(_build_artifact_rows(text))
+    rows.extend(_v2_evidence_rows())
 
     OUT_CSV.parent.mkdir(parents=True, exist_ok=True)
     with OUT_CSV.open("w", newline="", encoding="utf-8") as handle:
@@ -150,6 +151,88 @@ def _private_marker_rows() -> list[dict[str, str]]:
             ASPDAC_PAPER_GUIDE,
         ))
     return rows
+
+
+def _v2_evidence_rows() -> list[dict[str, str]]:
+    rows: list[dict[str, str]] = []
+    measured = _read_csv(REPO_ROOT / "results/processed/workload_scaling_v2_measured_summary.csv")
+    if measured:
+        total = sum(_int(row.get("n")) for row in measured if row.get("architecture") == "v2")
+        passes = sum(_int(row.get("pass_count")) for row in measured if row.get("architecture") == "v2")
+        blocked = sum(_int(row.get("blocked_count")) for row in measured if row.get("architecture") == "v2")
+        rows.append(_row(
+            "v2_measured_workload_zero_fail",
+            "PASS" if total > 0 and passes == total and blocked == 0 else "FAIL",
+            "results/processed/workload_scaling_v2_measured_summary.csv",
+            f"pass_rows={passes}; total_rows={total}; blocked_rows={blocked}",
+            "repository evidence gate",
+        ))
+
+    expanded = _read_csv(REPO_ROOT / "results/processed/expanded_benchmark_replay_measured.csv")
+    if expanded:
+        bad = [
+            row for row in expanded
+            if row.get("replay_status") != "PASS"
+            or row.get("rtl_record_status") != "PASS"
+            or row.get("capsule_export_status") != "PASS"
+            or row.get("compiler_backed") != "true"
+        ]
+        rows.append(_row(
+            "expanded_benchmark_replay_clean",
+            "PASS" if not bad else "FAIL",
+            "results/processed/expanded_benchmark_replay_measured.csv",
+            f"rows={len(expanded)} bad_rows={len(bad)}",
+            "repository evidence gate",
+        ))
+
+    mapped = _read_csv(REPO_ROOT / "results/processed/mapped_scaling_v2_measured.csv")
+    if mapped:
+        full_core_pass = [row for row in mapped if row.get("architecture") == "v2" and row.get("status") == "PASS"]
+        rows.append(_row(
+            "v2_full_core_mapped_rows_present",
+            "PASS" if full_core_pass else "FAIL",
+            "results/processed/mapped_scaling_v2_measured.csv",
+            f"v2_pass_rows={len(full_core_pass)}",
+            "repository evidence gate",
+        ))
+
+    stale_phrases = (
+        "No v2 replay PASS is claimed",
+        "blocked until full-core v2 runtime harness",
+        "Analytic capacity estimates only; no PASS claim",
+        "full-core v2 & NA & NA & NA & NA & blocked",
+    )
+    table_paths = sorted((PAPER_DIR / "tables").glob("table_*_v2.tex")) + [PAPER_DIR / "tables/table_limitations.tex"]
+    stale = []
+    for path in table_paths:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for phrase in stale_phrases:
+            if phrase in text:
+                stale.append(f"{path.relative_to(REPO_ROOT).as_posix()}:{phrase}")
+    rows.append(_row(
+        "v2_generated_tables_not_stale",
+        "PASS" if not stale else "FAIL",
+        "paper/tables",
+        "no stale blocked/no-pass v2 generated table phrases" if not stale else "; ".join(stale),
+        "repository evidence gate",
+    ))
+    return rows
+
+
+def _read_csv(path: Path) -> list[dict[str, str]]:
+    if not path.exists():
+        return []
+    with path.open(newline="", encoding="utf-8") as handle:
+        return list(csv.DictReader(handle))
+
+
+def _int(value: object) -> int:
+    try:
+        return int(str(value))
+    except (TypeError, ValueError):
+        return 0
 
 
 def _documentclass_line(text: str) -> str:

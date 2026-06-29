@@ -1,12 +1,12 @@
-\begin{tabular}{llrr}
+\begin{tabular}{llrrr}
 \toprule
-Baseline & Config & Median bytes & N \\
+Baseline & Config & Median bytes & Pass & N \\
 \midrule
-full\_commit\_trace & trace\_or\_snapshot & 891808.000000 & 75 \\
-full\_instruction\_trace & trace\_or\_snapshot & 445904.000000 & 75 \\
-v1\_replaycapsule\_full & full & 5376.000000 & 75 \\
-v2\_core & core & 736.000000 & 75 \\
-v2\_full & full & 4112.000000 & 75 \\
-v2\_hashed & hashed & 736.000000 & 75 \\
+full\_commit\_trace & baseline & 891808.000000 & 0 & 75 \\
+full\_instruction\_trace & baseline & 445904.000000 & 0 & 75 \\
+v1\_full & full & 5376.000000 & 25 & 75 \\
+v2\_core & core & 8.000000 & 75 & 75 \\
+v2\_full & full & 1928.000000 & 75 & 75 \\
+v2\_hashed & hashed & 8.000000 & 75 & 75 \\
 \bottomrule
 \end{tabular}

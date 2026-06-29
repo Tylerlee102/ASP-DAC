@@ -1,13 +1,10 @@
 \begin{tabular}{lrrr}
 \toprule
-Config & Cycle overhead & Commit overhead & Notes \\
+Config & Cycle overhead & Commit overhead & Wall overhead \\
 \midrule
-baseline\_no\_recorder & NA & NA & v1 measured \\
-recorder\_enabled & 0.000000 & 0.000000 & v1 measured \\
-recorder\_present\_disabled & 0.000000 & 0.000000 & v1 measured \\
-baseline\_no\_recorder & NA & NA & v1 measured \\
-recorder\_enabled & 0.000000 & 0.000000 & v1 measured \\
-recorder\_present\_disabled & 0.000000 & 0.000000 & v1 measured \\
-v2 & NA & NA & blocked until full-core v2 runtime harness \\
+v2\_recorder\_present\_disabled & 0.00 & 0.00 & 993.59 \\
+v2\_recorder\_enabled\_core & 0.00 & 0.00 & 8.80 \\
+v2\_recorder\_enabled\_hashed & 0.00 & 0.00 & 9.97 \\
+v2\_recorder\_enabled\_full & 0.00 & 0.00 & 43.97 \\
 \bottomrule
 \end{tabular}

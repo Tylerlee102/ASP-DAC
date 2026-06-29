@@ -12,16 +12,18 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 137 >>
+<< /Length 203 >>
 stream
 BT
 /F1 16 Tf
 72 740 Td
 (Runtime scaling v2) Tj
 0 -24 Td
-(v1 runtime scaling exists.) Tj
+(Core median cycle overhead: 0.00%) Tj
 0 -24 Td
-(v2 full-core runtime is blocked.) Tj
+(Full median wall overhead: 43.97%) Tj
+0 -24 Td
+(Simulator wall time is not hardware timing.) Tj
 ET
 endstream
 endobj
@@ -35,5 +37,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-499
+565
 %%EOF

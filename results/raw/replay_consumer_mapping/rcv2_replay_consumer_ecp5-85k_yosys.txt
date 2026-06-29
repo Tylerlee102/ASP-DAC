@@ -1369,40 +1369,40 @@ Extracted 3009 AND gates and 7863 wires from module `rcv2_replay_consumer' to a 
 5.45.17.5. Executing ABC9.
 Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
 ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
-ABC: + read_lut <abc-temp-dir>/input.lut 
-ABC: + read_box <abc-temp-dir>/input.box 
-ABC: + &read <abc-temp-dir>/input.xaig 
-ABC: + &ps 
+ABC: + read_lut <abc-temp-dir>/input.lut
+ABC: + read_box <abc-temp-dir>/input.box
+ABC: + &read <abc-temp-dir>/input.xaig
+ABC: + &ps
 ABC: <abc-temp-dir>/input : i/o =    278/    194  and =    2540  lev =   31 (   3.00)  mem = 0.05 MB  box = 121  bb = 75
-ABC: + &scorr 
+ABC: + &scorr
 ABC: Warning: The network is combinational.
-ABC: + &sweep 
-ABC: + &dc2 
-ABC: + &dch -f -r 
-ABC: + &ps 
+ABC: + &sweep
+ABC: + &dc2
+ABC: + &dch -f -r
+ABC: + &ps
 ABC: <abc-temp-dir>/input : i/o =    278/    194  and =    2448  lev =   68 (   2.07)  mem = 0.05 MB  ch =  331  box = 121  bb = 75
 ABC: cst =       0  cls =    298  lit =     331  unused =    2310  proof =     0
-ABC: + &if -W 300 -v 
+ABC: + &if -W 300 -v
 ABC: K = 7. Memory (bytes): Truth =    0. Cut =   76. Obj =  156. Set =  780. CutMin = no
 ABC: Node =    2448.  Ch =   298.  Total mem =    0.61 MB. Peak cut mem =    0.06 MB.
 ABC: P:  Del = 4371.00.  Ar =    1557.0.  Edge =     2130.  Cut =    31070.  T =     0.00 sec
 ABC: P:  Del = 4248.00.  Ar =    1315.0.  Edge =     1861.  Cut =    30935.  T =     0.00 sec
 ABC: P:  Del = 4248.00.  Ar =    1114.0.  Edge =     1847.  Cut =    54514.  T =     0.00 sec
-ABC: F:  Del = 4246.00.  Ar =     748.0.  Edge =     1549.  Cut =    40758.  T =     0.02 sec
+ABC: F:  Del = 4246.00.  Ar =     748.0.  Edge =     1549.  Cut =    40758.  T =     0.00 sec
 ABC: A:  Del = 4246.00.  Ar =     713.0.  Edge =     1414.  Cut =    39501.  T =     0.00 sec
 ABC: A:  Del = 4246.00.  Ar =     685.0.  Edge =     1319.  Cut =    39263.  T =     0.01 sec
-ABC: Total time =     0.03 sec
-ABC: + &write -n <abc-temp-dir>/output.aig 
-ABC: + &mfs 
-ABC: + &ps -l 
+ABC: Total time =     0.02 sec
+ABC: + &write -n <abc-temp-dir>/output.aig
+ABC: + &mfs
+ABC: + &ps -l
 ABC: <abc-temp-dir>/input : i/o =    278/    194  and =    1976  lev =   26 (   2.37)  mem = 0.04 MB  box = 121  bb = 75
 ABC: Mapping (K=7)  :  lut =    325  edge =    1303  lev =    8 (0.80)  levB =   22  mem = 0.02 MB
 ABC: LUT = 325 : 2=93 28.6 %  3=36 11.1 %  4=74 22.8 %  5=32 9.8 %  6=77 23.7 %  7=13 4.0 %  Ave = 4.01
-ABC: + &write -n <abc-temp-dir>/output.aig 
-ABC: + &verify 
-ABC: Networks are equivalent.  Time =     0.10 sec
-ABC: + time 
-ABC: elapse: 0.35 seconds, total: 0.35 seconds
+ABC: + &write -n <abc-temp-dir>/output.aig
+ABC: + &verify
+ABC: Networks are equivalent.  Time =     0.09 sec
+ABC: + time
+ABC: elapse: 0.33 seconds, total: 0.33 seconds
 
 5.45.17.6. Executing AIGER frontend.
 <suppressed ~954 debug messages>
@@ -1950,7 +1950,7 @@ Removed 0 unused modules.
 === rcv2_replay_consumer ===
 
         +----------Local Count, excluding submodules.
-        | 
+        |
      1045 wires
      3658 wire bits
      1045 public wires
@@ -1969,11 +1969,11 @@ Removed 0 unused modules.
 === design hierarchy ===
 
         +----------Count including submodules.
-        | 
+        |
         2 rcv2_replay_consumer
 
         +----------Count including submodules.
-        | 
+        |
      1045 wires
      3658 wire bits
      1045 public wires
@@ -1998,6 +1998,6 @@ Found and reported 0 problems.
 
 5.52. Executing JSON backend.
 
-End of script. Logfile hash: b56f648b1e
+End of script. Logfile hash: 94edaeabaa
 Yosys 0.66+154 (git sha1 23aadd92a, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 13.2.1)
 Time spent: 1% 23x read_verilog (0 sec), 1% 23x opt_expr (0 sec), ...

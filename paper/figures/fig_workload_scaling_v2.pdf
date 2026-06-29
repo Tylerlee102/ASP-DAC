@@ -12,18 +12,18 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 172 >>
+<< /Length 185 >>
 stream
 BT
 /F1 16 Tf
 72 740 Td
 (Workload scaling v2) Tj
 0 -24 Td
-(v1 FAIL rows: 150) Tj
+(Measured v2 PASS rows: 1125/1125) Tj
 0 -24 Td
-(v2 full-core rows blocked: 1125) Tj
+(Blocked rows: 0) Tj
 0 -24 Td
-(No v2 replay PASS is claimed.) Tj
+(Scope: host-driven full-core record/replay.) Tj
 ET
 endstream
 endobj
@@ -37,5 +37,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-534
+547
 %%EOF

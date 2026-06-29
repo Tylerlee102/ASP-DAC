@@ -43,7 +43,7 @@ This document locks the evidence used for the main-track submission polish pass.
 
 - Paper target: `paper/main.pdf`
 - Status: PASS
-- Tool: locked-ci-artifact
+- Tool: tectonic
 - Output: `paper\main.pdf`
 
 ## Locked Copy Directory

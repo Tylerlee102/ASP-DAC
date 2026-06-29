@@ -107,6 +107,7 @@ def _collect_files() -> list[tuple[Path, str, str]]:
         ("results/debug/topconf_v2_before/*", "baseline", "frozen pre-v2 evidence"),
         ("rtl/replaycapsule_v2/*", "rtl", "v2 RTL source"),
         ("rtl/mapped/replaycapsule_v2_recorder_wrapper.sv", "rtl", "v2 synthesis wrapper"),
+        ("rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv", "rtl", "v2 replay-consume pin-limited wrapper"),
         ("tb/replay_consumer/*", "tests", "v2 replay consumer testbench"),
         ("scripts/diagnose_workload_failures.py", "scripts", "v2 diagnosis script"),
         ("scripts/run_buffer_sensitivity_v2.py", "scripts", "v2 buffer script"),
