@@ -155,6 +155,7 @@ def _points(mode: str, max_replay_points: int) -> list[tuple[int, int, str]]:
         return [(2048, 32, "full")]
     if mode == "representative":
         points = [
+            (512, 8, "core"),
             (1024, 16, "core"),
             (2048, 16, "core"),
             (2048, 32, "full"),
@@ -204,6 +205,7 @@ def _run_design(
     yosys_log.write_text(run_mapped_synthesis._clean(y.stdout), encoding="utf-8")
     if y.returncode != 0 or not json_path.exists():
         return _failed(design.name, memory_words, buffer_depth, config, yosys_log, "SYNTH_FAIL")
+    run_mapped_synthesis._sanitize_file(json_path)
 
     command = [nextpnr, *TARGET.nextpnr_args, "--json", rel(json_path), "--textcfg", rel(bitstream_path)]
     if run_mapped_synthesis.ECP5_LPF.exists():

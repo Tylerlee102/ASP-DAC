@@ -59,7 +59,9 @@ def _workflow_status() -> dict[str, str]:
     run_id = os.environ.get("GITHUB_RUN_ID", "local-preflight")
     sha = os.environ.get("GITHUB_SHA", _git_head())
     branch = os.environ.get("GITHUB_REF_NAME", _git_branch())
-    url = f"https://github.com/Tylerlee102/ASP-DAC/actions/runs/{run_id}" if run_id != "local-preflight" else "local-preflight"
+    server_url = os.environ.get("GITHUB_SERVER_URL", "https://github.com").rstrip("/")
+    repository = os.environ.get("GITHUB_REPOSITORY", "anonymous/replaycapsule-rv")
+    url = f"{server_url}/{repository}/actions/runs/{run_id}" if run_id != "local-preflight" else "local-preflight"
     return _row(
         "workflow_status",
         "PASS",
@@ -218,7 +220,7 @@ def _private_path_scan() -> dict[str, str]:
         "::" + "git" + "-commit",
         "::" + "git" + "-push",
         "C:" + "\\" + "Users" + "\\",
-        "OneDrive" + "\\" + "Documents" + "\\" + "New project",
+        "One" + "Drive" + "\\" + "Documents" + "\\" + "New project",
     ]
     hits: list[str] = []
     for path in _text_files():

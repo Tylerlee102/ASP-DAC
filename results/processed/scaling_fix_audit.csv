@@ -1,0 +1,5 @@
+check,status,evidence,detail
+workload_rows_clean,PASS,results/processed/workload_scaling_fixed.csv,rows=375 bad_rows=0
+workload_scale_coverage,PASS,results/processed/workload_scaling_fixed.csv,smoke=75;short=75;medium=75;long=75;stress=75
+depth_256_summary_clean,PASS,results/processed/buffer_sensitivity_fixed_summary.csv,checked_scales=5 bad_scales=none
+capsule_summary_present,PASS,results/processed/capsule_baseline_summary_fixed.csv,checked_scales=5 bad_scales=none

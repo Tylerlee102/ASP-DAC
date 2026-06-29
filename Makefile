@@ -161,6 +161,14 @@ workload-scaling-full: firmware
 	$(PYTHON) scripts/generate_scaled_workloads.py --mode full
 	$(PYTHON) scripts/run_workload_scaling.py --mode full
 
+workload-scaling-v2-quick: firmware
+	$(PYTHON) scripts/generate_scaled_workloads.py --mode quick
+	$(PYTHON) scripts/run_workload_scaling.py --mode quick --arch v2 --recorder-config core --output results/processed/workload_scaling_fixed.csv --raw-dir results/raw/workload_scaling_fixed
+
+workload-scaling-v2-full: firmware
+	$(PYTHON) scripts/generate_scaled_workloads.py --mode full
+	$(PYTHON) scripts/run_workload_scaling.py --mode full --arch v2 --recorder-config core --output results/processed/workload_scaling_fixed.csv --raw-dir results/raw/workload_scaling_fixed
+
 runtime-scaling-quick: firmware
 	$(PYTHON) scripts/run_runtime_scaling.py --mode quick
 
@@ -172,8 +180,17 @@ capsule-baselines:
 
 capsule-baselines-full: capsule-baselines
 
+capsule-baselines-fixed:
+	$(PYTHON) scripts/run_capsule_baselines.py --input results/processed/workload_scaling_fixed.csv --output results/processed/capsule_baseline_comparison_fixed.csv --summary-output results/processed/capsule_baseline_summary_fixed.csv
+
 buffer-sensitivity:
 	$(PYTHON) scripts/run_buffer_sensitivity.py
+
+buffer-sensitivity-fixed:
+	$(PYTHON) scripts/run_buffer_sensitivity.py --input results/processed/workload_scaling_fixed.csv --output results/processed/buffer_sensitivity_fixed.csv --summary-output results/processed/buffer_sensitivity_fixed_summary.csv
+
+scaling-fix-audit:
+	$(PYTHON) scripts/audit_scaling_fix.py
 
 buffer-sensitivity-full: buffer-sensitivity
 
@@ -250,6 +267,7 @@ paper-audit:
 	$(PYTHON) scripts/audit_claims.py
 	$(PYTHON) scripts/audit_paper_numbers.py
 	$(PYTHON) scripts/audit_todos.py
+	$(PYTHON) scripts/audit_aspdac_submission.py
 
 artifact:
 	$(PYTHON) scripts/generate_submission_docs.py

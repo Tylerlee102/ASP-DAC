@@ -1,15 +1,15 @@
 group,metric,value,n,evidence,notes
-replay_correctness,pass_rate_by_benchmark:interrupt_race_bug,70.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:interrupt_race_bug,100.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
 replay_correctness,pass_rate_by_benchmark:mmio_ordering_bug,100.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_benchmark:sensor_threshold_bug,40.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:sensor_threshold_bug,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
 replay_correctness,pass_rate_by_benchmark:stack_corruption_bug,100.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_benchmark:uart_command_bug,40.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_benchmark:watchdog_timeout_bug,40.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_workload_scale:long,33.333333,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_workload_scale:medium,33.333333,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:uart_command_bug,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:watchdog_timeout_bug,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:long,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:medium,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
 replay_correctness,pass_rate_by_workload_scale:short,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
 replay_correctness,pass_rate_by_workload_scale:smoke,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_workload_scale:stress,33.333333,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:stress,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
 negative_replay,rejected,10,12,results/processed/full_rtl_replay_negative.csv,corrupted capsule rejection count
 negative_replay,unexpected_accepted,0,12,results/processed/full_rtl_replay_negative.csv,unexpected accepts remain visible
 negative_replay,na,2,12,results/processed/full_rtl_replay_negative.csv,not-applicable negative rows
@@ -28,16 +28,16 @@ runtime_scaling,median_sim_wall_time_overhead_pct:smoke,6.990000,75,results/proc
 runtime_scaling,median_cycle_overhead_pct:stress,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_commit_overhead_pct:stress,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_sim_wall_time_overhead_pct:stress,38.850000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-capsule_scaling,median_bytes:long,5376.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
-capsule_scaling,median_reduction_vs_full_instruction:long,97.800000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
-capsule_scaling,median_bytes:medium,5376.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
-capsule_scaling,median_reduction_vs_full_instruction:medium,95.790000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
+capsule_scaling,median_bytes:long,86016.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
+capsule_scaling,median_reduction_vs_full_instruction:long,64.860000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
+capsule_scaling,median_bytes:medium,21504.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
+capsule_scaling,median_reduction_vs_full_instruction:medium,83.180000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
 capsule_scaling,median_bytes:short,5376.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
 capsule_scaling,median_reduction_vs_full_instruction:short,78.710000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
 capsule_scaling,median_bytes:smoke,5376.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
 capsule_scaling,median_reduction_vs_full_instruction:smoke,59.520000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
-capsule_scaling,median_bytes:stress,5376.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
-capsule_scaling,median_reduction_vs_full_instruction:stress,98.790000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
+capsule_scaling,median_bytes:stress,344064.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
+capsule_scaling,median_reduction_vs_full_instruction:stress,22.840000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
 buffer_sensitivity,depth_4_long_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
 buffer_sensitivity,depth_4_medium_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
 buffer_sensitivity,depth_4_short_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
@@ -68,27 +68,61 @@ buffer_sensitivity,depth_128_medium_overflow_pct,100.000000,75,results/processed
 buffer_sensitivity,depth_128_short_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
 buffer_sensitivity,depth_128_smoke_overflow_pct,60.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
 buffer_sensitivity,depth_128_stress_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
-buffer_sensitivity,depth_256_long_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
-buffer_sensitivity,depth_256_medium_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
-buffer_sensitivity,depth_256_short_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
-buffer_sensitivity,depth_256_smoke_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
-buffer_sensitivity,depth_256_stress_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
-mapped_scaling,lut:mem1024:buf16:core,124.66,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+buffer_sensitivity,depth_256_long_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_256_medium_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_256_short_overflow_pct,60.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_256_smoke_overflow_pct,60.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_256_stress_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_512_long_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_512_medium_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_512_short_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_512_smoke_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_512_stress_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_1024_long_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_1024_medium_overflow_pct,60.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_1024_short_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_1024_smoke_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_1024_stress_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_2048_long_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_2048_medium_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_2048_short_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_2048_smoke_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_2048_stress_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_4096_long_overflow_pct,60.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_4096_medium_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_4096_short_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_4096_smoke_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_4096_stress_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_8192_long_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_8192_medium_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_8192_short_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_8192_smoke_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_8192_stress_overflow_pct,100.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_16384_long_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_16384_medium_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_16384_short_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_16384_smoke_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+buffer_sensitivity,depth_16384_stress_overflow_pct,60.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
+mapped_scaling,lut:mem512:buf8:core,114.20,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem512:buf8:core,174.53,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,bram:mem512:buf8:core,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem512:buf8:core,-19.56,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem1024:buf16:core,123.89,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,ff:mem1024:buf16:core,341.79,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem1024:buf16:core,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem1024:buf16:core,-20.81,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,lut:mem2048:buf16:core,125.36,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem1024:buf16:core,-18.38,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem2048:buf16:core,138.40,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,ff:mem2048:buf16:core,341.79,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem2048:buf16:core,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem2048:buf16:core,-25.48,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,lut:mem2048:buf32:full,182.55,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem2048:buf16:core,-16.76,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem2048:buf32:full,218.36,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,ff:mem2048:buf32:full,646.43,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem2048:buf32:full,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem2048:buf32:full,-25.70,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,lut:mem4096:buf32:full,182.06,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem2048:buf32:full,-15.06,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem4096:buf32:full,221.23,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,ff:mem4096:buf32:full,646.43,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem4096:buf32:full,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem4096:buf32:full,-17.53,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem4096:buf32:full,-9.98,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 event_ablation,commit_index_reject_rate,100.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
 event_ablation,commit_index_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
 event_ablation,cycle_delta_reject_rate,0.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately

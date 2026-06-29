@@ -1,0 +1,1 @@
+PASS replay benchmark=sensor_threshold_bug variant=fixed seed=2 arch=v1 recorder_config=core property=0 events=16384 cycles=200000 commits=55738 notes="record/replay capsule packets match"

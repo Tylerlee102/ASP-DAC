@@ -1,0 +1,9 @@
+RESULT,valid_capsule_consumes_all_events,PASS,PASS,1,0
+RESULT,missing_event_rejects,REJECT,REJECT,1,1
+RESULT,duplicate_event_rejects,REJECT,REJECT,1,2
+RESULT,reordered_event_rejects,REJECT,REJECT,1,3
+RESULT,wrong_mmio_value_rejects,REJECT,REJECT,1,4
+RESULT,wrong_interrupt_cause_rejects,REJECT,REJECT,1,5
+RESULT,wrong_payload_hash_rejects,REJECT,REJECT,1,6
+RESULT,truncated_capsule_rejects,REJECT,REJECT,1,7
+SUMMARY,8,8

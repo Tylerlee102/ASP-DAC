@@ -1,20 +1,32 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[sigconf,anonymous]{acmart}
+
+\setcopyright{none}
+\settopmatter{printacmref=false,printccs=false,printfolios=true}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+
+\acmConference[ASP-DAC '27]{32nd Asia and South Pacific Design Automation Conference}{January 25--28, 2027}{Tokyo, Japan}
+\acmYear{2027}
+\copyrightyear{2027}
 
 \usepackage{booktabs}
 \usepackage{graphicx}
-\usepackage{url}
+
+\newif\ifrcfullartifactpaper
+\rcfullartifactpaperfalse
 
 \begin{document}
 
 \title{ReplayCapsule-RV: Event-Sufficient Hardware Failure Capsules for Replaying Embedded RISC-V Interrupt/MMIO Bugs}
 
-\author{\IEEEauthorblockN{Anonymous Authors}
-\IEEEauthorblockA{Anonymous Institution}}
-
-\maketitle
+\author{Anonymous Author(s)}
+\affiliation{%
+  \institution{Anonymous Institution}
+  \country{}}
 
 \input{sections/generated_numbers}
 \input{sections/abstract}
+
+\maketitle
 
 \input{sections/introduction}
 \input{sections/motivation}
@@ -26,7 +38,10 @@
 \input{sections/limitations}
 \input{sections/conclusion}
 
-\bibliographystyle{IEEEtran}
+\clearpage
+\phantomsection
+\label{aspdac:references-start}
+\bibliographystyle{ACM-Reference-Format}
 \bibliography{references}
 
 \end{document}

@@ -8,6 +8,13 @@ import hashlib
 import zipfile
 from pathlib import Path
 
+try:
+    import zlib as _zlib  # noqa: F401
+except Exception:
+    ZIP_COMPRESSION = zipfile.ZIP_STORED
+else:
+    ZIP_COMPRESSION = zipfile.ZIP_DEFLATED
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DIST_DIR = REPO_ROOT / "dist"
@@ -45,17 +52,66 @@ INCLUDE_ROOTS = (
 )
 
 EXCLUDE_PARTS = {".git", ".tools", "dist", "__pycache__", ".pytest_cache", ".mypy_cache"}
-EXCLUDE_SUFFIXES = (".pyc", ".vvp", ".vcd", ".map", ".log")
+EXCLUDE_SUFFIXES = (
+    ".aux",
+    ".bbl",
+    ".bcf",
+    ".blg",
+    ".fdb_latexmk",
+    ".fls",
+    ".log",
+    ".map",
+    ".out",
+    ".pyc",
+    ".run.xml",
+    ".synctex.gz",
+    ".vcd",
+    ".vvp",
+)
+
+TEXT_ARCHIVE_SUFFIXES = {
+    "",
+    ".c",
+    ".cpp",
+    ".csv",
+    ".h",
+    ".json",
+    ".ld",
+    ".lpf",
+    ".md",
+    ".py",
+    ".sh",
+    ".sv",
+    ".svh",
+    ".tex",
+    ".txt",
+    ".v",
+    ".yml",
+    ".yaml",
+}
+
+PRIVATE_REPLACEMENTS = (
+    ("C:" + "\\Users\\" + "ty" + "boy", "."),
+    ("C:" + "/Users/" + "ty" + "boy", "."),
+    ("\\Users\\" + "ty" + "boy", "\\Users\\USER"),
+    ("/Users/" + "ty" + "boy", "/Users/USER"),
+    ("One" + "Drive\\Documents\\" + "New project", "WORKSPACE"),
+    ("One" + "Drive/Documents/" + "New project", "WORKSPACE"),
+    ("One" + "Drive", "WORKSPACE"),
+    ("Tyler" + "lee102", "anonymous"),
+    ("github.com/" + "Tyler" + "lee102", "github.com/anonymous"),
+    ("ty" + "boy", "user"),
+)
 
 
 def main() -> int:
     DIST_DIR.mkdir(parents=True, exist_ok=True)
     files = sorted(_iter_files())
     rows = []
-    with zipfile.ZipFile(ZIP_PATH, "w", compression=zipfile.ZIP_DEFLATED) as archive:
+    with zipfile.ZipFile(ZIP_PATH, "w", compression=ZIP_COMPRESSION) as archive:
         for path in files:
             rel = path.relative_to(REPO_ROOT).as_posix()
-            data = path.read_bytes()
+            data = _archive_data(path)
             archive.writestr(rel, data)
             rows.append({"path": rel, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
     with MANIFEST_CSV.open("w", newline="", encoding="utf-8") as handle:
@@ -89,6 +145,16 @@ def _skip(path: Path) -> bool:
     if rel_parts & EXCLUDE_PARTS:
         return True
     return path.suffix.lower() in EXCLUDE_SUFFIXES
+
+
+def _archive_data(path: Path) -> bytes:
+    data = path.read_bytes()
+    if path.suffix.lower() not in TEXT_ARCHIVE_SUFFIXES:
+        return data
+    text = data.decode("utf-8", errors="replace")
+    for needle, replacement in PRIVATE_REPLACEMENTS:
+        text = text.replace(needle, replacement)
+    return text.encode("utf-8")
 
 
 if __name__ == "__main__":

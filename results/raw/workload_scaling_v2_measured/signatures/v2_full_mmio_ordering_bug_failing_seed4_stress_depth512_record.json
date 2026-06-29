@@ -1,0 +1,18 @@
+{
+  "benchmark": "mmio_ordering_bug",
+  "variant": "failing",
+  "seed": 4,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 5,
+  "property_signature": "0x0d0e500c",
+  "cycles_to_failure": 94268,
+  "commits_to_failure": 20496,
+  "event_count": 497,
+  "capsule_bytes": 3976,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "property failure observed"
+}

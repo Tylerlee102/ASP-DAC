@@ -1,8 +1,8 @@
 Info: constraining clock net 'clk' to 50.00 MHz
 
 Info: Logic utilisation before packing:
-Info:     Total LUT4s:      7804/83640     9%
-Info:         logic LUTs:   7150/83640     8%
+Info:     Total LUT4s:      8217/83640     9%
+Info:         logic LUTs:   7563/83640     9%
 Info:         carry LUTs:    654/83640     0%
 Info:           RAM LUTs:      0/10455     0%
 Info:          RAMW LUTs:      0/20910     0%
@@ -38,11 +38,11 @@ Info: Packing carries...
 Info: Packing LUTs...
 Info: Packing LUT5-7s...
 Info: Packing FFs...
-Info:     1039 FFs paired with LUTs.
+Info:     1071 FFs paired with LUTs.
 Info: Generating derived timing constraints...
 Info: Promoting globals...
 Info:     promoting clock net clk$TRELLIS_IO_IN to global network
-Info: Checksum: 0x6e8efe16
+Info: Checksum: 0x9a602100
 
 Info: Device utilisation:
 Info: 	          TRELLIS_IO:      23/    365     6%
@@ -71,478 +71,410 @@ Info: 	     TRELLIS_ECLKBUF:       0/      8     0%
 Info: 	        ECLKBRIDGECS:       0/      2     0%
 Info: 	                DCSC:       0/      2     0%
 Info: 	          TRELLIS_FF:    6591/  83640     7%
-Info: 	        TRELLIS_COMB:    7910/  83640     9%
+Info: 	        TRELLIS_COMB:    8325/  83640     9%
 Info: 	        TRELLIS_RAMW:       0/  10455     0%
 
 Info: Placed 23 cells based on constraints.
-Info: Creating initial analytic placement for 12018 cells, random placement wirelen = 1058379.
-Info:     at initial placer iter 0, wirelen = 2470
-Info:     at initial placer iter 1, wirelen = 2493
-Info:     at initial placer iter 2, wirelen = 2446
-Info:     at initial placer iter 3, wirelen = 2496
-Info: Running main analytical placer, max placement attempts per cell = 26393745.
-Info:     at iteration #1, type ALL: wirelen solved = 2438, spread = 69899, legal = 80820; time = 0.30s
-Info:     at iteration #2, type ALL: wirelen solved = 13435, spread = 45562, legal = 58563; time = 0.24s
-Info:     at iteration #3, type ALL: wirelen solved = 19749, spread = 41493, legal = 56486; time = 0.24s
-Info:     at iteration #4, type ALL: wirelen solved = 21757, spread = 40920, legal = 54413; time = 0.23s
-Info:     at iteration #5, type ALL: wirelen solved = 24092, spread = 38660, legal = 53246; time = 0.21s
-Info:     at iteration #6, type ALL: wirelen solved = 25625, spread = 38096, legal = 54471; time = 0.24s
-Info:     at iteration #7, type ALL: wirelen solved = 26492, spread = 37993, legal = 54597; time = 0.25s
-Info:     at iteration #8, type ALL: wirelen solved = 27827, spread = 37656, legal = 52800; time = 0.22s
-Info:     at iteration #9, type ALL: wirelen solved = 28421, spread = 37256, legal = 53381; time = 0.24s
-Info:     at iteration #10, type ALL: wirelen solved = 29299, spread = 37146, legal = 53270; time = 0.22s
-Info:     at iteration #11, type ALL: wirelen solved = 30111, spread = 37673, legal = 53536; time = 0.23s
-Info:     at iteration #12, type ALL: wirelen solved = 30675, spread = 38331, legal = 52851; time = 0.23s
-Info:     at iteration #13, type ALL: wirelen solved = 31811, spread = 38511, legal = 52632; time = 0.20s
-Info:     at iteration #14, type ALL: wirelen solved = 32193, spread = 37822, legal = 54129; time = 0.23s
-Info:     at iteration #15, type ALL: wirelen solved = 33198, spread = 39393, legal = 51305; time = 0.22s
-Info:     at iteration #16, type ALL: wirelen solved = 33896, spread = 38740, legal = 53333; time = 0.23s
-Info:     at iteration #17, type ALL: wirelen solved = 34463, spread = 39811, legal = 54586; time = 0.21s
-Info:     at iteration #18, type ALL: wirelen solved = 35356, spread = 40637, legal = 55436; time = 0.21s
-Info:     at iteration #19, type ALL: wirelen solved = 36077, spread = 40950, legal = 54268; time = 0.21s
-Info:     at iteration #20, type ALL: wirelen solved = 36900, spread = 41424, legal = 54441; time = 0.23s
-Info: HeAP Placer Time: 6.76s
-Info:   of which solving equations: 3.14s
-Info:   of which spreading cells: 0.67s
-Info:   of which strict legalisation: 1.20s
+Info: Creating initial analytic placement for 12101 cells, random placement wirelen = 1065877.
+Info:     at initial placer iter 0, wirelen = 2596
+Info:     at initial placer iter 1, wirelen = 2523
+Info:     at initial placer iter 2, wirelen = 2473
+Info:     at initial placer iter 3, wirelen = 2497
+Info: Running main analytical placer, max placement attempts per cell = 27922864.
+Info:     at iteration #1, type ALL: wirelen solved = 2502, spread = 68769, legal = 78832; time = 0.27s
+Info:     at iteration #2, type ALL: wirelen solved = 13599, spread = 46484, legal = 59267; time = 0.28s
+Info:     at iteration #3, type ALL: wirelen solved = 20465, spread = 42859, legal = 57627; time = 0.26s
+Info:     at iteration #4, type ALL: wirelen solved = 22966, spread = 43026, legal = 55160; time = 0.25s
+Info:     at iteration #5, type ALL: wirelen solved = 25673, spread = 41267, legal = 57174; time = 0.28s
+Info:     at iteration #6, type ALL: wirelen solved = 26706, spread = 40796, legal = 55870; time = 0.27s
+Info:     at iteration #7, type ALL: wirelen solved = 27943, spread = 41100, legal = 56746; time = 0.26s
+Info:     at iteration #8, type ALL: wirelen solved = 28772, spread = 40933, legal = 57041; time = 0.27s
+Info:     at iteration #9, type ALL: wirelen solved = 30235, spread = 41143, legal = 56363; time = 0.24s
+Info: HeAP Placer Time: 3.83s
+Info:   of which solving equations: 1.89s
+Info:   of which spreading cells: 0.35s
+Info:   of which strict legalisation: 0.64s
 
 Info: Running simulated annealing placer for refinement.
-Info:   at iteration #1: temp = 0.000000, timing cost = 5635, wirelen = 51305
-Info:   at iteration #5: temp = 0.000000, timing cost = 7362, wirelen = 44440
-Info:   at iteration #10: temp = 0.000000, timing cost = 6848, wirelen = 42316
-Info:   at iteration #15: temp = 0.000000, timing cost = 7241, wirelen = 41062
-Info:   at iteration #20: temp = 0.000000, timing cost = 7170, wirelen = 40150
-Info:   at iteration #25: temp = 0.000000, timing cost = 7119, wirelen = 39812
-Info:   at iteration #30: temp = 0.000000, timing cost = 6968, wirelen = 39648
-Info:   at iteration #35: temp = 0.000000, timing cost = 6682, wirelen = 39580
-Info:   at iteration #40: temp = 0.000000, timing cost = 7325, wirelen = 39517
-Info:   at iteration #43: temp = 0.000000, timing cost = 6900, wirelen = 39493
-Info: SA placement time 26.58s
+Info:   at iteration #1: temp = 0.000000, timing cost = 5559, wirelen = 55160
+Info:   at iteration #5: temp = 0.000000, timing cost = 4199, wirelen = 46758
+Info:   at iteration #10: temp = 0.000000, timing cost = 3897, wirelen = 44279
+Info:   at iteration #15: temp = 0.000000, timing cost = 5494, wirelen = 43016
+Info:   at iteration #20: temp = 0.000000, timing cost = 5848, wirelen = 41849
+Info:   at iteration #25: temp = 0.000000, timing cost = 5682, wirelen = 41418
+Info:   at iteration #30: temp = 0.000000, timing cost = 5425, wirelen = 41202
+Info:   at iteration #35: temp = 0.000000, timing cost = 5425, wirelen = 41113
+Info:   at iteration #40: temp = 0.000000, timing cost = 5428, wirelen = 41057
+Info:   at iteration #45: temp = 0.000000, timing cost = 5423, wirelen = 41021
+Info:   at iteration #46: temp = 0.000000, timing cost = 5399, wirelen = 41017 
+Info: SA placement time 23.36s
 
-Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 45.74 MHz (FAIL at 50.00 MHz)
+Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 48.22 MHz (FAIL at 50.00 MHz)
 
-Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 23.43 ns
-Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 25.40 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 25.05 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 25.56 ns
 
 Info: Slack histogram:
-Info:  legend: * represents 36 endpoint(s)
-Info:          + represents [1,36) endpoint(s)
-Info: [ -1861,   -805) |*******+
-Info: [  -805,    251) |***********************************+
-Info: [   251,   1307) |************************************************************
-Info: [  1307,   2363) |**************************************+
-Info: [  2363,   3419) |**********+
-Info: [  3419,   4475) |***+
-Info: [  4475,   5531) |****+
-Info: [  5531,   6587) |********+
-Info: [  6587,   7643) |*******************+
-Info: [  7643,   8699) |**************+
-Info: [  8699,   9755) |************+
-Info: [  9755,  10811) |********+
-Info: [ 10811,  11867) |*****+
-Info: [ 11867,  12923) |**************+
-Info: [ 12923,  13979) |*****************+
-Info: [ 13979,  15035) |**********************+
-Info: [ 15035,  16091) |****************************+
-Info: [ 16091,  17147) |*****************************+
-Info: [ 17147,  18203) |*************+
-Info: [ 18203,  19259) |*+
-Info: Checksum: 0x04abe09f
+Info:  legend: * represents 34 endpoint(s)
+Info:          + represents [1,34) endpoint(s)
+Info: [  -737,    262) |+
+Info: [   262,   1261) |**************+
+Info: [  1261,   2260) |***********************************+
+Info: [  2260,   3259) |************************************************************ 
+Info: [  3259,   4258) |****************************************+
+Info: [  4258,   5257) |**********+
+Info: [  5257,   6256) |*********+
+Info: [  6256,   7255) |************************+
+Info: [  7255,   8254) |************************+
+Info: [  8254,   9253) |**********+
+Info: [  9253,  10252) |****+
+Info: [ 10252,  11251) |***+
+Info: [ 11251,  12250) |*****+
+Info: [ 12250,  13249) |***************+
+Info: [ 13249,  14248) |*******************+
+Info: [ 14248,  15247) |********************************+
+Info: [ 15247,  16246) |*******************+
+Info: [ 16246,  17245) |**************************+
+Info: [ 17245,  18244) |**************+
+Info: [ 18244,  19243) |*+
+Info: Checksum: 0x148e0f35
 Info: Routing globals...
 Info:     routing clock net $glbnet$clk$TRELLIS_IO_IN using global 0
 
 Info: Routing..
 Info: Setting up routing queue.
-Info: Routing 39853 arcs.
+Info: Routing 41133 arcs.
 Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
 Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
-Info:       1000 |      531        468 |  531   468 |     39540|       0.64       0.64|
-Info:       2000 |      984       1015 |  453   547 |     39335|       0.29       0.94|
-Info:       3000 |     1424       1575 |  440   560 |     39281|       0.31       1.25|
-Info:       4000 |     1897       2102 |  473   527 |     39136|       0.28       1.53|
-Info:       5000 |     2287       2712 |  390   610 |     38957|       0.29       1.82|
-Info:       6000 |     2700       3299 |  413   587 |     38620|       0.32       2.14|
-Info:       7000 |     3090       3909 |  390   610 |     38389|       0.29       2.43|
-Info:       8000 |     3385       4614 |  295   705 |     37968|       0.28       2.71|
-Info:       9000 |     3677       5322 |  292   708 |     37847|       0.30       3.01|
-Info:      10000 |     3945       6054 |  268   732 |     37588|       0.26       3.27|
-Info:      11000 |     4136       6863 |  191   809 |     37380|       0.26       3.53|
-Info:      12000 |     4444       7555 |  308   692 |     37257|       0.30       3.83|
-Info:      13000 |     4652       8347 |  208   792 |     36874|       0.26       4.09|
-Info:      14000 |     4928       9071 |  276   724 |     36425|       0.24       4.33|
-Info:      15000 |     5198       9801 |  270   730 |     35989|       0.25       4.58|
-Info:      16000 |     5508      10491 |  310   690 |     35781|       0.29       4.87|
-Info:      17000 |     5712      11287 |  204   796 |     35178|       0.22       5.09|
-Info:      18000 |     5925      12074 |  213   787 |     34715|       0.23       5.32|
-Info:      19000 |     6113      12886 |  188   812 |     34125|       0.23       5.55|
-Info:      20000 |     6328      13671 |  215   785 |     33692|       0.25       5.80|
-Info:      21000 |     6506      14493 |  178   822 |     33324|       0.27       6.06|
-Info:      22000 |     6637      15362 |  131   869 |     32525|       0.22       6.28|
-Info:      23000 |     6788      16211 |  151   849 |     31735|       0.23       6.51|
-Info:      24000 |     6967      17032 |  179   821 |     30944|       0.23       6.74|
-Info:      25000 |     7119      17880 |  152   848 |     30189|       0.24       6.98|
-Info:      26000 |     7307      18692 |  188   812 |     29424|       0.24       7.22|
-Info:      27000 |     7485      19514 |  178   822 |     28654|       0.26       7.48|
-Info:      28000 |     7678      20319 |  193   805 |     28005|       0.25       7.73|
-Info:      29000 |     7848      21140 |  170   821 |     27202|       0.22       7.95|
-Info:      30000 |     8043      21888 |  195   748 |     26444|       0.25       8.20|
-Info:      31000 |     8240      22642 |  197   754 |     25954|       0.26       8.46|
-Info:      32000 |     8391      23454 |  151   812 |     25161|       0.21       8.67|
-Info:      33000 |     8604      24218 |  213   764 |     24513|       0.28       8.95|
-Info:      34000 |     8811      24983 |  207   765 |     23825|       0.27       9.22|
-Info:      35000 |     9037      25740 |  226   757 |     23128|       0.29       9.51|
-Info:      36000 |     9252      26469 |  215   729 |     22429|       0.27       9.78|
-Info:      37000 |     9435      27266 |  183   797 |     21660|       0.27      10.05|
-Info:      38000 |     9655      28018 |  220   752 |     21055|       0.29      10.34|
-Info:      39000 |     9891      28757 |  236   739 |     20536|       0.30      10.63|
-Info:      40000 |    10114      29437 |  223   680 |     19892|       0.27      10.91|
-Info:      41000 |    10378      30121 |  264   684 |     19274|       0.29      11.20|
-Info:      42000 |    10635      30814 |  257   693 |     18652|       0.30      11.50|
-Info:      43000 |    10870      31470 |  235   656 |     17932|       0.26      11.76|
-Info:      44000 |    11053      32197 |  183   727 |     17189|       0.22      11.97|
-Info:      45000 |    11320      32906 |  267   709 |     16595|       0.26      12.23|
-Info:      46000 |    11410      33806 |   90   900 |     15805|       0.22      12.45|
-Info:      47000 |    11485      34722 |   75   916 |     14964|       0.22      12.67|
-Info:      48000 |    11580      35618 |   95   896 |     14130|       0.26      12.93|
-Info:      49000 |    11683      36504 |  103   886 |     13367|       0.26      13.19|
-Info:      50000 |    11787      37391 |  104   887 |     12595|       0.22      13.41|
-Info:      51000 |    12030      38140 |  243   749 |     12104|       0.36      13.78|
-Info:      52000 |    12219      38939 |  189   799 |     11454|       0.29      14.07|
-Info:      53000 |    12386      39759 |  167   820 |     10782|       0.30      14.36|
-Info:      54000 |    12528      40610 |  142   851 |     10035|       0.34      14.71|
-Info:      55000 |    12762      41367 |  234   757 |      9475|       0.34      15.05|
-Info:      56000 |    12961      42159 |  199   792 |      8797|       0.33      15.38|
-Info:      57000 |    13264      42850 |  303   691 |      8388|       0.42      15.80|
-Info:      58000 |    13524      43583 |  260   733 |      7817|       0.37      16.17|
-Info:      59000 |    13854      44251 |  330   668 |      7492|       0.42      16.59|
-Info:      60000 |    14149      44948 |  295   697 |      7052|       0.39      16.98|
-Info:      61000 |    14411      45682 |  262   734 |      6397|       0.43      17.41|
-Info:      62000 |    14803      46284 |  392   602 |      6158|       0.48      17.88|
-Info:      63000 |    15141      46940 |  338   656 |      5644|       0.40      18.29|
-Info:      64000 |    15566      47515 |  425   575 |      5722|       0.46      18.75|
-Info:      65000 |    15926      48150 |  360   635 |      5384|       0.54      19.30|
-Info:      66000 |    16355      48718 |  429   568 |      5085|       0.58      19.87|
-Info:      67000 |    16741      49327 |  386   609 |      4723|       0.54      20.42|
-Info:      68000 |    17170      49891 |  429   564 |      4379|       0.54      20.96|
-Info:      69000 |    17631      50430 |  461   539 |      4335|       0.59      21.55|
-Info:      70000 |    18072      50986 |  441   556 |      4058|       0.55      22.10|
-Info:      71000 |    18565      51491 |  493   505 |      3935|       0.62      22.72|
-Info:      72000 |    19033      52021 |  468   530 |      3899|       0.63      23.35|
-Info:      73000 |    19467      52586 |  434   565 |      3664|       0.54      23.89|
-Info:      74000 |    19909      53143 |  442   557 |      3531|       0.56      24.46|
-Info:      75000 |    20341      53711 |  432   568 |      3585|       0.55      25.00|
-Info:      76000 |    20782      54270 |  441   559 |      3333|       0.65      25.66|
-Info:      77000 |    21270      54780 |  488   510 |      3024|       0.63      26.28|
-Info:      78000 |    21748      55301 |  478   521 |      2747|       0.64      26.92|
-Info:      79000 |    22252      55793 |  504   492 |      2603|       0.66      27.58|
-Info:      80000 |    22741      56302 |  489   509 |      2513|       0.72      28.29|
-Info:      81000 |    23218      56821 |  477   519 |      2283|       0.75      29.05|
-Info:      82000 |    23687      57350 |  469   529 |      2152|       0.71      29.75|
-Info:      83000 |    24206      57829 |  519   479 |      2005|       0.74      30.49|
-Info:      84000 |    24745      58284 |  539   455 |      1810|       0.72      31.21|
-Info:      85000 |    25251      58778 |  506   494 |      1825|       0.74      31.94|
-Info:      86000 |    25759      59270 |  508   492 |      1937|       0.71      32.66|
-Info:      87000 |    26251      59777 |  492   507 |      1873|       0.69      33.35|
-Info:      88000 |    26791      60233 |  540   456 |      1670|       0.71      34.05|
-Info:      89000 |    27339      60684 |  548   451 |      1494|       0.82      34.87|
-Info:      90000 |    27859      61162 |  520   478 |      1396|       0.81      35.69|
-Info:      91000 |    28398      61622 |  539   460 |      1359|       0.80      36.49|
-Info:      92000 |    28938      62081 |  540   459 |      1351|       0.90      37.39|
-Info:      93000 |    29478      62541 |  540   460 |      1295|       0.90      38.30|
-Info:      94000 |    29990      63029 |  512   488 |      1217|       0.73      39.03|
-Info:      95000 |    30542      63476 |  552   447 |      1104|       0.80      39.83|
-Info:      96000 |    31101      63917 |  559   441 |      1067|       0.76      40.59|
-Info:      97000 |    31611      64405 |  510   488 |       825|       0.84      41.43|
-Info:      98000 |    32162      64854 |  551   449 |       732|       0.83      42.26|
-Info:      99000 |    32703      65312 |  541   458 |       644|       0.84      43.10|
-Info:     100000 |    33197      65817 |  494   505 |       637|       0.90      44.00|
-Info:     101000 |    33752      66261 |  555   444 |       663|       0.91      44.91|
-Info:     102000 |    34245      66768 |  493   507 |       537|       0.99      45.90|
-Info:     103000 |    34760      67253 |  515   485 |       393|       0.83      46.72|
-Info:     104000 |    35277      67736 |  517   483 |       267|       0.81      47.54|
-Info:     105000 |    35862      68151 |  585   415 |       263|       0.86      48.39|
-Info:     106000 |    36360      68652 |  498   501 |       147|       1.04      49.44|
-Info:     107000 |    36925      69087 |  565   435 |        16|       0.99      50.42|
-Info:     107111 |    36992      69132 |   67    45 |         0|       0.19      50.62|
+Info:       1000 |      373        626 |  373   626 |     40671|       0.56       0.56|
+Info:       2000 |      760       1239 |  387   613 |     40286|       0.26       0.83|
+Info:       3000 |     1069       1930 |  309   691 |     39783|       0.25       1.08|
+Info:       4000 |     1324       2675 |  255   745 |     39244|       0.23       1.30|
+Info:       5000 |     1649       3350 |  325   675 |     38834|       0.24       1.54|
+Info:       6000 |     1969       4030 |  320   680 |     38464|       0.26       1.80|
+Info:       7000 |     2206       4793 |  237   763 |     37935|       0.21       2.01|
+Info:       8000 |     2449       5550 |  243   757 |     37548|       0.22       2.23|
+Info:       9000 |     2864       6135 |  415   585 |     37402|       0.26       2.49|
+Info:      10000 |     3057       6942 |  193   807 |     36693|       0.19       2.68|
+Info:      11000 |     3354       7645 |  297   703 |     36357|       0.24       2.92|
+Info:      12000 |     3537       8462 |  183   817 |     35698|       0.22       3.13|
+Info:      13000 |     3678       9321 |  141   859 |     34970|       0.24       3.37|
+Info:      14000 |     3921      10078 |  243   757 |     34442|       0.24       3.60|
+Info:      15000 |     4083      10916 |  162   838 |     33760|       0.19       3.79|
+Info:      16000 |     4271      11728 |  188   812 |     33050|       0.20       3.99|
+Info:      17000 |     4444      12555 |  173   827 |     32266|       0.18       4.17|
+Info:      18000 |     4660      13339 |  216   784 |     31572|       0.19       4.36|
+Info:      19000 |     4822      14177 |  162   838 |     30848|       0.19       4.55|
+Info:      20000 |     5104      14895 |  282   718 |     30213|       0.21       4.76|
+Info:      21000 |     5393      15606 |  289   711 |     29798|       0.24       4.99|
+Info:      22000 |     5537      16462 |  144   856 |     28961|       0.18       5.18|
+Info:      23000 |     5694      17302 |  157   840 |     28158|       0.21       5.39|
+Info:      24000 |     5867      18096 |  173   794 |     27517|       0.21       5.59|
+Info:      25000 |     6110      18752 |  243   656 |     26888|       0.17       5.77|
+Info:      26000 |     6357      19491 |  247   739 |     26202|       0.20       5.96|
+Info:      27000 |     6523      20281 |  166   790 |     25537|       0.19       6.16|
+Info:      28000 |     6729      21041 |  206   760 |     24790|       0.19       6.35|
+Info:      29000 |     6901      21832 |  172   791 |     24030|       0.22       6.57|
+Info:      30000 |     7093      22616 |  192   784 |     23276|       0.23       6.80|
+Info:      31000 |     7293      23387 |  200   771 |     22563|       0.21       7.00|
+Info:      32000 |     7499      24128 |  206   741 |     21807|       0.21       7.21|
+Info:      33000 |     7704      24873 |  205   745 |     21090|       0.23       7.44|
+Info:      34000 |     8007      25502 |  303   629 |     20516|       0.26       7.70|
+Info:      35000 |     8282      26175 |  275   673 |     19906|       0.27       7.97|
+Info:      36000 |     8524      26855 |  242   680 |     19239|       0.22       8.19|
+Info:      37000 |     8877      27470 |  353   615 |     18845|       0.30       8.48|
+Info:      38000 |     9190      28117 |  313   647 |     18368|       0.29       8.77|
+Info:      39000 |     9424      28766 |  234   649 |     17781|       0.22       8.99|
+Info:      40000 |     9747      29421 |  323   655 |     17393|       0.28       9.26|
+Info:      41000 |     9935      30229 |  188   808 |     16747|       0.23       9.50|
+Info:      42000 |    10109      31040 |  174   811 |     16139|       0.24       9.74|
+Info:      43000 |    10222      31911 |  113   871 |     15398|       0.23       9.97|
+Info:      44000 |    10398      32718 |  176   807 |     14781|       0.25      10.22|
+Info:      45000 |    10505      33586 |  107   868 |     14074|       0.25      10.47|
+Info:      46000 |    10678      34396 |  173   810 |     13404|       0.27      10.74|
+Info:      47000 |    10786      35267 |  108   871 |     12692|       0.23      10.97|
+Info:      48000 |    10962      36078 |  176   811 |     12090|       0.25      11.23|
+Info:      49000 |    11224      36804 |  262   726 |     11677|       0.35      11.57|
+Info:      50000 |    11420      37593 |  196   789 |     11043|       0.31      11.88|
+Info:      51000 |    11643      38354 |  223   761 |     10491|       0.29      12.17|
+Info:      52000 |    11836      39141 |  193   787 |      9884|       0.27      12.44|
+Info:      53000 |    12051      39915 |  215   774 |      9248|       0.34      12.78|
+Info:      54000 |    12269      40679 |  218   764 |      8605|       0.33      13.11|
+Info:      55000 |    12570      41371 |  301   692 |      8231|       0.36      13.47|
+Info:      56000 |    12864      42066 |  294   695 |      7661|       0.36      13.83|
+Info:      57000 |    13193      42729 |  329   663 |      7372|       0.38      14.22|
+Info:      58000 |    13528      43386 |  335   657 |      7063|       0.41      14.63|
+Info:      59000 |    13805      44095 |  277   709 |      6616|       0.37      15.00|
+Info:      60000 |    14102      44786 |  297   691 |      6166|       0.36      15.36|
+Info:      61000 |    14515      45369 |  413   583 |      6323|       0.40      15.76|
+Info:      62000 |    14923      45961 |  408   592 |      6277|       0.42      16.19|
+Info:      63000 |    15232      46649 |  309   688 |      5992|       0.43      16.62|
+Info:      64000 |    15588      47286 |  356   637 |      5559|       0.46      17.08|
+Info:      65000 |    15973      47897 |  385   611 |      5485|       0.44      17.52|
+Info:      66000 |    16421      48449 |  448   552 |      5530|       0.47      17.98|
+Info:      67000 |    16783      49082 |  362   633 |      5544|       0.43      18.41|
+Info:      68000 |    17146      49712 |  363   630 |      5318|       0.47      18.89|
+Info:      69000 |    17460      50390 |  314   678 |      4859|       0.40      19.29|
+Info:      70000 |    17849      50994 |  389   604 |      4619|       0.47      19.76|
+Info:      71000 |    18328      51513 |  479   519 |      4499|       0.45      20.21|
+Info:      72000 |    18712      52127 |  384   614 |      4184|       0.43      20.64|
+Info:      73000 |    19075      52758 |  363   631 |      4011|       0.49      21.13|
+Info:      74000 |    19461      53368 |  386   610 |      3861|       0.47      21.59|
+Info:      75000 |    19887      53941 |  426   573 |      3801|       0.51      22.10|
+Info:      76000 |    20334      54491 |  447   550 |      3643|       0.49      22.60|
+Info:      77000 |    20816      55009 |  482   518 |      3677|       0.49      23.09|
+Info:      78000 |    21257      55567 |  441   558 |      3454|       0.50      23.59|
+Info:      79000 |    21604      56217 |  347   650 |      3348|       0.50      24.10|
+Info:      80000 |    22022      56787 |  418   570 |      2978|       0.54      24.64|
+Info:      81000 |    22471      57330 |  449   543 |      2644|       0.53      25.17|
+Info:      82000 |    22922      57876 |  451   546 |      2442|       0.51      25.68|
+Info:      83000 |    23349      58445 |  427   569 |      2288|       0.56      26.24|
+Info:      84000 |    23775      59016 |  426   571 |      2013|       0.58      26.82|
+Info:      85000 |    24208      59583 |  433   567 |      1861|       0.58      27.39|
+Info:      86000 |    24676      60113 |  468   530 |      1872|       0.59      27.98|
+Info:      87000 |    25085      60704 |  409   591 |      1782|       0.63      28.60|
+Info:      88000 |    25509      61278 |  424   574 |      1592|       0.59      29.20|
+Info:      89000 |    25988      61797 |  479   519 |      1353|       0.62      29.82|
+Info:      90000 |    26476      62307 |  488   510 |      1200|       0.58      30.39|
+Info:      91000 |    26935      62843 |  459   536 |      1067|       0.59      30.99|
+Info:      92000 |    27416      63357 |  481   514 |       695|       0.60      31.58|
+Info:      93000 |    27825      63948 |  409   591 |       776|       0.55      32.13|
+Info:      94000 |    28272      64500 |  447   552 |       667|       0.61      32.74|
+Info:      95000 |    28736      65036 |  464   536 |       585|       0.61      33.35|
+Info:      96000 |    29223      65549 |  487   513 |       613|       0.62      33.98|
+Info:      97000 |    29694      66075 |  471   526 |       352|       0.64      34.62|
+Info:      98000 |    30138      66627 |  444   552 |       181|       0.62      35.24|
+Info:      99000 |    30646      67117 |  508   490 |       186|       0.75      35.99|
+Info:     100000 |    31065      67698 |  419   581 |       144|       0.68      36.67|
+Info:     100528 |    31317      67974 |  252   276 |         0|       0.38      37.05|
 Info: Routing complete.
-Info: Router1 time 50.62s
-Info: Checksum: 0xb59a284f
+Info: Router1 time 37.05s
+Info: Checksum: 0xb0da0555
 
 Info: Critical path report for clock '$glbnet$clk$TRELLIS_IO_IN' (posedge -> posedge):
 Info:       type curr  total name
-Info:   clk-to-q  5.61  5.61 Source u_mapped_memory.mem.0.1.DOA8
-Info:    routing  1.02  6.63 Net u_mapped_memory.ram_rdata[17] (13,22) -> (14,17)
-Info:                          Sink mem_rdata_LUT4_Z_26.C
-Info:                          Defined in:
-Info:                               rtl/mapped/mapped_memory.sv:26.16-26.25
-Info:      logic  0.24  6.86 Source mem_rdata_LUT4_Z_26.F
-Info:    routing  0.91  7.77 Net mem_rdata[17] (14,17) -> (16,16)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_23_D_LUT4_Z_D_LUT4_Z.A
-Info:                          Defined in:
-Info:                               rtl/mapped/mapped_memory.sv:13.23-13.32
-Info:      logic  0.24  8.01 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_23_D_LUT4_Z_D_LUT4_Z.F
-Info:    routing  0.85  8.86 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_23_D_LUT4_Z_D[2] (16,16) -> (18,16)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_23_D_LUT4_Z.D
+Info:   clk-to-q  0.52  0.52 Source u_full_core_replaycapsule.u_picorv32.eoi_TRELLIS_FF_Q_28.Q
+Info:    routing  1.47  2.00 Net eoi[3] (11,13) -> (18,15)
+Info:                          Sink u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_SD_LUT4_Z_1.A
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  9.10 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_23_D_LUT4_Z.F
-Info:    routing  0.43  9.53 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_23_D[4] (18,16) -> (18,16)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_LUT4_Z.C
+Info:      logic  0.24  2.23 Source u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_SD_LUT4_Z_1.F
+Info:    routing  1.49  3.72 Net u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_SD[1] (18,15) -> (20,19)
+Info:                          Sink u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.B
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  9.77 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_LUT4_Z.F
-Info:    routing  1.33  11.10 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D[3] (18,16) -> (19,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_CCU2C_A1$CCU2_COMB1.A
+Info:      logic  0.24  3.96 Source u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.F
+Info:    routing  0.00  3.96 Net u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT (20,19) -> (20,19)
+Info:                          Sink u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.F1
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.45  11.55 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  11.55 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_CCU2C_A1_COUT (19,19) -> (19,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  11.62 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCO
-Info:    routing  0.00  11.62 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_FCI_INT (19,19) -> (19,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCI
-Info:      logic  0.00  11.62 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_4_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCO
-Info:    routing  0.00  11.62 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_CIN (19,19) -> (19,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  11.69 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  11.69 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_FCI_INT (19,19) -> (19,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  11.69 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  11.69 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_COUT (19,19) -> (19,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_6_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  11.76 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_6_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  11.76 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_6_D_CCU2C_A1$CCU2_FCI_INT (19,19) -> (19,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_6_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  11.76 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_6_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  11.76 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_6_D_CCU2C_A1_COUT (19,19) -> (20,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_27_D_CCU2C_A0$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  11.83 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_27_D_CCU2C_A0$CCU2_COMB0.FCO
-Info:    routing  0.00  11.83 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_27_D_CCU2C_A0$CCU2_FCI_INT (20,19) -> (20,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_27_D_CCU2C_A0$CCU2_COMB1.FCI
-Info:      logic  0.00  11.83 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_27_D_CCU2C_A0$CCU2_COMB1.FCO
-Info:    routing  0.00  11.83 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_27_D_CCU2C_A0_COUT (20,19) -> (20,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_13_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  11.90 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_13_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  11.90 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_13_D_CCU2C_A1$CCU2_FCI_INT (20,19) -> (20,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_13_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  11.90 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_13_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  11.90 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_13_D_CCU2C_A1_COUT (20,19) -> (20,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  11.97 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  11.97 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_FCI_INT (20,19) -> (20,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  11.97 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  11.97 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1_COUT (20,19) -> (20,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_30_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.04 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_30_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  12.04 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_30_D_CCU2C_A1$CCU2_FCI_INT (20,19) -> (20,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_30_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  12.04 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_30_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  12.04 Net $nextpnr_CCU2C_1$CIN (20,19) -> (21,19)
-Info:                          Sink $nextpnr_CCU2C_1$CCU2_COMB0.FCI
-Info:      logic  0.44  12.49 Source $nextpnr_CCU2C_1$CCU2_COMB0.F
-Info:    routing  1.68  14.17 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_LUT4_C_D[4] (21,19) -> (11,24)
-Info:                          Sink u_full_core_replaycapsule.property_fail_valid_TRELLIS_FF_Q_DI_LUT4_Z_C_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_BLUT_LUT4_Z.M
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.26  14.43 Source u_full_core_replaycapsule.property_fail_valid_TRELLIS_FF_Q_DI_LUT4_Z_C_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_BLUT_LUT4_Z.OFX
-Info:    routing  1.29  15.72 Net u_full_core_replaycapsule.property_fail_valid_TRELLIS_FF_Q_DI_LUT4_Z_C[1] (11,24) -> (8,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_pc_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_A_Z_LUT4_A_Z_LUT4_C.M
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.26  15.97 Source u_full_core_replaycapsule.u_replay_capsule_top.final_pc_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_A_Z_LUT4_A_Z_LUT4_C.OFX
-Info:    routing  0.00  15.97 Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_A_Z_LUT4_A_Z_L6MUX21_SD_D1 (8,19) -> (8,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_pc_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_A_Z_LUT4_A_Z_LUT4_C_Z_PFUMX_BLUT_ALUT_LUT4_Z.FXB
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:141.30-141.32
+Info:      logic  0.17  4.12 Source u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.00  4.12 Net u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_D1 (20,19) -> (20,19)
+Info:                          Sink u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:141.38-141.40
-Info:      logic  0.24  16.21 Source u_full_core_replaycapsule.u_replay_capsule_top.final_pc_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_A_Z_LUT4_A_Z_LUT4_C_Z_PFUMX_BLUT_ALUT_LUT4_Z.OFX
-Info:    routing  0.67  16.89 Net u_full_core_replaycapsule.u_replay_capsule_top.final_commit_index_LUT4_Z_8_D_LUT4_B_Z_LUT4_A_Z_L6MUX21_SD_Z[4] (8,19) -> (8,17)
-Info:                          Sink u_full_core_replaycapsule.property_signature_TRELLIS_FF_Q_22.M
-Info:      setup  0.00  16.89 Source u_full_core_replaycapsule.property_signature_TRELLIS_FF_Q_22.M
-Info: 8.69 ns logic, 8.19 ns routing
+Info:      logic  0.24  4.37 Source u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  0.85  5.21 Net u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z_D[2] (20,19) -> (20,21)
+Info:                          Sink u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  5.45 Source u_full_core_replaycapsule.u_picorv32.mem_valid_LUT4_D_1_Z_PFUMX_BLUT_Z_PFUMX_C0_Z_LUT4_Z.F
+Info:    routing  0.60  6.05 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_LUT4_D_Z_LUT4_D_1_Z[1] (20,21) -> (17,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  6.28 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0_LUT4_Z.F
+Info:    routing  0.88  7.16 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0 (17,23) -> (16,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB0.A
+Info:      logic  0.45  7.61 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB0.FCO
+Info:    routing  0.00  7.61 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_FCI_INT (16,23) -> (16,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB1.FCI
+Info:      logic  0.40  8.01 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB1.F
+Info:    routing  0.85  8.86 Net u_full_core_replaycapsule.u_replay_capsule_top.raw_multievent_pending_LUT4_Z_D[0] (16,23) -> (15,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0$CCU2_COMB1.A
+Info:                          Defined in:
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.45  9.31 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0$CCU2_COMB1.FCO
+Info:    routing  0.00  9.31 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT (15,23) -> (15,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/event_tap.sv:54.31-54.53
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  9.38 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB0.FCO
+Info:    routing  0.00  9.38 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_FCI_INT (15,23) -> (15,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB1.FCI
+Info:      logic  0.40  9.78 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB1.F
+Info:    routing  1.21  10.99 Net u_full_core_replaycapsule.running_signature_LUT4_Z_C_LUT4_A_Z_LUT4_D_Z_PFUMX_Z_1_C0_LUT4_Z_1_B[3] (15,23) -> (19,31)
+Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_1.D
+Info:                          Defined in:
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  11.23 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_1.F
+Info:    routing  1.28  12.51 Net u_full_core_replaycapsule.capsule_event_count_LUT4_Z_C[5] (19,31) -> (15,35)
+Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_2_A_LUT4_A_Z_LUT4_C_40.M
+Info:                          Defined in:
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  12.76 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_2_A_LUT4_A_Z_LUT4_C_40.OFX
+Info:    routing  3.92  16.68 Net u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_2_A_LUT4_A_Z_LUT4_D_Z_PFUMX_BLUT_Z_L6MUX21_D0_Z (15,35) -> (38,5)
+Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.mem[8]_TRELLIS_FF_Q_94.CE
+Info:      setup  0.00  16.68 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.mem[8]_TRELLIS_FF_Q_94.CE
+Info: 4.14 ns logic, 12.54 ns routing
 
 Info: Critical path report for cross-domain path '<async>' -> 'posedge $glbnet$clk$TRELLIS_IO_IN':
 Info:       type curr  total name
 Info:     source  0.00  0.00 Source uart_rx$tr_io.O
-Info:    routing  5.09  5.09 Net uart_rx$TRELLIS_IO_IN (0,89) -> (13,19)
+Info:    routing  5.59  5.59 Net uart_rx$TRELLIS_IO_IN (0,89) -> (19,18)
 Info:                          Sink u_full_core_replaycapsule_external_input_valid_LUT4_Z.C
 Info:                          Defined in:
-Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:12.22-12.29
-Info:      logic  0.24  5.33 Source u_full_core_replaycapsule_external_input_valid_LUT4_Z.F
-Info:    routing  1.12  6.45 Net u_full_core_replaycapsule_external_input_valid (13,19) -> (11,20)
-Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0_LUT4_Z.A
+Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:15.22-15.29
+Info:      logic  0.24  5.83 Source u_full_core_replaycapsule_external_input_valid_LUT4_Z.F
+Info:    routing  1.02  6.85 Net u_full_core_replaycapsule_external_input_valid (19,18) -> (16,16)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_LUT4_D_Z_LUT4_D_1.B
 Info:                          Defined in:
 Info:                               rtl/event_tap.sv:23.23-23.43
-Info:      logic  0.24  6.69 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0_LUT4_Z.F
-Info:    routing  1.08  7.76 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0 (11,20) -> (11,21)
-Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB0.A
-Info:      logic  0.45  8.21 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB0.FCO
-Info:    routing  0.00  8.21 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_FCI_INT (11,21) -> (11,21)
-Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB1.FCI
-Info:      logic  0.00  8.21 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB1.FCO
-Info:    routing  0.00  8.21 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_COUT (11,21) -> (11,21)
-Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S1_CCU2C_S0$CCU2_COMB0.FCI
+Info:      logic  0.24  7.09 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_LUT4_D_Z_LUT4_D_1.F
+Info:    routing  1.28  8.36 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_LUT4_D_Z_LUT4_D_1_Z[0] (16,16) -> (17,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0_LUT4_Z.C
 Info:                          Defined in:
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  8.60 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0_LUT4_Z.F
+Info:    routing  0.88  9.48 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A0 (17,23) -> (16,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB0.A
+Info:      logic  0.45  9.92 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB0.FCO
+Info:    routing  0.00  9.92 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_FCI_INT (16,23) -> (16,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB1.FCI
+Info:      logic  0.40  10.32 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0$CCU2_COMB1.F
+Info:    routing  0.85  11.18 Net u_full_core_replaycapsule.u_replay_capsule_top.raw_multievent_pending_LUT4_Z_D[0] (16,23) -> (15,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0$CCU2_COMB1.A
+Info:                          Defined in:
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.45  11.62 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0$CCU2_COMB1.FCO
+Info:    routing  0.00  11.62 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT (15,23) -> (15,23)
+Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/event_tap.sv:54.31-54.53
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.44  8.65 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S1_CCU2C_S0$CCU2_COMB0.F
-Info:    routing  1.10  9.75 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S1[1] (11,21) -> (11,23)
-Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB0.A
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.45  10.20 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB0.FCO
-Info:    routing  0.00  10.20 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_FCI_INT (11,23) -> (11,23)
+Info:      logic  0.07  11.70 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB0.FCO
+Info:    routing  0.00  11.70 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_FCI_INT (15,23) -> (15,23)
 Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB1.FCI
-Info:      logic  0.40  10.60 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB1.F
-Info:    routing  1.54  12.14 Net u_full_core_replaycapsule.capsule_frozen_TRELLIS_FF_Q_CE[2] (11,23) -> (19,31)
-Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN_S1_LUT4_Z_1_A_LUT4_A_Z_LUT4_C_1.M
+Info:      logic  0.40  12.10 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB1.F
+Info:    routing  1.21  13.31 Net u_full_core_replaycapsule.running_signature_LUT4_Z_C_LUT4_A_Z_LUT4_D_Z_PFUMX_Z_1_C0_LUT4_Z_1_B[3] (15,23) -> (19,31)
+Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_1.D
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.26  12.40 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN_S1_LUT4_Z_1_A_LUT4_A_Z_LUT4_C_1.OFX
-Info:    routing  1.25  13.65 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN_S1_LUT4_Z_1_A_CCU2C_B0_CIN_CCU2C_COUT_B1_LUT4_D_1_Z[3] (19,31) -> (21,27)
-Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN_S1_LUT4_Z_1_A_CCU2C_B0_CIN_CCU2C_COUT_B1_LUT4_D_2_Z_LUT4_C_2.D
+Info:      logic  0.24  13.54 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_1.F
+Info:    routing  1.28  14.82 Net u_full_core_replaycapsule.capsule_event_count_LUT4_Z_C[5] (19,31) -> (15,35)
+Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_2_A_LUT4_A_Z_LUT4_C_40.M
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  13.89 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN_S1_LUT4_Z_1_A_CCU2C_B0_CIN_CCU2C_COUT_B1_LUT4_D_2_Z_LUT4_C_2.F
-Info:    routing  3.17  17.05 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_S0_CCU2C_A0_COUT_CCU2C_CIN_S1_LUT4_Z_1_A_CCU2C_B0_CIN_CCU2C_COUT_B1_LUT4_D_2_Z_LUT4_C_2_Z (21,27) -> (37,3)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.mem[20]_TRELLIS_FF_Q_94.CE
-Info:      setup  0.00  17.05 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.mem[20]_TRELLIS_FF_Q_94.CE
-Info: 2.70 ns logic, 14.35 ns routing
+Info:      logic  0.26  15.08 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_2_A_LUT4_A_Z_LUT4_C_40.OFX
+Info:    routing  3.92  19.00 Net u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_2_A_LUT4_A_Z_LUT4_D_Z_PFUMX_BLUT_Z_L6MUX21_D0_Z (15,35) -> (38,5)
+Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.mem[8]_TRELLIS_FF_Q_94.CE
+Info:      setup  0.00  19.00 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.mem[8]_TRELLIS_FF_Q_94.CE
+Info: 2.97 ns logic, 16.03 ns routing
 
 Info: Critical path report for cross-domain path 'posedge $glbnet$clk$TRELLIS_IO_IN' -> '<async>':
 Info:       type curr  total name
-Info:   clk-to-q  0.52  0.52 Source board_counter_TRELLIS_FF_Q_10.Q
-Info:    routing  2.36  2.88 Net board_counter[2] (16,17) -> (14,30)
-Info:                          Sink u_full_core_replaycapsule.capsule_read_addr_LUT4_D_2.D
+Info:   clk-to-q  0.52  0.52 Source board_counter_TRELLIS_FF_Q_4.Q
+Info:    routing  2.83  3.36 Net board_counter[3] (16,17) -> (13,30)
+Info:                          Sink u_full_core_replaycapsule.capsule_read_addr_LUT4_D_5.C
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:40.50-40.67
+Info:      logic  0.24  3.59 Source u_full_core_replaycapsule.capsule_read_addr_LUT4_D_5.F
+Info:    routing  0.83  4.43 Net u_full_core_replaycapsule.capsule_read_addr_LUT4_D_5_Z[1] (13,30) -> (14,30)
+Info:                          Sink u_full_core_replaycapsule.capsule_read_addr_LUT4_B_23.C
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  3.12 Source u_full_core_replaycapsule.capsule_read_addr_LUT4_D_2.F
-Info:    routing  0.93  4.05 Net u_full_core_replaycapsule.capsule_read_addr_LUT4_D_2_Z[3] (14,30) -> (15,32)
-Info:                          Sink u_full_core_replaycapsule.capsule_read_addr_LUT4_B_14.C
+Info:      logic  0.24  4.66 Source u_full_core_replaycapsule.capsule_read_addr_LUT4_B_23.F
+Info:    routing  6.73  11.40 Net u_full_core_replaycapsule.capsule_read_addr_LUT4_B_21_Z[3] (14,30) -> (33,8)
+Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z.D
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  4.28 Source u_full_core_replaycapsule.capsule_read_addr_LUT4_B_14.F
-Info:    routing  4.22  8.51 Net u_full_core_replaycapsule.capsule_read_addr_LUT4_B_14_Z[2] (15,32) -> (33,27)
-Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_53_D_LUT4_Z_1_D_LUT4_Z.C
+Info:      logic  0.24  11.63 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z.F
+Info:    routing  1.12  12.76 Net u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D_LUT4_Z_D_LUT4_Z_D[3] (33,8) -> (33,7)
+Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D_LUT4_Z_D_LUT4_Z.D
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  8.74 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_53_D_LUT4_Z_1_D_LUT4_Z.F
-Info:    routing  1.47  10.21 Net u_full_core_replaycapsule.capsule_read_data_LUT4_Z_53_D_LUT4_Z_1_D[3] (33,27) -> (35,25)
-Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_53_D_LUT4_Z_1.D
+Info:      logic  0.24  12.99 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D_LUT4_Z_D_LUT4_Z.F
+Info:    routing  1.15  14.15 Net u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D_LUT4_Z_D[3] (33,7) -> (33,11)
+Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D_LUT4_Z.D
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  10.45 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_53_D_LUT4_Z_1.F
-Info:    routing  0.86  11.31 Net u_full_core_replaycapsule.capsule_read_data_LUT4_Z_53_D[3] (35,25) -> (36,25)
-Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_53.D
+Info:      logic  0.24  14.38 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D_LUT4_Z.F
+Info:    routing  0.92  15.31 Net u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164_D[3] (33,11) -> (33,9)
+Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164.D
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  11.55 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_53.F
-Info:    routing  1.42  12.97 Net capsule_read_data[91] (36,25) -> (35,21)
-Info:                          Sink u_mapped_memory.io_read_value_LUT4_Z_15_D_LUT4_Z_C_LUT4_A.C
+Info:      logic  0.24  15.54 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_164.F
+Info:    routing  1.47  17.01 Net capsule_read_data[19] (33,9) -> (32,16)
+Info:                          Sink u_mapped_memory.io_read_value_PFUMX_Z_3_ALUT_LUT4_Z_A_LUT4_A_Z_LUT4_Z.C
 Info:                          Defined in:
-Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:38.37-38.54
-Info:      logic  0.24  13.21 Source u_mapped_memory.io_read_value_LUT4_Z_15_D_LUT4_Z_C_LUT4_A.F
-Info:    routing  1.98  15.19 Net u_mapped_memory.io_read_value_LUT4_Z_15_D_LUT4_Z_C_LUT4_A_Z[3] (35,21) -> (35,17)
-Info:                          Sink u_mapped_memory.io_read_value_LUT4_Z_15_D_LUT4_Z_C_LUT4_A_Z_LUT4_D.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  15.42 Source u_mapped_memory.io_read_value_LUT4_Z_15_D_LUT4_Z_C_LUT4_A_Z_LUT4_D.F
-Info:    routing  1.20  16.62 Net u_mapped_memory.io_read_value_LUT4_Z_15_D_LUT4_Z_C_LUT4_A_Z_LUT4_D_Z[3] (35,17) -> (30,17)
-Info:                          Sink recorder_status_mix_PFUMX_Z_2_ALUT_LUT4_Z.D
+Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:41.37-41.54
+Info:      logic  0.24  17.25 Source u_mapped_memory.io_read_value_PFUMX_Z_3_ALUT_LUT4_Z_A_LUT4_A_Z_LUT4_Z.F
+Info:    routing  0.88  18.12 Net u_mapped_memory.io_read_value_PFUMX_Z_3_ALUT_LUT4_Z_A_LUT4_A_Z[2] (32,16) -> (31,16)
+Info:                          Sink recorder_status_mix_PFUMX_Z_5_ALUT_LUT4_Z.C
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  16.86 Source recorder_status_mix_PFUMX_Z_2_ALUT_LUT4_Z.F
-Info:    routing  0.00  16.86 Net recorder_status_mix_PFUMX_Z_2_ALUT (30,17) -> (30,17)
-Info:                          Sink recorder_status_mix_PFUMX_Z_2_BLUT_LUT4_Z.F1
+Info:      logic  0.24  18.36 Source recorder_status_mix_PFUMX_Z_5_ALUT_LUT4_Z.F
+Info:    routing  0.00  18.36 Net recorder_status_mix_PFUMX_Z_5_ALUT (31,16) -> (31,16)
+Info:                          Sink recorder_status_mix_PFUMX_Z_5_BLUT_LUT4_Z.F1
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
-Info:      logic  0.17  17.02 Source recorder_status_mix_PFUMX_Z_2_BLUT_LUT4_Z.OFX
-Info:    routing  1.21  18.23 Net recorder_status_mix[27] (30,17) -> (29,18)
-Info:                          Sink u_mapped_memory.io_read_value_PFUMX_Z_6_ALUT_LUT4_Z_A_LUT4_A_Z_LUT4_D_Z_LUT4_D_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.M
+Info:      logic  0.17  18.52 Source recorder_status_mix_PFUMX_Z_5_BLUT_LUT4_Z.OFX
+Info:    routing  0.85  19.37 Net recorder_status_mix[19] (31,16) -> (31,17)
+Info:                          Sink u_mapped_memory.io_read_value_LUT4_Z_5_C_LUT4_Z_A_LUT4_A_Z_LUT4_D_Z_LUT4_C.D
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.26  18.49 Source u_mapped_memory.io_read_value_PFUMX_Z_6_ALUT_LUT4_Z_A_LUT4_A_Z_LUT4_D_Z_LUT4_D_Z_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
-Info:    routing  1.42  19.91 Net u_mapped_memory.io_read_value_PFUMX_Z_6_ALUT_LUT4_Z_A_LUT4_A_Z_LUT4_D_Z_LUT4_D_Z[3] (29,18) -> (23,20)
-Info:                          Sink recorder_status_xor_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.D
+Info:      logic  0.24  19.61 Source u_mapped_memory.io_read_value_LUT4_Z_5_C_LUT4_Z_A_LUT4_A_Z_LUT4_D_Z_LUT4_C.F
+Info:    routing  1.84  21.44 Net u_mapped_memory.io_read_value_LUT4_Z_3_D_LUT4_Z_C_LUT4_A_Z_LUT4_D_Z_LUT4_C_Z[2] (31,17) -> (15,15)
+Info:                          Sink u_mapped_memory.io_read_value_PFUMX_Z_6_ALUT_LUT4_Z_A_LUT4_A_Z_LUT4_D_Z_LUT4_D_Z_LUT4_Z_1.C
 Info:                          Defined in:
 Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  20.14 Source recorder_status_xor_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.F
-Info:    routing  0.00  20.14 Net recorder_status_xor_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_ALUT (23,20) -> (23,20)
-Info:                          Sink recorder_status_xor_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:      logic  0.24  21.68 Source u_mapped_memory.io_read_value_PFUMX_Z_6_ALUT_LUT4_Z_A_LUT4_A_Z_LUT4_D_Z_LUT4_D_Z_LUT4_Z_1.F
+Info:    routing  1.59  23.27 Net u_mapped_memory.io_read_value_PFUMX_Z_6_ALUT_LUT4_Z_A_LUT4_A_Z_LUT4_D_Z_LUT4_D_Z[5] (15,15) -> (15,36)
+Info:                          Sink recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.M
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.22-157.24
-Info:      logic  0.17  20.31 Source recorder_status_xor_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z.OFX
-Info:    routing  0.00  20.31 Net recorder_status_xor_L6MUX21_Z_D0_L6MUX21_Z_D0 (23,20) -> (23,20)
-Info:                          Sink recorder_status_xor_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  23.52 Source recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  0.00  23.52 Net recorder_status_xor_L6MUX21_Z_D1 (15,36) -> (15,36)
+Info:                          Sink recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.FXB
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.50-157.52
-Info:      logic  0.24  20.55 Source recorder_status_xor_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
-Info:    routing  0.00  20.55 Net recorder_status_xor_L6MUX21_Z_D0 (23,20) -> (23,20)
-Info:                          Sink recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.FXA
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.66-157.68
-Info:      logic  0.24  20.79 Source recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
-Info:    routing  3.48  24.27 Net recorder_status_xor$TRELLIS_IO_OUT (23,20) -> (0,38)
+Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.70-157.72
+Info:      logic  0.24  23.77 Source recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  2.00  25.77 Net recorder_status_xor$TRELLIS_IO_OUT (15,36) -> (0,38)
 Info:                          Sink recorder_status_xor$tr_io.I
 Info:                          Defined in:
-Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:19.22-19.41
-Info: 3.71 ns logic, 20.55 ns routing
+Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:22.22-22.41
+Info: 3.55 ns logic, 22.22 ns routing
 
-Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 59.22 MHz (PASS at 50.00 MHz)
+Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 59.94 MHz (PASS at 50.00 MHz)
 
-Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 17.05 ns
-Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 24.27 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 19.00 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 25.77 ns
 
 Info: Slack histogram:
-Info:  legend: * represents 45 endpoint(s)
-Info:          + represents [1,45) endpoint(s)
-Info: [  3113,   3902) |****+
-Info: [  3902,   4691) |***********************************+
-Info: [  4691,   5480) |************************************************************
-Info: [  5480,   6269) |*******************+
-Info: [  6269,   7058) |***+
-Info: [  7058,   7847) |******+
-Info: [  7847,   8636) |***********+
-Info: [  8636,   9425) |**********+
-Info: [  9425,  10214) |******+
-Info: [ 10214,  11003) |********+
-Info: [ 11003,  11792) |**********+
-Info: [ 11792,  12581) |***+
-Info: [ 12581,  13370) |***+
-Info: [ 13370,  14159) |******+
-Info: [ 14159,  14948) |**************+
-Info: [ 14948,  15737) |*******************+
-Info: [ 15737,  16526) |************************+
-Info: [ 16526,  17315) |****************+
-Info: [ 17315,  18104) |*************+
-Info: [ 18104,  18893) |**+
+Info:  legend: * represents 40 endpoint(s)
+Info:          + represents [1,40) endpoint(s)
+Info: [  3318,   4105) |+
+Info: [  4105,   4892) |*******+
+Info: [  4892,   5679) |*******************************+
+Info: [  5679,   6466) |************************************************************ 
+Info: [  6466,   7253) |************************************+
+Info: [  7253,   8040) |*******+
+Info: [  8040,   8827) |****************+
+Info: [  8827,   9614) |**************+
+Info: [  9614,  10401) |**************+
+Info: [ 10401,  11188) |*******+
+Info: [ 11188,  11975) |****+
+Info: [ 11975,  12762) |***+
+Info: [ 12762,  13549) |****+
+Info: [ 13549,  14336) |********+
+Info: [ 14336,  15123) |****************+
+Info: [ 15123,  15910) |*************************+
+Info: [ 15910,  16697) |**********************+
+Info: [ 16697,  17484) |*****************+
+Info: [ 17484,  18271) |**************+
+Info: [ 18271,  19058) |*+
 
 Info: Program finished normally.

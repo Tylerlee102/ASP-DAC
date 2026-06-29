@@ -1,0 +1,1 @@
+PASS record benchmark=uart_command_bug variant=failing seed=2 arch=v2 recorder_config=hashed property=1 events=2 cycles=1543 commits=339 notes="property failure observed"

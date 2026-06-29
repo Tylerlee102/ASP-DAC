@@ -1,0 +1,1 @@
+PASS record benchmark=watchdog_timeout_bug variant=failing seed=5 arch=v2 recorder_config=full property=6 events=549 cycles=1581 commits=348 notes="property failure observed"

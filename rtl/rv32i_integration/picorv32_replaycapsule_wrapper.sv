@@ -6,7 +6,8 @@ module picorv32_replaycapsule_wrapper #(
   parameter logic [31:0] STACKADDR      = 32'h0000_2000,
   parameter int          CAPSULE_DEPTH  = 256,
   parameter int          CAPSULE_ADDR_W = $clog2(CAPSULE_DEPTH),
-  parameter bit          ENABLE_WATCHDOG = 1'b0
+  parameter bit          ENABLE_WATCHDOG = 1'b0,
+  parameter bit          ENABLE_V2_RECORDERS = 1'b1
 ) (
   input  logic        clk,
   input  logic        rst_n,
@@ -249,6 +250,8 @@ module picorv32_replaycapsule_wrapper #(
     .captured_event_type()
   );
 
+  generate
+    if (ENABLE_V2_RECORDERS) begin : g_v2_recorders
   rcv2_recorder #(
     .REPLAYCAPSULE_CONFIG(1),
     .BUFFER_DEPTH(CAPSULE_DEPTH),
@@ -386,6 +389,36 @@ module picorv32_replaycapsule_wrapper #(
     .captured_event_type(),
     .dropped_diagnostic_count(v2_full_dropped_diagnostic_count)
   );
+    end else begin : g_no_v2_recorders
+      assign v2_core_capsule_read_data = '0;
+      assign v2_core_capsule_frozen = 1'b0;
+      assign v2_core_capsule_overflow = 1'b0;
+      assign v2_core_capsule_event_count = '0;
+      assign v2_core_running_signature = 32'h0;
+      assign v2_core_property_fail_valid = 1'b0;
+      assign v2_core_property_id = 8'h0;
+      assign v2_core_property_signature = 32'h0;
+      assign v2_core_dropped_diagnostic_count = 32'h0;
+      assign v2_hashed_capsule_read_data = '0;
+      assign v2_hashed_capsule_frozen = 1'b0;
+      assign v2_hashed_capsule_overflow = 1'b0;
+      assign v2_hashed_capsule_event_count = '0;
+      assign v2_hashed_running_signature = 32'h0;
+      assign v2_hashed_property_fail_valid = 1'b0;
+      assign v2_hashed_property_id = 8'h0;
+      assign v2_hashed_property_signature = 32'h0;
+      assign v2_hashed_dropped_diagnostic_count = 32'h0;
+      assign v2_full_capsule_read_data = '0;
+      assign v2_full_capsule_frozen = 1'b0;
+      assign v2_full_capsule_overflow = 1'b0;
+      assign v2_full_capsule_event_count = '0;
+      assign v2_full_running_signature = 32'h0;
+      assign v2_full_property_fail_valid = 1'b0;
+      assign v2_full_property_id = 8'h0;
+      assign v2_full_property_signature = 32'h0;
+      assign v2_full_dropped_diagnostic_count = 32'h0;
+    end
+  endgenerate
 
   assign use_v2 = arch_select == 2'd2;
   assign v2_capture_enabled = capture_mode != 4'h4;

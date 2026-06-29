@@ -1,0 +1,18 @@
+{
+  "benchmark": "interrupt_race_bug",
+  "variant": "fixed",
+  "seed": 3,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 100000,
+  "commits_to_failure": 30596,
+  "event_count": 52,
+  "capsule_bytes": 416,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "no false property failure"
+}

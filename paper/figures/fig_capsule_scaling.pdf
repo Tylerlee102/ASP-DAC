@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 502 >>
+<< /Length 506 >>
 stream
 BT
 /F1 15 Tf
@@ -20,15 +20,15 @@ BT
 (Capsule Size Scaling) Tj
 /F1 10 Tf
 0 -24 Td
-(long: median 5376.000000 bytes, reduction vs full instruction 97.800000%) Tj
+(long: median 86016.000000 bytes, reduction vs full instruction 64.860000%) Tj
 0 -16 Td
-(medium: median 5376.000000 bytes, reduction vs full instruction 95.790000%) Tj
+(medium: median 21504.000000 bytes, reduction vs full instruction 83.180000%) Tj
 0 -16 Td
 (short: median 5376.000000 bytes, reduction vs full instruction 78.710000%) Tj
 0 -16 Td
 (smoke: median 5376.000000 bytes, reduction vs full instruction 59.520000%) Tj
 0 -16 Td
-(stress: median 5376.000000 bytes, reduction vs full instruction 98.790000%) Tj
+(stress: median 344064.000000 bytes, reduction vs full instruction 22.840000%) Tj
 ET
 endstream
 endobj
@@ -42,5 +42,5 @@ xref
 0000000311 00000 n
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-864
+868
 %%EOF

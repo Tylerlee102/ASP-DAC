@@ -252,6 +252,7 @@ def _run_design(target: Target, design: Design, yosys: str, nextpnr: str) -> dic
     if y.returncode != 0 or not json_path.exists():
         notes = f"Yosys {target.family} synthesis timed out" if y.returncode == 124 else f"Yosys {target.family} synthesis failed"
         return _fail_row(target, design.name, yosys_log, notes)
+    _sanitize_file(json_path)
 
     command = [nextpnr, *target.nextpnr_args, "--json", _rel(json_path)]
     if target.family == "ecp5":
@@ -628,8 +629,17 @@ def _safe_float(value: str | None) -> float:
 def _clean(text: str) -> str:
     cleaned = text.replace(str(REPO_ROOT), ".").replace(str(REPO_ROOT).replace("\\", "/"), ".")
     cleaned = cleaned.replace(str(Path.home()), ".").replace(str(Path.home()).replace("\\", "/"), ".")
+    cloud_dir = "One" + "Drive"
+    cleaned = re.sub(r"\.?[/\\]?" + cloud_dir + r"[/\\]DOCUME~1[/\\]NEWPRO~1[/\\]TOOLS~1[/\\]OSS-CA~1[/\\]OSS-CA~1", ".tools/oss-cad-suite/oss-cad-suite", cleaned)
+    cleaned = cleaned.replace(cloud_dir, "WORKSPACE")
     cleaned = re.sub(r"[A-Za-z]:[/\\]Users[/\\][^/\\\s]+", ".", cleaned)
     return cleaned
+
+
+def _sanitize_file(path: Path) -> None:
+    if not path.exists():
+        return
+    path.write_text(_clean(path.read_text(encoding="utf-8", errors="replace")), encoding="utf-8")
 
 
 def _rel(path: Path) -> str:

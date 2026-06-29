@@ -1,0 +1,1 @@
+PASS replay benchmark=sensor_threshold_bug variant=no_failure_edge seed=1 arch=v2 recorder_config=core property=0 events=1 cycles=200000 commits=55739 notes="record/replay canonical events match"

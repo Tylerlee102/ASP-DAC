@@ -1,376 +1,376 @@
-benchmark,variant,seed,workload_scale,firmware_source,compiler_backed,cycles,commits,events,capsule_bytes,event_rate_per_kinst,cycles_to_failure,commits_to_failure,property_id,replay_status,final_signature_match,event_match,overflow,notes
-sensor_threshold_bug,failing,1,smoke,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,2,smoke,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,3,smoke,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,4,smoke,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,5,smoke,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,1,short,compiler_c_scaled,true,1607,354,136,2856,384.180791,1607,354,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,2,short,compiler_c_scaled,true,1607,354,136,2856,384.180791,1607,354,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,3,short,compiler_c_scaled,true,1607,354,136,2856,384.180791,1607,354,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,4,short,compiler_c_scaled,true,1607,354,136,2856,384.180791,1607,354,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,5,short,compiler_c_scaled,true,1607,354,136,2856,384.180791,1607,354,3,PASS,PASS,PASS,false,record/replay complete
-sensor_threshold_bug,failing,1,medium,compiler_c_scaled,true,6023,1314,256,5376,194.824962,6023,1314,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,2,medium,compiler_c_scaled,true,6023,1314,256,5376,194.824962,6023,1314,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,3,medium,compiler_c_scaled,true,6023,1314,256,5376,194.824962,6023,1314,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,4,medium,compiler_c_scaled,true,6023,1314,256,5376,194.824962,6023,1314,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,5,medium,compiler_c_scaled,true,6023,1314,256,5376,194.824962,6023,1314,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,1,long,compiler_c_scaled,true,23687,5154,256,5376,49.670159,23687,5154,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,2,long,compiler_c_scaled,true,23687,5154,256,5376,49.670159,23687,5154,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,3,long,compiler_c_scaled,true,23687,5154,256,5376,49.670159,23687,5154,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,4,long,compiler_c_scaled,true,23687,5154,256,5376,49.670159,23687,5154,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,5,long,compiler_c_scaled,true,23687,5154,256,5376,49.670159,23687,5154,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,1,stress,compiler_c_scaled,true,94343,20514,256,5376,12.479282,94343,20514,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,2,stress,compiler_c_scaled,true,94343,20514,256,5376,12.479282,94343,20514,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,3,stress,compiler_c_scaled,true,94343,20514,256,5376,12.479282,94343,20514,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,4,stress,compiler_c_scaled,true,94343,20514,256,5376,12.479282,94343,20514,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,failing,5,stress,compiler_c_scaled,true,94343,20514,256,5376,12.479282,94343,20514,3,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,1,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,2,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,3,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,4,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,5,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,1,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,2,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,3,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,4,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,5,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,fixed,1,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,2,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,3,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,4,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,5,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,1,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,2,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,3,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,4,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,5,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,1,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,2,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,3,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,4,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,fixed,5,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,1,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,2,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,3,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,4,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,5,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,1,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,2,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,3,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,4,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,5,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-sensor_threshold_bug,no_failure_edge,1,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,2,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,3,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,4,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,5,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,1,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,2,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,3,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,4,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,5,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,1,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,2,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,3,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,4,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-sensor_threshold_bug,no_failure_edge,5,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-interrupt_race_bug,failing,1,smoke,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,2,smoke,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,3,smoke,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,4,smoke,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,5,smoke,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,1,short,compiler_c_scaled,true,1540,338,132,2772,390.532544,1540,338,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,2,short,compiler_c_scaled,true,1540,338,132,2772,390.532544,1540,338,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,3,short,compiler_c_scaled,true,1540,338,132,2772,390.532544,1540,338,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,4,short,compiler_c_scaled,true,1540,338,132,2772,390.532544,1540,338,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,5,short,compiler_c_scaled,true,1540,338,132,2772,390.532544,1540,338,2,PASS,PASS,PASS,false,record/replay complete
-interrupt_race_bug,failing,1,medium,compiler_c_scaled,true,5956,1298,256,5376,197.226502,5956,1298,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,2,medium,compiler_c_scaled,true,5956,1298,256,5376,197.226502,5956,1298,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,3,medium,compiler_c_scaled,true,5956,1298,256,5376,197.226502,5956,1298,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,4,medium,compiler_c_scaled,true,5956,1298,256,5376,197.226502,5956,1298,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,5,medium,compiler_c_scaled,true,5956,1298,256,5376,197.226502,5956,1298,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,1,long,compiler_c_scaled,true,23620,5138,256,5376,49.824835,23620,5138,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,2,long,compiler_c_scaled,true,23620,5138,256,5376,49.824835,23620,5138,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,3,long,compiler_c_scaled,true,23620,5138,256,5376,49.824835,23620,5138,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,4,long,compiler_c_scaled,true,23620,5138,256,5376,49.824835,23620,5138,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,5,long,compiler_c_scaled,true,23620,5138,256,5376,49.824835,23620,5138,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,1,stress,compiler_c_scaled,true,94276,20498,256,5376,12.489023,94276,20498,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,2,stress,compiler_c_scaled,true,94276,20498,256,5376,12.489023,94276,20498,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,3,stress,compiler_c_scaled,true,94276,20498,256,5376,12.489023,94276,20498,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,4,stress,compiler_c_scaled,true,94276,20498,256,5376,12.489023,94276,20498,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,failing,5,stress,compiler_c_scaled,true,94276,20498,256,5376,12.489023,94276,20498,2,FAIL,FAIL,FAIL,true,error_code=WRONG_PROPERTY
-interrupt_race_bug,fixed,1,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,2,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,3,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,4,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,5,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,1,short,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,2,short,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,3,short,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,4,short,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,5,short,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,1,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,2,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,3,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,4,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,5,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,1,long,compiler_c_scaled,true,100000,30596,256,5376,8.367107,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,2,long,compiler_c_scaled,true,100000,30596,256,5376,8.367107,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,3,long,compiler_c_scaled,true,100000,30596,256,5376,8.367107,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,4,long,compiler_c_scaled,true,100000,30596,256,5376,8.367107,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,5,long,compiler_c_scaled,true,100000,30596,256,5376,8.367107,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,1,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,2,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,3,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,4,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-interrupt_race_bug,fixed,5,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,1,smoke,compiler_c_scaled,true,56,14,4,84,285.714286,56,14,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,2,smoke,compiler_c_scaled,true,56,14,4,84,285.714286,56,14,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,3,smoke,compiler_c_scaled,true,56,14,4,84,285.714286,56,14,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,4,smoke,compiler_c_scaled,true,56,14,4,84,285.714286,56,14,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,5,smoke,compiler_c_scaled,true,56,14,4,84,285.714286,56,14,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,1,short,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,2,short,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,3,short,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,4,short,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,5,short,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,5,PASS,PASS,PASS,false,record/replay complete
-mmio_ordering_bug,failing,1,medium,compiler_c_scaled,true,5951,1297,256,5376,197.378566,5951,1297,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,2,medium,compiler_c_scaled,true,5951,1297,256,5376,197.378566,5951,1297,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,3,medium,compiler_c_scaled,true,5951,1297,256,5376,197.378566,5951,1297,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,4,medium,compiler_c_scaled,true,5951,1297,256,5376,197.378566,5951,1297,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,5,medium,compiler_c_scaled,true,5951,1297,256,5376,197.378566,5951,1297,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,1,long,compiler_c_scaled,true,23615,5137,256,5376,49.834534,23615,5137,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,2,long,compiler_c_scaled,true,23615,5137,256,5376,49.834534,23615,5137,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,3,long,compiler_c_scaled,true,23615,5137,256,5376,49.834534,23615,5137,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,4,long,compiler_c_scaled,true,23615,5137,256,5376,49.834534,23615,5137,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,5,long,compiler_c_scaled,true,23615,5137,256,5376,49.834534,23615,5137,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,1,stress,compiler_c_scaled,true,94271,20497,256,5376,12.489633,94271,20497,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,2,stress,compiler_c_scaled,true,94271,20497,256,5376,12.489633,94271,20497,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,3,stress,compiler_c_scaled,true,94271,20497,256,5376,12.489633,94271,20497,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,4,stress,compiler_c_scaled,true,94271,20497,256,5376,12.489633,94271,20497,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,failing,5,stress,compiler_c_scaled,true,94271,20497,256,5376,12.489633,94271,20497,5,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,1,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,2,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,3,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,4,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,5,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,1,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,2,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,3,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,4,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,5,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,1,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,2,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,3,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,4,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,5,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,1,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,2,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,3,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,4,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,5,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,1,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,2,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,3,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,4,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-mmio_ordering_bug,fixed,5,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,1,smoke,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,2,smoke,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,3,smoke,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,4,smoke,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,5,smoke,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,1,short,compiler_c_scaled,true,1538,338,131,2751,387.573964,1538,338,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,2,short,compiler_c_scaled,true,1538,338,131,2751,387.573964,1538,338,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,3,short,compiler_c_scaled,true,1538,338,131,2751,387.573964,1538,338,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,4,short,compiler_c_scaled,true,1538,338,131,2751,387.573964,1538,338,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,5,short,compiler_c_scaled,true,1538,338,131,2751,387.573964,1538,338,4,PASS,PASS,PASS,false,record/replay complete
-stack_corruption_bug,failing,1,medium,compiler_c_scaled,true,5954,1298,256,5376,197.226502,5954,1298,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,2,medium,compiler_c_scaled,true,5954,1298,256,5376,197.226502,5954,1298,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,3,medium,compiler_c_scaled,true,5954,1298,256,5376,197.226502,5954,1298,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,4,medium,compiler_c_scaled,true,5954,1298,256,5376,197.226502,5954,1298,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,5,medium,compiler_c_scaled,true,5954,1298,256,5376,197.226502,5954,1298,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,1,long,compiler_c_scaled,true,23618,5138,256,5376,49.824835,23618,5138,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,2,long,compiler_c_scaled,true,23618,5138,256,5376,49.824835,23618,5138,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,3,long,compiler_c_scaled,true,23618,5138,256,5376,49.824835,23618,5138,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,4,long,compiler_c_scaled,true,23618,5138,256,5376,49.824835,23618,5138,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,5,long,compiler_c_scaled,true,23618,5138,256,5376,49.824835,23618,5138,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,1,stress,compiler_c_scaled,true,94274,20498,256,5376,12.489023,94274,20498,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,2,stress,compiler_c_scaled,true,94274,20498,256,5376,12.489023,94274,20498,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,3,stress,compiler_c_scaled,true,94274,20498,256,5376,12.489023,94274,20498,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,4,stress,compiler_c_scaled,true,94274,20498,256,5376,12.489023,94274,20498,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,failing,5,stress,compiler_c_scaled,true,94274,20498,256,5376,12.489023,94274,20498,4,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,1,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,2,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,3,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,4,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,5,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,1,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,2,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,3,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,4,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,5,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,1,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,2,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,3,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,4,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,5,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,1,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,2,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,3,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,4,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,5,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,1,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,2,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,3,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,4,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-stack_corruption_bug,fixed,5,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,failing,1,smoke,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,2,smoke,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,3,smoke,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,4,smoke,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,5,smoke,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,1,short,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,2,short,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,3,short,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,4,short,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,5,short,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
-uart_command_bug,failing,1,medium,compiler_c_scaled,true,5959,1299,256,5376,197.074673,5959,1299,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,2,medium,compiler_c_scaled,true,5959,1299,256,5376,197.074673,5959,1299,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,3,medium,compiler_c_scaled,true,5959,1299,256,5376,197.074673,5959,1299,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,4,medium,compiler_c_scaled,true,5959,1299,256,5376,197.074673,5959,1299,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,5,medium,compiler_c_scaled,true,5959,1299,256,5376,197.074673,5959,1299,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,1,long,compiler_c_scaled,true,23623,5139,256,5376,49.815139,23623,5139,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,2,long,compiler_c_scaled,true,23623,5139,256,5376,49.815139,23623,5139,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,3,long,compiler_c_scaled,true,23623,5139,256,5376,49.815139,23623,5139,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,4,long,compiler_c_scaled,true,23623,5139,256,5376,49.815139,23623,5139,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,5,long,compiler_c_scaled,true,23623,5139,256,5376,49.815139,23623,5139,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,1,stress,compiler_c_scaled,true,94279,20499,256,5376,12.488414,94279,20499,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,2,stress,compiler_c_scaled,true,94279,20499,256,5376,12.488414,94279,20499,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,3,stress,compiler_c_scaled,true,94279,20499,256,5376,12.488414,94279,20499,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,4,stress,compiler_c_scaled,true,94279,20499,256,5376,12.488414,94279,20499,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,failing,5,stress,compiler_c_scaled,true,94279,20499,256,5376,12.488414,94279,20499,1,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,1,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,2,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,3,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,4,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,5,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,1,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,2,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,3,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,4,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,5,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,fixed,1,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,2,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,3,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,4,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,5,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,1,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,2,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,3,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,4,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,5,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,1,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,2,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,3,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,4,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,fixed,5,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,1,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,2,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,3,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,4,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,5,smoke,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,1,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,2,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,3,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,4,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,5,short,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-uart_command_bug,no_failure_edge,1,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,2,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,3,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,4,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,5,medium,compiler_c_scaled,true,50000,15979,256,5376,16.021028,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,1,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,2,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,3,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,4,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,5,long,compiler_c_scaled,true,100000,30598,256,5376,8.366560,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,1,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,2,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,3,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,4,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-uart_command_bug,no_failure_edge,5,stress,compiler_c_scaled,true,200000,55739,256,5376,4.592834,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,1,smoke,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,2,smoke,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,3,smoke,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,4,smoke,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,5,smoke,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,1,short,compiler_c_scaled,true,1584,349,134,2814,383.954155,1584,349,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,2,short,compiler_c_scaled,true,1584,349,134,2814,383.954155,1584,349,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,3,short,compiler_c_scaled,true,1584,349,134,2814,383.954155,1584,349,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,4,short,compiler_c_scaled,true,1584,349,134,2814,383.954155,1584,349,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,5,short,compiler_c_scaled,true,1584,349,134,2814,383.954155,1584,349,6,PASS,PASS,PASS,false,record/replay complete
-watchdog_timeout_bug,failing,1,medium,compiler_c_scaled,true,6000,1309,256,5376,195.569137,6000,1309,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,2,medium,compiler_c_scaled,true,6000,1309,256,5376,195.569137,6000,1309,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,3,medium,compiler_c_scaled,true,6000,1309,256,5376,195.569137,6000,1309,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,4,medium,compiler_c_scaled,true,6000,1309,256,5376,195.569137,6000,1309,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,5,medium,compiler_c_scaled,true,6000,1309,256,5376,195.569137,6000,1309,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,1,long,compiler_c_scaled,true,23664,5149,256,5376,49.718392,23664,5149,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,2,long,compiler_c_scaled,true,23664,5149,256,5376,49.718392,23664,5149,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,3,long,compiler_c_scaled,true,23664,5149,256,5376,49.718392,23664,5149,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,4,long,compiler_c_scaled,true,23664,5149,256,5376,49.718392,23664,5149,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,5,long,compiler_c_scaled,true,23664,5149,256,5376,49.718392,23664,5149,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,1,stress,compiler_c_scaled,true,94320,20509,256,5376,12.482325,94320,20509,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,2,stress,compiler_c_scaled,true,94320,20509,256,5376,12.482325,94320,20509,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,3,stress,compiler_c_scaled,true,94320,20509,256,5376,12.482325,94320,20509,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,4,stress,compiler_c_scaled,true,94320,20509,256,5376,12.482325,94320,20509,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,failing,5,stress,compiler_c_scaled,true,94320,20509,256,5376,12.482325,94320,20509,6,FAIL,FAIL,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,1,smoke,compiler_c_scaled,true,5000,1657,256,5376,154.496077,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,2,smoke,compiler_c_scaled,true,5000,1657,256,5376,154.496077,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,3,smoke,compiler_c_scaled,true,5000,1657,256,5376,154.496077,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,4,smoke,compiler_c_scaled,true,5000,1657,256,5376,154.496077,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,5,smoke,compiler_c_scaled,true,5000,1657,256,5376,154.496077,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,1,short,compiler_c_scaled,true,10000,3154,256,5376,81.166772,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,2,short,compiler_c_scaled,true,10000,3154,256,5376,81.166772,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,3,short,compiler_c_scaled,true,10000,3154,256,5376,81.166772,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,4,short,compiler_c_scaled,true,10000,3154,256,5376,81.166772,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,5,short,compiler_c_scaled,true,10000,3154,256,5376,81.166772,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,fixed,1,medium,compiler_c_scaled,true,50000,15975,256,5376,16.025039,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,2,medium,compiler_c_scaled,true,50000,15975,256,5376,16.025039,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,3,medium,compiler_c_scaled,true,50000,15975,256,5376,16.025039,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,4,medium,compiler_c_scaled,true,50000,15975,256,5376,16.025039,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,5,medium,compiler_c_scaled,true,50000,15975,256,5376,16.025039,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,1,long,compiler_c_scaled,true,100000,30594,256,5376,8.367654,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,2,long,compiler_c_scaled,true,100000,30594,256,5376,8.367654,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,3,long,compiler_c_scaled,true,100000,30594,256,5376,8.367654,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,4,long,compiler_c_scaled,true,100000,30594,256,5376,8.367654,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,5,long,compiler_c_scaled,true,100000,30594,256,5376,8.367654,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,1,stress,compiler_c_scaled,true,200000,55735,256,5376,4.593164,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,2,stress,compiler_c_scaled,true,200000,55735,256,5376,4.593164,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,3,stress,compiler_c_scaled,true,200000,55735,256,5376,4.593164,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,4,stress,compiler_c_scaled,true,200000,55735,256,5376,4.593164,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,fixed,5,stress,compiler_c_scaled,true,200000,55735,256,5376,4.593164,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,1,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,2,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,3,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,4,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,5,smoke,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,1,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,2,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,3,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,4,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,5,short,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
-watchdog_timeout_bug,no_failure_edge,1,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,2,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,3,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,4,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,5,medium,compiler_c_scaled,true,50000,15978,256,5376,16.022030,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,1,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,2,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,3,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,4,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,5,long,compiler_c_scaled,true,100000,30597,256,5376,8.366833,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,1,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,2,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,3,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,4,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
-watchdog_timeout_bug,no_failure_edge,5,stress,compiler_c_scaled,true,200000,55738,256,5376,4.592917,NA,NA,0,FAIL,PASS,FAIL,true,error_code=REPLAY_STIMULUS
+benchmark,variant,seed,workload_scale,buffer_depth,firmware_source,compiler_backed,cycles,commits,events,capsule_bytes,event_rate_per_kinst,cycles_to_failure,commits_to_failure,property_id,replay_status,final_signature_match,event_match,overflow,notes
+sensor_threshold_bug,failing,1,smoke,256,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,2,smoke,256,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,3,smoke,256,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,4,smoke,256,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,5,smoke,256,compiler_c_scaled,true,128,31,9,189,290.322581,128,31,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,1,short,256,compiler_c_scaled,true,1604,353,136,2856,385.269122,1604,353,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,2,short,256,compiler_c_scaled,true,1604,353,136,2856,385.269122,1604,353,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,3,short,256,compiler_c_scaled,true,1604,353,136,2856,385.269122,1604,353,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,4,short,256,compiler_c_scaled,true,1604,353,136,2856,385.269122,1604,353,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,5,short,256,compiler_c_scaled,true,1604,353,136,2856,385.269122,1604,353,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,fixed,1,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,2,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,3,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,4,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,5,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,1,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,2,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,3,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,4,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,5,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,1,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,2,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,3,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,4,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,5,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,1,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,2,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,3,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,4,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,5,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,failing,1,smoke,256,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,2,smoke,256,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,3,smoke,256,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,4,smoke,256,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,5,smoke,256,compiler_c_scaled,true,61,15,5,105,333.333333,61,15,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,1,short,256,compiler_c_scaled,true,1537,337,132,2772,391.691395,1537,337,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,2,short,256,compiler_c_scaled,true,1537,337,132,2772,391.691395,1537,337,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,3,short,256,compiler_c_scaled,true,1537,337,132,2772,391.691395,1537,337,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,4,short,256,compiler_c_scaled,true,1537,337,132,2772,391.691395,1537,337,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,5,short,256,compiler_c_scaled,true,1537,337,132,2772,391.691395,1537,337,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,fixed,1,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,2,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,3,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,4,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,5,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,1,short,256,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,2,short,256,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,3,short,256,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,4,short,256,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,5,short,256,compiler_c_scaled,true,10000,3156,256,5376,81.115336,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,failing,1,smoke,256,compiler_c_scaled,true,59,15,4,84,266.666667,59,15,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,2,smoke,256,compiler_c_scaled,true,59,15,4,84,266.666667,59,15,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,3,smoke,256,compiler_c_scaled,true,59,15,4,84,266.666667,59,15,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,4,smoke,256,compiler_c_scaled,true,59,15,4,84,266.666667,59,15,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,5,smoke,256,compiler_c_scaled,true,59,15,4,84,266.666667,59,15,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,1,short,256,compiler_c_scaled,true,1532,336,131,2751,389.880952,1532,336,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,2,short,256,compiler_c_scaled,true,1532,336,131,2751,389.880952,1532,336,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,3,short,256,compiler_c_scaled,true,1532,336,131,2751,389.880952,1532,336,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,4,short,256,compiler_c_scaled,true,1532,336,131,2751,389.880952,1532,336,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,5,short,256,compiler_c_scaled,true,1532,336,131,2751,389.880952,1532,336,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,fixed,1,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,2,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,3,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,4,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,5,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,1,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,2,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,3,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,4,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,5,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,failing,1,smoke,256,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,2,smoke,256,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,3,smoke,256,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,4,smoke,256,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,5,smoke,256,compiler_c_scaled,true,62,16,4,84,250.000000,62,16,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,1,short,256,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,2,short,256,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,3,short,256,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,4,short,256,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,5,short,256,compiler_c_scaled,true,1535,337,131,2751,388.724036,1535,337,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,fixed,1,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,2,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,3,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,4,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,5,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,1,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,2,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,3,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,4,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,5,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,failing,1,smoke,256,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,2,smoke,256,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,3,smoke,256,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,4,smoke,256,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,5,smoke,256,compiler_c_scaled,true,67,17,5,105,294.117647,67,17,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,1,short,256,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,2,short,256,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,3,short,256,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,4,short,256,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,5,short,256,compiler_c_scaled,true,1543,339,132,2772,389.380531,1543,339,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,fixed,1,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,2,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,3,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,4,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,5,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,1,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,2,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,3,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,4,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,5,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,1,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,2,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,3,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,4,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,5,smoke,256,compiler_c_scaled,true,5000,1661,256,5376,154.124022,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,1,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,2,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,3,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,4,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,5,short,256,compiler_c_scaled,true,10000,3158,256,5376,81.063965,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,failing,1,smoke,256,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,2,smoke,256,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,3,smoke,256,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,4,smoke,256,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,5,smoke,256,compiler_c_scaled,true,105,26,7,147,269.230769,105,26,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,1,short,256,compiler_c_scaled,true,1581,348,134,2814,385.057471,1581,348,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,2,short,256,compiler_c_scaled,true,1581,348,134,2814,385.057471,1581,348,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,3,short,256,compiler_c_scaled,true,1581,348,134,2814,385.057471,1581,348,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,4,short,256,compiler_c_scaled,true,1581,348,134,2814,385.057471,1581,348,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,5,short,256,compiler_c_scaled,true,1581,348,134,2814,385.057471,1581,348,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,fixed,1,smoke,256,compiler_c_scaled,true,5000,1655,256,5376,154.682779,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,2,smoke,256,compiler_c_scaled,true,5000,1655,256,5376,154.682779,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,3,smoke,256,compiler_c_scaled,true,5000,1655,256,5376,154.682779,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,4,smoke,256,compiler_c_scaled,true,5000,1655,256,5376,154.682779,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,5,smoke,256,compiler_c_scaled,true,5000,1655,256,5376,154.682779,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,1,short,256,compiler_c_scaled,true,10000,3152,256,5376,81.218274,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,2,short,256,compiler_c_scaled,true,10000,3152,256,5376,81.218274,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,3,short,256,compiler_c_scaled,true,10000,3152,256,5376,81.218274,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,4,short,256,compiler_c_scaled,true,10000,3152,256,5376,81.218274,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,5,short,256,compiler_c_scaled,true,10000,3152,256,5376,81.218274,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,1,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,2,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,3,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,4,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,5,smoke,256,compiler_c_scaled,true,5000,1660,256,5376,154.216867,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,1,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,2,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,3,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,4,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,5,short,256,compiler_c_scaled,true,10000,3157,256,5376,81.089642,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,failing,1,medium,1024,compiler_c_scaled,true,6020,1313,520,10920,396.039604,6020,1313,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,2,medium,1024,compiler_c_scaled,true,6020,1313,520,10920,396.039604,6020,1313,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,3,medium,1024,compiler_c_scaled,true,6020,1313,520,10920,396.039604,6020,1313,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,4,medium,1024,compiler_c_scaled,true,6020,1313,520,10920,396.039604,6020,1313,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,5,medium,1024,compiler_c_scaled,true,6020,1313,520,10920,396.039604,6020,1313,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,fixed,1,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,2,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,3,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,4,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,5,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,1,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,2,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,3,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,4,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,5,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,failing,1,medium,1024,compiler_c_scaled,true,5953,1297,516,10836,397.841172,5953,1297,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,2,medium,1024,compiler_c_scaled,true,5953,1297,516,10836,397.841172,5953,1297,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,3,medium,1024,compiler_c_scaled,true,5953,1297,516,10836,397.841172,5953,1297,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,4,medium,1024,compiler_c_scaled,true,5953,1297,516,10836,397.841172,5953,1297,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,5,medium,1024,compiler_c_scaled,true,5953,1297,516,10836,397.841172,5953,1297,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,fixed,1,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,2,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,3,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,4,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,5,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,failing,1,medium,1024,compiler_c_scaled,true,5948,1296,515,10815,397.376543,5948,1296,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,2,medium,1024,compiler_c_scaled,true,5948,1296,515,10815,397.376543,5948,1296,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,3,medium,1024,compiler_c_scaled,true,5948,1296,515,10815,397.376543,5948,1296,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,4,medium,1024,compiler_c_scaled,true,5948,1296,515,10815,397.376543,5948,1296,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,5,medium,1024,compiler_c_scaled,true,5948,1296,515,10815,397.376543,5948,1296,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,fixed,1,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,2,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,3,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,4,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,5,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,failing,1,medium,1024,compiler_c_scaled,true,5951,1297,515,10815,397.070162,5951,1297,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,2,medium,1024,compiler_c_scaled,true,5951,1297,515,10815,397.070162,5951,1297,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,3,medium,1024,compiler_c_scaled,true,5951,1297,515,10815,397.070162,5951,1297,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,4,medium,1024,compiler_c_scaled,true,5951,1297,515,10815,397.070162,5951,1297,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,5,medium,1024,compiler_c_scaled,true,5951,1297,515,10815,397.070162,5951,1297,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,fixed,1,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,2,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,3,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,4,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,5,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,failing,1,medium,1024,compiler_c_scaled,true,5959,1299,516,10836,397.228637,5959,1299,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,2,medium,1024,compiler_c_scaled,true,5959,1299,516,10836,397.228637,5959,1299,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,3,medium,1024,compiler_c_scaled,true,5959,1299,516,10836,397.228637,5959,1299,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,4,medium,1024,compiler_c_scaled,true,5959,1299,516,10836,397.228637,5959,1299,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,5,medium,1024,compiler_c_scaled,true,5959,1299,516,10836,397.228637,5959,1299,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,fixed,1,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,2,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,3,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,4,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,5,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,1,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,2,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,3,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,4,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,5,medium,1024,compiler_c_scaled,true,50000,15979,1024,21504,64.084110,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,failing,1,medium,1024,compiler_c_scaled,true,5997,1308,518,10878,396.024465,5997,1308,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,2,medium,1024,compiler_c_scaled,true,5997,1308,518,10878,396.024465,5997,1308,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,3,medium,1024,compiler_c_scaled,true,5997,1308,518,10878,396.024465,5997,1308,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,4,medium,1024,compiler_c_scaled,true,5997,1308,518,10878,396.024465,5997,1308,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,5,medium,1024,compiler_c_scaled,true,5997,1308,518,10878,396.024465,5997,1308,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,fixed,1,medium,1024,compiler_c_scaled,true,50000,15973,1024,21504,64.108183,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,2,medium,1024,compiler_c_scaled,true,50000,15973,1024,21504,64.108183,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,3,medium,1024,compiler_c_scaled,true,50000,15973,1024,21504,64.108183,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,4,medium,1024,compiler_c_scaled,true,50000,15973,1024,21504,64.108183,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,5,medium,1024,compiler_c_scaled,true,50000,15973,1024,21504,64.108183,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,1,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,2,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,3,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,4,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,5,medium,1024,compiler_c_scaled,true,50000,15978,1024,21504,64.088121,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,failing,1,long,4096,compiler_c_scaled,true,23684,5153,2056,43176,398.990879,23684,5153,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,2,long,4096,compiler_c_scaled,true,23684,5153,2056,43176,398.990879,23684,5153,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,3,long,4096,compiler_c_scaled,true,23684,5153,2056,43176,398.990879,23684,5153,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,4,long,4096,compiler_c_scaled,true,23684,5153,2056,43176,398.990879,23684,5153,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,5,long,4096,compiler_c_scaled,true,23684,5153,2056,43176,398.990879,23684,5153,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,fixed,1,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,2,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,3,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,4,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,5,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,1,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,2,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,3,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,4,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,5,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,failing,1,long,4096,compiler_c_scaled,true,23617,5137,2052,43092,399.454935,23617,5137,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,2,long,4096,compiler_c_scaled,true,23617,5137,2052,43092,399.454935,23617,5137,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,3,long,4096,compiler_c_scaled,true,23617,5137,2052,43092,399.454935,23617,5137,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,4,long,4096,compiler_c_scaled,true,23617,5137,2052,43092,399.454935,23617,5137,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,5,long,4096,compiler_c_scaled,true,23617,5137,2052,43092,399.454935,23617,5137,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,fixed,1,long,4096,compiler_c_scaled,true,100000,30596,4096,86016,133.873709,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,2,long,4096,compiler_c_scaled,true,100000,30596,4096,86016,133.873709,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,3,long,4096,compiler_c_scaled,true,100000,30596,4096,86016,133.873709,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,4,long,4096,compiler_c_scaled,true,100000,30596,4096,86016,133.873709,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,5,long,4096,compiler_c_scaled,true,100000,30596,4096,86016,133.873709,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,failing,1,long,4096,compiler_c_scaled,true,23612,5136,2051,43071,399.338006,23612,5136,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,2,long,4096,compiler_c_scaled,true,23612,5136,2051,43071,399.338006,23612,5136,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,3,long,4096,compiler_c_scaled,true,23612,5136,2051,43071,399.338006,23612,5136,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,4,long,4096,compiler_c_scaled,true,23612,5136,2051,43071,399.338006,23612,5136,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,5,long,4096,compiler_c_scaled,true,23612,5136,2051,43071,399.338006,23612,5136,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,fixed,1,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,2,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,3,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,4,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,5,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,failing,1,long,4096,compiler_c_scaled,true,23615,5137,2051,43071,399.260269,23615,5137,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,2,long,4096,compiler_c_scaled,true,23615,5137,2051,43071,399.260269,23615,5137,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,3,long,4096,compiler_c_scaled,true,23615,5137,2051,43071,399.260269,23615,5137,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,4,long,4096,compiler_c_scaled,true,23615,5137,2051,43071,399.260269,23615,5137,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,5,long,4096,compiler_c_scaled,true,23615,5137,2051,43071,399.260269,23615,5137,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,fixed,1,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,2,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,3,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,4,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,5,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,failing,1,long,4096,compiler_c_scaled,true,23623,5139,2052,43092,399.299475,23623,5139,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,2,long,4096,compiler_c_scaled,true,23623,5139,2052,43092,399.299475,23623,5139,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,3,long,4096,compiler_c_scaled,true,23623,5139,2052,43092,399.299475,23623,5139,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,4,long,4096,compiler_c_scaled,true,23623,5139,2052,43092,399.299475,23623,5139,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,5,long,4096,compiler_c_scaled,true,23623,5139,2052,43092,399.299475,23623,5139,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,fixed,1,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,2,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,3,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,4,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,5,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,1,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,2,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,3,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,4,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,5,long,4096,compiler_c_scaled,true,100000,30598,4096,86016,133.864958,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,failing,1,long,4096,compiler_c_scaled,true,23661,5148,2054,43134,398.989899,23661,5148,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,2,long,4096,compiler_c_scaled,true,23661,5148,2054,43134,398.989899,23661,5148,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,3,long,4096,compiler_c_scaled,true,23661,5148,2054,43134,398.989899,23661,5148,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,4,long,4096,compiler_c_scaled,true,23661,5148,2054,43134,398.989899,23661,5148,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,5,long,4096,compiler_c_scaled,true,23661,5148,2054,43134,398.989899,23661,5148,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,fixed,1,long,4096,compiler_c_scaled,true,100000,30592,4096,86016,133.891213,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,2,long,4096,compiler_c_scaled,true,100000,30592,4096,86016,133.891213,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,3,long,4096,compiler_c_scaled,true,100000,30592,4096,86016,133.891213,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,4,long,4096,compiler_c_scaled,true,100000,30592,4096,86016,133.891213,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,5,long,4096,compiler_c_scaled,true,100000,30592,4096,86016,133.891213,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,1,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,2,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,3,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,4,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,5,long,4096,compiler_c_scaled,true,100000,30597,4096,86016,133.869334,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,failing,1,stress,16384,compiler_c_scaled,true,94340,20513,8200,172200,399.746502,94340,20513,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,2,stress,16384,compiler_c_scaled,true,94340,20513,8200,172200,399.746502,94340,20513,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,3,stress,16384,compiler_c_scaled,true,94340,20513,8200,172200,399.746502,94340,20513,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,4,stress,16384,compiler_c_scaled,true,94340,20513,8200,172200,399.746502,94340,20513,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,failing,5,stress,16384,compiler_c_scaled,true,94340,20513,8200,172200,399.746502,94340,20513,3,PASS,PASS,PASS,false,record/replay complete
+sensor_threshold_bug,fixed,1,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,2,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,3,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,4,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,fixed,5,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,1,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,2,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,3,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,4,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+sensor_threshold_bug,no_failure_edge,5,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,failing,1,stress,16384,compiler_c_scaled,true,94273,20497,8196,172116,399.863395,94273,20497,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,2,stress,16384,compiler_c_scaled,true,94273,20497,8196,172116,399.863395,94273,20497,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,3,stress,16384,compiler_c_scaled,true,94273,20497,8196,172116,399.863395,94273,20497,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,4,stress,16384,compiler_c_scaled,true,94273,20497,8196,172116,399.863395,94273,20497,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,failing,5,stress,16384,compiler_c_scaled,true,94273,20497,8196,172116,399.863395,94273,20497,2,PASS,PASS,PASS,false,record/replay complete
+interrupt_race_bug,fixed,1,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,2,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,3,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,4,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+interrupt_race_bug,fixed,5,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,failing,1,stress,16384,compiler_c_scaled,true,94268,20496,8195,172095,399.834114,94268,20496,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,2,stress,16384,compiler_c_scaled,true,94268,20496,8195,172095,399.834114,94268,20496,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,3,stress,16384,compiler_c_scaled,true,94268,20496,8195,172095,399.834114,94268,20496,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,4,stress,16384,compiler_c_scaled,true,94268,20496,8195,172095,399.834114,94268,20496,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,failing,5,stress,16384,compiler_c_scaled,true,94268,20496,8195,172095,399.834114,94268,20496,5,PASS,PASS,PASS,false,record/replay complete
+mmio_ordering_bug,fixed,1,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,2,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,3,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,4,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+mmio_ordering_bug,fixed,5,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,failing,1,stress,16384,compiler_c_scaled,true,94271,20497,8195,172095,399.814607,94271,20497,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,2,stress,16384,compiler_c_scaled,true,94271,20497,8195,172095,399.814607,94271,20497,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,3,stress,16384,compiler_c_scaled,true,94271,20497,8195,172095,399.814607,94271,20497,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,4,stress,16384,compiler_c_scaled,true,94271,20497,8195,172095,399.814607,94271,20497,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,failing,5,stress,16384,compiler_c_scaled,true,94271,20497,8195,172095,399.814607,94271,20497,4,PASS,PASS,PASS,false,record/replay complete
+stack_corruption_bug,fixed,1,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,2,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,3,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,4,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+stack_corruption_bug,fixed,5,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,failing,1,stress,16384,compiler_c_scaled,true,94279,20499,8196,172116,399.824382,94279,20499,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,2,stress,16384,compiler_c_scaled,true,94279,20499,8196,172116,399.824382,94279,20499,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,3,stress,16384,compiler_c_scaled,true,94279,20499,8196,172116,399.824382,94279,20499,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,4,stress,16384,compiler_c_scaled,true,94279,20499,8196,172116,399.824382,94279,20499,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,failing,5,stress,16384,compiler_c_scaled,true,94279,20499,8196,172116,399.824382,94279,20499,1,PASS,PASS,PASS,false,record/replay complete
+uart_command_bug,fixed,1,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,2,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,3,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,4,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,fixed,5,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,1,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,2,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,3,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,4,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+uart_command_bug,no_failure_edge,5,stress,16384,compiler_c_scaled,true,200000,55739,16384,344064,293.941405,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,failing,1,stress,16384,compiler_c_scaled,true,94317,20508,8198,172158,399.746440,94317,20508,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,2,stress,16384,compiler_c_scaled,true,94317,20508,8198,172158,399.746440,94317,20508,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,3,stress,16384,compiler_c_scaled,true,94317,20508,8198,172158,399.746440,94317,20508,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,4,stress,16384,compiler_c_scaled,true,94317,20508,8198,172158,399.746440,94317,20508,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,failing,5,stress,16384,compiler_c_scaled,true,94317,20508,8198,172158,399.746440,94317,20508,6,PASS,PASS,PASS,false,record/replay complete
+watchdog_timeout_bug,fixed,1,stress,16384,compiler_c_scaled,true,200000,55733,16384,344064,293.973050,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,2,stress,16384,compiler_c_scaled,true,200000,55733,16384,344064,293.973050,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,3,stress,16384,compiler_c_scaled,true,200000,55733,16384,344064,293.973050,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,4,stress,16384,compiler_c_scaled,true,200000,55733,16384,344064,293.973050,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,fixed,5,stress,16384,compiler_c_scaled,true,200000,55733,16384,344064,293.973050,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,1,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,2,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,3,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,4,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete
+watchdog_timeout_bug,no_failure_edge,5,stress,16384,compiler_c_scaled,true,200000,55738,16384,344064,293.946679,NA,NA,0,PASS,PASS,PASS,true,record/replay complete

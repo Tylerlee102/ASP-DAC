@@ -1,119 +1,22 @@
 \section{Evaluation}
 \label{sec:evaluation}
 
-All tables in this section are generated from processed CSV files by \texttt{scripts/render\_paper\_tables.py}. The paper-number audit checks that numeric claims in the paper appear in generated CSVs or generated table sources.
+The evaluation is generated from repository scripts and processed CSVs; the paper-number audit rejects numeric claims that do not appear in generated evidence. The core full-RTL ledger reports \rcFullReplayPass/\rcFullReplayTotal\ compiler-backed record/replay PASS rows. The negative ledger rejects \rcNegativeReject\ replay-critical corruptions, reports \rcNegativeUnexpectedAccept\ unexpected accepts, and leaves \rcNegativeNA\ not-applicable rows for corruption classes outside the current commit-index harness.
 
+\subsection{Replay, Scale, and Buffers}
+
+Replay succeeds on the fixed compiler-backed suite in the full-RTL harness, but scaling is constrained by capsule capacity. The regenerated workload-scaling evidence reports 375/375 PASS rows with workload-aware v1 depths: 256 for smoke and short workloads, 1024 for medium, 4096 for long, and 16384 for stress. The buffer-sensitivity table shows replay success reaches 100.000000\% for each workload class at those selected depths, while the sticky overflow bit remains asserted on long-running fixed and no-failure rows that do not freeze at a property failure. The paper therefore treats buffer depth as a design parameter, not a hidden constant.
+
+Capsule-size comparisons use the buffer depth required for the workload class under test. \texttt{capsule\_baseline\_summary.csv} reports median ReplayCapsule reductions versus the raw full-instruction-trace estimate of 59.52\% for smoke, 78.71\% for short, 83.18\% for medium, 64.86\% for long, and 22.84\% for stress. The same CSV includes a labeled \texttt{riscv\_etrace\_branch\_trace\_estimate} row; that estimate is smaller than ReplayCapsule-RV for these workloads, so the raw instruction-trace comparison is a weak baseline, not a state-of-the-art trace-compression claim.
+
+The v2 evidence package adds compressed recorder configurations and two additional actuator/configuration firmware families. Those rows improve workload and benchmark coverage for the scoped model, but they do not turn the standalone replay-consume controller into an integrated full-core autonomous replay path.
+
+\subsection{Cost and Mapping}
+
+The mapped FPGA results are same-target bring-up/debug measurements. The board-level baseline and ReplayCapsule wrappers use the same \rcMappedTarget\ target and \rcMappedFlow\ flow. After gating unselected v2 recorder instances in v1 mapped builds, the representative mapped-scaling summary reports LUT overhead from 114.20\% to 221.23\%, FF overhead from 174.53\% to 646.43\%, BRAM overhead of 0.00\%, and Fmax change from -19.56\% to -9.98\%. Expanded mapped-scaling CSVs report the lower-overhead core configurations separately from the full diagnostic configuration.
+
+This overhead is acceptable only under the intended use case: temporary validation and post-failure replay instrumentation during hardware/software bring-up. It is not presented as a production always-on block. The current artifact does not include an ASIC or power flow; FPGA results should be read as feasibility and cost-shape evidence rather than signoff implementation data.
+
+\ifrcfullartifactpaper
 \input{sections/generated_tables}
-
-\subsection{Replay and Corruption Results}
-
-Table~\ref{tab:replay-success} reports \rcFullReplayPass/\rcFullReplayTotal\ compiler-backed host-driven full RTL replay rows. Table~\ref{tab:negative} reports \rcNegativeReject\ corrupted-capsule rows rejected, \rcNegativeUnexpectedAccept\ unexpected accepts, and \rcNegativeNA\ not-applicable rows for corruption classes outside the current commit-index harness.
-
-\subsection{Runtime and Mapping}
-
-Table~\ref{tab:runtime} reports measured cycle, commit, and simulator wall-time summaries for \texttt{baseline\_no\_recorder}, \texttt{recorder\_present\_disabled}, and \texttt{recorder\_enabled}. Cycle and commit medians are separate from simulator wall-clock measurements.
-
-Table~\ref{tab:mapped-overhead} reports same-target ECP5 place-and-route for the board-scoped baseline and ReplayCapsule designs. The full-core mapped rows use the same \rcMappedTarget\ target, the same Yosys synth\_ecp5 plus nextpnr-ecp5 flow, the same memory size, and the same board-level I/O assumptions. The recorder presence check passes on the mapped ReplayCapsule netlist.
-
-\subsection{Expanded Scaling Package}
-
-The top-conference artifact adds workload scaling, capsule baseline comparisons, buffer-depth sensitivity, runtime scaling by workload length, event-class ablations, recorder-configuration sensitivity, and mapped memory/buffer/configuration scaling. These results are generated from \texttt{results/processed/workload\_scaling.csv}, \texttt{capsule\_baseline\_comparison.csv}, \texttt{capsule\_baseline\_summary.csv}, \texttt{buffer\_sensitivity.csv}, \texttt{buffer\_sensitivity\_summary.csv}, \texttt{runtime\_scaling.csv}, \texttt{runtime\_scaling\_summary.csv}, \texttt{event\_ablation\_scaling.csv}, \texttt{mapped\_scaling.csv}, \texttt{mapped\_scaling\_overhead.csv}, and \texttt{mapped\_scaling\_summary.csv}. Trace-baseline rows that are not directly emitted by the RTL are labeled as estimated in their CSV notes.
-
-The evaluation answers eight scoped questions. First, replay works across the generated benchmark suite in Table~\ref{tab:replay-success}. Second, replay across workload scales is reported in \texttt{workload\_scaling.csv} and Figure~\ref{fig:topconf-replay-scaling}; PASS requires record, replay, final-signature, and event matching. Third, capsule-size scaling and reductions against trace baselines are reported in \texttt{capsule\_baseline\_summary.csv} and Figure~\ref{fig:topconf-capsule-scaling}; estimated baselines remain labeled as estimated. Fourth, buffer-depth sensitivity is reported in \texttt{buffer\_sensitivity\_summary.csv} and Figure~\ref{fig:topconf-buffer-sensitivity}; no buffer depth is called sufficient unless measured rows support it. Fifth, runtime scaling separates architectural cycle and commit counts from simulator wall-clock time in \texttt{runtime\_scaling\_summary.csv} and Figure~\ref{fig:topconf-runtime-scaling}. Sixth, event-class ablations in \texttt{event\_ablation\_scaling.csv} and Figure~\ref{fig:topconf-event-ablation} distinguish replay-critical corruption from diagnostic-only context. Seventh, mapped scaling in \texttt{mapped\_scaling\_overhead.csv} and Figure~\ref{fig:topconf-mapped-scaling} reports only same-target place-and-route PASS comparisons. Eighth, Table~\ref{tab:limitations} states the exact limits.
-
-The mapped scaling data is FPGA recorder/instrumented-wrapper evidence. It is not ASIC area or power evidence, and it is not an autonomous synthesizable replay-consume datapath. Simulator wall time is reported separately from architectural cycle and commit counts.
-
-\subsection{ReplayCapsule-RV v2 Evidence}
-
-The v2 pass adds generated CSVs for workload-failure diagnosis, v2 buffer capacity estimates, v2 capsule-size estimates, replay-consume RTL tests, replay-consume mapping, second-target mapping attempts, and benchmark diversity status. The workload-failure diagnosis classifies all 150 v1 workload-scaling FAIL rows as buffer overflow. The v2 buffer and capsule CSVs are explicitly labeled analytic where they estimate compressed storage from measured v1 rows; they do not convert any unmeasured v2 full-core replay case into a PASS. The replay-consume controller is tested as a synthesizable prototype: valid capsules consume all events, and missing, duplicate, reordered, wrong-MMIO, wrong-interrupt, wrong-hash, and truncated streams are rejected. The mapped replay-consumer row is standalone prototype evidence and is not a full-core autonomous replay claim.
-
-\begin{table}[t]
-\centering
-\caption{Replay-consume controller prototype tests.}
-\label{tab:replay-consumer-v2}
-\input{tables/table_replay_consumer_tests}
-\end{table}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_replay_consumer_controller.pdf}{\includegraphics[width=\linewidth]{figures/fig_replay_consumer_controller.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/replay\_consumer\_tests.csv}}}}
-\caption{Replay-consume controller prototype status.}
-\label{fig:replay-consumer-v2}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_workload_scaling_v2.pdf}{\includegraphics[width=\linewidth]{figures/fig_workload_scaling_v2.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/workload\_scaling\_v2.csv}}}}
-\caption{v2 workload-scaling status. v2 rows are blocked until full-core v2 replay is integrated.}
-\label{fig:workload-v2}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_mapped_overhead_v2.pdf}{\includegraphics[width=\linewidth]{figures/fig_mapped_overhead_v2.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/replay\_consumer\_mapped.csv}}}}
-\caption{v2 mapping status. The mapped replay consumer is a standalone prototype, not full-core overhead evidence.}
-\label{fig:mapped-v2}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_replay_success.pdf}{\includegraphics[width=\linewidth]{figures/fig_replay_success.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/workload\_scaling.csv}}}}
-\caption{Replay success by workload scale. Missing, blocked, timeout, and failing rows remain visible in the source CSV.}
-\label{fig:topconf-replay-scaling}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_capsule_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_capsule_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/capsule\_baseline\_summary.csv}}}}
-\caption{Capsule size scaling and trace-baseline comparison. Estimated trace baselines are labeled in the source CSV.}
-\label{fig:topconf-capsule-scaling}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_runtime_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_runtime_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/runtime\_scaling\_summary.csv}}}}
-\caption{Runtime scaling by workload length. Simulator wall time is not a hardware runtime claim.}
-\label{fig:topconf-runtime-scaling}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_buffer_sensitivity.pdf}{\includegraphics[width=\linewidth]{figures/fig_buffer_sensitivity.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/buffer\_sensitivity\_summary.csv}}}}
-\caption{Buffer-depth sensitivity from measured event counts.}
-\label{fig:topconf-buffer-sensitivity}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_event_ablation_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_event_ablation_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/event\_ablation\_scaling.csv}}}}
-\caption{Event-class ablation results. Replay-critical and diagnostic-only rows are labeled separately in the source CSV.}
-\label{fig:topconf-event-ablation}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/fig_mapped_scaling.pdf}{\includegraphics[width=\linewidth]{figures/fig_mapped_scaling.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{results/processed/mapped\_scaling\_overhead.csv}}}}
-\caption{Same-target mapped overhead for rows where both baseline and ReplayCapsule place-and-route pass and recorder presence is confirmed.}
-\label{fig:topconf-mapped-scaling}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/replay_success_summary.pdf}{\includegraphics[width=\linewidth]{figures/replay_success_summary.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{paper/figures/replay\_success\_summary.svg}}}}
-\caption{Replay success summary generated from the full RTL replay and corruption ledgers.}
-\label{fig:replay-summary}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/runtime_overhead_summary.pdf}{\includegraphics[width=\linewidth]{figures/runtime_overhead_summary.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{paper/figures/runtime\_overhead\_summary.svg}}}}
-\caption{Runtime summary generated from \texttt{runtime\_overhead\_summary.csv}.}
-\label{fig:runtime-summary}
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\IfFileExists{figures/mapped_overhead_summary.pdf}{\includegraphics[width=\linewidth]{figures/mapped_overhead_summary.pdf}}{\fbox{\parbox{\linewidth}{Generated source: \texttt{paper/figures/mapped\_overhead\_summary.svg}}}}
-\caption{Full-core mapped overhead summary generated from \texttt{mapped\_overhead.csv}.}
-\label{fig:mapped-summary}
-\end{figure}
+\fi

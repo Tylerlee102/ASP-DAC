@@ -1,0 +1,18 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "variant": "failing",
+  "seed": 5,
+  "mode": "replay",
+  "architecture": "v1",
+  "recorder_config": "core",
+  "packet_width_bits": 168,
+  "property_id": 3,
+  "property_signature": "0x5e055123",
+  "cycles_to_failure": 94340,
+  "commits_to_failure": 20513,
+  "event_count": 8200,
+  "capsule_bytes": 172200,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "record/replay capsule packets match"
+}

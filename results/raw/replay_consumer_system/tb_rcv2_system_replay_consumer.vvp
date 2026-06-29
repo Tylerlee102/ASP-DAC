@@ -1,0 +1,2397 @@
+#! 
+:ivl_version "14.0 (devel)" "(s20260301-220-g78750c51d-dirty)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "C:\Users\tyboy\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\tyboy\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\tyboy\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\tyboy\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\tyboy\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\lib\ivl\va_math.vpi";
+:vpi_module "C:\Users\tyboy\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\lib\ivl\v2009.vpi";
+S_000001d53102cc80 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_000001d530f808b0 .scope module, "tb_rcv2_system_replay_consumer" "tb_rcv2_system_replay_consumer" 3 3;
+ .timescale -9 -12;
+P_000001d53102d060 .param/l "CAPTURE_ALL" 1 4 19, C4<0000>;
+P_000001d53102d098 .param/l "CAPTURE_DISABLED" 1 4 23, C4<0100>;
+P_000001d53102d0d0 .param/l "CAPTURE_MMIO_INTERRUPT" 1 4 20, C4<0001>;
+P_000001d53102d108 .param/l "CAPTURE_PROPERTY_AWARE" 1 4 21, C4<0010>;
+P_000001d53102d140 .param/l "CAPTURE_REPLAYCAPSULE_RV" 1 4 22, C4<0011>;
+P_000001d53102d178 .param/l "EV_BRANCH" 1 4 7, C4<0001>;
+P_000001d53102d1b0 .param/l "EV_CHECKPOINT_HASH" 1 4 17, C4<1011>;
+P_000001d53102d1e8 .param/l "EV_COMMIT" 1 4 6, C4<0000>;
+P_000001d53102d220 .param/l "EV_EXTERNAL_INPUT" 1 4 15, C4<1001>;
+P_000001d53102d258 .param/l "EV_INTERRUPT_ENTER" 1 4 13, C4<0111>;
+P_000001d53102d290 .param/l "EV_INTERRUPT_EXIT" 1 4 14, C4<1000>;
+P_000001d53102d2c8 .param/l "EV_JUMP" 1 4 8, C4<0010>;
+P_000001d53102d300 .param/l "EV_LOAD" 1 4 10, C4<0100>;
+P_000001d53102d338 .param/l "EV_MMIO_READ" 1 4 11, C4<0101>;
+P_000001d53102d370 .param/l "EV_MMIO_WRITE" 1 4 12, C4<0110>;
+P_000001d53102d3a8 .param/l "EV_PROPERTY_FAIL" 1 4 16, C4<1010>;
+P_000001d53102d3e0 .param/l "EV_STORE" 1 4 9, C4<0011>;
+P_000001d53102d418 .param/l "RCV2_CFG_CORE" 1 5 2, +C4<00000000000000000000000000000001>;
+P_000001d53102d450 .param/l "RCV2_CFG_DIAGNOSTIC" 1 5 4, +C4<00000000000000000000000000000011>;
+P_000001d53102d488 .param/l "RCV2_CFG_FULL" 1 5 5, +C4<00000000000000000000000000000100>;
+P_000001d53102d4c0 .param/l "RCV2_CFG_HASHED" 1 5 3, +C4<00000000000000000000000000000010>;
+P_000001d53102d4f8 .param/l "RCV2_CFG_MINIMAL" 1 5 1, +C4<00000000000000000000000000000000>;
+P_000001d53102d530 .param/l "RCV2_ERR_DUPLICATE_EVENT" 1 5 11, C4<00000010>;
+P_000001d53102d568 .param/l "RCV2_ERR_MISSING_EVENT" 1 5 10, C4<00000001>;
+P_000001d53102d5a0 .param/l "RCV2_ERR_NONE" 1 5 9, C4<00000000>;
+P_000001d53102d5d8 .param/l "RCV2_ERR_REORDERED_EVENT" 1 5 12, C4<00000011>;
+P_000001d53102d610 .param/l "RCV2_ERR_TRUNCATED_CAPSULE" 1 5 16, C4<00000111>;
+P_000001d53102d648 .param/l "RCV2_ERR_WRONG_IRQ_CAUSE" 1 5 14, C4<00000101>;
+P_000001d53102d680 .param/l "RCV2_ERR_WRONG_MMIO_VALUE" 1 5 13, C4<00000100>;
+P_000001d53102d6b8 .param/l "RCV2_ERR_WRONG_PAYLOAD_HASH" 1 5 15, C4<00000110>;
+P_000001d53102d6f0 .param/l "RCV2_FLAG_DELTA_WIDE" 1 5 21, +C4<00000000000000000000000000000011>;
+P_000001d53102d728 .param/l "RCV2_FLAG_DIAGNOSTIC" 1 5 18, +C4<00000000000000000000000000000000>;
+P_000001d53102d760 .param/l "RCV2_FLAG_DICT_HIT" 1 5 20, +C4<00000000000000000000000000000010>;
+P_000001d53102d798 .param/l "RCV2_FLAG_HASH" 1 5 19, +C4<00000000000000000000000000000001>;
+P_000001d53102d7d0 .param/l "RCV2_WORD_WIDTH" 1 5 7, +C4<00000000000000000000000001000000>;
+P_000001d53102d808 .param/l "RC_EVENT_FLAG_W" 1 4 2, +C4<00000000000000000000000000000100>;
+P_000001d53102d840 .param/l "RC_EVENT_TYPE_W" 1 4 1, +C4<00000000000000000000000000000100>;
+P_000001d53102d878 .param/l "RC_EVENT_WIDTH" 1 4 4, +C4<00000000000000000000000010101000>;
+P_000001d53102d8b0 .param/l "RC_WORD_W" 1 4 3, +C4<00000000000000000000000000100000>;
+P_000001d53102d8e8 .param/l "REAL_W0" 1 3 7, C4<0110000000001110000011000000000000000000000000000000000100000000>;
+P_000001d53102d920 .param/l "REAL_W1" 1 3 8, C4<0111000000000001000000000000000000000000000000000000000100000001>;
+v000001d5310996a0_0 .net "capsule_ready", 0 0, L_000001d530f9a450;  1 drivers
+v000001d53109abe0_0 .var "capsule_valid", 0 0;
+v000001d53109ad20_0 .var "capsule_word", 63 0;
+v000001d53109a500_0 .var "clear", 0 0;
+v000001d53109a1e0_0 .var "clk", 0 0;
+v000001d53109af00_0 .net "consumed_all_events", 0 0, v000001d531092f90_0;  1 drivers
+v000001d531099ec0_0 .net "consumed_count", 31 0, v000001d5310938f0_0;  1 drivers
+v000001d53109a460_0 .net "irq_replay_cause", 7 0, v000001d53108e820_0;  1 drivers
+v000001d531099740_0 .net "irq_replay_valid", 0 0, v000001d53108db00_0;  1 drivers
+v000001d531099560_0 .net "mmio_replay_addr_token", 31 0, v000001d5310932b0_0;  1 drivers
+v000001d53109b2c0_0 .net "mmio_replay_valid", 0 0, v000001d531092950_0;  1 drivers
+v000001d531099880_0 .net "mmio_replay_value", 31 0, v000001d531093350_0;  1 drivers
+v000001d53109afa0_0 .var "observed_addr", 31 0;
+v000001d531099ba0_0 .var "observed_commit_index", 31 0;
+v000001d53109b180_0 .var "observed_data", 31 0;
+v000001d53109aa00_0 .var "observed_event_type", 3 0;
+v000001d531099a60_0 .var "observed_payload_hash", 31 0;
+v000001d53109aaa0_0 .var "observed_valid", 0 0;
+v000001d53109a000_0 .var/i "passed_count", 31 0;
+v000001d531099c40_0 .net "replay_error", 0 0, v000001d531093c10_0;  1 drivers
+v000001d53109a780_0 .net "replay_error_code", 7 0, v000001d531093cb0_0;  1 drivers
+v000001d53109ab40_0 .var "rst_n", 0 0;
+v000001d5310999c0_0 .var "start", 0 0;
+v000001d53109ac80_0 .var "stream_done", 0 0;
+v000001d53109adc0_0 .var/i "total_count", 31 0;
+S_000001d530f80a40 .scope module, "dut" "rcv2_replay_consumer" 3 40, 6 1 0, S_000001d530f808b0;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "clk";
+    .port_info 1 /INPUT 1 "rst_n";
+    .port_info 2 /INPUT 1 "clear";
+    .port_info 3 /INPUT 1 "start";
+    .port_info 4 /INPUT 1 "capsule_valid";
+    .port_info 5 /OUTPUT 1 "capsule_ready";
+    .port_info 6 /INPUT 64 "capsule_word";
+    .port_info 7 /INPUT 1 "stream_done";
+    .port_info 8 /INPUT 1 "observed_valid";
+    .port_info 9 /INPUT 4 "observed_event_type";
+    .port_info 10 /INPUT 32 "observed_commit_index";
+    .port_info 11 /INPUT 32 "observed_addr";
+    .port_info 12 /INPUT 32 "observed_data";
+    .port_info 13 /INPUT 32 "observed_payload_hash";
+    .port_info 14 /OUTPUT 1 "mmio_replay_valid";
+    .port_info 15 /OUTPUT 32 "mmio_replay_addr_token";
+    .port_info 16 /OUTPUT 32 "mmio_replay_value";
+    .port_info 17 /OUTPUT 1 "irq_replay_valid";
+    .port_info 18 /OUTPUT 8 "irq_replay_cause";
+    .port_info 19 /OUTPUT 1 "consumed_all_events";
+    .port_info 20 /OUTPUT 1 "replay_error";
+    .port_info 21 /OUTPUT 8 "replay_error_code";
+    .port_info 22 /OUTPUT 32 "consumed_count";
+P_000001d53102d960 .param/l "CAPTURE_ALL" 1 7 19, C4<0000>;
+P_000001d53102d998 .param/l "CAPTURE_DISABLED" 1 7 23, C4<0100>;
+P_000001d53102d9d0 .param/l "CAPTURE_MMIO_INTERRUPT" 1 7 20, C4<0001>;
+P_000001d53102da08 .param/l "CAPTURE_PROPERTY_AWARE" 1 7 21, C4<0010>;
+P_000001d53102da40 .param/l "CAPTURE_REPLAYCAPSULE_RV" 1 7 22, C4<0011>;
+P_000001d53102da78 .param/l "ENABLE_PAYLOAD_HASH" 0 6 3, C4<1>;
+P_000001d53102dab0 .param/l "EVENT_COUNT" 0 6 2, +C4<00000000000000000000000000000010>;
+P_000001d53102dae8 .param/l "EV_BRANCH" 1 7 7, C4<0001>;
+P_000001d53102db20 .param/l "EV_CHECKPOINT_HASH" 1 7 17, C4<1011>;
+P_000001d53102db58 .param/l "EV_COMMIT" 1 7 6, C4<0000>;
+P_000001d53102db90 .param/l "EV_EXTERNAL_INPUT" 1 7 15, C4<1001>;
+P_000001d53102dbc8 .param/l "EV_INTERRUPT_ENTER" 1 7 13, C4<0111>;
+P_000001d53102dc00 .param/l "EV_INTERRUPT_EXIT" 1 7 14, C4<1000>;
+P_000001d53102dc38 .param/l "EV_JUMP" 1 7 8, C4<0010>;
+P_000001d53102dc70 .param/l "EV_LOAD" 1 7 10, C4<0100>;
+P_000001d53102dca8 .param/l "EV_MMIO_READ" 1 7 11, C4<0101>;
+P_000001d53102dce0 .param/l "EV_MMIO_WRITE" 1 7 12, C4<0110>;
+P_000001d53102dd18 .param/l "EV_PROPERTY_FAIL" 1 7 16, C4<1010>;
+P_000001d53102dd50 .param/l "EV_STORE" 1 7 9, C4<0011>;
+P_000001d53102dd88 .param/l "RCV2_CFG_CORE" 1 8 2, +C4<00000000000000000000000000000001>;
+P_000001d53102ddc0 .param/l "RCV2_CFG_DIAGNOSTIC" 1 8 4, +C4<00000000000000000000000000000011>;
+P_000001d53102ddf8 .param/l "RCV2_CFG_FULL" 1 8 5, +C4<00000000000000000000000000000100>;
+P_000001d53102de30 .param/l "RCV2_CFG_HASHED" 1 8 3, +C4<00000000000000000000000000000010>;
+P_000001d53102de68 .param/l "RCV2_CFG_MINIMAL" 1 8 1, +C4<00000000000000000000000000000000>;
+P_000001d53102dea0 .param/l "RCV2_ERR_DUPLICATE_EVENT" 1 8 11, C4<00000010>;
+P_000001d53102ded8 .param/l "RCV2_ERR_MISSING_EVENT" 1 8 10, C4<00000001>;
+P_000001d53102df10 .param/l "RCV2_ERR_NONE" 1 8 9, C4<00000000>;
+P_000001d53102df48 .param/l "RCV2_ERR_REORDERED_EVENT" 1 8 12, C4<00000011>;
+P_000001d53102df80 .param/l "RCV2_ERR_TRUNCATED_CAPSULE" 1 8 16, C4<00000111>;
+P_000001d53102dfb8 .param/l "RCV2_ERR_WRONG_IRQ_CAUSE" 1 8 14, C4<00000101>;
+P_000001d53102dff0 .param/l "RCV2_ERR_WRONG_MMIO_VALUE" 1 8 13, C4<00000100>;
+P_000001d53102e028 .param/l "RCV2_ERR_WRONG_PAYLOAD_HASH" 1 8 15, C4<00000110>;
+P_000001d53102e060 .param/l "RCV2_FLAG_DELTA_WIDE" 1 8 21, +C4<00000000000000000000000000000011>;
+P_000001d53102e098 .param/l "RCV2_FLAG_DIAGNOSTIC" 1 8 18, +C4<00000000000000000000000000000000>;
+P_000001d53102e0d0 .param/l "RCV2_FLAG_DICT_HIT" 1 8 20, +C4<00000000000000000000000000000010>;
+P_000001d53102e108 .param/l "RCV2_FLAG_HASH" 1 8 19, +C4<00000000000000000000000000000001>;
+P_000001d53102e140 .param/l "RCV2_WORD_WIDTH" 1 8 7, +C4<00000000000000000000000001000000>;
+P_000001d53102e178 .param/l "RC_EVENT_FLAG_W" 1 7 2, +C4<00000000000000000000000000000100>;
+P_000001d53102e1b0 .param/l "RC_EVENT_TYPE_W" 1 7 1, +C4<00000000000000000000000000000100>;
+P_000001d53102e1e8 .param/l "RC_EVENT_WIDTH" 1 7 4, +C4<00000000000000000000000010101000>;
+P_000001d53102e220 .param/l "RC_WORD_W" 1 7 3, +C4<00000000000000000000000000100000>;
+P_000001d53102e258 .param/l "STRICT_ORDER" 0 6 4, C4<1>;
+L_000001d530f9a060 .functor AND 1, v000001d531092bd0_0, L_000001d53109b360, C4<1>, C4<1>;
+L_000001d530f9a450 .functor AND 1, L_000001d530f9a060, L_000001d53109b400, C4<1>, C4<1>;
+L_000001d530f9a290 .functor AND 1, v000001d53109abe0_0, L_000001d530f9a450, C4<1>, C4<1>;
+L_000001d530f9a0d0 .functor AND 1, v000001d53109abe0_0, L_000001d530f9a450, C4<1>, C4<1>;
+v000001d531093e90_0 .net *"_ivl_11", 31 0, L_000001d531099e20;  1 drivers
+v000001d531092810_0 .net *"_ivl_15", 0 0, L_000001d53109b360;  1 drivers
+v000001d5310924f0_0 .net *"_ivl_17", 0 0, L_000001d530f9a060;  1 drivers
+v000001d531092ef0_0 .net *"_ivl_19", 0 0, L_000001d53109b400;  1 drivers
+v000001d5310926d0_0 .net *"_ivl_7", 31 0, L_000001d53109ae60;  1 drivers
+v000001d531092bd0_0 .var "active", 0 0;
+v000001d531093490_0 .net "capsule_ready", 0 0, L_000001d530f9a450;  alias, 1 drivers
+v000001d531092c70_0 .net "capsule_valid", 0 0, v000001d53109abe0_0;  1 drivers
+v000001d5310930d0_0 .net "capsule_word", 63 0, v000001d53109ad20_0;  1 drivers
+v000001d531093a30_0 .net "clear", 0 0, v000001d53109a500_0;  1 drivers
+v000001d531092d10_0 .net "clk", 0 0, v000001d53109a1e0_0;  1 drivers
+v000001d531092f90_0 .var "consumed_all_events", 0 0;
+v000001d5310938f0_0 .var "consumed_count", 31 0;
+v000001d531092770_0 .var "expected_commit_index", 31 0;
+v000001d531093990_0 .net "expected_flags", 3 0, L_000001d531099b00;  1 drivers
+v000001d531092db0_0 .net "expected_payload", 31 0, L_000001d531099d80;  1 drivers
+v000001d531093850_0 .net "expected_payload_hash", 31 0, L_000001d53109a0a0;  1 drivers
+v000001d531093170_0 .net "expected_type", 3 0, L_000001d53109b220;  1 drivers
+v000001d531093fd0_0 .net "irq_mismatch", 0 0, v000001d53108e780_0;  1 drivers
+v000001d531092e50_0 .net "irq_replay_cause", 7 0, v000001d53108e820_0;  alias, 1 drivers
+v000001d531093030_0 .net "irq_replay_valid", 0 0, v000001d53108db00_0;  alias, 1 drivers
+v000001d531093530_0 .net "mmio_mismatch", 0 0, v000001d531092a90_0;  1 drivers
+v000001d531093210_0 .net "mmio_replay_addr_token", 31 0, v000001d5310932b0_0;  alias, 1 drivers
+v000001d531093ad0_0 .net "mmio_replay_valid", 0 0, v000001d531092950_0;  alias, 1 drivers
+v000001d531092590_0 .net "mmio_replay_value", 31 0, v000001d531093350_0;  alias, 1 drivers
+v000001d5310935d0_0 .net "next_commit_index", 31 0, L_000001d531099f60;  1 drivers
+v000001d5310941b0_0 .net "observed_addr", 31 0, v000001d53109afa0_0;  1 drivers
+v000001d5310937b0_0 .net "observed_commit_index", 31 0, v000001d531099ba0_0;  1 drivers
+v000001d531093710_0 .net "observed_data", 31 0, v000001d53109b180_0;  1 drivers
+v000001d531093670_0 .net "observed_event_type", 3 0, v000001d53109aa00_0;  1 drivers
+v000001d531093b70_0 .net "observed_payload_hash", 31 0, v000001d531099a60_0;  1 drivers
+v000001d531092630_0 .net "observed_valid", 0 0, v000001d53109aaa0_0;  1 drivers
+v000001d531093c10_0 .var "replay_error", 0 0;
+v000001d531093cb0_0 .var "replay_error_code", 7 0;
+v000001d531093d50_0 .net "rst_n", 0 0, v000001d53109ab40_0;  1 drivers
+v000001d531093f30_0 .net "start", 0 0, v000001d5310999c0_0;  1 drivers
+v000001d531094070_0 .net "stream_done", 0 0, v000001d53109ac80_0;  1 drivers
+E_000001d531017f10/0 .event negedge, v000001d531093d50_0;
+E_000001d531017f10/1 .event posedge, v000001d531092d10_0;
+E_000001d531017f10 .event/or E_000001d531017f10/0, E_000001d531017f10/1;
+L_000001d53109b220 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_type, 4, v000001d53109ad20_0 (v000001d531080630_0) S_000001d531082640;
+L_000001d531099b00 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_flags, 4, v000001d53109ad20_0 (v000001d531080ef0_0) S_000001d531082960;
+L_000001d531099d80 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_payload, 32, v000001d53109ad20_0 (v000001d531080f90_0) S_000001d531082fa0;
+L_000001d53109ae60 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_commit_delta_for_word, 32, v000001d53109ad20_0 (v000001d531002cd0_0) S_000001d53107f7d0;
+L_000001d531099f60 .arith/sum 32, v000001d531092770_0, L_000001d53109ae60;
+L_000001d531099e20 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_hash_addr_for_event, 32, L_000001d53109b220, v000001d53109ad20_0, v000001d53109afa0_0 (v000001d5310801d0_0, v000001d531081490_0, v000001d5310806d0_0) S_000001d53107fe10;
+L_000001d53109a0a0 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_expected_payload_hash, 32, L_000001d53109b220, L_000001d531099f60, L_000001d531099e20, L_000001d531099d80 (v000001d530fb9e00_0, v000001d530fb9cc0_0, v000001d531001d30_0, v000001d530fb97c0_0) S_000001d53107fc80;
+L_000001d53109b360 .reduce/nor v000001d531093c10_0;
+L_000001d53109b400 .reduce/nor v000001d531092f90_0;
+S_000001d530f80bd0 .scope autofunction.vec4.s32, "rc_get_addr" "rc_get_addr" 7 61, 7 61 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531002190_0 .var "event_packet", 167 0;
+; Variable rc_get_addr is vec4 return value of scope S_000001d530f80bd0
+TD_tb_rcv2_system_replay_consumer.dut.rc_get_addr ;
+    %load/vec4 v000001d531002190_0;
+    %parti/s 32, 32, 7;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_addr (store_vec4_to_lval)
+    %end;
+S_000001d530f47290 .scope autofunction.vec4.s32, "rc_get_commit_index" "rc_get_commit_index" 7 49, 7 49 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531002370_0 .var "event_packet", 167 0;
+; Variable rc_get_commit_index is vec4 return value of scope S_000001d530f47290
+TD_tb_rcv2_system_replay_consumer.dut.rc_get_commit_index ;
+    %load/vec4 v000001d531002370_0;
+    %parti/s 32, 96, 8;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_commit_index (store_vec4_to_lval)
+    %end;
+S_000001d530ed67a0 .scope autofunction.vec4.s32, "rc_get_data" "rc_get_data" 7 67, 7 67 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d5310018d0_0 .var "event_packet", 167 0;
+; Variable rc_get_data is vec4 return value of scope S_000001d530ed67a0
+TD_tb_rcv2_system_replay_consumer.dut.rc_get_data ;
+    %load/vec4 v000001d5310018d0_0;
+    %parti/s 32, 0, 2;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_data (store_vec4_to_lval)
+    %end;
+S_000001d530ed6930 .scope autofunction.vec4.s32, "rc_get_event_id" "rc_get_event_id" 7 43, 7 43 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531001830_0 .var "event_packet", 167 0;
+; Variable rc_get_event_id is vec4 return value of scope S_000001d530ed6930
+TD_tb_rcv2_system_replay_consumer.dut.rc_get_event_id ;
+    %load/vec4 v000001d531001830_0;
+    %parti/s 32, 128, 9;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_event_id (store_vec4_to_lval)
+    %end;
+S_000001d530ed6ac0 .scope autofunction.vec4.s32, "rc_get_pc" "rc_get_pc" 7 55, 7 55 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531001150_0 .var "event_packet", 167 0;
+; Variable rc_get_pc is vec4 return value of scope S_000001d530ed6ac0
+TD_tb_rcv2_system_replay_consumer.dut.rc_get_pc ;
+    %load/vec4 v000001d531001150_0;
+    %parti/s 32, 64, 8;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_pc (store_vec4_to_lval)
+    %end;
+S_000001d53107f320 .scope autofunction.vec4.s4, "rc_get_type" "rc_get_type" 7 37, 7 37 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531001e70_0 .var "event_packet", 167 0;
+; Variable rc_get_type is vec4 return value of scope S_000001d53107f320
+TD_tb_rcv2_system_replay_consumer.dut.rc_get_type ;
+    %load/vec4 v000001d531001e70_0;
+    %parti/s 4, 164, 9;
+    %ret/vec4 0, 0, 4;  Assign to rc_get_type (store_vec4_to_lval)
+    %end;
+S_000001d53107f4b0 .scope autofunction.vec4.s168, "rc_pack_event" "rc_pack_event" 7 25, 7 25 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531002af0_0 .var "addr", 31 0;
+v000001d531001dd0_0 .var "commit_index", 31 0;
+v000001d531002b90_0 .var "data", 31 0;
+v000001d5310011f0_0 .var "event_id", 31 0;
+v000001d531001bf0_0 .var "event_type", 3 0;
+v000001d531002550_0 .var "flags", 3 0;
+v000001d531001a10_0 .var "pc", 31 0;
+; Variable rc_pack_event is vec4 return value of scope S_000001d53107f4b0
+TD_tb_rcv2_system_replay_consumer.dut.rc_pack_event ;
+    %load/vec4 v000001d531001bf0_0;
+    %load/vec4 v000001d531002550_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d5310011f0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531001dd0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531001a10_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531002af0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531002b90_0;
+    %concat/vec4; draw_concat_vec4
+    %ret/vec4 0, 0, 168;  Assign to rc_pack_event (store_vec4_to_lval)
+    %end;
+S_000001d53107f640 .scope autofunction.vec4.s4, "rcv2_capture_mode_for_config" "rcv2_capture_mode_for_config" 8 23, 8 23 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d5310027d0_0 .var/2s "cfg", 31 0;
+; Variable rcv2_capture_mode_for_config is vec4 return value of scope S_000001d53107f640
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_capture_mode_for_config ;
+    %load/vec4 v000001d5310027d0_0;
+    %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/e;
+    %jmp/1 T_7.0, 6;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 32;
+    %cmp/e;
+    %jmp/1 T_7.1, 6;
+    %dup/vec4;
+    %pushi/vec4 2, 0, 32;
+    %cmp/e;
+    %jmp/1 T_7.2, 6;
+    %dup/vec4;
+    %pushi/vec4 3, 0, 32;
+    %cmp/e;
+    %jmp/1 T_7.3, 6;
+    %dup/vec4;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %jmp/1 T_7.4, 6;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_7.6;
+T_7.0 ;
+    %pushi/vec4 1, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_7.6;
+T_7.1 ;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_7.6;
+T_7.2 ;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_7.6;
+T_7.3 ;
+    %pushi/vec4 0, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_7.6;
+T_7.4 ;
+    %pushi/vec4 0, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_7.6;
+T_7.6 ;
+    %pop/vec4 1;
+    %end;
+S_000001d53107f7d0 .scope autofunction.vec4.s32, "rcv2_commit_delta_for_word" "rcv2_commit_delta_for_word" 6 60, 6 60 0, S_000001d530f80a40;
+ .timescale 0 0;
+; Variable rcv2_commit_delta_for_word is vec4 return value of scope S_000001d53107f7d0
+v000001d531002cd0_0 .var "word", 63 0;
+v000001d531002e10_0 .var "word_flags", 3 0;
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_commit_delta_for_word ;
+    %alloc S_000001d531082960;
+    %load/vec4 v000001d531002cd0_0;
+    %store/vec4 v000001d531080ef0_0, 0, 64;
+    %callf/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_flags, S_000001d531082960;
+    %free S_000001d531082960;
+    %store/vec4 v000001d531002e10_0, 0, 4;
+    %load/vec4 v000001d531002e10_0;
+    %parti/s 1, 3, 3;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_8.7, 8;
+    %pushi/vec4 0, 0, 16;
+    %alloc S_000001d5310827d0;
+    %load/vec4 v000001d531002cd0_0;
+    %store/vec4 v000001d531080310_0, 0, 64;
+    %callf/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_debug, S_000001d5310827d0;
+    %free S_000001d5310827d0;
+    %concat/vec4; draw_concat_vec4
+    %alloc S_000001d531082320;
+    %load/vec4 v000001d531002cd0_0;
+    %store/vec4 v000001d531080770_0, 0, 64;
+    %callf/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_delta, S_000001d531082320;
+    %free S_000001d531082320;
+    %concat/vec4; draw_concat_vec4
+    %ret/vec4 0, 0, 32;  Assign to rcv2_commit_delta_for_word (store_vec4_to_lval)
+    %jmp T_8.8;
+T_8.7 ;
+    %pushi/vec4 0, 0, 24;
+    %alloc S_000001d531082320;
+    %load/vec4 v000001d531002cd0_0;
+    %store/vec4 v000001d531080770_0, 0, 64;
+    %callf/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_delta, S_000001d531082320;
+    %free S_000001d531082320;
+    %concat/vec4; draw_concat_vec4
+    %ret/vec4 0, 0, 32;  Assign to rcv2_commit_delta_for_word (store_vec4_to_lval)
+T_8.8 ;
+    %end;
+S_000001d53107f960 .scope autofunction.vec4.s1, "rcv2_config_has_diagnostics" "rcv2_config_has_diagnostics" 8 42, 8 42 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531001c90_0 .var/2s "cfg", 31 0;
+; Variable rcv2_config_has_diagnostics is vec4 return value of scope S_000001d53107f960
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_config_has_diagnostics ;
+    %load/vec4 v000001d531001c90_0;
+    %cmpi/e 3, 0, 32;
+    %flag_get/vec4 4;
+    %jmp/1 T_9.9, 4;
+    %load/vec4 v000001d531001c90_0;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_9.9;
+    %ret/vec4 0, 0, 1;  Assign to rcv2_config_has_diagnostics (store_vec4_to_lval)
+    %end;
+S_000001d53107faf0 .scope autofunction.vec4.s1, "rcv2_config_has_hash" "rcv2_config_has_hash" 8 36, 8 36 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531001290_0 .var/2s "cfg", 31 0;
+; Variable rcv2_config_has_hash is vec4 return value of scope S_000001d53107faf0
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_config_has_hash ;
+    %load/vec4 v000001d531001290_0;
+    %cmpi/e 2, 0, 32;
+    %jmp/1 T_10.11, 4;
+    %flag_mov 8, 4;
+    %load/vec4 v000001d531001290_0;
+    %cmpi/e 3, 0, 32;
+    %flag_or 4, 8;
+T_10.11;
+    %flag_get/vec4 4;
+    %jmp/1 T_10.10, 4;
+    %load/vec4 v000001d531001290_0;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_10.10;
+    %ret/vec4 0, 0, 1;  Assign to rcv2_config_has_hash (store_vec4_to_lval)
+    %end;
+S_000001d53107fc80 .scope autofunction.vec4.s32, "rcv2_expected_payload_hash" "rcv2_expected_payload_hash" 6 74, 6 74 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d531001d30_0 .var "addr", 31 0;
+v000001d530fb9cc0_0 .var "commit_index", 31 0;
+v000001d530fb97c0_0 .var "data", 31 0;
+v000001d530fb9e00_0 .var "event_type", 3 0;
+v000001d530fb99a0_0 .var "mixed", 31 0;
+; Variable rcv2_expected_payload_hash is vec4 return value of scope S_000001d53107fc80
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_expected_payload_hash ;
+    %load/vec4 v000001d530fb97c0_0;
+    %load/vec4 v000001d530fb9e00_0;
+    %load/vec4 v000001d530fb9e00_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d530fb9e00_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d530fb9e00_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d530fb9e00_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d530fb9e00_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d530fb9e00_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d530fb9e00_0;
+    %concat/vec4; draw_concat_vec4
+    %xor;
+    %store/vec4 v000001d530fb99a0_0, 0, 32;
+    %load/vec4 v000001d530fb99a0_0;
+    %load/vec4 v000001d530fb9cc0_0;
+    %parti/s 16, 0, 2;
+    %load/vec4 v000001d530fb9cc0_0;
+    %parti/s 16, 16, 6;
+    %concat/vec4; draw_concat_vec4
+    %xor;
+    %store/vec4 v000001d530fb99a0_0, 0, 32;
+    %load/vec4 v000001d530fb99a0_0;
+    %load/vec4 v000001d531001d30_0;
+    %parti/s 8, 0, 2;
+    %load/vec4 v000001d531001d30_0;
+    %parti/s 24, 8, 5;
+    %concat/vec4; draw_concat_vec4
+    %xor;
+    %store/vec4 v000001d530fb99a0_0, 0, 32;
+    %load/vec4 v000001d530fb99a0_0;
+    %ix/load 4, 5, 0;
+    %flag_set/imm 4, 0;
+    %shiftl 4;
+    %load/vec4 v000001d530fb99a0_0;
+    %ix/load 4, 2, 0;
+    %flag_set/imm 4, 0;
+    %shiftr 4;
+    %xor;
+    %pushi/vec4 2654435769, 0, 32;
+    %xor;
+    %ret/vec4 0, 0, 32;  Assign to rcv2_expected_payload_hash (store_vec4_to_lval)
+    %end;
+S_000001d53107fe10 .scope autofunction.vec4.s32, "rcv2_hash_addr_for_event" "rcv2_hash_addr_for_event" 6 46, 6 46 0, S_000001d530f80a40;
+ .timescale 0 0;
+v000001d5310801d0_0 .var "event_type", 3 0;
+v000001d5310806d0_0 .var "observed_addr", 31 0;
+; Variable rcv2_hash_addr_for_event is vec4 return value of scope S_000001d53107fe10
+v000001d531081490_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_hash_addr_for_event ;
+    %load/vec4 v000001d5310801d0_0;
+    %cmpi/e 10, 0, 4;
+    %jmp/0xz  T_12.12, 4;
+    %pushi/vec4 0, 0, 24;
+    %alloc S_000001d531081fb0;
+    %load/vec4 v000001d531081490_0;
+    %store/vec4 v000001d531081670_0, 0, 64;
+    %callf/vec4 TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_addr_token, S_000001d531081fb0;
+    %free S_000001d531081fb0;
+    %concat/vec4; draw_concat_vec4
+    %ret/vec4 0, 0, 32;  Assign to rcv2_hash_addr_for_event (store_vec4_to_lval)
+    %jmp T_12.13;
+T_12.12 ;
+    %load/vec4 v000001d5310806d0_0;
+    %ret/vec4 0, 0, 32;  Assign to rcv2_hash_addr_for_event (store_vec4_to_lval)
+T_12.13 ;
+    %end;
+S_000001d531081fb0 .scope autofunction.vec4.s8, "rcv2_word_addr_token" "rcv2_word_addr_token" 8 66, 8 66 0, S_000001d530f80a40;
+ .timescale 0 0;
+; Variable rcv2_word_addr_token is vec4 return value of scope S_000001d531081fb0
+v000001d531081670_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_addr_token ;
+    %load/vec4 v000001d531081670_0;
+    %parti/s 8, 40, 7;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_addr_token (store_vec4_to_lval)
+    %end;
+S_000001d5310827d0 .scope autofunction.vec4.s8, "rcv2_word_debug" "rcv2_word_debug" 8 78, 8 78 0, S_000001d530f80a40;
+ .timescale 0 0;
+; Variable rcv2_word_debug is vec4 return value of scope S_000001d5310827d0
+v000001d531080310_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_debug ;
+    %load/vec4 v000001d531080310_0;
+    %parti/s 8, 0, 2;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_debug (store_vec4_to_lval)
+    %end;
+S_000001d531082320 .scope autofunction.vec4.s8, "rcv2_word_delta" "rcv2_word_delta" 8 60, 8 60 0, S_000001d530f80a40;
+ .timescale 0 0;
+; Variable rcv2_word_delta is vec4 return value of scope S_000001d531082320
+v000001d531080770_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_delta ;
+    %load/vec4 v000001d531080770_0;
+    %parti/s 8, 48, 7;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_delta (store_vec4_to_lval)
+    %end;
+S_000001d531082960 .scope autofunction.vec4.s4, "rcv2_word_flags" "rcv2_word_flags" 8 54, 8 54 0, S_000001d530f80a40;
+ .timescale 0 0;
+; Variable rcv2_word_flags is vec4 return value of scope S_000001d531082960
+v000001d531080ef0_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_flags ;
+    %load/vec4 v000001d531080ef0_0;
+    %parti/s 4, 56, 7;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_word_flags (store_vec4_to_lval)
+    %end;
+S_000001d531082fa0 .scope autofunction.vec4.s32, "rcv2_word_payload" "rcv2_word_payload" 8 72, 8 72 0, S_000001d530f80a40;
+ .timescale 0 0;
+; Variable rcv2_word_payload is vec4 return value of scope S_000001d531082fa0
+v000001d531080f90_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_payload ;
+    %load/vec4 v000001d531080f90_0;
+    %parti/s 32, 8, 5;
+    %ret/vec4 0, 0, 32;  Assign to rcv2_word_payload (store_vec4_to_lval)
+    %end;
+S_000001d531082640 .scope autofunction.vec4.s4, "rcv2_word_type" "rcv2_word_type" 8 48, 8 48 0, S_000001d530f80a40;
+ .timescale 0 0;
+; Variable rcv2_word_type is vec4 return value of scope S_000001d531082640
+v000001d531080630_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.rcv2_word_type ;
+    %load/vec4 v000001d531080630_0;
+    %parti/s 4, 60, 7;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_word_type (store_vec4_to_lval)
+    %end;
+S_000001d531082af0 .scope module, "u_irq_replay_driver" "rcv2_irq_replay_driver" 6 113, 9 1 0, S_000001d530f80a40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "event_valid";
+    .port_info 1 /INPUT 64 "event_word";
+    .port_info 2 /INPUT 1 "observed_valid";
+    .port_info 3 /INPUT 32 "observed_cause";
+    .port_info 4 /OUTPUT 1 "irq_replay_valid";
+    .port_info 5 /OUTPUT 8 "irq_replay_cause";
+    .port_info 6 /OUTPUT 1 "irq_mismatch";
+P_000001d531083150 .param/l "CAPTURE_ALL" 1 7 19, C4<0000>;
+P_000001d531083188 .param/l "CAPTURE_DISABLED" 1 7 23, C4<0100>;
+P_000001d5310831c0 .param/l "CAPTURE_MMIO_INTERRUPT" 1 7 20, C4<0001>;
+P_000001d5310831f8 .param/l "CAPTURE_PROPERTY_AWARE" 1 7 21, C4<0010>;
+P_000001d531083230 .param/l "CAPTURE_REPLAYCAPSULE_RV" 1 7 22, C4<0011>;
+P_000001d531083268 .param/l "EV_BRANCH" 1 7 7, C4<0001>;
+P_000001d5310832a0 .param/l "EV_CHECKPOINT_HASH" 1 7 17, C4<1011>;
+P_000001d5310832d8 .param/l "EV_COMMIT" 1 7 6, C4<0000>;
+P_000001d531083310 .param/l "EV_EXTERNAL_INPUT" 1 7 15, C4<1001>;
+P_000001d531083348 .param/l "EV_INTERRUPT_ENTER" 1 7 13, C4<0111>;
+P_000001d531083380 .param/l "EV_INTERRUPT_EXIT" 1 7 14, C4<1000>;
+P_000001d5310833b8 .param/l "EV_JUMP" 1 7 8, C4<0010>;
+P_000001d5310833f0 .param/l "EV_LOAD" 1 7 10, C4<0100>;
+P_000001d531083428 .param/l "EV_MMIO_READ" 1 7 11, C4<0101>;
+P_000001d531083460 .param/l "EV_MMIO_WRITE" 1 7 12, C4<0110>;
+P_000001d531083498 .param/l "EV_PROPERTY_FAIL" 1 7 16, C4<1010>;
+P_000001d5310834d0 .param/l "EV_STORE" 1 7 9, C4<0011>;
+P_000001d531083508 .param/l "RCV2_CFG_CORE" 1 8 2, +C4<00000000000000000000000000000001>;
+P_000001d531083540 .param/l "RCV2_CFG_DIAGNOSTIC" 1 8 4, +C4<00000000000000000000000000000011>;
+P_000001d531083578 .param/l "RCV2_CFG_FULL" 1 8 5, +C4<00000000000000000000000000000100>;
+P_000001d5310835b0 .param/l "RCV2_CFG_HASHED" 1 8 3, +C4<00000000000000000000000000000010>;
+P_000001d5310835e8 .param/l "RCV2_CFG_MINIMAL" 1 8 1, +C4<00000000000000000000000000000000>;
+P_000001d531083620 .param/l "RCV2_ERR_DUPLICATE_EVENT" 1 8 11, C4<00000010>;
+P_000001d531083658 .param/l "RCV2_ERR_MISSING_EVENT" 1 8 10, C4<00000001>;
+P_000001d531083690 .param/l "RCV2_ERR_NONE" 1 8 9, C4<00000000>;
+P_000001d5310836c8 .param/l "RCV2_ERR_REORDERED_EVENT" 1 8 12, C4<00000011>;
+P_000001d531083700 .param/l "RCV2_ERR_TRUNCATED_CAPSULE" 1 8 16, C4<00000111>;
+P_000001d531083738 .param/l "RCV2_ERR_WRONG_IRQ_CAUSE" 1 8 14, C4<00000101>;
+P_000001d531083770 .param/l "RCV2_ERR_WRONG_MMIO_VALUE" 1 8 13, C4<00000100>;
+P_000001d5310837a8 .param/l "RCV2_ERR_WRONG_PAYLOAD_HASH" 1 8 15, C4<00000110>;
+P_000001d5310837e0 .param/l "RCV2_FLAG_DELTA_WIDE" 1 8 21, +C4<00000000000000000000000000000011>;
+P_000001d531083818 .param/l "RCV2_FLAG_DIAGNOSTIC" 1 8 18, +C4<00000000000000000000000000000000>;
+P_000001d531083850 .param/l "RCV2_FLAG_DICT_HIT" 1 8 20, +C4<00000000000000000000000000000010>;
+P_000001d531083888 .param/l "RCV2_FLAG_HASH" 1 8 19, +C4<00000000000000000000000000000001>;
+P_000001d5310838c0 .param/l "RCV2_WORD_WIDTH" 1 8 7, +C4<00000000000000000000000001000000>;
+P_000001d5310838f8 .param/l "RC_EVENT_FLAG_W" 1 7 2, +C4<00000000000000000000000000000100>;
+P_000001d531083930 .param/l "RC_EVENT_TYPE_W" 1 7 1, +C4<00000000000000000000000000000100>;
+P_000001d531083968 .param/l "RC_EVENT_WIDTH" 1 7 4, +C4<00000000000000000000000010101000>;
+P_000001d5310839a0 .param/l "RC_WORD_W" 1 7 3, +C4<00000000000000000000000000100000>;
+v000001d53108da60_0 .net "event_type", 3 0, L_000001d531099600;  1 drivers
+v000001d53108e1e0_0 .net "event_valid", 0 0, L_000001d530f9a0d0;  1 drivers
+v000001d53108f720_0 .net "event_word", 63 0, v000001d53109ad20_0;  alias, 1 drivers
+v000001d53108e780_0 .var "irq_mismatch", 0 0;
+v000001d53108e820_0 .var "irq_replay_cause", 7 0;
+v000001d53108db00_0 .var "irq_replay_valid", 0 0;
+v000001d53108dba0_0 .net "observed_cause", 31 0, v000001d53109b180_0;  alias, 1 drivers
+v000001d53108df60_0 .net "observed_valid", 0 0, v000001d53109aaa0_0;  alias, 1 drivers
+v000001d53108edc0_0 .net "payload", 31 0, L_000001d53109b040;  1 drivers
+E_000001d531017d90/0 .event anyedge, v000001d53108e1e0_0, v000001d53108da60_0, v000001d53108edc0_0, v000001d53108df60_0;
+E_000001d531017d90/1 .event anyedge, v000001d53108dba0_0;
+E_000001d531017d90 .event/or E_000001d531017d90/0, E_000001d531017d90/1;
+L_000001d531099600 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_word_type, 4, v000001d53109ad20_0 (v000001d53108f900_0) S_000001d53108d350;
+L_000001d53109b040 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_word_payload, 32, v000001d53109ad20_0 (v000001d53108f0e0_0) S_000001d53108bf00;
+S_000001d531082c80 .scope autofunction.vec4.s32, "rc_get_addr" "rc_get_addr" 7 61, 7 61 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d531080810_0 .var "event_packet", 167 0;
+; Variable rc_get_addr is vec4 return value of scope S_000001d531082c80
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rc_get_addr ;
+    %load/vec4 v000001d531080810_0;
+    %parti/s 32, 32, 7;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_addr (store_vec4_to_lval)
+    %end;
+S_000001d5310824b0 .scope autofunction.vec4.s32, "rc_get_commit_index" "rc_get_commit_index" 7 49, 7 49 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d5310810d0_0 .var "event_packet", 167 0;
+; Variable rc_get_commit_index is vec4 return value of scope S_000001d5310824b0
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rc_get_commit_index ;
+    %load/vec4 v000001d5310810d0_0;
+    %parti/s 32, 96, 8;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_commit_index (store_vec4_to_lval)
+    %end;
+S_000001d531082e10 .scope autofunction.vec4.s32, "rc_get_data" "rc_get_data" 7 67, 7 67 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d531080590_0 .var "event_packet", 167 0;
+; Variable rc_get_data is vec4 return value of scope S_000001d531082e10
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rc_get_data ;
+    %load/vec4 v000001d531080590_0;
+    %parti/s 32, 0, 2;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_data (store_vec4_to_lval)
+    %end;
+S_000001d531082190 .scope autofunction.vec4.s32, "rc_get_event_id" "rc_get_event_id" 7 43, 7 43 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d5310815d0_0 .var "event_packet", 167 0;
+; Variable rc_get_event_id is vec4 return value of scope S_000001d531082190
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rc_get_event_id ;
+    %load/vec4 v000001d5310815d0_0;
+    %parti/s 32, 128, 9;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_event_id (store_vec4_to_lval)
+    %end;
+S_000001d53108bbe0 .scope autofunction.vec4.s32, "rc_get_pc" "rc_get_pc" 7 55, 7 55 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d531081710_0 .var "event_packet", 167 0;
+; Variable rc_get_pc is vec4 return value of scope S_000001d53108bbe0
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rc_get_pc ;
+    %load/vec4 v000001d531081710_0;
+    %parti/s 32, 64, 8;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_pc (store_vec4_to_lval)
+    %end;
+S_000001d53108cea0 .scope autofunction.vec4.s4, "rc_get_type" "rc_get_type" 7 37, 7 37 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d531080c70_0 .var "event_packet", 167 0;
+; Variable rc_get_type is vec4 return value of scope S_000001d53108cea0
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rc_get_type ;
+    %load/vec4 v000001d531080c70_0;
+    %parti/s 4, 164, 9;
+    %ret/vec4 0, 0, 4;  Assign to rc_get_type (store_vec4_to_lval)
+    %end;
+S_000001d53108c540 .scope autofunction.vec4.s168, "rc_pack_event" "rc_pack_event" 7 25, 7 25 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d531081cb0_0 .var "addr", 31 0;
+v000001d531081170_0 .var "commit_index", 31 0;
+v000001d531081210_0 .var "data", 31 0;
+v000001d531080950_0 .var "event_id", 31 0;
+v000001d531080130_0 .var "event_type", 3 0;
+v000001d531080bd0_0 .var "flags", 3 0;
+v000001d531080e50_0 .var "pc", 31 0;
+; Variable rc_pack_event is vec4 return value of scope S_000001d53108c540
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rc_pack_event ;
+    %load/vec4 v000001d531080130_0;
+    %load/vec4 v000001d531080bd0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531080950_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531081170_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531080e50_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531081cb0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531081210_0;
+    %concat/vec4; draw_concat_vec4
+    %ret/vec4 0, 0, 168;  Assign to rc_pack_event (store_vec4_to_lval)
+    %end;
+S_000001d53108d030 .scope autofunction.vec4.s4, "rcv2_capture_mode_for_config" "rcv2_capture_mode_for_config" 8 23, 8 23 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d5310818f0_0 .var/2s "cfg", 31 0;
+; Variable rcv2_capture_mode_for_config is vec4 return value of scope S_000001d53108d030
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_capture_mode_for_config ;
+    %load/vec4 v000001d5310818f0_0;
+    %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/e;
+    %jmp/1 T_26.14, 6;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 32;
+    %cmp/e;
+    %jmp/1 T_26.15, 6;
+    %dup/vec4;
+    %pushi/vec4 2, 0, 32;
+    %cmp/e;
+    %jmp/1 T_26.16, 6;
+    %dup/vec4;
+    %pushi/vec4 3, 0, 32;
+    %cmp/e;
+    %jmp/1 T_26.17, 6;
+    %dup/vec4;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %jmp/1 T_26.18, 6;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_26.20;
+T_26.14 ;
+    %pushi/vec4 1, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_26.20;
+T_26.15 ;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_26.20;
+T_26.16 ;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_26.20;
+T_26.17 ;
+    %pushi/vec4 0, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_26.20;
+T_26.18 ;
+    %pushi/vec4 0, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_26.20;
+T_26.20 ;
+    %pop/vec4 1;
+    %end;
+S_000001d53108c220 .scope autofunction.vec4.s1, "rcv2_config_has_diagnostics" "rcv2_config_has_diagnostics" 8 42, 8 42 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d531081990_0 .var/2s "cfg", 31 0;
+; Variable rcv2_config_has_diagnostics is vec4 return value of scope S_000001d53108c220
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_config_has_diagnostics ;
+    %load/vec4 v000001d531081990_0;
+    %cmpi/e 3, 0, 32;
+    %flag_get/vec4 4;
+    %jmp/1 T_27.21, 4;
+    %load/vec4 v000001d531081990_0;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_27.21;
+    %ret/vec4 0, 0, 1;  Assign to rcv2_config_has_diagnostics (store_vec4_to_lval)
+    %end;
+S_000001d53108c090 .scope autofunction.vec4.s1, "rcv2_config_has_hash" "rcv2_config_has_hash" 8 36, 8 36 0, S_000001d531082af0;
+ .timescale 0 0;
+v000001d531081030_0 .var/2s "cfg", 31 0;
+; Variable rcv2_config_has_hash is vec4 return value of scope S_000001d53108c090
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_config_has_hash ;
+    %load/vec4 v000001d531081030_0;
+    %cmpi/e 2, 0, 32;
+    %jmp/1 T_28.23, 4;
+    %flag_mov 8, 4;
+    %load/vec4 v000001d531081030_0;
+    %cmpi/e 3, 0, 32;
+    %flag_or 4, 8;
+T_28.23;
+    %flag_get/vec4 4;
+    %jmp/1 T_28.22, 4;
+    %load/vec4 v000001d531081030_0;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_28.22;
+    %ret/vec4 0, 0, 1;  Assign to rcv2_config_has_hash (store_vec4_to_lval)
+    %end;
+S_000001d53108c3b0 .scope autofunction.vec4.s8, "rcv2_word_addr_token" "rcv2_word_addr_token" 8 66, 8 66 0, S_000001d531082af0;
+ .timescale 0 0;
+; Variable rcv2_word_addr_token is vec4 return value of scope S_000001d53108c3b0
+v000001d531081b70_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_word_addr_token ;
+    %load/vec4 v000001d531081b70_0;
+    %parti/s 8, 40, 7;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_addr_token (store_vec4_to_lval)
+    %end;
+S_000001d53108ba50 .scope autofunction.vec4.s8, "rcv2_word_debug" "rcv2_word_debug" 8 78, 8 78 0, S_000001d531082af0;
+ .timescale 0 0;
+; Variable rcv2_word_debug is vec4 return value of scope S_000001d53108ba50
+v000001d531081df0_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_word_debug ;
+    %load/vec4 v000001d531081df0_0;
+    %parti/s 8, 0, 2;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_debug (store_vec4_to_lval)
+    %end;
+S_000001d53108d1c0 .scope autofunction.vec4.s8, "rcv2_word_delta" "rcv2_word_delta" 8 60, 8 60 0, S_000001d531082af0;
+ .timescale 0 0;
+; Variable rcv2_word_delta is vec4 return value of scope S_000001d53108d1c0
+v000001d531080450_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_word_delta ;
+    %load/vec4 v000001d531080450_0;
+    %parti/s 8, 48, 7;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_delta (store_vec4_to_lval)
+    %end;
+S_000001d53108bd70 .scope autofunction.vec4.s4, "rcv2_word_flags" "rcv2_word_flags" 8 54, 8 54 0, S_000001d531082af0;
+ .timescale 0 0;
+; Variable rcv2_word_flags is vec4 return value of scope S_000001d53108bd70
+v000001d5310803b0_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_word_flags ;
+    %load/vec4 v000001d5310803b0_0;
+    %parti/s 4, 56, 7;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_word_flags (store_vec4_to_lval)
+    %end;
+S_000001d53108bf00 .scope autofunction.vec4.s32, "rcv2_word_payload" "rcv2_word_payload" 8 72, 8 72 0, S_000001d531082af0;
+ .timescale 0 0;
+; Variable rcv2_word_payload is vec4 return value of scope S_000001d53108bf00
+v000001d53108f0e0_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_word_payload ;
+    %load/vec4 v000001d53108f0e0_0;
+    %parti/s 32, 8, 5;
+    %ret/vec4 0, 0, 32;  Assign to rcv2_word_payload (store_vec4_to_lval)
+    %end;
+S_000001d53108d350 .scope autofunction.vec4.s4, "rcv2_word_type" "rcv2_word_type" 8 48, 8 48 0, S_000001d531082af0;
+ .timescale 0 0;
+; Variable rcv2_word_type is vec4 return value of scope S_000001d53108d350
+v000001d53108f900_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_irq_replay_driver.rcv2_word_type ;
+    %load/vec4 v000001d53108f900_0;
+    %parti/s 4, 60, 7;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_word_type (store_vec4_to_lval)
+    %end;
+S_000001d53108c9f0 .scope module, "u_mmio_replay_driver" "rcv2_mmio_replay_driver" 6 101, 10 1 0, S_000001d530f80a40;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "event_valid";
+    .port_info 1 /INPUT 64 "event_word";
+    .port_info 2 /INPUT 1 "observed_valid";
+    .port_info 3 /INPUT 32 "observed_addr";
+    .port_info 4 /INPUT 32 "observed_data";
+    .port_info 5 /OUTPUT 1 "mmio_replay_valid";
+    .port_info 6 /OUTPUT 32 "mmio_replay_addr_token";
+    .port_info 7 /OUTPUT 32 "mmio_replay_value";
+    .port_info 8 /OUTPUT 1 "mmio_mismatch";
+P_000001d53108fa20 .param/l "CAPTURE_ALL" 1 7 19, C4<0000>;
+P_000001d53108fa58 .param/l "CAPTURE_DISABLED" 1 7 23, C4<0100>;
+P_000001d53108fa90 .param/l "CAPTURE_MMIO_INTERRUPT" 1 7 20, C4<0001>;
+P_000001d53108fac8 .param/l "CAPTURE_PROPERTY_AWARE" 1 7 21, C4<0010>;
+P_000001d53108fb00 .param/l "CAPTURE_REPLAYCAPSULE_RV" 1 7 22, C4<0011>;
+P_000001d53108fb38 .param/l "EV_BRANCH" 1 7 7, C4<0001>;
+P_000001d53108fb70 .param/l "EV_CHECKPOINT_HASH" 1 7 17, C4<1011>;
+P_000001d53108fba8 .param/l "EV_COMMIT" 1 7 6, C4<0000>;
+P_000001d53108fbe0 .param/l "EV_EXTERNAL_INPUT" 1 7 15, C4<1001>;
+P_000001d53108fc18 .param/l "EV_INTERRUPT_ENTER" 1 7 13, C4<0111>;
+P_000001d53108fc50 .param/l "EV_INTERRUPT_EXIT" 1 7 14, C4<1000>;
+P_000001d53108fc88 .param/l "EV_JUMP" 1 7 8, C4<0010>;
+P_000001d53108fcc0 .param/l "EV_LOAD" 1 7 10, C4<0100>;
+P_000001d53108fcf8 .param/l "EV_MMIO_READ" 1 7 11, C4<0101>;
+P_000001d53108fd30 .param/l "EV_MMIO_WRITE" 1 7 12, C4<0110>;
+P_000001d53108fd68 .param/l "EV_PROPERTY_FAIL" 1 7 16, C4<1010>;
+P_000001d53108fda0 .param/l "EV_STORE" 1 7 9, C4<0011>;
+P_000001d53108fdd8 .param/l "RCV2_CFG_CORE" 1 8 2, +C4<00000000000000000000000000000001>;
+P_000001d53108fe10 .param/l "RCV2_CFG_DIAGNOSTIC" 1 8 4, +C4<00000000000000000000000000000011>;
+P_000001d53108fe48 .param/l "RCV2_CFG_FULL" 1 8 5, +C4<00000000000000000000000000000100>;
+P_000001d53108fe80 .param/l "RCV2_CFG_HASHED" 1 8 3, +C4<00000000000000000000000000000010>;
+P_000001d53108feb8 .param/l "RCV2_CFG_MINIMAL" 1 8 1, +C4<00000000000000000000000000000000>;
+P_000001d53108fef0 .param/l "RCV2_ERR_DUPLICATE_EVENT" 1 8 11, C4<00000010>;
+P_000001d53108ff28 .param/l "RCV2_ERR_MISSING_EVENT" 1 8 10, C4<00000001>;
+P_000001d53108ff60 .param/l "RCV2_ERR_NONE" 1 8 9, C4<00000000>;
+P_000001d53108ff98 .param/l "RCV2_ERR_REORDERED_EVENT" 1 8 12, C4<00000011>;
+P_000001d53108ffd0 .param/l "RCV2_ERR_TRUNCATED_CAPSULE" 1 8 16, C4<00000111>;
+P_000001d531090008 .param/l "RCV2_ERR_WRONG_IRQ_CAUSE" 1 8 14, C4<00000101>;
+P_000001d531090040 .param/l "RCV2_ERR_WRONG_MMIO_VALUE" 1 8 13, C4<00000100>;
+P_000001d531090078 .param/l "RCV2_ERR_WRONG_PAYLOAD_HASH" 1 8 15, C4<00000110>;
+P_000001d5310900b0 .param/l "RCV2_FLAG_DELTA_WIDE" 1 8 21, +C4<00000000000000000000000000000011>;
+P_000001d5310900e8 .param/l "RCV2_FLAG_DIAGNOSTIC" 1 8 18, +C4<00000000000000000000000000000000>;
+P_000001d531090120 .param/l "RCV2_FLAG_DICT_HIT" 1 8 20, +C4<00000000000000000000000000000010>;
+P_000001d531090158 .param/l "RCV2_FLAG_HASH" 1 8 19, +C4<00000000000000000000000000000001>;
+P_000001d531090190 .param/l "RCV2_WORD_WIDTH" 1 8 7, +C4<00000000000000000000000001000000>;
+P_000001d5310901c8 .param/l "RC_EVENT_FLAG_W" 1 7 2, +C4<00000000000000000000000000000100>;
+P_000001d531090200 .param/l "RC_EVENT_TYPE_W" 1 7 1, +C4<00000000000000000000000000000100>;
+P_000001d531090238 .param/l "RC_EVENT_WIDTH" 1 7 4, +C4<00000000000000000000000010101000>;
+P_000001d531090270 .param/l "RC_WORD_W" 1 7 3, +C4<00000000000000000000000000100000>;
+v000001d5310923b0_0 .net "event_type", 3 0, L_000001d53109a140;  1 drivers
+v000001d531093df0_0 .net "event_valid", 0 0, L_000001d530f9a290;  1 drivers
+v000001d5310928b0_0 .net "event_word", 63 0, v000001d53109ad20_0;  alias, 1 drivers
+v000001d531092a90_0 .var "mmio_mismatch", 0 0;
+v000001d5310932b0_0 .var "mmio_replay_addr_token", 31 0;
+v000001d531092950_0 .var "mmio_replay_valid", 0 0;
+v000001d531093350_0 .var "mmio_replay_value", 31 0;
+v000001d531092310_0 .net "observed_addr", 31 0, v000001d53109afa0_0;  alias, 1 drivers
+v000001d531092450_0 .net "observed_data", 31 0, v000001d53109b180_0;  alias, 1 drivers
+v000001d5310929f0_0 .net "observed_valid", 0 0, v000001d53109aaa0_0;  alias, 1 drivers
+v000001d531092b30_0 .net "payload", 31 0, L_000001d53109a280;  1 drivers
+E_000001d531018150/0 .event anyedge, v000001d531093df0_0, v000001d5310923b0_0, v000001d53108f720_0, v000001d531092b30_0;
+E_000001d531018150/1 .event anyedge, v000001d53108df60_0, v000001d53108dba0_0, v000001d531092310_0;
+E_000001d531018150 .event/or E_000001d531018150/0, E_000001d531018150/1;
+L_000001d53109a140 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_type, 4, v000001d53109ad20_0 (v000001d5310933f0_0) S_000001d5310920b0;
+L_000001d53109a280 .ufunc/vec4 TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_payload, 32, v000001d53109ad20_0 (v000001d53108f540_0) S_000001d531090490;
+S_000001d53108cb80 .scope autofunction.vec4.s32, "rc_get_addr" "rc_get_addr" 7 61, 7 61 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108e000_0 .var "event_packet", 167 0;
+; Variable rc_get_addr is vec4 return value of scope S_000001d53108cb80
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rc_get_addr ;
+    %load/vec4 v000001d53108e000_0;
+    %parti/s 32, 32, 7;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_addr (store_vec4_to_lval)
+    %end;
+S_000001d53108d4e0 .scope autofunction.vec4.s32, "rc_get_commit_index" "rc_get_commit_index" 7 49, 7 49 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108f360_0 .var "event_packet", 167 0;
+; Variable rc_get_commit_index is vec4 return value of scope S_000001d53108d4e0
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rc_get_commit_index ;
+    %load/vec4 v000001d53108f360_0;
+    %parti/s 32, 96, 8;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_commit_index (store_vec4_to_lval)
+    %end;
+S_000001d53108c6d0 .scope autofunction.vec4.s32, "rc_get_data" "rc_get_data" 7 67, 7 67 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108f7c0_0 .var "event_packet", 167 0;
+; Variable rc_get_data is vec4 return value of scope S_000001d53108c6d0
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rc_get_data ;
+    %load/vec4 v000001d53108f7c0_0;
+    %parti/s 32, 0, 2;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_data (store_vec4_to_lval)
+    %end;
+S_000001d53108c860 .scope autofunction.vec4.s32, "rc_get_event_id" "rc_get_event_id" 7 43, 7 43 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108ebe0_0 .var "event_packet", 167 0;
+; Variable rc_get_event_id is vec4 return value of scope S_000001d53108c860
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rc_get_event_id ;
+    %load/vec4 v000001d53108ebe0_0;
+    %parti/s 32, 128, 9;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_event_id (store_vec4_to_lval)
+    %end;
+S_000001d53108d670 .scope autofunction.vec4.s32, "rc_get_pc" "rc_get_pc" 7 55, 7 55 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108dc40_0 .var "event_packet", 167 0;
+; Variable rc_get_pc is vec4 return value of scope S_000001d53108d670
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rc_get_pc ;
+    %load/vec4 v000001d53108dc40_0;
+    %parti/s 32, 64, 8;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_pc (store_vec4_to_lval)
+    %end;
+S_000001d53108d800 .scope autofunction.vec4.s4, "rc_get_type" "rc_get_type" 7 37, 7 37 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108efa0_0 .var "event_packet", 167 0;
+; Variable rc_get_type is vec4 return value of scope S_000001d53108d800
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rc_get_type ;
+    %load/vec4 v000001d53108efa0_0;
+    %parti/s 4, 164, 9;
+    %ret/vec4 0, 0, 4;  Assign to rc_get_type (store_vec4_to_lval)
+    %end;
+S_000001d53108cd10 .scope autofunction.vec4.s168, "rc_pack_event" "rc_pack_event" 7 25, 7 25 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108dce0_0 .var "addr", 31 0;
+v000001d53108e140_0 .var "commit_index", 31 0;
+v000001d53108e3c0_0 .var "data", 31 0;
+v000001d53108de20_0 .var "event_id", 31 0;
+v000001d53108ee60_0 .var "event_type", 3 0;
+v000001d53108e280_0 .var "flags", 3 0;
+v000001d53108e5a0_0 .var "pc", 31 0;
+; Variable rc_pack_event is vec4 return value of scope S_000001d53108cd10
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rc_pack_event ;
+    %load/vec4 v000001d53108ee60_0;
+    %load/vec4 v000001d53108e280_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d53108de20_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d53108e140_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d53108e5a0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d53108dce0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d53108e3c0_0;
+    %concat/vec4; draw_concat_vec4
+    %ret/vec4 0, 0, 168;  Assign to rc_pack_event (store_vec4_to_lval)
+    %end;
+S_000001d531091750 .scope autofunction.vec4.s4, "rcv2_capture_mode_for_config" "rcv2_capture_mode_for_config" 8 23, 8 23 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108e960_0 .var/2s "cfg", 31 0;
+; Variable rcv2_capture_mode_for_config is vec4 return value of scope S_000001d531091750
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_capture_mode_for_config ;
+    %load/vec4 v000001d53108e960_0;
+    %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/e;
+    %jmp/1 T_42.24, 6;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 32;
+    %cmp/e;
+    %jmp/1 T_42.25, 6;
+    %dup/vec4;
+    %pushi/vec4 2, 0, 32;
+    %cmp/e;
+    %jmp/1 T_42.26, 6;
+    %dup/vec4;
+    %pushi/vec4 3, 0, 32;
+    %cmp/e;
+    %jmp/1 T_42.27, 6;
+    %dup/vec4;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %jmp/1 T_42.28, 6;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_42.30;
+T_42.24 ;
+    %pushi/vec4 1, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_42.30;
+T_42.25 ;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_42.30;
+T_42.26 ;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_42.30;
+T_42.27 ;
+    %pushi/vec4 0, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_42.30;
+T_42.28 ;
+    %pushi/vec4 0, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_42.30;
+T_42.30 ;
+    %pop/vec4 1;
+    %end;
+S_000001d531091430 .scope autofunction.vec4.s1, "rcv2_config_has_diagnostics" "rcv2_config_has_diagnostics" 8 42, 8 42 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108f040_0 .var/2s "cfg", 31 0;
+; Variable rcv2_config_has_diagnostics is vec4 return value of scope S_000001d531091430
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_config_has_diagnostics ;
+    %load/vec4 v000001d53108f040_0;
+    %cmpi/e 3, 0, 32;
+    %flag_get/vec4 4;
+    %jmp/1 T_43.31, 4;
+    %load/vec4 v000001d53108f040_0;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_43.31;
+    %ret/vec4 0, 0, 1;  Assign to rcv2_config_has_diagnostics (store_vec4_to_lval)
+    %end;
+S_000001d531091a70 .scope autofunction.vec4.s1, "rcv2_config_has_hash" "rcv2_config_has_hash" 8 36, 8 36 0, S_000001d53108c9f0;
+ .timescale 0 0;
+v000001d53108f5e0_0 .var/2s "cfg", 31 0;
+; Variable rcv2_config_has_hash is vec4 return value of scope S_000001d531091a70
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_config_has_hash ;
+    %load/vec4 v000001d53108f5e0_0;
+    %cmpi/e 2, 0, 32;
+    %jmp/1 T_44.33, 4;
+    %flag_mov 8, 4;
+    %load/vec4 v000001d53108f5e0_0;
+    %cmpi/e 3, 0, 32;
+    %flag_or 4, 8;
+T_44.33;
+    %flag_get/vec4 4;
+    %jmp/1 T_44.32, 4;
+    %load/vec4 v000001d53108f5e0_0;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_44.32;
+    %ret/vec4 0, 0, 1;  Assign to rcv2_config_has_hash (store_vec4_to_lval)
+    %end;
+S_000001d531090c60 .scope autofunction.vec4.s8, "rcv2_word_addr_token" "rcv2_word_addr_token" 8 66, 8 66 0, S_000001d53108c9f0;
+ .timescale 0 0;
+; Variable rcv2_word_addr_token is vec4 return value of scope S_000001d531090c60
+v000001d53108e500_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_addr_token ;
+    %load/vec4 v000001d53108e500_0;
+    %parti/s 8, 40, 7;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_addr_token (store_vec4_to_lval)
+    %end;
+S_000001d531090620 .scope autofunction.vec4.s8, "rcv2_word_debug" "rcv2_word_debug" 8 78, 8 78 0, S_000001d53108c9f0;
+ .timescale 0 0;
+; Variable rcv2_word_debug is vec4 return value of scope S_000001d531090620
+v000001d53108ea00_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_debug ;
+    %load/vec4 v000001d53108ea00_0;
+    %parti/s 8, 0, 2;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_debug (store_vec4_to_lval)
+    %end;
+S_000001d5310915c0 .scope autofunction.vec4.s8, "rcv2_word_delta" "rcv2_word_delta" 8 60, 8 60 0, S_000001d53108c9f0;
+ .timescale 0 0;
+; Variable rcv2_word_delta is vec4 return value of scope S_000001d5310915c0
+v000001d53108eaa0_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_delta ;
+    %load/vec4 v000001d53108eaa0_0;
+    %parti/s 8, 48, 7;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_delta (store_vec4_to_lval)
+    %end;
+S_000001d531091d90 .scope autofunction.vec4.s4, "rcv2_word_flags" "rcv2_word_flags" 8 54, 8 54 0, S_000001d53108c9f0;
+ .timescale 0 0;
+; Variable rcv2_word_flags is vec4 return value of scope S_000001d531091d90
+v000001d53108f4a0_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_flags ;
+    %load/vec4 v000001d53108f4a0_0;
+    %parti/s 4, 56, 7;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_word_flags (store_vec4_to_lval)
+    %end;
+S_000001d531090490 .scope autofunction.vec4.s32, "rcv2_word_payload" "rcv2_word_payload" 8 72, 8 72 0, S_000001d53108c9f0;
+ .timescale 0 0;
+; Variable rcv2_word_payload is vec4 return value of scope S_000001d531090490
+v000001d53108f540_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_payload ;
+    %load/vec4 v000001d53108f540_0;
+    %parti/s 32, 8, 5;
+    %ret/vec4 0, 0, 32;  Assign to rcv2_word_payload (store_vec4_to_lval)
+    %end;
+S_000001d5310920b0 .scope autofunction.vec4.s4, "rcv2_word_type" "rcv2_word_type" 8 48, 8 48 0, S_000001d53108c9f0;
+ .timescale 0 0;
+; Variable rcv2_word_type is vec4 return value of scope S_000001d5310920b0
+v000001d5310933f0_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_type ;
+    %load/vec4 v000001d5310933f0_0;
+    %parti/s 4, 60, 7;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_word_type (store_vec4_to_lval)
+    %end;
+S_000001d5310907b0 .scope autotask, "feed_event" "feed_event" 3 108, 3 108 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d531094110_0 .var "obs_addr", 31 0;
+v000001d531095f70_0 .var "obs_commit", 31 0;
+v000001d531095930_0 .var "obs_data", 31 0;
+v000001d531095250_0 .var "obs_hash", 31 0;
+v000001d531095070_0 .var "obs_type", 3 0;
+v000001d5310959d0_0 .var "observed_ok", 0 0;
+v000001d531094a30_0 .var "word", 63 0;
+E_000001d531018710 .event negedge, v000001d531092d10_0;
+E_000001d531018750 .event posedge, v000001d531092d10_0;
+TD_tb_rcv2_system_replay_consumer.feed_event ;
+    %wait E_000001d531018710;
+    %load/vec4 v000001d531094a30_0;
+    %store/vec4 v000001d53109ad20_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d53109abe0_0, 0, 1;
+    %load/vec4 v000001d5310959d0_0;
+    %store/vec4 v000001d53109aaa0_0, 0, 1;
+    %load/vec4 v000001d531095070_0;
+    %store/vec4 v000001d53109aa00_0, 0, 4;
+    %load/vec4 v000001d531095f70_0;
+    %store/vec4 v000001d531099ba0_0, 0, 32;
+    %load/vec4 v000001d531094110_0;
+    %store/vec4 v000001d53109afa0_0, 0, 32;
+    %load/vec4 v000001d531095930_0;
+    %store/vec4 v000001d53109b180_0, 0, 32;
+    %load/vec4 v000001d531095250_0;
+    %store/vec4 v000001d531099a60_0, 0, 32;
+    %wait E_000001d531018750;
+    %wait E_000001d531018710;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109abe0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109aaa0_0, 0, 1;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001d53109aa00_0, 0, 4;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531099ba0_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d53109afa0_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d53109b180_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531099a60_0, 0, 32;
+    %end;
+S_000001d531090940 .scope autotask, "feed_real_valid_capsule" "feed_real_valid_capsule" 3 139, 3 139 0, S_000001d530f808b0;
+ .timescale -9 -12;
+TD_tb_rcv2_system_replay_consumer.feed_real_valid_capsule ;
+    %alloc S_000001d5310907b0;
+    %pushi/vec4 3223066624, 0, 33;
+    %concati/vec4 256, 0, 31;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 14, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 1073741836, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %alloc S_000001d5310907b0;
+    %pushi/vec4 3758227456, 0, 33;
+    %concati/vec4 257, 0, 31;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 15, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %end;
+S_000001d5310918e0 .scope autofunction.vec4.s64, "pack_word" "pack_word" 3 71, 3 71 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d531094f30_0 .var "addr_token", 7 0;
+v000001d531095a70_0 .var "debug_context", 7 0;
+v000001d5310957f0_0 .var "delta", 7 0;
+v000001d531095110_0 .var "event_type", 3 0;
+v000001d531096010_0 .var "flags", 3 0;
+; Variable pack_word is vec4 return value of scope S_000001d5310918e0
+v000001d5310960b0_0 .var "payload", 31 0;
+TD_tb_rcv2_system_replay_consumer.pack_word ;
+    %load/vec4 v000001d531095110_0;
+    %load/vec4 v000001d531096010_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d5310957f0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531094f30_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d5310960b0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531095a70_0;
+    %concat/vec4; draw_concat_vec4
+    %ret/vec4 0, 0, 64;  Assign to pack_word (store_vec4_to_lval)
+    %end;
+S_000001d531090ad0 .scope autofunction.vec4.s32, "rc_get_addr" "rc_get_addr" 4 61, 4 61 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d531095d90_0 .var "event_packet", 167 0;
+; Variable rc_get_addr is vec4 return value of scope S_000001d531090ad0
+TD_tb_rcv2_system_replay_consumer.rc_get_addr ;
+    %load/vec4 v000001d531095d90_0;
+    %parti/s 32, 32, 7;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_addr (store_vec4_to_lval)
+    %end;
+S_000001d531090df0 .scope autofunction.vec4.s32, "rc_get_commit_index" "rc_get_commit_index" 4 49, 4 49 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d5310954d0_0 .var "event_packet", 167 0;
+; Variable rc_get_commit_index is vec4 return value of scope S_000001d531090df0
+TD_tb_rcv2_system_replay_consumer.rc_get_commit_index ;
+    %load/vec4 v000001d5310954d0_0;
+    %parti/s 32, 96, 8;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_commit_index (store_vec4_to_lval)
+    %end;
+S_000001d531091c00 .scope autofunction.vec4.s32, "rc_get_data" "rc_get_data" 4 67, 4 67 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d531095390_0 .var "event_packet", 167 0;
+; Variable rc_get_data is vec4 return value of scope S_000001d531091c00
+TD_tb_rcv2_system_replay_consumer.rc_get_data ;
+    %load/vec4 v000001d531095390_0;
+    %parti/s 32, 0, 2;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_data (store_vec4_to_lval)
+    %end;
+S_000001d531090f80 .scope autofunction.vec4.s32, "rc_get_event_id" "rc_get_event_id" 4 43, 4 43 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d531096150_0 .var "event_packet", 167 0;
+; Variable rc_get_event_id is vec4 return value of scope S_000001d531090f80
+TD_tb_rcv2_system_replay_consumer.rc_get_event_id ;
+    %load/vec4 v000001d531096150_0;
+    %parti/s 32, 128, 9;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_event_id (store_vec4_to_lval)
+    %end;
+S_000001d531091110 .scope autofunction.vec4.s32, "rc_get_pc" "rc_get_pc" 4 55, 4 55 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d531096290_0 .var "event_packet", 167 0;
+; Variable rc_get_pc is vec4 return value of scope S_000001d531091110
+TD_tb_rcv2_system_replay_consumer.rc_get_pc ;
+    %load/vec4 v000001d531096290_0;
+    %parti/s 32, 64, 8;
+    %ret/vec4 0, 0, 32;  Assign to rc_get_pc (store_vec4_to_lval)
+    %end;
+S_000001d531091f20 .scope autofunction.vec4.s4, "rc_get_type" "rc_get_type" 4 37, 4 37 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d5310947b0_0 .var "event_packet", 167 0;
+; Variable rc_get_type is vec4 return value of scope S_000001d531091f20
+TD_tb_rcv2_system_replay_consumer.rc_get_type ;
+    %load/vec4 v000001d5310947b0_0;
+    %parti/s 4, 164, 9;
+    %ret/vec4 0, 0, 4;  Assign to rc_get_type (store_vec4_to_lval)
+    %end;
+S_000001d5310912a0 .scope autofunction.vec4.s168, "rc_pack_event" "rc_pack_event" 4 25, 4 25 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d531095610_0 .var "addr", 31 0;
+v000001d531095430_0 .var "commit_index", 31 0;
+v000001d531094e90_0 .var "data", 31 0;
+v000001d5310951b0_0 .var "event_id", 31 0;
+v000001d531094850_0 .var "event_type", 3 0;
+v000001d531095890_0 .var "flags", 3 0;
+v000001d531094fd0_0 .var "pc", 31 0;
+; Variable rc_pack_event is vec4 return value of scope S_000001d5310912a0
+TD_tb_rcv2_system_replay_consumer.rc_pack_event ;
+    %load/vec4 v000001d531094850_0;
+    %load/vec4 v000001d531095890_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d5310951b0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531095430_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531094fd0_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531095610_0;
+    %concat/vec4; draw_concat_vec4
+    %load/vec4 v000001d531094e90_0;
+    %concat/vec4; draw_concat_vec4
+    %ret/vec4 0, 0, 168;  Assign to rc_pack_event (store_vec4_to_lval)
+    %end;
+S_000001d531090300 .scope autofunction.vec4.s4, "rcv2_capture_mode_for_config" "rcv2_capture_mode_for_config" 5 23, 5 23 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d5310952f0_0 .var/2s "cfg", 31 0;
+; Variable rcv2_capture_mode_for_config is vec4 return value of scope S_000001d531090300
+TD_tb_rcv2_system_replay_consumer.rcv2_capture_mode_for_config ;
+    %load/vec4 v000001d5310952f0_0;
+    %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/e;
+    %jmp/1 T_61.34, 6;
+    %dup/vec4;
+    %pushi/vec4 1, 0, 32;
+    %cmp/e;
+    %jmp/1 T_61.35, 6;
+    %dup/vec4;
+    %pushi/vec4 2, 0, 32;
+    %cmp/e;
+    %jmp/1 T_61.36, 6;
+    %dup/vec4;
+    %pushi/vec4 3, 0, 32;
+    %cmp/e;
+    %jmp/1 T_61.37, 6;
+    %dup/vec4;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %jmp/1 T_61.38, 6;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_61.40;
+T_61.34 ;
+    %pushi/vec4 1, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_61.40;
+T_61.35 ;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_61.40;
+T_61.36 ;
+    %pushi/vec4 3, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_61.40;
+T_61.37 ;
+    %pushi/vec4 0, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_61.40;
+T_61.38 ;
+    %pushi/vec4 0, 0, 4;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_capture_mode_for_config (store_vec4_to_lval)
+    %jmp T_61.40;
+T_61.40 ;
+    %pop/vec4 1;
+    %end;
+S_000001d531097d20 .scope autofunction.vec4.s1, "rcv2_config_has_diagnostics" "rcv2_config_has_diagnostics" 5 42, 5 42 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d5310963d0_0 .var/2s "cfg", 31 0;
+; Variable rcv2_config_has_diagnostics is vec4 return value of scope S_000001d531097d20
+TD_tb_rcv2_system_replay_consumer.rcv2_config_has_diagnostics ;
+    %load/vec4 v000001d5310963d0_0;
+    %cmpi/e 3, 0, 32;
+    %flag_get/vec4 4;
+    %jmp/1 T_62.41, 4;
+    %load/vec4 v000001d5310963d0_0;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_62.41;
+    %ret/vec4 0, 0, 1;  Assign to rcv2_config_has_diagnostics (store_vec4_to_lval)
+    %end;
+S_000001d531098680 .scope autofunction.vec4.s1, "rcv2_config_has_hash" "rcv2_config_has_hash" 5 36, 5 36 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d5310961f0_0 .var/2s "cfg", 31 0;
+; Variable rcv2_config_has_hash is vec4 return value of scope S_000001d531098680
+TD_tb_rcv2_system_replay_consumer.rcv2_config_has_hash ;
+    %load/vec4 v000001d5310961f0_0;
+    %cmpi/e 2, 0, 32;
+    %jmp/1 T_63.43, 4;
+    %flag_mov 8, 4;
+    %load/vec4 v000001d5310961f0_0;
+    %cmpi/e 3, 0, 32;
+    %flag_or 4, 8;
+T_63.43;
+    %flag_get/vec4 4;
+    %jmp/1 T_63.42, 4;
+    %load/vec4 v000001d5310961f0_0;
+    %pushi/vec4 4, 0, 32;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_63.42;
+    %ret/vec4 0, 0, 1;  Assign to rcv2_config_has_hash (store_vec4_to_lval)
+    %end;
+S_000001d531097b90 .scope autofunction.vec4.s8, "rcv2_word_addr_token" "rcv2_word_addr_token" 5 66, 5 66 0, S_000001d530f808b0;
+ .timescale -9 -12;
+; Variable rcv2_word_addr_token is vec4 return value of scope S_000001d531097b90
+v000001d531094530_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.rcv2_word_addr_token ;
+    %load/vec4 v000001d531094530_0;
+    %parti/s 8, 40, 7;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_addr_token (store_vec4_to_lval)
+    %end;
+S_000001d531097eb0 .scope autofunction.vec4.s8, "rcv2_word_debug" "rcv2_word_debug" 5 78, 5 78 0, S_000001d530f808b0;
+ .timescale -9 -12;
+; Variable rcv2_word_debug is vec4 return value of scope S_000001d531097eb0
+v000001d531094b70_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.rcv2_word_debug ;
+    %load/vec4 v000001d531094b70_0;
+    %parti/s 8, 0, 2;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_debug (store_vec4_to_lval)
+    %end;
+S_000001d531098b30 .scope autofunction.vec4.s8, "rcv2_word_delta" "rcv2_word_delta" 5 60, 5 60 0, S_000001d530f808b0;
+ .timescale -9 -12;
+; Variable rcv2_word_delta is vec4 return value of scope S_000001d531098b30
+v000001d5310945d0_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.rcv2_word_delta ;
+    %load/vec4 v000001d5310945d0_0;
+    %parti/s 8, 48, 7;
+    %ret/vec4 0, 0, 8;  Assign to rcv2_word_delta (store_vec4_to_lval)
+    %end;
+S_000001d531097870 .scope autofunction.vec4.s4, "rcv2_word_flags" "rcv2_word_flags" 5 54, 5 54 0, S_000001d530f808b0;
+ .timescale -9 -12;
+; Variable rcv2_word_flags is vec4 return value of scope S_000001d531097870
+v000001d531094c10_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.rcv2_word_flags ;
+    %load/vec4 v000001d531094c10_0;
+    %parti/s 4, 56, 7;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_word_flags (store_vec4_to_lval)
+    %end;
+S_000001d531098040 .scope autofunction.vec4.s32, "rcv2_word_payload" "rcv2_word_payload" 5 72, 5 72 0, S_000001d530f808b0;
+ .timescale -9 -12;
+; Variable rcv2_word_payload is vec4 return value of scope S_000001d531098040
+v000001d531094d50_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.rcv2_word_payload ;
+    %load/vec4 v000001d531094d50_0;
+    %parti/s 32, 8, 5;
+    %ret/vec4 0, 0, 32;  Assign to rcv2_word_payload (store_vec4_to_lval)
+    %end;
+S_000001d531098810 .scope autofunction.vec4.s4, "rcv2_word_type" "rcv2_word_type" 5 48, 5 48 0, S_000001d530f808b0;
+ .timescale -9 -12;
+; Variable rcv2_word_type is vec4 return value of scope S_000001d531098810
+v000001d531099920_0 .var "word", 63 0;
+TD_tb_rcv2_system_replay_consumer.rcv2_word_type ;
+    %load/vec4 v000001d531099920_0;
+    %parti/s 4, 60, 7;
+    %ret/vec4 0, 0, 4;  Assign to rcv2_word_type (store_vec4_to_lval)
+    %end;
+S_000001d5310976e0 .scope autotask, "report_result" "report_result" 3 156, 3 156 0, S_000001d530f808b0;
+ .timescale -9 -12;
+v000001d53109a3c0_0 .var/str "actual_result";
+v000001d53109a960_0 .var "expected_error", 7 0;
+v000001d53109a820_0 .var/str "expected_result";
+v000001d531099ce0_0 .var "ok", 0 0;
+v000001d53109a8c0_0 .var/str "test_name";
+TD_tb_rcv2_system_replay_consumer.report_result ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d531099ce0_0, 0, 1;
+    %load/str v000001d53109a820_0;
+    %pushi/str "PASS";
+    %cmp/str;
+    %flag_get/vec4 4;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_70.44, 8;
+    %load/str v000001d53109a3c0_0;
+    %pushi/str "PASS";
+    %cmp/str;
+    %flag_get/vec4 4;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_70.47, 9;
+    %load/vec4 v000001d53109af00_0;
+    %and;
+T_70.47;
+    %flag_set/vec4 8;
+    %flag_get/vec4 8;
+    %jmp/0 T_70.46, 8;
+    %load/vec4 v000001d531099c40_0;
+    %nor/r;
+    %and;
+T_70.46;
+    %store/vec4 v000001d531099ce0_0, 0, 1;
+    %jmp T_70.45;
+T_70.44 ;
+    %load/str v000001d53109a3c0_0;
+    %pushi/str "REJECT";
+    %cmp/str;
+    %flag_get/vec4 4;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_70.49, 9;
+    %load/vec4 v000001d531099c40_0;
+    %and;
+T_70.49;
+    %flag_set/vec4 8;
+    %flag_get/vec4 8;
+    %jmp/0 T_70.48, 8;
+    %load/vec4 v000001d53109a780_0;
+    %load/vec4 v000001d53109a960_0;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %and;
+T_70.48;
+    %store/vec4 v000001d531099ce0_0, 0, 1;
+T_70.45 ;
+    %load/vec4 v000001d53109adc0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001d53109adc0_0, 0, 32;
+    %load/vec4 v000001d531099ce0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_70.50, 8;
+    %load/vec4 v000001d53109a000_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001d53109a000_0, 0, 32;
+T_70.50 ;
+    %vpi_call/w 3 172 "$display", "RESULT,%s,%s,%s,%0d,%0d", v000001d53109a8c0_0, v000001d53109a820_0, v000001d53109a3c0_0, v000001d531099ce0_0, v000001d53109a780_0 {0 0 0};
+    %end;
+S_000001d531098fe0 .scope autotask, "reset_case" "reset_case" 3 84, 3 84 0, S_000001d530f808b0;
+ .timescale -9 -12;
+E_000001d531017dd0 .event posedge, v000001d531092d10_0;
+TD_tb_rcv2_system_replay_consumer.reset_case ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109ab40_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109a500_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d5310999c0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109abe0_0, 0, 1;
+    %pushi/vec4 0, 0, 64;
+    %store/vec4 v000001d53109ad20_0, 0, 64;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109ac80_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109aaa0_0, 0, 1;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v000001d53109aa00_0, 0, 4;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531099ba0_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d53109afa0_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d53109b180_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531099a60_0, 0, 32;
+    %pushi/vec4 2, 0, 32;
+T_71.52 %dup/vec4;
+    %cmpi/s 0, 0, 32;
+    %jmp/1xz T_71.53, 5;
+    %jmp/1 T_71.53, 4;
+    %subi 1, 0, 32;
+    %wait E_000001d531017dd0;
+    %jmp T_71.52;
+T_71.53 ;
+    %pop/vec4 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d53109ab40_0, 0, 1;
+    %wait E_000001d531017dd0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310999c0_0, 0, 1;
+    %wait E_000001d531017dd0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d5310999c0_0, 0, 1;
+    %wait E_000001d531017dd0;
+    %end;
+S_000001d531098360 .scope autotask, "send_done" "send_done" 3 146, 3 146 0, S_000001d530f808b0;
+ .timescale -9 -12;
+E_000001d5310186d0 .event negedge, v000001d531092d10_0;
+E_000001d531018350 .event posedge, v000001d531092d10_0;
+TD_tb_rcv2_system_replay_consumer.send_done ;
+    %wait E_000001d5310186d0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d53109ac80_0, 0, 1;
+    %wait E_000001d531018350;
+    %wait E_000001d5310186d0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109ac80_0, 0, 1;
+    %end;
+    .scope S_000001d53108c9f0;
+T_73 ;
+Ewait_0 .event/or E_000001d531018150, E_0x0;
+    %wait Ewait_0;
+    %load/vec4 v000001d531093df0_0;
+    %flag_set/vec4 8;
+    %flag_get/vec4 8;
+    %jmp/0 T_73.0, 8;
+    %load/vec4 v000001d5310923b0_0;
+    %cmpi/e 5, 0, 4;
+    %flag_get/vec4 4;
+    %jmp/1 T_73.1, 4;
+    %load/vec4 v000001d5310923b0_0;
+    %pushi/vec4 6, 0, 4;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_73.1;
+    %and;
+T_73.0;
+    %store/vec4 v000001d531092950_0, 0, 1;
+    %pushi/vec4 0, 0, 24;
+    %alloc S_000001d531090c60;
+    %load/vec4 v000001d5310928b0_0;
+    %store/vec4 v000001d53108e500_0, 0, 64;
+    %callf/vec4 TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_addr_token, S_000001d531090c60;
+    %free S_000001d531090c60;
+    %concat/vec4; draw_concat_vec4
+    %store/vec4 v000001d5310932b0_0, 0, 32;
+    %load/vec4 v000001d531092b30_0;
+    %store/vec4 v000001d531093350_0, 0, 32;
+    %load/vec4 v000001d531092950_0;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_73.3, 9;
+    %load/vec4 v000001d5310929f0_0;
+    %and;
+T_73.3;
+    %flag_set/vec4 8;
+    %flag_get/vec4 8;
+    %jmp/0 T_73.2, 8;
+    %load/vec4 v000001d531092450_0;
+    %load/vec4 v000001d531092b30_0;
+    %cmp/ne;
+    %flag_get/vec4 4;
+    %and;
+T_73.2;
+    %store/vec4 v000001d531092a90_0, 0, 1;
+    %load/vec4 v000001d531092950_0;
+    %flag_set/vec4 10;
+    %flag_get/vec4 10;
+    %jmp/0 T_73.7, 10;
+    %load/vec4 v000001d5310929f0_0;
+    %and;
+T_73.7;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_73.6, 9;
+    %load/vec4 v000001d531092310_0;
+    %parti/s 8, 0, 2;
+    %alloc S_000001d531090c60;
+    %load/vec4 v000001d5310928b0_0;
+    %store/vec4 v000001d53108e500_0, 0, 64;
+    %callf/vec4 TD_tb_rcv2_system_replay_consumer.dut.u_mmio_replay_driver.rcv2_word_addr_token, S_000001d531090c60;
+    %free S_000001d531090c60;
+    %cmp/ne;
+    %flag_get/vec4 4;
+    %and;
+T_73.6;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_73.4, 8;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d531092a90_0, 0, 1;
+T_73.4 ;
+    %jmp T_73;
+    .thread T_73, $push;
+    .scope S_000001d531082af0;
+T_74 ;
+Ewait_1 .event/or E_000001d531017d90, E_0x0;
+    %wait Ewait_1;
+    %load/vec4 v000001d53108e1e0_0;
+    %flag_set/vec4 8;
+    %flag_get/vec4 8;
+    %jmp/0 T_74.0, 8;
+    %load/vec4 v000001d53108da60_0;
+    %cmpi/e 7, 0, 4;
+    %flag_get/vec4 4;
+    %jmp/1 T_74.1, 4;
+    %load/vec4 v000001d53108da60_0;
+    %pushi/vec4 8, 0, 4;
+    %cmp/e;
+    %flag_get/vec4 4;
+    %or;
+T_74.1;
+    %and;
+T_74.0;
+    %store/vec4 v000001d53108db00_0, 0, 1;
+    %load/vec4 v000001d53108edc0_0;
+    %parti/s 8, 0, 2;
+    %store/vec4 v000001d53108e820_0, 0, 8;
+    %load/vec4 v000001d53108db00_0;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_74.3, 9;
+    %load/vec4 v000001d53108df60_0;
+    %and;
+T_74.3;
+    %flag_set/vec4 8;
+    %flag_get/vec4 8;
+    %jmp/0 T_74.2, 8;
+    %load/vec4 v000001d53108dba0_0;
+    %parti/s 8, 0, 2;
+    %load/vec4 v000001d53108e820_0;
+    %cmp/ne;
+    %flag_get/vec4 4;
+    %and;
+T_74.2;
+    %store/vec4 v000001d53108e780_0, 0, 1;
+    %jmp T_74;
+    .thread T_74, $push;
+    .scope S_000001d530f80a40;
+T_75 ;
+    %wait E_000001d531017f10;
+    %load/vec4 v000001d531093d50_0;
+    %nor/r;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.0, 8;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001d531092bd0_0, 0;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v000001d531092770_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001d531092f90_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v000001d5310938f0_0, 0;
+    %jmp T_75.1;
+T_75.0 ;
+    %load/vec4 v000001d531093a30_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.2, 8;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001d531092bd0_0, 0;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v000001d531092770_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001d531092f90_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v000001d5310938f0_0, 0;
+    %jmp T_75.3;
+T_75.2 ;
+    %load/vec4 v000001d531093f30_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.4, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531092bd0_0, 0;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v000001d531092770_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001d531092f90_0, 0;
+    %pushi/vec4 0, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 0, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %pushi/vec4 0, 0, 32;
+    %assign/vec4 v000001d5310938f0_0, 0;
+T_75.4 ;
+    %load/vec4 v000001d531092bd0_0;
+    %flag_set/vec4 11;
+    %flag_get/vec4 11;
+    %jmp/0 T_75.10, 11;
+    %load/vec4 v000001d531094070_0;
+    %and;
+T_75.10;
+    %flag_set/vec4 10;
+    %flag_get/vec4 10;
+    %jmp/0 T_75.9, 10;
+    %load/vec4 v000001d531092f90_0;
+    %nor/r;
+    %and;
+T_75.9;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_75.8, 9;
+    %load/vec4 v000001d531093c10_0;
+    %nor/r;
+    %and;
+T_75.8;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.6, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 7, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+T_75.6 ;
+    %load/vec4 v000001d531092bd0_0;
+    %flag_set/vec4 11;
+    %flag_get/vec4 11;
+    %jmp/0 T_75.15, 11;
+    %load/vec4 v000001d531092c70_0;
+    %and;
+T_75.15;
+    %flag_set/vec4 10;
+    %flag_get/vec4 10;
+    %jmp/0 T_75.14, 10;
+    %load/vec4 v000001d531092f90_0;
+    %and;
+T_75.14;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_75.13, 9;
+    %load/vec4 v000001d531093c10_0;
+    %nor/r;
+    %and;
+T_75.13;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.11, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 2, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %jmp T_75.12;
+T_75.11 ;
+    %load/vec4 v000001d531092bd0_0;
+    %flag_set/vec4 11;
+    %flag_get/vec4 11;
+    %jmp/0 T_75.20, 11;
+    %load/vec4 v000001d531092c70_0;
+    %and;
+T_75.20;
+    %flag_set/vec4 10;
+    %flag_get/vec4 10;
+    %jmp/0 T_75.19, 10;
+    %load/vec4 v000001d531093490_0;
+    %and;
+T_75.19;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_75.18, 9;
+    %load/vec4 v000001d531093c10_0;
+    %nor/r;
+    %and;
+T_75.18;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.16, 8;
+    %load/vec4 v000001d531092630_0;
+    %nor/r;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.21, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 1, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %jmp T_75.22;
+T_75.21 ;
+    %pushi/vec4 1, 0, 1;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_75.25, 9;
+    %load/vec4 v000001d531093670_0;
+    %load/vec4 v000001d531093170_0;
+    %cmp/ne;
+    %flag_get/vec4 4;
+    %jmp/1 T_75.26, 4;
+    %load/vec4 v000001d5310937b0_0;
+    %load/vec4 v000001d5310935d0_0;
+    %cmp/ne;
+    %flag_get/vec4 4;
+    %or;
+T_75.26;
+    %and;
+T_75.25;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.23, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 3, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %jmp T_75.24;
+T_75.23 ;
+    %load/vec4 v000001d531093530_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.27, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 4, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %jmp T_75.28;
+T_75.27 ;
+    %load/vec4 v000001d531093fd0_0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.29, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 5, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %jmp T_75.30;
+T_75.29 ;
+    %pushi/vec4 1, 0, 1;
+    %flag_set/vec4 10;
+    %flag_get/vec4 10;
+    %jmp/0 T_75.34, 10;
+    %load/vec4 v000001d531093990_0;
+    %parti/s 1, 1, 2;
+    %and;
+T_75.34;
+    %flag_set/vec4 9;
+    %flag_get/vec4 9;
+    %jmp/0 T_75.33, 9;
+    %load/vec4 v000001d531093b70_0;
+    %load/vec4 v000001d531093850_0;
+    %cmp/ne;
+    %flag_get/vec4 4;
+    %and;
+T_75.33;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_75.31, 8;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531093c10_0, 0;
+    %pushi/vec4 6, 0, 8;
+    %assign/vec4 v000001d531093cb0_0, 0;
+    %jmp T_75.32;
+T_75.31 ;
+    %load/vec4 v000001d5310935d0_0;
+    %assign/vec4 v000001d531092770_0, 0;
+    %load/vec4 v000001d5310938f0_0;
+    %addi 1, 0, 32;
+    %assign/vec4 v000001d5310938f0_0, 0;
+    %load/vec4 v000001d5310938f0_0;
+    %addi 1, 0, 32;
+    %cmpi/u 2, 0, 32;
+    %flag_inv 5; GE is !LT
+    %jmp/0xz  T_75.35, 5;
+    %pushi/vec4 1, 0, 1;
+    %assign/vec4 v000001d531092f90_0, 0;
+T_75.35 ;
+T_75.32 ;
+T_75.30 ;
+T_75.28 ;
+T_75.24 ;
+T_75.22 ;
+T_75.16 ;
+T_75.12 ;
+T_75.3 ;
+T_75.1 ;
+    %jmp T_75;
+    .thread T_75;
+    .scope S_000001d530f808b0;
+T_76 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d53109a1e0_0, 0, 1;
+T_76.0 ;
+    %delay 5000, 0;
+    %load/vec4 v000001d53109a1e0_0;
+    %inv;
+    %store/vec4 v000001d53109a1e0_0, 0, 1;
+    %jmp T_76.0;
+T_76.1 ;
+    %end;
+    .thread T_76;
+    .scope S_000001d530f808b0;
+T_77 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d53109a000_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d53109adc0_0, 0, 32;
+    %alloc S_000001d531098fe0;
+    %fork TD_tb_rcv2_system_replay_consumer.reset_case, S_000001d531098fe0;
+    %join;
+    %free S_000001d531098fe0;
+    %alloc S_000001d531090940;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_real_valid_capsule, S_000001d531090940;
+    %join;
+    %free S_000001d531090940;
+    %alloc S_000001d5310976e0;
+    %pushi/str "valid_capsule_consumes_all_events";
+    %store/str v000001d53109a8c0_0;
+    %pushi/str "PASS";
+    %store/str v000001d53109a820_0;
+    %load/vec4 v000001d531099c40_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_77.0, 8;
+    %pushi/vec4 1380272709, 0, 32; draw_string_vec4
+    %pushi/vec4 17236, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_77.1, 8;
+T_77.0 ; End of true expr.
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %pushi/vec4 21331, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_77.1, 8;
+ ; End of false expr.
+    %blend;
+T_77.1;
+    %pushv/str; Cast BOOL/LOGIC to string
+    %store/str v000001d53109a3c0_0;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v000001d53109a960_0, 0, 8;
+    %fork TD_tb_rcv2_system_replay_consumer.report_result, S_000001d5310976e0;
+    %join;
+    %free S_000001d5310976e0;
+    %alloc S_000001d531098fe0;
+    %fork TD_tb_rcv2_system_replay_consumer.reset_case, S_000001d531098fe0;
+    %join;
+    %free S_000001d531098fe0;
+    %alloc S_000001d5310907b0;
+    %pushi/vec4 3223066624, 0, 33;
+    %concati/vec4 256, 0, 31;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 14, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 1073741836, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %alloc S_000001d5310976e0;
+    %pushi/str "missing_event_rejects";
+    %store/str v000001d53109a8c0_0;
+    %pushi/str "REJECT";
+    %store/str v000001d53109a820_0;
+    %load/vec4 v000001d531099c40_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_77.2, 8;
+    %pushi/vec4 1380272709, 0, 32; draw_string_vec4
+    %pushi/vec4 17236, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_77.3, 8;
+T_77.2 ; End of true expr.
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %pushi/vec4 21331, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_77.3, 8;
+ ; End of false expr.
+    %blend;
+T_77.3;
+    %pushv/str; Cast BOOL/LOGIC to string
+    %store/str v000001d53109a3c0_0;
+    %pushi/vec4 1, 0, 8;
+    %store/vec4 v000001d53109a960_0, 0, 8;
+    %fork TD_tb_rcv2_system_replay_consumer.report_result, S_000001d5310976e0;
+    %join;
+    %free S_000001d5310976e0;
+    %alloc S_000001d531098fe0;
+    %fork TD_tb_rcv2_system_replay_consumer.reset_case, S_000001d531098fe0;
+    %join;
+    %free S_000001d531098fe0;
+    %alloc S_000001d531090940;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_real_valid_capsule, S_000001d531090940;
+    %join;
+    %free S_000001d531090940;
+    %alloc S_000001d5310907b0;
+    %pushi/vec4 3758227456, 0, 33;
+    %concati/vec4 257, 0, 31;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 16, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %alloc S_000001d5310976e0;
+    %pushi/str "duplicate_event_rejects";
+    %store/str v000001d53109a8c0_0;
+    %pushi/str "REJECT";
+    %store/str v000001d53109a820_0;
+    %load/vec4 v000001d531099c40_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_77.4, 8;
+    %pushi/vec4 1380272709, 0, 32; draw_string_vec4
+    %pushi/vec4 17236, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_77.5, 8;
+T_77.4 ; End of true expr.
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %pushi/vec4 21331, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_77.5, 8;
+ ; End of false expr.
+    %blend;
+T_77.5;
+    %pushv/str; Cast BOOL/LOGIC to string
+    %store/str v000001d53109a3c0_0;
+    %pushi/vec4 2, 0, 8;
+    %store/vec4 v000001d53109a960_0, 0, 8;
+    %fork TD_tb_rcv2_system_replay_consumer.report_result, S_000001d5310976e0;
+    %join;
+    %free S_000001d5310976e0;
+    %alloc S_000001d531098fe0;
+    %fork TD_tb_rcv2_system_replay_consumer.reset_case, S_000001d531098fe0;
+    %join;
+    %free S_000001d531098fe0;
+    %alloc S_000001d5310907b0;
+    %pushi/vec4 3223066624, 0, 33;
+    %concati/vec4 256, 0, 31;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 14, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 1073741836, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %alloc S_000001d5310976e0;
+    %pushi/str "reordered_event_rejects";
+    %store/str v000001d53109a8c0_0;
+    %pushi/str "REJECT";
+    %store/str v000001d53109a820_0;
+    %load/vec4 v000001d531099c40_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_77.6, 8;
+    %pushi/vec4 1380272709, 0, 32; draw_string_vec4
+    %pushi/vec4 17236, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_77.7, 8;
+T_77.6 ; End of true expr.
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %pushi/vec4 21331, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_77.7, 8;
+ ; End of false expr.
+    %blend;
+T_77.7;
+    %pushv/str; Cast BOOL/LOGIC to string
+    %store/str v000001d53109a3c0_0;
+    %pushi/vec4 3, 0, 8;
+    %store/vec4 v000001d53109a960_0, 0, 8;
+    %fork TD_tb_rcv2_system_replay_consumer.report_result, S_000001d5310976e0;
+    %join;
+    %free S_000001d5310976e0;
+    %alloc S_000001d531098fe0;
+    %fork TD_tb_rcv2_system_replay_consumer.reset_case, S_000001d531098fe0;
+    %join;
+    %free S_000001d531098fe0;
+    %alloc S_000001d5310907b0;
+    %pushi/vec4 3223066624, 0, 33;
+    %concati/vec4 256, 0, 31;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 14, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 1073741836, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 2, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %alloc S_000001d5310976e0;
+    %pushi/str "wrong_mmio_value_rejects";
+    %store/str v000001d53109a8c0_0;
+    %pushi/str "REJECT";
+    %store/str v000001d53109a820_0;
+    %load/vec4 v000001d531099c40_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_77.8, 8;
+    %pushi/vec4 1380272709, 0, 32; draw_string_vec4
+    %pushi/vec4 17236, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_77.9, 8;
+T_77.8 ; End of true expr.
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %pushi/vec4 21331, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_77.9, 8;
+ ; End of false expr.
+    %blend;
+T_77.9;
+    %pushv/str; Cast BOOL/LOGIC to string
+    %store/str v000001d53109a3c0_0;
+    %pushi/vec4 4, 0, 8;
+    %store/vec4 v000001d53109a960_0, 0, 8;
+    %fork TD_tb_rcv2_system_replay_consumer.report_result, S_000001d5310976e0;
+    %join;
+    %free S_000001d5310976e0;
+    %alloc S_000001d531098fe0;
+    %fork TD_tb_rcv2_system_replay_consumer.reset_case, S_000001d531098fe0;
+    %join;
+    %free S_000001d531098fe0;
+    %alloc S_000001d5310907b0;
+    %pushi/vec4 3758227456, 0, 33;
+    %concati/vec4 257, 0, 31;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 7, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 2, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %alloc S_000001d5310976e0;
+    %pushi/str "wrong_interrupt_cause_rejects";
+    %store/str v000001d53109a8c0_0;
+    %pushi/str "REJECT";
+    %store/str v000001d53109a820_0;
+    %load/vec4 v000001d531099c40_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_77.10, 8;
+    %pushi/vec4 1380272709, 0, 32; draw_string_vec4
+    %pushi/vec4 17236, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_77.11, 8;
+T_77.10 ; End of true expr.
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %pushi/vec4 21331, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_77.11, 8;
+ ; End of false expr.
+    %blend;
+T_77.11;
+    %pushv/str; Cast BOOL/LOGIC to string
+    %store/str v000001d53109a3c0_0;
+    %pushi/vec4 5, 0, 8;
+    %store/vec4 v000001d53109a960_0, 0, 8;
+    %fork TD_tb_rcv2_system_replay_consumer.report_result, S_000001d5310976e0;
+    %join;
+    %free S_000001d5310976e0;
+    %alloc S_000001d531098fe0;
+    %fork TD_tb_rcv2_system_replay_consumer.reset_case, S_000001d531098fe0;
+    %join;
+    %free S_000001d531098fe0;
+    %alloc S_000001d5310907b0;
+    %alloc S_000001d5310918e0;
+    %pushi/vec4 5, 0, 4;
+    %pushi/vec4 2, 0, 4;
+    %pushi/vec4 12, 0, 8;
+    %pushi/vec4 0, 0, 8;
+    %pushi/vec4 850, 0, 32;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v000001d531095a70_0, 0, 8;
+    %store/vec4 v000001d5310960b0_0, 0, 32;
+    %store/vec4 v000001d531094f30_0, 0, 8;
+    %store/vec4 v000001d5310957f0_0, 0, 8;
+    %store/vec4 v000001d531096010_0, 0, 4;
+    %store/vec4 v000001d531095110_0, 0, 4;
+    %callf/vec4 TD_tb_rcv2_system_replay_consumer.pack_word, S_000001d5310918e0;
+    %free S_000001d5310918e0;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 12, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 1073741824, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 850, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 4660, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %alloc S_000001d5310976e0;
+    %pushi/str "wrong_payload_hash_rejects";
+    %store/str v000001d53109a8c0_0;
+    %pushi/str "REJECT";
+    %store/str v000001d53109a820_0;
+    %load/vec4 v000001d531099c40_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_77.12, 8;
+    %pushi/vec4 1380272709, 0, 32; draw_string_vec4
+    %pushi/vec4 17236, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_77.13, 8;
+T_77.12 ; End of true expr.
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %pushi/vec4 21331, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_77.13, 8;
+ ; End of false expr.
+    %blend;
+T_77.13;
+    %pushv/str; Cast BOOL/LOGIC to string
+    %store/str v000001d53109a3c0_0;
+    %pushi/vec4 6, 0, 8;
+    %store/vec4 v000001d53109a960_0, 0, 8;
+    %fork TD_tb_rcv2_system_replay_consumer.report_result, S_000001d5310976e0;
+    %join;
+    %free S_000001d5310976e0;
+    %alloc S_000001d531098fe0;
+    %fork TD_tb_rcv2_system_replay_consumer.reset_case, S_000001d531098fe0;
+    %join;
+    %free S_000001d531098fe0;
+    %alloc S_000001d5310907b0;
+    %pushi/vec4 3223066624, 0, 33;
+    %concati/vec4 256, 0, 31;
+    %store/vec4 v000001d531094a30_0, 0, 64;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001d5310959d0_0, 0, 1;
+    %pushi/vec4 6, 0, 4;
+    %store/vec4 v000001d531095070_0, 0, 4;
+    %pushi/vec4 14, 0, 32;
+    %store/vec4 v000001d531095f70_0, 0, 32;
+    %pushi/vec4 1073741836, 0, 32;
+    %store/vec4 v000001d531094110_0, 0, 32;
+    %pushi/vec4 1, 0, 32;
+    %store/vec4 v000001d531095930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001d531095250_0, 0, 32;
+    %fork TD_tb_rcv2_system_replay_consumer.feed_event, S_000001d5310907b0;
+    %join;
+    %free S_000001d5310907b0;
+    %alloc S_000001d531098360;
+    %fork TD_tb_rcv2_system_replay_consumer.send_done, S_000001d531098360;
+    %join;
+    %free S_000001d531098360;
+    %alloc S_000001d5310976e0;
+    %pushi/str "truncated_capsule_rejects";
+    %store/str v000001d53109a8c0_0;
+    %pushi/str "REJECT";
+    %store/str v000001d53109a820_0;
+    %load/vec4 v000001d531099c40_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_77.14, 8;
+    %pushi/vec4 1380272709, 0, 32; draw_string_vec4
+    %pushi/vec4 17236, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_77.15, 8;
+T_77.14 ; End of true expr.
+    %pushi/vec4 20545, 0, 32; draw_string_vec4
+    %pushi/vec4 21331, 0, 16; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_77.15, 8;
+ ; End of false expr.
+    %blend;
+T_77.15;
+    %pushv/str; Cast BOOL/LOGIC to string
+    %store/str v000001d53109a3c0_0;
+    %pushi/vec4 7, 0, 8;
+    %store/vec4 v000001d53109a960_0, 0, 8;
+    %fork TD_tb_rcv2_system_replay_consumer.report_result, S_000001d5310976e0;
+    %join;
+    %free S_000001d5310976e0;
+    %vpi_call/w 3 214 "$display", "SUMMARY,%0d,%0d", v000001d53109a000_0, v000001d53109adc0_0 {0 0 0};
+    %load/vec4 v000001d53109a000_0;
+    %load/vec4 v000001d53109adc0_0;
+    %cmp/ne;
+    %jmp/0xz  T_77.16, 4;
+    %vpi_call/w 3 215 "$finish", 32'sb00000000000000000000000000000001 {0 0 0};
+T_77.16 ;
+    %vpi_call/w 3 216 "$finish", 32'sb00000000000000000000000000000000 {0 0 0};
+    %end;
+    .thread T_77;
+# The file index is used to find the file name in the following table.
+:file_names 11;
+    "N/A";
+    "<interactive>";
+    "-";
+    "tb/replay_consumer/tb_rcv2_system_replay_consumer.sv";
+    "rtl/replaycapsule_v2/../../rtl/event_defs.svh";
+    "rtl/replaycapsule_v2/../../rtl/replaycapsule_v2/rcv2_config.svh";
+    "rtl/replaycapsule_v2/rcv2_replay_consumer.sv";
+    "rtl/replaycapsule_v2/../event_defs.svh";
+    "rtl/replaycapsule_v2/rcv2_config.svh";
+    "rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv";
+    "rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv";

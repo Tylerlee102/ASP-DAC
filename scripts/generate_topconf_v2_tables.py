@@ -45,16 +45,33 @@ def _write_table_replay_consumer_tests() -> None:
 
 
 def _write_table_buffer_sensitivity_v2() -> None:
-    rows = [
+    rows = []
+    v1_depths = {"256", "1024", "4096", "16384"}
+    rows.extend(
+        {
+            "architecture": "v1",
+            "recorder_config": "full",
+            "buffer_depth": row.get("buffer_depth", "NA"),
+            "overflow_rate_pct": row.get("overflow_rate_pct", "NA"),
+            "replay_success_rate_pct": row.get("replay_success_rate_pct", "NA"),
+        }
+        for row in read_csv(REPO_ROOT / "results/processed/buffer_sensitivity_summary.csv")
+        if row.get("workload_scale") == "stress" and row.get("buffer_depth") in v1_depths
+    )
+    v2_depths = {"64", "256", "2048"}
+    rows.extend(
         row
-        for row in read_csv(REPO_ROOT / "results/processed/buffer_sensitivity_v2_summary.csv")
-        if row.get("workload_scale") == "stress" and row.get("buffer_depth") in {"256", "512", "1024", "2048"}
-    ]
+        for row in read_csv(REPO_ROOT / "results/processed/buffer_sensitivity_v2_measured_summary.csv")
+        if row.get("workload_scale") == "stress"
+        and row.get("recorder_config") in {"core", "full"}
+        and row.get("buffer_depth") in v2_depths
+    )
+    rows.sort(key=lambda row: (_esc(row.get("architecture", "NA")), _esc(row.get("recorder_config", "NA")), int(row.get("buffer_depth", "0"))))
     lines = [r"\begin{tabular}{llrrr}", r"\toprule", r"Arch & Config & Depth & Overflow \% & Replay success \% \\", r"\midrule"]
-    for row in rows[:16]:
+    for row in rows:
         lines.append(
             f"{_esc(row['architecture'])} & {_esc(row['recorder_config'])} & {row['buffer_depth']} & "
-            f"{row['overflow_rate_pct']} & {_esc(row['replay_success_rate_pct'])} " + r"\\"
+            f"{_esc(row.get('overflow_rate_pct', 'NA'))} & {_esc(row.get('replay_success_rate_pct', 'NA'))} " + r"\\"
         )
     lines.extend([r"\bottomrule", r"\end{tabular}"])
     _write_tex(TABLE_DIR / "table_buffer_sensitivity_v2.tex", lines)

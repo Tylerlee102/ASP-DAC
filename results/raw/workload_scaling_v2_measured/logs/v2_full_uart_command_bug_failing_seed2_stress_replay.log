@@ -1,0 +1,1 @@
+PASS replay benchmark=uart_command_bug variant=failing seed=2 arch=v2 recorder_config=full property=1 events=242 cycles=94279 commits=20499 notes="record/replay canonical events match"

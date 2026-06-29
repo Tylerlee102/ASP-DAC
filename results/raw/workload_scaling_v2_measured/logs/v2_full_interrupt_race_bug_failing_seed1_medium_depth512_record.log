@@ -1,0 +1,1 @@
+PASS record benchmark=interrupt_race_bug variant=failing seed=1 arch=v2 recorder_config=full property=2 events=498 cycles=5953 commits=1297 notes="property failure observed"

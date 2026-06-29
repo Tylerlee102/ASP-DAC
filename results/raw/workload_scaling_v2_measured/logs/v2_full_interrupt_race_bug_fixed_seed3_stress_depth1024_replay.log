@@ -1,0 +1,1 @@
+PASS replay benchmark=interrupt_race_bug variant=fixed seed=3 arch=v2 recorder_config=full property=0 events=1012 cycles=200000 commits=55738 notes="record/replay canonical events match"

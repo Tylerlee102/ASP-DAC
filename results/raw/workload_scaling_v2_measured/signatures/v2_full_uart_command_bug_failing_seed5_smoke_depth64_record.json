@@ -1,0 +1,18 @@
+{
+  "benchmark": "uart_command_bug",
+  "variant": "failing",
+  "seed": 5,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 1,
+  "property_signature": "0xac7000ea",
+  "cycles_to_failure": 67,
+  "commits_to_failure": 17,
+  "event_count": 21,
+  "capsule_bytes": 168,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "property failure observed"
+}

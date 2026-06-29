@@ -197,9 +197,11 @@ def _event_ablation_table_rows() -> list[dict[str, object]]:
 
 def _limitations() -> list[dict[str, object]]:
     return [
-        {"limitation": "host_driven_replay", "paper_wording": "Replay consume is host-driven in the Verilator harness."},
-        {"limitation": "mapped_scope", "paper_wording": "Mapped data measures the recorder/instrumented full-core wrapper, not an autonomous replay-consume engine."},
-        {"limitation": "high_area_overhead", "paper_wording": "FF/LUT overhead remains an optimization target."},
+        {"limitation": "host_driven_replay", "paper_wording": "Full-core replay consume remains host-driven in the Verilator harness."},
+        {"limitation": "v2_consumer_scope", "paper_wording": "The v2 replay-consume controller is tested and maps standalone, but is not wired into full-core instruction replay."},
+        {"limitation": "buffer_depth_tradeoff", "paper_wording": "Replay-critical workload scaling uses workload-aware capsule depth; stress rows require the deepest generated setting."},
+        {"limitation": "mapped_scope", "paper_wording": "Mapped data measures bring-up/debug instrumentation, not an area-optimized autonomous replay-consume engine."},
+        {"limitation": "high_area_overhead", "paper_wording": "FF/LUT overhead remains high even after disabling unselected recorder logic."},
         {"limitation": "no_asic_power", "paper_wording": "ASIC area, timing, and power are not evaluated."},
         {"limitation": "single_hart_scope", "paper_wording": "Evaluation is single-hart RV32I and excludes multicore, DMA, caches/coherence, and arbitrary peripherals."},
     ]

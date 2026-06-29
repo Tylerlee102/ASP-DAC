@@ -1,0 +1,6 @@
+make[1]: Entering directory 'R:/build/verilator/runtime_baseline_obj_dir'
+g++    runtime_main.o verilated.o verilated_threads.o Vpicorv32_baseline_top__ALL.a    -pthread -lpthread -latomic   -o ../runtime_baseline_sim
+make[1]: Leaving directory 'R:/build/verilator/runtime_baseline_obj_dir'
+- V e r i l a t i o n   R e p o r t: Verilator 5.049 devel rev v5.048-331-g0ebae4371 (mod)
+- Verilator: Built from 0.000 MB sources in 0 modules, into 0.000 MB in 0 C++ files needing 0.000 MB
+- Verilator: Walltime 0.431 s (elab=0.000, cvt=0.000, bld=0.357); cpu 0.000 s on 1 threads; allocated 6.168 MB

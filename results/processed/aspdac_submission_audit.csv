@@ -1,0 +1,25 @@
+check,status,file,detail,source
+acm_primary_template,PASS,paper/main.tex,"initial manuscript must use the ACM Primary Article Template, sample-sigconf/acmart format",https://www.aspdac.com/aspdac2027/author/technical_paper/
+not_ieee_format,PASS,paper/main.tex,"ASP-DAC 2027 requires ACM format, not IEEEtran",https://www.aspdac.com/aspdac2027/author/technical_paper/
+anonymous_review_mode,PASS,paper/main.tex,initial manuscripts must be double-blind and omit author-identifying information,https://www.aspdac.com/aspdac2027/author/technical_paper/
+abstract_before_maketitle,PASS,paper/main.tex,acmart expects the abstract before maketitle,ACM Primary Article Template
+acm_bibliography_style,PASS,paper/main.tex,bibliography should use ACM reference formatting for ACM proceedings,ACM Primary Article Template
+references_flushed_after_content,PASS,paper/main.tex,all figures and tables must count in the six-page body before references,https://www.aspdac.com/aspdac2027/cfp/
+private_marker_scan,PASS,paper/main.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/abstract.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/architecture.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/conclusion.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/evaluation.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/generated_numbers.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/generated_tables.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/introduction.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/limitations.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/model.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/motivation.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/related_work.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/sections/replay_verification.tex,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+private_marker_scan,PASS,paper/references.bib,no private/local identity markers,https://www.aspdac.com/aspdac2027/author/technical_paper/
+fresh_pdf,PASS,paper/main.pdf,PDF must be rebuilt after the latest LaTeX source/table/reference change,https://www.aspdac.com/aspdac2027/author/technical_paper/
+pdf_total_pages,PASS,paper/main.pdf,total_pages=5; ASP-DAC permits six body pages plus one reference page,https://www.aspdac.com/aspdac2027/cfp/
+reference_start_page,PASS,paper/main.aux,reference_start_page=5; expected label aspdac:references-start,https://www.aspdac.com/aspdac2027/cfp/
+body_page_limit,PASS,paper/main.pdf,body_pages_before_references=4; limit is 6 including figures and tables,https://www.aspdac.com/aspdac2027/cfp/

@@ -934,6 +934,7 @@ def _run_v2_mapped_design(
             row["status"] = "FAIL"
             row["report_path"] = _rel(yosys_log)
             return row
+        run_mapped_synthesis._sanitize_file(json_path)
     command = [nextpnr, *target.nextpnr_args, "--json", _rel(json_path), "--textcfg", _rel(bitstream_path)]
     if run_mapped_synthesis.ECP5_LPF.exists():
         command.extend(["--lpf", _rel(run_mapped_synthesis.ECP5_LPF)])

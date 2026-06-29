@@ -1,0 +1,1 @@
+PASS replay benchmark=watchdog_timeout_bug variant=failing seed=2 arch=v2 recorder_config=full property=6 events=241 cycles=5997 commits=1308 notes="record/replay canonical events match"

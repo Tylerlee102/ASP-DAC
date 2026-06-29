@@ -1,0 +1,18 @@
+{
+  "benchmark": "watchdog_timeout_bug",
+  "variant": "fixed",
+  "seed": 4,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "hashed",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 10000,
+  "commits_to_failure": 3152,
+  "event_count": 8,
+  "capsule_bytes": 64,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "no false property failure"
+}

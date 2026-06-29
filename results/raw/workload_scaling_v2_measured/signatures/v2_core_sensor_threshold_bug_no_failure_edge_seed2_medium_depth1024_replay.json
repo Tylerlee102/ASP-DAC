@@ -1,0 +1,18 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "variant": "no_failure_edge",
+  "seed": 2,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "core",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 50000,
+  "commits_to_failure": 15979,
+  "event_count": 1,
+  "capsule_bytes": 8,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "record/replay canonical events match"
+}

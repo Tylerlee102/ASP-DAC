@@ -1,0 +1,18 @@
+{
+  "benchmark": "mmio_ordering_bug",
+  "variant": "failing",
+  "seed": 1,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "core",
+  "packet_width_bits": 64,
+  "property_id": 5,
+  "property_signature": "0x0d0e0013",
+  "cycles_to_failure": 59,
+  "commits_to_failure": 15,
+  "event_count": 1,
+  "capsule_bytes": 8,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "record/replay canonical events match"
+}

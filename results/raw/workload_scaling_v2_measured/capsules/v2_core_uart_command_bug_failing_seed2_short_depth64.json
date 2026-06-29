@@ -1,0 +1,17 @@
+{
+  "benchmark": "uart_command_bug",
+  "variant": "failing",
+  "seed": 2,
+  "mode": "record",
+  "architecture": "v2",
+  "schema_version": 2,
+  "recorder_config": "core",
+  "packet_width_bits": 64,
+  "property_id": 1,
+  "property_signature": "0xac7001a8",
+  "overflow": false,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "584e0c0000005501", "schema_version": 2, "flags": 8, "flags_hex": "0x00000008", "event_type": 5, "event_id": 0, "commit": 334, "commit_index": 334, "pc": "0x00000000", "addr": "0x4000000c", "data": "0x00000055", "mmio_address": "0x4000000c", "mmio_value": "0x00000055", "raw_mmio_value": "0x00000055", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 1, "payload_hash": "0x00000055", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 1, "cycle": null, "packet": "600504000000fa00", "schema_version": 2, "flags": 0, "flags_hex": "0x00000000", "event_type": 6, "event_id": 1, "commit": 339, "commit_index": 339, "pc": "0x00000000", "addr": "0x40000004", "data": "0x000000fa", "mmio_address": "0x40000004", "mmio_value": "0x000000fa", "raw_mmio_value": "0x000000fa", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 1, "payload_hash": "0x000000fa", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"}
+  ]
+}

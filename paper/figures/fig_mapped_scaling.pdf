@@ -20,9 +20,9 @@ BT
 (Mapped Scaling) Tj
 /F1 10 Tf
 0 -24 Td
-(core: lut 124.66%, ff 341.79%, bram 0.00%, fmax_mhz -20.81%, lut 125.36%, ff 341.79%, bram 0.00%, fmax_mhz -25) Tj
+(core: lut 114.20%, ff 174.53%, bram 0.00%, fmax_mhz -19.56%, lut 123.89%, ff 341.79%, bram 0.00%, fmax_mhz -18) Tj
 0 -16 Td
-(full: lut 182.55%, ff 646.43%, bram 0.00%, fmax_mhz -25.70%, lut 182.06%, ff 646.43%, bram 0.00%, fmax_mhz -17) Tj
+(full: lut 218.36%, ff 646.43%, bram 0.00%, fmax_mhz -15.06%, lut 221.23%, ff 646.43%, bram 0.00%, fmax_mhz -9.) Tj
 0 -16 Td
 (hashed: no same-target PASS overhead row) Tj
 ET

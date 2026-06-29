@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 361 >>
+<< /Length 446 >>
 stream
 BT
 /F1 15 Tf
@@ -20,11 +20,13 @@ BT
 (Mapped Memory Scaling) Tj
 /F1 10 Tf
 0 -24 Td
-(memory_words 1024: lut 124.66%, ff 341.79%, bram 0.00%, fmax_mhz -20.81%) Tj
+(memory_words 512: lut 114.20%, ff 174.53%, bram 0.00%, fmax_mhz -19.56%) Tj
 0 -16 Td
-(memory_words 2048: lut 125.36%, ff 341.79%, bram 0.00%, fmax_mhz -25.48%, lut 182.55%, ff 646.43%, bram 0.00%,) Tj
+(memory_words 1024: lut 123.89%, ff 341.79%, bram 0.00%, fmax_mhz -18.38%) Tj
 0 -16 Td
-(memory_words 4096: lut 182.06%, ff 646.43%, bram 0.00%, fmax_mhz -17.53%) Tj
+(memory_words 2048: lut 138.40%, ff 341.79%, bram 0.00%, fmax_mhz -16.76%, lut 218.36%, ff 646.43%, bram 0.00%,) Tj
+0 -16 Td
+(memory_words 4096: lut 221.23%, ff 646.43%, bram 0.00%, fmax_mhz -9.98%) Tj
 ET
 endstream
 endobj
@@ -38,5 +40,5 @@ xref
 0000000311 00000 n
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-723
+808
 %%EOF

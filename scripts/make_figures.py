@@ -5,6 +5,14 @@ from __future__ import annotations
 
 import csv
 from pathlib import Path
+from typing import Iterable
+
+try:
+    from reportlab.lib import colors
+    from reportlab.pdfgen import canvas
+except Exception:  # pragma: no cover - optional local rendering helper
+    canvas = None
+    colors = None
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -40,11 +48,22 @@ def main() -> int:
     for name, svg in figures.items():
         (RESULTS_FIGURES / name).write_text(svg, encoding="utf-8")
         (PAPER_FIGURES / name).write_text(svg, encoding="utf-8")
+    _write_core_pdf_figures()
     print(f"WROTE {len(figures)} SVG figures to {RESULTS_FIGURES} and {PAPER_FIGURES}")
     return 0
 
 
 def _architecture_svg() -> str:
+    boxes, arrows, width, height = _architecture_diagram()
+    return _diagram("ReplayCapsule-RV RTL Architecture", boxes, arrows, width, height)
+
+
+def _replay_flow_svg() -> str:
+    boxes, arrows, width, height = _replay_flow_diagram()
+    return _diagram("Deterministic Replay Methodology", boxes, arrows, width, height)
+
+
+def _architecture_diagram() -> tuple[list[tuple[int, int, int, int, str]], list[tuple[int, int, int, int]], int, int]:
     boxes = [
         (30, 80, 150, 54, "RV32I core"),
         (230, 40, 150, 54, "event_tap"),
@@ -66,10 +85,10 @@ def _architecture_svg() -> str:
         (705, 94, 505, 240),
         (580, 267, 630, 267),
     ]
-    return _diagram("ReplayCapsule-RV RTL Architecture", boxes, arrows, 820, 340)
+    return boxes, arrows, 820, 340
 
 
-def _replay_flow_svg() -> str:
+def _replay_flow_diagram() -> tuple[list[tuple[int, int, int, int, str]], list[tuple[int, int, int, int]], int, int]:
     boxes = [
         (30, 80, 150, 58, "Record run"),
         (220, 80, 150, 58, "Property fail"),
@@ -78,7 +97,70 @@ def _replay_flow_svg() -> str:
         (790, 80, 150, 58, "Compare signature"),
     ]
     arrows = [(180, 109, 220, 109), (370, 109, 410, 109), (560, 109, 600, 109), (750, 109, 790, 109)]
-    return _diagram("Deterministic Replay Methodology", boxes, arrows, 980, 220)
+    return boxes, arrows, 980, 220
+
+
+def _write_core_pdf_figures() -> None:
+    if canvas is None or colors is None:
+        return
+    specs = [
+        ("architecture_overview.pdf", "ReplayCapsule-RV RTL Architecture", *_architecture_diagram()),
+        ("replay_flow.pdf", "Deterministic Replay Methodology", *_replay_flow_diagram()),
+    ]
+    for name, title, boxes, arrows, width, height in specs:
+        for directory in (RESULTS_FIGURES, PAPER_FIGURES):
+            _write_pdf_diagram(directory / name, title, boxes, arrows, width, height)
+
+
+def _write_pdf_diagram(
+    path: Path,
+    title: str,
+    boxes: Iterable[tuple[int, int, int, int, str]],
+    arrows: Iterable[tuple[int, int, int, int]],
+    width: int,
+    height: int,
+) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    c = canvas.Canvas(str(path), pagesize=(width, height))
+    c.setFillColor(colors.white)
+    c.rect(0, 0, width, height, stroke=0, fill=1)
+    c.setFillColor(colors.HexColor("#1f2933"))
+    c.setFont("Helvetica-Bold", 18)
+    c.drawCentredString(width / 2, height - 30, title)
+    c.setStrokeColor(colors.HexColor("#555555"))
+    c.setLineWidth(2)
+    for x1, y1, x2, y2 in arrows:
+        _pdf_arrow(c, x1, height - y1, x2, height - y2)
+    for x, y, w, h, label in boxes:
+        yy = height - y - h
+        c.setFillColor(colors.HexColor("#f8fbff"))
+        c.setStrokeColor(colors.HexColor("#4b6f9f"))
+        c.roundRect(x, yy, w, h, 6, stroke=1, fill=1)
+        c.setFillColor(colors.HexColor("#1f2933"))
+        c.setFont("Helvetica", 13)
+        c.drawCentredString(x + w / 2, yy + h / 2 - 4, label)
+    c.showPage()
+    c.save()
+
+
+def _pdf_arrow(c: canvas.Canvas, x1: int, y1: int, x2: int, y2: int) -> None:
+    c.line(x1, y1, x2, y2)
+    # Short arrowhead good enough for manuscript figures.
+    dx = x2 - x1
+    dy = y2 - y1
+    length = max((dx * dx + dy * dy) ** 0.5, 1.0)
+    ux = dx / length
+    uy = dy / length
+    size = 8
+    left = (x2 - size * ux - size * uy / 2, y2 - size * uy + size * ux / 2)
+    right = (x2 - size * ux + size * uy / 2, y2 - size * uy - size * ux / 2)
+    path = c.beginPath()
+    path.moveTo(x2, y2)
+    path.lineTo(*left)
+    path.lineTo(*right)
+    path.close()
+    c.setFillColor(colors.HexColor("#555555"))
+    c.drawPath(path, stroke=0, fill=1)
 
 
 def _baseline_trace_sizes_svg(rows: list[dict[str, str]]) -> str:

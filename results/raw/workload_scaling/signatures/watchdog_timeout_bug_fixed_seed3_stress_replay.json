@@ -1,0 +1,18 @@
+{
+  "benchmark": "watchdog_timeout_bug",
+  "variant": "fixed",
+  "seed": 3,
+  "mode": "replay",
+  "architecture": "v1",
+  "recorder_config": "core",
+  "packet_width_bits": 168,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 200000,
+  "commits_to_failure": 55733,
+  "event_count": 16384,
+  "capsule_bytes": 344064,
+  "overflow": true,
+  "replay_ok": true,
+  "notes": "record/replay capsule packets match"
+}

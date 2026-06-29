@@ -1,0 +1,18 @@
+{
+  "benchmark": "uart_command_bug",
+  "variant": "fixed",
+  "seed": 1,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 200000,
+  "commits_to_failure": 55739,
+  "event_count": 241,
+  "capsule_bytes": 1928,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "record/replay canonical events match"
+}

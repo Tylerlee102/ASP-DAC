@@ -14,9 +14,9 @@ interrupt_race_bug,failing,3,NOT_RUN,PASS,2,2,NOT_RUN,61,NOT_RUN,15,NOT_RUN,5,PA
 interrupt_race_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33326,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 interrupt_race_bug,fixed,2,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33326,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 interrupt_race_bug,fixed,3,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33326,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
-mmio_ordering_bug,failing,1,NOT_RUN,PASS,5,5,NOT_RUN,56,NOT_RUN,14,NOT_RUN,4,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
-mmio_ordering_bug,failing,2,NOT_RUN,PASS,5,5,NOT_RUN,56,NOT_RUN,14,NOT_RUN,4,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
-mmio_ordering_bug,failing,3,NOT_RUN,PASS,5,5,NOT_RUN,56,NOT_RUN,14,NOT_RUN,4,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+mmio_ordering_bug,failing,1,NOT_RUN,PASS,5,5,NOT_RUN,59,NOT_RUN,15,NOT_RUN,4,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+mmio_ordering_bug,failing,2,NOT_RUN,PASS,5,5,NOT_RUN,59,NOT_RUN,15,NOT_RUN,4,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+mmio_ordering_bug,failing,3,NOT_RUN,PASS,5,5,NOT_RUN,59,NOT_RUN,15,NOT_RUN,4,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 mmio_ordering_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33328,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 mmio_ordering_bug,fixed,2,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33328,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 mmio_ordering_bug,fixed,3,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33328,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
@@ -38,9 +38,9 @@ uart_command_bug,no_failure_edge,3,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33328
 watchdog_timeout_bug,failing,1,NOT_RUN,PASS,6,6,NOT_RUN,105,NOT_RUN,26,NOT_RUN,7,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 watchdog_timeout_bug,failing,2,NOT_RUN,PASS,6,6,NOT_RUN,105,NOT_RUN,26,NOT_RUN,7,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 watchdog_timeout_bug,failing,3,NOT_RUN,PASS,6,6,NOT_RUN,105,NOT_RUN,26,NOT_RUN,7,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
-watchdog_timeout_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33324,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
-watchdog_timeout_bug,fixed,2,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33324,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
-watchdog_timeout_bug,fixed,3,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33324,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,fixed,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33322,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,fixed,2,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33322,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
+watchdog_timeout_bug,fixed,3,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33322,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 watchdog_timeout_bug,no_failure_edge,1,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33327,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 watchdog_timeout_bug,no_failure_edge,2,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33327,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation
 watchdog_timeout_bug,no_failure_edge,3,NOT_RUN,PASS,0,0,NOT_RUN,100000,NOT_RUN,33327,NOT_RUN,256,PASS,NA,NA,NA,compiler-backed firmware row; fallback comparison not run in this invocation

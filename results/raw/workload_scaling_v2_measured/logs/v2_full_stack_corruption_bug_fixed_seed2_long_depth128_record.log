@@ -1,0 +1,1 @@
+PASS record benchmark=stack_corruption_bug variant=fixed seed=2 arch=v2 recorder_config=full property=0 events=113 cycles=100000 commits=30597 notes="no false property failure"

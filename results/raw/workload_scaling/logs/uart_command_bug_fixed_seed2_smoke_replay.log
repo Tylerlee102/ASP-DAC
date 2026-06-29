@@ -1,0 +1,1 @@
+PASS replay benchmark=uart_command_bug variant=fixed seed=2 arch=v1 recorder_config=core property=0 events=256 cycles=5000 commits=1661 notes="record/replay capsule packets match"

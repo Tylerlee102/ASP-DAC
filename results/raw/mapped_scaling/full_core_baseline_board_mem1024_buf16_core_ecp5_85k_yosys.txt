@@ -4223,43 +4223,43 @@ Extracted 8409 AND gates and 23384 wires from module `full_core_baseline_board_t
 5.45.18.5. Executing ABC9.
 Running ABC command: "<yosys-exe-dir>/yosys-abc" -s -f <abc-temp-dir>/abc.script 2>&1
 ABC: ======== ABC command line "source <abc-temp-dir>/abc.script"
-ABC: + read_lut <abc-temp-dir>/input.lut
-ABC: + read_box <abc-temp-dir>/input.box
-ABC: + &read <abc-temp-dir>/input.xaig
-ABC: + &ps
+ABC: + read_lut <abc-temp-dir>/input.lut 
+ABC: + read_box <abc-temp-dir>/input.box 
+ABC: + &read <abc-temp-dir>/input.xaig 
+ABC: + &ps 
 ABC: <abc-temp-dir>/input : i/o =    988/   1035  and =    7806  lev =   22 (   1.83)  mem = 0.17 MB  box = 331  bb = 106
 ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 1 carries.
-ABC: + &scorr
+ABC: + &scorr 
 ABC: Warning: The network is combinational.
-ABC: + &sweep
-ABC: + &dc2
-ABC: + &dch -f -r
-ABC: + &ps
+ABC: + &sweep 
+ABC: + &dc2 
+ABC: + &dch -f -r 
+ABC: + &ps 
 ABC: <abc-temp-dir>/input : i/o =    988/   1035  and =    9539  lev =   28 (   1.47)  mem = 0.19 MB  ch = 1169  box = 329  bb = 106
 ABC: cst =       0  cls =   1014  lit =    1169  unused =    9119  proof =     0
 ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 1 carries.
-ABC: + &if -W 300 -v
+ABC: + &if -W 300 -v 
 ABC: K = 7. Memory (bytes): Truth =    0. Cut =   76. Obj =  156. Set =  780. CutMin = no
 ABC: Node =    9539.  Ch =  1014.  Total mem =    2.39 MB. Peak cut mem =    0.28 MB.
 ABC: P:  Del = 3440.00.  Ar =    6954.0.  Edge =     8924.  Cut =   109739.  T =     0.01 sec
 ABC: P:  Del = 3440.00.  Ar =    7320.0.  Edge =     9277.  Cut =   108669.  T =     0.01 sec
-ABC: P:  Del = 3429.00.  Ar =    2946.0.  Edge =     7873.  Cut =   199207.  T =     0.02 sec
+ABC: P:  Del = 3429.00.  Ar =    2946.0.  Edge =     7873.  Cut =   199207.  T =     0.03 sec
 ABC: F:  Del = 3420.00.  Ar =    2513.0.  Edge =     7480.  Cut =   168053.  T =     0.02 sec
 ABC: A:  Del = 3420.00.  Ar =    2408.0.  Edge =     6827.  Cut =   160680.  T =     0.03 sec
-ABC: A:  Del = 3420.00.  Ar =    2404.0.  Edge =     6817.  Cut =   167293.  T =     0.03 sec
-ABC: Total time =     0.11 sec
-ABC: + &write -n <abc-temp-dir>/output.aig
-ABC: + &mfs
-ABC: + &ps -l
+ABC: A:  Del = 3420.00.  Ar =    2404.0.  Edge =     6817.  Cut =   167293.  T =     0.01 sec
+ABC: Total time =     0.09 sec
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &mfs 
+ABC: + &ps -l 
 ABC: <abc-temp-dir>/input : i/o =    988/   1035  and =    6985  lev =   20 (   1.60)  mem = 0.16 MB  box = 329  bb = 106
 ABC: Mapping (K=7)  :  lut =   1769  edge =    6674  lev =    7 (0.82)  levB =   32  mem = 0.08 MB
 ABC: LUT = 1769 : 2=211 11.9 %  3=351 19.8 %  4=925 52.3 %  5=232 13.1 %  6=11 0.6 %  7=39 2.2 %  Ave = 3.77
 ABC: Warning: AIG with boxes has internal fanout in 0 complex flops and 1 carries.
-ABC: + &write -n <abc-temp-dir>/output.aig
-ABC: + &verify
+ABC: + &write -n <abc-temp-dir>/output.aig 
+ABC: + &verify 
 ABC: Networks are equivalent.  Time =     0.11 sec
-ABC: + time
-ABC: elapse: 0.67 seconds, total: 0.67 seconds
+ABC: + time 
+ABC: elapse: 0.66 seconds, total: 0.66 seconds
 
 5.45.18.6. Executing AIGER frontend.
 <suppressed ~4058 debug messages>
@@ -5178,7 +5178,7 @@ Removed 0 unused modules.
 === full_core_baseline_board_top ===
 
         +----------Local Count, excluding submodules.
-        |
+        | 
      2520 wires
      7374 wire bits
      2520 public wires
@@ -5198,11 +5198,11 @@ Removed 0 unused modules.
 === design hierarchy ===
 
         +----------Count including submodules.
-        |
+        | 
         6 full_core_baseline_board_top
 
         +----------Count including submodules.
-        |
+        | 
      2520 wires
      7374 wire bits
      2520 public wires
@@ -5228,6 +5228,6 @@ Found and reported 0 problems.
 
 5.52. Executing JSON backend.
 
-End of script. Logfile hash: 673b0c9fa8
+End of script. Logfile hash: b56042890c
 Yosys 0.66+154 (git sha1 23aadd92a, Release, GNU /usr/bin/x86_64-w64-mingw32-g++ 13.2.1)
 Time spent: 1% 35x opt_expr (0 sec), 1% 31x opt_clean (0 sec), ...

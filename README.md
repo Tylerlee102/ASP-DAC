@@ -141,6 +141,6 @@ Forbidden claims:
 - `firmware/`: compiler-built firmware benchmarks.
 - `tb/`: Verilator and replay-comparator harnesses.
 - `scripts/`: reproduction, audit, table, figure, synthesis, and packaging scripts.
-- `paper/`: IEEE-style paper source and generated table/figure assets.
+- `paper/`: ACM/ASP-DAC-style paper source and generated table/figure assets.
 - `docs/`: reviewer-facing model, evidence, limitation, and submission docs.
 - `results/processed/`: generated CSV evidence.

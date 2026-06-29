@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+from pathlib import Path
 from statistics import mean, median
 
 from topconf_eval_common import REPO_ROOT, read_csv, read_json, reduction_pct, safe_float, safe_int, write_csv
@@ -19,6 +20,7 @@ BASELINES = (
     "full_commit_trace",
     "pc_only_trace",
     "branch_trace",
+    "riscv_etrace_branch_trace_estimate",
     "load_store_trace",
     "mmio_only_trace",
     "interrupt_only_trace",
@@ -34,6 +36,7 @@ FIELDS = [
     "variant",
     "seed",
     "workload_scale",
+    "buffer_depth",
     "baseline",
     "bytes",
     "events",
@@ -51,6 +54,7 @@ FIELDS = [
 SUMMARY_FIELDS = [
     "baseline",
     "workload_scale",
+    "median_buffer_depth",
     "median_bytes",
     "mean_bytes",
     "min_bytes",
@@ -65,16 +69,20 @@ SUMMARY_FIELDS = [
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--input", default=str(WORKLOAD_CSV))
+    parser.add_argument("--output", default=str(OUT_CSV))
+    parser.add_argument("--summary-output", default=str(SUMMARY_CSV))
     args = parser.parse_args()
 
-    workload_rows = read_csv(REPO_ROOT / args.input if not args.input.startswith("results/") else REPO_ROOT / args.input)
+    workload_rows = read_csv(_repo_path(args.input))
     rows = []
     for row in workload_rows:
         rows.extend(_baseline_rows(row))
-    write_csv(OUT_CSV, FIELDS, rows)
-    write_csv(SUMMARY_CSV, SUMMARY_FIELDS, _summary_rows(rows))
-    print(f"WROTE results/processed/capsule_baseline_comparison.csv")
-    print(f"WROTE results/processed/capsule_baseline_summary.csv")
+    out_csv = _repo_path(args.output)
+    summary_csv = _repo_path(args.summary_output)
+    write_csv(out_csv, FIELDS, rows)
+    write_csv(summary_csv, SUMMARY_FIELDS, _summary_rows(rows))
+    print(f"WROTE {_rel(out_csv)}")
+    print(f"WROTE {_rel(summary_csv)}")
     return 0
 
 
@@ -86,13 +94,17 @@ def _baseline_rows(row: dict[str, str]) -> list[dict[str, object]]:
     out = []
     for baseline in BASELINES:
         value = values[baseline]
-        replay_success = row.get("replay_status") == "PASS" and baseline.startswith("replaycapsule")
+        strict_valid = row.get("strict_replay_valid", "").lower() == "true" or (
+            row.get("strict_replay_valid", "") == "" and row.get("replay_status") == "PASS" and row.get("overflow", "false").lower() != "true"
+        )
+        replay_success = strict_valid and baseline.startswith("replaycapsule")
         out.append(
             {
                 "benchmark": row.get("benchmark", "NA"),
                 "variant": row.get("variant", "NA"),
                 "seed": row.get("seed", "NA"),
                 "workload_scale": row.get("workload_scale", "NA"),
+                "buffer_depth": row.get("buffer_depth", "NA"),
                 "baseline": baseline,
                 "bytes": value["bytes"],
                 "events": value["events"],
@@ -121,6 +133,7 @@ def _baseline_values(row: dict[str, str]) -> dict[str, dict[str, object]]:
     capsule_bytes = capsule_value
     event_counts = _event_counts(row)
     branch_events = event_counts.get(1, 0) + event_counts.get(2, 0)
+    etrace_sync_packets = max(1, (commits + 63) // 64)
     mem_events = sum(event_counts.get(event_type, 0) for event_type in (3, 4, 5, 6))
     mmio_events = event_counts.get(5, 0) + event_counts.get(6, 0)
     irq_events = event_counts.get(7, 0) + event_counts.get(8, 0)
@@ -129,6 +142,12 @@ def _baseline_values(row: dict[str, str]) -> dict[str, dict[str, object]]:
         "full_commit_trace": _estimated(commits * 16, commits, "ESTIMATED formula=commits*(pc+instruction+register-digest=16B)", False),
         "pc_only_trace": _estimated(commits * 4, commits, "ESTIMATED formula=commits*pc32", False),
         "branch_trace": _estimated(branch_events * 12, branch_events, "ESTIMATED formula=branch/jump events*(type+pc+target=12B)", False),
+        "riscv_etrace_branch_trace_estimate": _estimated(
+            branch_events * 4 + etrace_sync_packets * 8,
+            branch_events,
+            "ESTIMATED RISC-V E-Trace/N-Trace-style branch stream; formula=branch/jump events*4B + 64-commit sync packets*8B",
+            False,
+        ),
         "load_store_trace": _estimated(mem_events * 12, mem_events, "ESTIMATED formula=load/store/MMIO events*(type+addr+data=12B)", False),
         "mmio_only_trace": _estimated(mmio_events * 12, mmio_events, "ESTIMATED formula=MMIO read/write events*(type+addr+data=12B)", False),
         "interrupt_only_trace": _estimated(irq_events * 12, irq_events, "ESTIMATED formula=interrupt events*(type+pc+commit=12B)", False),
@@ -141,8 +160,13 @@ def _baseline_values(row: dict[str, str]) -> dict[str, dict[str, object]]:
 
 
 def _event_counts(row: dict[str, str]) -> dict[int, int]:
-    base = f"{row.get('benchmark')}_{row.get('variant')}_seed{row.get('seed')}_{row.get('workload_scale')}.json"
-    payload = read_json(CAPSULE_DIR / base)
+    capsule_path = row.get("capsule_path", "")
+    if capsule_path and capsule_path != "NA":
+        payload = read_json(_repo_path(capsule_path))
+    else:
+        prefix = "" if row.get("architecture", "v1") in {"", "v1", "NA"} else f"{row.get('architecture')}_{row.get('recorder_config', 'core')}_"
+        base = f"{prefix}{row.get('benchmark')}_{row.get('variant')}_seed{row.get('seed')}_{row.get('workload_scale')}.json"
+        payload = read_json(CAPSULE_DIR / base)
     counts: dict[int, int] = {}
     for event in payload.get("events", []) if isinstance(payload.get("events"), list) else []:
         if not isinstance(event, dict):
@@ -174,13 +198,16 @@ def _summary_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
     for baseline, scale in keys:
         subset = [row for row in rows if row["baseline"] == baseline and row["workload_scale"] == scale]
         byte_values = [safe_float(row["bytes"]) for row in subset]
+        buffer_depths = [safe_float(row.get("buffer_depth")) for row in subset]
         bytes_clean = [value for value in byte_values if value is not None]
+        depths_clean = [value for value in buffer_depths if value is not None]
         red_i = [safe_float(row["reduction_vs_full_instruction_pct"]) for row in subset]
         red_c = [safe_float(row["reduction_vs_full_commit_pct"]) for row in subset]
         out.append(
             {
                 "baseline": baseline,
                 "workload_scale": scale,
+                "median_buffer_depth": _fmt(median(depths_clean)) if depths_clean else "NA",
                 "median_bytes": _fmt(median(bytes_clean)) if bytes_clean else "NA",
                 "mean_bytes": _fmt(mean(bytes_clean)) if bytes_clean else "NA",
                 "min_bytes": _fmt(min(bytes_clean)) if bytes_clean else "NA",
@@ -196,6 +223,15 @@ def _summary_rows(rows: list[dict[str, object]]) -> list[dict[str, object]]:
 
 def _fmt(value: float) -> str:
     return f"{value:.6f}"
+
+
+def _repo_path(value: str) -> Path:
+    path = Path(value)
+    return path if path.is_absolute() else REPO_ROOT / path
+
+
+def _rel(path: Path) -> str:
+    return path.relative_to(REPO_ROOT).as_posix()
 
 
 if __name__ == "__main__":

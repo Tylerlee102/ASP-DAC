@@ -1,0 +1,18 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "variant": "failing",
+  "seed": 5,
+  "mode": "record",
+  "architecture": "v1",
+  "recorder_config": "core",
+  "packet_width_bits": 168,
+  "property_id": 3,
+  "property_signature": "0x5e0500f9",
+  "cycles_to_failure": 128,
+  "commits_to_failure": 31,
+  "event_count": 9,
+  "capsule_bytes": 189,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "property failure observed"
+}

@@ -1,0 +1,18 @@
+{
+  "benchmark": "stack_corruption_bug",
+  "variant": "fixed",
+  "seed": 1,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 50000,
+  "commits_to_failure": 15978,
+  "event_count": 113,
+  "capsule_bytes": 904,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "no false property failure"
+}

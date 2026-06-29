@@ -15,8 +15,14 @@ OUT_CSV = REPO_ROOT / "results/processed/private_marker_scan.csv"
 NEEDLES = (
     "C:" + "\\Users\\",
     "C:" + "/Users/",
-    "OneDrive\\Documents\\" + "New project",
-    "OneDrive/Documents/" + "New project",
+    "\\Users\\" + "ty" + "boy",
+    "/Users/" + "ty" + "boy",
+    "One" + "Drive\\Documents\\" + "New project",
+    "One" + "Drive/Documents/" + "New project",
+    "One" + "Drive",
+    "Tyler" + "lee102",
+    "github.com/" + "Tyler" + "lee102",
+    "ty" + "boy",
     "::git-" + "stage",
     "::git-" + "commit",
     "::git-" + "push",
@@ -31,6 +37,8 @@ SKIP_DIRS = {
     ".mypy_cache",
     "firmware/build",
     "firmware/build_scaled",
+    "results/raw",
+    "results/debug",
 }
 
 TEXT_SUFFIXES = {

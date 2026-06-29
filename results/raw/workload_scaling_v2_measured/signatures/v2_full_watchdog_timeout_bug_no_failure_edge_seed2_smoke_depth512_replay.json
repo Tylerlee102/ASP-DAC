@@ -1,0 +1,18 @@
+{
+  "benchmark": "watchdog_timeout_bug",
+  "variant": "no_failure_edge",
+  "seed": 2,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 5000,
+  "commits_to_failure": 1660,
+  "event_count": 496,
+  "capsule_bytes": 3968,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "record/replay canonical events match"
+}

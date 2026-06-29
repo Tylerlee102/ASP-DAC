@@ -1,0 +1,1 @@
+PASS record benchmark=uart_command_bug variant=fixed seed=5 arch=v2 recorder_config=full property=0 events=497 cycles=100000 commits=30598 notes="no false property failure"

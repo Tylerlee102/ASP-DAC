@@ -5,6 +5,7 @@ module full_core_replaycapsule_board_top #(
   parameter logic [3:0]  CAPTURE_MODE   = 4'h3,
   parameter logic [1:0]  ARCH_SELECT    = 2'd1,
   parameter logic [1:0]  RECORDER_CONFIG_SELECT = 2'd0,
+  parameter bit          ENABLE_V2_RECORDERS = (ARCH_SELECT == 2'd2),
   parameter logic [31:0] PROGADDR_RESET = 32'h0000_0080,
   parameter logic [31:0] PROGADDR_IRQ   = 32'h0000_0010,
   parameter logic [31:0] STACKADDR      = 32'h0000_2000
@@ -67,7 +68,8 @@ module full_core_replaycapsule_board_top #(
     .STACKADDR(STACKADDR),
     .CAPSULE_DEPTH(CAPSULE_DEPTH),
     .CAPSULE_ADDR_W(CAPSULE_ADDR_W),
-    .ENABLE_WATCHDOG(1'b0)
+    .ENABLE_WATCHDOG(1'b0),
+    .ENABLE_V2_RECORDERS(ENABLE_V2_RECORDERS)
   ) u_full_core_replaycapsule (
     .clk(clk),
     .rst_n(rst_n),

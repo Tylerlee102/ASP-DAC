@@ -1,0 +1,1 @@
+PASS record benchmark=sensor_threshold_bug variant=failing seed=5 arch=v2 recorder_config=full property=3 events=497 cycles=1604 commits=353 notes="property failure observed"

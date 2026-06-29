@@ -12,4 +12,13 @@ Embedded event logs are widely used to explain firmware failures after deploymen
 
 FPGA/emulation debugging and checkpointing can capture broad hardware state and rerun workloads under controlled conditions. Snapshot and time-travel systems similarly preserve enough state to resume or inspect execution~\cite{king2005debugging}. ReplayCapsule-RV is narrower: it keeps the same initial state and firmware image, then records the boundary events needed for a selected failure prefix.
 
+The side-by-side distinction is:
+\begin{itemize}
+\item Full instruction or commit traces capture the retired stream or per-commit state; ReplayCapsule-RV records replay-driving boundary events and property-fail context.
+\item RISC-V E-Trace and N-Trace-style mechanisms capture compressed control-flow discontinuities and synchronization; the generated E-Trace-style estimate is a stronger size baseline than raw instruction trace, while ReplayCapsule-RV carries MMIO values and interrupt timing for replay.
+\item Deterministic VM replay captures device inputs and scheduling at OS or VM granularity; ReplayCapsule-RV uses commit-indexed single-hart RV32I boundary events inside a firmware-running RTL harness.
+\item Runtime-verification monitors capture assertion outcomes and checker state; ReplayCapsule-RV uses the checker as a trigger and validates the captured event stream by record/replay comparison.
+\end{itemize}
+In the current implementation, v1 packets are 168.000000-bit boundary-event records and v2 measured rows use compact 64-bit exported capsule words where integrated; the claim is scoped replay sufficiency for interrupt/MMIO bugs, not trace-standard replacement or autonomous full-core replay consume.
+
 The implementation builds on PicoRV32, Verilator, Icarus Verilog, Yosys, nextpnr, and bounded formal tooling~\cite{picorv32,verilator,icarus,yosys,nextpnr,symbiyosys}. These tools support reproducibility; the claimed research object is the scoped capsule model, recorder, replay harness, and evidence package.

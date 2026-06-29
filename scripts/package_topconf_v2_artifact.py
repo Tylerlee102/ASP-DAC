@@ -9,18 +9,57 @@ from pathlib import Path
 
 from topconf_eval_common import REPO_ROOT, rel, write_csv
 
+try:
+    import zlib as _zlib  # noqa: F401
+except Exception:
+    ZIP_COMPRESSION = zipfile.ZIP_STORED
+else:
+    ZIP_COMPRESSION = zipfile.ZIP_DEFLATED
+
 
 ZIP_PATH = REPO_ROOT / "dist/replaycapsule-rv-topconf-v2-artifact.zip"
 MANIFEST_CSV = REPO_ROOT / "dist/topconf_v2_artifact_manifest.csv"
 PROCESSED_MANIFEST = REPO_ROOT / "results/processed/topconf_v2_artifact_manifest.csv"
 FIELDS = ["path", "bytes", "category", "notes"]
+TEXT_ARCHIVE_SUFFIXES = {
+    "",
+    ".c",
+    ".cpp",
+    ".csv",
+    ".h",
+    ".json",
+    ".ld",
+    ".lpf",
+    ".md",
+    ".py",
+    ".sh",
+    ".sv",
+    ".svh",
+    ".tex",
+    ".txt",
+    ".v",
+    ".yml",
+    ".yaml",
+}
+PRIVATE_REPLACEMENTS = (
+    ("C:" + "\\Users\\" + "ty" + "boy", "."),
+    ("C:" + "/Users/" + "ty" + "boy", "."),
+    ("\\Users\\" + "ty" + "boy", "\\Users\\USER"),
+    ("/Users/" + "ty" + "boy", "/Users/USER"),
+    ("One" + "Drive\\Documents\\" + "New project", "WORKSPACE"),
+    ("One" + "Drive/Documents/" + "New project", "WORKSPACE"),
+    ("One" + "Drive", "WORKSPACE"),
+    ("Tyler" + "lee102", "anonymous"),
+    ("github.com/" + "Tyler" + "lee102", "github.com/anonymous"),
+    ("ty" + "boy", "user"),
+)
 
 
 def main() -> int:
     ZIP_PATH.parent.mkdir(parents=True, exist_ok=True)
     files = _collect_files()
     rows = []
-    with zipfile.ZipFile(ZIP_PATH, "w", compression=zipfile.ZIP_DEFLATED) as zf:
+    with zipfile.ZipFile(ZIP_PATH, "w", compression=ZIP_COMPRESSION) as zf:
         for path, category, notes in files:
             if not path.exists() or not path.is_file():
                 continue
@@ -31,8 +70,9 @@ def main() -> int:
             if path.suffix.lower() in {".vvp", ".exe", ".dll", ".json", ".config"} and category == "raw":
                 continue
             arcname = rel(path)
-            zf.write(path, arcname)
-            rows.append({"path": arcname, "bytes": path.stat().st_size, "category": category, "notes": notes})
+            data = _archive_data(path)
+            zf.writestr(arcname, data)
+            rows.append({"path": arcname, "bytes": len(data), "category": category, "notes": notes})
         manifest_text = _manifest_text(rows)
         zf.writestr("dist/topconf_v2_artifact_manifest.csv", manifest_text)
     _write_manifest_csv(MANIFEST_CSV, rows)
@@ -103,6 +143,16 @@ def _manifest_text(rows: list[dict[str, object]]) -> str:
     writer.writeheader()
     writer.writerows(rows)
     return handle.getvalue()
+
+
+def _archive_data(path: Path) -> bytes:
+    data = path.read_bytes()
+    if path.suffix.lower() not in TEXT_ARCHIVE_SUFFIXES:
+        return data
+    text = data.decode("utf-8", errors="replace")
+    for needle, replacement in PRIVATE_REPLACEMENTS:
+        text = text.replace(needle, replacement)
+    return text.encode("utf-8")
 
 
 def _write_manifest_csv(path: Path, rows: list[dict[str, object]]) -> None:

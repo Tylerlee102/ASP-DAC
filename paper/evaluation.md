@@ -52,6 +52,12 @@ Current generated artifacts:
 
 The paper labels replay, baseline, ablation, interrupt-campaign, and event-sufficiency numbers as model-level, firmware-sim, RTL-smoke, or full RTL evidence according to their source CSVs. Current full RTL evidence is compiler-backed host-driven record/replay and replay-critical corruption rejection; current formal evidence is bounded event-tap, event-classifier/slicer, property-checker, hash-signature, MMIO/interrupt logger, register, replay-control, replay-mismatch, recorder, and capsule-buffer BMC/cover targets plus a generated theorem proof-obligation matrix. Current mapped evidence is same-target ECP5 place-and-route for board-level full-core baseline and ReplayCapsule wrappers.
 
+The workload-scaling evidence is reported at the buffer depth required for each workload class to pass replay-critical rows. The selected depths are 256 entries for smoke and short workloads, 1024 for medium, 4096 for long, and 16384 for stress; at those selected depths, all measured replay rows pass. The sticky overflow bit can still assert on fixed and no-failure rows that intentionally run until the cycle bound, so overflow is reported separately from replay-critical success.
+
+Capsule-size reductions are therefore reported at the selected passing depth, not the smallest tested depth. The generated raw full-instruction-trace reductions are 59.52% for smoke, 78.71% for short, 83.18% for medium, 64.86% for long, and 22.84% for stress. The generated `riscv_etrace_branch_trace_estimate` baseline is smaller than the raw instruction trace baseline for these rows, so the raw-trace reduction is a weak baseline and not a claim against state-of-the-art trace compression.
+
+After disabling redundant v2 recorder logic in v1 mapped configurations, the representative same-target ECP5 rows still report high instrumentation overhead: LUT overhead ranges from 114.20% to 221.23%, FF overhead from 174.53% to 646.43%, BRAM overhead is 0.00%, and Fmax change ranges from -19.56% to -9.98%. These rows are reported as bring-up/debug instrumentation costs, not as area-optimized production silicon costs.
+
 The result pipeline is:
 
 1. `scripts/run_all_tests.py`

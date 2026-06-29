@@ -3,14 +3,19 @@
 
 from __future__ import annotations
 
-import ctypes
 import os
 import re
 import shutil
 import subprocess
 from pathlib import Path
 
+import run_mapped_synthesis
 from topconf_eval_common import REPO_ROOT, rel, write_csv
+
+try:
+    import ctypes
+except ModuleNotFoundError:
+    ctypes = None
 
 
 OUT_CSV = REPO_ROOT / "results/processed/replay_consumer_mapped.csv"
@@ -51,6 +56,7 @@ def _run_mapping(yosys: str, nextpnr: str, target: str, nextpnr_args: tuple[str,
     yosys_log.write_text(_clean(y.stdout), encoding="utf-8")
     if y.returncode != 0 or not json_path.exists():
         return _row(target, "yosys+synth_ecp5+nextpnr-ecp5", "rcv2_replay_consumer", "FAIL", rel(yosys_log), "Yosys synthesis failed")
+    run_mapped_synthesis._sanitize_file(json_path)
 
     n = _run([nextpnr, *nextpnr_args, "--json", rel(json_path), "--textcfg", rel(config_path)], 180)
     nextpnr_log.write_text(_clean(n.stdout), encoding="utf-8")
@@ -140,7 +146,7 @@ def _tool_env() -> dict[str, str]:
 
 
 def _short_path(path: Path) -> Path:
-    if os.name != "nt":
+    if os.name != "nt" or ctypes is None:
         return path
     try:
         buffer = ctypes.create_unicode_buffer(1024)

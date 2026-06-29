@@ -1,0 +1,1 @@
+PASS record benchmark=mmio_ordering_bug variant=failing seed=2 arch=v2 recorder_config=full property=5 events=241 cycles=5948 commits=1296 notes="property failure observed"

@@ -1,0 +1,1 @@
+PASS replay benchmark=mmio_ordering_bug variant=failing seed=2 arch=v1 recorder_config=core property=5 events=515 cycles=5948 commits=1296 notes="record/replay capsule packets match"

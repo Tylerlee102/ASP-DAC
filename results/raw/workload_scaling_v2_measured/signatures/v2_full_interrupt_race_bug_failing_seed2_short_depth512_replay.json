@@ -1,0 +1,18 @@
+{
+  "benchmark": "interrupt_race_bug",
+  "variant": "failing",
+  "seed": 2,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 2,
+  "property_signature": "0x1a1e01bb",
+  "cycles_to_failure": 1537,
+  "commits_to_failure": 337,
+  "event_count": 498,
+  "capsule_bytes": 3984,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "record/replay canonical events match"
+}

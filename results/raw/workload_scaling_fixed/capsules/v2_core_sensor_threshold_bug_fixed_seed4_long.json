@@ -1,0 +1,18 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "variant": "fixed",
+  "seed": 4,
+  "mode": "record",
+  "architecture": "v2",
+  "schema_version": 2,
+  "recorder_config": "core",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "overflow": false,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "580e000000035214", "schema_version": 2, "flags": 8, "flags_hex": "0x00000008", "event_type": 5, "event_id": 0, "commit": 5134, "commit_index": 5134, "pc": "0x00000000", "addr": "0x40000000", "data": "0x00000352", "mmio_address": "0x40000000", "mmio_value": "0x00000352", "raw_mmio_value": "0x00000352", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 0, "payload_hash": "0x00000352", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 1, "cycle": null, "packet": "6006080000cafe00", "schema_version": 2, "flags": 0, "flags_hex": "0x00000000", "event_type": 6, "event_id": 1, "commit": 5140, "commit_index": 5140, "pc": "0x00000000", "addr": "0x40000008", "data": "0x0000cafe", "mmio_address": "0x40000008", "mmio_value": "0x0000cafe", "raw_mmio_value": "0x0000cafe", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 0, "payload_hash": "0x0000cafe", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 2, "cycle": null, "packet": "6001040000000000", "schema_version": 2, "flags": 0, "flags_hex": "0x00000000", "event_type": 6, "event_id": 2, "commit": 5141, "commit_index": 5141, "pc": "0x00000000", "addr": "0x40000004", "data": "0x00000000", "mmio_address": "0x40000004", "mmio_value": "0x00000000", "raw_mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 0, "payload_hash": "0x00000000", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"}
+  ]
+}

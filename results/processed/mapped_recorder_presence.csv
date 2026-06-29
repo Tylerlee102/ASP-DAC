@@ -1,4 +1,5 @@
 design,target,flow,memory_words,buffer_depth,recorder_config,recorder_present,evidence,status,notes
+full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,512,8,core,yes,results/raw/mapped_scaling/full_core_replaycapsule_board_mem512_buf8_core_ecp5_85k_yosys.txt,PASS,recorder hierarchy/status evidence found
 full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,core,yes,results/raw/mapped_scaling/full_core_replaycapsule_board_mem1024_buf16_core_ecp5_85k_yosys.txt,PASS,recorder hierarchy/status evidence found
 full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,core,yes,results/raw/mapped_scaling/full_core_replaycapsule_board_mem2048_buf16_core_ecp5_85k_yosys.txt,PASS,recorder hierarchy/status evidence found
 full_core_replaycapsule_board,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,full,yes,results/raw/mapped_scaling/full_core_replaycapsule_board_mem2048_buf32_full_ecp5_85k_yosys.txt,PASS,recorder hierarchy/status evidence found

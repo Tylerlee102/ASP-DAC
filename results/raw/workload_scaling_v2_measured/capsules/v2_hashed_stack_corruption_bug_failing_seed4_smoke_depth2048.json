@@ -1,0 +1,15 @@
+{
+  "benchmark": "stack_corruption_bug",
+  "variant": "failing",
+  "seed": 4,
+  "mode": "record",
+  "architecture": "v2",
+  "schema_version": 2,
+  "recorder_config": "hashed",
+  "packet_width_bits": 64,
+  "property_id": 4,
+  "property_signature": "0x8901aefb",
+  "overflow": false,
+  "events": [
+  ]
+}

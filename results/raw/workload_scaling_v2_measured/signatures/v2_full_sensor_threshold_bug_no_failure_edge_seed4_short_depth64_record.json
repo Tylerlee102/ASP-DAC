@@ -1,0 +1,18 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "variant": "no_failure_edge",
+  "seed": 4,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 10000,
+  "commits_to_failure": 3158,
+  "event_count": 49,
+  "capsule_bytes": 392,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "no false property failure"
+}

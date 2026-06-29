@@ -4,13 +4,17 @@
 from __future__ import annotations
 
 import csv
-import ctypes
 import os
 import shutil
 import subprocess
 from pathlib import Path
 
 from topconf_eval_common import REPO_ROOT, rel, write_csv
+
+try:
+    import ctypes
+except ModuleNotFoundError:
+    ctypes = None
 
 
 OUT_CSV = REPO_ROOT / "results/processed/replay_consumer_tests.csv"
@@ -142,7 +146,7 @@ def _tool_env() -> dict[str, str]:
 
 
 def _short_path(path: Path) -> Path:
-    if os.name != "nt":
+    if os.name != "nt" or ctypes is None:
         return path
     try:
         buffer = ctypes.create_unicode_buffer(1024)

@@ -1,0 +1,1 @@
+PASS replay benchmark=stack_corruption_bug variant=failing seed=4 arch=v2 recorder_config=full property=4 events=112 cycles=94271 commits=20497 notes="record/replay canonical events match"

@@ -1,0 +1,1 @@
+PASS replay benchmark=mmio_ordering_bug variant=fixed seed=1 arch=v2 recorder_config=full property=0 events=2034 cycles=50000 commits=15979 notes="record/replay canonical events match"

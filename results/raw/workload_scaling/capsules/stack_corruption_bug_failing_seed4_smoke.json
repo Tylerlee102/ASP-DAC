@@ -1,0 +1,19 @@
+{
+  "benchmark": "stack_corruption_bug",
+  "variant": "failing",
+  "seed": 4,
+  "mode": "record",
+  "architecture": "v1",
+  "schema_version": 1,
+  "recorder_config": "core",
+  "packet_width_bits": 168,
+  "property_id": 4,
+  "property_signature": "0x8901aefb",
+  "overflow": false,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "1a0000000000000006000000a80000000000000000", "schema_version": 1, "flags": 0, "flags_hex": "0x00000000", "event_type": 1, "event_id": 0, "commit": 6, "commit_index": 6, "pc": "0x000000a8", "addr": "0x00000000", "data": "0x00000000", "mmio_address": "0x00000000", "mmio_value": "0x00000000", "raw_mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 4, "payload_hash": "0xac05c1d0", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 1, "cycle": null, "packet": "1a0000000100000007000000b00000000000000000", "schema_version": 1, "flags": 0, "flags_hex": "0x00000000", "event_type": 1, "event_id": 1, "commit": 7, "commit_index": 7, "pc": "0x000000b0", "addr": "0x00000000", "data": "0x00000000", "mmio_address": "0x00000000", "mmio_value": "0x00000000", "raw_mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 4, "payload_hash": "0x6a6b19c3", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 2, "cycle": null, "packet": "32000000020000000a000000bc00003ffc00000000", "schema_version": 1, "flags": 0, "flags_hex": "0x00000000", "event_type": 3, "event_id": 2, "commit": 10, "commit_index": 10, "pc": "0x000000bc", "addr": "0x00003ffc", "data": "0x00000000", "mmio_address": "0x00003ffc", "mmio_value": "0x00000000", "raw_mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 4, "payload_hash": "0x735c2354", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 3, "cycle": null, "packet": "320000000300000010000000d400001010deadbeef", "schema_version": 1, "flags": 0, "flags_hex": "0x00000000", "event_type": 3, "event_id": 3, "commit": 16, "commit_index": 16, "pc": "0x000000d4", "addr": "0x00001010", "data": "0xdeadbeef", "mmio_address": "0x00001010", "mmio_value": "0xdeadbeef", "raw_mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 4, "payload_hash": "0x47af3adc", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"}
+  ]
+}
