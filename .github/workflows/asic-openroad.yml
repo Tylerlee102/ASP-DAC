@@ -22,7 +22,7 @@ jobs:
     env:
       OPENROAD_DOCKER_IMAGE: openroad/orfs:latest
       ASIC_OPENPDK_ROUTE_STAGE: global
-      ASIC_OPENPDK_OPENROAD_TIMEOUT: "300"
+      ASIC_OPENPDK_OPENROAD_TIMEOUT: "900"
 
     steps:
       - name: Check out repository

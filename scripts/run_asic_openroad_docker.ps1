@@ -39,6 +39,6 @@ docker run --rm `
     -e ASIC_OPENPDK_LIBERTY=/work/.tools/openpdk/nangate45/NangateOpenCellLibrary_typical.lib `
     -e ASIC_OPENPDK_LEF=/work/.tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef `
     -e ASIC_OPENPDK_ROUTE_STAGE=global `
-    -e ASIC_OPENPDK_OPENROAD_TIMEOUT=300 `
+    -e ASIC_OPENPDK_OPENROAD_TIMEOUT=900 `
     $Image `
     bash -lc $inner

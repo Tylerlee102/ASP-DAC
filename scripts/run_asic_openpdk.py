@@ -424,6 +424,7 @@ def _write_openroad_flow_tcl(design: Design, area_row: dict[str, object], mapped
                 f"link_design {design.top}",
                 f"read_sdc {rel(SDC)}",
                 f"initialize_floorplan -site {NANGATE45_SITE} -die_area {{0 0 {die_side:.3f} {die_side:.3f}}} -core_area {{{CORE_MARGIN_UM:.3f} {CORE_MARGIN_UM:.3f} {core_hi:.3f} {core_hi:.3f}}}",
+                "rc_try make_tracks {make_tracks}",
                 "rc_try place_pins {place_pins -hor_layer metal3 -ver_layer metal2}",
                 f"rc_try global_placement {{global_placement -density {TARGET_UTILIZATION:.2f}}}",
                 "rc_try detailed_placement {detailed_placement}",
@@ -605,23 +606,25 @@ def _write_flow_scaffold() -> None:
             ),
             encoding="utf-8",
         )
-        (RAW_DIR / f"{design.design}_flow.tcl").write_text(
-            "\n".join(
-                [
-                    f"read_liberty {rel(liberty) if liberty else '$::env(ASIC_OPENPDK_LIBERTY)'}",
-                    f"read_lef {rel(lef) if lef else '$::env(ASIC_OPENPDK_LEF)'}",
-                    f"read_verilog {rel(RAW_DIR / (design.design + '_yosys_area_mapped.v'))}",
-                    f"link_design {design.top}",
-                    f"read_sdc {rel(SDC)}",
-                    "report_checks -path_delay max",
-                    "report_tns",
-                    "report_wns",
-                    "report_power",
-                    "",
-                ]
-            ),
-            encoding="utf-8",
-        )
+        flow_path = RAW_DIR / f"{design.design}_flow.tcl"
+        if not flow_path.exists():
+            flow_path.write_text(
+                "\n".join(
+                    [
+                        f"read_liberty {rel(liberty) if liberty else '$::env(ASIC_OPENPDK_LIBERTY)'}",
+                        f"read_lef {rel(lef) if lef else '$::env(ASIC_OPENPDK_LEF)'}",
+                        f"read_verilog {rel(RAW_DIR / (design.design + '_yosys_area_mapped.v'))}",
+                        f"link_design {design.top}",
+                        f"read_sdc {rel(SDC)}",
+                        "report_checks -path_delay max",
+                        "report_tns",
+                        "report_wns",
+                        "report_power",
+                        "",
+                    ]
+                ),
+                encoding="utf-8",
+            )
 
 
 def _write_doc(rows: list[dict[str, object]], area_rows: list[dict[str, object]], summary: dict[str, object]) -> None:
