@@ -1,1 +1,1 @@
-PASS replay benchmark=uart_command_bug variant=fixed seed=4 arch=v2 recorder_config=core property=0 events=1 cycles=200000 commits=55739 notes="record/replay canonical events match"
+PASS replay benchmark=uart_command_bug variant=fixed seed=4 arch=v2 recorder_config=core property=0 events=1 cycles=200000 commits=55739 notes="record/replay replay-critical events match; rtl replay consumer consumed 1/1"

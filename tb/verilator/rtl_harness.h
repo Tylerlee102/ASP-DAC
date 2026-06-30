@@ -25,6 +25,7 @@ struct HarnessOptions {
   bool dump_property = false;
   bool dump_pc = false;
   bool dump_disasm_context = false;
+  bool stream_stall_test = false;
 };
 
 struct HarnessResult {

@@ -1,1 +1,1 @@
-PASS replay benchmark=sensor_threshold_bug variant=no_failure_edge seed=3 arch=v2 recorder_config=core property=0 events=1 cycles=100000 commits=30598 notes="record/replay canonical events match"
+PASS replay benchmark=sensor_threshold_bug variant=no_failure_edge seed=3 arch=v2 recorder_config=core property=0 events=1 cycles=100000 commits=30598 notes="record/replay replay-critical events match; rtl replay consumer consumed 1/1"

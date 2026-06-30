@@ -1,1 +1,1 @@
-PASS record benchmark=uart_command_bug variant=failing seed=5 arch=v2 recorder_config=core property=1 events=2 cycles=23623 commits=5139 notes="property failure observed"
+PASS record benchmark=uart_command_bug variant=failing seed=5 arch=v2 recorder_config=core property=1 events=3 cycles=23623 commits=5140 notes="property failure observed"

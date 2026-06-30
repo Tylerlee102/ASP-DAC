@@ -1,0 +1,22 @@
+{
+  "benchmark": "sensor_threshold_bug",
+  "variant": "failing",
+  "seed": 1,
+  "mode": "record",
+  "architecture": "v2",
+  "schema_version": 2,
+  "recorder_config": "hashed",
+  "packet_width_bits": 64,
+  "property_id": 3,
+  "property_signature": "0x5e0500f9",
+  "overflow": false,
+  "stream_event_count": 1,
+  "stream_event_sent_count": 1,
+  "replay_critical_event_count": 1,
+  "stream_stall_count": 1,
+  "dropped_diagnostic_count": 0,
+  "replay_critical_overflow_count": 0,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "520c000000035200", "schema_version": 2, "flags": 2, "flags_hex": "0x00000002", "event_type": 5, "event_id": 0, "commit": 12, "commit_index": 12, "pc": "0x00000000", "addr": "0x40000000", "data": "0x00000352", "mmio_address": "0x40000000", "mmio_value": "0x00000352", "raw_mmio_value": "0x00000352", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 3, "payload_hash": "0x285becd8", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"}
+  ]
+}

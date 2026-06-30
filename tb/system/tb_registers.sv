@@ -6,6 +6,11 @@ module tb_registers;
   localparam logic [31:0] REG_STATUS = BASE_ADDR + 32'h04;
   localparam logic [31:0] REG_COUNT = BASE_ADDR + 32'h08;
   localparam logic [31:0] REG_SIG = BASE_ADDR + 32'h0c;
+  localparam logic [31:0] REG_STREAM_STATUS = BASE_ADDR + 32'h10;
+  localparam logic [31:0] REG_CRITICAL_COUNT = BASE_ADDR + 32'h14;
+  localparam logic [31:0] REG_STREAM_STALLS = BASE_ADDR + 32'h18;
+  localparam logic [31:0] REG_DIAG_DROPS = BASE_ADDR + 32'h1c;
+  localparam logic [31:0] REG_CRITICAL_OVERFLOW = BASE_ADDR + 32'h20;
 
   logic clk;
   logic rst_n;
@@ -20,6 +25,10 @@ module tb_registers;
   logic capsule_overflow;
   logic [31:0] event_count;
   logic [31:0] failure_signature;
+  logic [31:0] replay_critical_event_count;
+  logic [31:0] stream_stall_count;
+  logic [31:0] dropped_diagnostic_count;
+  logic [31:0] replay_critical_overflow_count;
   logic [3:0] capture_mode;
   logic capsule_clear;
   logic replay_enable;
@@ -40,6 +49,10 @@ module tb_registers;
     .capsule_overflow(capsule_overflow),
     .event_count(event_count),
     .failure_signature(failure_signature),
+    .replay_critical_event_count(replay_critical_event_count),
+    .stream_stall_count(stream_stall_count),
+    .dropped_diagnostic_count(dropped_diagnostic_count),
+    .replay_critical_overflow_count(replay_critical_overflow_count),
     .capture_mode(capture_mode),
     .capsule_clear(capsule_clear),
     .replay_enable(replay_enable)
@@ -59,6 +72,10 @@ module tb_registers;
     capsule_overflow = 1'b1;
     event_count = 32'd37;
     failure_signature = 32'habcd_1234;
+    replay_critical_event_count = 32'd13;
+    stream_stall_count = 32'd2;
+    dropped_diagnostic_count = 32'd3;
+    replay_critical_overflow_count = 32'd0;
 
     repeat (2) @(posedge clk);
     rst_n = 1'b1;
@@ -72,6 +89,15 @@ module tb_registers;
     read_reg(REG_STATUS, 32'h3, 1'b1, "status register read was incorrect");
     read_reg(REG_COUNT, event_count, 1'b1, "event-count register read was incorrect");
     read_reg(REG_SIG, failure_signature, 1'b1, "failure-signature register read was incorrect");
+    read_reg(REG_STREAM_STATUS, 32'h3, 1'b1, "stream status register read was incorrect");
+    read_reg(REG_CRITICAL_COUNT, replay_critical_event_count, 1'b1, "critical-count register read was incorrect");
+    read_reg(REG_STREAM_STALLS, stream_stall_count, 1'b1, "stream-stall register read was incorrect");
+    read_reg(REG_DIAG_DROPS, dropped_diagnostic_count, 1'b1, "diagnostic-drop register read was incorrect");
+    read_reg(REG_CRITICAL_OVERFLOW, replay_critical_overflow_count, 1'b1, "critical-overflow register read was incorrect");
+
+    replay_critical_overflow_count = 32'd1;
+    read_reg(REG_STREAM_STATUS, 32'h7, 1'b1, "stream status critical-overflow bit was incorrect");
+    replay_critical_overflow_count = 32'd0;
 
     bus_valid = 1'b1;
     bus_write = 1'b1;

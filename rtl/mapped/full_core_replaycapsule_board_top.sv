@@ -46,6 +46,15 @@ module full_core_replaycapsule_board_top #(
   (* keep = "true" *) logic property_fail_valid;
   (* keep = "true" *) logic [7:0] property_id;
   (* keep = "true" *) logic [31:0] property_signature;
+  (* keep = "true" *) logic capsule_stream_valid;
+  (* keep = "true" *) logic [63:0] capsule_stream_word;
+  (* keep = "true" *) logic [31:0] capsule_stream_event_count;
+  (* keep = "true" *) logic [31:0] capsule_stream_sent_count;
+  (* keep = "true" *) logic [31:0] capsule_replay_critical_event_count;
+  (* keep = "true" *) logic [31:0] capsule_stream_stall_count;
+  (* keep = "true" *) logic [31:0] capsule_dropped_diagnostic_count;
+  (* keep = "true" *) logic [31:0] capsule_replay_critical_overflow_count;
+  (* keep = "true" *) logic [CAPSULE_ADDR_W:0] capsule_stream_fifo_level;
   (* keep = "true" *) logic [31:0] recorder_status_mix;
   localparam int CAPSULE_COUNT_PAD_W = 32 - (CAPSULE_ADDR_W + 1);
 
@@ -83,6 +92,7 @@ module full_core_replaycapsule_board_top #(
     .replay_consume_valid(1'b0),
     .replay_consume_word(64'h0),
     .replay_consume_stream_done(1'b0),
+    .capsule_stream_ready(1'b1),
     .trap(trap),
     .mem_valid(mem_valid),
     .mem_instr(mem_instr),
@@ -104,6 +114,15 @@ module full_core_replaycapsule_board_top #(
     .property_fail_valid(property_fail_valid),
     .property_id(property_id),
     .property_signature(property_signature),
+    .capsule_stream_valid(capsule_stream_valid),
+    .capsule_stream_word(capsule_stream_word),
+    .capsule_stream_event_count(capsule_stream_event_count),
+    .capsule_stream_sent_count(capsule_stream_sent_count),
+    .capsule_replay_critical_event_count(capsule_replay_critical_event_count),
+    .capsule_stream_stall_count(capsule_stream_stall_count),
+    .capsule_dropped_diagnostic_count(capsule_dropped_diagnostic_count),
+    .capsule_replay_critical_overflow_count(capsule_replay_critical_overflow_count),
+    .capsule_stream_fifo_level(capsule_stream_fifo_level),
     .replay_consume_ready(),
     .replay_consume_observed_valid(),
     .replay_consume_all_events(),
@@ -142,6 +161,15 @@ module full_core_replaycapsule_board_top #(
     {24'h0, capsule_read_data[167:160]} ^
     {{CAPSULE_COUNT_PAD_W{1'b0}}, capsule_event_count} ^
     {24'h0, property_id} ^
+    capsule_stream_word[31:0] ^
+    capsule_stream_word[63:32] ^
+    capsule_stream_event_count ^
+    capsule_stream_sent_count ^
+    capsule_replay_critical_event_count ^
+    capsule_stream_stall_count ^
+    capsule_dropped_diagnostic_count ^
+    capsule_replay_critical_overflow_count ^
+    {{CAPSULE_COUNT_PAD_W{1'b0}}, capsule_stream_fifo_level} ^
     mem_addr ^
     mem_wdata ^
     mem_rdata ^
@@ -157,7 +185,7 @@ module full_core_replaycapsule_board_top #(
     property_fail_valid,
     |capsule_event_count
   } ^ recorder_status_mix[3:0];
-  assign capsule_event_seen = |capsule_event_count | property_fail_valid | capsule_frozen;
-  assign recorder_overflow_seen = capsule_overflow;
+  assign capsule_event_seen = |capsule_event_count | property_fail_valid | capsule_frozen | capsule_stream_valid;
+  assign recorder_overflow_seen = capsule_overflow | (capsule_replay_critical_overflow_count != 32'h0);
   assign recorder_status_xor = ^recorder_status_mix;
 endmodule

@@ -25,7 +25,7 @@ reference_start_page,PASS,paper/main.aux,reference_start_page=5; expected label 
 body_page_limit,PASS,paper/main.pdf,body_pages_before_references=4; limit is 6 including figures and tables,https://www.aspdac.com/aspdac2027/cfp/
 v2_full_rtl_replay_consumer_checked,PASS,results/processed/full_rtl_replay_v2.csv,"consumer_checked_pass=135/135 configs=core,full,hashed",repository evidence gate
 v2_depth8_core_hashed_probe_clean,PASS,results/processed/full_rtl_replay_v2_depth8_probe.csv,"rows=90 bad_rows=0 configs=core,hashed",repository evidence gate
-v2_measured_workload_zero_fail,PASS,results/processed/workload_scaling_v2_measured_summary.csv,pass_rows=1125; total_rows=1125; blocked_rows=0,repository evidence gate
+v2_measured_workload_zero_fail,PASS,results/processed/workload_scaling_v2_measured_summary.csv,pass_rows=750; total_rows=750; blocked_rows=0,repository evidence gate
 expanded_benchmark_replay_clean,PASS,results/processed/expanded_benchmark_replay_measured.csv,"rows=36 bad_rows=0 benchmarks=2 configs=core,full,hashed seeds=1,2,3",repository evidence gate
 v2_full_core_mapped_rows_present,PASS,results/processed/mapped_scaling_v2_measured.csv,"v2_pass_rows=2 configs=core,hashed",repository evidence gate
 v2_mapped_overhead_core_hashed_claimable,PASS,results/processed/mapped_scaling_overhead_v2_measured.csv,"claimable_configs=core,hashed",repository evidence gate

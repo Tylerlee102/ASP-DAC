@@ -1,0 +1,18 @@
+{
+  "benchmark": "watchdog_timeout_bug",
+  "variant": "no_failure_edge",
+  "seed": 3,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 6,
+  "property_signature": "0xfeed0081",
+  "cycles_to_failure": 99,
+  "commits_to_failure": 24,
+  "event_count": 25,
+  "capsule_bytes": 200,
+  "overflow": false,
+  "replay_ok": false,
+  "notes": "fixed/edge variant produced a property failure"
+}

@@ -21,6 +21,7 @@ module picorv32_replaycapsule_wrapper #(
   input  logic        replay_consume_valid,
   input  logic [63:0] replay_consume_word,
   input  logic        replay_consume_stream_done,
+  input  logic        capsule_stream_ready,
 
   output logic        trap,
   output logic        mem_valid,
@@ -46,6 +47,15 @@ module picorv32_replaycapsule_wrapper #(
   output logic        property_fail_valid,
   output logic [7:0]  property_id,
   output logic [31:0] property_signature,
+  output logic        capsule_stream_valid,
+  output logic [63:0] capsule_stream_word,
+  output logic [31:0] capsule_stream_event_count,
+  output logic [31:0] capsule_stream_sent_count,
+  output logic [31:0] capsule_replay_critical_event_count,
+  output logic [31:0] capsule_stream_stall_count,
+  output logic [31:0] capsule_dropped_diagnostic_count,
+  output logic [31:0] capsule_replay_critical_overflow_count,
+  output logic [CAPSULE_ADDR_W:0] capsule_stream_fifo_level,
   output logic        replay_consume_ready,
   output logic        replay_consume_observed_valid,
   output logic        replay_consume_all_events,
@@ -98,6 +108,15 @@ module picorv32_replaycapsule_wrapper #(
   logic [31:0] v2_core_captured_event_addr;
   logic [31:0] v2_core_captured_event_data;
   logic [31:0] v2_core_captured_event_payload_hash;
+  logic v2_core_stream_ready;
+  logic v2_core_stream_valid;
+  logic [63:0] v2_core_stream_word;
+  logic [31:0] v2_core_stream_event_count;
+  logic [31:0] v2_core_stream_sent_count;
+  logic [31:0] v2_core_replay_critical_event_count;
+  logic [31:0] v2_core_stream_stall_count;
+  logic [31:0] v2_core_replay_critical_overflow_count;
+  logic [CAPSULE_ADDR_W:0] v2_core_stream_fifo_level;
   logic [31:0] v2_core_dropped_diagnostic_count;
   logic [63:0] v2_hashed_capsule_read_data;
   logic v2_hashed_capsule_frozen;
@@ -113,6 +132,15 @@ module picorv32_replaycapsule_wrapper #(
   logic [31:0] v2_hashed_captured_event_addr;
   logic [31:0] v2_hashed_captured_event_data;
   logic [31:0] v2_hashed_captured_event_payload_hash;
+  logic v2_hashed_stream_ready;
+  logic v2_hashed_stream_valid;
+  logic [63:0] v2_hashed_stream_word;
+  logic [31:0] v2_hashed_stream_event_count;
+  logic [31:0] v2_hashed_stream_sent_count;
+  logic [31:0] v2_hashed_replay_critical_event_count;
+  logic [31:0] v2_hashed_stream_stall_count;
+  logic [31:0] v2_hashed_replay_critical_overflow_count;
+  logic [CAPSULE_ADDR_W:0] v2_hashed_stream_fifo_level;
   logic [31:0] v2_hashed_dropped_diagnostic_count;
   logic [63:0] v2_full_capsule_read_data;
   logic v2_full_capsule_frozen;
@@ -128,6 +156,15 @@ module picorv32_replaycapsule_wrapper #(
   logic [31:0] v2_full_captured_event_addr;
   logic [31:0] v2_full_captured_event_data;
   logic [31:0] v2_full_captured_event_payload_hash;
+  logic v2_full_stream_ready;
+  logic v2_full_stream_valid;
+  logic [63:0] v2_full_stream_word;
+  logic [31:0] v2_full_stream_event_count;
+  logic [31:0] v2_full_stream_sent_count;
+  logic [31:0] v2_full_replay_critical_event_count;
+  logic [31:0] v2_full_stream_stall_count;
+  logic [31:0] v2_full_replay_critical_overflow_count;
+  logic [CAPSULE_ADDR_W:0] v2_full_stream_fifo_level;
   logic [31:0] v2_full_dropped_diagnostic_count;
   logic selected_v2_captured_event_valid;
   logic [3:0] selected_v2_captured_event_type;
@@ -339,7 +376,16 @@ module picorv32_replaycapsule_wrapper #(
     .captured_event_addr(v2_core_captured_event_addr),
     .captured_event_data(v2_core_captured_event_data),
     .captured_event_payload_hash(v2_core_captured_event_payload_hash),
-    .dropped_diagnostic_count(v2_core_dropped_diagnostic_count)
+    .capsule_stream_ready(v2_core_stream_ready),
+    .capsule_stream_valid(v2_core_stream_valid),
+    .capsule_stream_word(v2_core_stream_word),
+    .stream_event_count(v2_core_stream_event_count),
+    .stream_event_sent_count(v2_core_stream_sent_count),
+    .replay_critical_event_count(v2_core_replay_critical_event_count),
+    .stream_stall_count(v2_core_stream_stall_count),
+    .dropped_diagnostic_count(v2_core_dropped_diagnostic_count),
+    .replay_critical_overflow_count(v2_core_replay_critical_overflow_count),
+    .stream_fifo_level(v2_core_stream_fifo_level)
   );
 
   rcv2_recorder #(
@@ -389,7 +435,16 @@ module picorv32_replaycapsule_wrapper #(
     .captured_event_addr(v2_hashed_captured_event_addr),
     .captured_event_data(v2_hashed_captured_event_data),
     .captured_event_payload_hash(v2_hashed_captured_event_payload_hash),
-    .dropped_diagnostic_count(v2_hashed_dropped_diagnostic_count)
+    .capsule_stream_ready(v2_hashed_stream_ready),
+    .capsule_stream_valid(v2_hashed_stream_valid),
+    .capsule_stream_word(v2_hashed_stream_word),
+    .stream_event_count(v2_hashed_stream_event_count),
+    .stream_event_sent_count(v2_hashed_stream_sent_count),
+    .replay_critical_event_count(v2_hashed_replay_critical_event_count),
+    .stream_stall_count(v2_hashed_stream_stall_count),
+    .dropped_diagnostic_count(v2_hashed_dropped_diagnostic_count),
+    .replay_critical_overflow_count(v2_hashed_replay_critical_overflow_count),
+    .stream_fifo_level(v2_hashed_stream_fifo_level)
   );
 
   rcv2_recorder #(
@@ -439,7 +494,16 @@ module picorv32_replaycapsule_wrapper #(
     .captured_event_addr(v2_full_captured_event_addr),
     .captured_event_data(v2_full_captured_event_data),
     .captured_event_payload_hash(v2_full_captured_event_payload_hash),
-    .dropped_diagnostic_count(v2_full_dropped_diagnostic_count)
+    .capsule_stream_ready(v2_full_stream_ready),
+    .capsule_stream_valid(v2_full_stream_valid),
+    .capsule_stream_word(v2_full_stream_word),
+    .stream_event_count(v2_full_stream_event_count),
+    .stream_event_sent_count(v2_full_stream_sent_count),
+    .replay_critical_event_count(v2_full_replay_critical_event_count),
+    .stream_stall_count(v2_full_stream_stall_count),
+    .dropped_diagnostic_count(v2_full_dropped_diagnostic_count),
+    .replay_critical_overflow_count(v2_full_replay_critical_overflow_count),
+    .stream_fifo_level(v2_full_stream_fifo_level)
   );
     end else begin : g_no_v2_recorders
       assign v2_core_capsule_read_data = '0;
@@ -456,6 +520,14 @@ module picorv32_replaycapsule_wrapper #(
       assign v2_core_captured_event_addr = 32'h0;
       assign v2_core_captured_event_data = 32'h0;
       assign v2_core_captured_event_payload_hash = 32'h0;
+      assign v2_core_stream_valid = 1'b0;
+      assign v2_core_stream_word = 64'h0;
+      assign v2_core_stream_event_count = 32'h0;
+      assign v2_core_stream_sent_count = 32'h0;
+      assign v2_core_replay_critical_event_count = 32'h0;
+      assign v2_core_stream_stall_count = 32'h0;
+      assign v2_core_replay_critical_overflow_count = 32'h0;
+      assign v2_core_stream_fifo_level = '0;
       assign v2_core_dropped_diagnostic_count = 32'h0;
       assign v2_hashed_capsule_read_data = '0;
       assign v2_hashed_capsule_frozen = 1'b0;
@@ -471,6 +543,14 @@ module picorv32_replaycapsule_wrapper #(
       assign v2_hashed_captured_event_addr = 32'h0;
       assign v2_hashed_captured_event_data = 32'h0;
       assign v2_hashed_captured_event_payload_hash = 32'h0;
+      assign v2_hashed_stream_valid = 1'b0;
+      assign v2_hashed_stream_word = 64'h0;
+      assign v2_hashed_stream_event_count = 32'h0;
+      assign v2_hashed_stream_sent_count = 32'h0;
+      assign v2_hashed_replay_critical_event_count = 32'h0;
+      assign v2_hashed_stream_stall_count = 32'h0;
+      assign v2_hashed_replay_critical_overflow_count = 32'h0;
+      assign v2_hashed_stream_fifo_level = '0;
       assign v2_hashed_dropped_diagnostic_count = 32'h0;
       assign v2_full_capsule_read_data = '0;
       assign v2_full_capsule_frozen = 1'b0;
@@ -486,12 +566,23 @@ module picorv32_replaycapsule_wrapper #(
       assign v2_full_captured_event_addr = 32'h0;
       assign v2_full_captured_event_data = 32'h0;
       assign v2_full_captured_event_payload_hash = 32'h0;
+      assign v2_full_stream_valid = 1'b0;
+      assign v2_full_stream_word = 64'h0;
+      assign v2_full_stream_event_count = 32'h0;
+      assign v2_full_stream_sent_count = 32'h0;
+      assign v2_full_replay_critical_event_count = 32'h0;
+      assign v2_full_stream_stall_count = 32'h0;
+      assign v2_full_replay_critical_overflow_count = 32'h0;
+      assign v2_full_stream_fifo_level = '0;
       assign v2_full_dropped_diagnostic_count = 32'h0;
     end
   endgenerate
 
   assign use_v2 = arch_select == 2'd2;
   assign v2_capture_enabled = capture_mode != 4'h4;
+  assign v2_core_stream_ready = !(use_v2 && recorder_config_select == 2'd0) || capsule_stream_ready;
+  assign v2_hashed_stream_ready = !(use_v2 && recorder_config_select == 2'd1) || capsule_stream_ready;
+  assign v2_full_stream_ready = !(use_v2 && recorder_config_select == 2'd2) || capsule_stream_ready;
 
   always_comb begin
     selected_v2_captured_event_valid = v2_core_captured_event_valid;
@@ -565,6 +656,15 @@ module picorv32_replaycapsule_wrapper #(
     property_fail_valid = v1_property_fail_valid;
     property_id = v1_property_id;
     property_signature = v1_property_signature;
+    capsule_stream_valid = 1'b0;
+    capsule_stream_word = 64'h0;
+    capsule_stream_event_count = 32'h0;
+    capsule_stream_sent_count = 32'h0;
+    capsule_replay_critical_event_count = 32'h0;
+    capsule_stream_stall_count = 32'h0;
+    capsule_dropped_diagnostic_count = 32'h0;
+    capsule_replay_critical_overflow_count = 32'h0;
+    capsule_stream_fifo_level = '0;
 
     if (use_v2) begin
       case (recorder_config_select)
@@ -577,6 +677,15 @@ module picorv32_replaycapsule_wrapper #(
           property_fail_valid = v2_hashed_property_fail_valid;
           property_id = v2_hashed_property_id;
           property_signature = v2_hashed_property_signature;
+          capsule_stream_valid = v2_hashed_stream_valid;
+          capsule_stream_word = v2_hashed_stream_word;
+          capsule_stream_event_count = v2_hashed_stream_event_count;
+          capsule_stream_sent_count = v2_hashed_stream_sent_count;
+          capsule_replay_critical_event_count = v2_hashed_replay_critical_event_count;
+          capsule_stream_stall_count = v2_hashed_stream_stall_count;
+          capsule_dropped_diagnostic_count = v2_hashed_dropped_diagnostic_count;
+          capsule_replay_critical_overflow_count = v2_hashed_replay_critical_overflow_count;
+          capsule_stream_fifo_level = v2_hashed_stream_fifo_level;
         end
         2'd2: begin
           capsule_read_data = {104'h0, v2_full_capsule_read_data};
@@ -587,6 +696,15 @@ module picorv32_replaycapsule_wrapper #(
           property_fail_valid = v2_full_property_fail_valid;
           property_id = v2_full_property_id;
           property_signature = v2_full_property_signature;
+          capsule_stream_valid = v2_full_stream_valid;
+          capsule_stream_word = v2_full_stream_word;
+          capsule_stream_event_count = v2_full_stream_event_count;
+          capsule_stream_sent_count = v2_full_stream_sent_count;
+          capsule_replay_critical_event_count = v2_full_replay_critical_event_count;
+          capsule_stream_stall_count = v2_full_stream_stall_count;
+          capsule_dropped_diagnostic_count = v2_full_dropped_diagnostic_count;
+          capsule_replay_critical_overflow_count = v2_full_replay_critical_overflow_count;
+          capsule_stream_fifo_level = v2_full_stream_fifo_level;
         end
         default: begin
           capsule_read_data = {104'h0, v2_core_capsule_read_data};
@@ -597,6 +715,15 @@ module picorv32_replaycapsule_wrapper #(
           property_fail_valid = v2_core_property_fail_valid;
           property_id = v2_core_property_id;
           property_signature = v2_core_property_signature;
+          capsule_stream_valid = v2_core_stream_valid;
+          capsule_stream_word = v2_core_stream_word;
+          capsule_stream_event_count = v2_core_stream_event_count;
+          capsule_stream_sent_count = v2_core_stream_sent_count;
+          capsule_replay_critical_event_count = v2_core_replay_critical_event_count;
+          capsule_stream_stall_count = v2_core_stream_stall_count;
+          capsule_dropped_diagnostic_count = v2_core_dropped_diagnostic_count;
+          capsule_replay_critical_overflow_count = v2_core_replay_critical_overflow_count;
+          capsule_stream_fifo_level = v2_core_stream_fifo_level;
         end
       endcase
     end

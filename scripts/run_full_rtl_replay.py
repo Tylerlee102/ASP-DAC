@@ -77,6 +77,7 @@ VERILATOR_SOURCE_PATHS = (
     "rtl/replaycapsule_v2/rcv2_adaptive_window.sv",
     "rtl/replaycapsule_v2/rcv2_event_packer.sv",
     "rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv",
+    "rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv",
     "rtl/replaycapsule_v2/rcv2_recorder.sv",
     "rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv",
     "rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv",
@@ -141,6 +142,12 @@ FIELDS_V2 = [
     "replay_consumer_consumed",
     "replay_consumer_expected",
     "replay_consumer_error_code",
+    "stream_event_count",
+    "stream_event_sent_count",
+    "replay_critical_event_count",
+    "stream_stall_count",
+    "dropped_diagnostic_count",
+    "replay_critical_overflow_count",
     "notes",
 ]
 
@@ -194,6 +201,7 @@ def main() -> int:
     parser.add_argument("--dump-property", action="store_true", help="write property-checker input/output traces")
     parser.add_argument("--dump-pc", action="store_true", help="write instruction fetch PC traces")
     parser.add_argument("--dump-disasm-context", action="store_true", help="write firmware disassembly or HEX context")
+    parser.add_argument("--stream-stall-test", action="store_true", help="intermittently stall the v2 capsule stream sink")
     parser.add_argument("--debug-dir", default=str(DEBUG_DIR), help="directory for --debug-events outputs")
     parser.add_argument("--allow-fallback", action="store_true", help="permit non-compiler fallback HEX rows")
     parser.add_argument("--arch", choices=("v1", "v2"), default=os.environ.get("ARCH", "v1"))
@@ -262,6 +270,7 @@ def main() -> int:
                         args.dump_property,
                         args.dump_pc,
                         args.dump_disasm_context,
+                        args.stream_stall_test,
                     )
                 )
 
@@ -450,6 +459,7 @@ def _run_case(
     dump_property: bool = False,
     dump_pc: bool = False,
     dump_disasm_context: bool = False,
+    stream_stall_test: bool = False,
 ) -> dict[str, str]:
     if arch == "v2":
         firmware_gate_blocker = _v2_compiler_firmware_blocker(benchmark, variant)
@@ -494,6 +504,7 @@ def _run_case(
         dump_property,
         dump_pc,
         dump_disasm_context,
+        stream_stall_test,
     )
     debug_requested = debug_events or dump_mmio or dump_property or dump_pc or dump_disasm_context
     if record.returncode != 0:
@@ -531,6 +542,7 @@ def _run_case(
         dump_property,
         dump_pc,
         dump_disasm_context,
+        stream_stall_test,
     )
     record_payload = _read_json(record_sig)
     replay_payload = _read_json(replay_sig)
@@ -575,6 +587,12 @@ def _run_case(
         "replay_consumer_consumed": str(replay_payload.get("replay_consumer_consumed", "NA")),
         "replay_consumer_expected": str(replay_payload.get("replay_consumer_expected", "NA")),
         "replay_consumer_error_code": str(replay_payload.get("replay_consumer_error_code", "NA")),
+        "stream_event_count": str(record_payload.get("stream_event_count", "NA")),
+        "stream_event_sent_count": str(record_payload.get("stream_event_sent_count", "NA")),
+        "replay_critical_event_count": str(record_payload.get("replay_critical_event_count", "NA")),
+        "stream_stall_count": str(record_payload.get("stream_stall_count", "NA")),
+        "dropped_diagnostic_count": str(record_payload.get("dropped_diagnostic_count", "NA")),
+        "replay_critical_overflow_count": str(record_payload.get("replay_critical_overflow_count", "NA")),
         "firmware_source": firmware_meta["firmware_source"],
         "firmware_sha256": firmware_meta["firmware_sha256"],
         "compiler_backed": firmware_meta["compiler_backed"],
@@ -599,6 +617,7 @@ def _run_sim(
     dump_property: bool = False,
     dump_pc: bool = False,
     dump_disasm_context: bool = False,
+    stream_stall_test: bool = False,
 ) -> subprocess.CompletedProcess[str]:
     command = [
         str(_sim_path()),
@@ -635,6 +654,8 @@ def _run_sim(
         command.append("--dump-pc")
     if dump_disasm_context:
         command.append("--dump-disasm-context")
+    if stream_stall_test:
+        command.append("--stream-stall-test")
     return subprocess.run(command, cwd=REPO_ROOT, env=_tool_env(), text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
 
 
@@ -1027,6 +1048,12 @@ def _blocked_row(benchmark: str, variant: str, seed: int, notes: str) -> dict[st
         "replay_consumer_consumed": "NA",
         "replay_consumer_expected": "NA",
         "replay_consumer_error_code": "NA",
+        "stream_event_count": "NA",
+        "stream_event_sent_count": "NA",
+        "replay_critical_event_count": "NA",
+        "stream_stall_count": "NA",
+        "dropped_diagnostic_count": "NA",
+        "replay_critical_overflow_count": "NA",
         "notes": notes,
     }
 
@@ -1069,6 +1096,12 @@ def _failed_row(
         "replay_consumer_consumed": "NA",
         "replay_consumer_expected": "NA",
         "replay_consumer_error_code": "NA",
+        "stream_event_count": str(record_payload.get("stream_event_count", "NA")),
+        "stream_event_sent_count": str(record_payload.get("stream_event_sent_count", "NA")),
+        "replay_critical_event_count": str(record_payload.get("replay_critical_event_count", "NA")),
+        "stream_stall_count": str(record_payload.get("stream_stall_count", "NA")),
+        "dropped_diagnostic_count": str(record_payload.get("dropped_diagnostic_count", "NA")),
+        "replay_critical_overflow_count": str(record_payload.get("replay_critical_overflow_count", "NA")),
         "notes": _clean(notes).splitlines()[-1] if _clean(notes).splitlines() else "RTL run failed",
     }
 

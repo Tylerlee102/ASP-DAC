@@ -64,6 +64,12 @@ WORKLOAD_FIELDS = [
     "final_signature_match",
     "event_match",
     "overflow",
+    "stream_event_count",
+    "stream_event_sent_count",
+    "replay_critical_event_count",
+    "stream_stall_count",
+    "dropped_diagnostic_count",
+    "replay_critical_overflow_count",
     "notes",
 ]
 
@@ -95,6 +101,12 @@ BUFFER_FIELDS = [
     "events",
     "capsule_bytes",
     "overflow",
+    "stream_event_count",
+    "stream_event_sent_count",
+    "replay_critical_event_count",
+    "stream_stall_count",
+    "dropped_diagnostic_count",
+    "replay_critical_overflow_count",
     "replay_status",
     "notes",
 ]
@@ -430,6 +442,12 @@ def _workload_from_payload(
         "final_signature_match": final_match,
         "event_match": event_match,
         "overflow": str(payload.get("overflow", "NA")).lower(),
+        "stream_event_count": payload.get("stream_event_count", "NA"),
+        "stream_event_sent_count": payload.get("stream_event_sent_count", "NA"),
+        "replay_critical_event_count": payload.get("replay_critical_event_count", "NA"),
+        "stream_stall_count": payload.get("stream_stall_count", "NA"),
+        "dropped_diagnostic_count": payload.get("dropped_diagnostic_count", "NA"),
+        "replay_critical_overflow_count": payload.get("replay_critical_overflow_count", "NA"),
         "notes": _clean(notes),
     }
 
@@ -457,6 +475,12 @@ def _empty_workload_row(benchmark: str, variant: str, seed: int, scale: str, con
         "final_signature_match": "NA",
         "event_match": "NA",
         "overflow": "NA",
+        "stream_event_count": "NA",
+        "stream_event_sent_count": "NA",
+        "replay_critical_event_count": "NA",
+        "stream_stall_count": "NA",
+        "dropped_diagnostic_count": "NA",
+        "replay_critical_overflow_count": "NA",
         "notes": _clean(notes),
     }
 
@@ -551,6 +575,12 @@ def _buffer_row(arch: str, config: str, source: dict[str, object], depth: int, m
         "events": source.get("events", "NA"),
         "capsule_bytes": source.get("capsule_bytes", "NA"),
         "overflow": source.get("overflow", "NA"),
+        "stream_event_count": source.get("stream_event_count", "NA"),
+        "stream_event_sent_count": source.get("stream_event_sent_count", "NA"),
+        "replay_critical_event_count": source.get("replay_critical_event_count", "NA"),
+        "stream_stall_count": source.get("stream_stall_count", "NA"),
+        "dropped_diagnostic_count": source.get("dropped_diagnostic_count", "NA"),
+        "replay_critical_overflow_count": source.get("replay_critical_overflow_count", "NA"),
         "replay_status": source.get("replay_status", "NA"),
         "notes": f"measured with current full-core simulator buffer depth {depth}",
     }

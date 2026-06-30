@@ -39,8 +39,105 @@ uint64_t packet_word64(const CapsuleEvent& event) {
   return static_cast<uint64_t>(std::stoull(event.packet_hex, nullptr, 16));
 }
 
+std::string packet_hex_from_stream_word(uint64_t word) {
+  return packet_hex_from_v2_words(static_cast<uint32_t>(word & 0xffffffffull),
+                                  static_cast<uint32_t>(word >> 32));
+}
+
 bool wants_debug_trace(const HarnessOptions& options) {
   return options.debug_events || options.dump_mmio || options.dump_property || options.dump_pc;
+}
+
+bool should_stall_valid_stream(
+    const HarnessOptions& options,
+    const Vreplaycapsule_verilator_top& top,
+    size_t captured_words) {
+  if (!options.stream_stall_test || options.arch != "v2" || !top.capsule_stream_valid) return false;
+  const uint64_t handshakes_or_stalls = static_cast<uint64_t>(captured_words) + top.capsule_stream_stall_count;
+  return (handshakes_or_stalls % 4u) == 0u;
+}
+
+void sample_capsule_stream(Vreplaycapsule_verilator_top* top, std::vector<uint64_t>* words) {
+  if (top->capsule_stream_valid && top->capsule_stream_ready) {
+    words->push_back(static_cast<uint64_t>(top->capsule_stream_word));
+  }
+}
+
+void drain_capsule_stream(
+    Vreplaycapsule_verilator_top* top,
+    VerilatedContext* context,
+    const HarnessOptions& options,
+    std::vector<uint64_t>* words) {
+  if (options.arch != "v2") return;
+  for (int i = 0; i < 10000; ++i) {
+    top->clk = 0;
+    top->capsule_stream_ready = 1;
+    top->eval();
+    if (!top->capsule_stream_valid &&
+        top->capsule_stream_sent_count >= top->capsule_stream_event_count) {
+      break;
+    }
+    sample_capsule_stream(top, words);
+    top->clk = 1;
+    top->eval();
+    context->timeInc(1);
+  }
+}
+
+uint32_t replay_required_count(const Capsule& capsule) {
+  uint32_t count = 0;
+  for (const auto& event : capsule.events) {
+    if (event.replay_required) ++count;
+  }
+  return count;
+}
+
+void feed_replay_consumer_if_observed(
+    Vreplaycapsule_verilator_top* top,
+    const Capsule& record_capsule,
+    uint32_t* replay_consume_index,
+    bool* replay_ok,
+    std::string* replay_notes) {
+  if (!top->replay_consume_observed_valid) return;
+  if (!top->replay_consume_ready) {
+    *replay_ok = false;
+    *replay_notes = "hardware replay consumer was not ready for observed event";
+  } else if (*replay_consume_index >= record_capsule.events.size()) {
+    *replay_ok = false;
+    *replay_notes = "hardware replay consumer observed more events than saved capsule";
+  } else {
+    top->replay_consume_word = packet_word64(record_capsule.events[*replay_consume_index]);
+    top->replay_consume_valid = 1;
+    ++(*replay_consume_index);
+    top->eval();
+  }
+}
+
+void flush_replay_consumer_after_failure(
+    Vreplaycapsule_verilator_top* top,
+    VerilatedContext* context,
+    const Capsule& record_capsule,
+    uint32_t* replay_consume_index,
+    bool* replay_ok,
+    std::string* replay_notes,
+    std::vector<uint64_t>* stream_words) {
+  for (int i = 0; i < 8 && *replay_ok && !top->replay_consume_error && !top->replay_consume_all_events; ++i) {
+    top->clk = 0;
+    top->replay_consume_valid = 0;
+    top->replay_consume_stream_done = 0;
+    top->mem_ready = 0;
+    top->capsule_stream_ready = 1;
+    top->eval();
+    sample_capsule_stream(top, stream_words);
+    feed_replay_consumer_if_observed(top, record_capsule, replay_consume_index, replay_ok, replay_notes);
+    top->clk = 1;
+    top->eval();
+    context->timeInc(1);
+  }
+  top->clk = 0;
+  top->replay_consume_valid = 0;
+  top->replay_consume_stream_done = 0;
+  top->eval();
 }
 
 uint32_t arch_select_for(const std::string& arch) {
@@ -150,6 +247,14 @@ std::vector<CapsuleEvent> events_of_type(const Capsule& capsule, uint32_t type) 
   return out;
 }
 
+std::vector<CapsuleEvent> replay_required_events(const Capsule& capsule) {
+  std::vector<CapsuleEvent> out;
+  for (const auto& event : capsule.events) {
+    if (event.replay_required) out.push_back(event);
+  }
+  return out;
+}
+
 bool compare_events(const Capsule& expected, const Capsule& observed, std::string* notes) {
   if (expected.property_id != observed.property_id) {
     *notes = "property ID mismatch";
@@ -158,6 +263,40 @@ bool compare_events(const Capsule& expected, const Capsule& observed, std::strin
   if (expected.property_signature != observed.property_signature) {
     *notes = "property signature mismatch";
     return false;
+  }
+  if (expected.architecture == "v2" || observed.architecture == "v2") {
+    const std::vector<CapsuleEvent> expected_required = replay_required_events(expected);
+    const std::vector<CapsuleEvent> observed_required = replay_required_events(observed);
+    if (expected_required.size() != observed_required.size()) {
+      *notes = "replay-critical event count mismatch";
+      return false;
+    }
+    for (size_t i = 0; i < expected_required.size(); ++i) {
+      const CapsuleEvent& lhs = expected_required[i];
+      const CapsuleEvent& rhs = observed_required[i];
+      if (lhs.event_type != rhs.event_type || lhs.commit != rhs.commit ||
+          lhs.addr != rhs.addr || lhs.data != rhs.data ||
+          lhs.payload_hash != rhs.payload_hash) {
+        std::ostringstream out;
+        out << "replay-critical event mismatch at index " << i
+            << " expected type=" << lhs.event_type << " commit=" << lhs.commit
+            << " addr=" << hex32(lhs.addr) << " data=" << hex32(lhs.data)
+            << " hash=" << hex32(lhs.payload_hash)
+            << " observed type=" << rhs.event_type << " commit=" << rhs.commit
+            << " addr=" << hex32(rhs.addr) << " data=" << hex32(rhs.data)
+            << " hash=" << hex32(rhs.payload_hash);
+        *notes = out.str();
+        return false;
+      }
+    }
+    std::ostringstream out;
+    out << "record/replay replay-critical events match";
+    if (expected.events.size() != observed.events.size()) {
+      out << "; diagnostic/context event counts differ record=" << expected.events.size()
+          << " replay=" << observed.events.size();
+    }
+    *notes = out.str();
+    return true;
   }
   if (expected.events.size() != observed.events.size()) {
     *notes = "event count mismatch";
@@ -226,7 +365,13 @@ uint32_t irq_from_capsule(const Capsule& capsule, uint32_t commit_count) {
   return active ? 1u : 0u;
 }
 
-Capsule read_capsule_from_dut(Vreplaycapsule_verilator_top* top, const HarnessOptions& options) {
+Capsule read_capsule_from_dut(
+    Vreplaycapsule_verilator_top* top,
+    const HarnessOptions& options,
+    const std::vector<uint64_t>& stream_words,
+    bool property_latched,
+    uint32_t latched_property_id,
+    uint32_t latched_property_signature) {
   Capsule capsule;
   capsule.benchmark = options.benchmark;
   capsule.variant = options.variant;
@@ -235,9 +380,22 @@ Capsule read_capsule_from_dut(Vreplaycapsule_verilator_top* top, const HarnessOp
   capsule.architecture = options.arch;
   capsule.recorder_config = options.recorder_config;
   capsule.packet_width_bits = options.arch == "v2" ? 64 : 168;
-  capsule.property_id = top->property_id;
-  capsule.property_signature = top->property_signature;
-  capsule.overflow = top->capsule_overflow;
+  capsule.property_id = property_latched ? latched_property_id : top->property_id;
+  capsule.property_signature = property_latched ? latched_property_signature : top->property_signature;
+  capsule.overflow = top->capsule_overflow || top->capsule_replay_critical_overflow_count != 0;
+  capsule.stream_event_count = top->capsule_stream_event_count;
+  capsule.stream_event_sent_count = top->capsule_stream_sent_count;
+  capsule.replay_critical_event_count = top->capsule_replay_critical_event_count;
+  capsule.stream_stall_count = top->capsule_stream_stall_count;
+  capsule.dropped_diagnostic_count = top->capsule_dropped_diagnostic_count;
+  capsule.replay_critical_overflow_count = top->capsule_replay_critical_overflow_count;
+  if (options.arch == "v2") {
+    for (uint64_t word : stream_words) {
+      capsule.events.push_back(decode_packet_hex(packet_hex_from_stream_word(word), options.arch));
+    }
+    apply_v2_commit_deltas(&capsule);
+    return capsule;
+  }
   const uint32_t count = top->capsule_event_count;
   for (uint32_t i = 0; i < count; ++i) {
     top->capsule_read_addr = i;
@@ -310,6 +468,10 @@ HarnessResult run_harness(const HarnessOptions& options) {
   std::string replay_notes = "ok";
   uint32_t irq_pulse_remaining = 0;
   uint32_t last_irq_line = 0;
+  bool property_latched = false;
+  uint32_t latched_property_id = 0;
+  uint32_t latched_property_signature = 0;
+  std::vector<uint64_t> streamed_capsule_words;
   std::vector<std::string> pc_trace;
   std::vector<std::string> mmio_trace;
   std::vector<std::string> property_trace;
@@ -325,6 +487,7 @@ HarnessResult run_harness(const HarnessOptions& options) {
   top.replay_consume_valid = 0;
   top.replay_consume_word = 0;
   top.replay_consume_stream_done = 0;
+  top.capsule_stream_ready = 1;
   top.mem_ready = 0;
   top.mem_rdata = 0;
   top.irq = 0;
@@ -440,8 +603,14 @@ HarnessResult run_harness(const HarnessOptions& options) {
       last_irq_line = top.irq;
     }
 
+    top.capsule_stream_ready = 1;
     top.eval();
-    if (use_replay_consumer && top.replay_consume_observed_valid) {
+    if (should_stall_valid_stream(options, top, streamed_capsule_words.size())) {
+      top.capsule_stream_ready = 0;
+      top.eval();
+    }
+    sample_capsule_stream(&top, &streamed_capsule_words);
+    if (use_replay_consumer && top.replay_consume_observed_valid && !top.replay_consume_all_events) {
       if (!top.replay_consume_ready) {
         replay_ok = false;
         replay_notes = "hardware replay consumer was not ready for observed event";
@@ -478,6 +647,9 @@ HarnessResult run_harness(const HarnessOptions& options) {
 
     if (top.property_fail_valid) {
       saw_failure = true;
+      property_latched = true;
+      latched_property_id = top.property_id;
+      latched_property_signature = top.property_signature;
       result.cycles_to_failure = cycles + 1;
       result.commits_to_failure = top.commit_count;
       break;
@@ -488,13 +660,34 @@ HarnessResult run_harness(const HarnessOptions& options) {
     result.commits_to_failure = top.commit_count;
   }
 
+  if (use_replay_consumer && saw_failure && replay_ok) {
+    flush_replay_consumer_after_failure(
+        &top,
+        &context,
+        record_capsule,
+        &replay_consume_index,
+        &replay_ok,
+        &replay_notes,
+        &streamed_capsule_words);
+    if (top.replay_consume_error) {
+      std::ostringstream out;
+      out << "hardware replay consumer error_code=" << static_cast<unsigned>(top.replay_consume_error_code)
+          << " consumed=" << static_cast<unsigned>(top.replay_consume_consumed_count)
+          << "/" << record_capsule.events.size();
+      replay_ok = false;
+      replay_notes = out.str();
+    }
+  }
+
+  drain_capsule_stream(&top, &context, options, &streamed_capsule_words);
+
   if (!replay_ok) {
     result.error_code = "REPLAY_STIMULUS";
     result.notes = replay_notes;
   } else if (stimulus.expected_property != 0 && !saw_failure) {
     result.error_code = "NO_EXPECTED_FAILURE";
     result.notes = "expected property failure did not occur";
-  } else if (stimulus.expected_property != 0 && top.property_id != stimulus.expected_property) {
+  } else if (stimulus.expected_property != 0 && latched_property_id != stimulus.expected_property) {
     result.error_code = "WRONG_PROPERTY";
     result.notes = "wrong property ID";
   } else if (stimulus.expected_property == 0 && saw_failure) {
@@ -507,13 +700,40 @@ HarnessResult run_harness(const HarnessOptions& options) {
     result.commits_to_failure = top.commit_count;
   }
 
-  result.capsule = read_capsule_from_dut(&top, options);
+  result.capsule = read_capsule_from_dut(
+      &top,
+      options,
+      streamed_capsule_words,
+      property_latched,
+      latched_property_id,
+      latched_property_signature);
   if (wants_debug_trace(options)) {
     write_debug_lines(options, "pc_trace.txt", pc_trace);
     write_debug_lines(options, "mmio_trace.txt", mmio_trace);
     write_debug_lines(options, "property_trace.txt", property_trace);
   }
   write_debug_events(options, result.capsule);
+  if (result.ok && options.arch == "v2") {
+    const uint32_t replay_required = replay_required_count(result.capsule);
+    if (result.capsule.replay_critical_overflow_count != 0) {
+      result.ok = false;
+      result.error_code = "CRITICAL_STREAM_OVERFLOW";
+      result.notes = "replay-critical stream overflow counter was nonzero";
+    } else if (result.capsule.stream_event_sent_count != result.capsule.stream_event_count ||
+               result.capsule.stream_event_sent_count != result.capsule.events.size()) {
+      result.ok = false;
+      result.error_code = "STREAM_COUNT_MISMATCH";
+      result.notes = "streamed capsule word count did not match recorder counters";
+    } else if (result.capsule.replay_critical_event_count != replay_required) {
+      result.ok = false;
+      result.error_code = "CRITICAL_COUNT_MISMATCH";
+      result.notes = "replay-critical counter did not match reconstructed capsule events";
+    } else if (options.stream_stall_test && result.capsule.stream_stall_count == 0) {
+      result.ok = false;
+      result.error_code = "STREAM_STALL_NOT_EXERCISED";
+      result.notes = "stream stall test did not observe any sink stalls";
+    }
+  }
   std::string write_error;
   if (!options.capsule_path.empty() && options.mode == "record") {
     write_capsule_json(options.capsule_path, result.capsule, &write_error);

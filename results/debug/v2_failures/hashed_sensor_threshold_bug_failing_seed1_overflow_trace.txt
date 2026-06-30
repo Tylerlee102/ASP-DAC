@@ -1,0 +1,15 @@
+architecture=v2
+recorder_config=hashed
+benchmark=sensor_threshold_bug
+variant=failing
+seed=1
+capsule_path=results/raw/rtl_capsules_v2/v2_hashed_sensor_threshold_bug_failing_seed1.json
+record_signature_path=results/raw/rtl_signatures_v2/v2_hashed_sensor_threshold_bug_failing_seed1_record.json
+replay_signature_path=results/raw/rtl_signatures_v2/v2_hashed_sensor_threshold_bug_failing_seed1_replay.json
+capsule_exists=true
+record_signature_exists=true
+replay_signature_exists=true
+capsule_overflow=False
+capsule_event_count=1
+record_replay_ok=True
+replay_replay_ok=False

@@ -1,0 +1,18 @@
+{
+  "benchmark": "stack_corruption_bug",
+  "variant": "fixed",
+  "seed": 3,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "core",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 100000,
+  "commits_to_failure": 6,
+  "event_count": 0,
+  "capsule_bytes": 0,
+  "overflow": false,
+  "replay_ok": true,
+  "notes": "record/replay capsule packets match"
+}

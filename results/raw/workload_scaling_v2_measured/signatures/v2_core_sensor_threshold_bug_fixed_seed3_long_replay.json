@@ -13,6 +13,17 @@
   "event_count": 3,
   "capsule_bytes": 24,
   "overflow": false,
+  "stream_event_count": 3,
+  "stream_event_sent_count": 3,
+  "replay_critical_event_count": 3,
+  "stream_stall_count": 0,
+  "dropped_diagnostic_count": 0,
+  "replay_critical_overflow_count": 0,
   "replay_ok": true,
-  "notes": "record/replay canonical events match"
+  "replay_consumer_checked": true,
+  "replay_consumer_ok": true,
+  "replay_consumer_expected": 3,
+  "replay_consumer_consumed": 3,
+  "replay_consumer_error_code": 0,
+  "notes": "record/replay replay-critical events match; rtl replay consumer consumed 3/3"
 }

@@ -1,0 +1,9 @@
+test_name,scope_label,capsule_source,expected_result,actual_result,passed,error_code,notes
+valid_capsule_consumes_all_events,prototype_system_integration,results/raw/rtl_capsules_v2/v2_core_interrupt_race_bug_failing_seed1.json,PASS,PASS,true,0,real measured v2 core capsule words with targeted negative mutations
+missing_event_rejects,prototype_system_integration,results/raw/rtl_capsules_v2/v2_core_interrupt_race_bug_failing_seed1.json,REJECT,REJECT,true,1,real measured v2 core capsule words with targeted negative mutations
+duplicate_event_rejects,prototype_system_integration,results/raw/rtl_capsules_v2/v2_core_interrupt_race_bug_failing_seed1.json,REJECT,REJECT,true,2,real measured v2 core capsule words with targeted negative mutations
+reordered_event_rejects,prototype_system_integration,results/raw/rtl_capsules_v2/v2_core_interrupt_race_bug_failing_seed1.json,REJECT,REJECT,true,3,real measured v2 core capsule words with targeted negative mutations
+wrong_mmio_value_rejects,prototype_system_integration,results/raw/rtl_capsules_v2/v2_core_interrupt_race_bug_failing_seed1.json,REJECT,REJECT,true,4,real measured v2 core capsule words with targeted negative mutations
+wrong_interrupt_cause_rejects,prototype_system_integration,results/raw/rtl_capsules_v2/v2_core_interrupt_race_bug_failing_seed1.json,REJECT,REJECT,true,5,real measured v2 core capsule words with targeted negative mutations
+wrong_payload_hash_rejects,prototype_system_integration,results/raw/rtl_capsules_v2/v2_core_interrupt_race_bug_failing_seed1.json,REJECT,REJECT,true,6,real measured v2 core capsule words with targeted negative mutations
+truncated_capsule_rejects,prototype_system_integration,results/raw/rtl_capsules_v2/v2_core_interrupt_race_bug_failing_seed1.json,REJECT,REJECT,true,7,real measured v2 core capsule words with targeted negative mutations

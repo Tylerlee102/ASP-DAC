@@ -22,7 +22,15 @@ module replaycapsule_v2_recorder_wrapper #(
   logic [31:0] property_signature;
   logic captured_event_valid;
   logic [3:0] captured_event_type;
+  logic capsule_stream_valid;
+  logic [63:0] capsule_stream_word;
+  logic [31:0] stream_event_count;
+  logic [31:0] stream_event_sent_count;
+  logic [31:0] replay_critical_event_count;
+  logic [31:0] stream_stall_count;
   logic [31:0] dropped_diagnostic_count;
+  logic [31:0] replay_critical_overflow_count;
+  logic [MEMORY_ADDR_W:0] stream_fifo_level;
   logic mem_valid;
   logic mem_write;
   logic [31:0] mem_addr;
@@ -91,11 +99,25 @@ module replaycapsule_v2_recorder_wrapper #(
     .property_signature(property_signature),
     .captured_event_valid(captured_event_valid),
     .captured_event_type(captured_event_type),
-    .dropped_diagnostic_count(dropped_diagnostic_count)
+    .captured_event_commit_index(),
+    .captured_event_addr(),
+    .captured_event_data(),
+    .captured_event_payload_hash(),
+    .capsule_stream_ready(1'b1),
+    .capsule_stream_valid(capsule_stream_valid),
+    .capsule_stream_word(capsule_stream_word),
+    .stream_event_count(stream_event_count),
+    .stream_event_sent_count(stream_event_sent_count),
+    .replay_critical_event_count(replay_critical_event_count),
+    .stream_stall_count(stream_stall_count),
+    .dropped_diagnostic_count(dropped_diagnostic_count),
+    .replay_critical_overflow_count(replay_critical_overflow_count),
+    .stream_fifo_level(stream_fifo_level)
   );
 
   assign gpio_out =
     capsule_read_data[7:0] ^
+    capsule_stream_word[7:0] ^
     running_signature[7:0] ^
     property_signature[7:0] ^
     property_id ^
@@ -107,6 +129,13 @@ module replaycapsule_v2_recorder_wrapper #(
     capsule_overflow ^
     property_fail_valid ^
     captured_event_valid ^
+    capsule_stream_valid ^
     ^capsule_event_count ^
+    ^stream_event_count ^
+    ^stream_event_sent_count ^
+    ^replay_critical_event_count ^
+    ^stream_stall_count ^
+    ^replay_critical_overflow_count ^
+    ^stream_fifo_level ^
     ^dropped_diagnostic_count;
 endmodule

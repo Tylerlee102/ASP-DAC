@@ -1,0 +1,5 @@
+expected_property_id=2
+observed_record_property_id=2
+record_returncode=0
+replay_returncode=1
+first_divergence=replay_failed:RTL_REPLAY_CONSUMER

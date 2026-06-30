@@ -9,6 +9,7 @@ module rcv2_recorder #(
   parameter bit ENABLE_BRam_FIFO = 1'b1,
   parameter bit ENABLE_BRAM_FIFO = ENABLE_BRam_FIFO,
   parameter bit ENABLE_ADAPTIVE_WINDOW = 1'b1,
+  parameter bit ENABLE_STREAMING = 1'b1,
   parameter bit ENABLE_WATCHDOG = 1'b0
 ) (
   input  logic        clk,
@@ -51,7 +52,16 @@ module rcv2_recorder #(
   output logic [31:0] captured_event_addr,
   output logic [31:0] captured_event_data,
   output logic [31:0] captured_event_payload_hash,
-  output logic [31:0] dropped_diagnostic_count
+  input  logic        capsule_stream_ready,
+  output logic        capsule_stream_valid,
+  output logic [63:0] capsule_stream_word,
+  output logic [31:0] stream_event_count,
+  output logic [31:0] stream_event_sent_count,
+  output logic [31:0] replay_critical_event_count,
+  output logic [31:0] stream_stall_count,
+  output logic [31:0] dropped_diagnostic_count,
+  output logic [31:0] replay_critical_overflow_count,
+  output logic [MEMORY_ADDR_W:0] stream_fifo_level
 );
   `include "../event_defs.svh"
   `include "rcv2_config.svh"
@@ -100,6 +110,17 @@ module rcv2_recorder #(
   logic [63:0] packed_word;
   logic delta_saturated;
   logic fifo_write_valid;
+  logic store_write_ready;
+  logic packer_event_valid;
+  logic capture_request;
+  logic diagnostic_fifo_drop;
+  logic critical_overflow_event;
+  logic [31:0] adaptive_dropped_diagnostic_count;
+  logic [31:0] fifo_dropped_diagnostic_count;
+  logic stream_output_fire;
+  logic legacy_capsule_overflow;
+  logic streaming_fifo_overflow;
+  logic [MEMORY_ADDR_W:0] saturated_stream_event_count;
 
   event_tap u_event_tap (
     .clk(clk),
@@ -211,7 +232,10 @@ module rcv2_recorder #(
 
   assign event_is_replay_critical =
     event_is_nondeterministic ||
+    final_event_type == EV_MMIO_READ ||
     final_event_type == EV_MMIO_WRITE ||
+    final_event_type == EV_INTERRUPT_ENTER ||
+    final_event_type == EV_INTERRUPT_EXIT ||
     final_event_type == EV_PROPERTY_FAIL ||
     final_event_type == EV_CHECKPOINT_HASH;
 
@@ -268,20 +292,25 @@ module rcv2_recorder #(
         .event_valid(classifier_keep_event),
         .event_is_replay_critical(event_is_replay_critical),
         .diagnostics_requested(EFF_DIAG),
-        .used_words(capsule_event_count),
+        .used_words(stream_fifo_level),
         .capacity_words((MEMORY_ADDR_W + 1)'(MEMORY_WORDS)),
         .capture_event(adaptive_capture_event),
         .diagnostics_enabled_eff(diagnostics_enabled_eff),
         .adaptive_drop(adaptive_drop),
-        .dropped_diagnostic_count(dropped_diagnostic_count)
+        .dropped_diagnostic_count(adaptive_dropped_diagnostic_count)
       );
     end else begin : g_no_adaptive_window
       assign adaptive_capture_event = 1'b1;
       assign diagnostics_enabled_eff = EFF_DIAG;
       assign adaptive_drop = 1'b0;
-      assign dropped_diagnostic_count = 32'h0;
+      assign adaptive_dropped_diagnostic_count = 32'h0;
     end
   endgenerate
+
+  assign capture_request = classifier_keep_event && adaptive_capture_event;
+  assign diagnostic_fifo_drop = ENABLE_STREAMING && capture_request && !event_is_replay_critical && !store_write_ready;
+  assign critical_overflow_event = ENABLE_STREAMING && capture_request && event_is_replay_critical && !store_write_ready;
+  assign packer_event_valid = capture_request && (!ENABLE_STREAMING || store_write_ready);
 
   rcv2_event_packer #(
     .ENABLE_DIAGNOSTICS(EFF_DIAG),
@@ -291,7 +320,7 @@ module rcv2_recorder #(
     .clk(clk),
     .rst_n(rst_n),
     .clear(clear),
-    .event_valid(classifier_keep_event && adaptive_capture_event),
+    .event_valid(packer_event_valid),
     .event_type(final_event_type),
     .event_flags({raw_multievent_pending, event_is_nondeterministic, event_is_property_relevant, capsule_overflow}),
     .commit_index(final_commit_index),
@@ -316,23 +345,103 @@ module rcv2_recorder #(
   assign captured_event_data = final_data;
   assign captured_event_payload_hash = payload_hash;
 
-  rcv2_event_fifo_bram #(
-    .WORD_WIDTH(64),
-    .MEMORY_WORDS(MEMORY_WORDS),
-    .ADDR_W(MEMORY_ADDR_W)
-  ) u_event_fifo (
-    .clk(clk),
-    .rst_n(rst_n),
-    .clear(clear),
-    .write_valid(fifo_write_valid),
-    .write_data(packed_word),
-    .freeze(property_fail_valid),
-    .read_addr(capsule_read_addr),
-    .read_data(capsule_read_data),
-    .frozen(capsule_frozen),
-    .overflow(capsule_overflow),
-    .used_words(capsule_event_count)
-  );
+  generate
+    if (ENABLE_STREAMING) begin : g_streaming_fifo
+      rcv2_event_stream_fifo #(
+        .WORD_WIDTH(64),
+        .DEPTH(MEMORY_WORDS),
+        .ADDR_W(MEMORY_ADDR_W)
+      ) u_event_stream_fifo (
+        .clk(clk),
+        .rst_n(rst_n),
+        .clear(clear),
+        .push_valid(fifo_write_valid),
+        .push_ready(store_write_ready),
+        .push_data(packed_word),
+        .freeze(property_fail_valid),
+        .read_addr(capsule_read_addr),
+        .read_data(capsule_read_data),
+        .stream_valid(capsule_stream_valid),
+        .stream_ready(capsule_stream_ready),
+        .stream_data(capsule_stream_word),
+        .frozen(capsule_frozen),
+        .overflow(streaming_fifo_overflow),
+        .used_words(stream_fifo_level)
+      );
+
+      assign legacy_capsule_overflow = 1'b0;
+      assign capsule_event_count = saturated_stream_event_count;
+    end else begin : g_legacy_fifo
+      rcv2_event_fifo_bram #(
+        .WORD_WIDTH(64),
+        .MEMORY_WORDS(MEMORY_WORDS),
+        .ADDR_W(MEMORY_ADDR_W)
+      ) u_event_fifo (
+        .clk(clk),
+        .rst_n(rst_n),
+        .clear(clear),
+        .write_valid(fifo_write_valid),
+        .write_data(packed_word),
+        .freeze(property_fail_valid),
+        .read_addr(capsule_read_addr),
+        .read_data(capsule_read_data),
+        .frozen(capsule_frozen),
+        .overflow(legacy_capsule_overflow),
+        .used_words(capsule_event_count)
+      );
+
+      assign store_write_ready = 1'b1;
+      assign capsule_stream_valid = 1'b0;
+      assign capsule_stream_word = 64'h0;
+      assign streaming_fifo_overflow = 1'b0;
+      assign stream_fifo_level = capsule_event_count;
+    end
+  endgenerate
+
+  assign stream_output_fire = capsule_stream_valid && capsule_stream_ready;
+  assign capsule_overflow = legacy_capsule_overflow || (replay_critical_overflow_count != 32'h0);
+  assign dropped_diagnostic_count = adaptive_dropped_diagnostic_count + fifo_dropped_diagnostic_count;
+  assign saturated_stream_event_count =
+    (stream_event_count > {{(31 - MEMORY_ADDR_W){1'b0}}, {MEMORY_ADDR_W + 1{1'b1}}}) ?
+      {MEMORY_ADDR_W + 1{1'b1}} :
+      stream_event_count[MEMORY_ADDR_W:0];
+
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      stream_event_count <= 32'h0;
+      stream_event_sent_count <= 32'h0;
+      replay_critical_event_count <= 32'h0;
+      stream_stall_count <= 32'h0;
+      fifo_dropped_diagnostic_count <= 32'h0;
+      replay_critical_overflow_count <= 32'h0;
+    end else if (clear) begin
+      stream_event_count <= 32'h0;
+      stream_event_sent_count <= 32'h0;
+      replay_critical_event_count <= 32'h0;
+      stream_stall_count <= 32'h0;
+      fifo_dropped_diagnostic_count <= 32'h0;
+      replay_critical_overflow_count <= 32'h0;
+    end else begin
+      if (fifo_write_valid) begin
+        stream_event_count <= stream_event_count + 32'h1;
+        if (event_is_replay_critical) begin
+          replay_critical_event_count <= replay_critical_event_count + 32'h1;
+        end
+      end
+      if (stream_output_fire) begin
+        stream_event_sent_count <= stream_event_sent_count + 32'h1;
+      end
+      if (ENABLE_STREAMING && capsule_stream_valid && !capsule_stream_ready) begin
+        stream_stall_count <= stream_stall_count + 32'h1;
+      end
+      if (diagnostic_fifo_drop) begin
+        fifo_dropped_diagnostic_count <= fifo_dropped_diagnostic_count + 32'h1;
+      end
+      if (critical_overflow_event) begin
+        replay_critical_overflow_count <= replay_critical_overflow_count + 32'h1;
+      end
+    end
+  end
 
   hash_signature #(
     .EVENT_WIDTH(64)
@@ -347,6 +456,7 @@ module rcv2_recorder #(
 
   logic unused_enable_bram_fifo;
   logic unused_buffer_depth;
+  logic unused_streaming_fifo_overflow;
   logic unused_slicer_keep;
   logic unused_sensor_deadline_active;
   logic unused_critical_section_active;
@@ -354,6 +464,7 @@ module rcv2_recorder #(
   logic unused_delta_saturated;
   assign unused_enable_bram_fifo = ENABLE_BRAM_FIFO;
   assign unused_buffer_depth = (BUFFER_DEPTH != 0);
+  assign unused_streaming_fifo_overflow = streaming_fifo_overflow;
   assign unused_slicer_keep = slicer_keep_context_event;
   assign unused_sensor_deadline_active = sensor_deadline_active;
   assign unused_critical_section_active = critical_section_active;

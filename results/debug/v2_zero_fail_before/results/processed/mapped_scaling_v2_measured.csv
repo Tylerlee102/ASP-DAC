@@ -1,0 +1,61 @@
+architecture,recorder_config,target,flow,design,memory_words,buffer_depth,lut,ff,bram,dsp,cells,area_um2,fmax_mhz,wns,tns,power_mw,status,report_path,notes
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,1024,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,1024,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,1024,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,1024,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,2048,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,2048,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,2048,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,2048,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,4096,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,4096,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,4096,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+baseline,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_baseline_board,4096,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,1024,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,1024,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,1024,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,1024,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,2048,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,2048,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,2048,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,2048,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,4096,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,4096,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,4096,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v1_replaycapsule_board,4096,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,not rerun in this measured v2 pass
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,1024,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,1024,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,1024,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,1024,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,2048,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,2048,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,2048,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,2048,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,4096,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,4096,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,4096,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_core_board,4096,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,1024,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,1024,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,1024,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,1024,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,2048,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,2048,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,2048,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,2048,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,4096,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,4096,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,4096,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_hashed_board,4096,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,1024,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,1024,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,1024,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,1024,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,2048,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,2048,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,2048,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,2048,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,4096,128,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,4096,256,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,4096,512,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated
+v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,full_core_v2_full_board,4096,1024,NA,NA,NA,NA,NA,NA,NA,NA,NA,NA,BLOCKED,NA,full-core v2 board mapping flow is not integrated

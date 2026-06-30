@@ -1,0 +1,24 @@
+benchmark=late_config_sequence_bug
+variant=failing
+seed=2
+firmware_hex=firmware/build_expanded/late_config_sequence_bug/failing.hex
+firmware_sha256=a4ec640d98e1bac6c5b57d4f6073589d14d0ca5aedf8e8452042f79da5b64111
+firmware_source=compiler_c
+compiler_backed=true
+compiler=riscv-none-elf-gcc.EXE
+compiler_version=riscv-none-elf-gcc.EXE (xPack GNU RISC-V Embedded GCC x86_64) 15.2.0
+compiler_flags=-march=rv32i -mabi=ilp32 -O2 -ffreestanding -fno-builtin -nostdlib -nostartfiles -Wall -Wextra
+expected_property_id=5
+observed_property_id=5
+record_returncode=0
+replay_returncode=0
+error_code=NA
+cycles_reached=59
+commits_reached=15
+main_returned=unknown_from_current_symbol_set
+post_main_infinite_loop=inspect_pc_trace
+interrupt_events=inspect_property_trace_and_interrupt_trace
+mmio_accesses=inspect_mmio_trace
+property_checker_io=inspect_property_trace
+record_stdout=PASS record benchmark=late_config_sequence_bug variant=failing seed=2 arch=v2 recorder_config=hashed property=5 events=1 cycles=59 commits=15 notes="property failure observed"\n
+replay_stdout=PASS replay benchmark=late_config_sequence_bug variant=failing seed=2 arch=v2 recorder_config=hashed property=5 events=1 cycles=58 commits=15 notes="record/replay canonical events match; rtl replay consumer consumed 1/1"\n

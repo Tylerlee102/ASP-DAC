@@ -230,6 +230,7 @@ uint32_t capsule_count(const RuntimeTop& top) {
   (void)top;
   return 0u;
 #else
+  if (top.arch_select == 2u) return top.capsule_stream_event_count;
   return top.capsule_event_count;
 #endif
 }
@@ -247,6 +248,12 @@ void configure_recorder(RuntimeTop* top, const Options& options) {
   top->external_input_valid = 0;
   top->external_input_value = 0;
   top->capsule_read_addr = 0;
+  top->replay_consume_start = 0;
+  top->replay_consume_expected_count = 0;
+  top->replay_consume_valid = 0;
+  top->replay_consume_word = 0;
+  top->replay_consume_stream_done = 0;
+  top->capsule_stream_ready = 1;
 #endif
 }
 

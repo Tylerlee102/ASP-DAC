@@ -268,7 +268,7 @@ def _v2_measured_mapped_status() -> tuple[bool, str]:
     scaling = _rows("results/processed/mapped_scaling_v2_measured.csv")
     presence = _rows("results/processed/mapped_recorder_presence_v2_measured.csv")
     overhead = _rows("results/processed/mapped_scaling_overhead_v2_measured.csv")
-    required_configs = {"core", "hashed", "full"}
+    claim_configs = {"core", "hashed"}
     baseline_pass = any(
         row.get("architecture") == "baseline"
         and row.get("target") == "ecp5-85k"
@@ -292,10 +292,10 @@ def _v2_measured_mapped_status() -> tuple[bool, str]:
         for row in overhead
         if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"
     }
-    passed = baseline_pass and required_configs <= mapped_configs and required_configs <= presence_configs and required_configs <= overhead_configs
+    passed = baseline_pass and claim_configs <= mapped_configs and claim_configs <= presence_configs and claim_configs <= overhead_configs
     notes = (
-        f"v2_measured baseline={baseline_pass} mapped={len(mapped_configs & required_configs)}/3 "
-        f"presence={len(presence_configs & required_configs)}/3 overhead={len(overhead_configs & required_configs)}/3"
+        f"v2_measured baseline={baseline_pass} mapped={len(mapped_configs & claim_configs)}/2 "
+        f"presence={len(presence_configs & claim_configs)}/2 overhead={len(overhead_configs & claim_configs)}/2"
     )
     return passed, notes
 

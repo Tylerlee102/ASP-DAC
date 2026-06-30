@@ -225,6 +225,12 @@ bool write_capsule_json(const std::string& path, const Capsule& capsule, std::st
     out << "  \"property_signature\": \"0x" << std::hex << std::setw(8) << std::setfill('0')
         << capsule.property_signature << std::dec << "\",\n";
     out << "  \"overflow\": " << (capsule.overflow ? "true" : "false") << ",\n";
+    out << "  \"stream_event_count\": " << capsule.stream_event_count << ",\n";
+    out << "  \"stream_event_sent_count\": " << capsule.stream_event_sent_count << ",\n";
+    out << "  \"replay_critical_event_count\": " << capsule.replay_critical_event_count << ",\n";
+    out << "  \"stream_stall_count\": " << capsule.stream_stall_count << ",\n";
+    out << "  \"dropped_diagnostic_count\": " << capsule.dropped_diagnostic_count << ",\n";
+    out << "  \"replay_critical_overflow_count\": " << capsule.replay_critical_overflow_count << ",\n";
     out << "  \"events\": [\n";
     for (size_t i = 0; i < capsule.events.size(); ++i) {
       const auto& event = capsule.events[i];
@@ -292,6 +298,12 @@ bool read_capsule_json(const std::string& path, Capsule* capsule, std::string* e
       capsule->property_signature = parse_hex_u32(match[1]);
     }
     capsule->overflow = std::regex_search(text, std::regex("\"overflow\"\\s*:\\s*true"));
+    if (std::regex_search(text, match, std::regex("\"stream_event_count\"\\s*:\\s*(\\d+)"))) capsule->stream_event_count = std::stoul(match[1]);
+    if (std::regex_search(text, match, std::regex("\"stream_event_sent_count\"\\s*:\\s*(\\d+)"))) capsule->stream_event_sent_count = std::stoul(match[1]);
+    if (std::regex_search(text, match, std::regex("\"replay_critical_event_count\"\\s*:\\s*(\\d+)"))) capsule->replay_critical_event_count = std::stoul(match[1]);
+    if (std::regex_search(text, match, std::regex("\"stream_stall_count\"\\s*:\\s*(\\d+)"))) capsule->stream_stall_count = std::stoul(match[1]);
+    if (std::regex_search(text, match, std::regex("\"dropped_diagnostic_count\"\\s*:\\s*(\\d+)"))) capsule->dropped_diagnostic_count = std::stoul(match[1]);
+    if (std::regex_search(text, match, std::regex("\"replay_critical_overflow_count\"\\s*:\\s*(\\d+)"))) capsule->replay_critical_overflow_count = std::stoul(match[1]);
     capsule->events.clear();
     std::vector<uint32_t> expected_hashes;
     std::vector<bool> has_expected_hash;
@@ -355,6 +367,12 @@ bool write_signature_json(const std::string& path, const Capsule& capsule, uint6
     out << "  \"event_count\": " << capsule.events.size() << ",\n";
     out << "  \"capsule_bytes\": " << capsule.events.size() * ((capsule.packet_width_bits + 7) / 8) << ",\n";
     out << "  \"overflow\": " << (capsule.overflow ? "true" : "false") << ",\n";
+    out << "  \"stream_event_count\": " << capsule.stream_event_count << ",\n";
+    out << "  \"stream_event_sent_count\": " << capsule.stream_event_sent_count << ",\n";
+    out << "  \"replay_critical_event_count\": " << capsule.replay_critical_event_count << ",\n";
+    out << "  \"stream_stall_count\": " << capsule.stream_stall_count << ",\n";
+    out << "  \"dropped_diagnostic_count\": " << capsule.dropped_diagnostic_count << ",\n";
+    out << "  \"replay_critical_overflow_count\": " << capsule.replay_critical_overflow_count << ",\n";
     out << "  \"replay_ok\": " << (replay_ok ? "true" : "false") << ",\n";
     out << "  \"replay_consumer_checked\": " << (replay_consumer_checked ? "true" : "false") << ",\n";
     out << "  \"replay_consumer_ok\": " << (replay_consumer_ok ? "true" : "false") << ",\n";

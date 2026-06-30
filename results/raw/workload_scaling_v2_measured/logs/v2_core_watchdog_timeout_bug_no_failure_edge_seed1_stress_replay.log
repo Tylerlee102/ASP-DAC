@@ -1,1 +1,1 @@
-PASS replay benchmark=watchdog_timeout_bug variant=no_failure_edge seed=1 arch=v2 recorder_config=core property=0 events=2 cycles=200000 commits=55738 notes="record/replay canonical events match"
+PASS replay benchmark=watchdog_timeout_bug variant=no_failure_edge seed=1 arch=v2 recorder_config=core property=0 events=2 cycles=200000 commits=55739 notes="record/replay replay-critical events match; rtl replay consumer consumed 2/2"

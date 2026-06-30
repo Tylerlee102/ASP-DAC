@@ -30,6 +30,12 @@ struct Capsule {
   uint32_t property_id = 0;
   uint32_t property_signature = 0;
   bool overflow = false;
+  uint32_t stream_event_count = 0;
+  uint32_t stream_event_sent_count = 0;
+  uint32_t replay_critical_event_count = 0;
+  uint32_t stream_stall_count = 0;
+  uint32_t dropped_diagnostic_count = 0;
+  uint32_t replay_critical_overflow_count = 0;
   std::vector<CapsuleEvent> events;
 };
 

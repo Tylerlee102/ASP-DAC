@@ -41,6 +41,7 @@ RUNTIME_DEPENDENCY_PATHS = (
     "rtl/replaycapsule_v2/rcv2_adaptive_window.sv",
     "rtl/replaycapsule_v2/rcv2_event_packer.sv",
     "rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv",
+    "rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv",
     "rtl/replaycapsule_v2/rcv2_recorder.sv",
     "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
     "tb/verilator/runtime_main.cpp",

@@ -1,0 +1,9 @@
+record_property_id=3
+replay_property_id=3
+record_property_signature=0x5e0500f9
+replay_property_signature=0x5e0500f9
+record_event_count=43
+replay_event_count=43
+first_divergence_event_index=14
+record_event={"addr": "0x40000000", "commit": 12, "commit_index": 12, "cycle": null, "data": "0x285becd8", "diagnostic_only": false, "event_id": 14, "event_type": 5, "index": 14, "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "mmio_address": "0x40000000", "mmio_value": "0x285becd8", "notes": "replay-critical", "packet": "530100285becd8c4", "payload_hash": "0xe47e4be8", "pc": "0x00000000", "property_id": 3, "replay_required": true, "source": "record"}
+replay_event={"addr": "0x40000000", "commit": 12, "commit_index": 12, "cycle": null, "data": "0x2930e67a", "diagnostic_only": false, "event_id": 14, "event_type": 5, "index": 14, "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "mmio_address": "0x40000000", "mmio_value": "0x2930e67a", "notes": "replay-critical", "packet": "5301002930e67ac4", "payload_hash": "0xd5b25014", "pc": "0x00000000", "property_id": 3, "replay_required": true, "source": "replay"}

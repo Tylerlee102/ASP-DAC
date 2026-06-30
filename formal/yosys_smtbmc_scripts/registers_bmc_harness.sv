@@ -8,6 +8,11 @@ module registers_bmc_harness (
   localparam logic [31:0] REG_STATUS = BASE_ADDR + 32'h04;
   localparam logic [31:0] REG_COUNT = BASE_ADDR + 32'h08;
   localparam logic [31:0] REG_SIG = BASE_ADDR + 32'h0c;
+  localparam logic [31:0] REG_STREAM_STATUS = BASE_ADDR + 32'h10;
+  localparam logic [31:0] REG_CRITICAL_COUNT = BASE_ADDR + 32'h14;
+  localparam logic [31:0] REG_STREAM_STALLS = BASE_ADDR + 32'h18;
+  localparam logic [31:0] REG_DIAG_DROPS = BASE_ADDR + 32'h1c;
+  localparam logic [31:0] REG_CRITICAL_OVERFLOW = BASE_ADDR + 32'h20;
 
   logic rst_n = 1'b0;
   always_ff @(posedge clk) begin
@@ -23,6 +28,10 @@ module registers_bmc_harness (
   (* anyseq *) logic capsule_overflow;
   (* anyseq *) logic [31:0] event_count;
   (* anyseq *) logic [31:0] failure_signature;
+  (* anyseq *) logic [31:0] replay_critical_event_count;
+  (* anyseq *) logic [31:0] stream_stall_count;
+  (* anyseq *) logic [31:0] dropped_diagnostic_count;
+  (* anyseq *) logic [31:0] replay_critical_overflow_count;
 
   logic clear;
   logic bus_ready;
@@ -45,7 +54,23 @@ module registers_bmc_harness (
   logic prev_replay_enable;
 
   assign clear = rst_n && clear_any;
-  assign selected = bus_valid && bus_addr[31:4] == BASE_ADDR[31:4];
+  always_comb begin
+    selected = 1'b0;
+    if (bus_valid) begin
+      unique case (bus_addr)
+        REG_CONTROL,
+        REG_STATUS,
+        REG_COUNT,
+        REG_SIG,
+        REG_STREAM_STATUS,
+        REG_CRITICAL_COUNT,
+        REG_STREAM_STALLS,
+        REG_DIAG_DROPS,
+        REG_CRITICAL_OVERFLOW: selected = 1'b1;
+        default: selected = 1'b0;
+      endcase
+    end
+  end
 
   always_comb begin
     expected_rdata = 32'h0;
@@ -55,6 +80,16 @@ module registers_bmc_harness (
         REG_STATUS: expected_rdata = {30'h0, capsule_overflow, capsule_frozen};
         REG_COUNT: expected_rdata = event_count;
         REG_SIG: expected_rdata = failure_signature;
+        REG_STREAM_STATUS: expected_rdata = {
+          29'h0,
+          replay_critical_overflow_count != 32'h0,
+          dropped_diagnostic_count != 32'h0,
+          stream_stall_count != 32'h0
+        };
+        REG_CRITICAL_COUNT: expected_rdata = replay_critical_event_count;
+        REG_STREAM_STALLS: expected_rdata = stream_stall_count;
+        REG_DIAG_DROPS: expected_rdata = dropped_diagnostic_count;
+        REG_CRITICAL_OVERFLOW: expected_rdata = replay_critical_overflow_count;
         default: expected_rdata = 32'h0;
       endcase
     end
@@ -76,6 +111,10 @@ module registers_bmc_harness (
     .capsule_overflow(capsule_overflow),
     .event_count(event_count),
     .failure_signature(failure_signature),
+    .replay_critical_event_count(replay_critical_event_count),
+    .stream_stall_count(stream_stall_count),
+    .dropped_diagnostic_count(dropped_diagnostic_count),
+    .replay_critical_overflow_count(replay_critical_overflow_count),
     .capture_mode(capture_mode),
     .capsule_clear(capsule_clear),
     .replay_enable(replay_enable)
@@ -121,6 +160,7 @@ module registers_bmc_harness (
 
       cover(selected && !bus_write && bus_addr == REG_STATUS && bus_ready);
       cover(selected && !bus_write && bus_addr == REG_COUNT && bus_rdata == event_count);
+      cover(selected && !bus_write && bus_addr == REG_CRITICAL_OVERFLOW && bus_rdata == replay_critical_overflow_count);
       cover(prev_selected && prev_bus_write && prev_bus_addr == REG_CONTROL && replay_enable == prev_bus_wdata[4]);
       cover(prev_clear && capsule_clear && capture_mode == 4'h3);
     end

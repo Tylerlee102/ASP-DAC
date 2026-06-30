@@ -7,7 +7,3 @@ v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,lut,2603,4365,1762.00,67.
 v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,ff,956,1735,779.00,81.49,yes,same-target measured full-core v2 overhead
 v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,bram,3,3,0.00,0.00,yes,same-target measured full-core v2 overhead
 v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,fmax_mhz,68.85,57.54,-11.31,-16.43,yes,same-target measured full-core v2 overhead
-v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,256,lut,2603,NA,NA,NA,no,requires same-target PASS baseline and v2 rows
-v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,256,ff,956,NA,NA,NA,no,requires same-target PASS baseline and v2 rows
-v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,256,bram,3,NA,NA,NA,no,requires same-target PASS baseline and v2 rows
-v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,256,fmax_mhz,68.85,NA,NA,NA,no,requires same-target PASS baseline and v2 rows

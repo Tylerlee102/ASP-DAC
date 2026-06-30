@@ -1,0 +1,17 @@
+{
+  "benchmark": "uart_command_bug",
+  "variant": "fixed",
+  "seed": 3,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "core",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "overflow": false,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "50010c0000000000", "event_type": 5, "event_id": 0, "commit": 1, "commit_index": 1, "pc": "0x00000000", "addr": "0x4000000c", "data": "0x00000000", "mmio_address": "0x4000000c", "mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0xc9ddb85e", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 1, "cycle": null, "packet": "6005080000cafe00", "event_type": 6, "event_id": 1, "commit": 6, "commit_index": 6, "pc": "0x00000000", "addr": "0x40000008", "data": "0x0000cafe", "mmio_address": "0x40000008", "mmio_value": "0x0000cafe", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x37abba49", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 2, "cycle": null, "packet": "6001040000000000", "event_type": 6, "event_id": 2, "commit": 7, "commit_index": 7, "pc": "0x00000000", "addr": "0x40000004", "data": "0x00000000", "mmio_address": "0x40000004", "mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x2105a04c", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"}
+  ]
+}

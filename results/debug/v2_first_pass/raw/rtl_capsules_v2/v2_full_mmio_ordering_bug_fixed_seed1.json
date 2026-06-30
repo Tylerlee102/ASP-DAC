@@ -1,0 +1,22 @@
+{
+  "benchmark": "mmio_ordering_bug",
+  "variant": "fixed",
+  "seed": 1,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "overflow": false,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "0300009e3779b984", "event_type": 0, "event_id": 0, "commit": 0, "commit_index": 0, "pc": "0x00000000", "addr": "0x00000000", "data": "0x9e3779b9", "mmio_address": "0x00000000", "mmio_value": "0x9e3779b9", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x1fab2f35", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 1, "cycle": null, "packet": "0301009e1739b988", "event_type": 0, "event_id": 1, "commit": 1, "commit_index": 1, "pc": "0x00000000", "addr": "0x00000000", "data": "0x9e1739b9", "mmio_address": "0x00000000", "mmio_value": "0x9e1739b9", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x831f3a5c", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 2, "cycle": null, "packet": "0301009e77f9b98c", "event_type": 0, "event_id": 2, "commit": 2, "commit_index": 2, "pc": "0x00000000", "addr": "0x00000000", "data": "0x9e77f9b9", "mmio_address": "0x00000000", "mmio_value": "0x9e77f9b9", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x62d379de", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 3, "cycle": null, "packet": "630108410b819f90", "event_type": 6, "event_id": 3, "commit": 3, "commit_index": 3, "pc": "0x00000000", "addr": "0x40000008", "data": "0x410b819f", "mmio_address": "0x40000008", "mmio_value": "0x410b819f", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0xe35d087d", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 4, "cycle": null, "packet": "0300009e57b9b990", "event_type": 0, "event_id": 4, "commit": 3, "commit_index": 3, "pc": "0x00000000", "addr": "0x00000000", "data": "0x9e57b9b9", "mmio_address": "0x00000000", "mmio_value": "0x9e57b9b9", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0xbb175bdf", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 5, "cycle": null, "packet": "0301009eb679b994", "event_type": 0, "event_id": 5, "commit": 4, "commit_index": 4, "pc": "0x00000000", "addr": "0x00000000", "data": "0x9eb679b9", "mmio_address": "0x00000000", "mmio_value": "0x9eb679b9", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x28b8de25", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"},
+    {"index": 6, "cycle": null, "packet": "630104c2d36fc698", "event_type": 6, "event_id": 6, "commit": 5, "commit_index": 5, "pc": "0x00000000", "addr": "0x40000004", "data": "0xc2d36fc6", "mmio_address": "0x40000004", "mmio_value": "0xc2d36fc6", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0x45d03415", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 7, "cycle": null, "packet": "0300009e9639b998", "event_type": 0, "event_id": 7, "commit": 5, "commit_index": 5, "pc": "0x00000000", "addr": "0x00000000", "data": "0x9e9639b9", "mmio_address": "0x00000000", "mmio_value": "0x9e9639b9", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "property_id": 0, "payload_hash": "0xfe9bfb75", "replay_required": false, "diagnostic_only": true, "source": "record", "notes": "diagnostic/context"}
+  ]
+}

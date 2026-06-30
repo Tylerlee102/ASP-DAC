@@ -1,4 +1,4 @@
-.PHONY: test reproduce quickcheck check-toolchain firmware verify-deterministic-firmware check-evidence firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth workload-scaling-quick workload-scaling-full runtime-scaling-quick runtime-scaling-full capsule-baselines capsule-baselines-full buffer-sensitivity buffer-sensitivity-full recorder-config-quick recorder-config-full mapped-scaling-quick mapped-scaling-full event-ablation-scaling event-ablation-scaling-full topconf-matrix topconf-tables topconf-figures topconf-artifact private-marker-scan topconf-quick topconf-full topconf-v2-evidence topconf-v2-measured replay-consumer-v2 topconf-v2-artifact topconf-v2-quick topconf-v2-full paper paper-audit artifact replay-demo phase12-smoke
+.PHONY: test reproduce quickcheck check-toolchain firmware verify-deterministic-firmware check-evidence firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth workload-scaling-quick workload-scaling-full runtime-scaling-quick runtime-scaling-full capsule-baselines capsule-baselines-full buffer-sensitivity buffer-sensitivity-full recorder-config-quick recorder-config-full mapped-scaling-quick mapped-scaling-full event-ablation-scaling event-ablation-scaling-full topconf-matrix topconf-tables topconf-figures topconf-artifact private-marker-scan topconf-quick topconf-full topconf-v2-evidence topconf-v2-measured replay-consumer-v2 streaming-capture-v2 topconf-v2-artifact topconf-v2-quick topconf-v2-full paper paper-audit artifact replay-demo phase12-smoke
 
 PYTHON ?= python3
 VERILATOR ?= verilator
@@ -40,6 +40,7 @@ RTL_COMMON = \
 	rtl/replaycapsule_v2/rcv2_adaptive_window.sv \
 	rtl/replaycapsule_v2/rcv2_event_packer.sv \
 	rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv \
+	rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv \
 	rtl/replaycapsule_v2/rcv2_recorder.sv \
 	rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv \
 	rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv \
@@ -238,6 +239,9 @@ replay-consumer-v2:
 	$(PYTHON) scripts/run_replay_consumer_mapping.py
 	-$(PYTHON) scripts/run_second_target_mapping.py
 
+streaming-capture-v2:
+	$(PYTHON) scripts/run_streaming_capture_tests.py
+
 topconf-v2-evidence:
 	$(PYTHON) scripts/diagnose_workload_failures.py
 	$(PYTHON) scripts/run_workload_scaling_v2.py
@@ -249,6 +253,7 @@ topconf-v2-evidence:
 
 topconf-v2-measured:
 	$(PYTHON) scripts/run_v2_measured_evaluation.py --timeout-sec 45 --measure-all-buffer-depths
+	$(PYTHON) scripts/run_streaming_capture_tests.py
 	$(PYTHON) scripts/run_expanded_benchmark_replay.py
 	$(PYTHON) scripts/benchmark_manifest.py
 	$(PYTHON) scripts/build_v2_zero_fail_bug_inventory.py

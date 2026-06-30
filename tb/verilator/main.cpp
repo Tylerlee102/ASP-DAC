@@ -49,6 +49,8 @@ bool parse_args(int argc, char** argv, HarnessOptions* options) {
       options->dump_pc = true;
     } else if (arg == "--dump-disasm-context") {
       options->dump_disasm_context = true;
+    } else if (arg == "--stream-stall-test") {
+      options->stream_stall_test = true;
     } else if (arg == "--debug-dir" && require_value(&i, argc, argv, &value)) {
       options->debug_dir = value;
     } else {
@@ -73,6 +75,7 @@ void usage(const char* argv0) {
       << "  [--seed N] [--max-cycles N] [--debug-events]\n"
       << "  [--capture-mode N] [--arch v1|v2] [--recorder-config core|hashed|full]\n"
       << "  [--dump-mmio] [--dump-property] [--dump-pc] [--dump-disasm-context]\n"
+      << "  [--stream-stall-test]\n"
       << "  [--debug-dir DIR]\n";
 }
 

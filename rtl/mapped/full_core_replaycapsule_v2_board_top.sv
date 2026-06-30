@@ -61,7 +61,15 @@ module full_core_replaycapsule_v2_board_top #(
   (* keep = "true" *) logic [31:0] property_signature;
   (* keep = "true" *) logic captured_event_valid;
   (* keep = "true" *) logic [3:0] captured_event_type;
+  (* keep = "true" *) logic capsule_stream_valid;
+  (* keep = "true" *) logic [63:0] capsule_stream_word;
+  (* keep = "true" *) logic [31:0] stream_event_count;
+  (* keep = "true" *) logic [31:0] stream_event_sent_count;
+  (* keep = "true" *) logic [31:0] replay_critical_event_count;
+  (* keep = "true" *) logic [31:0] stream_stall_count;
   (* keep = "true" *) logic [31:0] dropped_diagnostic_count;
+  (* keep = "true" *) logic [31:0] replay_critical_overflow_count;
+  (* keep = "true" *) logic [CAPSULE_ADDR_W:0] stream_fifo_level;
   (* keep = "true" *) logic [31:0] recorder_status_mix;
   localparam int CAPSULE_COUNT_PAD_W = 32 - (CAPSULE_ADDR_W + 1);
   localparam logic [3:0] TRACE_BRANCH_FLAG = 4'b0001;
@@ -216,7 +224,20 @@ module full_core_replaycapsule_v2_board_top #(
     .property_signature(property_signature),
     .captured_event_valid(captured_event_valid),
     .captured_event_type(captured_event_type),
-    .dropped_diagnostic_count(dropped_diagnostic_count)
+    .captured_event_commit_index(),
+    .captured_event_addr(),
+    .captured_event_data(),
+    .captured_event_payload_hash(),
+    .capsule_stream_ready(1'b1),
+    .capsule_stream_valid(capsule_stream_valid),
+    .capsule_stream_word(capsule_stream_word),
+    .stream_event_count(stream_event_count),
+    .stream_event_sent_count(stream_event_sent_count),
+    .replay_critical_event_count(replay_critical_event_count),
+    .stream_stall_count(stream_stall_count),
+    .dropped_diagnostic_count(dropped_diagnostic_count),
+    .replay_critical_overflow_count(replay_critical_overflow_count),
+    .stream_fifo_level(stream_fifo_level)
   );
 
   assign recorder_status_mix =
@@ -227,7 +248,15 @@ module full_core_replaycapsule_v2_board_top #(
     {{CAPSULE_COUNT_PAD_W{1'b0}}, capsule_event_count} ^
     {24'h0, property_id} ^
     {28'h0, captured_event_type} ^
+    capsule_stream_word[31:0] ^
+    capsule_stream_word[63:32] ^
+    stream_event_count ^
+    stream_event_sent_count ^
+    replay_critical_event_count ^
+    stream_stall_count ^
     dropped_diagnostic_count ^
+    replay_critical_overflow_count ^
+    {{CAPSULE_COUNT_PAD_W{1'b0}}, stream_fifo_level} ^
     mem_addr ^
     mem_wdata ^
     mem_rdata ^
@@ -244,6 +273,6 @@ module full_core_replaycapsule_v2_board_top #(
     |capsule_event_count
   } ^ recorder_status_mix[3:0];
   assign capsule_event_seen = |capsule_event_count | property_fail_valid | capsule_frozen | captured_event_valid;
-  assign recorder_overflow_seen = capsule_overflow;
+  assign recorder_overflow_seen = capsule_overflow | (replay_critical_overflow_count != 32'h0);
   assign recorder_status_xor = ^recorder_status_mix;
 endmodule

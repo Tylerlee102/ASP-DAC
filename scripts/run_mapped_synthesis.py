@@ -96,6 +96,7 @@ RTL_COMMON = (
     "rtl/replaycapsule_v2/rcv2_adaptive_window.sv",
     "rtl/replaycapsule_v2/rcv2_event_packer.sv",
     "rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv",
+    "rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv",
     "rtl/replaycapsule_v2/rcv2_recorder.sv",
     "rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv",
     "rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv",

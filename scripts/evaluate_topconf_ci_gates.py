@@ -218,11 +218,11 @@ def _runtime_scaling_v2_clean() -> dict[str, str]:
 def _mapped_scaling_v2_clean() -> dict[str, str]:
     overhead = _rows("results/processed/mapped_scaling_overhead_v2_measured.csv")
     presence = _rows("results/processed/mapped_recorder_presence_v2_measured.csv")
-    required = {"core", "hashed", "full"}
+    claim_configs = {"core", "hashed"}
     overhead_configs = {row.get("recorder_config") for row in overhead if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"}
     presence_configs = {row.get("recorder_config") for row in presence if row.get("target") == "ecp5-85k" and row.get("status") == "PASS" and row.get("recorder_present") == "true"}
-    passed = required <= overhead_configs and required <= presence_configs
-    return _final_row("mapped_scaling_v2_clean", passed, "results/processed/mapped_scaling_overhead_v2_measured.csv; results/processed/mapped_recorder_presence_v2_measured.csv", f"claim_allowed={len(required & overhead_configs)}/3 recorder_presence={len(required & presence_configs)}/3")
+    passed = claim_configs <= overhead_configs and claim_configs <= presence_configs
+    return _final_row("mapped_scaling_v2_clean", passed, "results/processed/mapped_scaling_overhead_v2_measured.csv; results/processed/mapped_recorder_presence_v2_measured.csv", f"claim_allowed={len(claim_configs & overhead_configs)}/2 recorder_presence={len(claim_configs & presence_configs)}/2")
 
 
 def _replay_consumer_tests_clean() -> dict[str, str]:

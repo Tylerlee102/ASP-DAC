@@ -1,0 +1,18 @@
+{
+  "benchmark": "uart_command_bug",
+  "variant": "fixed",
+  "seed": 3,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 100000,
+  "commits_to_failure": 8,
+  "event_count": 11,
+  "capsule_bytes": 88,
+  "overflow": false,
+  "replay_ok": false,
+  "notes": "event packet mismatch at index 1"
+}

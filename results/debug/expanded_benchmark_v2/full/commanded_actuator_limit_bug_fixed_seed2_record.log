@@ -1,0 +1,24 @@
+benchmark=commanded_actuator_limit_bug
+variant=fixed
+seed=2
+firmware_hex=firmware/build_expanded/commanded_actuator_limit_bug/fixed.hex
+firmware_sha256=113b88f050a198fac7f43bdfa429834f8a58db23add630345748e57ba41e2868
+firmware_source=compiler_c
+compiler_backed=true
+compiler=riscv-none-elf-gcc.EXE
+compiler_version=riscv-none-elf-gcc.EXE (xPack GNU RISC-V Embedded GCC x86_64) 15.2.0
+compiler_flags=-march=rv32i -mabi=ilp32 -O2 -ffreestanding -fno-builtin -nostdlib -nostartfiles -Wall -Wextra
+expected_property_id=0
+observed_property_id=0
+record_returncode=0
+replay_returncode=0
+error_code=NA
+cycles_reached=100000
+commits_reached=33326
+main_returned=unknown_from_current_symbol_set
+post_main_infinite_loop=inspect_pc_trace
+interrupt_events=inspect_property_trace_and_interrupt_trace
+mmio_accesses=inspect_mmio_trace
+property_checker_io=inspect_property_trace
+record_stdout=PASS record benchmark=commanded_actuator_limit_bug variant=fixed seed=2 arch=v2 recorder_config=full property=0 events=240 cycles=100000 commits=33326 notes="no false property failure"\n
+replay_stdout=PASS replay benchmark=commanded_actuator_limit_bug variant=fixed seed=2 arch=v2 recorder_config=full property=0 events=240 cycles=100000 commits=33327 notes="record/replay canonical events match; rtl replay consumer consumed 240/240"\n

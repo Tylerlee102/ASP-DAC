@@ -1,1 +1,1 @@
-PASS replay benchmark=interrupt_race_bug variant=failing seed=3 arch=v2 recorder_config=core property=2 events=2 cycles=61 commits=15 notes="record/replay canonical events match"
+PASS replay benchmark=interrupt_race_bug variant=failing seed=3 arch=v2 recorder_config=core property=2 events=3 cycles=60 commits=15 notes="record/replay replay-critical events match; rtl replay consumer consumed 3/3"

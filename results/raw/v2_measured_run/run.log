@@ -1,0 +1,61 @@
+V2_WORKLOAD_PROGRESS 1/750 config=core
+V2_WORKLOAD_PROGRESS 50/750 config=core
+V2_WORKLOAD_PROGRESS 100/750 config=core
+V2_WORKLOAD_PROGRESS 150/750 config=core
+V2_WORKLOAD_PROGRESS 200/750 config=core
+V2_WORKLOAD_PROGRESS 250/750 config=core
+V2_WORKLOAD_PROGRESS 300/750 config=core
+V2_WORKLOAD_PROGRESS 350/750 config=core
+V2_WORKLOAD_PROGRESS 400/750 config=hashed
+V2_WORKLOAD_PROGRESS 450/750 config=hashed
+V2_WORKLOAD_PROGRESS 500/750 config=hashed
+V2_WORKLOAD_PROGRESS 550/750 config=hashed
+V2_WORKLOAD_PROGRESS 600/750 config=hashed
+V2_WORKLOAD_PROGRESS 650/750 config=hashed
+V2_WORKLOAD_PROGRESS 700/750 config=hashed
+V2_WORKLOAD_PROGRESS 750/750 config=hashed
+WROTE results/processed/workload_scaling_v2_measured.csv
+WROTE results/processed/workload_scaling_v2_measured_summary.csv
+V2_BUFFER_DEPTH_START depth=16
+V2_WORKLOAD_PROGRESS 1/750 config=core
+V2_WORKLOAD_PROGRESS 50/750 config=core
+V2_WORKLOAD_PROGRESS 100/750 config=core
+V2_WORKLOAD_PROGRESS 150/750 config=core
+V2_WORKLOAD_PROGRESS 200/750 config=core
+V2_WORKLOAD_PROGRESS 250/750 config=core
+V2_WORKLOAD_PROGRESS 300/750 config=core
+V2_WORKLOAD_PROGRESS 350/750 config=core
+V2_WORKLOAD_PROGRESS 400/750 config=hashed
+V2_WORKLOAD_PROGRESS 450/750 config=hashed
+V2_WORKLOAD_PROGRESS 500/750 config=hashed
+V2_WORKLOAD_PROGRESS 550/750 config=hashed
+V2_WORKLOAD_PROGRESS 600/750 config=hashed
+V2_WORKLOAD_PROGRESS 650/750 config=hashed
+V2_WORKLOAD_PROGRESS 700/750 config=hashed
+V2_WORKLOAD_PROGRESS 750/750 config=hashed
+V2_BUFFER_DEPTH_START depth=32
+V2_WORKLOAD_PROGRESS 1/750 config=core
+V2_WORKLOAD_PROGRESS 50/750 config=core
+V2_WORKLOAD_PROGRESS 100/750 config=core
+V2_WORKLOAD_PROGRESS 150/750 config=core
+V2_WORKLOAD_PROGRESS 200/750 config=core
+V2_WORKLOAD_PROGRESS 250/750 config=core
+V2_WORKLOAD_PROGRESS 300/750 config=core
+V2_WORKLOAD_PROGRESS 350/750 config=core
+V2_WORKLOAD_PROGRESS 400/750 config=hashed
+V2_WORKLOAD_PROGRESS 450/750 config=hashed
+V2_WORKLOAD_PROGRESS 500/750 config=hashed
+V2_WORKLOAD_PROGRESS 550/750 config=hashed
+V2_WORKLOAD_PROGRESS 600/750 config=hashed
+V2_WORKLOAD_PROGRESS 650/750 config=hashed
+V2_WORKLOAD_PROGRESS 700/750 config=hashed
+V2_WORKLOAD_PROGRESS 750/750 config=hashed
+WROTE results/processed/buffer_sensitivity_v2_measured.csv
+WROTE results/processed/buffer_sensitivity_v2_measured_summary.csv
+WROTE results/processed/capsule_baseline_comparison_v2_measured.csv
+WROTE results/processed/capsule_baseline_summary_v2_measured.csv
+WROTE results/processed/runtime_scaling_v2_measured.csv
+WROTE results/processed/runtime_scaling_v2_measured_summary.csv
+WROTE results/processed/mapped_scaling_v2_measured.csv
+WROTE results/processed/mapped_scaling_overhead_v2_measured.csv
+WROTE results/processed/mapped_recorder_presence_v2_measured.csv

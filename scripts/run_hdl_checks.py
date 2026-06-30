@@ -45,6 +45,20 @@ class VerilatorLintTarget:
     include_dirs: tuple[str, ...]
 
 
+PICORV32_WRAPPER_V2_SOURCES = (
+    "../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv",
+    "../../rtl/replaycapsule_v2/rcv2_address_dictionary.sv",
+    "../../rtl/replaycapsule_v2/rcv2_adaptive_window.sv",
+    "../../rtl/replaycapsule_v2/rcv2_event_packer.sv",
+    "../../rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv",
+    "../../rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv",
+    "../../rtl/replaycapsule_v2/rcv2_recorder.sv",
+    "../../rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv",
+    "../../rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv",
+    "../../rtl/replaycapsule_v2/rcv2_replay_consumer.sv",
+)
+
+
 PICORV32_WRAPPER_SOURCES = (
     "tb_picorv32_wrapper_smoke.sv",
     "../../third_party/picorv32/picorv32.v",
@@ -55,10 +69,11 @@ PICORV32_WRAPPER_SOURCES = (
     "../../rtl/event_slicer.sv",
     "../../rtl/hash_signature.sv",
     "../../rtl/replay_capsule_top.sv",
+    *PICORV32_WRAPPER_V2_SOURCES,
     "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
 )
 
-PICORV32_INCLUDE_DIRS = ("../../rtl", "../../rtl/rv32i_integration", "../../third_party/picorv32")
+PICORV32_INCLUDE_DIRS = ("../../rtl", "../../rtl/replaycapsule_v2", "../../rtl/rv32i_integration", "../../third_party/picorv32")
 
 
 IVERILOG_TESTS = (
@@ -419,6 +434,8 @@ COMMON_RTL = (
     "rtl/replay_capsule_top.sv",
 )
 
+ROOT_V2_RTL = tuple(path.replace("../../", "") for path in PICORV32_WRAPPER_V2_SOURCES)
+
 
 VERILATOR_TARGETS = (
     VerilatorLintTarget(
@@ -430,8 +447,8 @@ VERILATOR_TARGETS = (
     VerilatorLintTarget(
         name="verilator_lint_picorv32_wrapper",
         top="picorv32_replaycapsule_wrapper",
-        sources=("third_party/picorv32/picorv32.v", *COMMON_RTL, "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv"),
-        include_dirs=("rtl", "rtl/rv32i_integration", "third_party/picorv32"),
+        sources=("third_party/picorv32/picorv32.v", *COMMON_RTL, *ROOT_V2_RTL, "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv"),
+        include_dirs=("rtl", "rtl/replaycapsule_v2", "rtl/rv32i_integration", "third_party/picorv32"),
     ),
     VerilatorLintTarget(
         name="verilator_lint_replaycapsule_soc",
@@ -476,11 +493,13 @@ def _run_iverilog_tests(rows: list[dict[str, str]], failures: list[str]) -> None
         compile_log = RAW_DIR / f"{test.name}_iverilog_compile.txt"
         run_log = RAW_DIR / f"{test.name}_vvp_run.txt"
         compile_cmd = [iverilog.command, "-g2012"]
-        for include_dir in test.include_dirs:
+        include_dirs = _augment_picorv32_include_dirs(test.include_dirs, test.sources)
+        sources = _augment_picorv32_sources(test.sources)
+        for include_dir in include_dirs:
             compile_cmd.extend(["-I", include_dir])
         for define in test.defines:
             compile_cmd.append(f"-D{define}")
-        compile_cmd.extend(["-o", os.path.relpath(output_path, cwd), *test.sources])
+        compile_cmd.extend(["-o", os.path.relpath(output_path, cwd), *sources])
         compile_result = _run(compile_cmd, cwd=cwd, env=iverilog.env)
         compile_log.write_text(_clean_log(compile_result.stdout) or "compile passed without output\n", encoding="utf-8")
         if compile_result.returncode != 0:
@@ -519,6 +538,27 @@ def _run_verilator_lint(rows: list[dict[str, str]], failures: list[str]) -> None
             rows.append(_row(target.name, "FAIL", verilator.label, str(log_path.relative_to(REPO_ROOT)), "lint failed"))
         else:
             rows.append(_row(target.name, "PASS", verilator.label, str(log_path.relative_to(REPO_ROOT)), "lint-only frontend check passed"))
+
+
+def _augment_picorv32_sources(sources: tuple[str, ...]) -> tuple[str, ...]:
+    wrapper = "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv"
+    if wrapper not in sources:
+        return sources
+    out: list[str] = []
+    inserted = False
+    for source in sources:
+        if source == wrapper and not inserted:
+            out.extend(item for item in PICORV32_WRAPPER_V2_SOURCES if item not in sources)
+            inserted = True
+        out.append(source)
+    return tuple(out)
+
+
+def _augment_picorv32_include_dirs(include_dirs: tuple[str, ...], sources: tuple[str, ...]) -> tuple[str, ...]:
+    wrapper = "../../rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv"
+    if wrapper not in sources or "../../rtl/replaycapsule_v2" in include_dirs:
+        return include_dirs
+    return ("../../rtl/replaycapsule_v2", *include_dirs)
 
 
 def _find_tool(name: str) -> Tool | None:

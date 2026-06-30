@@ -1,0 +1,161 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{12}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Dunlap et~al\mbox{.}(2002)]%
+        {dunlap2002revirt}
+\bibfield{author}{\bibinfo{person}{George~W. Dunlap},
+  \bibinfo{person}{Samuel~T. King}, \bibinfo{person}{Sukru Cinar},
+  \bibinfo{person}{Murtaza~A. Basrai}, {and} \bibinfo{person}{Peter~M. Chen}.}
+  \bibinfo{year}{2002}\natexlab{}.
+\newblock \showarticletitle{ReVirt: Enabling Intrusion Analysis through
+  Virtual-Machine Logging and Replay}. In \bibinfo{booktitle}{\emph{OSDI}}.
+\newblock
+
+
+\bibitem[{Icarus Verilog Project}(2026)]%
+        {icarus}
+\bibfield{author}{\bibinfo{person}{{Icarus Verilog Project}}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{Icarus Verilog}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://steveicarus.github.io/iverilog/}}.
+\newblock
+
+
+\bibitem[King et~al\mbox{.}(2005)]%
+        {king2005debugging}
+\bibfield{author}{\bibinfo{person}{Samuel~T. King}, \bibinfo{person}{George~W.
+  Dunlap}, {and} \bibinfo{person}{Peter~M. Chen}.}
+  \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Debugging Operating Systems with Time-Traveling
+  Virtual Machines}. In \bibinfo{booktitle}{\emph{USENIX Annual Technical
+  Conference}}.
+\newblock
+
+
+\bibitem[LeBlanc and Mellor-Crummey(1987)]%
+        {leblanc1987debugging}
+\bibfield{author}{\bibinfo{person}{Thomas~J. LeBlanc} {and}
+  \bibinfo{person}{John~M. Mellor-Crummey}.} \bibinfo{year}{1987}\natexlab{}.
+\newblock \showarticletitle{Debugging Parallel Programs with Instant Replay}.
+  In \bibinfo{booktitle}{\emph{IEEE Transactions on Computers}}.
+\newblock
+
+
+\bibitem[Leucker and Schallhart(2009)]%
+        {runtimeVerification}
+\bibfield{editor}{\bibinfo{person}{Martin Leucker} {and}
+  \bibinfo{person}{Christian Schallhart}} (Eds.).
+  \bibinfo{year}{2009}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{Runtime Verification}}.
+\newblock \bibinfo{publisher}{Springer}.
+\newblock
+
+
+\bibitem[{RISC-V International}(2026a)]%
+        {riscvDebug}
+\bibfield{author}{\bibinfo{person}{{RISC-V International}}.}
+  \bibinfo{year}{2026}\natexlab{a}.
+\newblock \bibinfo{title}{{RISC-V External Debug Support}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://github.com/riscv/riscv-debug-spec}}.
+\newblock
+\newblock
+\shownote{Accessed 2026-06-26}.
+
+
+\bibitem[{RISC-V International}(2026b)]%
+        {riscvTrace}
+\bibfield{author}{\bibinfo{person}{{RISC-V International}}.}
+  \bibinfo{year}{2026}\natexlab{b}.
+\newblock \bibinfo{title}{{RISC-V Processor Trace Specification}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://github.com/riscv-non-isa/riscv-trace-spec}}.
+\newblock
+\newblock
+\shownote{Accessed 2026-06-26}.
+
+
+\bibitem[{Verilator Project}(2026)]%
+        {verilator}
+\bibfield{author}{\bibinfo{person}{{Verilator Project}}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{Verilator}}.
+\newblock \bibinfo{howpublished}{\url{https://verilator.org/}}.
+\newblock
+
+
+\bibitem[Wolf(2026)]%
+        {picorv32}
+\bibfield{author}{\bibinfo{person}{Clifford Wolf}.}
+  \bibinfo{year}{2026}\natexlab{}.
+\newblock \bibinfo{title}{{PicoRV32: A Size-Optimized RISC-V CPU}}.
+\newblock \bibinfo{howpublished}{\url{https://github.com/YosysHQ/picorv32}}.
+\newblock
+
+
+\bibitem[{YosysHQ}(2026a)]%
+        {nextpnr}
+\bibfield{author}{\bibinfo{person}{{YosysHQ}}.}
+  \bibinfo{year}{2026}\natexlab{a}.
+\newblock \bibinfo{title}{{nextpnr: portable FPGA place and route}}.
+\newblock \bibinfo{howpublished}{\url{https://github.com/YosysHQ/nextpnr}}.
+\newblock
+
+
+\bibitem[{YosysHQ}(2026b)]%
+        {symbiyosys}
+\bibfield{author}{\bibinfo{person}{{YosysHQ}}.}
+  \bibinfo{year}{2026}\natexlab{b}.
+\newblock \bibinfo{title}{{SymbiYosys and Yosys SMTBMC}}.
+\newblock
+  \bibinfo{howpublished}{\url{https://yosyshq.readthedocs.io/projects/sby/}}.
+\newblock
+
+
+\bibitem[{YosysHQ}(2026c)]%
+        {yosys}
+\bibfield{author}{\bibinfo{person}{{YosysHQ}}.}
+  \bibinfo{year}{2026}\natexlab{c}.
+\newblock \bibinfo{title}{{Yosys Open SYnthesis Suite}}.
+\newblock \bibinfo{howpublished}{\url{https://yosyshq.net/yosys/}}.
+\newblock
+
+
+\end{thebibliography}
