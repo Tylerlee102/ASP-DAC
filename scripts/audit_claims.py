@@ -149,7 +149,7 @@ def main() -> int:
             context = " ".join(lines[max(0, index - 6) : min(len(lines), index + 7)])
             for pattern in PATTERNS:
                 for match in pattern.regex.finditer(line):
-                    status = "CAVEATED" if _is_caveated(context) else "REVIEW"
+                    status = "CAVEATED" if _is_caveated(context) or _is_config_name_use(pattern.claim_type, match.group(0), context) else "REVIEW"
                     rows.append(
                         {
                             "claim_type": pattern.claim_type,
@@ -204,6 +204,23 @@ def _skip(path: Path) -> bool:
 def _is_caveated(line: str) -> bool:
     text = line.lower()
     return any(marker in text for marker in SAFE_CONTEXT)
+
+
+def _is_config_name_use(claim_type: str, matched_text: str, context: str) -> bool:
+    if claim_type != "minimality_claim" or matched_text.lower() != "minimal":
+        return False
+    text = context.lower()
+    config_markers = (
+        "`minimal`",
+        "_minimal_",
+        "recorder config",
+        "minimal/core/hashed",
+        "minimal, core, and hashed",
+        "minimal recorder profile",
+        "v2 minimal ecp5",
+        "v2 minimal full-core",
+    )
+    return any(marker in text for marker in config_markers)
 
 
 def _rel(path: Path) -> str:

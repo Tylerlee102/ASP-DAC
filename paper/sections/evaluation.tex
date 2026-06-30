@@ -13,7 +13,9 @@ The v2 evidence package adds compressed recorder configurations and two addition
 
 \subsection{Cost and Mapping}
 
-The mapped FPGA results are same-target bring-up/debug measurements. The board-level baseline and ReplayCapsule wrappers use the same \rcMappedTarget\ target and \rcMappedFlow\ flow. After gating unselected v2 recorder instances in v1 mapped builds, the representative mapped-scaling summary reports LUT overhead from 114.20\% to 221.23\%, FF overhead from 174.53\% to 646.43\%, BRAM overhead of 0.00\%, and Fmax change from -19.56\% to -9.98\%. Expanded mapped-scaling CSVs report the lower-overhead core configurations separately from the full diagnostic configuration.
+The mapped FPGA results are same-target bring-up/debug measurements. The board-level baseline and ReplayCapsule wrappers use the same \rcMappedTarget\ target and \rcMappedFlow\ flow. After gating unselected v2 recorder instances in v1 mapped builds, the representative mapped-scaling summary reports LUT overhead from 114.20\% to 221.23\%, FF overhead from 174.53\% to 646.43\%, BRAM overhead of 0.00\%, and Fmax change from -19.56\% to -9.98\%.
+
+For the selected v2 minimal recorder profile, the same-target ECP5 measured row reports +8.26\% LUT, +3.77\% FF, +0.00\% BRAM, and -0.04\% Fmax. The core and hashed v2 rows remain diagnostic-rich comparison points, with +68.00\% and +67.69\% LUT overhead and +81.49\% FF overhead. These rows support the design direction that replay-critical boundary-event capture should be separated from optional on-chip diagnostics.
 
 This overhead is acceptable only under the intended use case: temporary validation and post-failure replay instrumentation during hardware/software bring-up. It is not presented as a production always-on block. The current artifact does not include an ASIC or power flow; FPGA results should be read as feasibility and cost-shape evidence rather than signoff implementation data.
 

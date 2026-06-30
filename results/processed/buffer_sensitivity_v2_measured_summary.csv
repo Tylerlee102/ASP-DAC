@@ -1,31 +1,91 @@
 architecture,recorder_config,buffer_depth,workload_scale,pass_count,fail_count,timeout_count,blocked_count,replay_success_rate_pct,overflow_rate_pct,median_events,median_capsule_bytes,n,notes
-v2,core,16,long,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,32,long,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,8,long,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,16,medium,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,32,medium,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,8,medium,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,16,short,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,32,short,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,8,short,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,16,smoke,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,32,smoke,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,8,smoke,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,16,stress,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,32,stress,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,core,8,stress,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,16,long,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,32,long,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,8,long,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,16,medium,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,32,medium,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,8,medium,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,16,short,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,32,short,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,8,short,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,16,smoke,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,32,smoke,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,8,smoke,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,16,stress,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,32,stress,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
-v2,hashed,8,stress,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v1,full,1024,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,128,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,2048,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,256,long,75,0,0,0,100.000000,60.000000,4096.000000,86016.000000,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,512,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,64,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,1024,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,128,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,2048,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,256,medium,75,0,0,0,100.000000,60.000000,1024.000000,21504.000000,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,512,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,64,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,1024,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,128,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,2048,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,256,short,75,0,0,0,100.000000,60.000000,256.000000,5376.000000,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,512,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,64,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,1024,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,128,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,2048,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,256,smoke,75,0,0,0,100.000000,60.000000,256.000000,5376.000000,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,512,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,64,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,1024,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,128,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,2048,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,256,stress,75,0,0,0,100.000000,60.000000,16384.000000,344064.000000,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,512,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v1,full,64,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,1024,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,128,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,2048,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,256,long,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,core,512,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,64,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,1024,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,128,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,2048,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,256,medium,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,core,512,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,64,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,1024,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,128,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,2048,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,256,short,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,core,512,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,64,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,1024,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,128,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,2048,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,256,smoke,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,core,512,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,64,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,1024,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,128,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,2048,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,256,stress,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,core,512,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,core,64,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,1024,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,128,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,2048,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,256,long,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,hashed,512,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,64,long,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,1024,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,128,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,2048,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,256,medium,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,hashed,512,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,64,medium,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,1024,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,128,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,2048,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,256,short,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,hashed,512,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,64,short,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,1024,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,128,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,2048,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,256,smoke,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,hashed,512,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,64,smoke,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,1024,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,128,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,2048,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,256,stress,75,0,0,0,100.000000,0.000000,2.000000,16.000000,75,all rows in this group come from measured v2 replay runs
+v2,hashed,512,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured
+v2,hashed,64,stress,0,0,0,75,0.000000,NA,NA,NA,75,legacy comparison rows are retained as blocked placeholders where this depth was not measured

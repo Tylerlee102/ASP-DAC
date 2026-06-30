@@ -38,6 +38,7 @@ LOG_DIR = RAW_DIR / "logs"
 MAPPED_RAW_DIR = REPO_ROOT / "results/raw/mapped_scaling_v2_measured"
 
 CONFIGS = ("core", "hashed", "full")
+MAPPED_CONFIGS = ("minimal", "core", "hashed")
 DEPTHS = (64, 128, 256, 512, 1024, 2048)
 WORKLOADS = ("smoke", "short", "medium", "long", "stress")
 CURRENT_MEASURED_DEPTH = 256
@@ -885,10 +886,10 @@ def _write_mapped_tables() -> None:
     target = run_mapped_synthesis.FULL_CORE_TARGETS[0]
     nextpnr = run_mapped_synthesis._find_tool(target.nextpnr_name)
     memory = 128
-    depth_by_config = {"core": 8, "hashed": 8, "full": 256}
+    depth_by_config = {"minimal": 8, "core": 8, "hashed": 8, "full": 256}
     baseline = _run_v2_mapped_design("baseline", "full", memory, depth_by_config["core"], yosys, nextpnr)
     mapped_rows = [baseline]
-    for config in CONFIGS:
+    for config in MAPPED_CONFIGS:
         mapped_rows.append(_run_v2_mapped_design("v2", config, memory, depth_by_config[config], yosys, nextpnr))
     overhead_rows = [
         {
@@ -904,7 +905,7 @@ def _write_mapped_tables() -> None:
             "delta": "NA",
             "percent_overhead": "NA",
             "claim_allowed": _mapped_claim_allowed(baseline, row),
-            "notes": "same-target measured full-core v2 overhead" if _mapped_claim_allowed(baseline, row) == "yes" else "requires same-target PASS baseline and v2 rows",
+            "notes": _mapped_overhead_note(baseline, row),
         }
         for row in mapped_rows
         if row["architecture"] == "v2"
@@ -1017,11 +1018,18 @@ def _v2_mapped_yosys_script(architecture: str, config: str, memory_words: int, b
             "rtl/mapped/full_core_replaycapsule_v2_board_top.sv",
         )
         top = "full_core_replaycapsule_v2_board_top"
-        config_select = {"core": 1, "hashed": 2, "full": 4}[config]
+        config_select = {"minimal": 0, "core": 1, "hashed": 2, "full": 4}[config]
         config_knobs = {
+            "minimal": (0, 0, 0, 0),
             "core": (0, 0, 0, 0),
             "hashed": (0, 1, 0, 0),
             "full": (1, 1, 1, 1),
+        }[config]
+        minimal_knobs = {
+            "minimal": (0, 0, 0, 0, 0, 1),
+            "core": (1, 1, 1, 1, 1, 0),
+            "hashed": (1, 1, 1, 1, 1, 0),
+            "full": (1, 1, 1, 1, 1, 0),
         }[config]
         addr_w = max(1, (buffer_depth - 1).bit_length())
         commands = [
@@ -1034,13 +1042,27 @@ def _v2_mapped_yosys_script(architecture: str, config: str, memory_words: int, b
             f"chparam -set ENABLE_PAYLOAD_HASH {config_knobs[1]} {top}",
             f"chparam -set ENABLE_ADDRESS_DICTIONARY {config_knobs[2]} {top}",
             f"chparam -set ENABLE_ADAPTIVE_WINDOW {config_knobs[3]} {top}",
+            f"chparam -set ENABLE_PROPERTY_CHECKER {minimal_knobs[0]} {top}",
+            f"chparam -set ENABLE_CONTEXT_SLICER {minimal_knobs[1]} {top}",
+            f"chparam -set ENABLE_EVENT_BUFFER {minimal_knobs[2]} {top}",
+            f"chparam -set ENABLE_SIGNATURE {minimal_knobs[3]} {top}",
+            f"chparam -set ENABLE_STATUS_COUNTERS {minimal_knobs[4]} {top}",
+            f"chparam -set ENABLE_MINIMAL_EVENT_TAP {minimal_knobs[5]} {top}",
         ]
     commands.append(f"synth_ecp5 -top {top} -json {_rel(json_path)}")
     return "; ".join(commands)
 
 
 def _mapped_claim_allowed(baseline: dict[str, object], row: dict[str, object]) -> str:
-    return "yes" if baseline.get("status") == "PASS" and row.get("status") == "PASS" else "no"
+    return "yes" if baseline.get("status") == "PASS" and row.get("status") == "PASS" and row.get("recorder_config") == "minimal" else "no"
+
+
+def _mapped_overhead_note(baseline: dict[str, object], row: dict[str, object]) -> str:
+    if baseline.get("status") != "PASS" or row.get("status") != "PASS":
+        return "requires same-target PASS baseline and v2 rows"
+    if row.get("recorder_config") == "minimal":
+        return "selected same-target measured full-core v2 overhead claim"
+    return "measured diagnostic comparison row; not the selected area-overhead claim"
 
 
 def _v2_presence_row(row: dict[str, object]) -> dict[str, object]:

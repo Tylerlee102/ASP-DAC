@@ -42,6 +42,9 @@ python3 scripts/summarize_artifact_manifest.py
 python3 scripts/package_artifact.py
 ```
 
+On Windows, `.\scripts\reproduce_all.ps1` probes the bundled Codex runtime,
+`python`, and `py`, and skips non-working Store aliases.
+
 ## Expected Runtime
 
 On the Linux CI image, the final reproduction run completed in a few minutes. Full Verilator replay and mapped synthesis dominate runtime. Local Windows runs may rely on the bundled Python runtime and may not have the same Verilator/Yosys/nextpnr dynamic libraries.
@@ -114,7 +117,9 @@ python3 scripts/package_artifact.py
 - Firmware rows must be compiler-backed: `firmware_source=compiler_c`.
 - Full RTL replay must have `rtl_record_status=PASS`, `replay_status=PASS`, and `final_signature_match=PASS`.
 - Negative replay must report `0` unexpected accepts.
-- Full-core mapped overhead is claimable only when both full-core board rows PASS on the same target and `mapped_recorder_presence.csv` is PASS.
+- Full-core mapped overhead is claimable only when both full-core board rows PASS on the same target and recorder presence is PASS.
+- The v2 mapped recorder evidence reports the selected minimal config separately from core/hashed; only the selected minimal recorder profile is the low-overhead replay-critical mapped claim, while core/hashed remain measured diagnostic comparison rows.
+- `tb_rcv2_minimal_recorder` in `results/processed/hdl_checks.csv` must PASS; it checks that the selected minimal recorder emits replay-critical boundary events accepted by the v2 replay consumer.
 - `paper/main.pdf` must exist and `paper_build_status.csv` must report PASS.
 - Claim, number, and TODO audits must report zero failing rows.
 - `final_ci_verification.csv` must explain any green-run warning or annotation. The previous exit-code-2 annotation was traced to the old installer loop and fixed; current expected warnings are limited to non-critical GitHub Actions runner/action deprecation notices.

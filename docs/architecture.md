@@ -97,6 +97,17 @@ interface should expose verification status separately from basic playback.
 `FROZEN` may be an explicit mode or a sticky state reached after a stop request
 or fatal recorder condition.
 
+## Recorder Profiles
+
+The v2 full-core mapped wrapper now separates the replay-critical capture path
+from diagnostic-rich capture. The `minimal` recorder config is a compile-time
+profile: it removes the property checker, context slicer, on-chip event buffer,
+hash signature, and detailed status counters from the mapped recorder path. It
+still emits commit-indexed MMIO read/write, external-input, and interrupt
+enter/exit events for host capture. The `core`, `hashed`, and `full` configs
+retain progressively richer diagnostic payloads and remain useful for debugging
+and sensitivity experiments.
+
 ## Module Responsibilities
 
 ### `replay_capsule_top`

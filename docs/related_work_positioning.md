@@ -34,4 +34,4 @@ ReplayCapsule-RV explores a middle point between full instruction tracing, coars
 
 ## Current Risk Framing
 
-The strongest current claims now include v2 host-driven full RTL replay, RTL consumer checks, and measured scaling/mapped evidence for the scoped suite. The main v2 risk is scope discipline: do not present the replay-consume prototype as autonomous full-core replay, and do not generalize the claimable core/hashed ECP5 mapping point beyond the measured configuration.
+The strongest current claims now include v2 host-driven full RTL replay, RTL consumer checks, the selected minimal-recorder mapped overhead point, and measured diagnostic comparison rows for the scoped suite. The main v2 risk is scope discipline: do not present the replay-consume prototype as autonomous full-core replay, and do not generalize the representative ECP5 mapping point beyond the measured configuration.

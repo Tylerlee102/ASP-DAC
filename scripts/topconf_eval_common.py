@@ -45,7 +45,7 @@ QUICK_SCALES = ("smoke", "medium", "stress")
 FULL_SCALES = tuple(WORKLOAD_SCALES)
 
 RECORDER_CONFIGS = {
-    "minimal": {"capture_mode": 0x1, "notes": "MMIO/interrupt/property-fail capture mode"},
+    "minimal": {"capture_mode": 0x1, "notes": "replay-critical MMIO/interrupt/external-input boundary-event capture"},
     "core": {"capture_mode": 0x3, "notes": "ReplayCapsule-RV property-relevant capture mode"},
     "hashed": {"capture_mode": 0x3, "notes": "core capture mode; hash evidence is carried by signatures"},
     "diagnostic": {"capture_mode": 0x0, "notes": "capture-all diagnostic mode"},

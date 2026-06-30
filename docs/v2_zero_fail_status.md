@@ -18,8 +18,9 @@ measured v2 evidence set.
 | v2 workload scaling | `results/processed/workload_scaling_v2_measured.csv` | 1125/1125 PASS rows |
 | v2 buffer sensitivity | `results/processed/buffer_sensitivity_v2_measured.csv` | 1125/1125 v2 measured PASS rows at the measured depth; other depths remain explicit blocked placeholders unless regenerated |
 | v2 runtime overhead | `results/processed/runtime_scaling_v2_measured.csv` | 25/25 MEASURED rows across baseline, disabled recorder, and v2 core/hashed/full configs |
-| v2 mapped full-core overhead | `results/processed/mapped_scaling_v2_measured.csv` and `results/processed/mapped_scaling_overhead_v2_measured.csv` | Same-target ECP5-85k baseline plus v2 core/hashed PASS at memory 128, buffer depth 8; full diagnostic depth-256 row is a visible non-claim timeout |
-| v2 mapped recorder presence | `results/processed/mapped_recorder_presence_v2_measured.csv` | 2/2 claimable core/hashed rows PASS with recorder hierarchy present |
+| v2 mapped full-core overhead | `results/processed/mapped_scaling_v2_measured.csv` and `results/processed/mapped_scaling_overhead_v2_measured.csv` | Same-target ECP5-85k baseline plus v2 minimal/core/hashed PASS at memory 128, buffer depth 8; selected minimal recorder profile is `+8.26%` LUT and `+3.77%` FF |
+| v2 mapped recorder presence | `results/processed/mapped_recorder_presence_v2_measured.csv` | 3/3 measured minimal/core/hashed rows PASS with recorder hierarchy present |
+| v2 minimal recorder fidelity | `results/processed/hdl_checks.csv` | `tb_rcv2_minimal_recorder` PASS: selected minimal recorder emits replay-critical boundary events accepted by the v2 replay consumer |
 | v2 new benchmark PASS coverage | `results/processed/expanded_benchmark_replay_measured.csv` | 36/36 PASS rows for `commanded_actuator_limit_bug` and `late_config_sequence_bug` across core/hashed/full and three seeds |
 | v2 replay-consume system tests | `results/processed/replay_consumer_system_tests.csv` | 8/8 PASS rows |
 
@@ -40,10 +41,11 @@ python scripts/run_expanded_benchmark_replay.py
 python scripts/build_v2_zero_fail_bug_inventory.py
 ```
 
-On Windows shells where `python3` resolves to the Microsoft Store alias, pass a
-real interpreter explicitly, for example:
+On Windows shells, prefer the checked-in interpreter-discovery wrapper for the
+local gate, or pass a real interpreter explicitly:
 
 ```sh
+.\scripts\reproduce_all.ps1
 make topconf-v2-measured PYTHON=/path/to/python
 make replay-consumer-v2 PYTHON=/path/to/python
 ```
@@ -55,8 +57,9 @@ Safe claims:
 - Compiler-backed, host-driven v2 full RTL record/replay passes for the scoped
   single-hart RV32I interrupt/MMIO benchmark suite.
 - v2 workload scaling, runtime overhead, measured-depth buffer sensitivity, and
-  same-target ECP5 full-core overhead for claimable core/hashed configs are
-  measured in the listed CSVs.
+  same-target ECP5 full-core overhead for the selected minimal recorder profile
+  are measured in the listed CSVs; core/hashed mapped rows are diagnostic
+  comparisons.
 - Two additional compiler-backed firmware benchmark families have measured v2
   PASS coverage across three seeds.
 
@@ -68,4 +71,5 @@ Still forbidden:
   future work.
 - Do not claim ASIC area, power, or timing.
 - Do not claim multicore, DMA, cache-coherent, OS, or broad platform replay.
-- Do not describe v2 overhead as low; report the measured overhead.
+- Do not describe broad v2 overhead as low; report the measured overhead for
+  each recorder config.

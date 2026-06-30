@@ -104,6 +104,11 @@ def _topconf_failures() -> list[dict[str, str]]:
     if not event:
         failures.append(_failure("event ablation", "event ablation scaling has no rows", "results/processed/event_ablation_scaling.csv"))
 
+    hdl = _rows("results/processed/hdl_checks.csv")
+    minimal_hdl = next((row for row in hdl if row.get("check") == "tb_rcv2_minimal_recorder"), {})
+    if minimal_hdl.get("status") != "PASS":
+        failures.append(_failure("v2 minimal recorder fidelity", "tb_rcv2_minimal_recorder is not PASS", "results/processed/hdl_checks.csv"))
+
     mapped = _rows("results/processed/mapped_scaling_summary.csv")
     mapped_ok = any(_positive_int(row.get("claim_allowed_points")) for row in mapped)
     if not mapped_ok:
@@ -166,6 +171,7 @@ def _write_final_verification(topconf_failures: list[dict[str, str]]) -> None:
         _buffer_sensitivity_v2_clean(),
         _runtime_scaling_v2_clean(),
         _mapped_scaling_v2_clean(),
+        _v2_minimal_recorder_fidelity_clean(),
         _replay_consumer_tests_clean(),
         _expanded_benchmarks_clean(),
         _paper_audit_clean(),
@@ -218,11 +224,20 @@ def _runtime_scaling_v2_clean() -> dict[str, str]:
 def _mapped_scaling_v2_clean() -> dict[str, str]:
     overhead = _rows("results/processed/mapped_scaling_overhead_v2_measured.csv")
     presence = _rows("results/processed/mapped_recorder_presence_v2_measured.csv")
-    claim_configs = {"core", "hashed"}
+    measured_configs = {"minimal", "core", "hashed"}
+    selected_claim_configs = {"minimal"}
     overhead_configs = {row.get("recorder_config") for row in overhead if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"}
     presence_configs = {row.get("recorder_config") for row in presence if row.get("target") == "ecp5-85k" and row.get("status") == "PASS" and row.get("recorder_present") == "true"}
-    passed = claim_configs <= overhead_configs and claim_configs <= presence_configs
-    return _final_row("mapped_scaling_v2_clean", passed, "results/processed/mapped_scaling_overhead_v2_measured.csv; results/processed/mapped_recorder_presence_v2_measured.csv", f"claim_allowed={len(claim_configs & overhead_configs)}/2 recorder_presence={len(claim_configs & presence_configs)}/2")
+    passed = selected_claim_configs <= overhead_configs and measured_configs <= presence_configs
+    total = len(measured_configs)
+    return _final_row("mapped_scaling_v2_clean", passed, "results/processed/mapped_scaling_overhead_v2_measured.csv; results/processed/mapped_recorder_presence_v2_measured.csv", f"selected_claim={len(selected_claim_configs & overhead_configs)}/{len(selected_claim_configs)} recorder_presence={len(measured_configs & presence_configs)}/{total}")
+
+
+def _v2_minimal_recorder_fidelity_clean() -> dict[str, str]:
+    rows = _rows("results/processed/hdl_checks.csv")
+    row = next((item for item in rows if item.get("check") == "tb_rcv2_minimal_recorder"), {})
+    passed = row.get("status") == "PASS"
+    return _final_row("v2_minimal_recorder_fidelity_clean", passed, row.get("raw_log", "results/processed/hdl_checks.csv"), "minimal recorder boundary-event stream is accepted by replay consumer")
 
 
 def _replay_consumer_tests_clean() -> dict[str, str]:

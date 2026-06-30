@@ -4,7 +4,7 @@ Generated from locked evidence: CI run latest successful final-reproduce run on 
 
 ## Panel Summary
 
-The strongest story is now an honest scoped systems/hardware artifact: compiler-backed firmware, 45/45 full RTL replay PASS rows, corrupted-capsule rejection, runtime summaries, and same-target ECP5 mapped overhead. The main reviewer risk is not missing evidence; it is overclaiming beyond the scope.
+The strongest story is now an honest scoped systems/hardware artifact: compiler-backed firmware, 45/45 full RTL replay PASS rows, corrupted-capsule rejection, runtime summaries, same-target ECP5 mapped overhead, and a selected v2 replay-critical recorder profile measured at 8.26% LUT overhead. The main reviewer risk is not missing evidence; it is overclaiming beyond the scope.
 
 ## Likely Decision
 

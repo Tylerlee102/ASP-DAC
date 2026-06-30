@@ -104,10 +104,17 @@ def _mapped_rows() -> list[dict[str, object]]:
                 "notes": "measured v1 mapped scaling row",
             }
         )
-    for config in ("core", "hashed", "full"):
-        for memory_words in (1024, 2048, 4096):
-            for buffer_depth in (128, 256, 512, 1024):
-                out.append(_blocked_v2_row(config, memory_words, buffer_depth))
+    measured = read_csv(REPO_ROOT / "results/processed/mapped_scaling_v2_measured.csv")
+    if measured:
+        out.extend(_measured_v2_row(row) for row in measured if row.get("architecture") == "v2")
+        measured_configs = {row.get("recorder_config") for row in measured if row.get("architecture") == "v2"}
+        if "full" not in measured_configs:
+            out.append(_blocked_v2_row("full", 128, 256))
+    else:
+        for config in ("minimal", "core", "hashed", "full"):
+            for memory_words in (1024, 2048, 4096):
+                for buffer_depth in (128, 256, 512, 1024):
+                    out.append(_blocked_v2_row(config, memory_words, buffer_depth))
     return out
 
 
@@ -117,7 +124,7 @@ def _blocked_v2_row(config: str, memory_words: int, buffer_depth: int) -> dict[s
         "recorder_config": config,
         "target": "ecp5-85k",
         "flow": "yosys+synth_ecp5+nextpnr-ecp5",
-        "design": "full_core_replaycapsule_v2_board",
+        "design": f"full_core_v2_{config}_board",
         "memory_words": memory_words,
         "buffer_depth": buffer_depth,
         "lut": "NA",
@@ -132,7 +139,32 @@ def _blocked_v2_row(config: str, memory_words: int, buffer_depth: int) -> dict[s
         "power_mw": "NA",
         "status": "BLOCKED",
         "report_path": "NA",
-        "notes": "full-core v2 mapped overhead blocked: v2 recorder is not integrated into the full-core board wrapper; do not compare standalone prototype against full-core v1",
+        "notes": "not measured in this generated status table; use mapped_scaling_v2_measured.csv for selected minimal and diagnostic comparison rows",
+    }
+
+
+def _measured_v2_row(row: dict[str, str]) -> dict[str, object]:
+    return {
+        "architecture": "v2",
+        "recorder_config": row.get("recorder_config", "NA"),
+        "target": row.get("target", "NA"),
+        "flow": row.get("flow", "NA"),
+        "design": row.get("design", "NA"),
+        "memory_words": row.get("memory_words", "NA"),
+        "buffer_depth": row.get("buffer_depth", "NA"),
+        "lut": row.get("lut", "NA"),
+        "ff": row.get("ff", "NA"),
+        "bram": row.get("bram", "NA"),
+        "dsp": row.get("dsp", "NA"),
+        "cells": row.get("cells", "NA"),
+        "area_um2": row.get("area_um2", "NA"),
+        "fmax_mhz": row.get("fmax_mhz", "NA"),
+        "wns": row.get("wns", "NA"),
+        "tns": row.get("tns", "NA"),
+        "power_mw": row.get("power_mw", "NA"),
+        "status": row.get("status", "NA"),
+        "report_path": row.get("report_path", "NA"),
+        "notes": "measured same-target full-core v2 mapped row",
     }
 
 
@@ -156,26 +188,48 @@ def _overhead_rows() -> list[dict[str, object]]:
                 "notes": row.get("notes", "measured v1 overhead row"),
             }
         )
-    for config in ("core", "hashed", "full"):
-        for metric in ("lut", "ff", "bram", "fmax_mhz"):
-            out.append(
-                {
-                    "architecture": "v2",
-                    "recorder_config": config,
-                    "target": "ecp5-85k",
-                    "flow": "yosys+synth_ecp5+nextpnr-ecp5",
-                    "memory_words": "2048",
-                    "buffer_depth": "512",
-                    "metric": metric,
-                    "baseline": "NA",
-                    "with_replaycapsule": "NA",
-                    "delta": "NA",
-                    "percent_overhead": "NA",
-                    "claim_allowed": "no",
-                    "notes": "blocked until same-target full-core v2 board mapping exists",
-                }
-            )
+    measured = read_csv(REPO_ROOT / "results/processed/mapped_scaling_overhead_v2_measured.csv")
+    if measured:
+        out.extend(_measured_v2_overhead_row(row) for row in measured)
+    else:
+        for config in ("minimal", "core", "hashed", "full"):
+            for metric in ("lut", "ff", "bram", "fmax_mhz"):
+                out.append(
+                    {
+                        "architecture": "v2",
+                        "recorder_config": config,
+                        "target": "ecp5-85k",
+                        "flow": "yosys+synth_ecp5+nextpnr-ecp5",
+                        "memory_words": "2048",
+                        "buffer_depth": "512",
+                        "metric": metric,
+                        "baseline": "NA",
+                        "with_replaycapsule": "NA",
+                        "delta": "NA",
+                        "percent_overhead": "NA",
+                        "claim_allowed": "no",
+                        "notes": "not measured in this generated status table; use mapped_scaling_v2_measured.csv for selected minimal and diagnostic comparison rows",
+                    }
+                )
     return out
+
+
+def _measured_v2_overhead_row(row: dict[str, str]) -> dict[str, object]:
+    return {
+        "architecture": "v2",
+        "recorder_config": row.get("recorder_config", "NA"),
+        "target": row.get("target", "NA"),
+        "flow": row.get("flow", "NA"),
+        "memory_words": row.get("memory_words", "NA"),
+        "buffer_depth": row.get("buffer_depth", "NA"),
+        "metric": row.get("metric", "NA"),
+        "baseline": row.get("baseline", "NA"),
+        "with_replaycapsule": row.get("with_replaycapsule", "NA"),
+        "delta": row.get("delta", "NA"),
+        "percent_overhead": row.get("percent_overhead", "NA"),
+        "claim_allowed": row.get("claim_allowed", "NA"),
+        "notes": row.get("notes", "measured same-target full-core v2 overhead row"),
+    }
 
 
 def _presence_rows() -> list[dict[str, object]]:
@@ -196,23 +250,43 @@ def _presence_rows() -> list[dict[str, object]]:
                 "notes": row.get("notes", "measured v1 recorder-presence row"),
             }
         )
-    for config in ("core", "hashed", "full"):
-        out.append(
-            {
-                "architecture": "v2",
-                "recorder_config": config,
-                "design": "full_core_replaycapsule_v2_board",
-                "target": "ecp5-85k",
-                "flow": "yosys+synth_ecp5+nextpnr-ecp5",
-                "memory_words": "2048",
-                "buffer_depth": "512",
-                "recorder_present": "NA",
-                "evidence": "NA",
-                "status": "BLOCKED",
-                "notes": "full-core v2 board wrapper not integrated yet",
-            }
-        )
+    measured = read_csv(REPO_ROOT / "results/processed/mapped_recorder_presence_v2_measured.csv")
+    if measured:
+        out.extend(_measured_v2_presence_row(row) for row in measured)
+    else:
+        for config in ("minimal", "core", "hashed", "full"):
+            out.append(
+                {
+                    "architecture": "v2",
+                    "recorder_config": config,
+                    "design": f"full_core_v2_{config}_board",
+                    "target": "ecp5-85k",
+                    "flow": "yosys+synth_ecp5+nextpnr-ecp5",
+                    "memory_words": "2048",
+                    "buffer_depth": "512",
+                    "recorder_present": "NA",
+                    "evidence": "NA",
+                    "status": "BLOCKED",
+                    "notes": "not measured in this generated status table; use mapped_recorder_presence_v2_measured.csv for measured recorder-presence rows",
+                }
+            )
     return out
+
+
+def _measured_v2_presence_row(row: dict[str, str]) -> dict[str, object]:
+    return {
+        "architecture": "v2",
+        "recorder_config": row.get("recorder_config", "NA"),
+        "design": row.get("design", "NA"),
+        "target": row.get("target", "NA"),
+        "flow": row.get("flow", "NA"),
+        "memory_words": row.get("memory_words", "NA"),
+        "buffer_depth": row.get("buffer_depth", "NA"),
+        "recorder_present": row.get("recorder_present", "NA"),
+        "evidence": row.get("evidence", "NA"),
+        "status": row.get("status", "NA"),
+        "notes": "measured same-target full-core v2 recorder-presence row",
+    }
 
 
 if __name__ == "__main__":

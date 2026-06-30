@@ -80,6 +80,7 @@ REQUIRED_TB = [
     "tb/system/tb_registers.sv",
     "tb/system/tb_replaycapsule_soc.sv",
     "tb/system/tb_picorv32_wrapper_smoke.sv",
+    "tb/system/tb_rcv2_minimal_recorder.sv",
 ]
 
 PYTHON_FILES = [
@@ -484,6 +485,16 @@ def _run_final_package_checks() -> int:
     measured_runtime = [row for row in runtime if row.get("status") == "MEASURED"]
     _expect(rows, failures, "final:runtime_overhead", len(measured_runtime) >= 9, f"{len(measured_runtime)} measured summary rows")
 
+    hdl = _read_csv("results/processed/hdl_checks.csv", rows, failures)
+    minimal_hdl = next((row for row in hdl if row.get("check") == "tb_rcv2_minimal_recorder"), {})
+    _expect(
+        rows,
+        failures,
+        "final:v2_minimal_recorder_fidelity",
+        minimal_hdl.get("status") == "PASS",
+        minimal_hdl.get("raw_log", "missing tb_rcv2_minimal_recorder row"),
+    )
+
     mapped_summary = _read_csv("results/processed/full_core_mapped_summary.csv", rows, failures)
     mapped_pass = any(
         row.get("status") == "PASS"
@@ -511,7 +522,7 @@ def _run_final_package_checks() -> int:
         failures,
         "final:mapped_design_rows",
         {"full_core_baseline_board", "full_core_replaycapsule_board"}.issubset(mapped_designs)
-        or {"full_core_baseline_board", "full_core_v2_core_board", "full_core_v2_hashed_board", "full_core_v2_full_board"}.issubset(v2_designs),
+        or {"full_core_baseline_board", "full_core_v2_minimal_board", "full_core_v2_core_board", "full_core_v2_hashed_board"}.issubset(v2_designs),
         ", ".join(sorted(mapped_designs)) or ", ".join(sorted(v2_designs)) or "no PASS rows",
     )
 
@@ -521,7 +532,7 @@ def _run_final_package_checks() -> int:
         rows,
         failures,
         "final:recorder_presence",
-        any(row.get("status") == "PASS" for row in presence) or {"core", "hashed", "full"} <= v2_presence,
+        any(row.get("status") == "PASS" for row in presence) or {"minimal", "core", "hashed"} <= v2_presence,
         "legacy recorder presence PASS or v2 presence configs=" + ",".join(sorted(v2_presence)),
     )
 
@@ -571,7 +582,8 @@ def _v2_measured_mapped_status(rows: list[dict[str, str]], failures: list[str]) 
     scaling = _read_csv("results/processed/mapped_scaling_v2_measured.csv", rows, failures)
     presence = _read_csv("results/processed/mapped_recorder_presence_v2_measured.csv", rows, failures)
     overhead = _read_csv("results/processed/mapped_scaling_overhead_v2_measured.csv", rows, failures)
-    claim_configs = {"core", "hashed"}
+    measured_configs = {"minimal", "core", "hashed"}
+    selected_claim_configs = {"minimal"}
     baseline_pass = any(
         row.get("architecture") == "baseline"
         and row.get("target") == "ecp5-85k"
@@ -595,10 +607,16 @@ def _v2_measured_mapped_status(rows: list[dict[str, str]], failures: list[str]) 
         for row in overhead
         if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"
     }
-    passed = baseline_pass and claim_configs <= mapped_configs and claim_configs <= presence_configs and claim_configs <= overhead_configs
+    passed = (
+        baseline_pass
+        and measured_configs <= mapped_configs
+        and measured_configs <= presence_configs
+        and selected_claim_configs <= overhead_configs
+    )
+    total = len(measured_configs)
     detail = (
-        f"v2 measured mapped baseline={baseline_pass} mapped={len(mapped_configs & claim_configs)}/2 "
-        f"presence={len(presence_configs & claim_configs)}/2 overhead={len(overhead_configs & claim_configs)}/2"
+        f"v2 measured mapped baseline={baseline_pass} mapped={len(mapped_configs & measured_configs)}/{total} "
+        f"presence={len(presence_configs & measured_configs)}/{total} selected_overhead={len(overhead_configs & selected_claim_configs)}/{len(selected_claim_configs)}"
     )
     return passed, detail
 

@@ -27,6 +27,7 @@ v2_full_rtl_replay_consumer_checked,PASS,results/processed/full_rtl_replay_v2.cs
 v2_depth8_core_hashed_probe_clean,PASS,results/processed/full_rtl_replay_v2_depth8_probe.csv,"rows=90 bad_rows=0 configs=core,hashed",repository evidence gate
 v2_measured_workload_zero_fail,PASS,results/processed/workload_scaling_v2_measured_summary.csv,pass_rows=750; total_rows=750; blocked_rows=0,repository evidence gate
 expanded_benchmark_replay_clean,PASS,results/processed/expanded_benchmark_replay_measured.csv,"rows=36 bad_rows=0 benchmarks=2 configs=core,full,hashed seeds=1,2,3",repository evidence gate
-v2_full_core_mapped_rows_present,PASS,results/processed/mapped_scaling_v2_measured.csv,"v2_pass_rows=2 configs=core,hashed",repository evidence gate
-v2_mapped_overhead_core_hashed_claimable,PASS,results/processed/mapped_scaling_overhead_v2_measured.csv,"claimable_configs=core,hashed",repository evidence gate
+v2_full_core_mapped_rows_present,PASS,results/processed/mapped_scaling_v2_measured.csv,"v2_pass_rows=3 configs=core,hashed,minimal",repository evidence gate
+v2_mapped_overhead_selected_minimal_claimable,PASS,results/processed/mapped_scaling_overhead_v2_measured.csv,selected_claim_configs=minimal,repository evidence gate
+v2_minimal_recorder_fidelity_checked,PASS,results\raw\tb_rcv2_minimal_recorder_vvp_run.txt,minimal recorder emits replay-critical boundary events and the v2 consumer accepts the stream,repository evidence gate
 v2_generated_tables_not_stale,PASS,paper/tables,no stale blocked/no-pass v2 generated table phrases,repository evidence gate

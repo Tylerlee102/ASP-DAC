@@ -7,24 +7,26 @@ input:results/processed/full_rtl_replay_negative.csv,PASS,12 rows
 final:negative_replay,PASS,rejected=10 unexpected=0 na=2
 input:results/processed/runtime_overhead_summary.csv,PASS,9 rows
 final:runtime_overhead,PASS,9 measured summary rows
+input:results/processed/hdl_checks.csv,PASS,29 rows
+final:v2_minimal_recorder_fidelity,PASS,results\raw\tb_rcv2_minimal_recorder_vvp_run.txt
 input:results/processed/full_core_mapped_summary.csv,PASS,1 rows
-input:results/processed/mapped_scaling_v2_measured.csv,PASS,3 rows
-input:results/processed/mapped_recorder_presence_v2_measured.csv,PASS,2 rows
-input:results/processed/mapped_scaling_overhead_v2_measured.csv,PASS,8 rows
-final:mapped_same_target,PASS,legacy ECP5-85K same-target mapped overhead row or v2 measured mapped baseline=True mapped=2/2 presence=2/2 overhead=2/2
+input:results/processed/mapped_scaling_v2_measured.csv,PASS,4 rows
+input:results/processed/mapped_recorder_presence_v2_measured.csv,PASS,3 rows
+input:results/processed/mapped_scaling_overhead_v2_measured.csv,PASS,12 rows
+final:mapped_same_target,PASS,legacy ECP5-85K same-target mapped overhead row or v2 measured mapped baseline=True mapped=3/3 presence=3/3 selected_overhead=1/1
 input:results/processed/mapped_synthesis.csv,PASS,4 rows
 final:mapped_design_rows,PASS,"full_core_baseline_board, full_core_replaycapsule_board"
 input:results/processed/mapped_recorder_presence.csv,PASS,6 rows
-final:recorder_presence,PASS,"legacy recorder presence PASS or v2 presence configs=core,hashed"
+final:recorder_presence,PASS,"legacy recorder presence PASS or v2 presence configs=core,hashed,minimal"
 input:results/processed/paper_build_status.csv,PASS,1 rows
 final:paper_pdf,PASS,paper/main.pdf PASS and present
-input:results/processed/claim_audit.csv,PASS,188 rows
+input:results/processed/claim_audit.csv,PASS,222 rows
 final:claim_audit,PASS,REVIEW rows=0
 input:results/processed/paper_number_audit.csv,PASS,1 rows
 final:number_audit,PASS,FAIL rows=0
 input:results/processed/todo_audit.csv,PASS,1 rows
 final:todo_audit,PASS,FAIL rows=0
-input:results/processed/artifact_manifest.csv,PASS,515 rows
+input:results/processed/artifact_manifest.csv,PASS,606 rows
 final:artifact_manifest,PASS,missing required rows=0
 final:artifact_zip,PASS,dist/replaycapsule-rv-artifact.zip
 final:evidence_lock,PASS,results/debug/final_submission_lock

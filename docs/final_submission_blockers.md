@@ -12,7 +12,7 @@ No fatal evidence blocker remains in the locked CI artifact.
 | --- | --- |
 | Host-driven replay consume path | Claim only the measured host-streamed full-core consumer check; do not claim autonomous hardware replay. |
 | Single-hart RV32I scope | Do not claim multicore, DMA, or cache-coherence support. |
-| ECP5 overhead is not optimized | Report the measured overhead and state that replay fidelity and auditability were prioritized over area minimization. |
+| ECP5 diagnostic overhead is not optimized | Report the selected v2 minimal recorder profile separately from diagnostic-rich core/hashed and legacy mapped rows. |
 | No ASIC flow | Do not claim ASIC area, timing, or power. |
 | Benchmark scope | Present the six generated families as evaluation evidence, not complete embedded coverage. |
 

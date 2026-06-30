@@ -16,7 +16,7 @@ The record-side RTL and board wrappers are synthesized and placed. The v2 consum
 
 ## 4. Why is overhead high?
 
-The prototype prioritizes replay fidelity and auditability over area minimization. Full-core ECP5 overhead is reported in `results/processed/mapped_overhead.csv`: LUT 143.75%, FF 341.79%, BRAM 0.00%, Fmax delta -20.12%.
+The diagnostic prototype prioritizes replay fidelity and auditability over area. Legacy full-core ECP5 overhead is reported in `results/processed/mapped_overhead.csv`: LUT 143.75%, FF 341.79%, BRAM 0.00%, Fmax delta -20.12%. The v2 minimal recorder profile is the selected replay-critical mapped path and is reported separately in `results/processed/mapped_scaling_overhead_v2_measured.csv`: LUT 8.26%, FF 3.77%, BRAM 0.00%, Fmax -0.04%.
 
 ## 5. Why only single-hart?
 

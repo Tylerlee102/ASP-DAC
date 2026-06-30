@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 218 >>
+<< /Length 186 >>
 stream
 BT
 /F1 16 Tf
@@ -20,8 +20,6 @@ BT
 (Recorder config tradeoff v2) Tj
 0 -24 Td
 (core: 100.000000%) Tj
-0 -24 Td
-(full: 100.000000%) Tj
 0 -24 Td
 (hashed: 100.000000%) Tj
 0 -24 Td
@@ -39,5 +37,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-580
+548
 %%EOF

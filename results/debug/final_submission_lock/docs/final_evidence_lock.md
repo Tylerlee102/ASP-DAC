@@ -37,6 +37,8 @@ This document locks the evidence used for the main-track submission polish pass.
 - full_core_baseline_board: 2814 LUT, 883 FF, 6 BRAM, Fmax 63.47 MHz.
 - full_core_replaycapsule_board: 6859 LUT, 3901 FF, 6 BRAM, Fmax 50.70 MHz.
 - Overhead: LUT 143.75%, FF 341.79%, BRAM 0.00%, Fmax delta -20.12%.
+- v2 minimal recorder profile: LUT 8.26%, FF 3.77%, BRAM 0.00%, Fmax delta -0.04%.
+- v2 diagnostic comparison, not selected area claim: core LUT 68.00%, hashed LUT 67.69%.
 - Recorder presence: PASS.
 
 ## Paper Build

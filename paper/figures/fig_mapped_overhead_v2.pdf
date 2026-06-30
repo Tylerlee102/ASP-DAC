@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 193 >>
+<< /Length 300 >>
 stream
 BT
 /F1 16 Tf
@@ -21,9 +21,13 @@ BT
 0 -24 Td
 (Replay consumer ECP5-85k status: PASS) Tj
 0 -24 Td
-(Standalone LUT=787 FF=75) Tj
+(Standalone LUT=1033 FF=107) Tj
 0 -24 Td
-(Full-core v2 core LUT overhead: 68.00%) Tj
+(v2 minimal full-core LUT/FF: 8.26%/3.77%) Tj
+0 -24 Td
+(v2 minimal Fmax delta: -0.04%) Tj
+0 -24 Td
+(v2 core/hashed LUT comparison: 68.00%/67.69%) Tj
 ET
 endstream
 endobj
@@ -37,5 +41,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-555
+662
 %%EOF

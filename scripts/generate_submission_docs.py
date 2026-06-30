@@ -46,6 +46,9 @@ def _evidence() -> dict[str, object]:
     mapped_overhead = _rows("mapped_overhead.csv")
     presence = _rows("mapped_recorder_presence.csv")
     mapped_summary = _rows("full_core_mapped_summary.csv")
+    v2_mapped = _rows("mapped_scaling_v2_measured.csv")
+    v2_mapped_overhead = _rows("mapped_scaling_overhead_v2_measured.csv")
+    v2_presence = _rows("mapped_recorder_presence_v2_measured.csv")
     paper = _rows("paper_build_status.csv")
     final_gate = _rows("final_ci_gate_status.csv")
     final_ci_verification = _rows("final_ci_verification.csv")
@@ -71,6 +74,9 @@ def _evidence() -> dict[str, object]:
         "mapped_overhead": mapped_overhead,
         "presence": presence,
         "mapped_summary": mapped_summary,
+        "v2_mapped": v2_mapped,
+        "v2_mapped_overhead": v2_mapped_overhead,
+        "v2_presence": v2_presence,
         "paper": paper,
         "final_gate": final_gate,
         "final_ci_verification": final_ci_verification,
@@ -144,7 +150,7 @@ The record-side RTL and board wrappers are synthesized and placed. The v2 consum
 
 ## 4. Why is overhead high?
 
-The prototype prioritizes replay fidelity and auditability over area minimization. Full-core ECP5 overhead is reported in `results/processed/mapped_overhead.csv`: LUT { _overhead(e, "lut") }%, FF { _overhead(e, "ff") }%, BRAM { _overhead(e, "bram") }%, Fmax delta { _overhead(e, "fmax_mhz") }%.
+The diagnostic prototype prioritizes replay fidelity and auditability over area. Legacy full-core ECP5 overhead is reported in `results/processed/mapped_overhead.csv`: LUT { _overhead(e, "lut") }%, FF { _overhead(e, "ff") }%, BRAM { _overhead(e, "bram") }%, Fmax delta { _overhead(e, "fmax_mhz") }%. The v2 minimal recorder profile is the selected replay-critical mapped path and is reported separately in `results/processed/mapped_scaling_overhead_v2_measured.csv`: LUT {_v2_overhead(e, "minimal", "lut")}%, FF {_v2_overhead(e, "minimal", "ff")}%, BRAM {_v2_overhead(e, "minimal", "bram")}%, Fmax {_v2_overhead(e, "minimal", "fmax_mhz")}%.
 
 ## 5. Why only single-hart?
 
@@ -185,7 +191,8 @@ Current status: SUBMISSION-READY CANDIDATE.
 | Full RTL replay | PASS | {len(e["replay_pass"])}/{len(e["replay"])} rows in `results/processed/full_rtl_replay.csv` |
 | Negative replay | PASS | {len(e["negative_reject"])} rejects, {len(e["negative_accept"])} unexpected accepts, {len(e["negative_na"])} NA in `results/processed/full_rtl_replay_negative.csv` |
 | Runtime overhead | PASS | baseline, disabled-recorder, and enabled-recorder rows in `results/processed/runtime_overhead_summary.csv` |
-| Full-core mapped overhead | PASS | same-target ECP5 rows in `results/processed/mapped_synthesis.csv` and `results/processed/mapped_overhead.csv` |
+| Full-core mapped overhead | PASS | same-target ECP5 rows in `results/processed/mapped_synthesis.csv`, `results/processed/mapped_overhead.csv`; selected v2 minimal overhead plus measured core/hashed comparisons in `results/processed/mapped_scaling_v2_measured.csv` |
+| Minimal recorder fidelity | PASS | `tb_rcv2_minimal_recorder` row in `results/processed/hdl_checks.csv` |
 | Recorder presence | PASS | `results/processed/mapped_recorder_presence.csv` |
 | Paper build | PASS | `results/processed/paper_build_status.csv` |
 | Claim/number/TODO audits | PASS | `results/processed/claim_audit.csv`, `paper_number_audit.csv`, `todo_audit.csv` |
@@ -196,7 +203,7 @@ Current status: SUBMISSION-READY CANDIDATE.
 - Event-sufficient capsules for scoped single-hart RV32I interrupt/MMIO failures.
 - Compiler-backed host-driven full RTL replay for the generated benchmark rows.
 - Full RTL corrupted-capsule rejection for replay-critical corruption classes.
-- Measured runtime summaries and same-target full-core ECP5 mapped overhead.
+- Measured runtime summaries and same-target full-core ECP5 mapped overhead for the selected v2 minimal recorder profile, with core/hashed retained as diagnostic comparisons.
 
 ## Forbidden Claims
 
@@ -223,7 +230,7 @@ No fatal evidence blocker remains in the locked CI artifact.
 | --- | --- |
 | Host-driven replay consume path | Claim only the measured host-streamed full-core consumer check; do not claim autonomous hardware replay. |
 | Single-hart RV32I scope | Do not claim multicore, DMA, or cache-coherence support. |
-| ECP5 overhead is not optimized | Report the measured overhead and state that replay fidelity and auditability were prioritized over area minimization. |
+| ECP5 diagnostic overhead is not optimized | Report the selected v2 minimal recorder profile separately from diagnostic-rich core/hashed and legacy mapped rows. |
 | No ASIC flow | Do not claim ASIC area, timing, or power. |
 | Benchmark scope | Present the six generated families as evaluation evidence, not complete embedded coverage. |
 
@@ -240,7 +247,7 @@ Generated from locked evidence: CI run {CI_RUN}.
 
 ## Panel Summary
 
-The strongest story is now an honest scoped systems/hardware artifact: compiler-backed firmware, {len(e["replay_pass"])}/{len(e["replay"])} full RTL replay PASS rows, corrupted-capsule rejection, runtime summaries, and same-target ECP5 mapped overhead. The main reviewer risk is not missing evidence; it is overclaiming beyond the scope.
+The strongest story is now an honest scoped systems/hardware artifact: compiler-backed firmware, {len(e["replay_pass"])}/{len(e["replay"])} full RTL replay PASS rows, corrupted-capsule rejection, runtime summaries, same-target ECP5 mapped overhead, and a selected v2 replay-critical recorder profile measured at {_v2_overhead(e, "minimal", "lut")}% LUT overhead. The main reviewer risk is not missing evidence; it is overclaiming beyond the scope.
 
 ## Likely Decision
 
@@ -250,7 +257,7 @@ Weak accept to accept if the paper preserves the scoped contribution wording and
 
 def _main_track_review(e: dict[str, object], title: str = "Main-Track Submission Review") -> str:
     reviewers = [
-        ("Hardware architecture reviewer", "weak accept", "clean recorder decomposition; full-core ECP5 mapping is now present", "record-side overhead is substantial", "none", "keep overhead discussion honest", "weak accept"),
+        ("Hardware architecture reviewer", "weak accept", "clean recorder decomposition; selected v2 replay-critical mapped profile is now present", "diagnostic-rich record-side overhead is substantial", "none", "keep minimal recorder and diagnostic rows separate", "weak accept"),
         ("EDA/synthesis reviewer", "weak accept", "same-target ECP5 baseline and ReplayCapsule rows pass P&R", "no ASIC area or power", "none", "state target, flow, memory, and board IO constraints", "weak accept"),
         ("Systems/debug reviewer", "accept", "compiler-backed full RTL replay and corruption rejection are strong", "host-driven replay consume path", "none", "make host-driven scope prominent", "accept"),
         ("Formal/replay model reviewer", "borderline", "commit-index model and proof obligations are clear", "no mechanized end-to-end processor proof", "none", "frame theorem as conditional model support", "borderline"),
@@ -319,6 +326,8 @@ def _mapped_lines(e: dict[str, object]) -> str:
             f"- full_core_baseline_board: {baseline.get('lut', 'NA')} LUT, {baseline.get('ff', 'NA')} FF, {baseline.get('bram', 'NA')} BRAM, Fmax {baseline.get('fmax_mhz', 'NA')} MHz.",
             f"- full_core_replaycapsule_board: {replay.get('lut', 'NA')} LUT, {replay.get('ff', 'NA')} FF, {replay.get('bram', 'NA')} BRAM, Fmax {replay.get('fmax_mhz', 'NA')} MHz.",
             f"- Overhead: LUT {_overhead(e, 'lut')}%, FF {_overhead(e, 'ff')}%, BRAM {_overhead(e, 'bram')}%, Fmax delta {_overhead(e, 'fmax_mhz')}%.",
+            f"- v2 minimal recorder profile: LUT {_v2_overhead(e, 'minimal', 'lut')}%, FF {_v2_overhead(e, 'minimal', 'ff')}%, BRAM {_v2_overhead(e, 'minimal', 'bram')}%, Fmax delta {_v2_overhead(e, 'minimal', 'fmax_mhz')}%.",
+            f"- v2 diagnostic comparison, not selected area claim: core LUT {_v2_overhead(e, 'core', 'lut')}%, hashed LUT {_v2_overhead(e, 'hashed', 'lut')}%.",
             f"- Recorder presence: {_first(e['presence']).get('status', 'NA')}.",
         ]
     )
@@ -328,6 +337,13 @@ def _overhead(e: dict[str, object], suffix: str) -> str:
     metric = f"full_core_baseline_board_to_full_core_replaycapsule_board_{suffix}"
     for row in e["mapped_overhead"]:  # type: ignore[union-attr]
         if row.get("metric") == metric:
+            return row.get("percent_overhead", "NA")
+    return "NA"
+
+
+def _v2_overhead(e: dict[str, object], config: str, metric: str) -> str:
+    for row in e["v2_mapped_overhead"]:  # type: ignore[union-attr]
+        if row.get("recorder_config") == config and row.get("metric") == metric:
             return row.get("percent_overhead", "NA")
     return "NA"
 
@@ -343,6 +359,12 @@ def _copy_lock_files() -> None:
         "results/processed/mapped_overhead.csv",
         "results/processed/mapped_recorder_presence.csv",
         "results/processed/full_core_mapped_summary.csv",
+        "results/processed/mapped_scaling_v2_measured.csv",
+        "results/processed/mapped_scaling_overhead_v2_measured.csv",
+        "results/processed/mapped_recorder_presence_v2_measured.csv",
+        "results/processed/hdl_checks.csv",
+        "results/raw/tb_rcv2_minimal_recorder_vvp_run.txt",
+        "results/raw/tb_rcv2_minimal_recorder_iverilog_compile.txt",
         "results/processed/paper_build_status.csv",
         "results/processed/toolchain_status.csv",
         "results/processed/claim_audit.csv",

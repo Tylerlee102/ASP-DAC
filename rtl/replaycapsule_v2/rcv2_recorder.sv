@@ -10,7 +10,13 @@ module rcv2_recorder #(
   parameter bit ENABLE_BRAM_FIFO = ENABLE_BRam_FIFO,
   parameter bit ENABLE_ADAPTIVE_WINDOW = 1'b1,
   parameter bit ENABLE_STREAMING = 1'b1,
-  parameter bit ENABLE_WATCHDOG = 1'b0
+  parameter bit ENABLE_WATCHDOG = 1'b0,
+  parameter bit ENABLE_PROPERTY_CHECKER = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit ENABLE_CONTEXT_SLICER = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit ENABLE_EVENT_BUFFER = 1'b1,
+  parameter bit ENABLE_SIGNATURE = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit ENABLE_STATUS_COUNTERS = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit ENABLE_MINIMAL_EVENT_TAP = (REPLAYCAPSULE_CONFIG == 0)
 ) (
   input  logic        clk,
   input  logic        rst_n,
@@ -122,64 +128,142 @@ module rcv2_recorder #(
   logic streaming_fifo_overflow;
   logic [MEMORY_ADDR_W:0] saturated_stream_event_count;
 
-  event_tap u_event_tap (
-    .clk(clk),
-    .rst_n(rst_n),
-    .commit_valid(commit_valid),
-    .commit_pc(commit_pc),
-    .commit_instr(commit_instr),
-    .commit_index(commit_index),
-    .branch_taken(branch_taken),
-    .jump_taken(jump_taken),
-    .mem_valid(mem_valid),
-    .mem_write(mem_write),
-    .mem_addr(mem_addr),
-    .mem_wdata(mem_wdata),
-    .mem_rdata(mem_rdata),
-    .external_input_valid(external_input_valid),
-    .external_input_value(external_input_value),
-    .interrupt_enter(interrupt_enter),
-    .interrupt_exit(interrupt_exit),
-    .event_valid(raw_event_valid),
-    .event_type(raw_event_type),
-    .event_commit_index(raw_event_commit_index),
-    .event_pc(raw_event_pc),
-    .event_addr(raw_event_addr),
-    .event_data(raw_event_data),
-    .multievent_pending(raw_multievent_pending)
-  );
+  generate
+    if (ENABLE_MINIMAL_EVENT_TAP) begin : g_minimal_event_tap
+      logic is_mmio;
+      logic [2:0] candidate_count;
 
-  property_checker #(
-    .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
-  ) u_property_checker (
-    .clk(clk),
-    .rst_n(rst_n),
-    .clear(clear),
-    .watchdog_enable(watchdog_enable),
-    .event_valid(raw_event_valid),
-    .event_type(raw_event_type),
-    .event_commit_index(raw_event_commit_index),
-    .event_pc(raw_event_pc),
-    .event_addr(raw_event_addr),
-    .event_data(raw_event_data),
-    .property_fail_valid(property_fail_valid),
-    .property_id(property_id),
-    .property_signature(property_signature),
-    .sensor_deadline_active(sensor_deadline_active),
-    .critical_section_active(critical_section_active)
-  );
+      assign is_mmio = (mem_addr & 32'hffff_0000) == 32'h4000_0000;
 
-  event_slicer u_event_slicer (
-    .clk(clk),
-    .rst_n(rst_n),
-    .clear(clear),
-    .event_valid(raw_event_valid),
-    .event_type(raw_event_type),
-    .property_fail_valid(property_fail_valid),
-    .capture_mode(CAPTURE_MODE),
-    .property_window_active(property_window_active),
-    .keep_context_event(slicer_keep_context_event)
-  );
+      always_comb begin
+        candidate_count = 3'd0;
+        candidate_count = candidate_count + ((interrupt_enter) ? 3'd1 : 3'd0);
+        candidate_count = candidate_count + ((interrupt_exit) ? 3'd1 : 3'd0);
+        candidate_count = candidate_count + ((external_input_valid) ? 3'd1 : 3'd0);
+        candidate_count = candidate_count + ((mem_valid && is_mmio) ? 3'd1 : 3'd0);
+      end
+
+      assign raw_multievent_pending = candidate_count > 3'd1;
+
+      always_comb begin
+        raw_event_valid = 1'b0;
+        raw_event_type = EV_COMMIT;
+        raw_event_commit_index = commit_index;
+        raw_event_pc = commit_pc;
+        raw_event_addr = 32'h0;
+        raw_event_data = 32'h0;
+
+        if (interrupt_enter) begin
+          raw_event_valid = 1'b1;
+          raw_event_type = EV_INTERRUPT_ENTER;
+          raw_event_data = 32'h1;
+        end else if (interrupt_exit) begin
+          raw_event_valid = 1'b1;
+          raw_event_type = EV_INTERRUPT_EXIT;
+          raw_event_data = 32'h0;
+        end else if (external_input_valid) begin
+          raw_event_valid = 1'b1;
+          raw_event_type = EV_EXTERNAL_INPUT;
+          raw_event_data = external_input_value;
+        end else if (mem_valid && is_mmio && !mem_write) begin
+          raw_event_valid = 1'b1;
+          raw_event_type = EV_MMIO_READ;
+          raw_event_addr = mem_addr;
+          raw_event_data = mem_rdata;
+        end else if (mem_valid && is_mmio && mem_write) begin
+          raw_event_valid = 1'b1;
+          raw_event_type = EV_MMIO_WRITE;
+          raw_event_addr = mem_addr;
+          raw_event_data = mem_wdata;
+        end
+      end
+
+      logic unused_minimal_commit_valid;
+      logic unused_minimal_commit_instr;
+      logic unused_minimal_branch_taken;
+      logic unused_minimal_jump_taken;
+      assign unused_minimal_commit_valid = commit_valid;
+      assign unused_minimal_commit_instr = |commit_instr;
+      assign unused_minimal_branch_taken = branch_taken;
+      assign unused_minimal_jump_taken = jump_taken;
+    end else begin : g_full_event_tap
+      event_tap u_event_tap (
+        .clk(clk),
+        .rst_n(rst_n),
+        .commit_valid(commit_valid),
+        .commit_pc(commit_pc),
+        .commit_instr(commit_instr),
+        .commit_index(commit_index),
+        .branch_taken(branch_taken),
+        .jump_taken(jump_taken),
+        .mem_valid(mem_valid),
+        .mem_write(mem_write),
+        .mem_addr(mem_addr),
+        .mem_wdata(mem_wdata),
+        .mem_rdata(mem_rdata),
+        .external_input_valid(external_input_valid),
+        .external_input_value(external_input_value),
+        .interrupt_enter(interrupt_enter),
+        .interrupt_exit(interrupt_exit),
+        .event_valid(raw_event_valid),
+        .event_type(raw_event_type),
+        .event_commit_index(raw_event_commit_index),
+        .event_pc(raw_event_pc),
+        .event_addr(raw_event_addr),
+        .event_data(raw_event_data),
+        .multievent_pending(raw_multievent_pending)
+      );
+    end
+  endgenerate
+
+  generate
+    if (ENABLE_PROPERTY_CHECKER) begin : g_property_checker
+      property_checker #(
+        .ENABLE_WATCHDOG(ENABLE_WATCHDOG)
+      ) u_property_checker (
+        .clk(clk),
+        .rst_n(rst_n),
+        .clear(clear),
+        .watchdog_enable(watchdog_enable),
+        .event_valid(raw_event_valid),
+        .event_type(raw_event_type),
+        .event_commit_index(raw_event_commit_index),
+        .event_pc(raw_event_pc),
+        .event_addr(raw_event_addr),
+        .event_data(raw_event_data),
+        .property_fail_valid(property_fail_valid),
+        .property_id(property_id),
+        .property_signature(property_signature),
+        .sensor_deadline_active(sensor_deadline_active),
+        .critical_section_active(critical_section_active)
+      );
+    end else begin : g_no_property_checker
+      assign property_fail_valid = 1'b0;
+      assign property_id = 8'h0;
+      assign property_signature = 32'h0;
+      assign sensor_deadline_active = 1'b0;
+      assign critical_section_active = 1'b0;
+    end
+  endgenerate
+
+  generate
+    if (ENABLE_CONTEXT_SLICER) begin : g_context_slicer
+      event_slicer u_event_slicer (
+        .clk(clk),
+        .rst_n(rst_n),
+        .clear(clear),
+        .event_valid(raw_event_valid),
+        .event_type(raw_event_type),
+        .property_fail_valid(property_fail_valid),
+        .capture_mode(CAPTURE_MODE),
+        .property_window_active(property_window_active),
+        .keep_context_event(slicer_keep_context_event)
+      );
+    end else begin : g_no_context_slicer
+      assign property_window_active = 1'b0;
+      assign slicer_keep_context_event = 1'b0;
+    end
+  endgenerate
 
   always_ff @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
@@ -219,16 +303,38 @@ module rcv2_recorder #(
     end
   end
 
-  event_classifier u_event_classifier (
-    .event_valid(final_event_valid),
-    .event_type(final_event_type),
-    .capture_mode(CAPTURE_MODE),
-    .property_window_active(property_window_active),
-    .overflow_guard(capsule_overflow),
-    .keep_event(classifier_keep_event),
-    .event_is_nondeterministic(event_is_nondeterministic),
-    .event_is_property_relevant(event_is_property_relevant)
-  );
+  generate
+    if (ENABLE_MINIMAL_EVENT_TAP) begin : g_minimal_classifier
+      assign event_is_nondeterministic =
+        final_event_type == EV_MMIO_READ ||
+        final_event_type == EV_INTERRUPT_ENTER ||
+        final_event_type == EV_INTERRUPT_EXIT ||
+        final_event_type == EV_EXTERNAL_INPUT;
+      assign event_is_property_relevant =
+        event_is_nondeterministic ||
+        final_event_type == EV_MMIO_WRITE ||
+        final_event_type == EV_PROPERTY_FAIL ||
+        final_event_type == EV_CHECKPOINT_HASH;
+      assign classifier_keep_event =
+        final_event_valid && (
+          event_is_nondeterministic ||
+          final_event_type == EV_MMIO_WRITE ||
+          final_event_type == EV_PROPERTY_FAIL ||
+          final_event_type == EV_CHECKPOINT_HASH
+        );
+    end else begin : g_event_classifier
+      event_classifier u_event_classifier (
+        .event_valid(final_event_valid),
+        .event_type(final_event_type),
+        .capture_mode(CAPTURE_MODE),
+        .property_window_active(property_window_active),
+        .overflow_guard(capsule_overflow),
+        .keep_event(classifier_keep_event),
+        .event_is_nondeterministic(event_is_nondeterministic),
+        .event_is_property_relevant(event_is_property_relevant)
+      );
+    end
+  endgenerate
 
   assign event_is_replay_critical =
     event_is_nondeterministic ||
@@ -346,7 +452,17 @@ module rcv2_recorder #(
   assign captured_event_payload_hash = payload_hash;
 
   generate
-    if (ENABLE_STREAMING) begin : g_streaming_fifo
+    if (!ENABLE_EVENT_BUFFER) begin : g_direct_stream
+      assign store_write_ready = 1'b1;
+      assign capsule_read_data = packed_word;
+      assign capsule_stream_valid = fifo_write_valid;
+      assign capsule_stream_word = packed_word;
+      assign capsule_frozen = 1'b0;
+      assign legacy_capsule_overflow = 1'b0;
+      assign streaming_fifo_overflow = 1'b0;
+      assign stream_fifo_level = '0;
+      assign capsule_event_count = saturated_stream_event_count;
+    end else if (ENABLE_STREAMING) begin : g_streaming_fifo
       rcv2_event_stream_fifo #(
         .WORD_WIDTH(64),
         .DEPTH(MEMORY_WORDS),
@@ -406,56 +522,74 @@ module rcv2_recorder #(
       {MEMORY_ADDR_W + 1{1'b1}} :
       stream_event_count[MEMORY_ADDR_W:0];
 
-  always_ff @(posedge clk or negedge rst_n) begin
-    if (!rst_n) begin
-      stream_event_count <= 32'h0;
-      stream_event_sent_count <= 32'h0;
-      replay_critical_event_count <= 32'h0;
-      stream_stall_count <= 32'h0;
-      fifo_dropped_diagnostic_count <= 32'h0;
-      replay_critical_overflow_count <= 32'h0;
-    end else if (clear) begin
-      stream_event_count <= 32'h0;
-      stream_event_sent_count <= 32'h0;
-      replay_critical_event_count <= 32'h0;
-      stream_stall_count <= 32'h0;
-      fifo_dropped_diagnostic_count <= 32'h0;
-      replay_critical_overflow_count <= 32'h0;
-    end else begin
-      if (fifo_write_valid) begin
-        stream_event_count <= stream_event_count + 32'h1;
-        if (event_is_replay_critical) begin
-          replay_critical_event_count <= replay_critical_event_count + 32'h1;
+  generate
+    if (ENABLE_STATUS_COUNTERS) begin : g_status_counters
+      always_ff @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+          stream_event_count <= 32'h0;
+          stream_event_sent_count <= 32'h0;
+          replay_critical_event_count <= 32'h0;
+          stream_stall_count <= 32'h0;
+          fifo_dropped_diagnostic_count <= 32'h0;
+          replay_critical_overflow_count <= 32'h0;
+        end else if (clear) begin
+          stream_event_count <= 32'h0;
+          stream_event_sent_count <= 32'h0;
+          replay_critical_event_count <= 32'h0;
+          stream_stall_count <= 32'h0;
+          fifo_dropped_diagnostic_count <= 32'h0;
+          replay_critical_overflow_count <= 32'h0;
+        end else begin
+          if (fifo_write_valid) begin
+            stream_event_count <= stream_event_count + 32'h1;
+            if (event_is_replay_critical) begin
+              replay_critical_event_count <= replay_critical_event_count + 32'h1;
+            end
+          end
+          if (stream_output_fire) begin
+            stream_event_sent_count <= stream_event_sent_count + 32'h1;
+          end
+          if (ENABLE_STREAMING && capsule_stream_valid && !capsule_stream_ready) begin
+            stream_stall_count <= stream_stall_count + 32'h1;
+          end
+          if (diagnostic_fifo_drop) begin
+            fifo_dropped_diagnostic_count <= fifo_dropped_diagnostic_count + 32'h1;
+          end
+          if (critical_overflow_event) begin
+            replay_critical_overflow_count <= replay_critical_overflow_count + 32'h1;
+          end
         end
       end
-      if (stream_output_fire) begin
-        stream_event_sent_count <= stream_event_sent_count + 32'h1;
-      end
-      if (ENABLE_STREAMING && capsule_stream_valid && !capsule_stream_ready) begin
-        stream_stall_count <= stream_stall_count + 32'h1;
-      end
-      if (diagnostic_fifo_drop) begin
-        fifo_dropped_diagnostic_count <= fifo_dropped_diagnostic_count + 32'h1;
-      end
-      if (critical_overflow_event) begin
-        replay_critical_overflow_count <= replay_critical_overflow_count + 32'h1;
-      end
+    end else begin : g_no_status_counters
+      assign stream_event_count = 32'h0;
+      assign stream_event_sent_count = 32'h0;
+      assign replay_critical_event_count = 32'h0;
+      assign stream_stall_count = 32'h0;
+      assign fifo_dropped_diagnostic_count = 32'h0;
+      assign replay_critical_overflow_count = 32'h0;
     end
-  end
+  endgenerate
 
-  hash_signature #(
-    .EVENT_WIDTH(64)
-  ) u_hash_signature (
-    .clk(clk),
-    .rst_n(rst_n),
-    .clear(clear),
-    .event_valid(fifo_write_valid),
-    .event_packet(packed_word),
-    .signature(running_signature)
-  );
+  generate
+    if (ENABLE_SIGNATURE) begin : g_hash_signature
+      hash_signature #(
+        .EVENT_WIDTH(64)
+      ) u_hash_signature (
+        .clk(clk),
+        .rst_n(rst_n),
+        .clear(clear),
+        .event_valid(fifo_write_valid),
+        .event_packet(packed_word),
+        .signature(running_signature)
+      );
+    end else begin : g_no_hash_signature
+      assign running_signature = 32'h0;
+    end
+  endgenerate
 
   logic unused_enable_bram_fifo;
   logic unused_buffer_depth;
+  logic unused_watchdog_enable;
   logic unused_streaming_fifo_overflow;
   logic unused_slicer_keep;
   logic unused_sensor_deadline_active;
@@ -464,6 +598,7 @@ module rcv2_recorder #(
   logic unused_delta_saturated;
   assign unused_enable_bram_fifo = ENABLE_BRAM_FIFO;
   assign unused_buffer_depth = (BUFFER_DEPTH != 0);
+  assign unused_watchdog_enable = watchdog_enable;
   assign unused_streaming_fifo_overflow = streaming_fifo_overflow;
   assign unused_slicer_keep = slicer_keep_context_event;
   assign unused_sensor_deadline_active = sensor_deadline_active;

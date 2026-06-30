@@ -108,16 +108,28 @@ def main() -> int:
     DIST_DIR.mkdir(parents=True, exist_ok=True)
     files = sorted(_iter_files())
     rows = []
-    with zipfile.ZipFile(ZIP_PATH, "w", compression=ZIP_COMPRESSION) as archive:
-        for path in files:
-            rel = path.relative_to(REPO_ROOT).as_posix()
-            data = _archive_data(path)
-            archive.writestr(rel, data)
-            rows.append({"path": rel, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
-    with MANIFEST_CSV.open("w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=["path", "bytes", "sha256"])
-        writer.writeheader()
-        writer.writerows(rows)
+    zip_tmp = ZIP_PATH.with_name(ZIP_PATH.name + ".tmp")
+    manifest_tmp = MANIFEST_CSV.with_name(MANIFEST_CSV.name + ".tmp")
+    for tmp in (zip_tmp, manifest_tmp):
+        if tmp.exists():
+            tmp.unlink()
+    try:
+        with zipfile.ZipFile(zip_tmp, "w", compression=ZIP_COMPRESSION) as archive:
+            for path in files:
+                rel = path.relative_to(REPO_ROOT).as_posix()
+                data = _archive_data(path)
+                archive.writestr(rel, data)
+                rows.append({"path": rel, "bytes": len(data), "sha256": hashlib.sha256(data).hexdigest()})
+        with manifest_tmp.open("w", newline="", encoding="utf-8") as handle:
+            writer = csv.DictWriter(handle, fieldnames=["path", "bytes", "sha256"])
+            writer.writeheader()
+            writer.writerows(rows)
+        zip_tmp.replace(ZIP_PATH)
+        manifest_tmp.replace(MANIFEST_CSV)
+    finally:
+        for tmp in (zip_tmp, manifest_tmp):
+            if tmp.exists():
+                tmp.unlink()
     print(f"WROTE dist/replaycapsule-rv-topconf-artifact.zip")
     print(f"WROTE dist/topconf_artifact_package_manifest.csv")
     print(f"PACKAGED {len(files)} files")

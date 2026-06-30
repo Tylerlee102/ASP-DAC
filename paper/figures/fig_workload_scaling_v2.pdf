@@ -12,14 +12,14 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 185 >>
+<< /Length 183 >>
 stream
 BT
 /F1 16 Tf
 72 740 Td
 (Workload scaling v2) Tj
 0 -24 Td
-(Measured v2 PASS rows: 1125/1125) Tj
+(Measured v2 PASS rows: 750/750) Tj
 0 -24 Td
 (Blocked rows: 0) Tj
 0 -24 Td
@@ -37,5 +37,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-547
+545
 %%EOF

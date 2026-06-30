@@ -1486,9 +1486,9 @@ Overfull \hbox (37.20152pt too wide) in paragraph at lines 12--13
  []
 
 
-Overfull \hbox (1.07104pt too wide) in paragraph at lines 16--17
-\TU/LinLibertine(0)/m/n/9 critical MMIO, interrupt, property-fail, and checkpoi
-nt-hash events
+Overfull \hbox (2.09105pt too wide) in paragraph at lines 18--19
+\TU/LinLibertine(0)/m/n/9 replay-critical MMIO, interrupt, property-fail, and c
+heckpoint-hash
  []
 
 ) (sections/replay_verification) (sections/evaluation
@@ -1504,25 +1504,22 @@ gative ledger
  []
 
 
-Overfull \hbox (15.43053pt too wide) in paragraph at lines 10--11
-\TU/LinLibertine(0)/m/n/9 ports median ReplayCapsule reductions versus the raw 
-full-instruction-
- []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 11.
+(Font)              scaled to size 9.0pt on input line 9.
 Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;ma
 pping=tex-text;" at 9.0pt
  -> LinBiolinum_R.otf
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 11.
+(Font)              scaled to size 7.0pt on input line 9.
 Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;ma
 pping=tex-text;" at 7.0pt
  -> LinBiolinum_R.otf
-[2.2]
-Overfull \hbox (7.46101pt too wide) in paragraph at lines 16--17
-\TU/LinLibertine(0)/m/n/9 to -9.98%. Expanded mapped-scaling CSVs report the lo
-wer-overhead
+ [2.2]
+Overfull \hbox (15.43053pt too wide) in paragraph at lines 10--11
+\TU/LinLibertine(0)/m/n/9 ports median ReplayCapsule reductions versus the raw
+full-instruction-
  []
 
 ) (sections/related_work
@@ -1542,9 +1539,6 @@ Overfull \hbox (3.306pt too wide) in paragraph at lines 7--8
 \TU/LinLibertine(0)/m/n/9 ordering so an execution can be reconstructed [[], []
 ]. ReplayCapsule-
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 Overfull \hbox (5.47151pt too wide) in paragraph at lines 13--14
@@ -1588,7 +1582,11 @@ Overfull \hbox (14.50128pt too wide) in paragraph at lines 22--23
 000-bit boundary-
  []
 
-) (sections/limitations [3.3]) (sections/conclusion)
+) (sections/limitations
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [3.3])
+(sections/conclusion)
 Overfull \hbox (14.90776pt too wide) in paragraph at lines 3--40
 \TU/LinLibertine(0)/m/n/9 interrupt/MMIO failures can be recorded as commit-ind
 exed boundary-
@@ -1632,4 +1630,4 @@ Overfull \vbox (1.54099pt too high) has occurred while \output is active []
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 62A6641D930A3C1D9DB4F298DCC8ABB1;2033.
  )
-Output written on main.xdv (5 pages, 237832 bytes).
+Output written on main.xdv (5 pages, 249372 bytes).

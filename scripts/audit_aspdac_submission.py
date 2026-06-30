@@ -227,9 +227,10 @@ def _v2_evidence_rows() -> list[dict[str, str]]:
     mapped = _read_csv(REPO_ROOT / "results/processed/mapped_scaling_v2_measured.csv")
     if mapped:
         full_core_pass = [row for row in mapped if row.get("architecture") == "v2" and row.get("status") == "PASS"]
+        required_mapped_configs = {"minimal", "core", "hashed"}
         rows.append(_row(
             "v2_full_core_mapped_rows_present",
-            "PASS" if {"core", "hashed"} <= {row.get("recorder_config") for row in full_core_pass} else "FAIL",
+            "PASS" if required_mapped_configs <= {row.get("recorder_config") for row in full_core_pass} else "FAIL",
             "results/processed/mapped_scaling_v2_measured.csv",
             f"v2_pass_rows={len(full_core_pass)} configs={','.join(sorted({row.get('recorder_config', 'NA') for row in full_core_pass}))}",
             "repository evidence gate",
@@ -243,12 +244,22 @@ def _v2_evidence_rows() -> list[dict[str, str]]:
             if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"
         }
         rows.append(_row(
-            "v2_mapped_overhead_core_hashed_claimable",
-            "PASS" if {"core", "hashed"} <= claimable else "FAIL",
+            "v2_mapped_overhead_selected_minimal_claimable",
+            "PASS" if {"minimal"} <= claimable else "FAIL",
             "results/processed/mapped_scaling_overhead_v2_measured.csv",
-            f"claimable_configs={','.join(sorted(claimable))}",
+            f"selected_claim_configs={','.join(sorted(claimable))}",
             "repository evidence gate",
         ))
+
+    hdl = _read_csv(REPO_ROOT / "results/processed/hdl_checks.csv")
+    minimal = next((row for row in hdl if row.get("check") == "tb_rcv2_minimal_recorder"), {})
+    rows.append(_row(
+        "v2_minimal_recorder_fidelity_checked",
+        "PASS" if minimal.get("status") == "PASS" else "FAIL",
+        minimal.get("raw_log", "results/processed/hdl_checks.csv"),
+        "minimal recorder emits replay-critical boundary events and the v2 consumer accepts the stream",
+        "repository evidence gate",
+    ))
 
     stale_phrases = (
         "No v2 replay PASS is claimed",

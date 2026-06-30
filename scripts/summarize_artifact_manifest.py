@@ -87,6 +87,10 @@ ARTIFACTS = (
     ArtifactSpec("results/processed/mapped_scaling.csv", "scripts/run_mapped_scaling.py", "mapped memory/buffer/config scaling rows"),
     ArtifactSpec("results/processed/mapped_scaling_overhead.csv", "scripts/run_mapped_scaling.py", "same-target mapped scaling overhead rows"),
     ArtifactSpec("results/processed/mapped_scaling_summary.csv", "scripts/run_mapped_scaling.py", "mapped scaling summary ranges"),
+    ArtifactSpec("results/processed/mapped_scaling_v2.csv", "scripts/run_mapped_scaling_v2.py", "v2 mapped status rows mirrored from measured evidence when available"),
+    ArtifactSpec("results/processed/mapped_scaling_v2_measured.csv", "scripts/run_v2_measured_evaluation.py", "measured v2 same-target mapped full-core rows"),
+    ArtifactSpec("results/processed/mapped_scaling_overhead_v2_measured.csv", "scripts/run_v2_measured_evaluation.py", "measured v2 same-target mapped overhead rows"),
+    ArtifactSpec("results/processed/mapped_recorder_presence_v2_measured.csv", "scripts/run_v2_measured_evaluation.py", "measured v2 mapped recorder-presence rows"),
     ArtifactSpec("results/processed/mapped_failure_diagnosis.csv", "scripts/diagnose_mapped_failures.py", "mapped P&R failure diagnosis rows"),
     ArtifactSpec("results/processed/topconf_summary.csv", "scripts/generate_topconf_tables.py", "top-conference generated summary rows"),
     ArtifactSpec("results/processed/private_marker_scan.csv", "scripts/scan_private_markers.py", "public text and artifact private-marker scan"),
@@ -121,6 +125,7 @@ ARTIFACTS = (
     ArtifactSpec("tb/verilator/picorv32_baseline_top.sv", "manual/runtime-overhead", "no-recorder PicoRV32 runtime baseline top"),
     ArtifactSpec("tb/verilator/capsule_io.cpp", "manual/rtl-harness", "capsule/signature JSON I/O"),
     ArtifactSpec("tb/verilator/README.md", "manual/rtl-harness", "RTL harness usage and limitations"),
+    ArtifactSpec("tb/system/tb_rcv2_minimal_recorder.sv", "scripts/run_hdl_checks.py", "selected v2 minimal recorder boundary-event fidelity testbench"),
     ArtifactSpec("constraints/ecp5_board.lpf", "manual/mapped-synthesis", "board-level ECP5 IO and clock constraints"),
 )
 
@@ -146,6 +151,9 @@ GLOBS = (
     ("results/raw/mapped_synthesis/*.json", "scripts/run_mapped_synthesis.py", "raw mapped synthesis JSON netlist"),
     ("results/raw/mapped_synthesis/*.config", "scripts/run_mapped_synthesis.py", "raw mapped ECP5 configuration text"),
     ("results/raw/mapped_synthesis/*.asc", "scripts/run_mapped_synthesis.py", "raw mapped iCE40 ASCII bitstream"),
+    ("results/raw/mapped_scaling_v2_measured/*.txt", "scripts/run_v2_measured_evaluation.py", "raw measured v2 mapped synthesis/place-and-route report"),
+    ("results/raw/mapped_scaling_v2_measured/*.json", "scripts/run_v2_measured_evaluation.py", "raw measured v2 mapped synthesis JSON netlist"),
+    ("results/raw/mapped_scaling_v2_measured/*.config", "scripts/run_v2_measured_evaluation.py", "raw measured v2 mapped ECP5 configuration text"),
 )
 
 

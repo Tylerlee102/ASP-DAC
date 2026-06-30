@@ -400,7 +400,7 @@ def _claimable_mapped_configs() -> set[str]:
         for row in _read_csv(overhead_path)
         if row.get("claim_allowed") == "yes"
     }
-    return configs or {"core", "hashed"}
+    return configs or {"minimal"}
 
 
 def _current_status(statuses: dict[str, str]) -> str:

@@ -56,7 +56,7 @@ Required evidence: LUT/FF/BRAM/Fmax from a real synthesis flow.
 
 Current weakness: full-core mapped ECP5 overhead is high.
 
-Fix plan: report the same-target ECP5 LUT/FF/BRAM/Fmax rows exactly and state that this prototype is not area-optimized.
+Fix plan: report the same-target ECP5 LUT/FF/BRAM/Fmax rows exactly, separate the v2 minimal recorder profile from diagnostic-rich core/hashed rows, and state that the diagnostic prototype is not area-optimized.
 
 ## 8. "The capsule is not actually minimal."
 

@@ -1,0 +1,1 @@
+tb_rcv2_minimal_recorder.sv:<line>: $finish called at 241000 (1ps)

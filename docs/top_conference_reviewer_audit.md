@@ -12,7 +12,7 @@ top strengths:
 - artifact scripts produce traceable CSVs and paper artifacts
 
 top weaknesses:
-- mapped LUT/FF overhead is high
+- diagnostic mapped LUT/FF overhead is high
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
@@ -25,7 +25,7 @@ likely reviewer questions:
 
 required paper wording changes:
 - state that mapped data is recorder/instrumented-wrapper evidence, not an autonomous replay engine
-- avoid low-overhead language for area
+- report the selected v2 replay-critical recorder profile separately from diagnostic-rich rows
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
 final recommendation: submit main-track with scoped claims
@@ -40,7 +40,7 @@ top strengths:
 - artifact scripts produce traceable CSVs and paper artifacts
 
 top weaknesses:
-- mapped LUT/FF overhead is high
+- diagnostic mapped LUT/FF overhead is high
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
@@ -53,7 +53,7 @@ likely reviewer questions:
 
 required paper wording changes:
 - state that mapped data is recorder/instrumented-wrapper evidence, not an autonomous replay engine
-- avoid low-overhead language for area
+- report the selected v2 replay-critical recorder profile separately from diagnostic-rich rows
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
 final recommendation: submit main-track with scoped claims
@@ -68,7 +68,7 @@ top strengths:
 - artifact scripts produce traceable CSVs and paper artifacts
 
 top weaknesses:
-- mapped LUT/FF overhead is high
+- diagnostic mapped LUT/FF overhead is high
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
@@ -81,7 +81,7 @@ likely reviewer questions:
 
 required paper wording changes:
 - state that mapped data is recorder/instrumented-wrapper evidence, not an autonomous replay engine
-- avoid low-overhead language for area
+- report the selected v2 replay-critical recorder profile separately from diagnostic-rich rows
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
 final recommendation: submit main-track with scoped claims
@@ -96,7 +96,7 @@ top strengths:
 - artifact scripts produce traceable CSVs and paper artifacts
 
 top weaknesses:
-- mapped LUT/FF overhead is high
+- diagnostic mapped LUT/FF overhead is high
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
@@ -109,7 +109,7 @@ likely reviewer questions:
 
 required paper wording changes:
 - state that mapped data is recorder/instrumented-wrapper evidence, not an autonomous replay engine
-- avoid low-overhead language for area
+- report the selected v2 replay-critical recorder profile separately from diagnostic-rich rows
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
 final recommendation: submit main-track with scoped claims
@@ -124,7 +124,7 @@ top strengths:
 - artifact scripts produce traceable CSVs and paper artifacts
 
 top weaknesses:
-- mapped LUT/FF overhead is high
+- diagnostic mapped LUT/FF overhead is high
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
@@ -137,7 +137,7 @@ likely reviewer questions:
 
 required paper wording changes:
 - state that mapped data is recorder/instrumented-wrapper evidence, not an autonomous replay engine
-- avoid low-overhead language for area
+- report the selected v2 replay-critical recorder profile separately from diagnostic-rich rows
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
 final recommendation: submit main-track with scoped claims
@@ -152,7 +152,7 @@ top strengths:
 - artifact scripts produce traceable CSVs and paper artifacts
 
 top weaknesses:
-- mapped LUT/FF overhead is high
+- diagnostic mapped LUT/FF overhead is high
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
@@ -165,7 +165,7 @@ likely reviewer questions:
 
 required paper wording changes:
 - state that mapped data is recorder/instrumented-wrapper evidence, not an autonomous replay engine
-- avoid low-overhead language for area
+- report the selected v2 replay-critical recorder profile separately from diagnostic-rich rows
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
 final recommendation: submit main-track with scoped claims
@@ -180,7 +180,7 @@ top strengths:
 - artifact scripts produce traceable CSVs and paper artifacts
 
 top weaknesses:
-- mapped LUT/FF overhead is high
+- diagnostic mapped LUT/FF overhead is high
 - replay consume path remains host-driven
 - benchmark and peripheral diversity are limited
 
@@ -193,7 +193,7 @@ likely reviewer questions:
 
 required paper wording changes:
 - state that mapped data is recorder/instrumented-wrapper evidence, not an autonomous replay engine
-- avoid low-overhead language for area
+- report the selected v2 replay-critical recorder profile separately from diagnostic-rich rows
 - keep ASIC/power and multicore/DMA/cache support out of claims
 
 final recommendation: submit main-track with scoped claims

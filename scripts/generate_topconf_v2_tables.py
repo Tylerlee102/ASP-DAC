@@ -129,8 +129,10 @@ def _write_table_mapped_scaling_v2() -> None:
     for row in full_core_rows:
         if row.get("architecture") == "baseline":
             scope = "baseline full-core mapping"
+        elif row.get("recorder_config") == "minimal" and row.get("status") == "PASS":
+            scope = "replay-critical recorder mapping"
         elif row.get("status") == "PASS":
-            scope = "full-core recorder mapping"
+            scope = "diagnostic recorder mapping"
         else:
             scope = "diagnostic config unresolved at measured depth"
         lines.append(
@@ -152,7 +154,7 @@ def _write_limitations_table() -> None:
             r"Core scope & Single-hart RV32I only \\",
             r"Replay consume & v2 host-streamed full-core consumer check; autonomous replay engine not integrated \\",
             r"v2 workload replay & Measured full-core host-driven record/replay rows \\",
-            r"Mapped overhead & v1 rows plus v2 core/hashed ECP5 rows measured; full diagnostic depth unresolved \\",
+            r"Mapped overhead & v1 rows plus selected v2 minimal ECP5 overhead; core/hashed are diagnostic comparisons \\",
             r"ASIC/power & Not measured \\",
             r"\bottomrule",
             r"\end{tabular}",
@@ -210,8 +212,30 @@ def _mapped_lines() -> list[str]:
     rows = read_csv(REPO_ROOT / "results/processed/replay_consumer_mapped.csv")
     row = rows[0] if rows else {}
     overhead_rows = _preferred_csv("mapped_scaling_overhead_v2_measured.csv", "mapped_scaling_overhead_v2.csv")
-    core_lut = next((item.get("percent_overhead", "NA") for item in overhead_rows if item.get("recorder_config") == "core" and item.get("metric") == "lut"), "NA")
-    return ["Mapped overhead v2", f"Replay consumer ECP5-85k status: {row.get('status', 'NA')}", f"Standalone LUT={row.get('lut', 'NA')} FF={row.get('ff', 'NA')}", f"Full-core v2 core LUT overhead: {core_lut}%"]
+    minimal_lut = _mapped_overhead_value(overhead_rows, "minimal", "lut")
+    minimal_ff = _mapped_overhead_value(overhead_rows, "minimal", "ff")
+    minimal_fmax = _mapped_overhead_value(overhead_rows, "minimal", "fmax_mhz")
+    core_lut = _mapped_overhead_value(overhead_rows, "core", "lut")
+    hashed_lut = _mapped_overhead_value(overhead_rows, "hashed", "lut")
+    return [
+        "Mapped overhead v2",
+        f"Replay consumer ECP5-85k status: {row.get('status', 'NA')}",
+        f"Standalone LUT={row.get('lut', 'NA')} FF={row.get('ff', 'NA')}",
+        f"v2 minimal full-core LUT/FF: {minimal_lut}%/{minimal_ff}%",
+        f"v2 minimal Fmax delta: {minimal_fmax}%",
+        f"v2 core/hashed LUT comparison: {core_lut}%/{hashed_lut}%",
+    ]
+
+
+def _mapped_overhead_value(rows: list[dict[str, str]], config: str, metric: str) -> str:
+    return next(
+        (
+            item.get("percent_overhead", "NA")
+            for item in rows
+            if item.get("recorder_config") == config and item.get("metric") == metric
+        ),
+        "NA",
+    )
 
 
 def _recorder_config_lines() -> list[str]:

@@ -1,33 +1,37 @@
 architecture,recorder_config,target,flow,memory_words,buffer_depth,metric,baseline,with_replaycapsule,delta,percent_overhead,claim_allowed,notes
-v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,lut,3342,7508,4166.00,124.66,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,512,8,lut,2536,5432,2896.00,114.20,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,512,8,ff,958,2630,1672.00,174.53,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,512,8,bram,3,3,0.00,0.00,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,512,8,fmax_mhz,73.52,59.14,-14.38,-19.56,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,lut,2758,6175,3417.00,123.89,yes,same-target mapped overhead
 v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,ff,883,3901,3018.00,341.79,yes,same-target mapped overhead
 v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,bram,4,4,0.00,0.00,yes,same-target mapped overhead
-v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,fmax_mhz,65.07,51.53,-13.54,-20.81,yes,same-target mapped overhead
-v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,lut,3359,7570,4211.00,125.36,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,1024,16,fmax_mhz,72.29,59.00,-13.29,-18.38,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,lut,2581,6153,3572.00,138.40,yes,same-target mapped overhead
 v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,ff,883,3901,3018.00,341.79,yes,same-target mapped overhead
 v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,bram,6,6,0.00,0.00,yes,same-target mapped overhead
-v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,fmax_mhz,68.06,50.72,-17.34,-25.48,yes,same-target mapped overhead
-v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,lut,3359,9491,6132.00,182.55,yes,same-target mapped overhead
+v1,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,16,fmax_mhz,70.57,58.74,-11.83,-16.76,yes,same-target mapped overhead
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,lut,2581,8217,5636.00,218.36,yes,same-target mapped overhead
 v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,ff,883,6591,5708.00,646.43,yes,same-target mapped overhead
 v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,bram,6,6,0.00,0.00,yes,same-target mapped overhead
-v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,fmax_mhz,68.06,50.57,-17.49,-25.70,yes,same-target mapped overhead
-v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,lut,3359,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,32,fmax_mhz,70.57,59.94,-10.63,-15.06,yes,same-target mapped overhead
+v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,lut,2581,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
 v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,ff,883,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
 v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,bram,6,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
-v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,fmax_mhz,68.06,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
-v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,lut,3367,9497,6130.00,182.06,yes,same-target mapped overhead
+v1,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,64,fmax_mhz,70.57,NA,NA,NA,no,requires same-target PASS rows and recorder presence PASS
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,lut,2562,8230,5668.00,221.23,yes,same-target mapped overhead
 v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,ff,883,6591,5708.00,646.43,yes,same-target mapped overhead
 v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,bram,10,10,0.00,0.00,yes,same-target mapped overhead
-v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,fmax_mhz,63.10,52.04,-11.06,-17.53,yes,same-target mapped overhead
-v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,lut,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,ff,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,bram,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,fmax_mhz,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,lut,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,ff,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,bram,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,fmax_mhz,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,lut,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,ff,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,bram,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
-v2,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,2048,512,fmax_mhz,NA,NA,NA,NA,no,blocked until same-target full-core v2 board mapping exists
+v1,full,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,4096,32,fmax_mhz,67.01,60.32,-6.69,-9.98,yes,same-target mapped overhead
+v2,minimal,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,lut,2603,2818,215.00,8.26,yes,selected same-target measured full-core v2 overhead claim
+v2,minimal,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,ff,956,992,36.00,3.77,yes,selected same-target measured full-core v2 overhead claim
+v2,minimal,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,bram,3,3,0.00,0.00,yes,selected same-target measured full-core v2 overhead claim
+v2,minimal,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,fmax_mhz,68.85,68.82,-0.03,-0.04,yes,selected same-target measured full-core v2 overhead claim
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,lut,2603,4373,1770.00,68.00,no,measured diagnostic comparison row; not the selected area-overhead claim
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,ff,956,1735,779.00,81.49,no,measured diagnostic comparison row; not the selected area-overhead claim
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,bram,3,3,0.00,0.00,no,measured diagnostic comparison row; not the selected area-overhead claim
+v2,core,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,fmax_mhz,68.85,55.66,-13.19,-19.16,no,measured diagnostic comparison row; not the selected area-overhead claim
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,lut,2603,4365,1762.00,67.69,no,measured diagnostic comparison row; not the selected area-overhead claim
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,ff,956,1735,779.00,81.49,no,measured diagnostic comparison row; not the selected area-overhead claim
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,bram,3,3,0.00,0.00,no,measured diagnostic comparison row; not the selected area-overhead claim
+v2,hashed,ecp5-85k,yosys+synth_ecp5+nextpnr-ecp5,128,8,fmax_mhz,68.85,57.54,-11.31,-16.43,no,measured diagnostic comparison row; not the selected area-overhead claim

@@ -2,10 +2,10 @@
 \toprule
 Design & LUT & FF & BRAM & Fmax MHz & Status & Scope \\
 \midrule
-v2 replay consumer & 787 & 75 & 0 & 87.51 & PASS & standalone prototype \\
+v2 replay consumer & 1033 & 107 & 0 & 84.20 & PASS & standalone prototype \\
 full\_core\_baseline\_board & 2603 & 956 & 3 & 68.85 & PASS & baseline full-core mapping \\
-full\_core\_v2\_core\_board & 4373 & 1735 & 3 & 55.66 & PASS & full-core recorder mapping \\
-full\_core\_v2\_hashed\_board & 4365 & 1735 & 3 & 57.54 & PASS & full-core recorder mapping \\
-full\_core\_v2\_full\_board & NA & NA & NA & NA & FAIL & diagnostic config unresolved at measured depth \\
+full\_core\_v2\_minimal\_board & 2818 & 992 & 3 & 68.82 & PASS & replay-critical recorder mapping \\
+full\_core\_v2\_core\_board & 4373 & 1735 & 3 & 55.66 & PASS & diagnostic recorder mapping \\
+full\_core\_v2\_hashed\_board & 4365 & 1735 & 3 & 57.54 & PASS & diagnostic recorder mapping \\
 \bottomrule
 \end{tabular}

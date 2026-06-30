@@ -34,6 +34,7 @@ def main() -> int:
         _negative_replay_gate(),
         _runtime_overhead_gate(),
         _mapped_synth_gate(),
+        _v2_minimal_recorder_fidelity_gate(),
         _paper_gate(),
         _artifact_gate(),
         _public_readme_updated(),
@@ -155,6 +156,18 @@ def _mapped_synth_gate() -> dict[str, str]:
     )
 
 
+def _v2_minimal_recorder_fidelity_gate() -> dict[str, str]:
+    rows = _rows("results/processed/hdl_checks.csv")
+    row = next((item for item in rows if item.get("check") == "tb_rcv2_minimal_recorder"), {})
+    passed = row.get("status") == "PASS"
+    return _row(
+        "v2_minimal_recorder_fidelity",
+        "PASS" if passed else "FAIL",
+        row.get("raw_log", "results/processed/hdl_checks.csv"),
+        "minimal recorder emits only replay-critical boundary events and replays them through the v2 consumer",
+    )
+
+
 def _paper_gate() -> dict[str, str]:
     paper_status = _first(_rows("results/processed/paper_build_status.csv"))
     claim_fail = _status_fail_count("results/processed/claim_audit.csv", fail_status="REVIEW")
@@ -268,7 +281,8 @@ def _v2_measured_mapped_status() -> tuple[bool, str]:
     scaling = _rows("results/processed/mapped_scaling_v2_measured.csv")
     presence = _rows("results/processed/mapped_recorder_presence_v2_measured.csv")
     overhead = _rows("results/processed/mapped_scaling_overhead_v2_measured.csv")
-    claim_configs = {"core", "hashed"}
+    measured_configs = {"minimal", "core", "hashed"}
+    selected_claim_configs = {"minimal"}
     baseline_pass = any(
         row.get("architecture") == "baseline"
         and row.get("target") == "ecp5-85k"
@@ -292,10 +306,16 @@ def _v2_measured_mapped_status() -> tuple[bool, str]:
         for row in overhead
         if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"
     }
-    passed = baseline_pass and claim_configs <= mapped_configs and claim_configs <= presence_configs and claim_configs <= overhead_configs
+    passed = (
+        baseline_pass
+        and measured_configs <= mapped_configs
+        and measured_configs <= presence_configs
+        and selected_claim_configs <= overhead_configs
+    )
+    total = len(measured_configs)
     notes = (
-        f"v2_measured baseline={baseline_pass} mapped={len(mapped_configs & claim_configs)}/2 "
-        f"presence={len(presence_configs & claim_configs)}/2 overhead={len(overhead_configs & claim_configs)}/2"
+        f"v2_measured baseline={baseline_pass} mapped={len(mapped_configs & measured_configs)}/{total} "
+        f"presence={len(presence_configs & measured_configs)}/{total} selected_overhead={len(overhead_configs & selected_claim_configs)}/{len(selected_claim_configs)}"
     )
     return passed, notes
 

@@ -7,6 +7,12 @@ module full_core_replaycapsule_v2_board_top #(
   parameter bit          ENABLE_PAYLOAD_HASH = (REPLAYCAPSULE_CONFIG != 1),
   parameter bit          ENABLE_ADDRESS_DICTIONARY = 1'b0,
   parameter bit          ENABLE_ADAPTIVE_WINDOW = (REPLAYCAPSULE_CONFIG == 4),
+  parameter bit          ENABLE_PROPERTY_CHECKER = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit          ENABLE_CONTEXT_SLICER = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit          ENABLE_EVENT_BUFFER = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit          ENABLE_SIGNATURE = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit          ENABLE_STATUS_COUNTERS = (REPLAYCAPSULE_CONFIG != 0),
+  parameter bit          ENABLE_MINIMAL_EVENT_TAP = (REPLAYCAPSULE_CONFIG == 0),
   parameter logic [31:0] PROGADDR_RESET = 32'h0000_0080,
   parameter logic [31:0] PROGADDR_IRQ   = 32'h0000_0010,
   parameter logic [31:0] STACKADDR      = 32'h0000_2000
@@ -33,6 +39,7 @@ module full_core_replaycapsule_v2_board_top #(
   logic [31:0] irq;
   logic [31:0] eoi;
   logic [31:0] eoi_q;
+  logic eoi_active_q;
   logic [7:0] memory_gpio_out;
   logic memory_uart_tx;
   logic [31:0] io_status;
@@ -76,15 +83,15 @@ module full_core_replaycapsule_v2_board_top #(
   localparam logic [3:0] TRACE_ADDR_FLAG   = 4'b0010;
 
   assign irq = {24'h0, gpio_in, 3'b000, uart_rx};
-  assign capsule_read_addr = board_counter[CAPSULE_ADDR_W-1:0];
+  assign capsule_read_addr = (REPLAYCAPSULE_CONFIG == 0) ? '0 : board_counter[CAPSULE_ADDR_W-1:0];
   assign trace_kind = core_trace_data[35:32];
   assign trace_payload = core_trace_data[31:0];
   assign trace_is_branch = (trace_kind & TRACE_BRANCH_FLAG) != 4'h0;
   assign trace_is_addr = (trace_kind & TRACE_ADDR_FLAG) != 4'h0;
   assign trace_context_pc = trace_is_branch ? trace_payload : fetch_context_pc;
   assign branch_taken = core_trace_valid && trace_is_branch;
-  assign interrupt_enter = eoi != 32'h0 && eoi_q == 32'h0;
-  assign interrupt_exit = eoi == 32'h0 && eoi_q != 32'h0;
+  assign interrupt_enter = (REPLAYCAPSULE_CONFIG == 0) ? (eoi != 32'h0 && !eoi_active_q) : (eoi != 32'h0 && eoi_q == 32'h0);
+  assign interrupt_exit = (REPLAYCAPSULE_CONFIG == 0) ? (eoi == 32'h0 && eoi_active_q) : (eoi == 32'h0 && eoi_q != 32'h0);
   assign mem_accepted = mem_valid && mem_ready && !mem_instr;
 
   always_ff @(posedge clk or negedge rst_n) begin
@@ -93,13 +100,19 @@ module full_core_replaycapsule_v2_board_top #(
       commit_index <= 32'h0;
       fetch_context_pc <= PROGADDR_RESET;
       eoi_q <= 32'h0;
+      eoi_active_q <= 1'b0;
     end else begin
-      board_counter <= board_counter + 32'h1;
+      if (REPLAYCAPSULE_CONFIG == 0) begin
+        board_counter <= 32'h0;
+      end else begin
+        board_counter <= board_counter + 32'h1;
+      end
       eoi_q <= eoi;
+      eoi_active_q <= eoi != 32'h0;
       if (core_trace_valid && !trace_is_addr) begin
         commit_index <= commit_index + 32'h1;
       end
-      if (mem_valid && mem_ready && mem_instr) begin
+      if (REPLAYCAPSULE_CONFIG != 0 && mem_valid && mem_ready && mem_instr) begin
         fetch_context_pc <= mem_addr;
       end
     end
@@ -191,25 +204,31 @@ module full_core_replaycapsule_v2_board_top #(
     .ENABLE_ADDRESS_DICTIONARY(ENABLE_ADDRESS_DICTIONARY),
     .ENABLE_BRam_FIFO(1'b1),
     .ENABLE_ADAPTIVE_WINDOW(ENABLE_ADAPTIVE_WINDOW),
-    .ENABLE_WATCHDOG(1'b0)
+    .ENABLE_WATCHDOG(1'b0),
+    .ENABLE_PROPERTY_CHECKER(ENABLE_PROPERTY_CHECKER),
+    .ENABLE_CONTEXT_SLICER(ENABLE_CONTEXT_SLICER),
+    .ENABLE_EVENT_BUFFER(ENABLE_EVENT_BUFFER),
+    .ENABLE_SIGNATURE(ENABLE_SIGNATURE),
+    .ENABLE_STATUS_COUNTERS(ENABLE_STATUS_COUNTERS),
+    .ENABLE_MINIMAL_EVENT_TAP(ENABLE_MINIMAL_EVENT_TAP)
   ) u_rcv2_recorder (
     .clk(clk),
     .rst_n(rst_n),
     .clear(1'b0),
     .watchdog_enable(gpio_in[1]),
     .commit_valid(core_trace_valid && !trace_is_addr),
-    .commit_pc(trace_context_pc),
+    .commit_pc((REPLAYCAPSULE_CONFIG == 0) ? 32'h0 : trace_context_pc),
     .commit_instr(32'h0000_0013),
     .commit_index(commit_index),
-    .branch_taken(branch_taken),
+    .branch_taken((REPLAYCAPSULE_CONFIG == 0) ? 1'b0 : branch_taken),
     .jump_taken(1'b0),
     .mem_valid(mem_accepted),
     .mem_write(mem_wstrb != 4'h0),
     .mem_addr(mem_addr),
     .mem_wdata(mem_wdata),
     .mem_rdata(mem_rdata),
-    .external_input_valid(board_counter[4] ^ uart_rx ^ gpio_in[0]),
-    .external_input_value(board_counter ^ {24'h0, gpio_in, 3'b000, uart_rx}),
+    .external_input_valid((REPLAYCAPSULE_CONFIG == 0) ? (uart_rx ^ gpio_in[0]) : (board_counter[4] ^ uart_rx ^ gpio_in[0])),
+    .external_input_value((REPLAYCAPSULE_CONFIG == 0) ? {24'h0, gpio_in, 3'b000, uart_rx} : (board_counter ^ {24'h0, gpio_in, 3'b000, uart_rx})),
     .interrupt_enter(interrupt_enter),
     .interrupt_exit(interrupt_exit),
     .checkpoint_hash_req(1'b0),
@@ -240,29 +259,43 @@ module full_core_replaycapsule_v2_board_top #(
     .stream_fifo_level(stream_fifo_level)
   );
 
-  assign recorder_status_mix =
-    running_signature ^
-    property_signature ^
-    capsule_read_data[31:0] ^
-    capsule_read_data[63:32] ^
-    {{CAPSULE_COUNT_PAD_W{1'b0}}, capsule_event_count} ^
-    {24'h0, property_id} ^
-    {28'h0, captured_event_type} ^
-    capsule_stream_word[31:0] ^
-    capsule_stream_word[63:32] ^
-    stream_event_count ^
-    stream_event_sent_count ^
-    replay_critical_event_count ^
-    stream_stall_count ^
-    dropped_diagnostic_count ^
-    replay_critical_overflow_count ^
-    {{CAPSULE_COUNT_PAD_W{1'b0}}, stream_fifo_level} ^
-    mem_addr ^
-    mem_wdata ^
-    mem_rdata ^
-    io_status ^
-    eoi ^
-    board_counter;
+  always_comb begin
+    if (REPLAYCAPSULE_CONFIG == 0) begin
+      recorder_status_mix =
+        capsule_stream_word[31:0] ^
+        capsule_stream_word[63:32] ^
+        {26'h0, capsule_stream_valid, captured_event_valid, captured_event_type} ^
+        mem_addr ^
+        mem_wdata ^
+        mem_rdata ^
+        io_status ^
+        eoi;
+    end else begin
+      recorder_status_mix =
+        running_signature ^
+        property_signature ^
+        capsule_read_data[31:0] ^
+        capsule_read_data[63:32] ^
+        {{CAPSULE_COUNT_PAD_W{1'b0}}, capsule_event_count} ^
+        {24'h0, property_id} ^
+        {28'h0, captured_event_type} ^
+        capsule_stream_word[31:0] ^
+        capsule_stream_word[63:32] ^
+        stream_event_count ^
+        stream_event_sent_count ^
+        replay_critical_event_count ^
+        stream_stall_count ^
+        dropped_diagnostic_count ^
+        replay_critical_overflow_count ^
+        {{CAPSULE_COUNT_PAD_W{1'b0}}, stream_fifo_level} ^
+        mem_addr ^
+        mem_wdata ^
+        mem_rdata ^
+        io_status ^
+        eoi ^
+        board_counter;
+    end
+  end
 
   assign gpio_out = memory_gpio_out ^ recorder_status_mix[7:0];
   assign uart_tx = memory_uart_tx ^ trap ^ recorder_status_mix[8];

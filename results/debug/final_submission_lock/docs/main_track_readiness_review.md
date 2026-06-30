@@ -5,10 +5,10 @@ Evidence basis: CI run latest successful final-reproduce run on master, artifact
 ## Hardware architecture reviewer
 
 - score: weak accept
-- strengths: clean recorder decomposition; full-core ECP5 mapping is now present.
-- weaknesses: record-side overhead is substantial.
+- strengths: clean recorder decomposition; selected v2 replay-critical mapped profile is now present.
+- weaknesses: diagnostic-rich record-side overhead is substantial.
 - fatal blockers: none.
-- required edits before submission: keep overhead discussion honest.
+- required edits before submission: keep minimal recorder and diagnostic rows separate.
 - final recommendation: weak accept.
 
 ## EDA/synthesis reviewer
