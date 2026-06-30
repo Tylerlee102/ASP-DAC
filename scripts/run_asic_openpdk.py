@@ -62,7 +62,7 @@ OVERHEAD_FIELDS = [
 SUMMARY_FIELDS = ["gate", "status", "pass_rows", "area_only_rows", "blocked_rows", "fail_rows", "notes"]
 
 YOSYS_AREA_TIMEOUT_SECONDS = 240
-OPENROAD_TIMEOUT_SECONDS = 900
+OPENROAD_TIMEOUT_SECONDS = int(os.environ.get("ASIC_OPENPDK_OPENROAD_TIMEOUT", "900"))
 NANGATE45_SITE = "FreePDK45_38x28_10R_NP_162NW_34O"
 TARGET_UTILIZATION = 0.55
 CORE_MARGIN_UM = 20.0
@@ -310,12 +310,15 @@ def _openroad_rows(area_rows: list[dict[str, object]]) -> list[dict[str, object]
     area_by_design = {str(row.get("design")): row for row in area_rows}
     rows: list[dict[str, object]] = []
     for design in DESIGNS:
+        print(f"ASIC_OPENPDK_START design={design.design}", flush=True)
         area_row = area_by_design.get(design.design, {})
         mapped_netlist = RAW_DIR / f"{design.design}_yosys_area_mapped.v"
         if area_row.get("status") != "PASS" or not mapped_netlist.exists():
             rows.append(_blocked_row(design, "missing passing Yosys mapped netlist for OpenROAD physical flow"))
+            print(f"ASIC_OPENPDK_DONE design={design.design} status=BLOCKED", flush=True)
             continue
         rows.append(_run_openroad_physical(design, area_row, openroad, mapped_netlist))
+        print(f"ASIC_OPENPDK_DONE design={design.design} status={rows[-1]['status']}", flush=True)
     return rows
 
 
@@ -338,12 +341,25 @@ def _run_openroad_physical(
             timeout=OPENROAD_TIMEOUT_SECONDS,
             check=False,
         )
-    except (OSError, subprocess.TimeoutExpired) as exc:
+    except OSError as exc:
         log_path.write_text(str(exc) + "\n", encoding="utf-8")
         row = _blocked_row(design, "OpenROAD invocation failed")
         row["status"] = "FAIL"
         row["report_path"] = rel(log_path)
         row["notes"] = _single_line(str(exc))
+        return row
+    except subprocess.TimeoutExpired as exc:
+        partial = ""
+        if exc.stdout:
+            partial += exc.stdout if isinstance(exc.stdout, str) else exc.stdout.decode("utf-8", errors="replace")
+        if exc.stderr:
+            partial += exc.stderr if isinstance(exc.stderr, str) else exc.stderr.decode("utf-8", errors="replace")
+        partial += f"\nRC_OPENROAD_TIMEOUT after {OPENROAD_TIMEOUT_SECONDS}s\n"
+        log_path.write_text(_clean_log(partial), encoding="utf-8")
+        row = _blocked_row(design, "OpenROAD invocation timed out")
+        row["status"] = "FAIL"
+        row["report_path"] = rel(log_path)
+        row["notes"] = f"OpenROAD timeout after {OPENROAD_TIMEOUT_SECONDS}s; see partial log"
         return row
 
     log_text = _clean_log(completed.stdout)
@@ -353,7 +369,7 @@ def _run_openroad_physical(
     metrics_present = metrics["cell_area_um2"] != "NA" and metrics["wns_ns"] != "NA" and metrics["power_mw"] != "NA"
     status = "PASS" if flow_pass and metrics_present else "FAIL"
     notes = (
-        "OpenROAD placed/routed Nangate45 physical-flow row with parsed area/timing/power"
+        f"OpenROAD placed/{_route_stage_label()} Nangate45 physical-flow row with parsed area/timing/power"
         if status == "PASS"
         else _openroad_failure_note(completed.returncode, log_text, metrics_present)
     )
@@ -361,7 +377,7 @@ def _run_openroad_physical(
         "architecture": design.architecture,
         "recorder_config": design.recorder_config,
         "target": _target_name(),
-        "flow": "yosys+openroad-openpdk",
+        "flow": f"yosys+openroad-openpdk-{_route_stage_label()}",
         "design": design.design,
         "top": design.top,
         "memory_words": design.memory_words,
@@ -420,7 +436,11 @@ def _write_openroad_flow_tcl(design: Design, area_row: dict[str, object], mapped
                 "  puts \"RC_OPENROAD_WARN clock_tree_synthesis command unavailable\"",
                 "}",
                 "rc_try global_route {global_route}",
-                "rc_try detailed_route {detailed_route}",
+                *(
+                    ["rc_try detailed_route {detailed_route}"]
+                    if _detailed_route_enabled()
+                    else ["puts \"RC_OPENROAD_WARN detailed_route disabled; using global-routed timing/power evidence\""]
+                ),
                 "if {[catch {estimate_parasitics -global_routing} err]} {",
                 "  puts \"RC_OPENROAD_WARN estimate_parasitics_global $err\"",
                 "  rc_try estimate_parasitics_placement_final {estimate_parasitics -placement}",
@@ -477,6 +497,14 @@ def _parse_total_power_w(log_text: str) -> float | None:
         if numbers:
             return numbers[-1]
     return None
+
+
+def _detailed_route_enabled() -> bool:
+    return os.environ.get("ASIC_OPENPDK_ROUTE_STAGE", "detailed").lower() in {"detailed", "detail", "droute"}
+
+
+def _route_stage_label() -> str:
+    return "detailed-routed" if _detailed_route_enabled() else "global-routed"
 
 
 def _first_float(patterns: tuple[str, ...], text: str, *, last: bool = False) -> float | None:
