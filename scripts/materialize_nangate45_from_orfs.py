@@ -32,21 +32,23 @@ def main() -> int:
 
     if liberty is None:
         raise SystemExit(f"missing {LIBERTY_NAME} under search roots: {', '.join(map(str, roots))}")
-    if combined_lef is None and (tech_lef is None or macro_lef is None):
+    if (tech_lef is None or macro_lef is None) and (
+        combined_lef is None or not _lef_has_cell_macros_before_end(combined_lef)
+    ):
         raise SystemExit(
-            f"missing {COMBINED_LEF_NAME}, or {TECH_LEF_NAME}+{MACRO_LEF_NAME}, under search roots: "
+            f"missing usable {COMBINED_LEF_NAME}, or {TECH_LEF_NAME}+{MACRO_LEF_NAME}, under search roots: "
             + ", ".join(map(str, roots))
         )
 
     out = args.output
     out.mkdir(parents=True, exist_ok=True)
     _copy_if_different(liberty, out / LIBERTY_NAME)
-    if combined_lef is not None:
-        _copy_if_different(combined_lef, out / COMBINED_LEF_NAME)
-    else:
+    if tech_lef is not None and macro_lef is not None:
         _combine_lefs((tech_lef, macro_lef), out / COMBINED_LEF_NAME)
         _copy_if_different(tech_lef, out / TECH_LEF_NAME)
         _copy_if_different(macro_lef, out / MACRO_LEF_NAME)
+    else:
+        _copy_if_different(combined_lef, out / COMBINED_LEF_NAME)
     (out / "README.md").write_text(
         "Nangate45 Liberty/LEF files copied from the OpenROAD-flow-scripts container for ReplayCapsule ASIC evidence.\n",
         encoding="utf-8",
@@ -102,18 +104,37 @@ def _find_first(roots: list[Path], name: str) -> Path | None:
 
 def _combine_lefs(inputs: tuple[Path | None, Path | None], output: Path) -> None:
     with output.open("w", encoding="utf-8") as handle:
-        for path in inputs:
+        for index, path in enumerate(inputs):
             if path is None:
                 continue
             handle.write(f"# ---- {path.name} ----\n")
-            handle.write(path.read_text(encoding="utf-8", errors="replace"))
+            for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+                stripped = line.strip()
+                upper = stripped.upper()
+                if upper == "END LIBRARY":
+                    continue
+                if index > 0 and upper.startswith(("VERSION ", "BUSBITCHARS ", "DIVIDERCHAR ")):
+                    continue
+                handle.write(line)
+                handle.write("\n")
             handle.write("\n")
+        handle.write("END LIBRARY\n")
 
 
 def _copy_if_different(source: Path, dest: Path) -> None:
     if source.resolve() == dest.resolve():
         return
     shutil.copy2(source, dest)
+
+
+def _lef_has_cell_macros_before_end(path: Path) -> bool:
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        stripped = line.strip()
+        if stripped.upper() == "END LIBRARY":
+            return False
+        if stripped in {"MACRO INV_X1", "MACRO NAND2_X1", "MACRO DFF_X1"}:
+            return True
+    return False
 
 
 if __name__ == "__main__":
