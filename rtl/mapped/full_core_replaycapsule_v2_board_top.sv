@@ -3,6 +3,10 @@ module full_core_replaycapsule_v2_board_top #(
   parameter int          CAPSULE_DEPTH  = 128,
   parameter int          CAPSULE_ADDR_W = $clog2(CAPSULE_DEPTH),
   parameter int          REPLAYCAPSULE_CONFIG = 1,
+  parameter bit          ENABLE_DIAGNOSTICS = (REPLAYCAPSULE_CONFIG == 4),
+  parameter bit          ENABLE_PAYLOAD_HASH = (REPLAYCAPSULE_CONFIG != 1),
+  parameter bit          ENABLE_ADDRESS_DICTIONARY = 1'b0,
+  parameter bit          ENABLE_ADAPTIVE_WINDOW = (REPLAYCAPSULE_CONFIG == 4),
   parameter logic [31:0] PROGADDR_RESET = 32'h0000_0080,
   parameter logic [31:0] PROGADDR_IRQ   = 32'h0000_0010,
   parameter logic [31:0] STACKADDR      = 32'h0000_2000
@@ -174,11 +178,11 @@ module full_core_replaycapsule_v2_board_top #(
     .BUFFER_DEPTH(CAPSULE_DEPTH),
     .MEMORY_WORDS(CAPSULE_DEPTH),
     .MEMORY_ADDR_W(CAPSULE_ADDR_W),
-    .ENABLE_DIAGNOSTICS(1'b1),
-    .ENABLE_PAYLOAD_HASH(1'b1),
-    .ENABLE_ADDRESS_DICTIONARY(1'b1),
+    .ENABLE_DIAGNOSTICS(ENABLE_DIAGNOSTICS),
+    .ENABLE_PAYLOAD_HASH(ENABLE_PAYLOAD_HASH),
+    .ENABLE_ADDRESS_DICTIONARY(ENABLE_ADDRESS_DICTIONARY),
     .ENABLE_BRam_FIFO(1'b1),
-    .ENABLE_ADAPTIVE_WINDOW(1'b1),
+    .ENABLE_ADAPTIVE_WINDOW(ENABLE_ADAPTIVE_WINDOW),
     .ENABLE_WATCHDOG(1'b0)
   ) u_rcv2_recorder (
     .clk(clk),

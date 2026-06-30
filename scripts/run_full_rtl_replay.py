@@ -78,6 +78,9 @@ VERILATOR_SOURCE_PATHS = (
     "rtl/replaycapsule_v2/rcv2_event_packer.sv",
     "rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv",
     "rtl/replaycapsule_v2/rcv2_recorder.sv",
+    "rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv",
+    "rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv",
+    "rtl/replaycapsule_v2/rcv2_replay_consumer.sv",
     "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
     "tb/verilator/main.cpp",
     "tb/verilator/rtl_harness.cpp",
@@ -133,6 +136,11 @@ FIELDS_V2 = [
     "cycles_to_failure",
     "commits_to_failure",
     "overflow",
+    "replay_consumer_status",
+    "replay_consumer_checked",
+    "replay_consumer_consumed",
+    "replay_consumer_expected",
+    "replay_consumer_error_code",
     "notes",
 ]
 
@@ -555,13 +563,18 @@ def _run_case(
         "replay_status": replay_status,
         "property_id_record": str(record_payload.get("property_id", "NA")),
         "property_id_replay": str(replay_payload.get("property_id", "NA")),
-        "commit_match": "PASS" if str(record_payload.get("commits_to_failure")) == str(replay_payload.get("commits_to_failure")) else "FAIL",
+        "commit_match": _commit_match_status(record_payload, replay_payload),
         "event_match": event_match,
         "final_signature_match": final_match,
         "capsule_bytes": str(record_payload.get("capsule_bytes", "NA")),
         "cycles_to_failure": str(record_payload.get("cycles_to_failure", "NA")),
         "commits_to_failure": str(record_payload.get("commits_to_failure", "NA")),
         "overflow": _csv_bool(capsule_payload.get("overflow", "NA")),
+        "replay_consumer_status": "PASS" if replay_payload.get("replay_consumer_ok") is True else "FAIL",
+        "replay_consumer_checked": _csv_bool(replay_payload.get("replay_consumer_checked", "NA")),
+        "replay_consumer_consumed": str(replay_payload.get("replay_consumer_consumed", "NA")),
+        "replay_consumer_expected": str(replay_payload.get("replay_consumer_expected", "NA")),
+        "replay_consumer_error_code": str(replay_payload.get("replay_consumer_error_code", "NA")),
         "firmware_source": firmware_meta["firmware_source"],
         "firmware_sha256": firmware_meta["firmware_sha256"],
         "compiler_backed": firmware_meta["compiler_backed"],
@@ -1009,6 +1022,11 @@ def _blocked_row(benchmark: str, variant: str, seed: int, notes: str) -> dict[st
         "firmware_source": "NA",
         "firmware_sha256": "NA",
         "compiler_backed": "false",
+        "replay_consumer_status": "NA",
+        "replay_consumer_checked": "false",
+        "replay_consumer_consumed": "NA",
+        "replay_consumer_expected": "NA",
+        "replay_consumer_error_code": "NA",
         "notes": notes,
     }
 
@@ -1046,6 +1064,11 @@ def _failed_row(
         "firmware_source": firmware_meta.get("firmware_source", "NA"),
         "firmware_sha256": firmware_meta.get("firmware_sha256", "NA"),
         "compiler_backed": firmware_meta.get("compiler_backed", "false"),
+        "replay_consumer_status": "NA",
+        "replay_consumer_checked": "false",
+        "replay_consumer_consumed": "NA",
+        "replay_consumer_expected": "NA",
+        "replay_consumer_error_code": "NA",
         "notes": _clean(notes).splitlines()[-1] if _clean(notes).splitlines() else "RTL run failed",
     }
 
@@ -1172,6 +1195,14 @@ def _event_count_from_row(row: dict[str, str]) -> str:
         return str(int(value) // bytes_per_event)
     except (TypeError, ValueError):
         return "NA"
+
+
+def _commit_match_status(record_payload: dict[str, object], replay_payload: dict[str, object]) -> str:
+    record_property = str(record_payload.get("property_id", "NA"))
+    replay_property = str(replay_payload.get("property_id", "NA"))
+    if record_property in {"0", "NA", ""} and replay_property in {"0", "NA", ""}:
+        return "NA"
+    return "PASS" if str(record_payload.get("commits_to_failure")) == str(replay_payload.get("commits_to_failure")) else "FAIL"
 
 
 def _likely_root_cause(row: dict[str, str]) -> str:

@@ -34,6 +34,11 @@ struct HarnessResult {
   Capsule capsule;
   uint64_t cycles_to_failure = 0;
   uint64_t commits_to_failure = 0;
+  bool replay_consumer_checked = false;
+  bool replay_consumer_ok = true;
+  uint32_t replay_consumer_expected = 0;
+  uint32_t replay_consumer_consumed = 0;
+  uint32_t replay_consumer_error_code = 0;
 };
 
 HarnessResult run_harness(const HarnessOptions& options);

@@ -27,5 +27,5 @@ g++    runtime_main.o verilated.o verilated_threads.o Vreplaycapsule_verilator_t
 rm Vreplaycapsule_verilator_top__ALL.verilator_deplist.tmp
 make[1]: Leaving directory 'R:/build/verilator/runtime_recorder_obj_dir'
 - V e r i l a t i o n   R e p o r t: Verilator 5.049 devel rev v5.048-331-g0ebae4371 (mod)
-- Verilator: Built from 2.452 MB sources in 25 modules, into 0.753 MB in 5 C++ files needing 0.001 MB
-- Verilator: Walltime 10.862 s (elab=0.016, cvt=0.119, bld=10.664); cpu 0.000 s on 1 threads; allocated 31.727 MB
+- Verilator: Built from 3.143 MB sources in 28 modules, into 0.888 MB in 5 C++ files needing 0.001 MB
+- Verilator: Walltime 11.730 s (elab=0.024, cvt=0.101, bld=11.543); cpu 0.000 s on 1 threads; allocated 33.910 MB

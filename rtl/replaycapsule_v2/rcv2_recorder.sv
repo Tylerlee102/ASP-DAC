@@ -47,6 +47,10 @@ module rcv2_recorder #(
   output logic [31:0] property_signature,
   output logic        captured_event_valid,
   output logic [3:0]  captured_event_type,
+  output logic [31:0] captured_event_commit_index,
+  output logic [31:0] captured_event_addr,
+  output logic [31:0] captured_event_data,
+  output logic [31:0] captured_event_payload_hash,
   output logic [31:0] dropped_diagnostic_count
 );
   `include "../event_defs.svh"
@@ -213,48 +217,71 @@ module rcv2_recorder #(
 
   assign dict_lookup_valid = final_event_valid && (final_event_type == EV_MMIO_READ || final_event_type == EV_MMIO_WRITE);
 
-  rcv2_address_dictionary #(
-    .ENTRIES(8),
-    .INDEX_W(3)
-  ) u_address_dictionary (
-    .clk(clk),
-    .rst_n(rst_n),
-    .clear(clear),
-    .lookup_valid(dict_lookup_valid),
-    .allocate(ENABLE_ADDRESS_DICTIONARY && classifier_keep_event),
-    .lookup_addr(final_addr),
-    .dict_hit(dict_hit),
-    .dict_index(dict_index)
-  );
+  generate
+    if (ENABLE_ADDRESS_DICTIONARY) begin : g_address_dictionary
+      rcv2_address_dictionary #(
+        .ENTRIES(8),
+        .INDEX_W(3)
+      ) u_address_dictionary (
+        .clk(clk),
+        .rst_n(rst_n),
+        .clear(clear),
+        .lookup_valid(dict_lookup_valid),
+        .allocate(classifier_keep_event),
+        .lookup_addr(final_addr),
+        .dict_hit(dict_hit),
+        .dict_index(dict_index)
+      );
+    end else begin : g_no_address_dictionary
+      assign dict_hit = 1'b0;
+      assign dict_index = 3'h0;
+    end
+  endgenerate
 
-  rcv2_payload_hasher u_payload_hasher (
-    .enable(EFF_HASH),
-    .event_valid(final_event_valid),
-    .event_type(final_event_type),
-    .commit_index(final_commit_index),
-    .addr(final_addr),
-    .data(final_data),
-    .hash_valid(hash_valid),
-    .payload_hash(payload_hash)
-  );
+  generate
+    if (EFF_HASH) begin : g_payload_hasher
+      rcv2_payload_hasher u_payload_hasher (
+        .enable(1'b1),
+        .event_valid(final_event_valid),
+        .event_type(final_event_type),
+        .commit_index(final_commit_index),
+        .addr(final_addr),
+        .data(final_data),
+        .hash_valid(hash_valid),
+        .payload_hash(payload_hash)
+      );
+    end else begin : g_no_payload_hasher
+      assign hash_valid = 1'b1;
+      assign payload_hash = final_data;
+    end
+  endgenerate
 
-  rcv2_adaptive_window #(
-    .COUNT_W(MEMORY_ADDR_W + 1),
-    .HIGH_WATERMARK_MARGIN(16)
-  ) u_adaptive_window (
-    .clk(clk),
-    .rst_n(rst_n),
-    .clear(clear),
-    .event_valid(classifier_keep_event),
-    .event_is_replay_critical(event_is_replay_critical),
-    .diagnostics_requested(EFF_DIAG || !ENABLE_ADAPTIVE_WINDOW),
-    .used_words(capsule_event_count),
-    .capacity_words((MEMORY_ADDR_W + 1)'(MEMORY_WORDS)),
-    .capture_event(adaptive_capture_event),
-    .diagnostics_enabled_eff(diagnostics_enabled_eff),
-    .adaptive_drop(adaptive_drop),
-    .dropped_diagnostic_count(dropped_diagnostic_count)
-  );
+  generate
+    if (ENABLE_ADAPTIVE_WINDOW) begin : g_adaptive_window
+      rcv2_adaptive_window #(
+        .COUNT_W(MEMORY_ADDR_W + 1),
+        .HIGH_WATERMARK_MARGIN(16)
+      ) u_adaptive_window (
+        .clk(clk),
+        .rst_n(rst_n),
+        .clear(clear),
+        .event_valid(classifier_keep_event),
+        .event_is_replay_critical(event_is_replay_critical),
+        .diagnostics_requested(EFF_DIAG),
+        .used_words(capsule_event_count),
+        .capacity_words((MEMORY_ADDR_W + 1)'(MEMORY_WORDS)),
+        .capture_event(adaptive_capture_event),
+        .diagnostics_enabled_eff(diagnostics_enabled_eff),
+        .adaptive_drop(adaptive_drop),
+        .dropped_diagnostic_count(dropped_diagnostic_count)
+      );
+    end else begin : g_no_adaptive_window
+      assign adaptive_capture_event = 1'b1;
+      assign diagnostics_enabled_eff = EFF_DIAG;
+      assign adaptive_drop = 1'b0;
+      assign dropped_diagnostic_count = 32'h0;
+    end
+  endgenerate
 
   rcv2_event_packer #(
     .ENABLE_DIAGNOSTICS(EFF_DIAG),
@@ -284,6 +311,10 @@ module rcv2_recorder #(
   assign fifo_write_valid = packed_valid && hash_valid;
   assign captured_event_valid = fifo_write_valid;
   assign captured_event_type = final_event_type;
+  assign captured_event_commit_index = final_commit_index;
+  assign captured_event_addr = final_addr;
+  assign captured_event_data = final_data;
+  assign captured_event_payload_hash = payload_hash;
 
   rcv2_event_fifo_bram #(
     .WORD_WIDTH(64),

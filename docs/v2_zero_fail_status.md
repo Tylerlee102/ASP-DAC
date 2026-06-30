@@ -1,6 +1,6 @@
 # ReplayCapsule-RV v2 Zero-Fail Status
 
-Last inspected: 2026-06-28.
+Last inspected: 2026-06-29.
 
 ## Bottom Line
 
@@ -14,13 +14,13 @@ measured v2 evidence set.
 
 | Requirement | Evidence | Current result |
 | --- | --- | --- |
-| v2 all-benchmark core/hashed/full replay | `results/processed/full_rtl_replay_v2.csv` | 135/135 PASS rows across core, hashed, and full recorder configs |
+| v2 all-benchmark core/hashed/full replay | `results/processed/full_rtl_replay_v2.csv` | 135/135 PASS rows across core, hashed, and full recorder configs with RTL consumer checks |
 | v2 workload scaling | `results/processed/workload_scaling_v2_measured.csv` | 1125/1125 PASS rows |
-| v2 buffer sensitivity | `results/processed/buffer_sensitivity_v2_measured.csv` | 6750/6750 v2 measured PASS rows across depths 64, 128, 256, 512, 1024, and 2048 |
+| v2 buffer sensitivity | `results/processed/buffer_sensitivity_v2_measured.csv` | 1125/1125 v2 measured PASS rows at the measured depth; other depths remain explicit blocked placeholders unless regenerated |
 | v2 runtime overhead | `results/processed/runtime_scaling_v2_measured.csv` | 25/25 MEASURED rows across baseline, disabled recorder, and v2 core/hashed/full configs |
-| v2 mapped full-core overhead | `results/processed/mapped_scaling_v2_measured.csv` and `results/processed/mapped_scaling_overhead_v2_measured.csv` | Same-target ECP5-85k baseline plus v2 core/hashed/full PASS at memory 128, buffer depth 16; all 12 overhead rows are claim-allowed |
-| v2 mapped recorder presence | `results/processed/mapped_recorder_presence_v2_measured.csv` | 3/3 PASS rows with recorder hierarchy present |
-| v2 new benchmark PASS coverage | `results/processed/expanded_benchmark_replay_measured.csv` | 12/12 PASS rows for `commanded_actuator_limit_bug` and `late_config_sequence_bug` across core/hashed/full |
+| v2 mapped full-core overhead | `results/processed/mapped_scaling_v2_measured.csv` and `results/processed/mapped_scaling_overhead_v2_measured.csv` | Same-target ECP5-85k baseline plus v2 core/hashed PASS at memory 128, buffer depth 8; full diagnostic depth-256 row is a visible non-claim timeout |
+| v2 mapped recorder presence | `results/processed/mapped_recorder_presence_v2_measured.csv` | 2/2 claimable core/hashed rows PASS with recorder hierarchy present |
+| v2 new benchmark PASS coverage | `results/processed/expanded_benchmark_replay_measured.csv` | 36/36 PASS rows for `commanded_actuator_limit_bug` and `late_config_sequence_bug` across core/hashed/full and three seeds |
 | v2 replay-consume system tests | `results/processed/replay_consumer_system_tests.csv` | 8/8 PASS rows |
 
 ## Reproduction Commands
@@ -54,16 +54,18 @@ Safe claims:
 
 - Compiler-backed, host-driven v2 full RTL record/replay passes for the scoped
   single-hart RV32I interrupt/MMIO benchmark suite.
-- v2 workload scaling, runtime overhead, buffer sensitivity, and same-target
-  ECP5 full-core overhead are measured in the listed CSVs.
+- v2 workload scaling, runtime overhead, measured-depth buffer sensitivity, and
+  same-target ECP5 full-core overhead for claimable core/hashed configs are
+  measured in the listed CSVs.
 - Two additional compiler-backed firmware benchmark families have measured v2
-  PASS coverage.
+  PASS coverage across three seeds.
 
 Still forbidden:
 
 - Do not claim autonomous full-core hardware replay consumption. The
-  replay-consume controller is real RTL with tests, but the full-core replay
-  flow remains host-driven.
+  replay-consume controller is real RTL with tests and host-streamed full-core
+  checks, but capsule storage/streaming and MMIO/IRQ replay muxing remain
+  future work.
 - Do not claim ASIC area, power, or timing.
 - Do not claim multicore, DMA, cache-coherent, OS, or broad platform replay.
 - Do not describe v2 overhead as low; report the measured overhead.

@@ -8,11 +8,16 @@
   "packet_width_bits": 64,
   "property_id": 5,
   "property_signature": "0x0d0e0013",
-  "cycles_to_failure": 59,
+  "cycles_to_failure": 58,
   "commits_to_failure": 15,
   "event_count": 18,
   "capsule_bytes": 144,
   "overflow": false,
   "replay_ok": true,
-  "notes": "record/replay canonical events match"
+  "replay_consumer_checked": true,
+  "replay_consumer_ok": true,
+  "replay_consumer_expected": 18,
+  "replay_consumer_consumed": 18,
+  "replay_consumer_error_code": 0,
+  "notes": "record/replay canonical events match; rtl replay consumer consumed 18/18"
 }

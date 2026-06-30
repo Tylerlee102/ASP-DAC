@@ -623,7 +623,7 @@ def _latex_limitations_table() -> str:
         "Processor & single-hart RV32I/PicoRV32 \\\\",
         "Nondeterminism & commit-indexed interrupt/MMIO boundary events \\\\",
         "Replay engine & host-driven Verilator harness \\\\",
-        "Replay hardware & tested standalone v2 replay-consume controller; no full-core consume datapath \\\\",
+        "Replay hardware & v2 host-streamed full-core consumer check; no autonomous replay engine \\\\",
         "Memory system & no multicore, DMA, cache-coherence, or analog-device model \\\\",
         "Optimization & bring-up/debug fidelity prioritized over area minimization \\\\",
         "\\bottomrule",

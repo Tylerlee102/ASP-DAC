@@ -16,6 +16,11 @@ module picorv32_replaycapsule_wrapper #(
   input  logic [3:0]  capture_mode,
   input  logic [1:0]  arch_select,
   input  logic [1:0]  recorder_config_select,
+  input  logic        replay_consume_start,
+  input  logic [31:0] replay_consume_expected_count,
+  input  logic        replay_consume_valid,
+  input  logic [63:0] replay_consume_word,
+  input  logic        replay_consume_stream_done,
 
   output logic        trap,
   output logic        mem_valid,
@@ -40,7 +45,13 @@ module picorv32_replaycapsule_wrapper #(
   output logic [31:0] running_signature,
   output logic        property_fail_valid,
   output logic [7:0]  property_id,
-  output logic [31:0] property_signature
+  output logic [31:0] property_signature,
+  output logic        replay_consume_ready,
+  output logic        replay_consume_observed_valid,
+  output logic        replay_consume_all_events,
+  output logic        replay_consume_error,
+  output logic [7:0]  replay_consume_error_code,
+  output logic [31:0] replay_consume_consumed_count
 );
   `include "../event_defs.svh"
 
@@ -81,6 +92,12 @@ module picorv32_replaycapsule_wrapper #(
   logic v2_core_property_fail_valid;
   logic [7:0] v2_core_property_id;
   logic [31:0] v2_core_property_signature;
+  logic v2_core_captured_event_valid;
+  logic [3:0] v2_core_captured_event_type;
+  logic [31:0] v2_core_captured_event_commit_index;
+  logic [31:0] v2_core_captured_event_addr;
+  logic [31:0] v2_core_captured_event_data;
+  logic [31:0] v2_core_captured_event_payload_hash;
   logic [31:0] v2_core_dropped_diagnostic_count;
   logic [63:0] v2_hashed_capsule_read_data;
   logic v2_hashed_capsule_frozen;
@@ -90,6 +107,12 @@ module picorv32_replaycapsule_wrapper #(
   logic v2_hashed_property_fail_valid;
   logic [7:0] v2_hashed_property_id;
   logic [31:0] v2_hashed_property_signature;
+  logic v2_hashed_captured_event_valid;
+  logic [3:0] v2_hashed_captured_event_type;
+  logic [31:0] v2_hashed_captured_event_commit_index;
+  logic [31:0] v2_hashed_captured_event_addr;
+  logic [31:0] v2_hashed_captured_event_data;
+  logic [31:0] v2_hashed_captured_event_payload_hash;
   logic [31:0] v2_hashed_dropped_diagnostic_count;
   logic [63:0] v2_full_capsule_read_data;
   logic v2_full_capsule_frozen;
@@ -99,7 +122,24 @@ module picorv32_replaycapsule_wrapper #(
   logic v2_full_property_fail_valid;
   logic [7:0] v2_full_property_id;
   logic [31:0] v2_full_property_signature;
+  logic v2_full_captured_event_valid;
+  logic [3:0] v2_full_captured_event_type;
+  logic [31:0] v2_full_captured_event_commit_index;
+  logic [31:0] v2_full_captured_event_addr;
+  logic [31:0] v2_full_captured_event_data;
+  logic [31:0] v2_full_captured_event_payload_hash;
   logic [31:0] v2_full_dropped_diagnostic_count;
+  logic selected_v2_captured_event_valid;
+  logic [3:0] selected_v2_captured_event_type;
+  logic [31:0] selected_v2_captured_event_commit_index;
+  logic [31:0] selected_v2_captured_event_addr;
+  logic [31:0] selected_v2_captured_event_data;
+  logic [31:0] selected_v2_captured_event_payload_hash;
+  logic replay_consume_mmio_valid;
+  logic [31:0] replay_consume_mmio_addr_token;
+  logic [31:0] replay_consume_mmio_value;
+  logic replay_consume_irq_valid;
+  logic [7:0] replay_consume_irq_cause;
   logic use_v2;
   logic v2_capture_enabled;
 
@@ -293,8 +333,12 @@ module picorv32_replaycapsule_wrapper #(
     .property_fail_valid(v2_core_property_fail_valid),
     .property_id(v2_core_property_id),
     .property_signature(v2_core_property_signature),
-    .captured_event_valid(),
-    .captured_event_type(),
+    .captured_event_valid(v2_core_captured_event_valid),
+    .captured_event_type(v2_core_captured_event_type),
+    .captured_event_commit_index(v2_core_captured_event_commit_index),
+    .captured_event_addr(v2_core_captured_event_addr),
+    .captured_event_data(v2_core_captured_event_data),
+    .captured_event_payload_hash(v2_core_captured_event_payload_hash),
     .dropped_diagnostic_count(v2_core_dropped_diagnostic_count)
   );
 
@@ -339,8 +383,12 @@ module picorv32_replaycapsule_wrapper #(
     .property_fail_valid(v2_hashed_property_fail_valid),
     .property_id(v2_hashed_property_id),
     .property_signature(v2_hashed_property_signature),
-    .captured_event_valid(),
-    .captured_event_type(),
+    .captured_event_valid(v2_hashed_captured_event_valid),
+    .captured_event_type(v2_hashed_captured_event_type),
+    .captured_event_commit_index(v2_hashed_captured_event_commit_index),
+    .captured_event_addr(v2_hashed_captured_event_addr),
+    .captured_event_data(v2_hashed_captured_event_data),
+    .captured_event_payload_hash(v2_hashed_captured_event_payload_hash),
     .dropped_diagnostic_count(v2_hashed_dropped_diagnostic_count)
   );
 
@@ -385,8 +433,12 @@ module picorv32_replaycapsule_wrapper #(
     .property_fail_valid(v2_full_property_fail_valid),
     .property_id(v2_full_property_id),
     .property_signature(v2_full_property_signature),
-    .captured_event_valid(),
-    .captured_event_type(),
+    .captured_event_valid(v2_full_captured_event_valid),
+    .captured_event_type(v2_full_captured_event_type),
+    .captured_event_commit_index(v2_full_captured_event_commit_index),
+    .captured_event_addr(v2_full_captured_event_addr),
+    .captured_event_data(v2_full_captured_event_data),
+    .captured_event_payload_hash(v2_full_captured_event_payload_hash),
     .dropped_diagnostic_count(v2_full_dropped_diagnostic_count)
   );
     end else begin : g_no_v2_recorders
@@ -398,6 +450,12 @@ module picorv32_replaycapsule_wrapper #(
       assign v2_core_property_fail_valid = 1'b0;
       assign v2_core_property_id = 8'h0;
       assign v2_core_property_signature = 32'h0;
+      assign v2_core_captured_event_valid = 1'b0;
+      assign v2_core_captured_event_type = 4'h0;
+      assign v2_core_captured_event_commit_index = 32'h0;
+      assign v2_core_captured_event_addr = 32'h0;
+      assign v2_core_captured_event_data = 32'h0;
+      assign v2_core_captured_event_payload_hash = 32'h0;
       assign v2_core_dropped_diagnostic_count = 32'h0;
       assign v2_hashed_capsule_read_data = '0;
       assign v2_hashed_capsule_frozen = 1'b0;
@@ -407,6 +465,12 @@ module picorv32_replaycapsule_wrapper #(
       assign v2_hashed_property_fail_valid = 1'b0;
       assign v2_hashed_property_id = 8'h0;
       assign v2_hashed_property_signature = 32'h0;
+      assign v2_hashed_captured_event_valid = 1'b0;
+      assign v2_hashed_captured_event_type = 4'h0;
+      assign v2_hashed_captured_event_commit_index = 32'h0;
+      assign v2_hashed_captured_event_addr = 32'h0;
+      assign v2_hashed_captured_event_data = 32'h0;
+      assign v2_hashed_captured_event_payload_hash = 32'h0;
       assign v2_hashed_dropped_diagnostic_count = 32'h0;
       assign v2_full_capsule_read_data = '0;
       assign v2_full_capsule_frozen = 1'b0;
@@ -416,12 +480,81 @@ module picorv32_replaycapsule_wrapper #(
       assign v2_full_property_fail_valid = 1'b0;
       assign v2_full_property_id = 8'h0;
       assign v2_full_property_signature = 32'h0;
+      assign v2_full_captured_event_valid = 1'b0;
+      assign v2_full_captured_event_type = 4'h0;
+      assign v2_full_captured_event_commit_index = 32'h0;
+      assign v2_full_captured_event_addr = 32'h0;
+      assign v2_full_captured_event_data = 32'h0;
+      assign v2_full_captured_event_payload_hash = 32'h0;
       assign v2_full_dropped_diagnostic_count = 32'h0;
     end
   endgenerate
 
   assign use_v2 = arch_select == 2'd2;
   assign v2_capture_enabled = capture_mode != 4'h4;
+
+  always_comb begin
+    selected_v2_captured_event_valid = v2_core_captured_event_valid;
+    selected_v2_captured_event_type = v2_core_captured_event_type;
+    selected_v2_captured_event_commit_index = v2_core_captured_event_commit_index;
+    selected_v2_captured_event_addr = v2_core_captured_event_addr;
+    selected_v2_captured_event_data = v2_core_captured_event_data;
+    selected_v2_captured_event_payload_hash = v2_core_captured_event_payload_hash;
+
+    case (recorder_config_select)
+      2'd1: begin
+        selected_v2_captured_event_valid = v2_hashed_captured_event_valid;
+        selected_v2_captured_event_type = v2_hashed_captured_event_type;
+        selected_v2_captured_event_commit_index = v2_hashed_captured_event_commit_index;
+        selected_v2_captured_event_addr = v2_hashed_captured_event_addr;
+        selected_v2_captured_event_data = v2_hashed_captured_event_data;
+        selected_v2_captured_event_payload_hash = v2_hashed_captured_event_payload_hash;
+      end
+      2'd2: begin
+        selected_v2_captured_event_valid = v2_full_captured_event_valid;
+        selected_v2_captured_event_type = v2_full_captured_event_type;
+        selected_v2_captured_event_commit_index = v2_full_captured_event_commit_index;
+        selected_v2_captured_event_addr = v2_full_captured_event_addr;
+        selected_v2_captured_event_data = v2_full_captured_event_data;
+        selected_v2_captured_event_payload_hash = v2_full_captured_event_payload_hash;
+      end
+      default: begin
+      end
+    endcase
+  end
+
+  assign replay_consume_observed_valid = use_v2 && selected_v2_captured_event_valid;
+
+  rcv2_replay_consumer #(
+    .EVENT_COUNT(0),
+    .ENABLE_PAYLOAD_HASH(1'b1),
+    .STRICT_ORDER(1'b1)
+  ) u_rcv2_replay_consumer (
+    .clk(clk),
+    .rst_n(rst_n),
+    .clear(clear),
+    .start(replay_consume_start),
+    .expected_event_count(replay_consume_expected_count),
+    .capsule_valid(use_v2 && replay_consume_valid),
+    .capsule_ready(replay_consume_ready),
+    .capsule_word(replay_consume_word),
+    .stream_done(replay_consume_stream_done),
+    .observed_valid(replay_consume_observed_valid),
+    .observed_event_type(selected_v2_captured_event_type),
+    .observed_commit_index(selected_v2_captured_event_commit_index),
+    .observed_addr(selected_v2_captured_event_addr),
+    .observed_data(selected_v2_captured_event_data),
+    .observed_payload_hash(selected_v2_captured_event_payload_hash),
+    .mmio_replay_valid(replay_consume_mmio_valid),
+    .mmio_replay_addr_token(replay_consume_mmio_addr_token),
+    .mmio_replay_value(replay_consume_mmio_value),
+    .irq_replay_valid(replay_consume_irq_valid),
+    .irq_replay_cause(replay_consume_irq_cause),
+    .consumed_all_events(replay_consume_all_events),
+    .replay_error(replay_consume_error),
+    .replay_error_code(replay_consume_error_code),
+    .consumed_count(replay_consume_consumed_count)
+  );
 
   always_comb begin
     capsule_read_data = v1_capsule_read_data;

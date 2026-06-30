@@ -78,6 +78,11 @@ module full_core_replaycapsule_board_top #(
     .capture_mode(CAPTURE_MODE),
     .arch_select(ARCH_SELECT),
     .recorder_config_select(RECORDER_CONFIG_SELECT),
+    .replay_consume_start(1'b0),
+    .replay_consume_expected_count(32'd0),
+    .replay_consume_valid(1'b0),
+    .replay_consume_word(64'h0),
+    .replay_consume_stream_done(1'b0),
     .trap(trap),
     .mem_valid(mem_valid),
     .mem_instr(mem_instr),
@@ -98,7 +103,13 @@ module full_core_replaycapsule_board_top #(
     .running_signature(running_signature),
     .property_fail_valid(property_fail_valid),
     .property_id(property_id),
-    .property_signature(property_signature)
+    .property_signature(property_signature),
+    .replay_consume_ready(),
+    .replay_consume_observed_valid(),
+    .replay_consume_all_events(),
+    .replay_consume_error(),
+    .replay_consume_error_code(),
+    .replay_consume_consumed_count()
   );
 
   mapped_memory #(

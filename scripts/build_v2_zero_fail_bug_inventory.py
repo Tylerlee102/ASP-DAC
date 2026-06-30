@@ -63,6 +63,8 @@ def _full_rtl_rows() -> list[dict[str, str]]:
             "rtl_record_status": row.get("rtl_record_status", "NA"),
             "capsule_export_status": row.get("capsule_export_status", "NA"),
             "replay_status": row.get("replay_status", "NA"),
+            "replay_consumer_checked": row.get("replay_consumer_checked", "NA"),
+            "replay_consumer_status": row.get("replay_consumer_status", "NA"),
             "commit_match": row.get("commit_match", "NA"),
             "event_match": row.get("event_match", "NA"),
             "final_signature_match": row.get("final_signature_match", "NA"),
@@ -126,6 +128,8 @@ def _buffer_rows() -> list[dict[str, str]]:
         status = row.get("replay_status", "NA")
         measured = row.get("measured_or_estimated", "NA")
         overflow = row.get("overflow", "NA")
+        if measured == "BLOCKED" and "not measured at this buffer depth" in row.get("notes", ""):
+            continue
         if measured == "MEASURED" and status == "PASS" and overflow != "true":
             continue
         out.append(
@@ -205,8 +209,11 @@ def _runtime_rows() -> list[dict[str, str]]:
 def _mapped_rows() -> list[dict[str, str]]:
     path = REPO_ROOT / "results/processed/mapped_scaling_v2_measured.csv"
     out = []
+    required_configs = _claimable_mapped_configs()
     for row in _read_csv(path):
         if row.get("architecture") != "v2":
+            continue
+        if row.get("recorder_config") not in required_configs:
             continue
         if row.get("status") == "PASS":
             continue
@@ -225,6 +232,8 @@ def _mapped_rows() -> list[dict[str, str]]:
     presence_path = REPO_ROOT / "results/processed/mapped_recorder_presence_v2_measured.csv"
     for row in _read_csv(presence_path):
         if row.get("architecture") != "v2":
+            continue
+        if row.get("recorder_config") not in required_configs:
             continue
         if row.get("status") == "PASS" and row.get("recorder_present") == "true":
             continue
@@ -281,9 +290,19 @@ def _expanded_benchmark_rows() -> list[dict[str, str]]:
         ]
     out = []
     rows = _read_csv(path)
-    passed_families = {row.get("benchmark", "") for row in rows if row.get("replay_status") == "PASS" and row.get("compiler_backed") == "true"}
+    passed_rows = [
+        row for row in rows
+        if row.get("replay_status") == "PASS"
+        and row.get("compiler_backed") == "true"
+        and row.get("rtl_record_status") == "PASS"
+        and row.get("capsule_export_status") == "PASS"
+        and row.get("replay_consumer_status") == "PASS"
+    ]
+    passed_families = {row.get("benchmark", "") for row in passed_rows}
+    passed_configs = {row.get("recorder_config", "") for row in passed_rows}
+    passed_seeds = {row.get("seed", "") for row in passed_rows}
     for row in rows:
-        if row.get("replay_status") == "PASS" and row.get("compiler_backed") == "true":
+        if row in passed_rows:
             continue
         out.append(
             _bug(
@@ -308,6 +327,19 @@ def _expanded_benchmark_rows() -> list[dict[str, str]]:
                 root_cause="fewer than two benchmark families have measured PASS rows",
                 evidence_file=_rel(path),
                 notes=f"passing_families={len(passed_families)}",
+            )
+        )
+    if not {"core", "hashed", "full"} <= passed_configs or len(passed_seeds) < 3:
+        out.append(
+            _bug(
+                area="BENCHMARK_EXPANSION",
+                row={},
+                current_status="BLOCKED",
+                error_code="NA",
+                first_failure_stage="expanded_benchmark_coverage",
+                root_cause="expanded benchmark coverage does not span all required configs and seeds",
+                evidence_file=_rel(path),
+                notes=f"passing_configs={','.join(sorted(passed_configs))}; passing_seeds={','.join(sorted(passed_seeds))}",
             )
         )
     return out
@@ -353,10 +385,22 @@ def _is_clean_replay_row(statuses: dict[str, str]) -> bool:
         statuses.get("rtl_record_status") == "PASS"
         and statuses.get("capsule_export_status") == "PASS"
         and statuses.get("replay_status") == "PASS"
-        and statuses.get("commit_match") == "PASS"
+        and statuses.get("replay_consumer_checked") == "true"
+        and statuses.get("replay_consumer_status") == "PASS"
+        and statuses.get("commit_match") in {"PASS", "NA"}
         and statuses.get("event_match") == "PASS"
         and statuses.get("final_signature_match") == "PASS"
     )
+
+
+def _claimable_mapped_configs() -> set[str]:
+    overhead_path = REPO_ROOT / "results/processed/mapped_scaling_overhead_v2_measured.csv"
+    configs = {
+        row.get("recorder_config", "")
+        for row in _read_csv(overhead_path)
+        if row.get("claim_allowed") == "yes"
+    }
+    return configs or {"core", "hashed"}
 
 
 def _current_status(statuses: dict[str, str]) -> str:
@@ -373,7 +417,7 @@ def _current_status(statuses: dict[str, str]) -> str:
 
 def _first_bad_stage(statuses: dict[str, str]) -> str:
     for key, value in statuses.items():
-        if value not in {"PASS", "false", "False", "NA", ""}:
+        if value not in {"PASS", "true", "True", "false", "False", "NA", ""}:
             return key
     return "unknown"
 

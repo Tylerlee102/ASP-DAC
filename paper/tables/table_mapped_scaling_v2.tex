@@ -1,11 +1,11 @@
-\begin{tabular}{lrrrrl}
+\begin{tabular}{lrrrrll}
 \toprule
-Design & LUT & FF & BRAM & Fmax MHz & Scope \\
+Design & LUT & FF & BRAM & Fmax MHz & Status & Scope \\
 \midrule
-v2 replay consumer & 787 & 75 & 0 & 87.51 & standalone prototype \\
-full\_core\_baseline\_board & 2603 & 956 & 3 & 68.85 & baseline full-core mapping \\
-full\_core\_v2\_core\_board & 5067 & 2508 & 3 & 55.40 & full-core recorder mapping \\
-full\_core\_v2\_hashed\_board & 5268 & 2508 & 3 & 54.82 & full-core recorder mapping \\
-full\_core\_v2\_full\_board & 5354 & 2556 & 3 & 53.73 & full-core recorder mapping \\
+v2 replay consumer & 787 & 75 & 0 & 87.51 & PASS & standalone prototype \\
+full\_core\_baseline\_board & 2603 & 956 & 3 & 68.85 & PASS & baseline full-core mapping \\
+full\_core\_v2\_core\_board & 4373 & 1735 & 3 & 55.66 & PASS & full-core recorder mapping \\
+full\_core\_v2\_hashed\_board & 4365 & 1735 & 3 & 57.54 & PASS & full-core recorder mapping \\
+full\_core\_v2\_full\_board & NA & NA & NA & NA & FAIL & diagnostic config unresolved at measured depth \\
 \bottomrule
 \end{tabular}

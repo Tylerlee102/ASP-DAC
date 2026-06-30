@@ -155,6 +155,41 @@ def _private_marker_rows() -> list[dict[str, str]]:
 
 def _v2_evidence_rows() -> list[dict[str, str]]:
     rows: list[dict[str, str]] = []
+    full_rtl_v2 = _read_csv(REPO_ROOT / "results/processed/full_rtl_replay_v2.csv")
+    if full_rtl_v2:
+        checked = [
+            row for row in full_rtl_v2
+            if row.get("replay_status") == "PASS"
+            and row.get("replay_consumer_checked") == "true"
+            and row.get("replay_consumer_status") == "PASS"
+            and row.get("replay_consumer_consumed") == row.get("replay_consumer_expected")
+        ]
+        configs = {row.get("recorder_config") for row in checked}
+        rows.append(_row(
+            "v2_full_rtl_replay_consumer_checked",
+            "PASS" if len(checked) == len(full_rtl_v2) and {"core", "hashed", "full"} <= configs else "FAIL",
+            "results/processed/full_rtl_replay_v2.csv",
+            f"consumer_checked_pass={len(checked)}/{len(full_rtl_v2)} configs={','.join(sorted(configs))}",
+            "repository evidence gate",
+        ))
+
+    depth8 = _read_csv(REPO_ROOT / "results/processed/full_rtl_replay_v2_depth8_probe.csv")
+    if depth8:
+        bad_depth8 = [
+            row for row in depth8
+            if row.get("replay_status") != "PASS"
+            or row.get("replay_consumer_status") != "PASS"
+            or row.get("overflowed") == "true"
+        ]
+        configs = {row.get("recorder_config") for row in depth8 if row.get("replay_status") == "PASS"}
+        rows.append(_row(
+            "v2_depth8_core_hashed_probe_clean",
+            "PASS" if not bad_depth8 and {"core", "hashed"} <= configs else "FAIL",
+            "results/processed/full_rtl_replay_v2_depth8_probe.csv",
+            f"rows={len(depth8)} bad_rows={len(bad_depth8)} configs={','.join(sorted(configs))}",
+            "repository evidence gate",
+        ))
+
     measured = _read_csv(REPO_ROOT / "results/processed/workload_scaling_v2_measured_summary.csv")
     if measured:
         total = sum(_int(row.get("n")) for row in measured if row.get("architecture") == "v2")
@@ -176,12 +211,16 @@ def _v2_evidence_rows() -> list[dict[str, str]]:
             or row.get("rtl_record_status") != "PASS"
             or row.get("capsule_export_status") != "PASS"
             or row.get("compiler_backed") != "true"
+            or row.get("replay_consumer_status") != "PASS"
         ]
+        configs = {row.get("recorder_config") for row in expanded}
+        benchmarks = {row.get("benchmark") for row in expanded}
+        seeds = {row.get("seed") for row in expanded}
         rows.append(_row(
             "expanded_benchmark_replay_clean",
-            "PASS" if not bad else "FAIL",
+            "PASS" if not bad and len(expanded) >= 36 and {"core", "hashed", "full"} <= configs and len(benchmarks) >= 2 and len(seeds) >= 3 else "FAIL",
             "results/processed/expanded_benchmark_replay_measured.csv",
-            f"rows={len(expanded)} bad_rows={len(bad)}",
+            f"rows={len(expanded)} bad_rows={len(bad)} benchmarks={len(benchmarks)} configs={','.join(sorted(configs))} seeds={','.join(sorted(seeds))}",
             "repository evidence gate",
         ))
 
@@ -190,9 +229,24 @@ def _v2_evidence_rows() -> list[dict[str, str]]:
         full_core_pass = [row for row in mapped if row.get("architecture") == "v2" and row.get("status") == "PASS"]
         rows.append(_row(
             "v2_full_core_mapped_rows_present",
-            "PASS" if full_core_pass else "FAIL",
+            "PASS" if {"core", "hashed"} <= {row.get("recorder_config") for row in full_core_pass} else "FAIL",
             "results/processed/mapped_scaling_v2_measured.csv",
-            f"v2_pass_rows={len(full_core_pass)}",
+            f"v2_pass_rows={len(full_core_pass)} configs={','.join(sorted({row.get('recorder_config', 'NA') for row in full_core_pass}))}",
+            "repository evidence gate",
+        ))
+
+    mapped_overhead = _read_csv(REPO_ROOT / "results/processed/mapped_scaling_overhead_v2_measured.csv")
+    if mapped_overhead:
+        claimable = {
+            row.get("recorder_config")
+            for row in mapped_overhead
+            if row.get("target") == "ecp5-85k" and row.get("claim_allowed") == "yes"
+        }
+        rows.append(_row(
+            "v2_mapped_overhead_core_hashed_claimable",
+            "PASS" if {"core", "hashed"} <= claimable else "FAIL",
+            "results/processed/mapped_scaling_overhead_v2_measured.csv",
+            f"claimable_configs={','.join(sorted(claimable))}",
             "repository evidence gate",
         ))
 

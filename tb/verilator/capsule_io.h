@@ -46,4 +46,9 @@ bool write_capsule_json(const std::string& path, const Capsule& capsule, std::st
 bool read_capsule_json(const std::string& path, Capsule* capsule, std::string* error);
 bool write_signature_json(const std::string& path, const Capsule& capsule, uint64_t cycles,
                           uint64_t commits, bool replay_ok, const std::string& notes,
-                          std::string* error);
+                          std::string* error,
+                          bool replay_consumer_checked = false,
+                          bool replay_consumer_ok = true,
+                          uint32_t replay_consumer_expected = 0,
+                          uint32_t replay_consumer_consumed = 0,
+                          uint32_t replay_consumer_error_code = 0);

@@ -4,7 +4,7 @@
 
 ReplayCapsule-RV explores event-sufficient failure capsules for replaying single-hart RV32I interrupt/MMIO failures, combining compiler-backed firmware-running RTL replay, corruption rejection, mapped recorder evidence, and scaling analysis.
 
-ReplayCapsule-RV v2 adds an adaptive compressed capsule format and a synthesizable replay-consume controller prototype. The v2 recorder is integrated into the full-core host-driven record/replay harness and has measured zero-fail replay, scaling, runtime, and representative ECP5 full-core mapping evidence. The v2 replay consumer is real RTL with corruption tests, but it is not yet a fully integrated autonomous full-core replay path.
+ReplayCapsule-RV v2 adds an adaptive compressed capsule format and a synthesizable replay-consume controller prototype. The v2 recorder is integrated into the full-core host-driven record/replay harness and has measured zero-fail replay, scaling, runtime, and representative ECP5 full-core mapping evidence for claimable reduced configs. The v2 replay consumer is real RTL with corruption tests and host-streamed full-core checks, but it is not yet a fully autonomous full-core replay path.
 
 ## Forbidden Claims
 
@@ -14,7 +14,7 @@ ReplayCapsule-RV v2 adds an adaptive compressed capsule format and a synthesizab
 - Do not claim full-system, multicore, cache, coherence, DMA, or OS replay.
 - Do not call overhead low or negligible unless same-target measured data supports it.
 - Do not claim ASIC power or area without an actual ASIC flow/report.
-- Do not claim complete autonomous replay until the replay-consume controller is integrated into full-core replay and passes.
+- Do not claim complete autonomous replay until capsule storage/streaming, MMIO/IRQ replay muxing, and replay-mode control are integrated and pass.
 
 ## Audit Categories
 
@@ -40,7 +40,7 @@ Embedded logs often capture diagnostic context. ReplayCapsule-RV separates repla
 
 ### FPGA/Emulation Replay
 
-The repository has ECP5 evidence for v1 and representative same-target ECP5-85k full-core overhead evidence for v2. The v2 mapping point is memory 128 and buffer depth 16; do not generalize it to all memory and buffer sizes or to ASIC/power claims.
+The repository has ECP5 evidence for v1 and representative same-target ECP5-85k full-core overhead evidence for v2 core/hashed reduced configs. The v2 mapping point is memory 128 and buffer depth 8 for claimable core/hashed rows; the full diagnostic depth-256 row is retained as an unresolved timeout and should not be used for overhead claims.
 
 ### Checkpoint/Snapshot Systems
 
@@ -60,6 +60,6 @@ ReplayCapsule-RV rejects corrupted capsule streams in negative replay and v2 rep
 - v1 negative replay: measured.
 - v1 workload-scaling failures: diagnosed as buffer overflow.
 - v2 recorder: RTL and Yosys hierarchy check.
-- v2 replay consumer: RTL tests and ECP5-85k prototype mapping.
+- v2 replay consumer: RTL tests, host-streamed full-core checks, and ECP5-85k prototype mapping.
 - v2 workload replay: measured zero-fail in `results/processed/workload_scaling_v2_measured.csv`.
-- v2 mapped full-core overhead: measured same-target ECP5-85k PASS rows in `results/processed/mapped_scaling_v2_measured.csv` and `results/processed/mapped_scaling_overhead_v2_measured.csv`.
+- v2 mapped full-core overhead: measured same-target ECP5-85k PASS rows for core/hashed reduced configs in `results/processed/mapped_scaling_v2_measured.csv` and `results/processed/mapped_scaling_overhead_v2_measured.csv`.

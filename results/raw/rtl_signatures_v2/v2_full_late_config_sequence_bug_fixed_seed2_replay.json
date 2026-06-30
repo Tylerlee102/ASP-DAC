@@ -1,0 +1,23 @@
+{
+  "benchmark": "late_config_sequence_bug",
+  "variant": "fixed",
+  "seed": 2,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "full",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 100000,
+  "commits_to_failure": 33328,
+  "event_count": 240,
+  "capsule_bytes": 1920,
+  "overflow": false,
+  "replay_ok": true,
+  "replay_consumer_checked": true,
+  "replay_consumer_ok": true,
+  "replay_consumer_expected": 240,
+  "replay_consumer_consumed": 240,
+  "replay_consumer_error_code": 0,
+  "notes": "record/replay canonical events match; rtl replay consumer consumed 240/240"
+}

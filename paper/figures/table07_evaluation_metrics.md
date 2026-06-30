@@ -9,7 +9,7 @@ full RTL replay, runtime summaries, and same-target ECP5 mapped overhead are mea
 | --- | --- | ---: | --- | --- | --- |
 | model_replay_success_rate | MEASURED (model) | 6/6 (100.0%) | percent | model | Model-level commit-index replay rows. |
 | firmware_sim_replay_success_rate | MEASURED (firmware-sim) | 6/6 (100.0%) | percent | firmware-sim | RV32I firmware-sim commit-index replay rows. |
-| firmware_running_rtl_replay_success_rate | MEASURED (rtl) | 45/45 (100.0%) | percent | rtl | Host-driven Verilator record/replay rows across evaluated benchmark/variant/seed cases; not a mapped hardware timing or synthesizable replay-consume datapath claim. |
+| firmware_running_rtl_replay_success_rate | MEASURED (rtl) | 45/45 (100.0%) | percent | rtl | Host-driven Verilator record/replay rows across evaluated benchmark/variant/seed cases; not a mapped hardware timing or autonomous replay-engine claim. |
 | replay_negative_fixture_pass_rate | MEASURED (model) | 96/96 (100.0%) | percent | model | Benchmark-derived positive and negative comparator fixtures across commit-index and cycle-index modes. |
 | hdl_frontend_pass_rate | MEASURED (rtl-smoke) | 28/28 (100.0%) | percent | rtl-smoke | Directed Icarus simulations, PicoRV32 wrapper smokes, and Verilator lint-only frontend checks. |
 | directed_icarus_module_pass_rate | MEASURED (rtl-smoke) | 9/9 (100.0%) | percent | rtl-smoke | Standalone directed Icarus module simulations excluding PicoRV32 wrapper smoke rows. |

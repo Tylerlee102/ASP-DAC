@@ -12,16 +12,16 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 171 >>
+<< /Length 167 >>
 stream
 BT
 /F1 16 Tf
 72 740 Td
 (Replay-consume controller) Tj
 0 -24 Td
-(RTL tests passed: 8/8) Tj
+(RTL tests passed: 9/9) Tj
 0 -24 Td
-(Scope: synthesizable prototype, not full-core autonomous replay.) Tj
+(Scope: host-streamed full-core check, not autonomous replay.) Tj
 ET
 endstream
 endobj
@@ -35,5 +35,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-533
+529
 %%EOF

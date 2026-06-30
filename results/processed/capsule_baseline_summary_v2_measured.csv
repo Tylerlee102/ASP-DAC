@@ -14,11 +14,11 @@ baseline,baseline,snapshot_at_failure,medium,0,75,0,0,4096.000000,96.800000,75,v
 baseline,baseline,snapshot_at_failure,short,0,75,0,0,4096.000000,83.780000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
 baseline,baseline,snapshot_at_failure,smoke,0,75,0,0,4096.000000,69.160000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
 baseline,baseline,snapshot_at_failure,stress,0,75,0,0,4096.000000,99.080000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
-v1,full,v1_full,long,75,0,25,50,5376.000000,97.800000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
-v1,full,v1_full,medium,75,0,25,50,5376.000000,95.790000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
+v1,full,v1_full,long,75,0,75,0,86016.000000,64.860000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
+v1,full,v1_full,medium,75,0,75,0,21504.000000,83.180000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
 v1,full,v1_full,short,75,0,75,0,5376.000000,78.710000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
 v1,full,v1_full,smoke,75,0,75,0,5376.000000,59.520000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
-v1,full,v1_full,stress,75,0,25,50,5376.000000,98.790000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
+v1,full,v1_full,stress,75,0,75,0,344064.000000,22.840000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
 v2,core,v2_core,long,75,0,75,0,8.000000,99.990000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
 v2,core,v2_core,medium,75,0,75,0,8.000000,99.980000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED
 v2,core,v2_core,short,75,0,75,0,8.000000,99.900000,75,v2 baseline rows are measured only when measured_or_estimated=MEASURED

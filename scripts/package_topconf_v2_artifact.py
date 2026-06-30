@@ -104,6 +104,8 @@ def _collect_files() -> list[tuple[Path, str, str]]:
         ("results/processed/*.csv", "results", "processed evidence CSV"),
         ("results/raw/replay_consumer/*", "raw", "replay consumer compile/run log"),
         ("results/raw/replay_consumer_mapping/*", "raw", "replay consumer mapping log"),
+        ("results/raw/mapped_scaling_v2_measured/*.txt", "raw", "v2 full-core mapped synthesis/place-and-route log"),
+        ("results/raw/expanded_benchmark_replay/*.log", "raw", "expanded benchmark replay run log"),
         ("results/debug/topconf_v2_before/*", "baseline", "frozen pre-v2 evidence"),
         ("rtl/replaycapsule_v2/*", "rtl", "v2 RTL source"),
         ("rtl/mapped/replaycapsule_v2_recorder_wrapper.sv", "rtl", "v2 synthesis wrapper"),

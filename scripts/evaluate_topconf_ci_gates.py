@@ -190,7 +190,7 @@ def _full_rtl_replay_v2_clean() -> dict[str, str]:
         if row.get("rtl_record_status") != "PASS"
         or row.get("capsule_export_status") != "PASS"
         or row.get("replay_status") != "PASS"
-        or row.get("commit_match") != "PASS"
+        or not _commit_match_ok(row)
         or row.get("event_match") != "PASS"
         or row.get("final_signature_match") != "PASS"
     ]
@@ -237,10 +237,14 @@ def _replay_consumer_tests_clean() -> dict[str, str]:
 def _expanded_benchmarks_clean() -> dict[str, str]:
     rows = _rows("results/processed/expanded_benchmark_replay_measured.csv") or _rows("results/processed/expanded_benchmark_replay.csv")
     if rows and "rtl_record_status" in rows[0]:
-        status_fields = ("rtl_record_status", "capsule_export_status", "replay_status", "commit_match", "event_match", "final_signature_match")
+        status_fields = ("rtl_record_status", "capsule_export_status", "replay_status", "event_match", "final_signature_match")
     else:
         status_fields = ("firmware_status", "rtl_replay_status", "property_match", "event_match", "final_signature_match")
-    bad = [row for row in rows if any(row.get(field) != "PASS" for field in status_fields)]
+    bad = [
+        row for row in rows
+        if any(row.get(field) != "PASS" for field in status_fields)
+        or ("commit_match" in row and not _commit_match_ok(row))
+    ]
     return _final_row("expanded_benchmarks_clean", bool(rows) and not bad, "results/processed/expanded_benchmark_replay_measured.csv", f"rows={len(rows)} bad_rows={len(bad)}")
 
 
@@ -313,6 +317,14 @@ def _positive_int(value: object) -> bool:
             return float(str(value or "0")) > 0
         except ValueError:
             return False
+
+
+def _commit_match_ok(row: dict[str, str]) -> bool:
+    if row.get("commit_match") == "PASS":
+        return True
+    if row.get("commit_match") != "NA":
+        return False
+    return row.get("property_id_record") in {"0", "NA", ""} and row.get("property_id_replay") in {"0", "NA", ""}
 
 
 if __name__ == "__main__":

@@ -106,7 +106,7 @@ def _full_rtl_replay_success_metric(rows: list[dict[str, str]]) -> dict[str, str
         "percent",
         "rtl",
         "results/processed/full_rtl_replay.csv",
-        "Host-driven Verilator record/replay rows across evaluated benchmark/variant/seed cases; not a mapped hardware timing or synthesizable replay-consume datapath claim.",
+        "Host-driven Verilator record/replay rows across evaluated benchmark/variant/seed cases; not a mapped hardware timing or autonomous replay-engine claim.",
     )
 
 

@@ -118,23 +118,24 @@ def _write_table_runtime_scaling_v2() -> None:
 def _write_table_mapped_scaling_v2() -> None:
     consumer = read_csv(REPO_ROOT / "results/processed/replay_consumer_mapped.csv")
     mapped = consumer[0] if consumer else {}
-    full_core_rows = [
-        row
-        for row in _preferred_csv("mapped_scaling_v2_measured.csv", "mapped_scaling_v2.csv")
-        if row.get("status") == "PASS"
-    ]
+    full_core_rows = _preferred_csv("mapped_scaling_v2_measured.csv", "mapped_scaling_v2.csv")
     lines = [
-        r"\begin{tabular}{lrrrrl}",
+        r"\begin{tabular}{lrrrrll}",
         r"\toprule",
-        r"Design & LUT & FF & BRAM & Fmax MHz & Scope \\",
+        r"Design & LUT & FF & BRAM & Fmax MHz & Status & Scope \\",
         r"\midrule",
-        f"v2 replay consumer & {_esc(mapped.get('lut', 'NA'))} & {_esc(mapped.get('ff', 'NA'))} & {_esc(mapped.get('bram', 'NA'))} & {_esc(mapped.get('fmax_mhz', 'NA'))} & standalone prototype " + r"\\",
+        f"v2 replay consumer & {_esc(mapped.get('lut', 'NA'))} & {_esc(mapped.get('ff', 'NA'))} & {_esc(mapped.get('bram', 'NA'))} & {_esc(mapped.get('fmax_mhz', 'NA'))} & {_esc(mapped.get('status', 'NA'))} & standalone prototype " + r"\\",
     ]
     for row in full_core_rows:
-        scope = "baseline full-core mapping" if row.get("architecture") == "baseline" else "full-core recorder mapping"
+        if row.get("architecture") == "baseline":
+            scope = "baseline full-core mapping"
+        elif row.get("status") == "PASS":
+            scope = "full-core recorder mapping"
+        else:
+            scope = "diagnostic config unresolved at measured depth"
         lines.append(
             f"{_esc(row.get('design', 'NA'))} & {_esc(row.get('lut', 'NA'))} & {_esc(row.get('ff', 'NA'))} & "
-            f"{_esc(row.get('bram', 'NA'))} & {_esc(row.get('fmax_mhz', 'NA'))} & {scope} " + r"\\"
+            f"{_esc(row.get('bram', 'NA'))} & {_esc(row.get('fmax_mhz', 'NA'))} & {_esc(row.get('status', 'NA'))} & {scope} " + r"\\"
         )
     lines.extend([r"\bottomrule", r"\end{tabular}"])
     _write_tex(TABLE_DIR / "table_mapped_scaling_v2.tex", lines)
@@ -149,9 +150,9 @@ def _write_limitations_table() -> None:
             r"Topic & Current scope \\",
             r"\midrule",
             r"Core scope & Single-hart RV32I only \\",
-            r"Replay consume & v2 synthesizable prototype; autonomous full-core consume not integrated \\",
+            r"Replay consume & v2 host-streamed full-core consumer check; autonomous replay engine not integrated \\",
             r"v2 workload replay & Measured full-core host-driven record/replay rows \\",
-            r"Mapped overhead & v1 and representative v2 full-core ECP5 rows measured \\",
+            r"Mapped overhead & v1 rows plus v2 core/hashed ECP5 rows measured; full diagnostic depth unresolved \\",
             r"ASIC/power & Not measured \\",
             r"\bottomrule",
             r"\end{tabular}",
@@ -226,7 +227,7 @@ def _recorder_config_lines() -> list[str]:
 def _consumer_lines() -> list[str]:
     tests = read_csv(REPO_ROOT / "results/processed/replay_consumer_tests.csv")
     passed = sum(1 for row in tests if row.get("passed") == "true")
-    return ["Replay-consume controller", f"RTL tests passed: {passed}/{len(tests)}", "Scope: synthesizable prototype, not full-core autonomous replay."]
+    return ["Replay-consume controller", f"RTL tests passed: {passed}/{len(tests)}", "Scope: host-streamed full-core check, not autonomous replay."]
 
 
 def _preferred_csv(preferred: str, fallback: str) -> list[dict[str, str]]:

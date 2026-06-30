@@ -42,6 +42,7 @@ module tb_rcv2_system_replay_consumer;
     .rst_n(rst_n),
     .clear(clear),
     .start(start),
+    .expected_event_count(32'd0),
     .capsule_valid(capsule_valid),
     .capsule_ready(capsule_ready),
     .capsule_word(capsule_word),

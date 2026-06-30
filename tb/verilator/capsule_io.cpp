@@ -330,7 +330,12 @@ bool read_capsule_json(const std::string& path, Capsule* capsule, std::string* e
 
 bool write_signature_json(const std::string& path, const Capsule& capsule, uint64_t cycles,
                           uint64_t commits, bool replay_ok, const std::string& notes,
-                          std::string* error) {
+                          std::string* error,
+                          bool replay_consumer_checked,
+                          bool replay_consumer_ok,
+                          uint32_t replay_consumer_expected,
+                          uint32_t replay_consumer_consumed,
+                          uint32_t replay_consumer_error_code) {
   try {
     std::filesystem::create_directories(std::filesystem::path(path).parent_path());
     std::ofstream out(path);
@@ -351,6 +356,11 @@ bool write_signature_json(const std::string& path, const Capsule& capsule, uint6
     out << "  \"capsule_bytes\": " << capsule.events.size() * ((capsule.packet_width_bits + 7) / 8) << ",\n";
     out << "  \"overflow\": " << (capsule.overflow ? "true" : "false") << ",\n";
     out << "  \"replay_ok\": " << (replay_ok ? "true" : "false") << ",\n";
+    out << "  \"replay_consumer_checked\": " << (replay_consumer_checked ? "true" : "false") << ",\n";
+    out << "  \"replay_consumer_ok\": " << (replay_consumer_ok ? "true" : "false") << ",\n";
+    out << "  \"replay_consumer_expected\": " << replay_consumer_expected << ",\n";
+    out << "  \"replay_consumer_consumed\": " << replay_consumer_consumed << ",\n";
+    out << "  \"replay_consumer_error_code\": " << replay_consumer_error_code << ",\n";
     out << "  \"notes\": \"" << json_escape(notes) << "\"\n";
     out << "}\n";
     return true;

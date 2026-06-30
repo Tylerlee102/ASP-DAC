@@ -26,7 +26,7 @@ Current status: SUBMISSION-READY CANDIDATE.
 ## Forbidden Claims
 
 - ASIC area or power.
-- Hardware replay-consume datapath.
+- Autonomous hardware replay engine.
 - Multicore, DMA, cache-coherent, or broad platform support.
 - Replacement for RISC-V trace/debug standards.
 - Globally smallest trace or universal deterministic replay.

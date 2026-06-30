@@ -65,6 +65,13 @@ module tb_picorv32_wrapper_smoke;
     .clear(clear),
     .watchdog_enable(ENABLE_WATCHDOG),
     .capture_mode(4'h3),
+    .arch_select(2'd1),
+    .recorder_config_select(2'd0),
+    .replay_consume_start(1'b0),
+    .replay_consume_expected_count(32'd0),
+    .replay_consume_valid(1'b0),
+    .replay_consume_word(64'h0),
+    .replay_consume_stream_done(1'b0),
     .trap(trap),
     .mem_valid(mem_valid),
     .mem_instr(mem_instr),
@@ -85,7 +92,13 @@ module tb_picorv32_wrapper_smoke;
     .running_signature(running_signature),
     .property_fail_valid(property_fail_valid),
     .property_id(property_id),
-    .property_signature(property_signature)
+    .property_signature(property_signature),
+    .replay_consume_ready(),
+    .replay_consume_observed_valid(),
+    .replay_consume_all_events(),
+    .replay_consume_error(),
+    .replay_consume_error_code(),
+    .replay_consume_consumed_count()
   );
 
   initial clk = 1'b0;

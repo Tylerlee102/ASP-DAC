@@ -35,6 +35,10 @@ std::string hex32(uint32_t value) {
   return out.str();
 }
 
+uint64_t packet_word64(const CapsuleEvent& event) {
+  return static_cast<uint64_t>(std::stoull(event.packet_hex, nullptr, 16));
+}
+
 bool wants_debug_trace(const HarnessOptions& options) {
   return options.debug_events || options.dump_mmio || options.dump_property || options.dump_pc;
 }
@@ -299,6 +303,8 @@ HarnessResult run_harness(const HarnessOptions& options) {
   VerilatedContext context;
   Vreplaycapsule_verilator_top top{&context};
   const Stimulus stimulus = stimulus_for(options.benchmark, options.variant);
+  const bool use_replay_consumer = options.mode == "replay" && options.arch == "v2";
+  uint32_t replay_consume_index = 0;
   size_t replay_mmio_index = 0;
   bool replay_ok = true;
   std::string replay_notes = "ok";
@@ -314,6 +320,11 @@ HarnessResult run_harness(const HarnessOptions& options) {
   top.capture_mode = options.capture_mode & 0xfu;
   top.arch_select = arch_select_for(options.arch);
   top.recorder_config_select = recorder_config_select_for(options.recorder_config);
+  top.replay_consume_start = 0;
+  top.replay_consume_expected_count = 0;
+  top.replay_consume_valid = 0;
+  top.replay_consume_word = 0;
+  top.replay_consume_stream_done = 0;
   top.mem_ready = 0;
   top.mem_rdata = 0;
   top.irq = 0;
@@ -329,11 +340,24 @@ HarnessResult run_harness(const HarnessOptions& options) {
   }
   top.rst_n = 1;
 
+  if (use_replay_consumer) {
+    result.replay_consumer_checked = true;
+    result.replay_consumer_expected = static_cast<uint32_t>(record_capsule.events.size());
+    top.replay_consume_expected_count = result.replay_consumer_expected;
+    top.replay_consume_start = 1;
+    top.clk = 0; top.eval();
+    top.clk = 1; top.eval();
+    context.timeInc(1);
+    top.replay_consume_start = 0;
+  }
+
   uint64_t cycles = 0;
   bool saw_failure = false;
   for (; cycles < options.max_cycles && replay_ok; ++cycles) {
     top.clk = 0;
     top.eval();
+    top.replay_consume_valid = 0;
+    top.replay_consume_stream_done = 0;
 
     top.mem_ready = top.mem_valid ? 1 : 0;
     top.mem_rdata = 0x00000013u;
@@ -417,9 +441,32 @@ HarnessResult run_harness(const HarnessOptions& options) {
     }
 
     top.eval();
+    if (use_replay_consumer && top.replay_consume_observed_valid) {
+      if (!top.replay_consume_ready) {
+        replay_ok = false;
+        replay_notes = "hardware replay consumer was not ready for observed event";
+      } else if (replay_consume_index >= record_capsule.events.size()) {
+        replay_ok = false;
+        replay_notes = "hardware replay consumer observed more events than saved capsule";
+      } else {
+        top.replay_consume_word = packet_word64(record_capsule.events[replay_consume_index]);
+        top.replay_consume_valid = 1;
+        ++replay_consume_index;
+        top.eval();
+      }
+    }
     top.clk = 1;
     top.eval();
     context.timeInc(1);
+
+    if (use_replay_consumer && top.replay_consume_error) {
+      std::ostringstream out;
+      out << "hardware replay consumer error_code=" << static_cast<unsigned>(top.replay_consume_error_code)
+          << " consumed=" << static_cast<unsigned>(top.replay_consume_consumed_count)
+          << "/" << record_capsule.events.size();
+      replay_ok = false;
+      replay_notes = out.str();
+    }
 
     if ((options.debug_events || options.dump_property) && top.property_fail_valid) {
       std::ostringstream line;
@@ -477,6 +524,29 @@ HarnessResult run_harness(const HarnessOptions& options) {
     result.notes = compare_note;
     if (!result.ok) result.error_code = "EVENT_MISMATCH";
   }
+  if (use_replay_consumer) {
+    result.replay_consumer_consumed = top.replay_consume_consumed_count;
+    result.replay_consumer_error_code = top.replay_consume_error_code;
+    result.replay_consumer_ok =
+        !top.replay_consume_error &&
+        top.replay_consume_all_events &&
+        top.replay_consume_consumed_count == result.replay_consumer_expected &&
+        replay_consume_index == result.replay_consumer_expected;
+    if (result.ok && !result.replay_consumer_ok) {
+      std::ostringstream out;
+      out << "hardware replay consumer did not accept full capsule: consumed="
+          << result.replay_consumer_consumed << "/" << result.replay_consumer_expected
+          << " error_code=" << result.replay_consumer_error_code;
+      result.ok = false;
+      result.error_code = "RTL_REPLAY_CONSUMER";
+      result.notes = out.str();
+    } else if (result.ok) {
+      std::ostringstream out;
+      out << result.notes << "; rtl replay consumer consumed "
+          << result.replay_consumer_consumed << "/" << result.replay_consumer_expected;
+      result.notes = out.str();
+    }
+  }
   if (!options.signature_path.empty()) {
     write_signature_json(
         options.signature_path,
@@ -485,7 +555,12 @@ HarnessResult run_harness(const HarnessOptions& options) {
         result.commits_to_failure,
         result.ok,
         result.notes,
-        &write_error);
+        &write_error,
+        result.replay_consumer_checked,
+        result.replay_consumer_ok,
+        result.replay_consumer_expected,
+        result.replay_consumer_consumed,
+        result.replay_consumer_error_code);
   }
   return result;
 }

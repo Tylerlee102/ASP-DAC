@@ -6,10 +6,10 @@ ReplayCapsule-RV captures event-sufficient hardware failure capsules for replayi
 
 - Compiler-backed firmware: `15/15` PASS in `results/processed/firmware_build.csv`.
 - Full RTL replay: `45/45` PASS in `results/processed/full_rtl_replay.csv`.
-- v2 full RTL replay: `135/135` PASS across core, hashed, and full recorder configs in `results/processed/full_rtl_replay_v2.csv`.
+- v2 full RTL replay: `135/135` PASS across core, hashed, and full recorder configs with RTL consumer checks in `results/processed/full_rtl_replay_v2.csv`.
 - v2 zero-fail measured gate: empty bug inventory in `results/processed/v2_zero_fail_bug_inventory.csv`; see `docs/v2_zero_fail_status.md`.
-- v2 workload/buffer/runtime/mapped evidence: `1125/1125` workload replay PASS rows, `6750/6750` v2 measured buffer rows, `25/25` runtime rows, and same-target ECP5 full-core mapped PASS rows in the `*_v2_measured.csv` files.
-- v2 new benchmark coverage: `12/12` PASS rows for two added compiler-backed firmware families in `results/processed/expanded_benchmark_replay_measured.csv`.
+- v2 workload/buffer/runtime/mapped evidence: `1125/1125` workload replay PASS rows, `1125/1125` v2 measured buffer rows at the measured depth, `25/25` runtime rows, and same-target ECP5 full-core mapped PASS rows for the core/hashed reduced configs in the `*_v2_measured.csv` files.
+- v2 new benchmark coverage: `36/36` PASS rows for two added compiler-backed firmware families across three seeds in `results/processed/expanded_benchmark_replay_measured.csv`.
 - Full RTL negative replay: `10` replay-critical corruptions rejected, `0` unexpected accepts, `2` not-applicable rows in `results/processed/full_rtl_replay_negative.csv`.
 - Runtime overhead: measured for the fixed workload set in `results/processed/runtime_overhead.csv` and `results/processed/runtime_overhead_summary.csv`.
 - Full-core mapped overhead: PASS for same-target ECP5 claim-allowed points in `results/processed/full_core_mapped_summary.csv`; mapped scaling has 9 PASS rows and 1 visible P&R timeout row in `results/processed/mapped_scaling.csv`.
@@ -109,10 +109,11 @@ The checked-in ECP5 scaling evidence preserves same-target PASS rows and the vis
 Claim-allowed ECP5 overhead ranges are reported in `results/processed/mapped_scaling_summary.csv`: LUT `+124.66%` to `+182.55%`, FF `+341.79%` to `+646.43%`, BRAM `+0.00%`, and Fmax `-25.70%` to `-17.53%`. These are high area overheads, not low-overhead results.
 
 For v2, same-target full-core ECP5 measured rows are in
-`results/processed/mapped_scaling_v2_measured.csv` at memory 128 and buffer
-depth 16. The companion overhead table
-`results/processed/mapped_scaling_overhead_v2_measured.csv` marks all v2
-core/hashed/full overhead comparisons as claim-allowed.
+`results/processed/mapped_scaling_v2_measured.csv` at memory 128. The reduced
+core and hashed configs pass at buffer depth 8 and are claim-allowed in
+`results/processed/mapped_scaling_overhead_v2_measured.csv`; the full diagnostic
+depth-256 row is retained as a visible P&R timeout and is not used for overhead
+claims.
 
 ## Scope And Limitations
 
@@ -123,6 +124,7 @@ Allowed claims:
 - Full RTL corrupted-capsule rejection for replay-critical corruption classes.
 - Runtime overhead for the fixed workload set.
 - Same-target ECP5 mapped overhead for claim-allowed PASS comparison points.
+- Host-streamed full-core v2 replay-consume checks for the measured v2 replay rows.
 - Measured v2 zero-fail evidence for the scoped v2 benchmark, scaling, runtime,
   mapped, and expanded-benchmark rows listed in `docs/v2_zero_fail_status.md`.
 
@@ -130,7 +132,7 @@ Forbidden claims:
 
 - Area overhead minimization.
 - ASIC implementation, timing, or energy results.
-- Autonomous hardware replay-consume datapath.
+- Autonomous hardware replay engine.
 - Multicore, DMA, cache-coherent, or broad platform support.
 - Replacement for RISC-V trace/debug standards.
 - Globally smallest trace or deterministic replay outside the stated RV32I interrupt/MMIO scope.

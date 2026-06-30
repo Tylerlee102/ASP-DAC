@@ -23,6 +23,7 @@ BENCHMARKS = (
 )
 VARIANTS = ("failing", "fixed")
 CONFIGS = ("core", "hashed", "full")
+SEEDS = (1, 2, 3)
 
 
 def main() -> int:
@@ -45,31 +46,32 @@ def main() -> int:
     for config in CONFIGS:
         for benchmark in BENCHMARKS:
             for variant in VARIANTS:
-                log = RAW_DIR / f"{config}_{benchmark}_{variant}.log"
-                result = _run(
-                    [
-                        sys.executable,
-                        "scripts/run_full_rtl_replay.py",
-                        "--arch",
-                        "v2",
-                        "--recorder-config",
-                        config,
-                        "--benchmark",
-                        benchmark,
-                        "--variant",
-                        variant,
-                        "--seed",
-                        "1",
-                        "--max-cycles",
-                        "100000",
-                        "--debug-dir",
-                        str(DEBUG_DIR / config),
-                    ],
-                    env,
-                    log,
-                )
-                if result.returncode != 0:
-                    failures += 1
+                for seed in SEEDS:
+                    log = RAW_DIR / f"{config}_{benchmark}_{variant}_seed{seed}.log"
+                    result = _run(
+                        [
+                            sys.executable,
+                            "scripts/run_full_rtl_replay.py",
+                            "--arch",
+                            "v2",
+                            "--recorder-config",
+                            config,
+                            "--benchmark",
+                            benchmark,
+                            "--variant",
+                            variant,
+                            "--seed",
+                            str(seed),
+                            "--max-cycles",
+                            "100000",
+                            "--debug-dir",
+                            str(DEBUG_DIR / config),
+                        ],
+                        env,
+                        log,
+                    )
+                    if result.returncode != 0:
+                        failures += 1
 
     rows = _read_rows(OUT_CSV)
     bad_rows = [
@@ -79,10 +81,14 @@ def main() -> int:
         or row.get("compiler_backed") != "true"
         or row.get("rtl_record_status") != "PASS"
         or row.get("capsule_export_status") != "PASS"
+        or row.get("replay_consumer_status") != "PASS"
     ]
+    expected_rows = len(BENCHMARKS) * len(VARIANTS) * len(CONFIGS) * len(SEEDS)
+    pass_benchmarks = {row.get("benchmark") for row in rows if row.get("replay_status") == "PASS"}
+    pass_seeds = {row.get("seed") for row in rows if row.get("replay_status") == "PASS"}
     print(f"WROTE {_rel(OUT_CSV)}")
     print(f"EXPANDED_BENCHMARK_ROWS total={len(rows)} bad={len(bad_rows)} command_failures={failures}")
-    return 1 if failures or bad_rows or len({row.get('benchmark') for row in rows if row.get('replay_status') == 'PASS'}) < 2 else 0
+    return 1 if failures or bad_rows or len(rows) < expected_rows or len(pass_benchmarks) < len(BENCHMARKS) or len(pass_seeds) < len(SEEDS) else 0
 
 
 def _run(command: list[str], env: dict[str, str], log_path: Path) -> subprocess.CompletedProcess[str]:

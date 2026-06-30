@@ -122,7 +122,7 @@ python3 scripts/package_artifact.py
 
 ## Known Limitations
 
-- Replay consume is host-driven in the Verilator harness; no hardware replay-consume datapath is claimed.
+- Replay consume is host-driven in the Verilator harness. The v2 full-core wrapper includes a host-streamed RTL consumer check, but no autonomous capsule source or MMIO/IRQ replay engine is claimed.
 - The scope is single-hart RV32I interrupt/MMIO failures.
 - DMA, multicore ordering, cache-coherence behavior, analog device state, and broad platform replay are not claimed.
 - No ASIC area or power claim is made.

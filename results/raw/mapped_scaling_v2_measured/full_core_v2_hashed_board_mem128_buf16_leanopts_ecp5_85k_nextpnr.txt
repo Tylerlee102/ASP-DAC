@@ -1,0 +1,535 @@
+Info: constraining clock net 'clk' to 50.00 MHz
+
+Info: Logic utilisation before packing:
+Info:     Total LUT4s:      4825/83640     5%
+Info:         logic LUTs:   4179/83640     4%
+Info:         carry LUTs:    646/83640     0%
+Info:           RAM LUTs:      0/10455     0%
+Info:          RAMW LUTs:      0/20910     0%
+
+Info:      Total DFFs:      2257/83640     2%
+
+Info: Packing IOs..
+Info: pin 'uart_tx$tr_io' constrained to Bel 'X0/Y56/PIOC'.
+Info: pin 'uart_rx$tr_io' constrained to Bel 'X0/Y89/PIOB'.
+Info: pin 'status_led[3]$tr_io' constrained to Bel 'X0/Y38/PIOC'.
+Info: pin 'status_led[2]$tr_io' constrained to Bel 'X0/Y38/PIOA'.
+Info: pin 'status_led[1]$tr_io' constrained to Bel 'X0/Y35/PIOD'.
+Info: pin 'status_led[0]$tr_io' constrained to Bel 'X0/Y35/PIOC'.
+Info: pin 'rst_n$tr_io' constrained to Bel 'X6/Y0/PIOB'.
+Info: pin 'recorder_status_xor$tr_io' constrained to Bel 'X0/Y38/PIOD'.
+Info: pin 'recorder_overflow_seen$tr_io' constrained to Bel 'X0/Y44/PIOD'.
+Info: pin 'gpio_out[7]$tr_io' constrained to Bel 'X0/Y11/PIOD'.
+Info: pin 'gpio_out[6]$tr_io' constrained to Bel 'X0/Y17/PIOB'.
+Info: pin 'gpio_out[5]$tr_io' constrained to Bel 'X0/Y11/PIOC'.
+Info: pin 'gpio_out[4]$tr_io' constrained to Bel 'X0/Y14/PIOC'.
+Info: pin 'gpio_out[3]$tr_io' constrained to Bel 'X0/Y14/PIOD'.
+Info: pin 'gpio_out[2]$tr_io' constrained to Bel 'X0/Y17/PIOC'.
+Info: pin 'gpio_out[1]$tr_io' constrained to Bel 'X0/Y17/PIOD'.
+Info: pin 'gpio_out[0]$tr_io' constrained to Bel 'X0/Y17/PIOA'.
+Info: pin 'gpio_in[3]$tr_io' constrained to Bel 'X9/Y0/PIOA'.
+Info: pin 'gpio_in[2]$tr_io' constrained to Bel 'X9/Y0/PIOB'.
+Info: pin 'gpio_in[1]$tr_io' constrained to Bel 'X13/Y0/PIOB'.
+Info: pin 'gpio_in[0]$tr_io' constrained to Bel 'X13/Y0/PIOA'.
+Info: pin 'clk$tr_io' constrained to Bel 'X0/Y47/PIOA'.
+Info: pin 'capsule_event_seen$tr_io' constrained to Bel 'X0/Y38/PIOB'.
+Info: Packing constants..
+Info: Packing carries...
+Info: Packing LUTs...
+Info: Packing LUT5-7s...
+Info: Packing FFs...
+Info:     909 FFs paired with LUTs.
+Info: Generating derived timing constraints...
+Info: Promoting globals...
+Info:     promoting clock net clk$TRELLIS_IO_IN to global network
+Info: Checksum: 0xaa19a414
+
+Info: Device utilisation:
+Info: 	          TRELLIS_IO:      23/    365     6%
+Info: 	                DCCA:       1/     56     1%
+Info: 	              DP16KD:       3/    208     1%
+Info: 	          MULT18X18D:       0/    156     0%
+Info: 	              ALU54B:       0/     78     0%
+Info: 	             EHXPLLL:       0/      4     0%
+Info: 	             EXTREFB:       0/      2     0%
+Info: 	                DCUA:       0/      2     0%
+Info: 	           PCSCLKDIV:       0/      2     0%
+Info: 	             IOLOGIC:       0/    224     0%
+Info: 	            SIOLOGIC:       0/    141     0%
+Info: 	                 GSR:       0/      1     0%
+Info: 	               JTAGG:       0/      1     0%
+Info: 	                OSCG:       0/      1     0%
+Info: 	               SEDGA:       0/      1     0%
+Info: 	                 DTR:       0/      1     0%
+Info: 	             USRMCLK:       0/      1     0%
+Info: 	             CLKDIVF:       0/      4     0%
+Info: 	           ECLKSYNCB:       0/     10     0%
+Info: 	             DLLDELD:       0/      8     0%
+Info: 	              DDRDLL:       0/      4     0%
+Info: 	             DQSBUFM:       0/     14     0%
+Info: 	     TRELLIS_ECLKBUF:       0/      8     0%
+Info: 	        ECLKBRIDGECS:       0/      2     0%
+Info: 	                DCSC:       0/      2     0%
+Info: 	          TRELLIS_FF:    2257/  83640     2%
+Info: 	        TRELLIS_COMB:    4917/  83640     5%
+Info: 	        TRELLIS_RAMW:       0/  10455     0%
+
+Info: Placed 23 cells based on constraints.
+Info: Creating initial analytic placement for 4753 cells, random placement wirelen = 505042.
+Info:     at initial placer iter 0, wirelen = 2596
+Info:     at initial placer iter 1, wirelen = 2641
+Info:     at initial placer iter 2, wirelen = 2460
+Info:     at initial placer iter 3, wirelen = 2403
+Info: Running main analytical placer, max placement attempts per cell = 6481800.
+Info:     at iteration #1, type ALL: wirelen solved = 2426, spread = 46492, legal = 48673; time = 0.10s
+Info:     at iteration #2, type ALL: wirelen solved = 4731, spread = 41491, legal = 43472; time = 0.08s
+Info:     at iteration #3, type ALL: wirelen solved = 9159, spread = 35968, legal = 39383; time = 0.08s
+Info:     at iteration #4, type ALL: wirelen solved = 11296, spread = 37345, legal = 39756; time = 0.09s
+Info:     at iteration #5, type ALL: wirelen solved = 13952, spread = 35965, legal = 38349; time = 0.08s
+Info:     at iteration #6, type ALL: wirelen solved = 16181, spread = 34397, legal = 37485; time = 0.09s
+Info:     at iteration #7, type ALL: wirelen solved = 16898, spread = 35295, legal = 37148; time = 0.09s
+Info:     at iteration #8, type ALL: wirelen solved = 18613, spread = 34665, legal = 36952; time = 0.11s
+Info:     at iteration #9, type ALL: wirelen solved = 20413, spread = 34694, legal = 37739; time = 0.10s
+Info:     at iteration #10, type ALL: wirelen solved = 21723, spread = 34045, legal = 36482; time = 0.09s
+Info:     at iteration #11, type ALL: wirelen solved = 23150, spread = 33388, legal = 36342; time = 0.10s
+Info:     at iteration #12, type ALL: wirelen solved = 23653, spread = 33140, legal = 36049; time = 0.10s
+Info:     at iteration #13, type ALL: wirelen solved = 24413, spread = 31713, legal = 34884; time = 0.08s
+Info:     at iteration #14, type ALL: wirelen solved = 24542, spread = 32592, legal = 35451; time = 0.09s
+Info:     at iteration #15, type ALL: wirelen solved = 25552, spread = 32899, legal = 36185; time = 0.08s
+Info:     at iteration #16, type ALL: wirelen solved = 26056, spread = 32769, legal = 35429; time = 0.07s
+Info:     at iteration #17, type ALL: wirelen solved = 26233, spread = 31559, legal = 34380; time = 0.08s
+Info:     at iteration #18, type ALL: wirelen solved = 25829, spread = 30740, legal = 34822; time = 0.09s
+Info:     at iteration #19, type ALL: wirelen solved = 25863, spread = 30831, legal = 33720; time = 0.09s
+Info:     at iteration #20, type ALL: wirelen solved = 25769, spread = 30235, legal = 34173; time = 0.09s
+Info:     at iteration #21, type ALL: wirelen solved = 25232, spread = 30807, legal = 33549; time = 0.10s
+Info:     at iteration #22, type ALL: wirelen solved = 25970, spread = 30873, legal = 33960; time = 0.10s
+Info:     at iteration #23, type ALL: wirelen solved = 25944, spread = 30666, legal = 33499; time = 0.08s
+Info:     at iteration #24, type ALL: wirelen solved = 26040, spread = 30208, legal = 33226; time = 0.10s
+Info:     at iteration #25, type ALL: wirelen solved = 25831, spread = 30365, legal = 33688; time = 0.09s
+Info:     at iteration #26, type ALL: wirelen solved = 25799, spread = 31176, legal = 34269; time = 0.09s
+Info:     at iteration #27, type ALL: wirelen solved = 26596, spread = 30399, legal = 33196; time = 0.11s
+Info: HeAP Placer Time: 3.85s
+Info:   of which solving equations: 1.83s
+Info:   of which spreading cells: 0.43s
+Info:   of which strict legalisation: 0.24s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 1521, wirelen = 33196
+Info:   at iteration #5: temp = 0.000000, timing cost = 1918, wirelen = 30267
+Info:   at iteration #10: temp = 0.000000, timing cost = 1733, wirelen = 29414
+Info:   at iteration #15: temp = 0.000000, timing cost = 1747, wirelen = 29088
+Info:   at iteration #20: temp = 0.000000, timing cost = 1763, wirelen = 29006
+Info:   at iteration #22: temp = 0.000000, timing cost = 1760, wirelen = 28998 
+Info: SA placement time 7.41s
+
+Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 51.65 MHz (PASS at 50.00 MHz)
+
+Info: Max delay <async>                           -> <async>                          : 26.54 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 23.20 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 25.55 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 8 endpoint(s)
+Info:          + represents [1,8) endpoint(s)
+Info: [   639,   1570) |****************+
+Info: [  1570,   2501) |************************************************************ 
+Info: [  2501,   3432) |*********************************************************+
+Info: [  3432,   4363) |****************+
+Info: [  4363,   5294) |*******************************+
+Info: [  5294,   6225) |*************************+
+Info: [  6225,   7156) |***********************+
+Info: [  7156,   8087) |*************************+
+Info: [  8087,   9018) |*****************************+
+Info: [  9018,   9949) |***********************+
+Info: [  9949,  10880) |*********************+
+Info: [ 10880,  11811) |********************+
+Info: [ 11811,  12742) |**********************+
+Info: [ 12742,  13673) |****************+
+Info: [ 13673,  14604) |**********+
+Info: [ 14604,  15535) |***********************+
+Info: [ 15535,  16466) |*******************************************+
+Info: [ 16466,  17397) |*******************************+
+Info: [ 17397,  18328) |**************+
+Info: [ 18328,  19259) |**************+
+Info: Checksum: 0xbd17052d
+Info: Routing globals...
+Info:     routing clock net $glbnet$clk$TRELLIS_IO_IN using global 0
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 21049 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:       1000 |      363        636 |  363   636 |     20559|       0.42       0.42|
+Info:       2000 |      624       1375 |  261   739 |     19978|       0.24       0.67|
+Info:       3000 |      834       2165 |  210   790 |     19409|       0.21       0.88|
+Info:       4000 |     1053       2946 |  219   781 |     18772|       0.19       1.07|
+Info:       5000 |     1280       3719 |  227   773 |     18033|       0.21       1.28|
+Info:       6000 |     1579       4420 |  299   701 |     17560|       0.24       1.51|
+Info:       7000 |     1819       5180 |  240   760 |     16937|       0.20       1.71|
+Info:       8000 |     2036       5963 |  217   783 |     16222|       0.21       1.93|
+Info:       9000 |     2264       6735 |  228   772 |     15508|       0.21       2.14|
+Info:      10000 |     2510       7489 |  246   754 |     14867|       0.23       2.37|
+Info:      11000 |     2841       8158 |  331   669 |     14388|       0.25       2.61|
+Info:      12000 |     3067       8932 |  226   774 |     13685|       0.25       2.86|
+Info:      13000 |     3323       9676 |  256   744 |     13069|       0.22       3.09|
+Info:      14000 |     3604      10338 |  281   662 |     12406|       0.20       3.29|
+Info:      15000 |     3950      10940 |  346   602 |     11830|       0.20       3.49|
+Info:      16000 |     4216      11620 |  266   680 |     11154|       0.23       3.72|
+Info:      17000 |     4456      12305 |  240   685 |     10407|       0.20       3.91|
+Info:      18000 |     4736      12964 |  280   659 |      9718|       0.25       4.17|
+Info:      19000 |     4989      13637 |  253   673 |      9046|       0.24       4.41|
+Info:      20000 |     5248      14332 |  259   695 |      8452|       0.30       4.71|
+Info:      21000 |     5554      14973 |  306   641 |      7902|       0.31       5.02|
+Info:      22000 |     5831      15612 |  277   639 |      7304|       0.28       5.30|
+Info:      23000 |     6122      16253 |  291   641 |      6705|       0.30       5.60|
+Info:      24000 |     6405      16851 |  283   598 |      6071|       0.27       5.86|
+Info:      25000 |     6591      17581 |  186   730 |      5329|       0.30       6.16|
+Info:      26000 |     6850      18320 |  259   739 |      4746|       0.32       6.48|
+Info:      27000 |     6946      19192 |   96   872 |      3885|       0.24       6.72|
+Info:      28000 |     7068      20034 |  122   842 |      3064|       0.29       7.01|
+Info:      29000 |     7319      20752 |  251   718 |      2458|       0.33       7.34|
+Info:      30000 |     7488      21544 |  169   792 |      1684|       0.29       7.63|
+Info:      31000 |     7722      22275 |  234   731 |       969|       0.37       8.00|
+Info:      32000 |     8078      22894 |  356   619 |       458|       0.44       8.44|
+Info:      32981 |     8465      23468 |  387   574 |         0|       0.46       8.91|
+Info: Routing complete.
+Info: Router1 time 8.91s
+Info: Checksum: 0x34dccdfe
+
+Info: Critical path report for clock '$glbnet$clk$TRELLIS_IO_IN' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  5.61  5.61 Source u_mapped_memory.mem.0.0.DOA16
+Info:    routing  2.01  7.62 Net u_mapped_memory.mem.0.0_DOA16[0] (13,22) -> (12,5)
+Info:                          Sink mem_rdata_PFUMX_Z_17_BLUT_LUT4_Z.B
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.40  8.02 Source mem_rdata_PFUMX_Z_17_BLUT_LUT4_Z.OFX
+Info:    routing  0.99  9.01 Net mem_rdata[16] (12,5) -> (12,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z.A
+Info:                          Defined in:
+Info:                               third_party/picorv32/picorv32.v:100.20-100.29
+Info:      logic  0.24  9.25 Source u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z.F
+Info:    routing  0.74  9.99 Net u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z_D[3] (12,9) -> (10,11)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  10.22 Source u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D_LUT4_Z_D_LUT4_Z.F
+Info:    routing  0.42  10.64 Net u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D_LUT4_Z_D[3] (10,11) -> (10,11)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  10.87 Source u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D_LUT4_Z.F
+Info:    routing  0.91  11.78 Net u_rcv2_recorder.u_payload_hasher.data_LUT4_Z_2_D_LUT4_Z_D[3] (10,11) -> (10,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB0.A
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.45  12.23 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB0.FCO
+Info:    routing  0.00  12.23 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_FCI_INT (10,9) -> (10,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB1.FCI
+Info:      logic  0.00  12.23 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB1.FCO
+Info:    routing  0.00  12.23 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_CIN (10,9) -> (10,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:143.75-143.106
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  12.30 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1$CCU2_COMB0.FCO
+Info:    routing  0.00  12.30 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1$CCU2_FCI_INT (10,9) -> (10,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1$CCU2_COMB1.FCI
+Info:      logic  0.00  12.30 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1$CCU2_COMB1.FCO
+Info:    routing  0.00  12.30 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_COUT (10,9) -> (10,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:143.75-143.106
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  12.37 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCO
+Info:    routing  0.00  12.37 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_COUT_CCU2C_CIN$CCU2_FCI_INT (10,9) -> (10,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCI
+Info:      logic  0.00  12.37 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_15_C0_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCO
+Info:    routing  0.00  12.37 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_CIN (10,9) -> (10,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:143.75-143.106
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  12.44 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0$CCU2_COMB0.FCO
+Info:    routing  0.00  12.44 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0$CCU2_FCI_INT (10,9) -> (10,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0$CCU2_COMB1.FCI
+Info:      logic  0.00  12.44 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0$CCU2_COMB1.FCO
+Info:    routing  0.00  12.44 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT (10,9) -> (11,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:143.75-143.106
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  12.52 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB0.FCO
+Info:    routing  0.00  12.52 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_FCI_INT (11,9) -> (11,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB1.FCI
+Info:      logic  0.00  12.52 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN$CCU2_COMB1.FCO
+Info:    routing  0.00  12.52 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN_COUT (11,9) -> (11,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:143.75-143.106
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  12.59 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_COMB0.FCO
+Info:    routing  0.00  12.59 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_FCI_INT (11,9) -> (11,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_COMB1.FCI
+Info:      logic  0.00  12.59 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_7_C0_CCU2C_A0_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_COMB1.FCO
+Info:    routing  0.00  12.59 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1_CIN_CCU2C_COUT_CIN (11,9) -> (11,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:143.75-143.106
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  12.66 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB0.FCO
+Info:    routing  0.00  12.66 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_FCI_INT (11,9) -> (11,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB1.FCI
+Info:      logic  0.00  12.66 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB1.FCO
+Info:    routing  0.00  12.66 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1_CIN (11,9) -> (11,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               rtl/property_checker.sv:143.75-143.106
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.07  12.73 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1$CCU2_COMB0.FCO
+Info:    routing  0.00  12.73 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1$CCU2_FCI_INT (11,9) -> (11,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1$CCU2_COMB1.FCI
+Info:      logic  0.00  12.73 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_16_C0_CCU2C_A1$CCU2_COMB1.FCO
+Info:    routing  0.00  12.73 Net $nextpnr_CCU2C_9$CIN (11,9) -> (12,9)
+Info:                          Sink $nextpnr_CCU2C_9$CCU2_COMB0.FCI
+Info:      logic  0.44  13.17 Source $nextpnr_CCU2C_9$CCU2_COMB0.F
+Info:    routing  1.49  14.66 Net u_rcv2_recorder.commit_valid_LUT4_C_Z_LUT4_D_Z[3] (12,9) -> (5,12)
+Info:                          Sink u_rcv2_recorder.watchdog_enable_LUT4_B_Z_PFUMX_ALUT_Z_PFUMX_Z_ALUT_LUT4_Z.B
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  14.90 Source u_rcv2_recorder.watchdog_enable_LUT4_B_Z_PFUMX_ALUT_Z_PFUMX_Z_ALUT_LUT4_Z.F
+Info:    routing  0.00  14.90 Net u_rcv2_recorder.watchdog_enable_LUT4_B_Z_PFUMX_ALUT_Z_PFUMX_Z_ALUT (5,12) -> (5,12)
+Info:                          Sink u_rcv2_recorder.watchdog_enable_LUT4_B_Z_PFUMX_ALUT_Z_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
+Info:      logic  0.17  15.06 Source u_rcv2_recorder.watchdog_enable_LUT4_B_Z_PFUMX_ALUT_Z_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  1.58  16.64 Net u_rcv2_recorder.property_fail_valid_TRELLIS_FF_Q_DI_LUT4_Z_D[2] (5,12) -> (15,9)
+Info:                          Sink u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_14_C0_LUT4_D_Z_LUT4_C_Z_PFUMX_C0_Z_L6MUX21_Z_30_D1_PFUMX_Z_ALUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  16.90 Source u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_14_C0_LUT4_D_Z_LUT4_C_Z_PFUMX_C0_Z_L6MUX21_Z_30_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  0.37  17.27 Net u_rcv2_recorder.u_payload_hasher.data_PFUMX_Z_14_C0_LUT4_D_Z_LUT4_C_Z_PFUMX_C0_Z[14] (15,9) -> (15,9)
+Info:                          Sink u_rcv2_recorder.property_signature_TRELLIS_FF_Q_17.M
+Info:      setup  0.00  17.27 Source u_rcv2_recorder.property_signature_TRELLIS_FF_Q_17.M
+Info: 8.76 ns logic, 8.50 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> '<async>':
+Info:       type curr  total name
+Info:     source  0.00  0.00 Source uart_rx$tr_io.O
+Info:    routing  6.37  6.37 Net uart_rx$TRELLIS_IO_IN (0,89) -> (14,7)
+Info:                          Sink u_rcv2_recorder_external_input_valid_LUT4_Z.C
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  6.61 Source u_rcv2_recorder_external_input_valid_LUT4_Z.F
+Info:    routing  1.12  7.72 Net u_rcv2_recorder_external_input_valid (14,7) -> (17,12)
+Info:                          Sink u_rcv2_recorder.jump_taken_LUT4_B_Z_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  7.96 Source u_rcv2_recorder.jump_taken_LUT4_B_Z_LUT4_Z.F
+Info:    routing  0.04  8.00 Net u_rcv2_recorder.jump_taken_LUT4_B_Z[2] (17,12) -> (17,12)
+Info:                          Sink u_rcv2_recorder.final_event_type_PFUMX_Z_ALUT_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  8.23 Source u_rcv2_recorder.final_event_type_PFUMX_Z_ALUT_LUT4_Z.F
+Info:    routing  0.00  8.23 Net u_rcv2_recorder.final_event_type_PFUMX_Z_ALUT (17,12) -> (17,12)
+Info:                          Sink u_rcv2_recorder.final_event_type_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
+Info:      logic  0.17  8.40 Source u_rcv2_recorder.final_event_type_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  1.94  10.34 Net captured_event_type[1] (17,12) -> (13,16)
+Info:                          Sink recorder_status_mix_LUT4_Z_17_D_LUT4_Z_D_LUT4_Z.C
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_v2_board_top.sv:63.35-63.54
+Info:      logic  0.24  10.57 Source recorder_status_mix_LUT4_Z_17_D_LUT4_Z_D_LUT4_Z.F
+Info:    routing  1.66  12.23 Net recorder_status_mix_LUT4_Z_17_D_LUT4_Z_D[3] (13,16) -> (13,26)
+Info:                          Sink recorder_status_mix_LUT4_Z_17_D_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  12.47 Source recorder_status_mix_LUT4_Z_17_D_LUT4_Z.F
+Info:    routing  2.28  14.75 Net recorder_status_mix_LUT4_Z_17_D[3] (13,26) -> (9,5)
+Info:                          Sink recorder_status_mix_LUT4_Z_17.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  14.98 Source recorder_status_mix_LUT4_Z_17.F
+Info:    routing  1.42  16.40 Net recorder_status_mix[1] (9,5) -> (4,7)
+Info:                          Sink recorder_status_xor_LUT4_Z_D_LUT4_Z_1.C
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_v2_board_top.sv:65.36-65.55
+Info:      logic  0.24  16.64 Source recorder_status_xor_LUT4_Z_D_LUT4_Z_1.F
+Info:    routing  0.84  17.48 Net recorder_status_xor_LUT4_Z_D[1] (4,7) -> (3,6)
+Info:                          Sink recorder_status_xor_LUT4_Z.B
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  17.72 Source recorder_status_xor_LUT4_Z.F
+Info:    routing  2.83  20.54 Net recorder_status_xor$TRELLIS_IO_OUT (3,6) -> (0,38)
+Info:                          Sink recorder_status_xor$tr_io.I
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_v2_board_top.sv:23.22-23.41
+Info: 2.05 ns logic, 18.49 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> 'posedge $glbnet$clk$TRELLIS_IO_IN':
+Info:       type curr  total name
+Info:     source  0.00  0.00 Source uart_rx$tr_io.O
+Info:    routing  6.37  6.37 Net uart_rx$TRELLIS_IO_IN (0,89) -> (14,7)
+Info:                          Sink u_rcv2_recorder_external_input_valid_LUT4_Z.C
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  6.61 Source u_rcv2_recorder_external_input_valid_LUT4_Z.F
+Info:    routing  1.35  7.96 Net u_rcv2_recorder_external_input_valid (14,7) -> (17,9)
+Info:                          Sink u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.A
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  8.19 Source u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.F
+Info:    routing  0.00  8.19 Net u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT (17,9) -> (17,9)
+Info:                          Sink u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.30-157.32
+Info:      logic  0.17  8.36 Source u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.00  8.36 Net u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0_L6MUX21_Z_D1 (17,9) -> (17,9)
+Info:                          Sink u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.54-157.56
+Info:      logic  0.24  8.60 Source u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  0.00  8.60 Net u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D0 (17,9) -> (17,9)
+Info:                          Sink u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.66-157.68
+Info:      logic  0.24  8.84 Source u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  1.01  9.85 Net u_rcv2_recorder.capsule_overflow_LUT4_A_C_LUT4_D_Z[3] (17,9) -> (14,15)
+Info:                          Sink u_rcv2_recorder.final_event_type_LUT4_Z_D_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  10.08 Source u_rcv2_recorder.final_event_type_LUT4_Z_D_LUT4_Z.F
+Info:    routing  1.29  11.38 Net u_rcv2_recorder.final_event_type_LUT4_Z_D[3] (14,15) -> (5,16)
+Info:                          Sink u_rcv2_recorder.capsule_overflow_LUT4_A.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  11.61 Source u_rcv2_recorder.capsule_overflow_LUT4_A.F
+Info:    routing  0.21  11.83 Net u_rcv2_recorder.commit_valid_LUT4_C_Z[2] (5,16) -> (5,16)
+Info:                          Sink u_rcv2_recorder.final_event_type_LUT4_Z_D_LUT4_D_Z_PFUMX_ALUT_Z_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  12.06 Source u_rcv2_recorder.final_event_type_LUT4_Z_D_LUT4_D_Z_PFUMX_ALUT_Z_LUT4_Z.F
+Info:    routing  1.66  13.73 Net u_rcv2_recorder.final_event_type_LUT4_Z_D_LUT4_D_Z_PFUMX_ALUT_Z[1] (5,16) -> (14,25)
+Info:                          Sink u_rcv2_recorder.captured_event_valid_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  13.96 Source u_rcv2_recorder.captured_event_valid_LUT4_Z.F
+Info:    routing  0.69  14.65 Net captured_event_valid (14,25) -> (13,25)
+Info:                          Sink u_rcv2_recorder.captured_event_valid_PFUMX_C0_3_BLUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_v2_board_top.sv:62.29-62.49
+Info:      logic  0.26  14.90 Source u_rcv2_recorder.captured_event_valid_PFUMX_C0_3_BLUT_LUT4_Z.OFX
+Info:    routing  2.02  16.92 Net u_rcv2_recorder.captured_event_valid_PFUMX_C0_3_Z (13,25) -> (36,24)
+Info:                          Sink u_rcv2_recorder.u_event_fifo.mem[6]_TRELLIS_FF_Q_35.CE
+Info:      setup  0.00  16.92 Source u_rcv2_recorder.u_event_fifo.mem[6]_TRELLIS_FF_Q_35.CE
+Info: 2.32 ns logic, 14.60 ns routing
+
+Info: Critical path report for cross-domain path 'posedge $glbnet$clk$TRELLIS_IO_IN' -> '<async>':
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source board_counter_TRELLIS_FF_Q_9.Q
+Info:    routing  2.58  3.11 Net board_counter[1] (12,6) -> (8,17)
+Info:                          Sink u_rcv2_recorder.capsule_read_addr_LUT4_D_9.C
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_v2_board_top.sv:53.50-53.67
+Info:      logic  0.24  3.34 Source u_rcv2_recorder.capsule_read_addr_LUT4_D_9.F
+Info:    routing  2.98  6.33 Net u_rcv2_recorder.capsule_read_data_LUT4_Z_48_D_LUT4_Z_D[2] (8,17) -> (33,28)
+Info:                          Sink u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D_LUT4_Z_1_D_PFUMX_Z_C0_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  6.57 Source u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D_LUT4_Z_1_D_PFUMX_Z_C0_LUT4_Z.F
+Info:    routing  0.63  7.19 Net u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D_LUT4_Z_1_D_PFUMX_Z_C0[4] (33,28) -> (33,28)
+Info:                          Sink u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D_LUT4_Z_1_D_PFUMX_Z_BLUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  7.45 Source u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D_LUT4_Z_1_D_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  1.09  8.54 Net u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D_LUT4_Z_1_D[3] (33,28) -> (32,27)
+Info:                          Sink u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D_LUT4_Z_1.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  8.77 Source u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D_LUT4_Z_1.F
+Info:    routing  0.67  9.44 Net u_rcv2_recorder.capsule_read_data_LUT4_Z_52_D[3] (32,27) -> (30,27)
+Info:                          Sink u_rcv2_recorder.capsule_read_data_LUT4_Z_52.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  9.68 Source u_rcv2_recorder.capsule_read_data_LUT4_Z_52.F
+Info:    routing  2.15  11.83 Net capsule_read_data[61] (30,27) -> (19,19)
+Info:                          Sink recorder_status_mix_LUT4_Z_18_D_PFUMX_Z_ALUT_LUT4_Z.A
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_v2_board_top.sv:54.36-54.53
+Info:      logic  0.24  12.07 Source recorder_status_mix_LUT4_Z_18_D_PFUMX_Z_ALUT_LUT4_Z.F
+Info:    routing  0.00  12.07 Net recorder_status_mix_LUT4_Z_18_D_PFUMX_Z_ALUT (19,19) -> (19,19)
+Info:                          Sink recorder_status_mix_LUT4_Z_18_D_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
+Info:      logic  0.17  12.23 Source recorder_status_mix_LUT4_Z_18_D_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  1.37  13.60 Net recorder_status_mix_LUT4_Z_18_D[3] (19,19) -> (18,8)
+Info:                          Sink recorder_status_mix_LUT4_Z_18.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  13.83 Source recorder_status_mix_LUT4_Z_18.F
+Info:    routing  0.87  14.71 Net recorder_status_mix[29] (18,8) -> (18,8)
+Info:                          Sink recorder_status_xor_LUT4_Z_D_LUT4_Z_2_D_LUT4_Z_D_PFUMX_Z_BLUT_LUT4_Z.B
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_v2_board_top.sv:65.36-65.55
+Info:      logic  0.40  15.11 Source recorder_status_xor_LUT4_Z_D_LUT4_Z_2_D_LUT4_Z_D_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.44  15.54 Net recorder_status_xor_LUT4_Z_D_LUT4_Z_2_D_LUT4_Z_D[3] (18,8) -> (18,7)
+Info:                          Sink recorder_status_xor_LUT4_Z_D_LUT4_Z_2_D_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  15.78 Source recorder_status_xor_LUT4_Z_D_LUT4_Z_2_D_LUT4_Z.F
+Info:    routing  1.12  16.90 Net recorder_status_xor_LUT4_Z_D_LUT4_Z_2_D[2] (18,7) -> (17,6)
+Info:                          Sink recorder_status_xor_LUT4_Z_D_LUT4_Z_2.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  17.14 Source recorder_status_xor_LUT4_Z_D_LUT4_Z_2.F
+Info:    routing  1.98  19.12 Net recorder_status_xor_LUT4_Z_D[3] (17,6) -> (3,6)
+Info:                          Sink recorder_status_xor_LUT4_Z.D
+Info:                          Defined in:
+Info:                               .\WORKSPACE\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  19.35 Source recorder_status_xor_LUT4_Z.F
+Info:    routing  2.83  22.18 Net recorder_status_xor$TRELLIS_IO_OUT (3,6) -> (0,38)
+Info:                          Sink recorder_status_xor$tr_io.I
+Info:                          Defined in:
+Info:                               rtl/mapped/full_core_replaycapsule_v2_board_top.sv:23.22-23.41
+Info: 3.47 ns logic, 18.71 ns routing
+
+Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 57.92 MHz (PASS at 50.00 MHz)
+
+Info: Max delay <async>                           -> <async>                          : 20.54 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 16.92 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 22.18 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 15 endpoint(s)
+Info:          + represents [1,15) endpoint(s)
+Info: [  2734,   3551) |**+
+Info: [  3551,   4368) |*+
+Info: [  4368,   5185) |+
+Info: [  5185,   6002) |**+
+Info: [  6002,   6819) |**********************+
+Info: [  6819,   7636) |************************************************************ 
+Info: [  7636,   8453) |*******************+
+Info: [  8453,   9270) |*****************+
+Info: [  9270,  10087) |************+
+Info: [ 10087,  10904) |*************+
+Info: [ 10904,  11721) |*************+
+Info: [ 11721,  12538) |***********+
+Info: [ 12538,  13355) |************+
+Info: [ 13355,  14172) |********+
+Info: [ 14172,  14989) |****+
+Info: [ 14989,  15806) |**********+
+Info: [ 15806,  16623) |************************+
+Info: [ 16623,  17440) |**************+
+Info: [ 17440,  18257) |**********+
+Info: [ 18257,  19074) |********+
+
+Info: Program finished normally.

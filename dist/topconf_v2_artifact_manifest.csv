@@ -1,31 +1,31 @@
 path,bytes,category,notes
-paper/main.pdf,94834,paper,locked PDF or locally built PDF
+paper/main.pdf,94964,paper,locked PDF or locally built PDF
 paper/main.tex,1158,paper,paper source
-README.md,7732,docs,repository README
-artifact_evaluation.md,4100,docs,artifact evaluation instructions
-docs/novelty_audit.md,4194,docs,novelty guardrails
-docs/related_work_positioning.md,2602,docs,related work guardrails
-docs/conference_readiness_dashboard.md,1831,docs,current readiness dashboard
+README.md,7983,docs,repository README
+artifact_evaluation.md,4193,docs,artifact evaluation instructions
+docs/novelty_audit.md,4431,docs,novelty guardrails
+docs/related_work_positioning.md,2704,docs,related work guardrails
+docs/conference_readiness_dashboard.md,1832,docs,current readiness dashboard
 paper/sections/abstract.tex,1020,paper,paper section source
-paper/sections/architecture.tex,3042,paper,paper section source
+paper/sections/architecture.tex,3047,paper,paper section source
 paper/sections/conclusion.tex,733,paper,paper section source
 paper/sections/evaluation.tex,3196,paper,paper section source
 paper/sections/generated_numbers.tex,1089,paper,paper section source
-paper/sections/generated_tables.tex,3521,paper,paper section source
+paper/sections/generated_tables.tex,3514,paper,paper section source
 paper/sections/introduction.tex,2208,paper,paper section source
-paper/sections/limitations.tex,2323,paper,paper section source
+paper/sections/limitations.tex,2332,paper,paper section source
 paper/sections/model.tex,1885,paper,paper section source
 paper/sections/motivation.tex,887,paper,paper section source
 paper/sections/related_work.tex,3697,paper,paper section source
-paper/sections/replay_verification.tex,1256,paper,paper section source
+paper/sections/replay_verification.tex,1410,paper,paper section source
 paper/tables/table_buffer_sensitivity.tex,3095,paper,generated paper table
-paper/tables/table_buffer_sensitivity_v2.tex,577,paper,generated paper table
+paper/tables/table_buffer_sensitivity_v2.tex,662,paper,generated paper table
 paper/tables/table_capsule_baselines.tex,4562,paper,generated paper table
-paper/tables/table_capsule_baselines_v2.tex,419,paper,generated paper table
+paper/tables/table_capsule_baselines_v2.tex,421,paper,generated paper table
 paper/tables/table_event_ablation.tex,590,paper,generated paper table
-paper/tables/table_limitations.tex,425,paper,generated paper table
+paper/tables/table_limitations.tex,463,paper,generated paper table
 paper/tables/table_mapped_scaling.tex,1179,paper,generated paper table
-paper/tables/table_mapped_scaling_v2.tex,539,paper,generated paper table
+paper/tables/table_mapped_scaling_v2.tex,598,paper,generated paper table
 paper/tables/table_negative_replay.tex,109,paper,generated paper table
 paper/tables/table_recorder_config_tradeoff.tex,136,paper,generated paper table
 paper/tables/table_replay_consumer_tests.tex,134,paper,generated paper table
@@ -40,7 +40,7 @@ paper/figures/baseline_trace_sizes.svg,7370,paper,generated paper figure/source
 paper/figures/fig_buffer_sensitivity.pdf,1232,paper,generated paper figure/source
 paper/figures/fig_buffer_sensitivity_v2.pdf,714,paper,generated paper figure/source
 paper/figures/fig_capsule_scaling.pdf,1045,paper,generated paper figure/source
-paper/figures/fig_capsule_scaling_v2.pdf,772,paper,generated paper figure/source
+paper/figures/fig_capsule_scaling_v2.pdf,774,paper,generated paper figure/source
 paper/figures/fig_event_ablation_scaling.pdf,1506,paper,generated paper figure/source
 paper/figures/fig_mapped_buffer_scaling.pdf,999,paper,generated paper figure/source
 paper/figures/fig_mapped_memory_scaling.pdf,985,paper,generated paper figure/source
@@ -48,7 +48,7 @@ paper/figures/fig_mapped_overhead_v2.pdf,738,paper,generated paper figure/source
 paper/figures/fig_mapped_scaling.pdf,899,paper,generated paper figure/source
 paper/figures/fig_recorder_config_tradeoff.pdf,660,paper,generated paper figure/source
 paper/figures/fig_recorder_config_tradeoff_v2.pdf,763,paper,generated paper figure/source
-paper/figures/fig_replay_consumer_controller.pdf,716,paper,generated paper figure/source
+paper/figures/fig_replay_consumer_controller.pdf,712,paper,generated paper figure/source
 paper/figures/fig_replay_success.pdf,773,paper,generated paper figure/source
 paper/figures/fig_runtime_scaling.pdf,1005,paper,generated paper figure/source
 paper/figures/fig_runtime_scaling_v2.pdf,748,paper,generated paper figure/source
@@ -68,13 +68,13 @@ paper/figures/table03_trace_baselines.md,967,paper,generated paper figure/source
 paper/figures/table04_event_sufficiency.md,1328,paper,generated paper figure/source
 paper/figures/table05_formal_coverage.md,2361,paper,generated paper figure/source
 paper/figures/table06_proof_obligations.md,2618,paper,generated paper figure/source
-paper/figures/table07_evaluation_metrics.md,8866,paper,generated paper figure/source
+paper/figures/table07_evaluation_metrics.md,8853,paper,generated paper figure/source
 paper/figures/table_event_sufficiency.md,5523,paper,generated paper figure/source
 paper/figures/trace_size_status.svg,1135,paper,generated paper figure/source
 results/processed/ablations.csv,10573,results,processed evidence CSV
 results/processed/apt_install_status.csv,799,results,processed evidence CSV
-results/processed/artifact_manifest.csv,119974,results,processed evidence CSV
-results/processed/aspdac_submission_audit.csv,4213,results,processed evidence CSV
+results/processed/artifact_manifest.csv,119975,results,processed evidence CSV
+results/processed/aspdac_submission_audit.csv,4774,results,processed evidence CSV
 results/processed/baseline_comparison.csv,43684,results,processed evidence CSV
 results/processed/benchmark_coverage.csv,2485,results,processed evidence CSV
 results/processed/benchmark_manifest.csv,2469,results,processed evidence CSV
@@ -83,54 +83,55 @@ results/processed/buffer_sensitivity_fixed.csv,1077278,results,processed evidenc
 results/processed/buffer_sensitivity_fixed_summary.csv,8632,results,processed evidence CSV
 results/processed/buffer_sensitivity_summary.csv,9014,results,processed evidence CSV
 results/processed/buffer_sensitivity_v2.csv,5852865,results,processed evidence CSV
-results/processed/buffer_sensitivity_v2_measured.csv,914403,results,processed evidence CSV
-results/processed/buffer_sensitivity_v2_measured_summary.csv,11776,results,processed evidence CSV
+results/processed/buffer_sensitivity_v2_measured.csv,1383208,results,processed evidence CSV
+results/processed/buffer_sensitivity_v2_measured_summary.csv,17365,results,processed evidence CSV
 results/processed/buffer_sensitivity_v2_summary.csv,44412,results,processed evidence CSV
 results/processed/buffer_sweep.csv,3723,results,processed evidence CSV
 results/processed/capsule_baseline_comparison.csv,836442,results,processed evidence CSV
 results/processed/capsule_baseline_comparison_fixed.csv,820287,results,processed evidence CSV
 results/processed/capsule_baseline_comparison_v2.csv,988170,results,processed evidence CSV
-results/processed/capsule_baseline_comparison_v2_measured.csv,390316,results,processed evidence CSV
+results/processed/capsule_baseline_comparison_v2_measured.csv,391051,results,processed evidence CSV
 results/processed/capsule_baseline_summary.csv,10763,results,processed evidence CSV
 results/processed/capsule_baseline_summary_fixed.csv,10420,results,processed evidence CSV
 results/processed/capsule_baseline_summary_v2.csv,12467,results,processed evidence CSV
-results/processed/capsule_baseline_summary_v2_measured.csv,5025,results,processed evidence CSV
+results/processed/capsule_baseline_summary_v2_measured.csv,5026,results,processed evidence CSV
 results/processed/ci_gate_failure_diagnosis.csv,622,results,processed evidence CSV
-results/processed/claim_audit.csv,76212,results,processed evidence CSV
+results/processed/claim_audit.csv,73489,results,processed evidence CSV
 results/processed/deterministic_firmware.csv,4775,results,processed evidence CSV
 results/processed/evaluation_matrix.csv,258918,results,processed evidence CSV
-results/processed/evaluation_metrics.csv,9033,results,processed evidence CSV
+results/processed/evaluation_metrics.csv,9066,results,processed evidence CSV
 results/processed/event_ablation_scaling.csv,324271,results,processed evidence CSV
 results/processed/event_sufficiency.csv,847,results,processed evidence CSV
 results/processed/event_sufficiency_matrix.csv,37601,results,processed evidence CSV
-results/processed/expanded_benchmark_replay.csv,7103,results,processed evidence CSV
-results/processed/expanded_benchmark_replay_measured.csv,4796,results,processed evidence CSV
+results/processed/expanded_benchmark_replay.csv,10319,results,processed evidence CSV
+results/processed/expanded_benchmark_replay_measured.csv,15736,results,processed evidence CSV
 results/processed/expanded_firmware_build.csv,13397,results,processed evidence CSV
 results/processed/final_ci_gate_status.csv,25,results,processed evidence CSV
-results/processed/final_ci_verification.csv,1951,results,processed evidence CSV
+results/processed/final_ci_verification.csv,1953,results,processed evidence CSV
 results/processed/firmware_build.csv,10156,results,processed evidence CSV
 results/processed/firmware_sim_replay.csv,938,results,processed evidence CSV
 results/processed/firmware_source_comparison.csv,8281,results,processed evidence CSV
-results/processed/firmware_source_comparison_v2.csv,2494,results,processed evidence CSV
+results/processed/firmware_source_comparison_v2.csv,6838,results,processed evidence CSV
 results/processed/formal_checks.csv,3928,results,processed evidence CSV
 results/processed/formal_coverage.csv,3515,results,processed evidence CSV
 results/processed/full_core_mapped_summary.csv,473,results,processed evidence CSV
 results/processed/full_rtl_replay.csv,16270,results,processed evidence CSV
 results/processed/full_rtl_replay_negative.csv,1467,results,processed evidence CSV
-results/processed/full_rtl_replay_v2.csv,49497,results,processed evidence CSV
+results/processed/full_rtl_replay_v2.csv,56497,results,processed evidence CSV
+results/processed/full_rtl_replay_v2_depth8_probe.csv,37564,results,processed evidence CSV
 results/processed/hdl_checks.csv,4532,results,processed evidence CSV
 results/processed/mapped_failure_diagnosis.csv,3109,results,processed evidence CSV
 results/processed/mapped_overhead.csv,3590,results,processed evidence CSV
 results/processed/mapped_recorder_presence.csv,1470,results,processed evidence CSV
 results/processed/mapped_recorder_presence_v2.csv,1726,results,processed evidence CSV
-results/processed/mapped_recorder_presence_v2_measured.csv,852,results,processed evidence CSV
+results/processed/mapped_recorder_presence_v2_measured.csv,853,results,processed evidence CSV
 results/processed/mapped_scaling.csv,3717,results,processed evidence CSV
 results/processed/mapped_scaling_overhead.csv,2913,results,processed evidence CSV
 results/processed/mapped_scaling_overhead_v2.csv,4201,results,processed evidence CSV
-results/processed/mapped_scaling_overhead_v2_measured.csv,1707,results,processed evidence CSV
+results/processed/mapped_scaling_overhead_v2_measured.csv,1674,results,processed evidence CSV
 results/processed/mapped_scaling_summary.csv,644,results,processed evidence CSV
 results/processed/mapped_scaling_v2.csv,13140,results,processed evidence CSV
-results/processed/mapped_scaling_v2_measured.csv,1266,results,processed evidence CSV
+results/processed/mapped_scaling_v2_measured.csv,1265,results,processed evidence CSV
 results/processed/mapped_synthesis.csv,1160,results,processed evidence CSV
 results/processed/overflow_contracts.csv,1124,results,processed evidence CSV
 results/processed/paper_build_status.csv,96,results,processed evidence CSV
@@ -148,7 +149,7 @@ results/processed/recorder_config_replay.csv,152,results,processed evidence CSV
 results/processed/recorder_config_runtime.csv,159,results,processed evidence CSV
 results/processed/replay_consumer_mapped.csv,320,results,processed evidence CSV
 results/processed/replay_consumer_system_tests.csv,1852,results,processed evidence CSV
-results/processed/replay_consumer_tests.csv,1024,results,processed evidence CSV
+results/processed/replay_consumer_tests.csv,1152,results,processed evidence CSV
 results/processed/replay_experiments.csv,1766,results,processed evidence CSV
 results/processed/replay_negative_tests.csv,18828,results,processed evidence CSV
 results/processed/rtl_capsule_event_classes.csv,3600,results,processed evidence CSV
@@ -160,7 +161,7 @@ results/processed/runtime_overhead.csv,25631,results,processed evidence CSV
 results/processed/runtime_overhead_summary.csv,1534,results,processed evidence CSV
 results/processed/runtime_scaling.csv,207181,results,processed evidence CSV
 results/processed/runtime_scaling_summary.csv,3350,results,processed evidence CSV
-results/processed/runtime_scaling_v2_measured.csv,5419,results,processed evidence CSV
+results/processed/runtime_scaling_v2_measured.csv,5408,results,processed evidence CSV
 results/processed/runtime_scaling_v2_measured_summary.csv,3196,results,processed evidence CSV
 results/processed/scaled_firmware_build.csv,26305,results,processed evidence CSV
 results/processed/scaling_fix_audit.csv,476,results,processed evidence CSV
@@ -174,7 +175,7 @@ results/processed/todo_audit.csv,142,results,processed evidence CSV
 results/processed/toolchain_status.csv,3041,results,processed evidence CSV
 results/processed/topconf_ci_gate_status.csv,27,results,processed evidence CSV
 results/processed/topconf_summary.csv,25870,results,processed evidence CSV
-results/processed/topconf_v2_artifact_manifest.csv,19542,results,processed evidence CSV
+results/processed/topconf_v2_artifact_manifest.csv,19741,results,processed evidence CSV
 results/processed/trace_sizes.csv,25220,results,processed evidence CSV
 results/processed/v2_replay_failure_diagnosis.csv,1591,results,processed evidence CSV
 results/processed/v2_zero_fail_bug_inventory.csv,229,results,processed evidence CSV
@@ -186,8 +187,8 @@ results/processed/workload_scaling_v2.csv,465369,results,processed evidence CSV
 results/processed/workload_scaling_v2_measured.csv,178041,results,processed evidence CSV
 results/processed/workload_scaling_v2_measured_summary.csv,2078,results,processed evidence CSV
 results/processed/workload_scaling_v2_summary.csv,3352,results,processed evidence CSV
-results/raw/replay_consumer/compile.log,918,raw,replay consumer compile/run log
-results/raw/replay_consumer/run.log,429,raw,replay consumer compile/run log
+results/raw/replay_consumer/compile.log,1102,raw,replay consumer compile/run log
+results/raw/replay_consumer/run.log,491,raw,replay consumer compile/run log
 results/raw/replay_consumer_mapping/rcv2_recorder_wrapper_yosys_check.txt,27564,raw,replay consumer mapping log
 results/raw/replay_consumer_mapping/rcv2_replay_consumer_ecp5-45k_nextpnr.txt,2375,raw,replay consumer mapping log
 results/raw/replay_consumer_mapping/rcv2_replay_consumer_ecp5-45k_yosys.txt,137132,raw,replay consumer mapping log
@@ -195,6 +196,95 @@ results/raw/replay_consumer_mapping/rcv2_replay_consumer_ecp5-85k_nextpnr.txt,23
 results/raw/replay_consumer_mapping/rcv2_replay_consumer_ecp5-85k_yosys.txt,137113,raw,replay consumer mapping log
 results/raw/replay_consumer_mapping/rcv2_replay_consumer_pin_limited_wrapper_ecp5-45k_nextpnr.txt,23856,raw,replay consumer mapping log
 results/raw/replay_consumer_mapping/rcv2_replay_consumer_pin_limited_wrapper_ecp5-45k_yosys.txt,153637,raw,replay consumer mapping log
+results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem128_buf16_ecp5_85k_nextpnr.txt,25190,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem128_buf16_ecp5_85k_yosys.txt,462968,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem128_buf8_ecp5_85k_nextpnr.txt,25610,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem128_buf8_ecp5_85k_yosys.txt,460993,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem2048_buf512_ecp5_85k_nextpnr.txt,22024,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem2048_buf512_ecp5_85k_yosys.txt,460194,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem512_buf128_ecp5_85k_nextpnr.txt,24662,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem512_buf128_ecp5_85k_yosys.txt,466058,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf16_ecp5_85k_nextpnr.txt,62273,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf16_ecp5_85k_yosys.txt,698920,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf16_gatedopts_ecp5_85k_nextpnr.txt,61905,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf16_gatedopts_ecp5_85k_yosys.txt,662945,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf16_leanopts_ecp5_85k_nextpnr.txt,54356,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf16_leanopts_ecp5_85k_yosys.txt,689866,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf8_gatedopts_ecp5_85k_nextpnr.txt,70061,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem128_buf8_gatedopts_ecp5_85k_yosys.txt,659185,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem2048_buf512_ecp5_85k_yosys.txt,3257713,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem512_buf128_ecp5_85k_nextpnr.txt,33814,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_core_board_mem512_buf128_ecp5_85k_yosys.txt,869473,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf16_ecp5_85k_nextpnr.txt,57091,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf16_ecp5_85k_yosys.txt,704288,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf16_gatedopts_ecp5_85k_nextpnr.txt,53817,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf16_gatedopts_ecp5_85k_yosys.txt,718935,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf16_leanopts_ecp5_85k_nextpnr.txt,39259,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf16_leanopts_ecp5_85k_yosys.txt,700578,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf256_gatedopts_ecp5_85k_nextpnr.txt,42515,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem128_buf256_gatedopts_ecp5_85k_yosys.txt,1029217,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem2048_buf512_ecp5_85k_yosys.txt,3257713,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_full_board_mem512_buf128_ecp5_85k_yosys.txt,857910,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf16_ecp5_85k_nextpnr.txt,57508,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf16_ecp5_85k_yosys.txt,709498,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf16_gatedopts_ecp5_85k_nextpnr.txt,84053,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf16_gatedopts_ecp5_85k_yosys.txt,675037,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf16_leanopts_ecp5_85k_nextpnr.txt,43735,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf16_leanopts_ecp5_85k_yosys.txt,685361,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf8_gatedopts_ecp5_85k_nextpnr.txt,71992,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf8_gatedopts_ecp5_85k_yosys.txt,654572,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem2048_buf512_ecp5_85k_yosys.txt,3257715,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem512_buf128_ecp5_85k_nextpnr.txt,37378,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem512_buf128_ecp5_85k_yosys.txt,879378,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/expanded_benchmark_replay/build_firmware.log,113,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_failing.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_fixed.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_failing.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_fixed.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_failing.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_fixed.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_failing.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_fixed.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_failing.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_fixed.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_failing.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_fixed.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
 results/debug/topconf_v2_before/baseline_status.md,737,baseline,frozen pre-v2 evidence
 results/debug/topconf_v2_before/docs_conference_readiness_dashboard.md,1831,baseline,frozen pre-v2 evidence
 results/debug/topconf_v2_before/paper_main.pdf,103302,baseline,frozen pre-v2 evidence
@@ -219,14 +309,14 @@ rtl/replaycapsule_v2/rcv2_config.svh,2686,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv,1548,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_event_packer.sv,2655,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv,787,rtl,v2 RTL source
-rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv,1064,rtl,v2 RTL source
+rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv,1161,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_payload_hasher.sv,705,rtl,v2 RTL source
-rtl/replaycapsule_v2/rcv2_recorder.sv,10419,rtl,v2 RTL source
-rtl/replaycapsule_v2/rcv2_replay_consumer.sv,6381,rtl,v2 RTL source
+rtl/replaycapsule_v2/rcv2_recorder.sv,11606,rtl,v2 RTL source
+rtl/replaycapsule_v2/rcv2_replay_consumer.sv,6728,rtl,v2 RTL source
 rtl/mapped/replaycapsule_v2_recorder_wrapper.sv,3507,rtl,v2 synthesis wrapper
-rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv,2194,rtl,v2 replay-consume pin-limited wrapper
-tb/replay_consumer/tb_rcv2_replay_consumer.sv,7634,tests,v2 replay consumer testbench
-tb/replay_consumer/tb_rcv2_system_replay_consumer.sv,6906,tests,v2 replay consumer testbench
+rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv,2228,rtl,v2 replay-consume pin-limited wrapper
+tb/replay_consumer/tb_rcv2_replay_consumer.sv,8485,tests,v2 replay consumer testbench
+tb/replay_consumer/tb_rcv2_system_replay_consumer.sv,6940,tests,v2 replay consumer testbench
 scripts/diagnose_workload_failures.py,3436,scripts,v2 diagnosis script
 scripts/run_buffer_sensitivity_v2.py,6157,scripts,v2 buffer script
 scripts/run_workload_scaling_v2.py,7214,scripts,v2 workload script
@@ -236,4 +326,4 @@ scripts/run_replay_consumer_mapping.py,7541,scripts,v2 replay consumer mapping s
 scripts/run_mapped_scaling_v2.py,7342,scripts,v2 mapped-status script
 scripts/run_second_target_mapping.py,4142,scripts,v2 second-target script
 scripts/benchmark_manifest.py,6165,scripts,benchmark diversity manifest script
-scripts/generate_topconf_v2_tables.py,13599,scripts,v2 paper table/figure script
+scripts/generate_topconf_v2_tables.py,13789,scripts,v2 paper table/figure script

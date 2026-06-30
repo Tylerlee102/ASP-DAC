@@ -12,14 +12,14 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 227 >>
+<< /Length 229 >>
 stream
 BT
 /F1 16 Tf
 72 740 Td
 (Capsule scaling v2) Tj
 0 -24 Td
-(v1 full median stress bytes: 5376.000000) Tj
+(v1 full median stress bytes: 344064.000000) Tj
 0 -24 Td
 (v2 core measured median stress bytes: 8.000000) Tj
 0 -24 Td
@@ -37,5 +37,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-589
+591
 %%EOF

@@ -7,6 +7,7 @@ module rcv2_replay_consumer #(
   input  logic        rst_n,
   input  logic        clear,
   input  logic        start,
+  input  logic [31:0] expected_event_count,
 
   input  logic        capsule_valid,
   output logic        capsule_ready,
@@ -35,6 +36,7 @@ module rcv2_replay_consumer #(
 
   logic active;
   logic [31:0] expected_commit_index;
+  logic [31:0] active_event_count;
   logic [3:0] expected_type;
   logic [3:0] expected_flags;
   logic [31:0] expected_payload;
@@ -124,6 +126,7 @@ module rcv2_replay_consumer #(
     if (!rst_n) begin
       active <= 1'b0;
       expected_commit_index <= 32'h0;
+      active_event_count <= EVENT_COUNT[31:0];
       consumed_all_events <= 1'b0;
       replay_error <= 1'b0;
       replay_error_code <= RCV2_ERR_NONE;
@@ -131,6 +134,7 @@ module rcv2_replay_consumer #(
     end else if (clear) begin
       active <= 1'b0;
       expected_commit_index <= 32'h0;
+      active_event_count <= EVENT_COUNT[31:0];
       consumed_all_events <= 1'b0;
       replay_error <= 1'b0;
       replay_error_code <= RCV2_ERR_NONE;
@@ -139,7 +143,8 @@ module rcv2_replay_consumer #(
       if (start) begin
         active <= 1'b1;
         expected_commit_index <= 32'h0;
-        consumed_all_events <= (EVENT_COUNT == 0);
+        active_event_count <= (expected_event_count != 32'h0) ? expected_event_count : EVENT_COUNT[31:0];
+        consumed_all_events <= ((expected_event_count != 32'h0) ? expected_event_count : EVENT_COUNT[31:0]) == 32'h0;
         replay_error <= 1'b0;
         replay_error_code <= RCV2_ERR_NONE;
         consumed_count <= 32'h0;
@@ -172,7 +177,7 @@ module rcv2_replay_consumer #(
         end else begin
           expected_commit_index <= next_commit_index;
           consumed_count <= consumed_count + 32'h1;
-          if (consumed_count + 32'h1 >= EVENT_COUNT[31:0]) begin
+          if (consumed_count + 32'h1 >= active_event_count) begin
             consumed_all_events <= 1'b1;
           end
         end

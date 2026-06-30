@@ -1,0 +1,23 @@
+{
+  "benchmark": "late_config_sequence_bug",
+  "variant": "fixed",
+  "seed": 2,
+  "mode": "record",
+  "architecture": "v2",
+  "recorder_config": "core",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "cycles_to_failure": 100000,
+  "commits_to_failure": 33328,
+  "event_count": 2,
+  "capsule_bytes": 16,
+  "overflow": false,
+  "replay_ok": true,
+  "replay_consumer_checked": false,
+  "replay_consumer_ok": true,
+  "replay_consumer_expected": 0,
+  "replay_consumer_consumed": 0,
+  "replay_consumer_error_code": 0,
+  "notes": "no false property failure"
+}

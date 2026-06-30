@@ -15,6 +15,11 @@ module replaycapsule_verilator_top #(
   input  logic [3:0]  capture_mode,
   input  logic [1:0]  arch_select,
   input  logic [1:0]  recorder_config_select,
+  input  logic        replay_consume_start,
+  input  logic [31:0] replay_consume_expected_count,
+  input  logic        replay_consume_valid,
+  input  logic [63:0] replay_consume_word,
+  input  logic        replay_consume_stream_done,
 
   output logic        trap,
   output logic        mem_valid,
@@ -45,6 +50,12 @@ module replaycapsule_verilator_top #(
   output logic        property_fail_valid,
   output logic [7:0]  property_id,
   output logic [31:0] property_signature,
+  output logic        replay_consume_ready,
+  output logic        replay_consume_observed_valid,
+  output logic        replay_consume_all_events,
+  output logic        replay_consume_error,
+  output logic [7:0]  replay_consume_error_code,
+  output logic [31:0] replay_consume_consumed_count,
   output logic [31:0] commit_count
 );
   logic [167:0] capsule_read_data;
@@ -64,6 +75,11 @@ module replaycapsule_verilator_top #(
     .capture_mode(capture_mode),
     .arch_select(arch_select),
     .recorder_config_select(recorder_config_select),
+    .replay_consume_start(replay_consume_start),
+    .replay_consume_expected_count(replay_consume_expected_count),
+    .replay_consume_valid(replay_consume_valid),
+    .replay_consume_word(replay_consume_word),
+    .replay_consume_stream_done(replay_consume_stream_done),
     .trap(trap),
     .mem_valid(mem_valid),
     .mem_instr(mem_instr),
@@ -84,7 +100,13 @@ module replaycapsule_verilator_top #(
     .running_signature(running_signature),
     .property_fail_valid(property_fail_valid),
     .property_id(property_id),
-    .property_signature(property_signature)
+    .property_signature(property_signature),
+    .replay_consume_ready(replay_consume_ready),
+    .replay_consume_observed_valid(replay_consume_observed_valid),
+    .replay_consume_all_events(replay_consume_all_events),
+    .replay_consume_error(replay_consume_error),
+    .replay_consume_error_code(replay_consume_error_code),
+    .replay_consume_consumed_count(replay_consume_consumed_count)
   );
 
   assign capsule_word0 = capsule_read_data[31:0];

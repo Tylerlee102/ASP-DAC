@@ -1,0 +1,23 @@
+{
+  "benchmark": "commanded_actuator_limit_bug",
+  "variant": "failing",
+  "seed": 3,
+  "mode": "replay",
+  "architecture": "v2",
+  "recorder_config": "hashed",
+  "packet_width_bits": 64,
+  "property_id": 1,
+  "property_signature": "0xac7000a4",
+  "cycles_to_failure": 68,
+  "commits_to_failure": 17,
+  "event_count": 2,
+  "capsule_bytes": 16,
+  "overflow": false,
+  "replay_ok": true,
+  "replay_consumer_checked": true,
+  "replay_consumer_ok": true,
+  "replay_consumer_expected": 2,
+  "replay_consumer_consumed": 2,
+  "replay_consumer_error_code": 0,
+  "notes": "record/replay canonical events match; rtl replay consumer consumed 2/2"
+}

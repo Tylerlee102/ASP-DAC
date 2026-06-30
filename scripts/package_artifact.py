@@ -60,9 +60,6 @@ INCLUDE_ROOTS = (
 INCLUDE_GLOBS = (
     "results/raw/verilator/build.log",
     "results/raw/mapped_synthesis/*.txt",
-    "results/raw/mapped_synthesis/*.json",
-    "results/raw/mapped_synthesis/*.config",
-    "results/raw/mapped_synthesis/*.asc",
 )
 
 EXCLUDE_PARTS = {
@@ -179,10 +176,13 @@ def _iter_files():
 
 
 def _skip(path: Path) -> bool:
-    if path.relative_to(REPO_ROOT).as_posix() == "results/processed/private_marker_scan.csv":
+    rel = path.relative_to(REPO_ROOT).as_posix()
+    if rel == "results/processed/private_marker_scan.csv":
         return True
-    if path.relative_to(REPO_ROOT).as_posix() == "results/raw/verilator/build.log":
+    if rel == "results/raw/verilator/build.log":
         return False
+    if rel.startswith(("results/raw/mapped_synthesis/", "results/raw/mapped_scaling/")) and path.suffix.lower() in {".json", ".config", ".asc"}:
+        return True
     rel_parts = set(path.relative_to(REPO_ROOT).parts)
     if rel_parts & EXCLUDE_PARTS:
         return True

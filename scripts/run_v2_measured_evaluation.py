@@ -855,11 +855,11 @@ def _write_mapped_tables() -> None:
     target = run_mapped_synthesis.FULL_CORE_TARGETS[0]
     nextpnr = run_mapped_synthesis._find_tool(target.nextpnr_name)
     memory = 128
-    depth = 16
-    baseline = _run_v2_mapped_design("baseline", "full", memory, depth, yosys, nextpnr)
+    depth_by_config = {"core": 8, "hashed": 8, "full": 256}
+    baseline = _run_v2_mapped_design("baseline", "full", memory, depth_by_config["core"], yosys, nextpnr)
     mapped_rows = [baseline]
     for config in CONFIGS:
-        mapped_rows.append(_run_v2_mapped_design("v2", config, memory, depth, yosys, nextpnr))
+        mapped_rows.append(_run_v2_mapped_design("v2", config, memory, depth_by_config[config], yosys, nextpnr))
     overhead_rows = [
         {
             "architecture": row["architecture"],
@@ -918,7 +918,8 @@ def _run_v2_mapped_design(
         return _blocked_mapped_row(architecture, config, design, memory_words, buffer_depth, "missing yosys")
     if not nextpnr:
         return _blocked_mapped_row(architecture, config, design, memory_words, buffer_depth, f"missing {target.nextpnr_name}")
-    stem = f"{design}_mem{memory_words}_buf{buffer_depth}_{target.suffix}"
+    opt_suffix = "_gatedopts" if architecture == "v2" else ""
+    stem = f"{design}_mem{memory_words}_buf{buffer_depth}{opt_suffix}_{target.suffix}"
     json_path = MAPPED_RAW_DIR / f"{stem}.json"
     bitstream_path = MAPPED_RAW_DIR / f"{stem}.{target.output_ext}"
     yosys_log = MAPPED_RAW_DIR / f"{stem}_yosys.txt"
@@ -987,6 +988,11 @@ def _v2_mapped_yosys_script(architecture: str, config: str, memory_words: int, b
         )
         top = "full_core_replaycapsule_v2_board_top"
         config_select = {"core": 1, "hashed": 2, "full": 4}[config]
+        config_knobs = {
+            "core": (0, 0, 0, 0),
+            "hashed": (0, 1, 0, 0),
+            "full": (1, 1, 1, 1),
+        }[config]
         addr_w = max(1, (buffer_depth - 1).bit_length())
         commands = [
             "read_verilog -sv -Irtl -Irtl/mapped -Irtl/rv32i_integration -Ithird_party/picorv32 " + " ".join(sources),
@@ -994,6 +1000,10 @@ def _v2_mapped_yosys_script(architecture: str, config: str, memory_words: int, b
             f"chparam -set CAPSULE_DEPTH {buffer_depth} {top}",
             f"chparam -set CAPSULE_ADDR_W {addr_w} {top}",
             f"chparam -set REPLAYCAPSULE_CONFIG {config_select} {top}",
+            f"chparam -set ENABLE_DIAGNOSTICS {config_knobs[0]} {top}",
+            f"chparam -set ENABLE_PAYLOAD_HASH {config_knobs[1]} {top}",
+            f"chparam -set ENABLE_ADDRESS_DICTIONARY {config_knobs[2]} {top}",
+            f"chparam -set ENABLE_ADAPTIVE_WINDOW {config_knobs[3]} {top}",
         ]
     commands.append(f"synth_ecp5 -top {top} -json {_rel(json_path)}")
     return "; ".join(commands)

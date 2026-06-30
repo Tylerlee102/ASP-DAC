@@ -39,6 +39,7 @@ module tb_rcv2_replay_consumer;
     .rst_n(rst_n),
     .clear(clear),
     .start(start),
+    .expected_event_count(32'd0),
     .capsule_valid(capsule_valid),
     .capsule_ready(capsule_ready),
     .capsule_word(capsule_word),
@@ -179,6 +180,20 @@ module tb_rcv2_replay_consumer;
     end
   endtask
 
+  task automatic valid_dict_hit_mmio_events;
+    logic [63:0] w0;
+    logic [63:0] w1;
+    logic [63:0] w2;
+    begin
+      w0 = pack_word(EV_MMIO_WRITE, 4'b0000, 8'd15, 8'h0c, 32'h0000_0001, 8'h00);
+      w1 = pack_word(EV_MMIO_WRITE, 4'b0000, 8'd1, 8'h08, 32'h0000_cafe, 8'h00);
+      w2 = pack_word(EV_MMIO_WRITE, 4'b0100, 8'd1, 8'h00, 32'h0000_0000, 8'h00);
+      feed_event(w0, 1'b1, EV_MMIO_WRITE, 32'd15, 32'h4000_000c, 32'h0000_0001, 32'h0);
+      feed_event(w1, 1'b1, EV_MMIO_WRITE, 32'd16, 32'h4000_0008, 32'h0000_cafe, 32'h0);
+      feed_event(w2, 1'b1, EV_MMIO_WRITE, 32'd17, 32'h4000_000c, 32'h0000_0000, 32'h0);
+    end
+  endtask
+
   initial begin
     passed_count = 0;
     total_count = 0;
@@ -186,6 +201,10 @@ module tb_rcv2_replay_consumer;
     reset_case();
     valid_three_events();
     report_result("valid_capsule_consumes_all_events", "PASS", replay_error ? "REJECT" : "PASS", RCV2_ERR_NONE);
+
+    reset_case();
+    valid_dict_hit_mmio_events();
+    report_result("dict_hit_mmio_consumes_observed_address", "PASS", replay_error ? "REJECT" : "PASS", RCV2_ERR_NONE);
 
     reset_case();
     feed_event(pack_word(EV_MMIO_READ, 4'b0000, 8'd4, 8'h44, 32'h0000_1111, 8'h00), 1'b0, EV_MMIO_READ, 32'd4, 32'h44, 32'h1111, 32'h0);

@@ -13,8 +13,10 @@ module rcv2_mmio_replay_driver (
   `include "rcv2_config.svh"
 
   logic [3:0] event_type;
+  logic [3:0] flags;
   logic [31:0] payload;
   assign event_type = rcv2_word_type(event_word);
+  assign flags = rcv2_word_flags(event_word);
   assign payload = rcv2_word_payload(event_word);
 
   always_comb begin
@@ -22,7 +24,7 @@ module rcv2_mmio_replay_driver (
     mmio_replay_addr_token = {24'h0, rcv2_word_addr_token(event_word)};
     mmio_replay_value = payload;
     mmio_mismatch = mmio_replay_valid && observed_valid && observed_data != payload;
-    if (mmio_replay_valid && observed_valid && observed_addr[7:0] != rcv2_word_addr_token(event_word)) begin
+    if (mmio_replay_valid && observed_valid && !flags[RCV2_FLAG_DICT_HIT] && observed_addr[7:0] != rcv2_word_addr_token(event_word)) begin
       mmio_mismatch = 1'b1;
     end
   end

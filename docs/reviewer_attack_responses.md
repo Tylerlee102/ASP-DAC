@@ -12,7 +12,7 @@ RISC-V trace and debug standards provide broader observability. ReplayCapsule-RV
 
 ## 3. Is the replay hardware synthesizable?
 
-The record-side RTL and board wrappers are synthesized and placed. The replay-consume path is host-driven. Evidence: `results/processed/mapped_synthesis.csv`, `results/processed/full_core_mapped_summary.csv`, and `results/processed/full_rtl_replay.csv`.
+The record-side RTL and board wrappers are synthesized and placed. The v2 consumer is integrated as a host-streamed full-core checker, while autonomous capsule storage and MMIO/IRQ replay muxing are still out of scope. Evidence: `results/processed/mapped_synthesis.csv`, `results/processed/full_core_mapped_summary.csv`, `results/processed/full_rtl_replay.csv`, and `results/processed/full_rtl_replay_v2.csv`.
 
 ## 4. Why is overhead high?
 
@@ -24,7 +24,7 @@ The model assumes deterministic single-hart RV32I execution between recorded bou
 
 ## 6. Why host-driven replay?
 
-Host-driven replay lets the artifact validate event sufficiency and corruption rejection without claiming a replay-consume datapath. Evidence: `results/processed/full_rtl_replay.csv` and `results/processed/full_rtl_replay_negative.csv`.
+Host-driven replay lets the artifact validate event sufficiency and corruption rejection while the v2 RTL consumer checks streamed capsule events against full-core observed events. Evidence: `results/processed/full_rtl_replay.csv`, `results/processed/full_rtl_replay_v2.csv`, and `results/processed/full_rtl_replay_negative.csv`.
 
 ## 7. Does this generalize beyond toy benchmarks?
 

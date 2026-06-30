@@ -81,40 +81,40 @@ Info:     at initial placer iter 1, wirelen = 2051
 Info:     at initial placer iter 2, wirelen = 1923
 Info:     at initial placer iter 3, wirelen = 1902
 Info: Running main analytical placer, max placement attempts per cell = 1658020.
-Info:     at iteration #1, type ALL: wirelen solved = 1904, spread = 29332, legal = 30082; time = 0.05s
-Info:     at iteration #2, type ALL: wirelen solved = 2104, spread = 25816, legal = 27183; time = 0.04s
-Info:     at iteration #3, type ALL: wirelen solved = 3035, spread = 24228, legal = 25298; time = 0.06s
-Info:     at iteration #4, type ALL: wirelen solved = 4435, spread = 23312, legal = 24817; time = 0.05s
-Info:     at iteration #5, type ALL: wirelen solved = 5983, spread = 21167, legal = 23357; time = 0.05s
+Info:     at iteration #1, type ALL: wirelen solved = 1904, spread = 29332, legal = 30082; time = 0.06s
+Info:     at iteration #2, type ALL: wirelen solved = 2104, spread = 25816, legal = 27183; time = 0.05s
+Info:     at iteration #3, type ALL: wirelen solved = 3035, spread = 24228, legal = 25298; time = 0.04s
+Info:     at iteration #4, type ALL: wirelen solved = 4435, spread = 23312, legal = 24817; time = 0.04s
+Info:     at iteration #5, type ALL: wirelen solved = 5983, spread = 21167, legal = 23357; time = 0.04s
 Info:     at iteration #6, type ALL: wirelen solved = 6430, spread = 21339, legal = 22615; time = 0.05s
-Info:     at iteration #7, type ALL: wirelen solved = 7505, spread = 19791, legal = 21573; time = 0.05s
-Info:     at iteration #8, type ALL: wirelen solved = 8022, spread = 19634, legal = 20889; time = 0.05s
-Info:     at iteration #9, type ALL: wirelen solved = 9050, spread = 19132, legal = 21410; time = 0.05s
-Info:     at iteration #10, type ALL: wirelen solved = 9804, spread = 18993, legal = 20816; time = 0.05s
-Info:     at iteration #11, type ALL: wirelen solved = 10333, spread = 18529, legal = 21095; time = 0.05s
+Info:     at iteration #7, type ALL: wirelen solved = 7505, spread = 19791, legal = 21573; time = 0.04s
+Info:     at iteration #8, type ALL: wirelen solved = 8022, spread = 19634, legal = 20889; time = 0.04s
+Info:     at iteration #9, type ALL: wirelen solved = 9050, spread = 19132, legal = 21410; time = 0.04s
+Info:     at iteration #10, type ALL: wirelen solved = 9804, spread = 18993, legal = 20816; time = 0.03s
+Info:     at iteration #11, type ALL: wirelen solved = 10333, spread = 18529, legal = 21095; time = 0.03s
 Info:     at iteration #12, type ALL: wirelen solved = 11022, spread = 18512, legal = 20836; time = 0.04s
 Info:     at iteration #13, type ALL: wirelen solved = 11649, spread = 18453, legal = 20636; time = 0.04s
-Info:     at iteration #14, type ALL: wirelen solved = 12605, spread = 18251, legal = 20860; time = 0.04s
+Info:     at iteration #14, type ALL: wirelen solved = 12605, spread = 18251, legal = 20860; time = 0.03s
 Info:     at iteration #15, type ALL: wirelen solved = 13039, spread = 17910, legal = 20184; time = 0.04s
-Info:     at iteration #16, type ALL: wirelen solved = 13093, spread = 17532, legal = 20163; time = 0.04s
+Info:     at iteration #16, type ALL: wirelen solved = 13093, spread = 17532, legal = 20163; time = 0.06s
 Info:     at iteration #17, type ALL: wirelen solved = 13339, spread = 17444, legal = 19578; time = 0.04s
 Info:     at iteration #18, type ALL: wirelen solved = 13610, spread = 17293, legal = 19031; time = 0.05s
-Info:     at iteration #19, type ALL: wirelen solved = 13875, spread = 17216, legal = 19692; time = 0.05s
+Info:     at iteration #19, type ALL: wirelen solved = 13875, spread = 17216, legal = 19692; time = 0.04s
 Info:     at iteration #20, type ALL: wirelen solved = 13785, spread = 17142, legal = 19507; time = 0.05s
 Info:     at iteration #21, type ALL: wirelen solved = 13909, spread = 17005, legal = 19012; time = 0.04s
-Info:     at iteration #22, type ALL: wirelen solved = 14126, spread = 16960, legal = 18648; time = 0.05s
-Info:     at iteration #23, type ALL: wirelen solved = 14262, spread = 17014, legal = 19194; time = 0.04s
-Info:     at iteration #24, type ALL: wirelen solved = 14308, spread = 16930, legal = 18977; time = 0.04s
-Info:     at iteration #25, type ALL: wirelen solved = 14248, spread = 17034, legal = 18547; time = 0.04s
+Info:     at iteration #22, type ALL: wirelen solved = 14126, spread = 16960, legal = 18648; time = 0.04s
+Info:     at iteration #23, type ALL: wirelen solved = 14262, spread = 17014, legal = 19194; time = 0.05s
+Info:     at iteration #24, type ALL: wirelen solved = 14308, spread = 16930, legal = 18977; time = 0.03s
+Info:     at iteration #25, type ALL: wirelen solved = 14248, spread = 17034, legal = 18547; time = 0.03s
 Info:     at iteration #26, type ALL: wirelen solved = 14400, spread = 17024, legal = 18760; time = 0.04s
-Info:     at iteration #27, type ALL: wirelen solved = 14554, spread = 17035, legal = 19508; time = 0.04s
+Info:     at iteration #27, type ALL: wirelen solved = 14554, spread = 17035, legal = 19508; time = 0.03s
 Info:     at iteration #28, type ALL: wirelen solved = 14555, spread = 17765, legal = 20191; time = 0.04s
-Info:     at iteration #29, type ALL: wirelen solved = 14985, spread = 17035, legal = 19718; time = 0.04s
-Info:     at iteration #30, type ALL: wirelen solved = 14694, spread = 17287, legal = 19582; time = 0.04s
-Info: HeAP Placer Time: 2.12s
-Info:   of which solving equations: 0.93s
-Info:   of which spreading cells: 0.24s
-Info:   of which strict legalisation: 0.17s
+Info:     at iteration #29, type ALL: wirelen solved = 14985, spread = 17035, legal = 19718; time = 0.03s
+Info:     at iteration #30, type ALL: wirelen solved = 14694, spread = 17287, legal = 19582; time = 0.03s
+Info: HeAP Placer Time: 1.81s
+Info:   of which solving equations: 0.81s
+Info:   of which spreading cells: 0.23s
+Info:   of which strict legalisation: 0.16s
 
 Info: Running simulated annealing placer for refinement.
 Info:   at iteration #1: temp = 0.000000, timing cost = 324, wirelen = 18547
@@ -122,7 +122,7 @@ Info:   at iteration #5: temp = 0.000000, timing cost = 197, wirelen = 17024
 Info:   at iteration #10: temp = 0.000000, timing cost = 210, wirelen = 16706
 Info:   at iteration #15: temp = 0.000000, timing cost = 207, wirelen = 16594
 Info:   at iteration #19: temp = 0.000000, timing cost = 223, wirelen = 16557 
-Info: SA placement time 4.28s
+Info: SA placement time 3.04s
 
 Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 58.66 MHz (PASS at 50.00 MHz)
 
@@ -161,23 +161,23 @@ Info: Setting up routing queue.
 Info: Routing 10876 arcs.
 Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
 Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
-Info:       1000 |      130        869 |  130   869 |     10067|       0.27       0.27|
-Info:       2000 |      316       1683 |  186   814 |      9324|       0.22       0.49|
-Info:       3000 |      477       2522 |  161   839 |      8518|       0.23       0.72|
-Info:       4000 |      650       3349 |  173   827 |      7741|       0.25       0.97|
-Info:       5000 |      875       4124 |  225   775 |      7061|       0.31       1.28|
-Info:       6000 |     1094       4885 |  219   761 |      6317|       0.34       1.62|
-Info:       7000 |     1341       5614 |  247   729 |      5674|       0.29       1.91|
-Info:       8000 |     1540       6309 |  199   695 |      4893|       0.21       2.12|
-Info:       9000 |     1798       7021 |  258   712 |      4239|       0.27       2.39|
-Info:      10000 |     2005       7730 |  207   709 |      3501|       0.24       2.63|
-Info:      11000 |     2197       8463 |  192   733 |      2733|       0.25       2.88|
-Info:      12000 |     2422       9152 |  225   689 |      2053|       0.29       3.17|
-Info:      13000 |     2561       9959 |  139   807 |      1231|       0.23       3.40|
-Info:      14000 |     2642      10824 |   81   865 |       333|       0.28       3.68|
-Info:      14479 |     2724      11201 |   82   377 |         0|       0.17       3.85|
+Info:       1000 |      130        869 |  130   869 |     10067|       0.23       0.23|
+Info:       2000 |      316       1683 |  186   814 |      9324|       0.21       0.44|
+Info:       3000 |      477       2522 |  161   839 |      8518|       0.18       0.61|
+Info:       4000 |      650       3349 |  173   827 |      7741|       0.20       0.81|
+Info:       5000 |      875       4124 |  225   775 |      7061|       0.22       1.03|
+Info:       6000 |     1094       4885 |  219   761 |      6317|       0.24       1.27|
+Info:       7000 |     1341       5614 |  247   729 |      5674|       0.22       1.50|
+Info:       8000 |     1540       6309 |  199   695 |      4893|       0.17       1.67|
+Info:       9000 |     1798       7021 |  258   712 |      4239|       0.23       1.90|
+Info:      10000 |     2005       7730 |  207   709 |      3501|       0.18       2.08|
+Info:      11000 |     2197       8463 |  192   733 |      2733|       0.18       2.26|
+Info:      12000 |     2422       9152 |  225   689 |      2053|       0.20       2.46|
+Info:      13000 |     2561       9959 |  139   807 |      1231|       0.20       2.66|
+Info:      14000 |     2642      10824 |   81   865 |       333|       0.22       2.88|
+Info:      14479 |     2724      11201 |   82   377 |         0|       0.16       3.04|
 Info: Routing complete.
-Info: Router1 time 3.85s
+Info: Router1 time 3.04s
 Info: Checksum: 0x2b8d4f18
 
 Info: Critical path report for clock '$glbnet$clk$TRELLIS_IO_IN' (posedge -> posedge):
@@ -186,12 +186,12 @@ Info:   clk-to-q  5.83  5.83 Source u_mapped_memory.mem.0.0.DOB9
 Info:    routing  0.96  6.79 Net u_mapped_memory.mem.0.0_DOB17[27] (6,22) -> (6,19)
 Info:                          Sink mem_rdata_PFUMX_Z_6_ALUT_LUT4_Z.B
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  7.03 Source mem_rdata_PFUMX_Z_6_ALUT_LUT4_Z.F
 Info:    routing  0.00  7.03 Net mem_rdata_PFUMX_Z_6_ALUT (6,19) -> (6,19)
 Info:                          Sink mem_rdata_PFUMX_Z_6_BLUT_LUT4_Z.F1
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
 Info:      logic  0.17  7.20 Source mem_rdata_PFUMX_Z_6_BLUT_LUT4_Z.OFX
 Info:    routing  1.60  8.80 Net baseline_status_mix_LUT4_Z_20_C_LUT4_Z_A_LUT4_B_Z_LUT4_Z_2_B_LUT4_A_Z[2] (6,19) -> (17,15)
 Info:                          Sink u_picorv32.mem_rdata_latched_LUT4_Z_20.D
@@ -206,27 +206,27 @@ Info:      logic  0.24  10.48 Source u_picorv32.mem_do_rinst_LUT4_C_Z_LUT4_Z_2.F
 Info:    routing  0.76  11.23 Net u_picorv32.instr_retirq_TRELLIS_FF_Q_DI_LUT4_Z_B[5] (16,12) -> (14,13)
 Info:                          Sink u_picorv32.latched_branch_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_1_D1_PFUMX_Z_BLUT_LUT4_Z.M
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.26  11.49 Source u_picorv32.latched_branch_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_1_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
 Info:    routing  0.00  11.49 Net u_picorv32.latched_branch_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_1_D1 (14,13) -> (14,13)
 Info:                          Sink u_picorv32.latched_branch_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_1_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:141.38-141.40
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:141.38-141.40
 Info:      logic  0.24  11.73 Source u_picorv32.latched_branch_LUT4_C_Z_LUT4_D_Z_L6MUX21_Z_1_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
 Info:    routing  0.94  12.67 Net u_picorv32.decoded_rs1_TRELLIS_FF_Q_1_DI_LUT4_D_Z[3] (14,13) -> (17,11)
 Info:                          Sink u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI_PFUMX_Z_C0_PFUMX_Z_2_BLUT_LUT4_Z.D
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.40  13.07 Source u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI_PFUMX_Z_C0_PFUMX_Z_2_BLUT_LUT4_Z.OFX
 Info:    routing  0.38  13.45 Net u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI_PFUMX_Z_C0[3] (17,11) -> (17,11)
 Info:                          Sink u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI_PFUMX_Z_ALUT_LUT4_Z.D
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  13.69 Source u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI_PFUMX_Z_ALUT_LUT4_Z.F
 Info:    routing  0.00  13.69 Net u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI_PFUMX_Z_ALUT (17,11) -> (17,11)
 Info:                          Sink u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI_PFUMX_Z_BLUT_LUT4_Z.F1
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
 Info:      logic  0.17  13.85 Source u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI_PFUMX_Z_BLUT_LUT4_Z.OFX
 Info:    routing  0.67  14.52 Net u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q_DI (17,11) -> (17,9)
 Info:                          Sink u_picorv32.cpuregs.0.0_DOA0_TRELLIS_FF_Q.M
@@ -244,47 +244,47 @@ Info:      logic  0.24  2.03 Source u_picorv32.mem_do_rinst_L6MUX21_SD_1_D1_PFUM
 Info:    routing  0.00  2.03 Net u_picorv32.mem_do_rinst_L6MUX21_SD_1_D1_PFUMX_Z_ALUT (3,4) -> (3,4)
 Info:                          Sink u_picorv32.mem_do_rinst_L6MUX21_SD_1_D1_PFUMX_Z_BLUT_LUT4_Z.F1
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.30-157.32
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:157.30-157.32
 Info:      logic  0.17  2.20 Source u_picorv32.mem_do_rinst_L6MUX21_SD_1_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
 Info:    routing  0.00  2.20 Net u_picorv32.mem_do_rinst_L6MUX21_SD_1_D1 (3,4) -> (3,4)
 Info:                          Sink u_picorv32.mem_do_rinst_L6MUX21_SD_1_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.54-157.56
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:157.54-157.56
 Info:      logic  0.24  2.44 Source u_picorv32.mem_do_rinst_L6MUX21_SD_1_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
 Info:    routing  0.00  2.44 Net u_picorv32.mem_do_rinst_L6MUX21_SD_1_Z (3,4) -> (3,4)
 Info:                          Sink u_picorv32.mem_do_rdata_LUT4_D_Z_PFUMX_BLUT_ALUT_LUT4_Z.FXA
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.66-157.68
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:157.66-157.68
 Info:      logic  0.24  2.68 Source u_picorv32.mem_do_rdata_LUT4_D_Z_PFUMX_BLUT_ALUT_LUT4_Z.OFX
 Info:    routing  1.49  4.17 Net u_picorv32.is_sll_srl_sra_LUT4_B_Z_LUT4_Z_1_C[1] (3,4) -> (22,4)
 Info:                          Sink u_picorv32.decoder_pseudo_trigger_TRELLIS_FF_Q_LSR_LUT4_Z_D_LUT4_Z.D
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  4.41 Source u_picorv32.decoder_pseudo_trigger_TRELLIS_FF_Q_LSR_LUT4_Z_D_LUT4_Z.F
 Info:    routing  0.60  5.01 Net u_picorv32.decoder_pseudo_trigger_TRELLIS_FF_Q_LSR_LUT4_Z_D[1] (22,4) -> (22,4)
 Info:                          Sink u_picorv32.decoder_pseudo_trigger_TRELLIS_FF_Q_LSR_LUT4_Z_D_LUT4_D.D
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  5.25 Source u_picorv32.decoder_pseudo_trigger_TRELLIS_FF_Q_LSR_LUT4_Z_D_LUT4_D.F
 Info:    routing  0.69  5.93 Net u_picorv32.decoder_pseudo_trigger_TRELLIS_FF_Q_LSR_LUT4_Z_D_LUT4_D_Z[4] (22,4) -> (23,2)
 Info:                          Sink u_picorv32.instr_lbu_LUT4_A_Z_LUT4_Z_C_LUT4_C.D
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  6.17 Source u_picorv32.instr_lbu_LUT4_A_Z_LUT4_Z_C_LUT4_C.F
 Info:    routing  0.73  6.89 Net u_picorv32.instr_lbu_LUT4_A_Z_LUT4_Z_C_LUT4_C_Z[4] (23,2) -> (24,3)
 Info:                          Sink u_picorv32.instr_lw_LUT4_C.D
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  7.13 Source u_picorv32.instr_lw_LUT4_C.F
 Info:    routing  0.59  7.72 Net u_picorv32.instr_lw_LUT4_C_Z[2] (24,3) -> (24,3)
 Info:                          Sink u_picorv32.instr_sw_LUT4_B.D
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  7.96 Source u_picorv32.instr_sw_LUT4_B.F
 Info:    routing  0.79  8.75 Net u_picorv32.instr_sw_LUT4_B_Z[4] (24,3) -> (23,2)
 Info:                          Sink u_picorv32.instr_sw_LUT4_B_Z_PFUMX_C0_BLUT_LUT4_Z.M
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.26  9.01 Source u_picorv32.instr_sw_LUT4_B_Z_PFUMX_C0_BLUT_LUT4_Z.OFX
 Info:    routing  0.46  9.47 Net u_picorv32.instr_sw_LUT4_B_Z_PFUMX_C0_Z[0] (23,2) -> (23,2)
 Info:                          Sink u_picorv32.mem_wordsize_TRELLIS_FF_Q_1.M
@@ -297,12 +297,12 @@ Info:   clk-to-q  5.83  5.83 Source u_mapped_memory.mem.0.0.DOB7
 Info:    routing  1.15  6.98 Net u_mapped_memory.mem.0.0_DOB17[25] (6,22) -> (6,13)
 Info:                          Sink mem_rdata_PFUMX_Z_5_ALUT_LUT4_Z.C
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  7.22 Source mem_rdata_PFUMX_Z_5_ALUT_LUT4_Z.F
 Info:    routing  0.00  7.22 Net mem_rdata_PFUMX_Z_5_ALUT (6,13) -> (6,13)
 Info:                          Sink mem_rdata_PFUMX_Z_5_BLUT_LUT4_Z.F1
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:133.22-133.24
 Info:      logic  0.17  7.38 Source mem_rdata_PFUMX_Z_5_BLUT_LUT4_Z.OFX
 Info:    routing  1.73  9.11 Net mem_rdata[25] (6,13) -> (10,17)
 Info:                          Sink baseline_status_mix_LUT4_Z_15_D_LUT4_Z.D
@@ -312,7 +312,7 @@ Info:      logic  0.24  9.35 Source baseline_status_mix_LUT4_Z_15_D_LUT4_Z.F
 Info:    routing  1.13  10.48 Net baseline_status_mix_LUT4_Z_15_D[3] (10,17) -> (10,20)
 Info:                          Sink baseline_status_mix_LUT4_Z_15.D
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  10.72 Source baseline_status_mix_LUT4_Z_15.F
 Info:    routing  0.83  11.54 Net baseline_status_mix[25] (10,20) -> (10,20)
 Info:                          Sink recorder_status_xor_LUT4_Z_D_LUT4_Z.C
@@ -322,7 +322,7 @@ Info:      logic  0.24  11.78 Source recorder_status_xor_LUT4_Z_D_LUT4_Z.F
 Info:    routing  1.17  12.95 Net recorder_status_xor_LUT4_Z_D[0] (10,20) -> (5,20)
 Info:                          Sink recorder_status_xor_LUT4_Z.A
 Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
+Info:                               .tools/oss-cad-suite/oss-cad-suite\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
 Info:      logic  0.24  13.18 Source recorder_status_xor_LUT4_Z.F
 Info:    routing  1.98  15.16 Net recorder_status_xor$TRELLIS_IO_OUT (5,20) -> (0,38)
 Info:                          Sink recorder_status_xor$tr_io.I

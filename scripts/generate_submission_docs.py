@@ -140,7 +140,7 @@ RISC-V trace and debug standards provide broader observability. ReplayCapsule-RV
 
 ## 3. Is the replay hardware synthesizable?
 
-The record-side RTL and board wrappers are synthesized and placed. The replay-consume path is host-driven. Evidence: `results/processed/mapped_synthesis.csv`, `results/processed/full_core_mapped_summary.csv`, and `results/processed/full_rtl_replay.csv`.
+The record-side RTL and board wrappers are synthesized and placed. The v2 consumer is integrated as a host-streamed full-core checker, while autonomous capsule storage and MMIO/IRQ replay muxing are still out of scope. Evidence: `results/processed/mapped_synthesis.csv`, `results/processed/full_core_mapped_summary.csv`, `results/processed/full_rtl_replay.csv`, and `results/processed/full_rtl_replay_v2.csv`.
 
 ## 4. Why is overhead high?
 
@@ -152,7 +152,7 @@ The model assumes deterministic single-hart RV32I execution between recorded bou
 
 ## 6. Why host-driven replay?
 
-Host-driven replay lets the artifact validate event sufficiency and corruption rejection without claiming a replay-consume datapath. Evidence: `results/processed/full_rtl_replay.csv` and `results/processed/full_rtl_replay_negative.csv`.
+Host-driven replay lets the artifact validate event sufficiency and corruption rejection while the v2 RTL consumer checks streamed capsule events against full-core observed events. Evidence: `results/processed/full_rtl_replay.csv`, `results/processed/full_rtl_replay_v2.csv`, and `results/processed/full_rtl_replay_negative.csv`.
 
 ## 7. Does this generalize beyond toy benchmarks?
 
@@ -201,7 +201,7 @@ Current status: SUBMISSION-READY CANDIDATE.
 ## Forbidden Claims
 
 - ASIC area or power.
-- Hardware replay-consume datapath.
+- Autonomous hardware replay engine.
 - Multicore, DMA, cache-coherent, or broad platform support.
 - Replacement for RISC-V trace/debug standards.
 - Globally smallest trace or universal deterministic replay.
@@ -221,7 +221,7 @@ No fatal evidence blocker remains in the locked CI artifact.
 
 | Limitation | Required handling |
 | --- | --- |
-| Host-driven replay consume path | Do not claim a synthesizable replay-consume datapath. |
+| Host-driven replay consume path | Claim only the measured host-streamed full-core consumer check; do not claim autonomous hardware replay. |
 | Single-hart RV32I scope | Do not claim multicore, DMA, or cache-coherence support. |
 | ECP5 overhead is not optimized | Report the measured overhead and state that replay fidelity and auditability were prioritized over area minimization. |
 | No ASIC flow | Do not claim ASIC area, timing, or power. |
