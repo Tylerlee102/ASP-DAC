@@ -10,6 +10,26 @@ if (-not (Get-Command docker -ErrorAction SilentlyContinue)) {
 
 $repo = (Resolve-Path (Join-Path $PSScriptRoot "..")).Path
 
+$inner = @'
+set -euo pipefail
+if ! command -v openroad >/dev/null 2>&1; then
+    mkdir -p results/raw/asic_openpdk
+    find / -type f -name openroad -perm /111 2>/dev/null | sort > results/raw/asic_openpdk/openroad_candidates.txt
+    OPENROAD_BIN="$(head -n 1 results/raw/asic_openpdk/openroad_candidates.txt || true)"
+    if [ -n "$OPENROAD_BIN" ]; then
+        export PATH="$(dirname "$OPENROAD_BIN"):$PATH"
+    fi
+fi
+which openroad
+openroad -version
+python3 scripts/materialize_nangate45_from_orfs.py
+python3 scripts/probe_asic_physical_tools.py
+python3 scripts/run_asic_openpdk.py
+python3 scripts/audit_aspdac_submission.py
+python3 scripts/update_chat_context.py
+python3 scripts/summarize_artifact_manifest.py
+'@
+
 docker pull $Image
 docker run --rm `
     -v "${repo}:/work" `
@@ -19,4 +39,4 @@ docker run --rm `
     -e ASIC_OPENPDK_LIBERTY=/work/.tools/openpdk/nangate45/NangateOpenCellLibrary_typical.lib `
     -e ASIC_OPENPDK_LEF=/work/.tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef `
     $Image `
-    bash -lc "set -euo pipefail; python3 scripts/materialize_nangate45_from_orfs.py; python3 scripts/probe_asic_physical_tools.py; python3 scripts/run_asic_openpdk.py; python3 scripts/audit_aspdac_submission.py; python3 scripts/update_chat_context.py; python3 scripts/summarize_artifact_manifest.py"
+    bash -lc $inner

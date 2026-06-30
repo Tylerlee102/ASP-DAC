@@ -41,6 +41,14 @@ jobs:
               python3 --version
               which yosys
               yosys -V
+              if ! command -v openroad >/dev/null 2>&1; then
+                mkdir -p results/raw/asic_openpdk
+                find / -type f -name openroad -perm /111 2>/dev/null | sort > results/raw/asic_openpdk/openroad_candidates.txt
+                OPENROAD_BIN="$(head -n 1 results/raw/asic_openpdk/openroad_candidates.txt || true)"
+                if [ -n "$OPENROAD_BIN" ]; then
+                  export PATH="$(dirname "$OPENROAD_BIN"):$PATH"
+                fi
+              fi
               which openroad
               openroad -version
               python3 scripts/materialize_nangate45_from_orfs.py
