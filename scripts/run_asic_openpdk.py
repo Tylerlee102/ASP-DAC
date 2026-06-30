@@ -474,9 +474,9 @@ def _parse_openroad_metrics(log_text: str, area_row: dict[str, object]) -> dict[
         ),
         log_text,
     )
-    die_area = _first_float((r"Die area:\s+([-+0-9.eE]+)",), log_text)
-    wns = _first_float((r"\bwns\b\s+([-+0-9.eE]+)", r"worst slack\s+([-+0-9.eE]+)"), log_text, last=True)
-    tns = _first_float((r"\btns\b\s+([-+0-9.eE]+)", r"total negative slack\s+([-+0-9.eE]+)"), log_text, last=True)
+    die_area = _parse_die_area_um2(log_text)
+    wns = _first_float((r"\bwns\b\s+([-+0-9.eE]+)", r"\bwns\b\s+\S+\s+([-+0-9.eE]+)", r"worst slack\s+([-+0-9.eE]+)"), log_text, last=True)
+    tns = _first_float((r"\btns\b\s+([-+0-9.eE]+)", r"\btns\b\s+\S+\s+([-+0-9.eE]+)", r"total negative slack\s+([-+0-9.eE]+)"), log_text, last=True)
     power_w = _parse_total_power_w(log_text)
     area_fallback = _float_value(area_row.get("cell_area_um2"))
     cell_area = cell_area if cell_area is not None else area_fallback
@@ -496,8 +496,24 @@ def _parse_total_power_w(log_text: str) -> float | None:
     for line in reversed(total_lines):
         numbers = [float(value) for value in re.findall(r"[-+]?\d+(?:\.\d+)?(?:[eE][-+]?\d+)?", line)]
         if numbers:
+            if "%" in line and len(numbers) >= 4:
+                return numbers[3]
             return numbers[-1]
     return None
+
+
+def _parse_die_area_um2(log_text: str) -> float | None:
+    die_area = _first_float((r"Die area:\s+([-+0-9.eE]+)",), log_text)
+    if die_area is not None:
+        return die_area
+    match = re.search(
+        r"Die BBox:\s*\(\s*([-+0-9.eE]+)\s+([-+0-9.eE]+)\s*\)\s*\(\s*([-+0-9.eE]+)\s+([-+0-9.eE]+)\s*\)",
+        log_text,
+    )
+    if not match:
+        return None
+    x1, y1, x2, y2 = (float(match.group(i)) for i in range(1, 5))
+    return abs(x2 - x1) * abs(y2 - y1)
 
 
 def _detailed_route_enabled() -> bool:
