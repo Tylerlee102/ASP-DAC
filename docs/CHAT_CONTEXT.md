@@ -2,16 +2,17 @@
 
 > Generated file. Refresh after code, paper, evidence, or artifact changes with `make chat-context` or by running `scripts/update_chat_context.py` with a real Python 3 executable.
 
-- Generated at: `2026-06-30T22:19:48-07:00`
+- Generated at: `2026-06-30T22:48:05-07:00`
 - Repository root: `C:\Users\tyboy\OneDrive\Documents\New project`
 - Python used for this snapshot: `C:\Users\tyboy\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
 
 ## Current Git State
 
 - Branch: `codex/aspdac-80-submission-package`
-- Commit: `e820b299`
-- Working tree status: `0 changed paths`
-- Changed paths: none
+- Commit: `f990b9ab`
+- Working tree status: `1 changed paths`
+- Changed paths:
+  - `M Makefile`
 
 ## Read This First
 
@@ -42,10 +43,10 @@
 | `constraints` | 2 | 2.59 KB | FPGA constraints |
 | `dist` | 6 | 142.06 MB | artifact zip packages |
 | `Dockerfile` | 1 | 830 B | top-level file |
-| `docs` | 59 | 322.30 KB | design, review, and readiness docs |
+| `docs` | 59 | 320.45 KB | design, review, and readiness docs |
 | `firmware` | 717 | 1.43 MB | firmware benchmarks and build outputs |
 | `formal` | 35 | 88.53 KB | formal assumptions/proof scripts |
-| `Makefile` | 1 | 14.66 KB | top-level file |
+| `Makefile` | 1 | 14.71 KB | top-level file |
 | `paper` | 84 | 377.07 KB | paper source, figures, tables, PDF |
 | `README.md` | 1 | 13.25 KB | top-level file |
 | `requirements.txt` | 1 | 177 B | top-level file |

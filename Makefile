@@ -5,6 +5,7 @@ VERILATOR ?= verilator
 VERILATOR_ENV ?= env -u VERILATOR_ROOT -u VERILATOR_BIN -u OSS_CAD_SUITE
 VERILATOR_MDIR ?= build/verilator/obj_dir
 VERILATOR_OUTPUT ?= ../replaycapsule_sim
+VERILATOR_WARN_FLAGS ?= -Wno-TIMESCALEMOD -Wno-UNOPTFLAT
 VERILATOR_EXTRA_FLAGS ?=
 RUNTIME_RECORDER_MDIR ?= build/verilator/runtime_recorder_obj_dir
 RUNTIME_BASELINE_MDIR ?= build/verilator/runtime_baseline_obj_dir
@@ -110,7 +111,7 @@ verilator-smoke:
 verilator-harness:
 	$(PYTHON) -c "from pathlib import Path; Path('build/verilator').mkdir(parents=True, exist_ok=True); Path('results/raw/verilator').mkdir(parents=True, exist_ok=True)"
 	$(VERILATOR_ENV) $(VERILATOR) --cc --exe --build --sv \
-		-Wno-TIMESCALEMOD \
+		$(VERILATOR_WARN_FLAGS) \
 		$(VERILATOR_EXTRA_FLAGS) \
 		--top-module replaycapsule_verilator_top \
 		-Irtl -Irtl/replaycapsule_v2 -Irtl/rv32i_integration -Ithird_party/picorv32 -Itb/verilator \
@@ -123,7 +124,7 @@ verilator-harness:
 runtime-harnesses:
 	$(PYTHON) -c "from pathlib import Path; Path('build/verilator').mkdir(parents=True, exist_ok=True); Path('results/raw/runtime_overhead').mkdir(parents=True, exist_ok=True)"
 	$(VERILATOR_ENV) $(VERILATOR) --cc --exe --build --sv \
-		-Wno-TIMESCALEMOD \
+		$(VERILATOR_WARN_FLAGS) \
 		--top-module replaycapsule_verilator_top \
 		-Irtl -Irtl/replaycapsule_v2 -Irtl/rv32i_integration -Ithird_party/picorv32 -Itb/verilator \
 		--Mdir $(RUNTIME_RECORDER_MDIR) \
@@ -131,7 +132,7 @@ runtime-harnesses:
 		-o $(RUNTIME_RECORDER_OUTPUT) \
 		$(RUNTIME_RECORDER_ABS_SOURCES) > results/raw/runtime_overhead/recorder_build.log 2>&1
 	$(VERILATOR_ENV) $(VERILATOR) --cc --exe --build --sv \
-		-Wno-TIMESCALEMOD \
+		$(VERILATOR_WARN_FLAGS) \
 		--top-module picorv32_baseline_top \
 		-Ithird_party/picorv32 -Itb/verilator \
 		--Mdir $(RUNTIME_BASELINE_MDIR) \
