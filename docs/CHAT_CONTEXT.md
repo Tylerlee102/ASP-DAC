@@ -2,17 +2,16 @@
 
 > Generated file. Refresh after code, paper, evidence, or artifact changes with `make chat-context` or by running `scripts/update_chat_context.py` with a real Python 3 executable.
 
-- Generated at: `2026-06-30T23:29:18-07:00`
+- Generated at: `2026-06-30T23:29:33-07:00`
 - Repository root: `C:\Users\tyboy\OneDrive\Documents\New project`
 - Python used for this snapshot: `C:\Users\tyboy\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
 
 ## Current Git State
 
 - Branch: `codex/aspdac-80-submission-package`
-- Commit: `bcdc14b5`
-- Working tree status: `1 changed paths`
-- Changed paths:
-  - `M .github/workflows/final-reproduce.yml`
+- Commit: `06abcf7f`
+- Working tree status: `0 changed paths`
+- Changed paths: none
 
 ## Read This First
 
@@ -43,7 +42,7 @@
 | `constraints` | 2 | 2.59 KB | FPGA constraints |
 | `dist` | 6 | 142.06 MB | artifact zip packages |
 | `Dockerfile` | 1 | 830 B | top-level file |
-| `docs` | 59 | 320.45 KB | design, review, and readiness docs |
+| `docs` | 59 | 320.49 KB | design, review, and readiness docs |
 | `firmware` | 717 | 1.43 MB | firmware benchmarks and build outputs |
 | `formal` | 35 | 88.53 KB | formal assumptions/proof scripts |
 | `Makefile` | 1 | 14.71 KB | top-level file |
