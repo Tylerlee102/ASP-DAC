@@ -435,8 +435,9 @@ def section_autonomous_replay_status() -> list[str]:
     standalone_smoke = next((row for row in hdl if row.get("check") == "tb_picorv32_standalone_self_replay_smoke"), {})
     standalone_lint = next((row for row in hdl if row.get("check") == "verilator_lint_replaycapsule_v2_self_replay_top"), {})
     standalone_soc_lint = next((row for row in hdl if row.get("check") == "verilator_lint_replaycapsule_v2_self_replay_soc"), {})
-    harness_mmio = "replay_mmio_value" in harness
-    harness_irq = "irq_from_capsule" in harness
+    v1_host_capsule_stimulus = "host_capsule_mmio_irq" in harness and "next_capsule_mmio_read" in harness
+    legacy_harness_mmio = "replay_mmio_value" in harness
+    legacy_harness_irq = "irq_from_capsule" in harness
     record_sigs = sorted((REPO_ROOT / "results/raw/rtl_signatures_v2").glob("*_record.json"))
     record_capture_sigs = 0
     for path in record_sigs:
@@ -516,8 +517,9 @@ def section_autonomous_replay_status() -> list[str]:
         f"| Replay consumer drives core-facing IRQ input | `{yes_no(core_replay_irq)}` | wrapper contains `.irq(core_irq)` and `replay_consume_irq_valid` |",
         f"| Hazard3 v2 wrapper wires replay consumer | `{yes_no(hazard3_consumer_wired)}` | `rtl/rv32i_integration/hazard3_replaycapsule_v2_wrapper.sv` |",
         f"| Hazard3 replay consumer drives core-facing MMIO/IRQ | `{yes_no(hazard3_replay_mem and hazard3_replay_irq)}` | wrapper drives `core_hrdata` and registered Hazard3 IRQ level from replay-consumer outputs |",
-        f"| Harness still injects replay MMIO values | `{yes_no(harness_mmio)}` | `tb/verilator/rtl_harness.cpp` contains `replay_mmio_value` |",
-        f"| Harness still injects replay IRQ timing | `{yes_no(harness_irq)}` | `tb/verilator/rtl_harness.cpp` contains `irq_from_capsule` |",
+        f"| v1 replay uses host-side capsule MMIO/IRQ stimulus | `{yes_no(v1_host_capsule_stimulus)}` | `tb/verilator/rtl_harness.cpp` reports `host_capsule_mmio_irq` |",
+        f"| v2 harness still injects replay MMIO values | `{yes_no(legacy_harness_mmio)}` | legacy marker `replay_mmio_value` absent/present in `tb/verilator/rtl_harness.cpp` |",
+        f"| v2 harness still injects replay IRQ timing | `{yes_no(legacy_harness_irq)}` | legacy marker `irq_from_capsule` absent/present in `tb/verilator/rtl_harness.cpp` |",
         f"| v2 full RTL rows use RTL MMIO/IRQ replay stimulus | `{len(stimulus_rows)}/{len(full_rtl_v2) if full_rtl_v2 else 0}` | `results/processed/full_rtl_replay_v2.csv`; configs={','.join(configs) if configs else 'NA'} |",
         f"| v2 self-replay uses replay-mode controller and captured RTL store without preload | `{len(self_replay_rows)}/{len(self_replay) if self_replay else 0}` | `results/processed/self_replay_handoff_v2.csv`; configs={','.join(self_configs) if self_configs else 'NA'} benchmarks={len(self_benchmarks)} |",
         f"| Hazard3 v2 MMIO+IRQ replay benchmark matrix | `{len(hazard3_v2_rows)}/{len(hazard3_v2_replay) if hazard3_v2_replay else 0}` | `results/processed/hazard3_v2_replay_smoke.csv`; benchmarks={len(hazard3_v2_row_benchmarks)} configs={','.join(hazard3_v2_row_configs) if hazard3_v2_row_configs else 'NA'} seeds={len(hazard3_v2_row_seeds)} with host IRQ low during replay |",
@@ -529,8 +531,8 @@ def section_autonomous_replay_status() -> list[str]:
         and consumer_wired
         and core_replay_mem
         and core_replay_irq
-        and not harness_mmio
-        and not harness_irq
+        and not legacy_harness_mmio
+        and not legacy_harness_irq
         and full_rtl_v2
         and len(stimulus_rows) == len(full_rtl_v2)
     ):

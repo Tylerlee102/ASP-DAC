@@ -121,6 +121,27 @@ uint32_t replay_required_count(const Capsule& capsule) {
   return count;
 }
 
+std::vector<CapsuleEvent> mmio_read_events(const Capsule& capsule) {
+  std::vector<CapsuleEvent> out;
+  for (const auto& event : capsule.events) {
+    if (event.event_type == 5) out.push_back(event);
+  }
+  return out;
+}
+
+bool next_capsule_mmio_read(
+    const std::vector<CapsuleEvent>& events,
+    size_t* index,
+    uint32_t addr,
+    uint32_t* value) {
+  if (*index >= events.size()) return false;
+  const CapsuleEvent& event = events[*index];
+  if (event.addr != addr) return false;
+  *value = event.data;
+  ++(*index);
+  return true;
+}
+
 uint32_t arch_select_for(const std::string& arch) {
   return arch == "v2" ? 2u : 1u;
 }
@@ -896,15 +917,18 @@ HarnessResult run_harness(const HarnessOptions& options) {
   const bool capture_replay_store = options.mode == "record" && options.arch == "v2";
   const std::vector<CapsuleEvent> replay_consumer_events =
       use_replay_consumer ? replay_required_events(record_capsule) : std::vector<CapsuleEvent>{};
+  const std::vector<CapsuleEvent> host_replay_mmio_reads =
+      options.mode == "replay" && options.arch == "v1" ? mmio_read_events(record_capsule) : std::vector<CapsuleEvent>{};
   if (use_replay_consumer) {
     result.replay_stimulus_source = "rtl_capsule_source_mmio_irq";
   } else if (options.mode == "replay") {
-    result.replay_stimulus_source = "host_replay_stimulus";
+    result.replay_stimulus_source = options.arch == "v1" ? "host_capsule_mmio_irq" : "host_replay_stimulus";
   } else {
     result.replay_stimulus_source = "record_environment";
   }
   uint32_t replay_consume_index = 0;
   uint32_t replay_consume_last_commit = 0;
+  size_t host_replay_mmio_read_index = 0;
   bool replay_word_valid = false;
   uint64_t replay_word = 0;
   bool replay_ok = true;
@@ -1001,7 +1025,10 @@ HarnessResult run_harness(const HarnessOptions& options) {
           pc_trace.push_back(line.str());
         }
       } else if (top.mem_wstrb == 0) {
-        if (options.mode == "replay" && addr >= 0x40000000u) {
+        if (options.mode == "replay" && options.arch == "v1" && addr >= 0x40000000u &&
+            next_capsule_mmio_read(host_replay_mmio_reads, &host_replay_mmio_read_index, addr, &top.mem_rdata)) {
+          // v1 replay uses the saved capsule as host-side MMIO stimulus.
+        } else if (options.mode == "replay" && addr >= 0x40000000u) {
           top.mem_rdata = 0xd15ea5edu;
         } else if (addr == SENSOR_ADDR || addr == PROFILE2_SENSOR_ADDR) {
           top.mem_rdata = sequenced_value(stimulus.sensor_sequence, &sensor_read_index, stimulus.sensor);
@@ -1054,7 +1081,7 @@ HarnessResult run_harness(const HarnessOptions& options) {
       }
     }
 
-    if (options.mode == "replay") {
+    if (options.mode == "replay" && options.arch == "v2") {
       top.irq = 0;
     } else if (irq_pulse_remaining > 0) {
       top.irq = 1;

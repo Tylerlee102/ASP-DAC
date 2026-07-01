@@ -254,7 +254,10 @@ def main() -> int:
     seeds = [args.seed] if args.seed is not None else [1] if args.quick else [1, 2, 3]
     benchmarks = [args.benchmark] if args.benchmark else list(BENCHMARKS)
     variants = {benchmark: (args.variant,) if args.variant else VARIANTS[benchmark] for benchmark in benchmarks}
-    recorder_configs = ("core", "hashed", "full") if args.recorder_config == "all" else (args.recorder_config,)
+    if args.recorder_config == "all":
+        recorder_configs = ("core", "hashed", "full") if args.arch == "v2" else ("core",)
+    else:
+        recorder_configs = (args.recorder_config,)
     allow_fallback = args.allow_fallback or _truthy_env("REPLAYCAPSULE_ALLOW_FALLBACK") or _truthy_env("ALLOW_FALLBACK")
     blocker = _ensure_simulator()
     rows: list[dict[str, str]] = []

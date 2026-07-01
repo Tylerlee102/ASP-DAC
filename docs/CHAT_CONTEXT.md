@@ -2,16 +2,20 @@
 
 > Generated file. Refresh after code, paper, evidence, or artifact changes with `make chat-context` or by running `scripts/update_chat_context.py` with a real Python 3 executable.
 
-- Generated at: `2026-06-30T23:29:33-07:00`
+- Generated at: `2026-06-30T23:57:42-07:00`
 - Repository root: `C:\Users\tyboy\OneDrive\Documents\New project`
 - Python used for this snapshot: `C:\Users\tyboy\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
 
 ## Current Git State
 
 - Branch: `codex/aspdac-80-submission-package`
-- Commit: `06abcf7f`
-- Working tree status: `0 changed paths`
-- Changed paths: none
+- Commit: `fdaeb26c`
+- Working tree status: `4 changed paths`
+- Changed paths:
+  - `M docs/CHAT_CONTEXT.md`
+  - ` M scripts/run_full_rtl_replay.py`
+  - ` M scripts/update_chat_context.py`
+  - ` M tb/verilator/rtl_harness.cpp`
 
 ## Read This First
 
@@ -23,8 +27,8 @@
 
 ## Repository Inventory
 
-- Counted files: `52067`
-- Counted size: `5.93 GB`
+- Counted files: `52118`
+- Counted size: `6.06 GB`
 - `.git` and `.tools` are skipped as repository metadata/local toolchain cache.
 
 | Path | Files | Size | Notes |
@@ -38,12 +42,12 @@
 | `.tools` | 0 | 0 B | skipped local metadata/toolchain |
 | `AGENTS.md` | 1 | 651 B | top-level file |
 | `artifact_evaluation.md` | 1 | 5.27 KB | top-level file |
-| `build` | 400 | 26.44 MB | generated build outputs |
+| `build` | 451 | 156.95 MB | generated build outputs |
 | `constraints` | 2 | 2.59 KB | FPGA constraints |
 | `dist` | 6 | 142.06 MB | artifact zip packages |
 | `Dockerfile` | 1 | 830 B | top-level file |
-| `docs` | 59 | 320.49 KB | design, review, and readiness docs |
-| `firmware` | 717 | 1.43 MB | firmware benchmarks and build outputs |
+| `docs` | 59 | 319.68 KB | design, review, and readiness docs |
+| `firmware` | 717 | 1.42 MB | firmware benchmarks and build outputs |
 | `formal` | 35 | 88.53 KB | formal assumptions/proof scripts |
 | `Makefile` | 1 | 14.71 KB | top-level file |
 | `paper` | 84 | 377.07 KB | paper source, figures, tables, PDF |
@@ -52,7 +56,7 @@
 | `results` | 50513 | 5.76 GB | raw and processed evidence |
 | `rtl` | 46 | 244.84 KB | hardware design source |
 | `scripts` | 98 | 1.23 MB | reproduction, analysis, audit, packaging scripts |
-| `tb` | 39 | 311.05 KB | testbenches and Verilator harnesses |
+| `tb` | 39 | 312.14 KB | testbenches and Verilator harnesses |
 | `third_party` | 54 | 616.29 KB | vendored dependencies |
 
 ## Implemented Components
@@ -160,8 +164,9 @@ Do not claim yet:
 | Replay consumer drives core-facing IRQ input | `yes` | wrapper contains `.irq(core_irq)` and `replay_consume_irq_valid` |
 | Hazard3 v2 wrapper wires replay consumer | `yes` | `rtl/rv32i_integration/hazard3_replaycapsule_v2_wrapper.sv` |
 | Hazard3 replay consumer drives core-facing MMIO/IRQ | `yes` | wrapper drives `core_hrdata` and registered Hazard3 IRQ level from replay-consumer outputs |
-| Harness still injects replay MMIO values | `no` | `tb/verilator/rtl_harness.cpp` contains `replay_mmio_value` |
-| Harness still injects replay IRQ timing | `no` | `tb/verilator/rtl_harness.cpp` contains `irq_from_capsule` |
+| v1 replay uses host-side capsule MMIO/IRQ stimulus | `yes` | `tb/verilator/rtl_harness.cpp` reports `host_capsule_mmio_irq` |
+| v2 harness still injects replay MMIO values | `no` | legacy marker `replay_mmio_value` absent/present in `tb/verilator/rtl_harness.cpp` |
+| v2 harness still injects replay IRQ timing | `no` | legacy marker `irq_from_capsule` absent/present in `tb/verilator/rtl_harness.cpp` |
 | v2 full RTL rows use RTL MMIO/IRQ replay stimulus | `135/135` | `results/processed/full_rtl_replay_v2.csv`; configs=core,full,hashed |
 | v2 self-replay uses replay-mode controller and captured RTL store without preload | `243/243` | `results/processed/self_replay_handoff_v2.csv`; configs=core,full,hashed benchmarks=12 |
 | Hazard3 v2 MMIO+IRQ replay benchmark matrix | `48/48` | `results/processed/hazard3_v2_replay_smoke.csv`; benchmarks=8 configs=core,hashed seeds=3 with host IRQ low during replay |
