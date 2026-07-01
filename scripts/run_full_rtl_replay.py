@@ -226,7 +226,7 @@ def main() -> int:
     parser.add_argument("--debug-dir", default=str(DEBUG_DIR), help="directory for --debug-events outputs")
     parser.add_argument("--allow-fallback", action="store_true", help="permit non-compiler fallback HEX rows")
     parser.add_argument("--arch", choices=("v1", "v2"), default=os.environ.get("ARCH", "v1"))
-    parser.add_argument("--recorder-config", choices=("core", "hashed", "full"), default=os.environ.get("RECORDER_CONFIG", "core"))
+    parser.add_argument("--recorder-config", choices=("core", "hashed", "full", "all"), default=os.environ.get("RECORDER_CONFIG", "core"))
     args = parser.parse_args()
     if args.variant and not args.benchmark:
         parser.error("--variant requires --benchmark")
@@ -254,16 +254,18 @@ def main() -> int:
     seeds = [args.seed] if args.seed is not None else [1] if args.quick else [1, 2, 3]
     benchmarks = [args.benchmark] if args.benchmark else list(BENCHMARKS)
     variants = {benchmark: (args.variant,) if args.variant else VARIANTS[benchmark] for benchmark in benchmarks}
+    recorder_configs = ("core", "hashed", "full") if args.recorder_config == "all" else (args.recorder_config,)
     allow_fallback = args.allow_fallback or _truthy_env("REPLAYCAPSULE_ALLOW_FALLBACK") or _truthy_env("ALLOW_FALLBACK")
     blocker = _ensure_simulator()
     rows: list[dict[str, str]] = []
     if blocker:
-        for benchmark in benchmarks:
-            for variant in variants[benchmark]:
-                for seed in seeds:
-                    rows.append(_tag_row(_blocked_row(benchmark, variant, seed, blocker), args.arch, args.recorder_config))
+        for recorder_config in recorder_configs:
+            for benchmark in benchmarks:
+                for variant in variants[benchmark]:
+                    for seed in seeds:
+                        rows.append(_tag_row(_blocked_row(benchmark, variant, seed, blocker), args.arch, recorder_config))
         if args.arch == "v2" and single_case:
-            _write_v2_first_row_debug_files(args.benchmark, args.variant, args.seed, debug_dir, capsule_dir, signature_dir, args.recorder_config, blocker)
+            _write_v2_first_row_debug_files(args.benchmark, args.variant, args.seed, debug_dir, capsule_dir, signature_dir, recorder_configs[0], blocker)
         output_rows = _merge_v2_rows(out_csv, rows) if args.arch == "v2" else rows
         _write_rows(output_rows, out_csv, fields)
         _write_firmware_source_comparison(output_rows, comparison_csv)
@@ -271,33 +273,34 @@ def main() -> int:
         print(f"BLOCKED full RTL replay: {blocker}")
         return 1 if _strict_ci() else 0
 
-    for benchmark in benchmarks:
-        for variant in variants[benchmark]:
-            for seed in seeds:
-                rows.append(
-                    _run_case(
-                        benchmark,
-                        variant,
-                        seed,
-                        args.max_cycles,
-                        allow_fallback,
-                        args.arch,
-                        args.recorder_config,
-                        capsule_dir,
-                        signature_dir,
-                        args.debug_events,
-                        debug_dir,
-                        args.dump_mmio,
-                        args.dump_property,
-                        args.dump_pc,
-                        args.dump_disasm_context,
-                        args.stream_stall_test,
+    for recorder_config in recorder_configs:
+        for benchmark in benchmarks:
+            for variant in variants[benchmark]:
+                for seed in seeds:
+                    rows.append(
+                        _run_case(
+                            benchmark,
+                            variant,
+                            seed,
+                            args.max_cycles,
+                            allow_fallback,
+                            args.arch,
+                            recorder_config,
+                            capsule_dir,
+                            signature_dir,
+                            args.debug_events,
+                            debug_dir,
+                            args.dump_mmio,
+                            args.dump_property,
+                            args.dump_pc,
+                            args.dump_disasm_context,
+                            args.stream_stall_test,
+                        )
                     )
-                )
 
     if args.arch == "v2" and single_case:
         blocker_note = rows[0].get("notes") if len(rows) == 1 and rows[0].get("rtl_record_status") == "BLOCKED" else None
-        _write_v2_first_row_debug_files(args.benchmark, args.variant, args.seed, debug_dir, capsule_dir, signature_dir, args.recorder_config, blocker_note)
+        _write_v2_first_row_debug_files(args.benchmark, args.variant, args.seed, debug_dir, capsule_dir, signature_dir, recorder_configs[0], blocker_note)
     output_rows = _merge_v2_rows(out_csv, rows) if args.arch == "v2" else rows
     _write_rows(output_rows, out_csv, fields)
     _write_firmware_source_comparison(output_rows, comparison_csv)
