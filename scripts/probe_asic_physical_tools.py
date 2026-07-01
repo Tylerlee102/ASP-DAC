@@ -509,7 +509,10 @@ def rel(path: Path) -> str:
     try:
         return path.resolve().relative_to(REPO_ROOT).as_posix()
     except ValueError:
-        return str(path)
+        parts = path.parts
+        if len(parts) >= 3 and parts[0].endswith(":\\") and parts[1].lower() == "users":
+            return str(Path("<local-user>", *parts[3:]))
+        return path.name
 
 
 if __name__ == "__main__":
