@@ -19,7 +19,7 @@ Watchdog timeout & failing, fixed, no\_failure\_edge & missed heartbeat under lo
 \end{table}
 
 \begin{table}[t]
-\caption{Host-driven full RTL replay success. Source: \texttt{results/processed/full\_rtl\_replay.csv}.}
+\caption{Full RTL replay success. Source: \texttt{results/processed/full\_rtl\_replay.csv}.}
 \label{tab:replay-success}
 \centering
 \begin{tabular}{lrrl}
@@ -90,8 +90,8 @@ Topic & Current scope \\
 \midrule
 Processor & single-hart RV32I/PicoRV32 \\
 Nondeterminism & commit-indexed interrupt/MMIO boundary events \\
-Replay engine & host-driven Verilator harness \\
-Replay hardware & v2 host-streamed full-core consumer check; no autonomous replay engine \\
+Replay flow & controller-driven captured-store self-replay measured; standalone board/silicon flow future \\
+Replay hardware & v2 source streams capsule words and consumer drives MMIO/IRQ replay \\
 Memory system & no multicore, DMA, cache-coherence, or analog-device model \\
 Optimization & bring-up/debug fidelity prioritized over area minimization \\
 \bottomrule

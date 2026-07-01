@@ -8,27 +8,29 @@ No. ReplayCapsule-RV records commit-indexed replay-driving interrupt/MMIO bounda
 
 ## 2. Why not use RISC-V trace?
 
-RISC-V trace and debug standards provide broader observability. ReplayCapsule-RV targets a narrower replay object: the boundary events needed by the host-driven replay harness. The paper must state complementarity, not replacement.
+RISC-V trace and debug standards provide broader observability. ReplayCapsule-RV targets a narrower replay object: the boundary events needed by the scoped Verilator replay path and RTL replay consumer. The paper must state complementarity, not replacement.
 
 ## 3. Is the replay hardware synthesizable?
 
-The record-side RTL and board wrappers are synthesized and placed. The v2 consumer is integrated as a host-streamed full-core checker, while autonomous capsule storage and MMIO/IRQ replay muxing are still out of scope. Evidence: `results/processed/mapped_synthesis.csv`, `results/processed/full_core_mapped_summary.csv`, `results/processed/full_rtl_replay.csv`, and `results/processed/full_rtl_replay_v2.csv`.
+The record-side RTL and board wrappers are synthesized and placed. The v2 replay path includes an RTL capture/source path, a replay-mode controller that arms the captured store and starts replay, and a consumer that drives MMIO/IRQ replay. Measured same-instance self-replay rows stream from the captured RTL store without harness-preloaded capsule words. The artifact now also has a reusable RTL self-replay SoC shell with internal instruction-memory/MMIO/IRQ/watchdog model and a 42/42 focused Icarus standalone self-replay matrix, including 3 IRQ rows with matching nonzero PicoRV32 record/replay interrupt-handler entry counts. A board/silicon replay flow remains out of scope. Evidence: `results/processed/mapped_synthesis.csv`, `results/processed/full_core_mapped_summary.csv`, `results/processed/full_rtl_replay.csv`, `results/processed/full_rtl_replay_v2.csv`, `results/processed/self_replay_handoff_v2.csv`, `results/processed/standalone_self_replay_smokes.csv`, and `results/processed/hdl_checks.csv`.
 
 ## 4. Why is overhead high?
 
 The diagnostic prototype prioritizes replay fidelity and auditability over area. Legacy full-core ECP5 overhead is reported in `results/processed/mapped_overhead.csv`: LUT 143.75%, FF 341.79%, BRAM 0.00%, Fmax delta -20.12%. The v2 minimal recorder profile is the selected replay-critical mapped path and is reported separately in `results/processed/mapped_scaling_overhead_v2_measured.csv`: LUT 8.26%, FF 3.77%, BRAM 0.00%, Fmax -0.04%.
 
+The artifact also includes Nangate45 OpenROAD placed/global-routed physical-flow rows in `results/processed/asic_openpdk.csv` with parsed area, WNS/TNS, and power for baseline plus v2 minimal/core/hashed/full configurations. Selected v2 minimal physical area overhead is 1.72%, and selected v2 minimal physical power overhead is 10.02%. These rows support scoped implementation-cost evidence, not detailed-route signoff, tapeout, silicon, or energy claims. Synthesis-only Yosys+ABC standard-cell area rows remain in `results/processed/asic_openpdk_yosys_area.csv`; the selected v2 minimal synthesis-only area overhead is 1.76%.
+
 ## 5. Why only single-hart?
 
 The model assumes deterministic single-hart RV32I execution between recorded boundary events. Multicore ordering, DMA, and cache-coherence effects require additional event contracts and are listed as limitations in the paper and docs.
 
-## 6. Why host-driven replay?
+## 6. Is replay autonomous?
 
-Host-driven replay lets the artifact validate event sufficiency and corruption rejection while the v2 RTL consumer checks streamed capsule events against full-core observed events. Evidence: `results/processed/full_rtl_replay.csv`, `results/processed/full_rtl_replay_v2.csv`, and `results/processed/full_rtl_replay_negative.csv`.
+The v2 path is hardware-driven at the capsule-stream and MMIO/IRQ replay boundary: the RTL replay-mode controller launches captured-store replay, the RTL source streams capsule words, the RTL consumer checks observed full-core events, and self-replay rows stream from the captured RTL store without harness-preloaded capsule words. The focused Icarus standalone self-replay matrix now instantiates the reusable RTL self-replay SoC shell outside the Verilator top; that shell holds the instruction-memory/MMIO/IRQ/watchdog model plus replay-mode controller/source path. The rows record PicoRV32 v2 base and expanded MMIO/interrupt/watchdog/profile2 failures across core/hashed/full configs, reset the core, launch captured-store replay, and require captured, source-sent, and consumer-consumed counts to match. The interrupt-race rows additionally require nonzero, matching record/replay PicoRV32 interrupt-handler entry counts. It is still not a board/silicon replay engine. Evidence: `results/processed/full_rtl_replay_v2.csv`, `results/processed/self_replay_handoff_v2.csv`, `results/processed/standalone_self_replay_smokes.csv`, `results/processed/hdl_checks.csv`, and `results/processed/full_rtl_replay_negative.csv`.
 
 ## 7. Does this generalize beyond toy benchmarks?
 
-The current evidence covers six firmware bug families and 45/45 compiler-backed full RTL rows. Broader firmware suites are future work; the current claim should stay scoped to these generated benchmarks.
+The current base evidence covers six firmware bug families and 45/45 compiler-backed full RTL rows. The v2 expanded ledger adds 144/144 measured replay rows across 8 firmware families, including alternate-MMIO-profile cases. Broader firmware suites are future work; the current claim should stay scoped to these generated benchmarks and profile models.
 
 ## 8. Can the recorder be optimized away?
 

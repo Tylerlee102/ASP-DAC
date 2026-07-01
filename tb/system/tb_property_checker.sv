@@ -66,6 +66,12 @@ module tb_property_checker;
       $fatal(1, "stack-protection property did not fail as expected");
     end
 
+    drive_event(EV_MMIO_WRITE, 32'h0000_0100, 32'h4000_0044, 32'd25, 32'd3);
+    @(posedge clk);
+    if (!property_fail_valid || property_id != 8'd5) begin
+      $fatal(1, "profile2 config-order property did not fail as expected");
+    end
+
     $finish;
   end
 

@@ -1,0 +1,15 @@
+check,status,tool,path,detail,action_needed,notes
+openroad_binary,PASS,openroad,/OpenROAD-flow-scripts/tools/install/OpenROAD/bin/openroad,26Q2-2270-g4c26918f5a,none,"Required for placed/routed ASIC area, timing, and power evidence."
+opensta_binary,PASS,sta,/OpenROAD-flow-scripts/tools/install/OpenROAD/bin/sta,3.1.0,none,Useful for independent static timing checks.
+docker_binary,PASS,docker,/usr/bin/docker,"Docker version 29.6.0, build fb59821",none,Common way to run Linux-only EDA flows from Windows.
+openroad_orfs_docker_image,PASS,dockerhub,openroad/orfs:latest,tag=latest size=1587177265 images=2 amd64_linux=1,none,The repo includes scripts/run_asic_openroad_docker.ps1 and .github/workflows/asic-openroad.yml for this image.
+wsl_status,MISSING,wsl,NA,wsl.exe not found,Install WSL or use Docker/Linux for OpenROAD.,Windows launcher is absent.
+wsl_feature_query,MISSING,dism,dism.exe,[Errno 2] No such file or directory: 'dism.exe',none,Records whether this Codex session can inspect the Windows WSL feature state without elevation.
+winget_openroad_package,MISSING,winget,NA,winget not found,Use WSL/Docker/Linux or a manual OpenROAD binary install.,"Winget is only a convenience path, not required by the artifact."
+conda_openroad_package_platforms,MISSING,conda,https://api.anaconda.org/package/litex-hub/openroad,"platforms=linux-64,osx-64",Conda route is not native-Windows here; use WSL/Docker/Linux for the Linux package.,The available litex-hub package metadata is useful only if a runnable platform package exists for this machine.
+openroad_official_release_metadata,PASS,openroad-release,https://vaultlink.precisioninno.com/api/releases/latest,version=26Q2-1164-g08f67ee5ec; files=openroad_26Q2-1164-g08f67ee5ec_amd64-ubuntu-22.04.deb; openroad_26Q2-1164-g08f67ee5ec_amd64-ubuntu-24.04.deb,none,Records current official prebuilt OpenROAD release metadata for the ASIC physical-flow blocker.
+openroad_official_download_access,BLOCKED,openroad-release,https://vaultlink.precisioninno.com/api/releases/26Q2-1164-g08f67ee5ec/openroad_26Q2-1164-g08f67ee5ec_amd64-ubuntu-22.04.deb/download,HTTP 401; package=openroad_26Q2-1164-g08f67ee5ec_amd64-ubuntu-22.04.deb,"Register/authorize download through the official OpenROAD release portal, then install the Ubuntu .deb inside WSL/Docker/Linux.","The official package endpoint exists, but this local probe is not authorized to download it."
+yosys_binary,PASS,yosys,/usr/local/bin/yosys,"Yosys 0.64 (git sha1 6d2c445ae, g++ 11.4.0-1ubuntu1~22.04.3 -fPIC -O3)",none,Already sufficient for the current Nangate45 synthesis-only rows.
+nangate45_liberty,PASS,file,.tools/openpdk/nangate45/NangateOpenCellLibrary_typical.lib,bytes=6692032,none,Required for synthesis and timing.
+nangate45_lef,PASS,file,.tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef,bytes=275420,none,Required for placement/routing.
+asic_sdc,PASS,file,constraints/asic_openpdk.sdc,bytes=187,none,Used by the OpenROAD flow scaffold.

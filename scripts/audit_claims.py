@@ -117,7 +117,7 @@ PATTERNS = (
     ClaimPattern(
         "asic_power_claim",
         re.compile(r"\b(ASIC|power)\b", re.IGNORECASE),
-        "ASIC and power wording is only allowed when stating that no ASIC/power claim is made.",
+        "ASIC and power wording must be backed by OpenROAD PASS rows or used only in limitations.",
     ),
     ClaimPattern(
         "production_claim",
@@ -134,12 +134,18 @@ PATTERNS = (
         re.compile(r"\bsynthesizable replay-consume\b", re.IGNORECASE),
         "Synthesizable replay-consume wording is only allowed in limitation contexts.",
     ),
+    ClaimPattern(
+        "stale_replay_scope",
+        re.compile(r"\b(no autonomous capsule source|no autonomous .*replay engine|host-streamed RTL consumer|replay consume(?: path)? (?:is|remains) host-driven|host-driven replay consume path)\b", re.IGNORECASE),
+        "Replay-scope wording must reflect the current RTL source/controller/consumer evidence while preserving the board/silicon boundary.",
+    ),
 )
 
 FIELDNAMES = ["claim_type", "status", "file", "line", "matched_text", "excerpt", "guidance"]
 
 
 def main() -> int:
+    asic_physical_supported = _asic_physical_supported()
     rows: list[dict[str, str]] = []
     for path in _markdown_files():
         rel_path = _rel(path)
@@ -149,7 +155,12 @@ def main() -> int:
             context = " ".join(lines[max(0, index - 6) : min(len(lines), index + 7)])
             for pattern in PATTERNS:
                 for match in pattern.regex.finditer(line):
-                    status = "CAVEATED" if _is_caveated(context) or _is_config_name_use(pattern.claim_type, match.group(0), context) else "REVIEW"
+                    supported = (
+                        pattern.claim_type == "asic_power_claim"
+                        and asic_physical_supported
+                        and _is_supported_asic_power_context(context)
+                    )
+                    status = "CAVEATED" if supported or _is_caveated(context) or _is_config_name_use(pattern.claim_type, match.group(0), context) else "REVIEW"
                     rows.append(
                         {
                             "claim_type": pattern.claim_type,
@@ -221,6 +232,33 @@ def _is_config_name_use(claim_type: str, matched_text: str, context: str) -> boo
         "v2 minimal full-core",
     )
     return any(marker in text for marker in config_markers)
+
+
+def _asic_physical_supported() -> bool:
+    summary_path = REPO_ROOT / "results/processed/asic_openpdk_summary.csv"
+    if not summary_path.exists():
+        return False
+    try:
+        with summary_path.open(newline="", encoding="utf-8") as handle:
+            summary = next(csv.DictReader(handle))
+    except (OSError, StopIteration):
+        return False
+    return summary.get("status") == "PASS" and summary.get("pass_rows") not in {"", "0", None}
+
+
+def _is_supported_asic_power_context(context: str) -> bool:
+    text = context.lower()
+    evidence_markers = (
+        "openroad",
+        "global-routed",
+        "global routed",
+        "nangate45",
+        "physical-flow",
+        "physical flow",
+        "asic_openpdk",
+        "placed/global-routed",
+    )
+    return any(marker in text for marker in evidence_markers)
 
 
 def _rel(path: Path) -> str:

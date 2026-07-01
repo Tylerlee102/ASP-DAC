@@ -20,5 +20,5 @@ post_main_infinite_loop=inspect_pc_trace
 interrupt_events=inspect_property_trace_and_interrupt_trace
 mmio_accesses=inspect_mmio_trace
 property_checker_io=inspect_property_trace
-record_stdout=PASS record benchmark=commanded_actuator_limit_bug variant=fixed seed=1 arch=v2 recorder_config=core property=0 events=3 cycles=100000 commits=33326 notes="no false property failure"\n
-replay_stdout=PASS replay benchmark=commanded_actuator_limit_bug variant=fixed seed=1 arch=v2 recorder_config=core property=0 events=3 cycles=100000 commits=33327 notes="record/replay canonical events match; rtl replay consumer consumed 3/3"\n
+record_stdout=PASS record benchmark=commanded_actuator_limit_bug variant=fixed seed=1 arch=v2 recorder_config=core property=0 events=3 cycles=100000 commits=33326 notes="no false property failure; rtl capture store retained 3/3 replay-critical words for reset-persistent source replay"\n
+replay_stdout=PASS replay benchmark=commanded_actuator_limit_bug variant=fixed seed=1 arch=v2 recorder_config=core property=0 events=3 cycles=100000 commits=33327 notes="record/replay replay-critical events match; rtl capsule source streamed 3/3 and replay consumer consumed 3/3 while driving MMIO/IRQ replay"\n

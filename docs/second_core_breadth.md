@@ -1,0 +1,44 @@
+# Second-Core Breadth Evidence
+
+Status: `PASS`.
+
+This folder now vendors FemtoRV32 Quark as a real second RV32I core candidate, adds ReplayCapsule wrappers around it, measures generic Yosys synthesis rows for both the core and wrapper, runs one compiler-built sensor-threshold firmware capture smoke through the wrapper, adds a reusable v1 RTL capsule replay checker plus a scoped v1 RTL MMIO replay driver, runs focused capsule-derived replay smokes that reset the wrapped core and reproduce captured capsule/property/signature evidence for 14 base and expanded benchmark families across 4 v1 capture profiles, and adds scoped seeded v2 MMIO replay-consumer smokes on FemtoRV32 for 14 benchmark families across 3 recorder configs and 3 seeds. This evidence is useful for reducing PicoRV32-only integration risk, but it is deliberately not a true CPU interrupt/ISR or full MMIO+IRQ replay claim.
+
+| Check | Status | Evidence | Notes |
+| --- | --- | --- | --- |
+| `femtorv32_source_present` | `PASS` | `third_party/femtorv32/femtorv32_quark.v` | Vendored FemtoRV32 Quark Verilog source is present. |
+| `femtorv32_declares_rv32i` | `PASS` | `third_party/femtorv32/femtorv32_quark.v` | Source declares RV32I architecture scope. |
+| `femtorv32_license_tracked` | `PASS` | `third_party/femtorv32/LICENSE` | Upstream BSD-3-Clause license is vendored with the core. |
+| `femtorv32_source_pinned` | `PASS` | `third_party/femtorv32/VENDORED.md` | Vendored metadata pins the upstream commit used for this copy. |
+| `femtorv32_generic_synthesis` | `PASS` | `results/processed/synthesis.csv` | Yosys generic synthesis row for FemtoRV32 reports cells=155. |
+| `femtorv32_replaycapsule_wrapper_present` | `PASS` | `rtl/rv32i_integration/femtorv32_replaycapsule_wrapper.sv` | ReplayCapsule wrapper around FemtoRV32 source is present. |
+| `femtorv32_replaycapsule_wrapper_lint` | `PASS` | `results\raw\verilator_lint_femtorv32_wrapper.txt` | Verilator frontend lint accepts the FemtoRV32 ReplayCapsule wrapper. |
+| `femtorv32_replaycapsule_wrapper_synthesis` | `PASS` | `results/processed/synthesis.csv` | Yosys generic synthesis row for the FemtoRV32 ReplayCapsule wrapper reports cells=1645. |
+| `femtorv32_compiler_firmware_smoke` | `PASS` | `results\raw\tb_femtorv32_sensor_threshold_smoke_vvp_run.txt` | Icarus runs compiler-built sensor_threshold_bug firmware on the FemtoRV32 ReplayCapsule wrapper and captures the expected property-fail capsule. |
+| `femtorv32_v1_capsule_replay_checker` | `PASS` | `results\raw\tb_rcv1_capsule_replay_checker_vvp_run.txt` | Reusable RTL checker for the 168-bit v1 capsule packet stream accepts matching replay packets and rejects mismatch/extra/truncated streams. |
+| `femtorv32_v1_mmio_replay_driver` | `PASS` | `results\raw\tb_rcv1_mmio_replay_driver_vvp_run.txt` | Scoped v1 RTL MMIO replay driver stores captured 168-bit packets and returns replay MMIO-read values for matching observed addresses. |
+| `femtorv32_capsule_derived_replay_smoke` | `PASS` | `results\raw\tb_femtorv32_capsule_derived_replay_smoke_vvp_run.txt` | Icarus captures the compiler-built sensor-threshold failure capsule, resets the wrapped FemtoRV32 core, drives replay MMIO reads through the scoped v1 RTL replay driver, and routes replay packet comparison through the v1 RTL checker. |
+| `femtorv32_v2_mmio_replay_consumer_smoke` | `PASS` | `results\raw\tb_femtorv32_v2_replay_smoke_vvp_run.txt` | A scoped FemtoRV32 v2 wrapper passes Verilator frontend lint and an Icarus smoke that records a v2 sensor-threshold stream, resets the wrapped core, changes the replay sensor input, and requires the v2 replay consumer to consume the captured MMIO replay stream and reproduce the property id and property signature. |
+| `femtorv32_v2_mmio_replay_consumer_config_matrix` | `PASS` | `results/processed/second_core_v2_smokes.csv` | Focused seeded FemtoRV32 v2 MMIO replay-consumer smokes pass for 14 benchmark families across 3 recorder configs (core, full, hashed) and 3 seeds, perturbing replay-side host MMIO inputs while requiring captured-stream consumption and property-signature equality; true IRQ replay and full MMIO+IRQ replay are not claimed. |
+| `femtorv32_capsule_derived_replay_matrix` | `PASS` | `results/processed/second_core_replay_smokes.csv` | Focused FemtoRV32 capsule-derived replay rows pass for 14 base and expanded benchmark families across 4 v1 capture profiles with checker-consumed packet streams and v1 MMIO replay-driver hit accounting, including wrapper-level IRQ-boundary evidence; no true CPU interrupt/ISR or seeded matrix claim. |
+| `femtorv32_replay_scope_boundary` | `INFO` | `docs/second_core_breadth.md` | This is second-core wrapper lint/synthesis plus focused capsule-derived replay smokes across v1 capture profiles with scoped v1 MMIO replay reads and a seeded scoped v2 MMIO replay-consumer campaign; true CPU interrupt/ISR replay and full MMIO+IRQ replay are not claimed yet. |
+
+Allowed from this evidence:
+
+- A second open-source RV32I core has been vendored with license metadata.
+- The second core has a measured generic Yosys synthesis row.
+- A ReplayCapsule wrapper around the second core passes Verilator frontend lint and generic Yosys synthesis.
+- One compiler-built sensor-threshold firmware smoke runs on the FemtoRV32 ReplayCapsule wrapper and captures the expected property-fail capsule.
+- A reusable v1 RTL capsule replay checker validates matching 168-bit packet streams and rejects mismatch/extra/truncated streams.
+- A scoped v1 RTL MMIO replay driver stores captured 168-bit packets and supplies replay MMIO-read values for matching observed addresses.
+- Focused capsule-derived replay smokes on FemtoRV32 reproduce captured property, signature, checker-consumed capsule packets, and v1 MMIO replay-driver hit accounting after reset for 14 base and expanded benchmark families across 4 v1 capture profiles.
+- Scoped seeded v2 FemtoRV32 replay-consumer smokes record a v2 MMIO/property stream, reset the wrapped core, perturb replay-side host MMIO inputs, and require the v2 consumer to consume the captured stream and reproduce the property id and property signature for 14 benchmark families across 3 recorder configs (core, full, hashed) and 3 seeds.
+
+Do not claim from this evidence:
+
+- v2 replay that drives both FemtoRV32 core-facing MMIO and IRQ inputs.
+- True CPU interrupt/ISR replay on FemtoRV32; the vendored Quark core has no external interrupt/CSR machinery.
+- Cross-core behavioral equivalence or portability.
+- ASIC, timing, power, or mapped FPGA results for FemtoRV32.
+
+Next step: add v2 IRQ stimulus on a core with true interrupt support.

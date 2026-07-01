@@ -23,6 +23,14 @@ recent instruction-fetch address as the memory-event PC context for smoke-level
 capsules. Full benchmark-wide RTL replay/export/compare simulation remains
 pending.
 
+FemtoRV32 Quark is vendored under `third_party/femtorv32` as a second RV32I
+core candidate. The current evidence checks source/license metadata, a
+ReplayCapsule wrapper, Verilator frontend lint, and generic Yosys synthesis
+through `results/processed/second_core_breadth.csv`. The wrapper also has one
+compiler-built sensor-threshold capture smoke in `results/processed/hdl_checks.csv`.
+There is not yet a full firmware-running FemtoRV32 ReplayCapsule record/replay
+row or interrupt replay claim.
+
 ## MMIO Map
 
 | Address | Name | Direction | Purpose |

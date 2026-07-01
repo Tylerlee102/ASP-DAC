@@ -110,7 +110,7 @@ jobs:
           unset VERILATOR_BIN
           unset OSS_CAD_SUITE
           hash -r
-          make full-rtl-replay DEBUG=1
+          make full-rtl-replay DEBUG=1 RECORDER_CONFIG=all
 
       - name: Check replay firmware evidence
         run: make check-evidence
@@ -124,7 +124,7 @@ jobs:
           make full-rtl-negative
 
       - name: Measure runtime overhead
-        run: make runtime-overhead
+        run: make runtime-overhead RECORDER_CONFIG=all
 
       - name: Compare fallback and compiler firmware sources
         run: make firmware-source-compare

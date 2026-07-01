@@ -25,5 +25,6 @@
   "replay_consumer_expected": 8,
   "replay_consumer_consumed": 8,
   "replay_consumer_error_code": 0,
-  "notes": "record/replay replay-critical events match; rtl replay consumer consumed 8/8"
+  "replay_stimulus_source": "rtl_capsule_source_mmio_irq",
+  "notes": "record/replay replay-critical events match; rtl capsule source streamed 8/8 and replay consumer consumed 8/8 while driving MMIO/IRQ replay"
 }

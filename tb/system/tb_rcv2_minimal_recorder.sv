@@ -58,6 +58,7 @@ module tb_rcv2_minimal_recorder;
   logic replay_capsule_ready;
   logic [63:0] replay_capsule_word;
   logic replay_stream_done;
+  logic [31:0] replay_current_commit_index;
   logic replay_observed_valid;
   logic [3:0] replay_observed_type;
   logic [31:0] replay_observed_commit;
@@ -164,6 +165,7 @@ module tb_rcv2_minimal_recorder;
     .capsule_ready(replay_capsule_ready),
     .capsule_word(replay_capsule_word),
     .stream_done(replay_stream_done),
+    .current_commit_index(replay_current_commit_index),
     .observed_valid(replay_observed_valid),
     .observed_event_type(replay_observed_type),
     .observed_commit_index(replay_observed_commit),
@@ -261,6 +263,7 @@ module tb_rcv2_minimal_recorder;
       @(negedge clk);
       replay_capsule_word = saved_word[index];
       replay_capsule_valid = 1'b1;
+      replay_current_commit_index = saved_commit[index] == 32'h0 ? 32'h0 : saved_commit[index] - 32'h1;
       replay_observed_valid = 1'b1;
       replay_observed_type = saved_type[index];
       replay_observed_commit = saved_commit[index];
@@ -278,6 +281,7 @@ module tb_rcv2_minimal_recorder;
       end
       @(negedge clk);
       replay_capsule_valid = 1'b0;
+      replay_current_commit_index = 32'h0;
       replay_observed_valid = 1'b0;
     end
   endtask
@@ -291,6 +295,7 @@ module tb_rcv2_minimal_recorder;
     replay_capsule_valid = 1'b0;
     replay_capsule_word = 64'h0;
     replay_stream_done = 1'b0;
+    replay_current_commit_index = 32'h0;
     replay_observed_valid = 1'b0;
     replay_observed_type = 4'h0;
     replay_observed_commit = 32'h0;

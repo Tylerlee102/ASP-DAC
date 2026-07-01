@@ -172,11 +172,16 @@ module picorv32_replaycapsule_wrapper #(
   logic [31:0] selected_v2_captured_event_addr;
   logic [31:0] selected_v2_captured_event_data;
   logic [31:0] selected_v2_captured_event_payload_hash;
+  logic selected_v2_captured_event_replay_critical;
   logic replay_consume_mmio_valid;
   logic [31:0] replay_consume_mmio_addr_token;
   logic [31:0] replay_consume_mmio_value;
   logic replay_consume_irq_valid;
   logic [7:0] replay_consume_irq_cause;
+  logic replay_drive_active;
+  logic core_mmio_read_access;
+  logic [31:0] core_mem_rdata;
+  logic [31:0] core_irq;
   logic use_v2;
   logic v2_capture_enabled;
 
@@ -189,6 +194,19 @@ module picorv32_replaycapsule_wrapper #(
   assign mem_wdata = core_mem_wdata;
   assign mem_wstrb = core_mem_wstrb;
   assign eoi = core_eoi;
+  assign core_mmio_read_access =
+    core_mem_valid &&
+    !core_mem_instr &&
+    core_mem_wstrb == 4'h0 &&
+    core_mem_addr[31:16] == 16'h4000;
+  assign core_mem_rdata =
+    (replay_drive_active && core_mmio_read_access && replay_consume_mmio_valid) ?
+      replay_consume_mmio_value :
+      mem_rdata;
+  assign core_irq =
+    replay_drive_active ?
+      (replay_consume_irq_valid ? {31'h0, |replay_consume_irq_cause} : 32'h0) :
+      irq;
 
   assign trace_kind = core_trace_data[35:32];
   assign trace_payload = core_trace_data[31:0];
@@ -200,6 +218,18 @@ module picorv32_replaycapsule_wrapper #(
   assign interrupt_enter = core_eoi != 32'h0 && core_eoi_q == 32'h0;
   assign interrupt_exit = core_eoi == 32'h0 && core_eoi_q != 32'h0;
   assign mem_accepted = core_mem_valid && mem_ready && !core_mem_instr;
+
+  always_ff @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+      replay_drive_active <= 1'b0;
+    end else if (clear) begin
+      replay_drive_active <= 1'b0;
+    end else if (use_v2 && replay_consume_start) begin
+      replay_drive_active <= 1'b1;
+    end else if (replay_consume_all_events || replay_consume_error) begin
+      replay_drive_active <= 1'b0;
+    end
+  end
 
   always_ff @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
@@ -268,7 +298,7 @@ module picorv32_replaycapsule_wrapper #(
     .mem_addr(core_mem_addr),
     .mem_wdata(core_mem_wdata),
     .mem_wstrb(core_mem_wstrb),
-    .mem_rdata(mem_rdata),
+    .mem_rdata(core_mem_rdata),
     .mem_la_read(),
     .mem_la_write(),
     .mem_la_addr(),
@@ -282,7 +312,7 @@ module picorv32_replaycapsule_wrapper #(
     .pcpi_rd(32'h0),
     .pcpi_wait(1'b0),
     .pcpi_ready(1'b0),
-    .irq(irq),
+    .irq(core_irq),
     .eoi(core_eoi),
     .trace_valid(core_trace_valid),
     .trace_data(core_trace_data)
@@ -308,7 +338,7 @@ module picorv32_replaycapsule_wrapper #(
     .mem_write(core_mem_wstrb != 4'h0),
     .mem_addr(core_mem_addr),
     .mem_wdata(core_mem_wdata),
-    .mem_rdata(mem_rdata),
+    .mem_rdata(core_mem_rdata),
     .external_input_valid(external_input_valid),
     .external_input_value(external_input_value),
     .interrupt_enter(interrupt_enter),
@@ -355,7 +385,7 @@ module picorv32_replaycapsule_wrapper #(
     .mem_write(core_mem_wstrb != 4'h0),
     .mem_addr(core_mem_addr),
     .mem_wdata(core_mem_wdata),
-    .mem_rdata(mem_rdata),
+    .mem_rdata(core_mem_rdata),
     .external_input_valid(v2_capture_enabled && external_input_valid),
     .external_input_value(external_input_value),
     .interrupt_enter(v2_capture_enabled && interrupt_enter),
@@ -414,7 +444,7 @@ module picorv32_replaycapsule_wrapper #(
     .mem_write(core_mem_wstrb != 4'h0),
     .mem_addr(core_mem_addr),
     .mem_wdata(core_mem_wdata),
-    .mem_rdata(mem_rdata),
+    .mem_rdata(core_mem_rdata),
     .external_input_valid(v2_capture_enabled && external_input_valid),
     .external_input_value(external_input_value),
     .interrupt_enter(v2_capture_enabled && interrupt_enter),
@@ -473,7 +503,7 @@ module picorv32_replaycapsule_wrapper #(
     .mem_write(core_mem_wstrb != 4'h0),
     .mem_addr(core_mem_addr),
     .mem_wdata(core_mem_wdata),
-    .mem_rdata(mem_rdata),
+    .mem_rdata(core_mem_rdata),
     .external_input_valid(v2_capture_enabled && external_input_valid),
     .external_input_value(external_input_value),
     .interrupt_enter(v2_capture_enabled && interrupt_enter),
@@ -580,6 +610,14 @@ module picorv32_replaycapsule_wrapper #(
 
   assign use_v2 = arch_select == 2'd2;
   assign v2_capture_enabled = capture_mode != 4'h4;
+  assign selected_v2_captured_event_replay_critical =
+    selected_v2_captured_event_type == EV_MMIO_READ ||
+    selected_v2_captured_event_type == EV_MMIO_WRITE ||
+    selected_v2_captured_event_type == EV_INTERRUPT_ENTER ||
+    selected_v2_captured_event_type == EV_INTERRUPT_EXIT ||
+    selected_v2_captured_event_type == EV_EXTERNAL_INPUT ||
+    selected_v2_captured_event_type == EV_PROPERTY_FAIL ||
+    selected_v2_captured_event_type == EV_CHECKPOINT_HASH;
   assign v2_core_stream_ready = !(use_v2 && recorder_config_select == 2'd0) || capsule_stream_ready;
   assign v2_hashed_stream_ready = !(use_v2 && recorder_config_select == 2'd1) || capsule_stream_ready;
   assign v2_full_stream_ready = !(use_v2 && recorder_config_select == 2'd2) || capsule_stream_ready;
@@ -614,7 +652,8 @@ module picorv32_replaycapsule_wrapper #(
     endcase
   end
 
-  assign replay_consume_observed_valid = use_v2 && selected_v2_captured_event_valid;
+  assign replay_consume_observed_valid =
+    use_v2 && selected_v2_captured_event_valid && selected_v2_captured_event_replay_critical;
 
   rcv2_replay_consumer #(
     .EVENT_COUNT(0),
@@ -630,6 +669,7 @@ module picorv32_replaycapsule_wrapper #(
     .capsule_ready(replay_consume_ready),
     .capsule_word(replay_consume_word),
     .stream_done(replay_consume_stream_done),
+    .current_commit_index(commit_index),
     .observed_valid(replay_consume_observed_valid),
     .observed_event_type(selected_v2_captured_event_type),
     .observed_commit_index(selected_v2_captured_event_commit_index),

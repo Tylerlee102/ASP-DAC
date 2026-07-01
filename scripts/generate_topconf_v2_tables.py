@@ -152,10 +152,10 @@ def _write_limitations_table() -> None:
             r"Topic & Current scope \\",
             r"\midrule",
             r"Core scope & Single-hart RV32I only \\",
-            r"Replay consume & v2 host-streamed full-core consumer check; autonomous replay engine not integrated \\",
-            r"v2 workload replay & Measured full-core host-driven record/replay rows \\",
+            r"Replay consume & v2 RTL source streams capsule words; consumer drives core-facing MMIO/IRQ replay \\",
+            r"v2 workload replay & Measured full-core record/replay rows; saved capsule image is preloaded by harness \\",
             r"Mapped overhead & v1 rows plus selected v2 minimal ECP5 overhead; core/hashed are diagnostic comparisons \\",
-            r"ASIC/power & Not measured \\",
+            r"ASIC/open-PDK & Nangate45 OpenROAD global-routed area/timing/power; no detailed-route signoff, tapeout, silicon, or energy \\",
             r"\bottomrule",
             r"\end{tabular}",
         ],
@@ -181,7 +181,7 @@ def _workload_lines() -> list[str]:
     v2_pass = sum(_int(row.get("pass_count")) for row in rows if row.get("architecture") == "v2")
     v2_total = sum(_int(row.get("n")) for row in rows if row.get("architecture") == "v2")
     blocked = sum(_int(row.get("blocked_count")) for row in rows if row.get("architecture") == "v2")
-    return ["Workload scaling v2", f"Measured v2 PASS rows: {v2_pass}/{v2_total}", f"Blocked rows: {blocked}", "Scope: host-driven full-core record/replay."]
+    return ["Workload scaling v2", f"Measured v2 PASS rows: {v2_pass}/{v2_total}", f"Blocked rows: {blocked}", "Scope: full-core record/replay with harness-preloaded RTL capsule source."]
 
 
 def _capsule_lines() -> list[str]:
@@ -245,13 +245,13 @@ def _recorder_config_lines() -> list[str]:
         f"{config}: {next((row.get('replay_success_rate_pct', 'NA') for row in rows if row.get('recorder_config') == config and row.get('workload_scale') == 'stress'), 'NA')}%"
         for config in configs
     ]
-    return ["Recorder config tradeoff v2", *pass_rates[:3], "All claims remain scoped to host-driven replay."]
+    return ["Recorder config tradeoff v2", *pass_rates[:3], "All claims remain scoped to harness-preloaded capsule-source replay."]
 
 
 def _consumer_lines() -> list[str]:
     tests = read_csv(REPO_ROOT / "results/processed/replay_consumer_tests.csv")
     passed = sum(1 for row in tests if row.get("passed") == "true")
-    return ["Replay-consume controller", f"RTL tests passed: {passed}/{len(tests)}", "Scope: host-streamed full-core check, not autonomous replay."]
+    return ["Replay-consume controller", f"RTL tests passed: {passed}/{len(tests)}", "Scope: RTL source streams capsule words; consumer drives MMIO/IRQ."]
 
 
 def _preferred_csv(preferred: str, fallback: str) -> list[dict[str, str]]:

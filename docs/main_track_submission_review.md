@@ -14,19 +14,19 @@ Evidence basis: CI run latest successful final-reproduce run on master, artifact
 ## EDA/synthesis reviewer
 
 - score: weak accept
-- strengths: same-target ECP5 baseline and ReplayCapsule rows pass P&R.
-- weaknesses: no ASIC area or power.
+- strengths: same-target ECP5 baseline and ReplayCapsule rows pass P&R; Nangate45 OpenROAD placed/global-routed area, timing, and power rows are present.
+- weaknesses: no detailed-route signoff, tapeout, or silicon energy result.
 - fatal blockers: none.
-- required edits before submission: state target, flow, memory, and board IO constraints.
+- required edits before submission: state target, flow, memory, board IO constraints, and global-route-only ASIC scope.
 - final recommendation: weak accept.
 
 ## Systems/debug reviewer
 
 - score: accept
-- strengths: compiler-backed full RTL replay and corruption rejection are strong.
-- weaknesses: host-driven replay consume path.
+- strengths: compiler-backed full RTL replay, captured-store self-replay handoff, and corruption rejection are strong.
+- weaknesses: reset orchestration and memory/peripheral shell remain harness-scoped.
 - fatal blockers: none.
-- required edits before submission: make host-driven scope prominent.
+- required edits before submission: make the board/silicon replay boundary prominent.
 - final recommendation: accept.
 
 ## Formal/replay model reviewer

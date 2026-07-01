@@ -30,6 +30,7 @@ REQUIRED_MODULES = [
     ("rtl/hash_signature.sv", "hash_signature"),
     ("rtl/rv32i_integration/replaycapsule_soc.sv", "replaycapsule_soc"),
     ("rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv", "picorv32_replaycapsule_wrapper"),
+    ("rtl/rv32i_integration/femtorv32_replaycapsule_wrapper.sv", "femtorv32_replaycapsule_wrapper"),
 ]
 
 REQUIRED_EVENTS = [

@@ -1,0 +1,24 @@
+read_verilog -sv -Irtl -Irtl/replaycapsule_v2 -Irtl/mapped -Ithird_party/picorv32 \
+  third_party/picorv32/picorv32.v \
+  rtl/event_pkg.sv \
+  rtl/event_tap.sv \
+  rtl/event_classifier.sv \
+  rtl/capsule_buffer.sv \
+  rtl/property_checker.sv \
+  rtl/event_slicer.sv \
+  rtl/hash_signature.sv \
+  rtl/replaycapsule_v2/rcv2_payload_hasher.sv \
+  rtl/replaycapsule_v2/rcv2_address_dictionary.sv \
+  rtl/replaycapsule_v2/rcv2_adaptive_window.sv \
+  rtl/replaycapsule_v2/rcv2_event_packer.sv \
+  rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv \
+  rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv \
+  rtl/replaycapsule_v2/rcv2_recorder.sv \
+  rtl/mapped/mapped_memory.sv \
+  rtl/mapped/full_core_replaycapsule_v2_board_top.sv
+chparam -set MEM_WORDS 128 full_core_replaycapsule_v2_board_top
+chparam -set CAPSULE_DEPTH 8 full_core_replaycapsule_v2_board_top
+chparam -set REPLAYCAPSULE_CONFIG 1 full_core_replaycapsule_v2_board_top
+synth -top full_core_replaycapsule_v2_board_top
+abc -liberty .tools/openpdk/nangate45/NangateOpenCellLibrary_typical.lib
+write_verilog results/raw/asic_openpdk/full_core_v2_core_board_yosys_area_mapped.v

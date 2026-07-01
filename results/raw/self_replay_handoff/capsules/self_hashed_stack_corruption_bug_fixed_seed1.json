@@ -1,0 +1,22 @@
+{
+  "benchmark": "stack_corruption_bug",
+  "variant": "fixed",
+  "seed": 1,
+  "mode": "record",
+  "architecture": "v2",
+  "schema_version": 2,
+  "recorder_config": "hashed",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "overflow": false,
+  "stream_event_count": 1,
+  "stream_event_sent_count": 1,
+  "replay_critical_event_count": 1,
+  "stream_stall_count": 0,
+  "dropped_diagnostic_count": 0,
+  "replay_critical_overflow_count": 0,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "6211080000cafe00", "schema_version": 2, "flags": 2, "flags_hex": "0x00000002", "event_type": 6, "event_id": 0, "commit": 17, "commit_index": 17, "pc": "0x00000000", "addr": "0x40000008", "data": "0x0000cafe", "mmio_address": "0x40000008", "mmio_value": "0x0000cafe", "raw_mmio_value": "0x0000cafe", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 0, "payload_hash": "0x434f019f", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"}
+  ]
+}

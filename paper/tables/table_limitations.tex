@@ -1,11 +1,13 @@
-\begin{tabular}{lp{0.58\linewidth}}
-\toprule
-Topic & Current scope \\
-\midrule
-Core scope & Single-hart RV32I only \\
-Replay consume & v2 host-streamed full-core consumer check; autonomous replay engine not integrated \\
-v2 workload replay & Measured full-core host-driven record/replay rows \\
-Mapped overhead & v1 rows plus selected v2 minimal ECP5 overhead; core/hashed are diagnostic comparisons \\
-ASIC/power & Not measured \\
-\bottomrule
+\begin{tabular}{ll}
+ \hline
+limitation & paper\_wording \\
+ \hline
+replay\_orchestration\_scope & Full-core replay uses RTL source/consumer MMIO/IRQ drive, but reset orchestration and the memory/peripheral shell remain in the harness. \\
+v2\_consumer\_scope & The v2 replay-mode controller, captured-store source, and replay consumer are tested, but a board/silicon replay flow is not integrated. \\
+buffer\_depth\_tradeoff & Replay-critical workload scaling uses workload-aware capsule depth; stress rows require the deepest generated setting. \\
+mapped\_scope & Mapped data measures bring-up/debug instrumentation, not an area-optimized shipped implementation. \\
+high\_area\_overhead & FF/LUT overhead remains high even after disabling unselected recorder logic. \\
+asic\_scope & Nangate45 OpenROAD global-routed area, timing, and power rows are reported; detailed-route signoff, tapeout, silicon, and energy are not evaluated. \\
+single\_hart\_scope & Evaluation is single-hart RV32I and excludes multicore, DMA, caches/coherence, and arbitrary peripherals. \\
+ \hline
 \end{tabular}

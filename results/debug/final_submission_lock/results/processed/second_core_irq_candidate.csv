@@ -1,0 +1,13 @@
+check,status,evidence,notes
+hazard3_source_present,PASS,third_party/hazard3/hdl,Vendored Hazard3 HDL is present with 38 Verilog/include files.
+hazard3_filelist_present,PASS,third_party/hazard3/hdl/hazard3.f,Filelist names 21 core source files including the IRQ controller.
+hazard3_license_tracked,PASS,third_party/hazard3/LICENSE,Apache-2.0 license is vendored with the candidate core.
+hazard3_source_pinned,PASS,third_party/hazard3/VENDORED.md,Vendored metadata pins upstream commit 8af992930f71a69b0e06c38734c1094f41a05ca0.
+hazard3_declares_rv32i,PASS,third_party/hazard3/Readme.md,README declares RV32I/RV32E scope and CSR support.
+hazard3_external_irq_ports,PASS,third_party/hazard3/hdl/hazard3_cpu_1port.v,"Top-level candidate exposes external, software, and timer interrupt inputs."
+hazard3_irq_configurable,PASS,third_party/hazard3/hdl/hazard3_config.vh,Candidate has configurable external IRQ count and trap-vector reset/writability parameters.
+hazard3_csr_interrupt_support,PASS,third_party/hazard3/hdl/hazard3_csr.v,CSR block implements standard machine trap/interrupt CSRs needed for true ISR replay work.
+hazard3_mret_decode_present,PASS,third_party/hazard3/hdl/hazard3_decode.v,"Candidate decodes or documents MRET, enabling real interrupt-return firmware instead of wrapper-only IRQ pulses."
+hazard3_irq_controller_present,PASS,third_party/hazard3/hdl/hazard3_irq_ctrl.v,Candidate includes an IRQ controller module with external interrupt pending logic.
+hazard3_frontend_lint,PASS,results/raw/second_core_irq_candidate/verilator_lint_hazard3_cpu_1port.txt,Verilator frontend lint accepts the vendored Hazard3 single-port CPU top and filelist.
+hazard3_replay_scope_boundary,INFO,docs/second_core_irq_candidate.md,This source/frontend probe is not itself a ReplayCapsule wrapper or replay result; the separate Hazard3 ISR smoke is tracked in docs/hazard3_irq_smoke.md and the seeded v2 ReplayCapsule MMIO+IRQ benchmark matrix is tracked in docs/hazard3_v2_replay_smoke.md.

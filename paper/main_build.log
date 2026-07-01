@@ -1,7 +1,7 @@
 note: "version 2" Tectonic command-line interface activated
 note: Running TeX ...
 Fontconfig error: Cannot load default config file: No such file: (null)
-warning: libertine.sty:308: 
+warning: libertine.sty:308:
 Requested font "[LinLibertine_R.otf]/OT" at 8.99997pt
 warning: libertine.sty:308: Requested font "[LinLibertine_R.otf]/OT" at 9.00003pt
 warning: libertine.sty:308: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;" at 9.00003pt
@@ -34,71 +34,73 @@ warning: libertine.sty:436: Requested font "[LinBiolinum_K.otf]/OT:script=latn;l
 warning: libertine.sty:437: Requested font "[LinLibertine_I.otf]/OT" at 8.99997pt
 warning: libertine.sty:437: Requested font "[LinLibertine_I.otf]/OT" at 9.00003pt
 warning: libertine.sty:437: Requested font "[LinLibertine_I.otf]/OT:script=latn;language=dflt;" at 9.00003pt
-warning: acmart.cls:815: 
+warning: acmart.cls:815:
 Requested font "[Inconsolatazi4-Regular.otf]/OT" at 8.99997pt
 warning: acmart.cls:815: Requested font "[Inconsolatazi4-Regular.otf]/OT" at 9.00003pt
 warning: acmart.cls:815: Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;" at 9.00003pt
 warning: acmart.cls:815: Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;" at 9.00003pt
-warning: main.tex:17: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
-warning: main.tex:17: 
+warning: main.tex:18: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
+warning: main.tex:18:
 Requested font "MinLibReg-ot1" at 7.3pt
-warning: main.tex:17:  -> MinLibReg-ot1
-warning: main.tex:17: Requested font "MinLibReg-ot1" at 5.5pt
-warning: main.tex:17:  -> MinLibReg-ot1
-warning: main.tex:17: Requested font "nxlmi7" at 7.3pt
-warning: main.tex:17:  -> nxlmi7
-warning: main.tex:17: Requested font "nxlmi5" at 5.5pt
-warning: main.tex:17:  -> nxlmi5
-warning: main.tex:17: Requested font "ntxsy7" at 7.3pt
-warning: main.tex:17:  -> ntxsy7
-warning: main.tex:17: Requested font "ntxsy5" at 5.5pt
-warning: main.tex:17:  -> ntxsy5
-warning: main.tex:17: Requested font "ntxexx" at 7.3pt
-warning: main.tex:17:  -> ntxexx
-warning: main.tex:17: Requested font "ntxexx" at 5.5pt
-warning: main.tex:17:  -> ntxexx
-warning: main.tex:17: 
+warning: main.tex:18:  -> MinLibReg-ot1
+warning: main.tex:18: Requested font "MinLibReg-ot1" at 5.5pt
+warning: main.tex:18:  -> MinLibReg-ot1
+warning: main.tex:18: Requested font "nxlmi7" at 7.3pt
+warning: main.tex:18:  -> nxlmi7
+warning: main.tex:18: Requested font "nxlmi5" at 5.5pt
+warning: main.tex:18:  -> nxlmi5
+warning: main.tex:18: Requested font "ntxsy7" at 7.3pt
+warning: main.tex:18:  -> ntxsy7
+warning: main.tex:18: Requested font "ntxsy5" at 5.5pt
+warning: main.tex:18:  -> ntxsy5
+warning: main.tex:18: Requested font "ntxexx" at 7.3pt
+warning: main.tex:18:  -> ntxexx
+warning: main.tex:18: Requested font "ntxexx" at 5.5pt
+warning: main.tex:18:  -> ntxexx
+warning: main.tex:18:
 Requested font "msam7" at 7.3pt
-warning: main.tex:17:  -> msam7
-warning: main.tex:17: Requested font "msam5" at 5.5pt
-warning: main.tex:17:  -> msam5
-warning: main.tex:17: 
+warning: main.tex:18:  -> msam7
+warning: main.tex:18: Requested font "msam5" at 5.5pt
+warning: main.tex:18:  -> msam5
+warning: main.tex:18:
 Requested font "msbm7" at 7.3pt
-warning: main.tex:17:  -> msbm7
-warning: main.tex:17: Requested font "msbm5" at 5.5pt
-warning: main.tex:17:  -> msbm5
-warning: main.tex:17: 
+warning: main.tex:18:  -> msbm7
+warning: main.tex:18: Requested font "msbm5" at 5.5pt
+warning: main.tex:18:  -> msbm5
+warning: main.tex:18:
 Requested font "nxlmia" at 7.3pt
-warning: main.tex:17:  -> nxlmia
-warning: main.tex:17: Requested font "nxlmia" at 5.5pt
-warning: main.tex:17:  -> nxlmia
-warning: main.tex:17: 
+warning: main.tex:18:  -> nxlmia
+warning: main.tex:18: Requested font "nxlmia" at 5.5pt
+warning: main.tex:18:  -> nxlmia
+warning: main.tex:18:
 Requested font "ntxsym" at 7.3pt
-warning: main.tex:17:  -> ntxsym
-warning: main.tex:17: Requested font "ntxsym" at 5.5pt
-warning: main.tex:17:  -> ntxsym
-warning: main.tex:17: 
+warning: main.tex:18:  -> ntxsym
+warning: main.tex:18: Requested font "ntxsym" at 5.5pt
+warning: main.tex:18:  -> ntxsym
+warning: main.tex:18:
 Requested font "ntxsyc" at 7.3pt
-warning: main.tex:17:  -> ntxsyc
-warning: main.tex:17: Requested font "ntxsyc" at 5.5pt
-warning: main.tex:17:  -> ntxsyc
-warning: main.tex:17: Requested font "ntxexa" at 7.3pt
-warning: main.tex:17:  -> ntxexa
-warning: main.tex:17: Requested font "ntxexa" at 5.5pt
-warning: main.tex:17:  -> ntxexa
-warning: main.tex:29: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
-warning: main.tex:29: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
-warning: main.tex:29: Requested font "[LinBiolinum_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
-warning: main.tex:29: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 12.0pt
-warning: main.tex:29: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 10.0pt
-warning: main.tex:29: Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 9.0pt
-warning: main.tex:29: Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 10.95pt
-warning: main.tex:29: Overfull \hbox (19.09578pt too wide) in paragraph at lines 29--29
-warning: main.tex:29: Overfull \hbox (22.34631pt too wide) in paragraph at lines 29--29
-warning: main.tex:29: Overfull \hbox (8.24481pt too wide) in paragraph at lines 29--29
-warning: main.tex:29: Overfull \hbox (8.50426pt too wide) in paragraph at lines 29--29
-warning: main.tex:29: Overfull \hbox (7.17752pt too wide) in paragraph at lines 29--29
-warning: sections/introduction:6: Overfull \hbox (1.2503pt too wide) in paragraph at lines 5--6
+warning: main.tex:18:  -> ntxsyc
+warning: main.tex:18: Requested font "ntxsyc" at 5.5pt
+warning: main.tex:18:  -> ntxsyc
+warning: main.tex:18: Requested font "ntxexa" at 7.3pt
+warning: main.tex:18:  -> ntxexa
+warning: main.tex:18: Requested font "ntxexa" at 5.5pt
+warning: main.tex:18:  -> ntxexa
+warning: main.tex:30: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
+warning: main.tex:30: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
+warning: main.tex:30: Requested font "[LinBiolinum_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
+warning: main.tex:30: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 12.0pt
+warning: main.tex:30: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 10.0pt
+warning: main.tex:30: Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 9.0pt
+warning: main.tex:30: Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 10.95pt
+warning: main.tex:30: Underfull \hbox (badness 2073) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 1048) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 2762) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 2142) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 2781) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 1048) in paragraph at lines 30--30
+warning: sections/introduction:6: Underfull \hbox (badness 2057) in paragraph at lines 5--6
+warning: sections/introduction:6: Underfull \hbox (badness 1052) in paragraph at lines 5--6
 warning: sections/introduction:9: Requested font "MinLibReg-ot1" at 9.0pt
 warning: sections/introduction:9:  -> MinLibReg-ot1
 warning: sections/introduction:9: Requested font "nxlmi" at 9.0pt
@@ -109,10 +111,10 @@ warning: sections/introduction:9: Requested font "ntxexx" at 9.0pt
 warning: sections/introduction:9:  -> ntxexx
 warning: sections/introduction:9: Requested font "msam10" at 9.0pt
 warning: sections/introduction:9:  -> msam10
-warning: sections/introduction:9: 
+warning: sections/introduction:9:
 Requested font "msbm10" at 9.0pt
 warning: sections/introduction:9:  -> msbm10
-warning: sections/introduction:9: 
+warning: sections/introduction:9:
 Requested font "nxlmia" at 9.0pt
 warning: sections/introduction:9:  -> nxlmia
 warning: sections/introduction:9: Requested font "ntxsym" at 9.0pt
@@ -121,41 +123,49 @@ warning: sections/introduction:9: Requested font "ntxsyc" at 9.0pt
 warning: sections/introduction:9:  -> ntxsyc
 warning: sections/introduction:9: Requested font "ntxexa" at 9.0pt
 warning: sections/introduction:9:  -> ntxexa
-warning: sections/introduction:10: Overfull \hbox (8.4515pt too wide) in paragraph at lines 9--10
-warning: sections/model:6: Overfull \hbox (6.60228pt too wide) in paragraph at lines 5--6
-warning: sections/model:8: Overfull \hbox (1.285pt too wide) in paragraph at lines 7--8
+warning: sections/introduction:10: Underfull \hbox (badness 1735) in paragraph at lines 9--10
+warning: sections/introduction:11: Underfull \vbox (badness 2005) has occurred while \output is active
+warning: sections/introduction:12: Underfull \hbox (badness 1755) in paragraph at lines 11--12
+warning: sections/introduction:12: Underfull \hbox (badness 2401) in paragraph at lines 11--12
+warning: sections/motivation:1: Underfull \hbox (badness 1953) in paragraph at lines 14--1
+warning: sections/model:8: Underfull \hbox (badness 3482) in paragraph at lines 7--8
 warning: sections/model:12: Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;+ss03;" at 9.0pt
 warning: sections/model:12: Underfull \hbox (badness 3930) in paragraph at lines 12--12
-warning: sections/model:16: Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;+ss03;" at 9.0pt
-warning: sections/architecture:1: Overfull \hbox (1.1755pt too wide) in paragraph at lines 16--1
-warning: sections/architecture:4: Overfull \hbox (2.41876pt too wide) in paragraph at lines 3--4
-warning: sections/architecture:13: Overfull \hbox (4.50406pt too wide) in paragraph at lines 12--13
-warning: sections/architecture:13: Overfull \hbox (37.20152pt too wide) in paragraph at lines 12--13
-warning: sections/architecture:19: Overfull \hbox (2.09105pt too wide) in paragraph at lines 18--19
-warning: sections/evaluation:1: Overfull \hbox (47.76979pt too wide) in paragraph at lines 7--1
-warning: sections/evaluation:5: Overfull \hbox (6.10126pt too wide) in paragraph at lines 4--5
-warning: sections/evaluation:9: Underfull \vbox (badness 10000) has occurred while \output is active
-warning: sections/evaluation:9: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 9.0pt
-warning: sections/evaluation:9: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
-warning: sections/evaluation:11: Overfull \hbox (15.43053pt too wide) in paragraph at lines 10--11
-warning: sections/related_work:6: Overfull \hbox (1.65254pt too wide) in paragraph at lines 5--6
-warning: sections/related_work:8: Overfull \hbox (2.9875pt too wide) in paragraph at lines 7--8
-warning: sections/related_work:8: Overfull \hbox (3.306pt too wide) in paragraph at lines 7--8
-warning: sections/related_work:14: Overfull \hbox (5.47151pt too wide) in paragraph at lines 13--14
-warning: sections/related_work:18: Overfull \hbox (9.76027pt too wide) in paragraph at lines 17--18
-warning: sections/related_work:19: Overfull \hbox (4.69403pt too wide) in paragraph at lines 18--19
-warning: sections/related_work:20: Overfull \hbox (10.6678pt too wide) in paragraph at lines 19--20
-warning: sections/related_work:20: Overfull \hbox (5.07278pt too wide) in paragraph at lines 19--20
-warning: sections/related_work:21: Overfull \hbox (13.62955pt too wide) in paragraph at lines 20--21
-warning: sections/related_work:23: Overfull \hbox (14.50128pt too wide) in paragraph at lines 22--23
-warning: sections/limitations:4: Underfull \vbox (badness 10000) has occurred while \output is active
-warning: main.tex:40: Overfull \hbox (14.90776pt too wide) in paragraph at lines 3--40
+warning: sections/model:14: Underfull \vbox (badness 1735) has occurred while \output is active
+warning: sections/architecture:4: Underfull \hbox (badness 1014) in paragraph at lines 3--4
+warning: sections/architecture:19: Underfull \hbox (badness 1577) in paragraph at lines 18--19
+warning: sections/architecture:19: Underfull \hbox (badness 1546) in paragraph at lines 18--19
+warning: sections/replay_verification:1: Underfull \hbox (badness 1502) in paragraph at lines 20--1
+warning: sections/replay_verification:6: Underfull \hbox (badness 1661) in paragraph at lines 5--6
+warning: sections/replay_verification:6: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 9.0pt
+warning: sections/replay_verification:6: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
+warning: sections/evaluation:1: Underfull \hbox (badness 1466) in paragraph at lines 7--1
+warning: sections/evaluation:10: Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;+ss03;" at 9.0pt
+warning: sections/evaluation:11: Underfull \hbox (badness 2689) in paragraph at lines 10--11
+warning: sections/evaluation:11: Underfull \hbox (badness 4266) in paragraph at lines 10--11
+warning: sections/evaluation:11: Underfull \hbox (badness 1478) in paragraph at lines 10--11
+warning: sections/evaluation:13: Underfull \hbox (badness 2717) in paragraph at lines 12--13
+warning: sections/evaluation:13: Underfull \hbox (badness 2809) in paragraph at lines 12--13
+warning: sections/evaluation:21: Underfull \hbox (badness 3219) in paragraph at lines 20--21
+warning: sections/evaluation:21: Underfull \hbox (badness 1173) in paragraph at lines 20--21
+warning: sections/related_work:6: Underfull \hbox (badness 1297) in paragraph at lines 5--6
+warning: sections/related_work:7: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: sections/related_work:8: Underfull \hbox (badness 6461) in paragraph at lines 7--8
+warning: sections/related_work:14: Underfull \hbox (badness 1286) in paragraph at lines 13--14
+warning: sections/related_work:18: Underfull \hbox (badness 1755) in paragraph at lines 17--18
+warning: sections/related_work:19: Underfull \hbox (badness 1622) in paragraph at lines 18--19
+warning: sections/related_work:21: Underfull \hbox (badness 1565) in paragraph at lines 20--21
+warning: sections/related_work:23: Underfull \hbox (badness 1354) in paragraph at lines 22--23
+warning: main.tex:41: Underfull \hbox (badness 2269) in paragraph at lines 3--41
+warning: main.tex:41: Underfull \hbox (badness 2205) in paragraph at lines 3--41
+warning: main.tex:41: Underfull \hbox (badness 3884) in paragraph at lines 3--41
+warning: main.tex:41: Underfull \vbox (badness 10000) has occurred while \output is active
 warning: main.bbl:47: Requested font "[LinLibertine_RI.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
-warning: main.tex:47: Overfull \vbox (1.54099pt too high) has occurred while \output is active
+warning: main.tex:48: Overfull \vbox (1.54099pt too high) has occurred while \output is active
 note: Running BibTeX on main.aux ...
 note: warnings were issued by BibTeX; use --print and/or --keep-logs for details.
 note: Rerunning TeX because bibtex was run ...
-warning: libertine.sty:308: 
+warning: libertine.sty:308:
 Requested font "[LinLibertine_R.otf]/OT" at 8.99997pt
 warning: libertine.sty:308: Requested font "[LinLibertine_R.otf]/OT" at 9.00003pt
 warning: libertine.sty:308: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;" at 9.00003pt
@@ -188,71 +198,73 @@ warning: libertine.sty:436: Requested font "[LinBiolinum_K.otf]/OT:script=latn;l
 warning: libertine.sty:437: Requested font "[LinLibertine_I.otf]/OT" at 8.99997pt
 warning: libertine.sty:437: Requested font "[LinLibertine_I.otf]/OT" at 9.00003pt
 warning: libertine.sty:437: Requested font "[LinLibertine_I.otf]/OT:script=latn;language=dflt;" at 9.00003pt
-warning: acmart.cls:815: 
+warning: acmart.cls:815:
 Requested font "[Inconsolatazi4-Regular.otf]/OT" at 8.99997pt
 warning: acmart.cls:815: Requested font "[Inconsolatazi4-Regular.otf]/OT" at 9.00003pt
 warning: acmart.cls:815: Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;" at 9.00003pt
 warning: acmart.cls:815: Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;" at 9.00003pt
-warning: main.tex:17: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
-warning: main.tex:17: 
+warning: main.tex:18: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
+warning: main.tex:18:
 Requested font "MinLibReg-ot1" at 7.3pt
-warning: main.tex:17:  -> MinLibReg-ot1
-warning: main.tex:17: Requested font "MinLibReg-ot1" at 5.5pt
-warning: main.tex:17:  -> MinLibReg-ot1
-warning: main.tex:17: Requested font "nxlmi7" at 7.3pt
-warning: main.tex:17:  -> nxlmi7
-warning: main.tex:17: Requested font "nxlmi5" at 5.5pt
-warning: main.tex:17:  -> nxlmi5
-warning: main.tex:17: Requested font "ntxsy7" at 7.3pt
-warning: main.tex:17:  -> ntxsy7
-warning: main.tex:17: Requested font "ntxsy5" at 5.5pt
-warning: main.tex:17:  -> ntxsy5
-warning: main.tex:17: Requested font "ntxexx" at 7.3pt
-warning: main.tex:17:  -> ntxexx
-warning: main.tex:17: Requested font "ntxexx" at 5.5pt
-warning: main.tex:17:  -> ntxexx
-warning: main.tex:17: 
+warning: main.tex:18:  -> MinLibReg-ot1
+warning: main.tex:18: Requested font "MinLibReg-ot1" at 5.5pt
+warning: main.tex:18:  -> MinLibReg-ot1
+warning: main.tex:18: Requested font "nxlmi7" at 7.3pt
+warning: main.tex:18:  -> nxlmi7
+warning: main.tex:18: Requested font "nxlmi5" at 5.5pt
+warning: main.tex:18:  -> nxlmi5
+warning: main.tex:18: Requested font "ntxsy7" at 7.3pt
+warning: main.tex:18:  -> ntxsy7
+warning: main.tex:18: Requested font "ntxsy5" at 5.5pt
+warning: main.tex:18:  -> ntxsy5
+warning: main.tex:18: Requested font "ntxexx" at 7.3pt
+warning: main.tex:18:  -> ntxexx
+warning: main.tex:18: Requested font "ntxexx" at 5.5pt
+warning: main.tex:18:  -> ntxexx
+warning: main.tex:18:
 Requested font "msam7" at 7.3pt
-warning: main.tex:17:  -> msam7
-warning: main.tex:17: Requested font "msam5" at 5.5pt
-warning: main.tex:17:  -> msam5
-warning: main.tex:17: 
+warning: main.tex:18:  -> msam7
+warning: main.tex:18: Requested font "msam5" at 5.5pt
+warning: main.tex:18:  -> msam5
+warning: main.tex:18:
 Requested font "msbm7" at 7.3pt
-warning: main.tex:17:  -> msbm7
-warning: main.tex:17: Requested font "msbm5" at 5.5pt
-warning: main.tex:17:  -> msbm5
-warning: main.tex:17: 
+warning: main.tex:18:  -> msbm7
+warning: main.tex:18: Requested font "msbm5" at 5.5pt
+warning: main.tex:18:  -> msbm5
+warning: main.tex:18:
 Requested font "nxlmia" at 7.3pt
-warning: main.tex:17:  -> nxlmia
-warning: main.tex:17: Requested font "nxlmia" at 5.5pt
-warning: main.tex:17:  -> nxlmia
-warning: main.tex:17: 
+warning: main.tex:18:  -> nxlmia
+warning: main.tex:18: Requested font "nxlmia" at 5.5pt
+warning: main.tex:18:  -> nxlmia
+warning: main.tex:18:
 Requested font "ntxsym" at 7.3pt
-warning: main.tex:17:  -> ntxsym
-warning: main.tex:17: Requested font "ntxsym" at 5.5pt
-warning: main.tex:17:  -> ntxsym
-warning: main.tex:17: 
+warning: main.tex:18:  -> ntxsym
+warning: main.tex:18: Requested font "ntxsym" at 5.5pt
+warning: main.tex:18:  -> ntxsym
+warning: main.tex:18:
 Requested font "ntxsyc" at 7.3pt
-warning: main.tex:17:  -> ntxsyc
-warning: main.tex:17: Requested font "ntxsyc" at 5.5pt
-warning: main.tex:17:  -> ntxsyc
-warning: main.tex:17: Requested font "ntxexa" at 7.3pt
-warning: main.tex:17:  -> ntxexa
-warning: main.tex:17: Requested font "ntxexa" at 5.5pt
-warning: main.tex:17:  -> ntxexa
-warning: main.tex:29: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
-warning: main.tex:29: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
-warning: main.tex:29: Requested font "[LinBiolinum_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
-warning: main.tex:29: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 12.0pt
-warning: main.tex:29: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 10.0pt
-warning: main.tex:29: Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 9.0pt
-warning: main.tex:29: Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 10.95pt
-warning: main.tex:29: Overfull \hbox (19.09578pt too wide) in paragraph at lines 29--29
-warning: main.tex:29: Overfull \hbox (22.34631pt too wide) in paragraph at lines 29--29
-warning: main.tex:29: Overfull \hbox (8.24481pt too wide) in paragraph at lines 29--29
-warning: main.tex:29: Overfull \hbox (8.50426pt too wide) in paragraph at lines 29--29
-warning: main.tex:29: Overfull \hbox (7.17752pt too wide) in paragraph at lines 29--29
-warning: sections/introduction:6: Overfull \hbox (1.2503pt too wide) in paragraph at lines 5--6
+warning: main.tex:18:  -> ntxsyc
+warning: main.tex:18: Requested font "ntxsyc" at 5.5pt
+warning: main.tex:18:  -> ntxsyc
+warning: main.tex:18: Requested font "ntxexa" at 7.3pt
+warning: main.tex:18:  -> ntxexa
+warning: main.tex:18: Requested font "ntxexa" at 5.5pt
+warning: main.tex:18:  -> ntxexa
+warning: main.tex:30: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
+warning: main.tex:30: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
+warning: main.tex:30: Requested font "[LinBiolinum_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 17.28pt
+warning: main.tex:30: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 12.0pt
+warning: main.tex:30: Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 10.0pt
+warning: main.tex:30: Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 9.0pt
+warning: main.tex:30: Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 10.95pt
+warning: main.tex:30: Underfull \hbox (badness 2073) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 1048) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 2762) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 2142) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 2781) in paragraph at lines 30--30
+warning: main.tex:30: Underfull \hbox (badness 1048) in paragraph at lines 30--30
+warning: sections/introduction:6: Underfull \hbox (badness 2057) in paragraph at lines 5--6
+warning: sections/introduction:6: Underfull \hbox (badness 1052) in paragraph at lines 5--6
 warning: sections/introduction:9: Requested font "MinLibReg-ot1" at 9.0pt
 warning: sections/introduction:9:  -> MinLibReg-ot1
 warning: sections/introduction:9: Requested font "nxlmi" at 9.0pt
@@ -263,10 +275,10 @@ warning: sections/introduction:9: Requested font "ntxexx" at 9.0pt
 warning: sections/introduction:9:  -> ntxexx
 warning: sections/introduction:9: Requested font "msam10" at 9.0pt
 warning: sections/introduction:9:  -> msam10
-warning: sections/introduction:9: 
+warning: sections/introduction:9:
 Requested font "msbm10" at 9.0pt
 warning: sections/introduction:9:  -> msbm10
-warning: sections/introduction:9: 
+warning: sections/introduction:9:
 Requested font "nxlmia" at 9.0pt
 warning: sections/introduction:9:  -> nxlmia
 warning: sections/introduction:9: Requested font "ntxsym" at 9.0pt
@@ -275,42 +287,50 @@ warning: sections/introduction:9: Requested font "ntxsyc" at 9.0pt
 warning: sections/introduction:9:  -> ntxsyc
 warning: sections/introduction:9: Requested font "ntxexa" at 9.0pt
 warning: sections/introduction:9:  -> ntxexa
-warning: sections/introduction:10: Overfull \hbox (8.4515pt too wide) in paragraph at lines 9--10
-warning: sections/model:6: Overfull \hbox (6.60228pt too wide) in paragraph at lines 5--6
-warning: sections/model:8: Overfull \hbox (1.285pt too wide) in paragraph at lines 7--8
+warning: sections/introduction:10: Underfull \hbox (badness 1735) in paragraph at lines 9--10
+warning: sections/introduction:11: Underfull \vbox (badness 2005) has occurred while \output is active
+warning: sections/introduction:12: Underfull \hbox (badness 1755) in paragraph at lines 11--12
+warning: sections/introduction:12: Underfull \hbox (badness 2401) in paragraph at lines 11--12
+warning: sections/motivation:1: Underfull \hbox (badness 1953) in paragraph at lines 14--1
+warning: sections/model:8: Underfull \hbox (badness 3482) in paragraph at lines 7--8
 warning: sections/model:12: Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;+ss03;" at 9.0pt
 warning: sections/model:12: Underfull \hbox (badness 3930) in paragraph at lines 12--12
-warning: sections/model:16: Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;+ss03;" at 9.0pt
-warning: sections/architecture:1: Overfull \hbox (1.1755pt too wide) in paragraph at lines 16--1
-warning: sections/architecture:4: Overfull \hbox (2.41876pt too wide) in paragraph at lines 3--4
-warning: sections/architecture:13: Overfull \hbox (4.50406pt too wide) in paragraph at lines 12--13
-warning: sections/architecture:13: Overfull \hbox (37.20152pt too wide) in paragraph at lines 12--13
-warning: sections/architecture:19: Overfull \hbox (2.09105pt too wide) in paragraph at lines 18--19
-warning: sections/evaluation:1: Overfull \hbox (47.76979pt too wide) in paragraph at lines 7--1
-warning: sections/evaluation:5: Overfull \hbox (6.10126pt too wide) in paragraph at lines 4--5
-warning: sections/evaluation:9: Underfull \vbox (badness 10000) has occurred while \output is active
-warning: sections/evaluation:9: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 9.0pt
-warning: sections/evaluation:9: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
-warning: sections/evaluation:11: Overfull \hbox (15.43053pt too wide) in paragraph at lines 10--11
-warning: sections/related_work:6: Overfull \hbox (1.65254pt too wide) in paragraph at lines 5--6
-warning: sections/related_work:8: Overfull \hbox (2.9875pt too wide) in paragraph at lines 7--8
-warning: sections/related_work:8: Overfull \hbox (3.306pt too wide) in paragraph at lines 7--8
-warning: sections/related_work:14: Overfull \hbox (5.47151pt too wide) in paragraph at lines 13--14
-warning: sections/related_work:18: Overfull \hbox (9.76027pt too wide) in paragraph at lines 17--18
-warning: sections/related_work:19: Overfull \hbox (4.69403pt too wide) in paragraph at lines 18--19
-warning: sections/related_work:20: Overfull \hbox (10.6678pt too wide) in paragraph at lines 19--20
-warning: sections/related_work:20: Overfull \hbox (5.07278pt too wide) in paragraph at lines 19--20
-warning: sections/related_work:21: Overfull \hbox (13.62955pt too wide) in paragraph at lines 20--21
-warning: sections/related_work:23: Overfull \hbox (14.50128pt too wide) in paragraph at lines 22--23
-warning: sections/limitations:4: Underfull \vbox (badness 10000) has occurred while \output is active
-warning: main.tex:40: Overfull \hbox (14.90776pt too wide) in paragraph at lines 3--40
+warning: sections/model:14: Underfull \vbox (badness 1735) has occurred while \output is active
+warning: sections/architecture:4: Underfull \hbox (badness 1014) in paragraph at lines 3--4
+warning: sections/architecture:19: Underfull \hbox (badness 1577) in paragraph at lines 18--19
+warning: sections/architecture:19: Underfull \hbox (badness 1546) in paragraph at lines 18--19
+warning: sections/replay_verification:1: Underfull \hbox (badness 1502) in paragraph at lines 20--1
+warning: sections/replay_verification:6: Underfull \hbox (badness 1661) in paragraph at lines 5--6
+warning: sections/replay_verification:6: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 9.0pt
+warning: sections/replay_verification:6: Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
+warning: sections/evaluation:1: Underfull \hbox (badness 1466) in paragraph at lines 7--1
+warning: sections/evaluation:10: Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;+ss03;" at 9.0pt
+warning: sections/evaluation:11: Underfull \hbox (badness 2689) in paragraph at lines 10--11
+warning: sections/evaluation:11: Underfull \hbox (badness 4266) in paragraph at lines 10--11
+warning: sections/evaluation:11: Underfull \hbox (badness 1478) in paragraph at lines 10--11
+warning: sections/evaluation:13: Underfull \hbox (badness 2717) in paragraph at lines 12--13
+warning: sections/evaluation:13: Underfull \hbox (badness 2809) in paragraph at lines 12--13
+warning: sections/evaluation:21: Underfull \hbox (badness 3219) in paragraph at lines 20--21
+warning: sections/evaluation:21: Underfull \hbox (badness 1173) in paragraph at lines 20--21
+warning: sections/related_work:6: Underfull \hbox (badness 1297) in paragraph at lines 5--6
+warning: sections/related_work:7: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: sections/related_work:8: Underfull \hbox (badness 6461) in paragraph at lines 7--8
+warning: sections/related_work:14: Underfull \hbox (badness 1286) in paragraph at lines 13--14
+warning: sections/related_work:18: Underfull \hbox (badness 1755) in paragraph at lines 17--18
+warning: sections/related_work:19: Underfull \hbox (badness 1622) in paragraph at lines 18--19
+warning: sections/related_work:21: Underfull \hbox (badness 1565) in paragraph at lines 20--21
+warning: sections/related_work:23: Underfull \hbox (badness 1354) in paragraph at lines 22--23
+warning: main.tex:41: Underfull \hbox (badness 2269) in paragraph at lines 3--41
+warning: main.tex:41: Underfull \hbox (badness 2205) in paragraph at lines 3--41
+warning: main.tex:41: Underfull \hbox (badness 3884) in paragraph at lines 3--41
+warning: main.tex:41: Underfull \vbox (badness 10000) has occurred while \output is active
 warning: main.bbl:47: Requested font "[LinLibertine_RI.otf]/OT:script=latn;language=dflt;+tnum;+lnum;mapping=tex-text;" at 7.0pt
-warning: main.tex:47: Overfull \vbox (1.54099pt too high) has occurred while \output is active
+warning: main.tex:48: Overfull \vbox (1.54099pt too high) has occurred while \output is active
 warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
 note: Running xdvipdfmx ...
-note: Writing `main.log` (65.091796875 KiB)
-note: Writing `main.pdf` (93.75 KiB)
+note: Writing `main.pdf` (96.94921875 KiB)
+note: Writing `main.log` (66.0498046875 KiB)
 note: Writing `main.out` (1.9853515625 KiB)
-note: Writing `main.blg` (808 B)
-note: Writing `main.aux` (4.2578125 KiB)
 note: Writing `main.bbl` (5.6328125 KiB)
+note: Writing `main.aux` (4.2578125 KiB)
+note: Writing `main.blg` (808 B)

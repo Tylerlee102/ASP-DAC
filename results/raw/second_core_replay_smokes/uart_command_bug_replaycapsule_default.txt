@@ -1,0 +1,2 @@
+RC_FEMTO_REPLAY_SMOKE_PASS property=1 count=4 signature=ac7000e9 replay_sensor=850 replay_command=85 capture_mode=3 sensor_packet=0 command_packet=1 checker_consumed=4 mmio_driver_hits=1
+tb/system/tb_femtorv32_wrapper_smoke.sv:555: $finish called at 1366000 (1ps)

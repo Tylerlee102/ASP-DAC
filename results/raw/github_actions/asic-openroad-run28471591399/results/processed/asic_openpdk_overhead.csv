@@ -1,0 +1,13 @@
+recorder_config,target,flow,metric,baseline,with_replaycapsule,delta,percent_overhead,status,notes
+minimal,nangate45,yosys+openroad-openpdk,area_um2,51157.652,52058.062,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+minimal,nangate45,yosys+openroad-openpdk,wns_ns,NA,NA,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+minimal,nangate45,yosys+openroad-openpdk,power_mw,NA,NA,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+core,nangate45,yosys+openroad-openpdk,area_um2,51157.652,61298.104,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+core,nangate45,yosys+openroad-openpdk,wns_ns,NA,NA,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+core,nangate45,yosys+openroad-openpdk,power_mw,NA,NA,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+hashed,nangate45,yosys+openroad-openpdk,area_um2,51157.652,61749.506,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+hashed,nangate45,yosys+openroad-openpdk,wns_ns,NA,NA,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+hashed,nangate45,yosys+openroad-openpdk,power_mw,NA,NA,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+full,nangate45,yosys+openroad-openpdk,area_um2,51157.652,62082.538,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+full,nangate45,yosys+openroad-openpdk,wns_ns,NA,NA,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS
+full,nangate45,yosys+openroad-openpdk,power_mw,NA,NA,NA,NA,BLOCKED,ASIC/open-PDK measurement unavailable until design rows are PASS

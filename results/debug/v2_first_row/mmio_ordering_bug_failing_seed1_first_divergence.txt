@@ -1,0 +1,5 @@
+expected_property_id=5
+observed_record_property_id=5
+record_returncode=0
+replay_returncode=0
+first_divergence=none

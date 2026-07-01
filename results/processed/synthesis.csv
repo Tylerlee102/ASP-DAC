@@ -1,4 +1,6 @@
 tool,top,status,cells,luts,ffs,brams,fmax_mhz,notes
+oss-cad-suite:yosys,FemtoRV32,MEASURED,155,NA,NA,NA,NA,Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow
+oss-cad-suite:yosys,femtorv32_replaycapsule_wrapper,MEASURED,1645,NA,NA,NA,NA,Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow
 yowasp-yosys,picorv32,MEASURED,519,NA,NA,NA,NA,Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow
 yowasp-yosys,picorv32_replaycapsule_wrapper,MEASURED,2055,NA,NA,NA,NA,Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow
 yowasp-yosys,replay_capsule_top,MEASURED,1324,NA,NA,NA,NA,Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow

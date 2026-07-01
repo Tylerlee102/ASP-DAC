@@ -1,0 +1,2 @@
+RC_HAZARD3_V2_REPLAY_SMOKE_PASS cycles=170 config=0 property=5 words=6 consumed=6 record_signature=0d0e0011 replay_signature=0d0e0011 signature_match=1 record_irq_entries=1 replay_irq_entries=1 record_mmio_reads=1 replay_mmio_reads=1 replay_mmio_drives=1 replay_irq_drives=24 external_irq_replay=0 sensor_value=683 replay_sensor_value=698
+tb\system\tb_hazard3_v2_replay_smoke.sv:398: $finish called at 2096000 (1ps)

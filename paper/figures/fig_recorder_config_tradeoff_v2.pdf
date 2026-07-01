@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 186 >>
+<< /Length 207 >>
 stream
 BT
 /F1 16 Tf
@@ -23,7 +23,7 @@ BT
 0 -24 Td
 (hashed: 100.000000%) Tj
 0 -24 Td
-(All claims remain scoped to host-driven replay.) Tj
+(All claims remain scoped to harness-preloaded capsule-source replay.) Tj
 ET
 endstream
 endobj
@@ -37,5 +37,5 @@ xref
 0000000311 00000 n 
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-548
+569
 %%EOF

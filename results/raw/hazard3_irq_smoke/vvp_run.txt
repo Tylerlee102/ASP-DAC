@@ -1,0 +1,2 @@
+HAZARD3_IRQ_SMOKE_PASS cycles=76 request_writes=1 isr_writes=1 isr_value=1 ack_writes=1 done_value=1 irq_final=0
+tb\system\tb_hazard3_irq_smoke.v:255: $finish called at 895000 (1ps)

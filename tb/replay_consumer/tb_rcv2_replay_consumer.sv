@@ -12,6 +12,7 @@ module tb_rcv2_replay_consumer;
   logic capsule_ready;
   logic [63:0] capsule_word;
   logic stream_done;
+  logic [31:0] current_commit_index;
   logic observed_valid;
   logic [3:0] observed_event_type;
   logic [31:0] observed_commit_index;
@@ -44,6 +45,7 @@ module tb_rcv2_replay_consumer;
     .capsule_ready(capsule_ready),
     .capsule_word(capsule_word),
     .stream_done(stream_done),
+    .current_commit_index(current_commit_index),
     .observed_valid(observed_valid),
     .observed_event_type(observed_event_type),
     .observed_commit_index(observed_commit_index),
@@ -87,6 +89,7 @@ module tb_rcv2_replay_consumer;
       capsule_valid = 1'b0;
       capsule_word = 64'h0;
       stream_done = 1'b0;
+      current_commit_index = 32'h0;
       observed_valid = 1'b0;
       observed_event_type = 4'h0;
       observed_commit_index = 32'h0;
@@ -116,6 +119,7 @@ module tb_rcv2_replay_consumer;
       @(negedge clk);
       capsule_word = word;
       capsule_valid = 1'b1;
+      current_commit_index = obs_commit == 32'h0 ? 32'h0 : obs_commit - 32'h1;
       observed_valid = observed_ok;
       observed_event_type = obs_type;
       observed_commit_index = obs_commit;
@@ -125,6 +129,36 @@ module tb_rcv2_replay_consumer;
       @(posedge clk);
       @(negedge clk);
       capsule_valid = 1'b0;
+      current_commit_index = 32'h0;
+      observed_valid = 1'b0;
+      observed_event_type = 4'h0;
+      observed_commit_index = 32'h0;
+      observed_addr = 32'h0;
+      observed_data = 32'h0;
+      observed_payload_hash = 32'h0;
+    end
+  endtask
+
+  task automatic observe_without_capsule(
+    input logic [3:0] obs_type,
+    input logic [31:0] obs_commit,
+    input logic [31:0] obs_addr,
+    input logic [31:0] obs_data,
+    input logic [31:0] obs_hash
+  );
+    begin
+      @(negedge clk);
+      capsule_valid = 1'b0;
+      current_commit_index = obs_commit == 32'h0 ? 32'h0 : obs_commit - 32'h1;
+      observed_valid = 1'b1;
+      observed_event_type = obs_type;
+      observed_commit_index = obs_commit;
+      observed_addr = obs_addr;
+      observed_data = obs_data;
+      observed_payload_hash = obs_hash;
+      @(posedge clk);
+      @(negedge clk);
+      current_commit_index = 32'h0;
       observed_valid = 1'b0;
       observed_event_type = 4'h0;
       observed_commit_index = 32'h0;
@@ -207,7 +241,7 @@ module tb_rcv2_replay_consumer;
     report_result("dict_hit_mmio_consumes_observed_address", "PASS", replay_error ? "REJECT" : "PASS", RCV2_ERR_NONE);
 
     reset_case();
-    feed_event(pack_word(EV_MMIO_READ, 4'b0000, 8'd4, 8'h44, 32'h0000_1111, 8'h00), 1'b0, EV_MMIO_READ, 32'd4, 32'h44, 32'h1111, 32'h0);
+    observe_without_capsule(EV_MMIO_READ, 32'd4, 32'h44, 32'h1111, 32'h0);
     report_result("missing_event_rejects", "REJECT", replay_error ? "REJECT" : "PASS", RCV2_ERR_MISSING_EVENT);
 
     reset_case();

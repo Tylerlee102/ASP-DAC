@@ -14,9 +14,9 @@ Fix plan: run all six firmware benchmarks on RTL traces and show per-bug minimal
 
 Required evidence: same events drive both checking and replay capsules; replay must reproduce failures, not only detect them.
 
-Current weakness: replay consume is host-driven rather than a deployed hardware replay datapath.
+Current weakness: the broad full-core replay matrix still depends on Verilator reset orchestration and a modeled memory/peripheral shell rather than a deployed board/silicon replay flow.
 
-Fix plan: keep the host-driven replay scope explicit and avoid claiming a synthesizable replay-consume path.
+Fix plan: emphasize the completed RTL capsule source, replay-mode controller, captured-store self-replay rows, and MMIO/IRQ replay consumer, while avoiding a board/silicon replay-engine claim.
 
 ## 3. "This is just deterministic replay."
 
@@ -38,9 +38,9 @@ Fix plan: keep the event interface and same-target mapped evidence tied to the s
 
 Required evidence: realistic embedded bug mechanics, failing/fixed firmware, randomized interrupt/input campaigns.
 
-Current weakness: the benchmark suite is generated and scoped, even though compiler-backed full RTL replay now passes.
+Current weakness: the benchmark suite is generated and scoped, even though compiler-backed full RTL replay, expanded v2 rows, FemtoRV32 breadth, and Hazard3 MMIO+IRQ replay rows now pass.
 
-Fix plan: present the six generated families as focused embedded bug mechanics, not complete embedded-system coverage.
+Fix plan: present the generated base, expanded, FemtoRV32, and Hazard3 families as focused embedded bug mechanics, not complete embedded-system coverage.
 
 ## 6. "The proof is too weak."
 

@@ -8,6 +8,10 @@ tb_event_tap,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_event_
 tb_mmio_interrupt_loggers,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_mmio_interrupt_loggers_vvp_run.txt,compile and simulation passed
 tb_registers,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_registers_vvp_run.txt,compile and simulation passed
 tb_replaycapsule_soc,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_replaycapsule_soc_vvp_run.txt,compile and simulation passed
+tb_rcv2_capsule_source,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_rcv2_capsule_source_vvp_run.txt,compile and simulation passed
+tb_rcv2_replay_mode_controller,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_rcv2_replay_mode_controller_vvp_run.txt,compile and simulation passed
+tb_rcv1_capsule_replay_checker,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_rcv1_capsule_replay_checker_vvp_run.txt,compile and simulation passed
+tb_rcv1_mmio_replay_driver,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_rcv1_mmio_replay_driver_vvp_run.txt,compile and simulation passed
 tb_picorv32_sensor_threshold_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_sensor_threshold_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_mmio_ordering_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_mmio_ordering_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_interrupt_race_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_interrupt_race_smoke_vvp_run.txt,compile and simulation passed
@@ -24,7 +28,15 @@ tb_picorv32_sensor_threshold_below_threshold_smoke,PASS,oss-cad-suite:iverilog+o
 tb_picorv32_uart_command_no_command_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_uart_command_no_command_smoke_vvp_run.txt,compile and simulation passed
 tb_picorv32_watchdog_timeout_below_threshold_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_watchdog_timeout_below_threshold_smoke_vvp_run.txt,compile and simulation passed
 tb_rcv2_minimal_recorder,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_rcv2_minimal_recorder_vvp_run.txt,compile and simulation passed
+tb_picorv32_standalone_self_replay_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_picorv32_standalone_self_replay_smoke_vvp_run.txt,compile and simulation passed
+tb_femtorv32_sensor_threshold_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_femtorv32_sensor_threshold_smoke_vvp_run.txt,compile and simulation passed
+tb_femtorv32_capsule_derived_replay_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_femtorv32_capsule_derived_replay_smoke_vvp_run.txt,compile and simulation passed
+tb_femtorv32_v2_replay_smoke,PASS,oss-cad-suite:iverilog+oss-cad-suite:vvp,results\raw\tb_femtorv32_v2_replay_smoke_vvp_run.txt,compile and simulation passed
 verilator_lint_replay_capsule_top,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replay_capsule_top.txt,lint-only frontend check passed
 verilator_lint_picorv32_wrapper,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_picorv32_wrapper.txt,lint-only frontend check passed
+verilator_lint_replaycapsule_v2_self_replay_top,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replaycapsule_v2_self_replay_top.txt,lint-only frontend check passed
+verilator_lint_replaycapsule_v2_self_replay_soc,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replaycapsule_v2_self_replay_soc.txt,lint-only frontend check passed
+verilator_lint_femtorv32_v2_wrapper,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_femtorv32_v2_wrapper.txt,lint-only frontend check passed
 verilator_lint_replaycapsule_soc,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replaycapsule_soc.txt,lint-only frontend check passed
+verilator_lint_femtorv32_wrapper,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_femtorv32_wrapper.txt,lint-only frontend check passed
 verilator_lint_replay_capsule_properties,PASS,oss-cad-suite:verilator,results\raw\verilator_lint_replay_capsule_properties.txt,lint-only frontend check passed

@@ -1,0 +1,12 @@
+WROTE results/raw/yosys_FemtoRV32.txt
+WROTE results/raw/yosys_femtorv32_replaycapsule_wrapper.txt
+WROTE results/processed/synthesis.csv
+WROTE results/processed/hdl_checks.csv
+WROTE results/processed/second_core_replay_smokes.csv
+WROTE docs/second_core_replay_smokes.md
+SECOND_CORE_REPLAY_SMOKES rows=56 bad=0
+WROTE results/processed/second_core_v2_smokes.csv
+WROTE docs/second_core_v2_smokes.md
+SECOND_CORE_V2_SMOKES rows=2 bad=0
+WROTE results/processed/second_core_breadth.csv
+WROTE docs/second_core_breadth.md

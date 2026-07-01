@@ -322,10 +322,13 @@ def _v2_measured_mapped_status() -> tuple[bool, str]:
 
 def _text_files() -> list[Path]:
     skip_dirs = {".git", ".tools", "build", "__pycache__"}
+    skip_files = {Path("docs/CHAT_CONTEXT.md")}
     suffixes = {".md", ".txt", ".csv", ".py", ".yml", ".yaml", ".tex", ".bib", ".sv", ".v", ".cpp", ".h", ".json", ".lpf"}
     paths = []
     for path in REPO_ROOT.rglob("*"):
         if path.is_dir() or set(path.relative_to(REPO_ROOT).parts) & skip_dirs:
+            continue
+        if path.relative_to(REPO_ROOT) in skip_files:
             continue
         if path.suffix.lower() in suffixes:
             paths.append(path)

@@ -1,0 +1,1 @@
+PASS self_replay benchmark=mmio_ordering_bug variant=fixed seed=1 arch=v2 recorder_config=full property=0 events=33332 cycles=100000 commits=33328 notes="record/replay replay-critical events match; rtl replay mode controller launched captured-store replay and streamed 2/2 and replay consumer consumed 2/2 without harness preload"

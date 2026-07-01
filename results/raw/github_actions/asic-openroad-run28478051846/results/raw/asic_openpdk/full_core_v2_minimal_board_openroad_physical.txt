@@ -1,0 +1,350 @@
+OpenROAD 26Q2-2517-g7304ba78ad
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0227] LEF file: .tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef, created 22 layers, 27 vias, 135 library cells
+[WARNING STA-0441] set_input_delay relative to a clock defined on the same port/pin not allowed.
+[WARNING IFP-0028] Core area lower left (20.000, 20.000) snapped to (20.140, 21.000).
+[INFO IFP-0001] Added 219 rows of 1618 site FreePDK45_38x28_10R_NP_162NW_34O.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 347.655 347.655 ) um
+[INFO IFP-0101] Core BBox: ( 20.140 21.000 ) ( 327.560 327.600 ) um
+[INFO IFP-0102] Core area:                        94254.972 um^2
+[INFO IFP-0103] Total instances area:             52058.062 um^2
+[INFO IFP-0104] Effective utilization:                0.552
+[INFO IFP-0105] Number of instances:                  23391
+Found 0 macro blocks.
+Using 2 tracks default min distance between IO pins.
+[INFO PPL-0001] Number of available slots 4286
+[INFO PPL-0002] Number of I/O             23
+[INFO PPL-0003] Number of I/O w/sink      23
+[INFO PPL-0004] Number of I/O w/o sink    0
+[INFO PPL-0005] Slots per section         200
+[INFO PPL-0008] Successfully assigned pins to sections.
+[INFO PPL-0012] I/O nets HPWL: 4048.26 um.
+[INFO GPL-0001] ---- Initialize GPL Main Data Structures
+[INFO GPL-0002] DBU: 2000
+[INFO GPL-0003] SiteSize: (  0.190  1.400 ) um
+[INFO GPL-0004] CoreBBox: ( 20.140 21.000 ) ( 327.560 327.600 ) um
+[INFO GPL-0036] Movable instances area:      52058.062 um^2
+[INFO GPL-0037] Total instances area:        52058.062 um^2
+[INFO GPL-0035] Pin density area adjust:      4338.114 um^2
+[INFO GPL-0032] ---- Initialize Region: Top-level
+[INFO GPL-0006] Number of instances:             23391
+[INFO GPL-0007] Movable instances:               23391
+[INFO GPL-0008] Fixed instances:                     0
+[INFO GPL-0009] Dummy instances:                     0
+[INFO GPL-0010] Number of nets:                  29579
+[INFO GPL-0011] Number of pins:                  94279
+[INFO GPL-0012] Die BBox:  (  0.000  0.000 ) ( 347.655 347.655 ) um
+[INFO GPL-0013] Core BBox: ( 20.140 21.000 ) ( 327.560 327.600 ) um
+[INFO GPL-0016] Core area:                   94254.972 um^2
+[INFO GPL-0014] Region name: top-level.
+[INFO GPL-0015] Region area:                 94254.972 um^2
+[INFO GPL-0017] Fixed instances area:            0.000 um^2
+[INFO GPL-0018] Movable instances area:      56396.176 um^2
+[INFO GPL-0019] Utilization:                    59.834 %
+[INFO GPL-0020] Standard cells area:         56396.176 um^2
+[INFO GPL-0021] Large instances area:            0.000 um^2
+[INFO GPL-0005] ---- Execute Conjugate Gradient Initial Placement.
+[INFO GPL-0051] Source of initial instance position counters:
+	Odb location = 0	Core center = 23391	Region center = 0
+[InitialPlace]  Iter: 1 conjugate gradient residual: 0.02104780 HPWL: 233051820
+[InitialPlace]  Iter: 2 conjugate gradient residual: 0.00780952 HPWL: 236895145
+[InitialPlace]  Iter: 3 conjugate gradient residual: 0.01139637 HPWL: 236693199
+[InitialPlace]  Iter: 4 conjugate gradient residual: 0.00984251 HPWL: 236172338
+[InitialPlace]  Iter: 5 conjugate gradient residual: 0.00904370 HPWL: 235964313
+[InitialPlace]  Iter: 6 conjugate gradient residual: 0.00817001 HPWL: 235889432
+[InitialPlace]  Iter: 7 conjugate gradient residual: 0.01134601 HPWL: 235568548
+[InitialPlace]  Iter: 8 conjugate gradient residual: 0.00892962 HPWL: 235854456
+[InitialPlace]  Iter: 9 conjugate gradient residual: 0.02874750 HPWL: 235646394
+[InitialPlace]  Iter: 10 conjugate gradient residual: 0.00904967 HPWL: 236981128
+[InitialPlace]  Iter: 11 conjugate gradient residual: 0.00930788 HPWL: 236612961
+[InitialPlace]  Iter: 12 conjugate gradient residual: 0.00742083 HPWL: 236228587
+[InitialPlace]  Iter: 13 conjugate gradient residual: 0.01433758 HPWL: 235978380
+[InitialPlace]  Iter: 14 conjugate gradient residual: 0.00798510 HPWL: 235962676
+[InitialPlace]  Iter: 15 conjugate gradient residual: 0.00708730 HPWL: 235683091
+[InitialPlace]  Iter: 16 conjugate gradient residual: 0.00868151 HPWL: 235469514
+[InitialPlace]  Iter: 17 conjugate gradient residual: 0.00352346 HPWL: 234452736
+[InitialPlace]  Iter: 18 conjugate gradient residual: 0.00352346 HPWL: 234522500
+[InitialPlace]  Iter: 19 conjugate gradient residual: 0.00352346 HPWL: 234454334
+[InitialPlace]  Iter: 20 conjugate gradient residual: 0.00352346 HPWL: 234536618
+[INFO GPL-0033] ---- Initialize Nesterov Region: Top-level
+[WARNING GPL-0302] Target density 0.5500 is too low for the available free area.
+Automatically adjusting to uniform density 0.6000.
+[INFO GPL-0023] Placement target density:       0.6000
+[INFO GPL-0024] Movable insts average area:      2.411 um^2
+[INFO GPL-0025] Ideal bin area:                  4.018 um^2
+[INFO GPL-0026] Ideal bin count:                 23456
+[INFO GPL-0027] Total bin area:              94254.972 um^2
+[INFO GPL-0028] Bin count (X, Y):         128 ,    128
+[INFO GPL-0029] Bin size (W * H):       2.402 *  2.395 um
+[INFO GPL-0030] Number of bins:                  16384
+[INFO GPL-0084] ---- Execute Nesterov Global Placement.
+[INFO GPL-0031] HPWL: Half-Perimeter Wirelength
+Iteration | Overflow |     HPWL (um) |  HPWL(%) |   Penalty | Group
+---------------------------------------------------------------
+        0 |   0.9992 |  2.429124e+04 |   +0.00% |  1.83e-17 |
+       10 |   0.9992 |  2.340945e+04 |   -3.63% |  2.98e-17 |
+       20 |   0.9992 |  2.325494e+04 |   -0.66% |  4.85e-17 |
+       30 |   0.9992 |  2.317154e+04 |   -0.36% |  7.90e-17 |
+       40 |   0.9992 |  2.317281e+04 |   +0.01% |  1.29e-16 |
+       50 |   0.9992 |  2.317320e+04 |   +0.00% |  2.10e-16 |
+       60 |   0.9992 |  2.317466e+04 |   +0.01% |  3.41e-16 |
+       70 |   0.9992 |  2.317755e+04 |   +0.01% |  5.56e-16 |
+       80 |   0.9992 |  2.318138e+04 |   +0.02% |  9.06e-16 |
+       90 |   0.9992 |  2.318714e+04 |   +0.02% |  1.48e-15 |
+      100 |   0.9992 |  2.319637e+04 |   +0.04% |  2.40e-15 |
+      110 |   0.9992 |  2.321255e+04 |   +0.07% |  3.92e-15 |
+      120 |   0.9992 |  2.324328e+04 |   +0.13% |  6.38e-15 |
+      130 |   0.9992 |  2.330332e+04 |   +0.26% |  1.04e-14 |
+      140 |   0.9991 |  2.341495e+04 |   +0.48% |  1.69e-14 |
+      150 |   0.9988 |  2.362536e+04 |   +0.90% |  2.76e-14 |
+      160 |   0.9988 |  2.403053e+04 |   +1.72% |  4.49e-14 |
+      170 |   0.9984 |  2.481784e+04 |   +3.28% |  7.31e-14 |
+      180 |   0.9978 |  2.618153e+04 |   +5.49% |  1.19e-13 |
+      190 |   0.9969 |  2.815801e+04 |   +7.55% |  1.94e-13 |
+      200 |   0.9960 |  3.109343e+04 |  +10.42% |  3.16e-13 |
+      210 |   0.9936 |  3.511678e+04 |  +12.94% |  5.14e-13 |
+      220 |   0.9904 |  4.011561e+04 |  +14.23% |  8.36e-13 |
+      230 |   0.9859 |  4.574166e+04 |  +14.02% |  1.36e-12 |
+      240 |   0.9797 |  5.198684e+04 |  +13.65% |  2.21e-12 |
+      250 |   0.9716 |  6.017325e+04 |  +15.75% |  3.60e-12 |
+      260 |   0.9603 |  7.076526e+04 |  +17.60% |  5.85e-12 |
+      270 |   0.9449 |  8.328865e+04 |  +17.70% |  9.50e-12 |
+      280 |   0.9253 |  9.742402e+04 |  +16.97% |  1.54e-11 |
+      290 |   0.9013 |  1.125742e+05 |  +15.55% |  2.50e-11 |
+      300 |   0.8733 |  1.278986e+05 |  +13.61% |  4.06e-11 |
+      310 |   0.8407 |  1.414645e+05 |  +10.61% |  6.60e-11 |
+      320 |   0.8041 |  1.519574e+05 |   +7.42% |  1.07e-10 |
+      330 |   0.7657 |  1.610361e+05 |   +5.97% |  1.74e-10 |
+      340 |   0.7240 |  1.747002e+05 |   +8.49% |  2.83e-10 |
+      350 |   0.6780 |  1.904865e+05 |   +9.04% |  4.60e-10 |
+      360 |   0.6344 |  2.011520e+05 |   +5.60% |  7.47e-10 |
+      370 |   0.5951 |  2.084870e+05 |   +3.65% |  1.21e-09 |
+      380 |   0.5561 |  2.198217e+05 |   +5.44% |  1.97e-09 |
+      390 |   0.5174 |  2.157205e+05 |   -1.87% |  3.21e-09 |
+      400 |   0.4762 |  2.267039e+05 |   +5.09% |  5.22e-09 |
+      410 |   0.4354 |  2.258960e+05 |   -0.36% |  8.51e-09 |
+      420 |   0.3934 |  2.242963e+05 |   -0.71% |  1.38e-08 |
+      430 |   0.3524 |  2.242029e+05 |   -0.04% |  2.25e-08 |
+      440 |   0.3164 |  2.213348e+05 |   -1.28% |  3.39e-08 |
+      450 |   0.2880 |  2.191756e+05 |   -0.98% |  4.99e-08 |
+      460 |   0.2598 |  2.180956e+05 |   -0.49% |  7.35e-08 |
+      470 |   0.2315 |  2.178198e+05 |   -0.13% |  1.08e-07 |
+      480 |   0.2046 |  2.176570e+05 |   -0.07% |  1.60e-07 |
+      490 |   0.1807 |  2.175656e+05 |   -0.04% |  2.35e-07 |
+      500 |   0.1554 |  2.177102e+05 |   +0.07% |  3.46e-07 |
+      510 |   0.1338 |  2.179979e+05 |   +0.13% |  5.10e-07 |
+      520 |   0.1123 |  2.182710e+05 |   +0.13% |  7.51e-07 |
+      528 |   0.0989 |  2.185793e+05 |          |  1.06e-06 |
+---------------------------------------------------------------
+[INFO GPL-1001] Global placement finished at iteration 528
+[INFO GPL-1002] Placed Cell Area            56396.1756
+[INFO GPL-1003] Available Free Area         94254.9720
+[INFO GPL-1004] Minimum Feasible Density        0.6000 (cell_area / free_area)
+[INFO GPL-1006]   Suggested Target Densities:
+[INFO GPL-1007]     - For 90% usage of free space: 0.6648
+[INFO GPL-1008]     - For 80% usage of free space: 0.7479
+[INFO GPL-1014] Final placement area: 56396.18 (+0.00%)
+[INFO DPL-0006] Core area: 94254.97 um^2, Instances area: 52058.06 um^2, Utilization: 55.2%
+[INFO DPL-0005] Diamond search max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+[INFO DPL-1101] Legalizing using diamond search.
+Movements Summary
+---------------------------------------
+Total cells:                   23391
+Diamond Move Success:          23391 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+[INFO DPL-0500] Runtime: 0.19s
+Placement Analysis
+---------------------------------
+total displacement      22305.1 u
+average displacement        1.0 u
+max displacement            3.5 u
+original HPWL          218713.6 u
+legalized HPWL         241365.2 u
+delta HPWL                   10 %
+
+[WARNING EST-0018] wire capacitance for corner default is zero. Use the set_wire_rc command to set wire resistance and capacitance.
+[WARNING EST-0027] no estimated parasitics. Using wire load models.
+Iteration |   Area    | Resized | Buffers | Nets repaired | Remaining
+---------------------------------------------------------------------
+        0 |     +0.0% |       0 |       0 |             0 |     29576
+    final |     +1.6% |     254 |     382 |           309 |         0
+---------------------------------------------------------------------
+[INFO RSZ-0034] Found 254 slew violations.
+[INFO RSZ-0036] Found 287 capacitance violations.
+[INFO RSZ-0039] Resized 254 instances.
+[INFO RSZ-0038] Inserted 382 buffers in 309 nets.
+[INFO RSZ-0504] Runtime: 2.99s
+[WARNING CTS-0104] Clock wire resistance/capacitance values are zero.
+Use set_wire_rc to set them.
+[INFO CTS-0050] Root buffer is CLKBUF_X3.
+[INFO CTS-0051] Sink buffer is CLKBUF_X1.
+[INFO CTS-0052] The following clock buffers will be used for CTS:
+                    CLKBUF_X1
+                    CLKBUF_X2
+                    CLKBUF_X3
+[INFO CTS-0049] Characterization buffer is CLKBUF_X3.
+[INFO CTS-0007] Net "clk" found for clock "clk".
+[INFO CTS-0010]  Clock net "clk" has 6178 sinks.
+[INFO CTS-0008] TritonCTS found 1 clock nets.
+[INFO CTS-0097] Characterization used 3 buffer(s) types.
+[INFO CTS-0201] 0 blockages from hard placement blockages and placed macros will be used.
+[INFO CTS-0027] Generating H-Tree topology for net clk.
+[INFO CTS-0028]  Total number of sinks: 6178.
+[INFO CTS-0030]  Number of static layers: 0.
+[INFO CTS-0020]  Wire segment unit: 14000  dbu (7 um).
+[INFO CTS-0023]  Original sink region: [(45030, 46370), (651890, 651170)].
+[INFO CTS-0024]  Normalized sink region: [(3.21643, 3.31214), (46.5636, 46.5121)].
+[INFO CTS-0025]     Width:  43.3471.
+[INFO CTS-0026]     Height: 43.2000.
+ Level 1
+    Direction: Horizontal
+    Sinks per sub-region: 3089
+    Sub-region size: 21.6736 X 43.2000
+[INFO CTS-0034]     Segment length (rounded): 10.
+ Level 2
+    Direction: Vertical
+    Sinks per sub-region: 1545
+    Sub-region size: 21.6736 X 21.6000
+[INFO CTS-0034]     Segment length (rounded): 10.
+ Level 3
+    Direction: Horizontal
+    Sinks per sub-region: 773
+    Sub-region size: 10.8368 X 21.6000
+[INFO CTS-0034]     Segment length (rounded): 6.
+ Level 4
+    Direction: Vertical
+    Sinks per sub-region: 387
+    Sub-region size: 10.8368 X 10.8000
+[INFO CTS-0034]     Segment length (rounded): 6.
+ Level 5
+    Direction: Horizontal
+    Sinks per sub-region: 194
+    Sub-region size: 5.4184 X 10.8000
+[INFO CTS-0034]     Segment length (rounded): 2.
+ Level 6
+    Direction: Vertical
+    Sinks per sub-region: 97
+    Sub-region size: 5.4184 X 5.4000
+[INFO CTS-0034]     Segment length (rounded): 2.
+ Level 7
+    Direction: Horizontal
+    Sinks per sub-region: 49
+    Sub-region size: 2.7092 X 5.4000
+[INFO CTS-0034]     Segment length (rounded): 1.
+ Level 8
+    Direction: Vertical
+    Sinks per sub-region: 25
+    Sub-region size: 2.7092 X 2.7000
+[INFO CTS-0034]     Segment length (rounded): 1.
+ Level 9
+    Direction: Horizontal
+    Sinks per sub-region: 13
+    Sub-region size: 1.3546 X 2.7000
+[INFO CTS-0034]     Segment length (rounded): 1.
+[INFO CTS-0032]  Stop criterion found. Max number of sinks is 15.
+[INFO CTS-0035]  Number of sinks covered: 6178.
+[INFO CTS-0018]     Created 581 clock buffers.
+[INFO CTS-0012]     Minimum number of buffers in the clock path: 4.
+[INFO CTS-0013]     Maximum number of buffers in the clock path: 4.
+[INFO CTS-0015]     Created 581 clock nets.
+[INFO CTS-0016]     Fanout distribution for the current clock = 4:4, 5:4, 6:20, 7:23, 8:56, 9:47, 10:61, 11:44, 12:49, 13:34, 14:48, 15:30, 16:26, 17:11, 18:10, 19:11, 20:12, 21:5, 22:5, 23:2, 24:6, 25:2, 28:1, 29:1..
+[INFO CTS-0017]     Max level of the clock tree: 9.
+[INFO CTS-0098] Clock net "clk"
+[INFO CTS-0099]  Sinks 6624
+[INFO CTS-0100]  Leaf buffers 0
+[INFO CTS-0101]  Average sink wire length 409.79 um
+[INFO CTS-0102]  Path depth 4 - 4
+[INFO CTS-0207]  Dummy loads inserted 446
+[INFO CTS-0500] Runtime: 5.20s
+[INFO DPL-0006] Core area: 94254.97 um^2, Instances area: 54373.86 um^2, Utilization: 57.7%
+[INFO DPL-0005] Diamond search max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+[INFO DPL-1101] Legalizing using diamond search.
+Movements Summary
+---------------------------------------
+Total cells:                   24800
+Diamond Move Success:          24800 (100.00%)
+Diamond Move Failure:              0
+Rip-up and replace Success:        0 (  0.00% of diamond failures)
+Rip-up and replace Failure:        0
+Total Placement Failures:          0
+---------------------------------------
+[INFO DPL-0500] Runtime: 0.18s
+Placement Analysis
+---------------------------------
+total displacement       2751.0 u
+average displacement        0.1 u
+max displacement            5.9 u
+original HPWL          298754.4 u
+legalized HPWL         299636.7 u
+delta HPWL                    0 %
+
+RC_OPENROAD_WARN detailed_route disabled; using global-routed timing/power evidence
+RC_OPENROAD_METRIC_BEGIN
+Design area 54374 um^2 58% utilization.
+wns max 0.00
+tns max 0.00
+Startpoint: gpio_in[0] (input port clocked by clk)
+Endpoint: recorder_status_xor (output port clocked by clk)
+Path Group: clk
+Path Type: max
+
+  Delay    Time   Description
+---------------------------------------------------------
+   0.00    0.00   clock clk (rise edge)
+   0.00    0.00   clock network delay (propagated)
+   2.00    2.00 v input external delay
+   0.00    2.00 v gpio_in[0] (in)
+   0.07    2.07 v _584_/Z (XOR2_X2)
+   0.04    2.11 v u_rcv2_recorder/max_cap382/Z (BUF_X4)
+   0.18    2.29 ^ u_rcv2_recorder/_100_/ZN (INV_X1)
+   0.03    2.32 v u_rcv2_recorder/_193_/ZN (AOI21_X1)
+   0.04    2.37 ^ u_rcv2_recorder/_194_/ZN (NOR2_X1)
+   0.03    2.39 v u_rcv2_recorder/_195_/ZN (INV_X1)
+   0.04    2.43 ^ u_rcv2_recorder/u_event_packer/_460_/ZN (NOR2_X1)
+   0.02    2.45 v u_rcv2_recorder/u_event_packer/_461_/ZN (NAND2_X1)
+   0.11    2.56 ^ u_rcv2_recorder/u_event_packer/_464_/ZN (AOI22_X1)
+   0.04    2.59 v u_rcv2_recorder/u_event_packer/_512_/ZN (AOI22_X1)
+   0.05    2.64 ^ u_rcv2_recorder/u_event_packer/_513_/ZN (OAI211_X1)
+   0.06    2.70 ^ _506_/Z (XOR2_X1)
+   0.05    2.75 ^ _507_/ZN (XNOR2_X1)
+   0.06    2.81 ^ _510_/ZN (XNOR2_X1)
+   0.06    2.87 ^ _608_/Z (XOR2_X1)
+   0.05    2.91 ^ _609_/ZN (XNOR2_X1)
+   0.05    2.96 ^ _615_/ZN (XNOR2_X1)
+   0.05    3.00 ^ _616_/ZN (XNOR2_X1)
+   0.06    3.06 ^ _632_/ZN (XNOR2_X1)
+   0.00    3.06 ^ recorder_status_xor (out)
+           3.06   data arrival time
+
+  20.00   20.00   clock clk (rise edge)
+   0.00   20.00   clock network delay (propagated)
+   0.00   20.00   clock reconvergence pessimism
+  -2.00   18.00   output external delay
+          18.00   data required time
+---------------------------------------------------------
+          18.00   data required time
+          -3.06   data arrival time
+---------------------------------------------------------
+          14.94   slack (MET)
+
+
+Group                  Internal  Switching    Leakage      Total
+                          Power      Power      Power      Power (Watts)
+----------------------------------------------------------------
+Sequential             2.33e-03   1.43e-04   4.73e-04   2.95e-03  44.7%
+Combinational          7.77e-04   1.10e-03   4.83e-04   2.36e-03  35.8%
+Clock                  5.04e-04   7.31e-04   4.86e-05   1.28e-03  19.5%
+Macro                  0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+Pad                    0.00e+00   0.00e+00   0.00e+00   0.00e+00   0.0%
+----------------------------------------------------------------
+Total                  3.61e-03   1.97e-03   1.01e-03   6.59e-03 100.0%
+                          54.8%      29.9%      15.2%
+RC_OPENROAD_METRIC_END
+RC_OPENROAD_STATUS PASS
+

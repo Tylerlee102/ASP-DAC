@@ -1,0 +1,1 @@
+PASS self_replay benchmark=platform2_status_window_bug variant=fixed seed=1 arch=v2 recorder_config=full property=0 events=33332 cycles=100000 commits=33327 notes="record/replay replay-critical events match; rtl replay mode controller launched captured-store replay and streamed 3/3 and replay consumer consumed 3/3 without harness preload"

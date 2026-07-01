@@ -1,0 +1,2 @@
+check,status,cycles,request_writes,isr_writes,isr_value,ack_writes,done_value,irq_final,raw_log,notes
+hazard3_true_isr_smoke,PASS,76,1,1,1,1,1,0,results/raw/hazard3_irq_smoke/vvp_run.txt,"Hazard3 executed a standard machine external interrupt handler, acknowledged the IRQ from the handler, returned with mret, and foreground code wrote done."

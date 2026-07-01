@@ -1,0 +1,2 @@
+gate,status,pass_rows,area_only_rows,blocked_rows,fail_rows,notes
+asic_openpdk,PARTIAL,0,5,0,5,; Yosys+ABC Nangate45 synthesis-only area rows available

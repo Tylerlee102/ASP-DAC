@@ -55,4 +55,4 @@ It writes:
 
 Rows marked `firmware-sim` prove that benchmark firmware programs can be encoded as RV32I words, executed by the local interpreter, and replay-compared under commit-index evidence.
 
-Rows marked `firmware-sim` do not by themselves prove PicoRV32 firmware-running RTL replay. The current host-driven Verilator ledger reports 45/45 evaluated record/replay PASS rows, while compiler-backed firmware builds, mapped timing, and a synthesizable replay-consume datapath remain out of scope for this evidence level.
+Rows marked `firmware-sim` do not by themselves prove PicoRV32 firmware-running RTL replay. The full RTL ledgers separately report compiler-backed record/replay PASS rows, including v2 rows with RTL capsule-source and MMIO/IRQ replay drive. Compiler-backed firmware builds, mapped timing, and the v2 replay controller/source/consumer evidence are therefore cited from their own generated CSVs, not from this firmware-simulation evidence level.

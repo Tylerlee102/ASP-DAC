@@ -1,0 +1,13 @@
+recorder_config,target,flow,metric,baseline,with_replaycapsule,delta,percent_overhead,status,notes
+minimal,nangate45,yosys+openroad-openpdk-global-routed,area_um2,53453.000,54374.000,921.000000,1.72,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+minimal,nangate45,yosys+openroad-openpdk-global-routed,wns_ns,0.000,0.000,0.000000,NA,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+minimal,nangate45,yosys+openroad-openpdk-global-routed,power_mw,5.990000,6.590000,0.600000,10.02,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+core,nangate45,yosys+openroad-openpdk-global-routed,area_um2,53453.000,63848.000,10395.000000,19.45,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+core,nangate45,yosys+openroad-openpdk-global-routed,wns_ns,0.000,0.000,0.000000,NA,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+core,nangate45,yosys+openroad-openpdk-global-routed,power_mw,5.990000,7.740000,1.750000,29.22,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+hashed,nangate45,yosys+openroad-openpdk-global-routed,area_um2,53453.000,64299.000,10846.000000,20.29,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+hashed,nangate45,yosys+openroad-openpdk-global-routed,wns_ns,0.000,0.000,0.000000,NA,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+hashed,nangate45,yosys+openroad-openpdk-global-routed,power_mw,5.990000,8.570000,2.580000,43.07,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+full,nangate45,yosys+openroad-openpdk-global-routed,area_um2,53453.000,65693.000,12240.000000,22.90,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+full,nangate45,yosys+openroad-openpdk-global-routed,wns_ns,0.000,0.000,0.000000,NA,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows
+full,nangate45,yosys+openroad-openpdk-global-routed,power_mw,5.990000,8.290000,2.300000,38.40,PASS,OpenROAD global-routed Nangate45 physical-flow overhead from PASS rows

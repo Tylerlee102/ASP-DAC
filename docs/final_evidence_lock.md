@@ -41,6 +41,13 @@ This document locks the evidence used for the main-track submission polish pass.
 - v2 diagnostic comparison, not selected area claim: core LUT 68.00%, hashed LUT 67.69%.
 - Recorder presence: PASS.
 
+## ASIC/open-PDK Evidence
+
+- Summary: PASS; 5/5 OpenROAD placed/global-routed rows PASS with area, WNS/TNS, and power.
+- Selected v2 minimal physical overhead: area 1.72%, power 10.02%.
+- Selected v2 minimal synthesis-only area overhead: 1.76%.
+- Scope boundary: OpenROAD rows are global-routed implementation evidence, not detailed-route signoff, tapeout, silicon, or energy data.
+
 ## Paper Build
 
 - Paper target: `paper/main.pdf`

@@ -20,6 +20,15 @@ module replaycapsule_verilator_top #(
   input  logic        replay_consume_valid,
   input  logic [63:0] replay_consume_word,
   input  logic        replay_consume_stream_done,
+  input  logic        replay_consume_use_source,
+  input  logic        replay_source_store_clear,
+  input  logic        replay_source_capture_enable,
+  input  logic        replay_source_load_valid,
+  input  logic [CAPSULE_ADDR_W-1:0] replay_source_load_addr,
+  input  logic [63:0] replay_source_load_word,
+  input  logic        replay_controller_enable,
+  input  logic        replay_controller_arm_record,
+  input  logic        replay_controller_start,
   input  logic        capsule_stream_ready,
 
   output logic        trap,
@@ -66,9 +75,112 @@ module replaycapsule_verilator_top #(
   output logic        replay_consume_error,
   output logic [7:0]  replay_consume_error_code,
   output logic [31:0] replay_consume_consumed_count,
+  output logic        replay_source_active,
+  output logic        replay_source_stream_done,
+  output logic        replay_source_underflow,
+  output logic        replay_source_capture_ready,
+  output logic        replay_source_capture_overflow,
+  output logic [31:0] replay_source_captured_count,
+  output logic [31:0] replay_source_sent_count,
+  output logic        replay_controller_busy,
+  output logic        replay_controller_record_active,
+  output logic        replay_controller_replay_active,
+  output logic        replay_controller_done,
+  output logic        replay_controller_error,
+  output logic [7:0]  replay_controller_state,
+  output logic [7:0]  replay_controller_error_code,
   output logic [31:0] commit_count
 );
   logic [167:0] capsule_read_data;
+  logic replay_source_valid;
+  logic [63:0] replay_source_word;
+  logic replay_consume_ready_internal;
+  logic replay_consume_valid_selected;
+  logic [63:0] replay_consume_word_selected;
+  logic replay_consume_stream_done_selected;
+  logic selected_replay_consume_start;
+  logic [31:0] selected_replay_consume_expected_count;
+  logic selected_replay_consume_use_source;
+  logic selected_replay_source_store_clear;
+  logic selected_replay_source_capture_enable;
+  logic controller_replay_consume_start;
+  logic [31:0] controller_replay_consume_expected_count;
+  logic controller_replay_consume_use_source;
+  logic controller_replay_source_store_clear;
+  logic controller_replay_source_capture_enable;
+
+  rcv2_replay_mode_controller u_replay_mode_controller (
+    .clk(clk),
+    .rst_n(rst_n),
+    .clear(clear),
+    .enable(replay_controller_enable),
+    .arm_record(replay_controller_arm_record),
+    .start_replay(replay_controller_start),
+    .captured_count(replay_source_captured_count),
+    .capture_overflow(replay_source_capture_overflow),
+    .source_underflow(replay_source_underflow),
+    .consume_all_events(replay_consume_all_events),
+    .consume_error(replay_consume_error),
+    .source_store_clear(controller_replay_source_store_clear),
+    .source_capture_enable(controller_replay_source_capture_enable),
+    .consume_use_source(controller_replay_consume_use_source),
+    .consume_start(controller_replay_consume_start),
+    .consume_expected_count(controller_replay_consume_expected_count),
+    .busy(replay_controller_busy),
+    .record_active(replay_controller_record_active),
+    .replay_active(replay_controller_replay_active),
+    .done(replay_controller_done),
+    .error(replay_controller_error),
+    .state(replay_controller_state),
+    .error_code(replay_controller_error_code)
+  );
+
+  assign selected_replay_consume_start =
+    replay_controller_enable ? controller_replay_consume_start : replay_consume_start;
+  assign selected_replay_consume_expected_count =
+    replay_controller_enable ? controller_replay_consume_expected_count : replay_consume_expected_count;
+  assign selected_replay_consume_use_source =
+    replay_controller_enable ? controller_replay_consume_use_source : replay_consume_use_source;
+  assign selected_replay_source_store_clear =
+    replay_controller_enable ? controller_replay_source_store_clear : replay_source_store_clear;
+  assign selected_replay_source_capture_enable =
+    replay_controller_enable ? controller_replay_source_capture_enable : replay_source_capture_enable;
+
+  rcv2_capsule_source #(
+    .WORDS(CAPSULE_DEPTH),
+    .ADDR_W(CAPSULE_ADDR_W)
+  ) u_replay_source (
+    .clk(clk),
+    .rst_n(rst_n),
+    .clear(clear),
+    .store_clear(selected_replay_source_store_clear),
+    .capture_enable(selected_replay_source_capture_enable),
+    .capture_valid(capsule_stream_valid && capsule_stream_ready),
+    .capture_word(capsule_stream_word),
+    .load_valid(replay_source_load_valid),
+    .load_addr(replay_source_load_addr),
+    .load_word(replay_source_load_word),
+    .start(selected_replay_consume_start && selected_replay_consume_use_source),
+    .expected_count(selected_replay_consume_expected_count),
+    .capsule_ready(selected_replay_consume_use_source && replay_consume_ready_internal),
+    .capture_ready(replay_source_capture_ready),
+    .capture_overflow(replay_source_capture_overflow),
+    .captured_count(replay_source_captured_count),
+    .capsule_valid(replay_source_valid),
+    .capsule_word(replay_source_word),
+    .stream_done(replay_source_stream_done),
+    .active(replay_source_active),
+    .underflow(replay_source_underflow),
+    .sent_count(replay_source_sent_count)
+  );
+
+  assign replay_consume_valid_selected =
+    selected_replay_consume_use_source ? replay_source_valid : replay_consume_valid;
+  assign replay_consume_word_selected =
+    selected_replay_consume_use_source ? replay_source_word : replay_consume_word;
+  assign replay_consume_stream_done_selected =
+    selected_replay_consume_use_source ? replay_source_stream_done : replay_consume_stream_done;
+  assign replay_consume_ready = replay_consume_ready_internal;
 
   picorv32_replaycapsule_wrapper #(
     .PROGADDR_RESET(PROGADDR_RESET),
@@ -85,11 +197,11 @@ module replaycapsule_verilator_top #(
     .capture_mode(capture_mode),
     .arch_select(arch_select),
     .recorder_config_select(recorder_config_select),
-    .replay_consume_start(replay_consume_start),
-    .replay_consume_expected_count(replay_consume_expected_count),
-    .replay_consume_valid(replay_consume_valid),
-    .replay_consume_word(replay_consume_word),
-    .replay_consume_stream_done(replay_consume_stream_done),
+    .replay_consume_start(selected_replay_consume_start),
+    .replay_consume_expected_count(selected_replay_consume_expected_count),
+    .replay_consume_valid(replay_consume_valid_selected),
+    .replay_consume_word(replay_consume_word_selected),
+    .replay_consume_stream_done(replay_consume_stream_done_selected),
     .capsule_stream_ready(capsule_stream_ready),
     .trap(trap),
     .mem_valid(mem_valid),
@@ -121,7 +233,7 @@ module replaycapsule_verilator_top #(
     .capsule_dropped_diagnostic_count(capsule_dropped_diagnostic_count),
     .capsule_replay_critical_overflow_count(capsule_replay_critical_overflow_count),
     .capsule_stream_fifo_level(capsule_stream_fifo_level),
-    .replay_consume_ready(replay_consume_ready),
+    .replay_consume_ready(replay_consume_ready_internal),
     .replay_consume_observed_valid(replay_consume_observed_valid),
     .replay_consume_all_events(replay_consume_all_events),
     .replay_consume_error(replay_consume_error),

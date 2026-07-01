@@ -4,7 +4,7 @@
 
 ReplayCapsule-RV explores event-sufficient failure capsules for replaying single-hart RV32I interrupt/MMIO failures, combining compiler-backed firmware-running RTL replay, corruption rejection, mapped recorder evidence, and scaling analysis.
 
-ReplayCapsule-RV v2 adds an adaptive compressed capsule format and a synthesizable replay-consume controller prototype. The v2 recorder is integrated into the full-core host-driven record/replay harness and has measured zero-fail replay, scaling, runtime, a selected minimal-recorder ECP5 full-core overhead point, and measured core/hashed diagnostic mapping comparisons. The v2 replay consumer is real RTL with corruption tests and host-streamed full-core checks, but it is not yet a fully autonomous full-core replay path.
+ReplayCapsule-RV v2 adds an adaptive compressed capsule format, an RTL capture/source path, a replay-mode controller, and a synthesizable replay-consume controller prototype. The v2 recorder is integrated into the full-core record/replay harness and has measured zero-fail replay, scaling, runtime, a selected minimal-recorder ECP5 full-core overhead point, and measured core/hashed diagnostic mapping comparisons. The v2 replay source, replay-mode controller, and consumer are real RTL with corruption tests, full-core checks, reset-persistent capture-store tests, record-signature evidence, and same-instance self-replay rows from the captured RTL store. The path is not yet a standalone board/silicon replay engine because reset orchestration and the memory/peripheral shell remain in the Verilator harness.
 
 ## Forbidden Claims
 
@@ -13,8 +13,8 @@ ReplayCapsule-RV v2 adds an adaptive compressed capsule format and a synthesizab
 - Do not claim replacement for RISC-V trace/debug standards.
 - Do not claim full-system, multicore, cache, coherence, DMA, or OS replay.
 - Do not call overhead low or negligible unless same-target measured data supports it.
-- Do not claim ASIC power or area without an actual ASIC flow/report.
-- Do not claim complete autonomous replay until capsule storage/streaming, MMIO/IRQ replay muxing, and replay-mode control are integrated and pass.
+- Claim only the generated Nangate45 OpenROAD placed/global-routed area, timing, and power rows; do not claim detailed-route signoff, tapeout, silicon, or energy.
+- Do not claim a standalone board/silicon replay engine until reset control and the memory/peripheral shell are integrated outside Verilator orchestration.
 
 ## Audit Categories
 
@@ -60,6 +60,6 @@ ReplayCapsule-RV rejects corrupted capsule streams in negative replay and v2 rep
 - v1 negative replay: measured.
 - v1 workload-scaling failures: diagnosed as buffer overflow.
 - v2 recorder: RTL and Yosys hierarchy check.
-- v2 replay consumer: RTL tests, host-streamed full-core checks, and ECP5-85k prototype mapping.
+- v2 replay source/consumer: RTL tests, full-core replay checks with RTL-streamed capsule words and MMIO/IRQ replay stimulus, and ECP5-85k prototype mapping.
 - v2 workload replay: measured zero-fail in `results/processed/workload_scaling_v2_measured.csv`.
 - v2 mapped full-core overhead: selected minimal-recorder same-target ECP5-85k overhead claim plus measured core/hashed diagnostic comparisons in `results/processed/mapped_scaling_v2_measured.csv` and `results/processed/mapped_scaling_overhead_v2_measured.csv`.

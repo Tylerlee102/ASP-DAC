@@ -12,7 +12,7 @@ hand into captions, plots, or tables.
 | --- | --- |
 | Generated today | A real artifact exists in `results/` or `paper/figures/` with today's run output and can be used as source evidence. |
 | Partial today | A source artifact exists today, but the final paper figure/table has not been rendered or the artifact only covers the smoke path. |
-| Requires expanded RTL/PicoRV32 evidence | Needs additional firmware-running RTL traces beyond the locked host-driven Verilator replay suite before broader paper claims can be filled. |
+| Requires expanded RTL/PicoRV32 evidence | Needs additional firmware-running RTL traces beyond the locked Verilator-orchestrated replay suite before broader paper claims can be filled. |
 | Requires expanded mapped FPGA flow | Needs another mapped target, ASIC flow, or optimized implementation beyond the locked same-target ECP5 evidence. |
 | Spec only | The figure can be drawn from the architecture/model docs, but no generated paper asset exists yet. |
 
@@ -21,7 +21,7 @@ hand into captions, plots, or tables.
 | Artifact | Generated today? | Used by | Current honesty status |
 | --- | --- | --- | --- |
 | `results/raw/model_suite_traces.json` | Yes | Event model, replay flow, trace-size baselines | Six benchmark model-level traces. |
-| `results/processed/replay_experiments.csv` | Yes | Replay flow | Six model-level and firmware-sim replay rows pass; full host-driven RTL replay is reported in `results/processed/full_rtl_replay.csv`. |
+| `results/processed/replay_experiments.csv` | Yes | Replay flow | Six model-level and firmware-sim replay rows pass; full RTL replay is reported in `results/processed/full_rtl_replay.csv`, with v2 RTL MMIO/IRQ replay drive reported in `results/processed/full_rtl_replay_v2.csv`. |
 | `results/processed/trace_sizes.csv` | Yes | Baseline trace-size figure | Contains model-level and firmware-sim rows for six benchmarks, plus RTL-smoke capsule-byte rows for exported failing/fixed capsules. Full RTL trace-size reductions remain future work where unavailable. |
 | `results/figures/baseline_trace_sizes.svg` | Yes | Baseline trace-size figure | Generated from `trace_sizes.csv`. |
 | `results/figures/ablation_heatmap.svg` | Yes | Ablation heatmap | Generated from model-level ablation rows. |
@@ -33,7 +33,7 @@ hand into captions, plots, or tables.
 | `results/processed/randomized_interrupt_campaign.csv` | Yes | Seeded interrupt campaign figure | RTL-smoke interrupt-race seeds reproduce expected property IDs and capsule digests across fresh simulator invocations, including MMIO wait-state latency cases. |
 | `results/processed/randomized_interrupt_corruption.csv` | Yes | Seeded interrupt campaign table context | Per-seed RTL-smoke capsules self-compare and reject missing-event, duplicate-event, metadata, payload, and order corruptions through the replay comparator. |
 | `results/figures/randomized_interrupt_campaign.svg` | Yes | Seeded interrupt campaign figure | Generated from `randomized_interrupt_campaign.csv`. |
-| `results/processed/hdl_checks.csv` | Yes | Verification status | Nine directed Icarus module simulations, fifteen PicoRV32 wrapper smokes, and Verilator lint-only checks pass. |
+| `results/processed/hdl_checks.csv` | Yes | Verification status | Ten directed Icarus module simulations, fifteen PicoRV32 wrapper smokes, and Verilator lint-only checks pass. |
 | `results/processed/picorv32_smoke_summary.csv` | Yes | Wrapper smoke observations | Parses PicoRV32 smoke logs for property IDs, capsule counts, freeze state, and overflow state. |
 | `results/processed/picorv32_smoke_coverage.csv` | Yes | Wrapper smoke coverage | Summarizes failing-image, fixed-image, no-failure edge, and benchmark-family wrapper coverage. |
 | `results/processed/benchmark_coverage.csv` | Yes | Benchmark coverage | Joins model, firmware-sim, wrapper-smoke, export, alignment, and sufficiency evidence by benchmark; full RTL replay is reported separately in `results/processed/full_rtl_replay.csv`. |
@@ -71,7 +71,7 @@ hand into captions, plots, or tables.
 | Fig. 5 | RTL capsule event classes | Show packet-class composition of exported RTL-smoke capsules without treating it as full benchmark-wide trace evidence. | `paper/figures/rtl_capsule_event_classes.svg` | Yes. Generated from `results/processed/rtl_capsule_event_classes.csv`. | Yes for full benchmark-wide RTL class counts. |
 | Fig. 6 | Seeded interrupt campaign | Show seeded RTL-smoke interrupt-race reruns and frozen capsule packet counts after digest-match checks. | `paper/figures/randomized_interrupt_campaign.svg` | Yes. Generated from `results/processed/randomized_interrupt_campaign.csv`. | Yes for full record/replay randomized campaign. |
 | Table 1 | Synthesis/resource table | Report monitor/resource cost and timing only from generated synthesis outputs. | `paper/figures/table01_synthesis_resources.md` | Generated table from `synthesis.csv`, `synthesis_overhead.csv`, and `mapped_synthesis.csv`. | Further optimization or non-ECP5 targets are future work. |
-| Table 2 | Replay evidence table | Summarize model, firmware-sim, RTL-smoke alignment, and host-driven full RTL replay status. | `paper/figures/table02_replay_evidence.md` | Generated table from `replay_experiments.csv`, `rtl_firmware_alignment.csv`, and `full_rtl_replay.csv`. | Autonomous hardware replay remains out of scope. |
+| Table 2 | Replay evidence table | Summarize model, firmware-sim, RTL-smoke alignment, and Verilator full RTL replay status. | `paper/figures/table02_replay_evidence.md` | Generated table from `replay_experiments.csv`, `rtl_firmware_alignment.csv`, and `full_rtl_replay.csv`. | Standalone board/silicon replay remains out of scope. |
 | Table 3 | Trace-size baseline table | Summarize available firmware-sim trace-size baselines and exported RTL-smoke capsule bytes. | `paper/figures/table03_trace_baselines.md` | Generated partial table today from `results/processed/trace_sizes.csv` and `results/processed/rtl_capsule_event_classes.csv`. | Requires full benchmark-wide RTL trace-size rows. |
 | Table 4 | Event-sufficiency table | Summarize model-level and RTL-smoke event-removal ablations that break replay by benchmark. | `paper/figures/table04_event_sufficiency.md` | Generated partial table today from `results/processed/event_sufficiency.csv`, `results/processed/ablations.csv`, and `results/processed/rtl_smoke_event_sufficiency.csv`. | Requires full benchmark-wide RTL-backed ablations. |
 | Table 5 | Formal coverage table | Summarize bounded formal contract families, depths, obligations, and explicit limits. | `paper/figures/table05_formal_coverage.md` | Generated table today from `results/processed/formal_coverage.csv`. | End-to-end processor/replay theorem remains outside current bounded checks. |
@@ -143,7 +143,7 @@ Source material:
 
 Paper-readiness checks:
 - Distinguish model/firmware-sim replay, RTL-smoke alignment, and the
-  host-driven full RTL Verilator replay suite.
+  Verilator full RTL replay suite.
 - Full benchmark claims must cite `results/processed/full_rtl_replay.csv`.
 
 ### Fig. 4: Baseline Trace Sizes

@@ -62,6 +62,9 @@ On the Linux CI image, the final reproduction run completed in a few minutes. Fu
 - `results/processed/mapped_overhead.csv`
 - `results/processed/mapped_recorder_presence.csv`
 - `results/processed/full_core_mapped_summary.csv`
+- `results/processed/standalone_self_replay_smokes.csv`
+- `results/processed/hazard3_v2_replay_smoke.csv`
+- `results/processed/asic_openpdk.csv`
 - `results/processed/claim_audit.csv`
 - `results/processed/paper_number_audit.csv`
 - `results/processed/todo_audit.csv`
@@ -127,8 +130,8 @@ python3 scripts/package_artifact.py
 
 ## Known Limitations
 
-- Replay consume is host-driven in the Verilator harness. The v2 full-core wrapper includes a host-streamed RTL consumer check, but no autonomous capsule source or MMIO/IRQ replay engine is claimed.
+- The v2 replay path is hardware-driven at the capsule-stream and MMIO/IRQ replay boundary: captured replay-critical words feed an RTL capsule source, an RTL replay-mode controller launches replay, and the RTL consumer drives core-facing MMIO/IRQ replay. The broad full-core matrix still relies on Verilator reset orchestration and a modeled memory/peripheral shell, so no standalone board/silicon replay engine is claimed.
 - The scope is single-hart RV32I interrupt/MMIO failures.
 - DMA, multicore ordering, cache-coherence behavior, analog device state, and broad platform replay are not claimed.
-- No ASIC area or power claim is made.
+- ASIC/open-PDK claims are limited to the generated Nangate45 OpenROAD placed/global-routed area, timing, and power rows; detailed-route signoff, tapeout, silicon, and energy are not claimed.
 - The ECP5 implementation is evidence of place-and-route feasibility and overhead, not an area-optimized design.

@@ -1,0 +1,1 @@
+../../rtl/replaycapsule_v2/rcv2_replay_mode_controller.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.

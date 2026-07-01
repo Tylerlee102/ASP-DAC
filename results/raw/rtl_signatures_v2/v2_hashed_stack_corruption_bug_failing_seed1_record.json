@@ -25,5 +25,6 @@
   "replay_consumer_expected": 0,
   "replay_consumer_consumed": 0,
   "replay_consumer_error_code": 0,
-  "notes": "property failure observed"
+  "replay_stimulus_source": "record_environment",
+  "notes": "property failure observed; rtl capture store retained 0/0 replay-critical words for reset-persistent source replay"
 }

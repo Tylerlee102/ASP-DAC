@@ -1,0 +1,5 @@
+# interrupt trace
+[record]
+{"addr": "0x00000000", "commit": 15, "commit_index": 15, "cycle": null, "data": "0x00000001", "diagnostic_only": false, "event_id": 18, "event_type": 7, "flags": 3, "flags_hex": "0x00000003", "index": 18, "interrupt_cause": 1, "interrupt_pending": true, "interrupt_pending_or_taken": true, "interrupt_taken": true, "mmio_address": "0x00000000", "mmio_value": "0x00000001", "notes": "replay-critical", "packet": "7301000000000101", "payload_hash": "0x6ce78aa4", "pc": "0x00000000", "property_id": 2, "raw_mmio_value": "0x00000000", "replay_required": true, "schema_version": 2, "source": "record"}
+[replay]
+no matching events

@@ -13,8 +13,24 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 RAW_DIR = REPO_ROOT / "results/raw"
+OSS_CAD_SUITE = REPO_ROOT / ".tools" / "oss-cad-suite" / "oss-cad-suite"
 
 SYNTH_TARGETS = {
+    "FemtoRV32": [
+        "third_party/femtorv32/femtorv32_quark.v",
+    ],
+    "femtorv32_replaycapsule_wrapper": [
+        "third_party/femtorv32/femtorv32_quark.v",
+        "rtl/event_pkg.sv",
+        "rtl/event_tap.sv",
+        "rtl/event_classifier.sv",
+        "rtl/capsule_buffer.sv",
+        "rtl/property_checker.sv",
+        "rtl/event_slicer.sv",
+        "rtl/hash_signature.sv",
+        "rtl/replay_capsule_top.sv",
+        "rtl/rv32i_integration/femtorv32_replaycapsule_wrapper.sv",
+    ],
     "picorv32": [
         "third_party/picorv32/picorv32.v",
     ],
@@ -102,6 +118,12 @@ def _find_yosys() -> tuple[list[str] | None, dict[str, str] | None, str]:
     system_yosys = shutil.which("yosys")
     if system_yosys:
         return [system_yosys], None, "yosys"
+
+    oss_yosys = OSS_CAD_SUITE / "bin" / "yosys.exe"
+    if oss_yosys.exists():
+        env = dict(os.environ)
+        env["PATH"] = os.pathsep.join([str(OSS_CAD_SUITE / "bin"), str(OSS_CAD_SUITE / "lib"), env.get("PATH", "")])
+        return [str(oss_yosys)], env, "oss-cad-suite:yosys"
 
     local_bin = REPO_ROOT / ".tools" / "python" / "bin" / "yowasp-yosys.exe"
     local_pkg = REPO_ROOT / ".tools" / "python"

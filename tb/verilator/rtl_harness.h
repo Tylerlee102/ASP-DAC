@@ -40,6 +40,7 @@ struct HarnessResult {
   uint32_t replay_consumer_expected = 0;
   uint32_t replay_consumer_consumed = 0;
   uint32_t replay_consumer_error_code = 0;
+  std::string replay_stimulus_source = "external_environment";
 };
 
 HarnessResult run_harness(const HarnessOptions& options);

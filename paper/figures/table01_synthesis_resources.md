@@ -9,6 +9,8 @@ Generic Yosys cell counts are measured from real local reports. Mapped rows are 
 | Baseline PicoRV32 | yowasp-yosys | MEASURED | 519 | NA | NA | NA | NA | Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow |
 | ReplayCapsule record-side top | yowasp-yosys | MEASURED | 1324 | NA | NA | NA | NA | Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow |
 | PicoRV32 + ReplayCapsule wrapper | yowasp-yosys | MEASURED | 2055 | NA | NA | NA | NA | Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow |
+| FemtoRV32 | oss-cad-suite:yosys | MEASURED | 155 | NA | NA | NA | NA | Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow |
+| femtorv32_replaycapsule_wrapper | oss-cad-suite:yosys | MEASURED | 1645 | NA | NA | NA | NA | Yosys generic cell count only; FPGA LUT/FF/BRAM/Fmax requires mapped flow |
 
 ## Generic Cell-Overhead Context
 

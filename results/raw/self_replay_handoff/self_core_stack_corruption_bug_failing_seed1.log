@@ -1,0 +1,1 @@
+PASS self_replay benchmark=stack_corruption_bug variant=failing seed=1 arch=v2 recorder_config=core property=4 events=0 cycles=61 commits=16 notes="record/replay replay-critical events match; rtl replay mode controller launched captured-store replay and streamed 0/0 and replay consumer consumed 0/0 without harness preload"
