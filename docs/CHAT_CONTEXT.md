@@ -2,14 +2,14 @@
 
 > Generated file. Refresh after code, paper, evidence, or artifact changes with `make chat-context` or by running `scripts/update_chat_context.py` with a real Python 3 executable.
 
-- Generated at: `2026-06-30T23:58:06-07:00`
+- Generated at: `2026-07-01T11:43:23-07:00`
 - Repository root: `C:\Users\tyboy\OneDrive\Documents\New project`
 - Python used for this snapshot: `C:\Users\tyboy\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
 
 ## Current Git State
 
-- Branch: `codex/aspdac-80-submission-package`
-- Commit: `75d3d44e`
+- Branch: `master`
+- Commit: `d071b176`
 - Working tree status: `0 changed paths`
 - Changed paths: none
 
@@ -33,27 +33,27 @@
 | `.dockerignore` | 1 | 106 B | top-level file |
 | `.git` | 0 | 0 B | skipped local metadata/toolchain |
 | `.gitattributes` | 1 | 14 B | top-level file |
-| `.github` | 4 | 19.91 KB | CI workflows |
+| `.github` | 4 | 20.08 KB | CI workflows |
 | `.gitignore` | 1 | 79 B | top-level file |
 | `.tools` | 0 | 0 B | skipped local metadata/toolchain |
-| `AGENTS.md` | 1 | 651 B | top-level file |
-| `artifact_evaluation.md` | 1 | 5.27 KB | top-level file |
+| `AGENTS.md` | 1 | 668 B | top-level file |
+| `artifact_evaluation.md` | 1 | 5.30 KB | top-level file |
 | `build` | 451 | 156.95 MB | generated build outputs |
-| `constraints` | 2 | 2.59 KB | FPGA constraints |
+| `constraints` | 2 | 2.60 KB | FPGA constraints |
 | `dist` | 6 | 142.06 MB | artifact zip packages |
 | `Dockerfile` | 1 | 830 B | top-level file |
-| `docs` | 59 | 320.77 KB | design, review, and readiness docs |
+| `docs` | 59 | 320.80 KB | design, review, and readiness docs |
 | `firmware` | 717 | 1.42 MB | firmware benchmarks and build outputs |
 | `formal` | 35 | 88.53 KB | formal assumptions/proof scripts |
-| `Makefile` | 1 | 14.71 KB | top-level file |
-| `paper` | 84 | 377.07 KB | paper source, figures, tables, PDF |
-| `README.md` | 1 | 13.25 KB | top-level file |
+| `Makefile` | 1 | 14.79 KB | top-level file |
+| `paper` | 84 | 377.17 KB | paper source, figures, tables, PDF |
+| `README.md` | 1 | 13.30 KB | top-level file |
 | `requirements.txt` | 1 | 177 B | top-level file |
-| `results` | 50513 | 5.76 GB | raw and processed evidence |
-| `rtl` | 46 | 244.84 KB | hardware design source |
+| `results` | 50513 | 5.77 GB | raw and processed evidence |
+| `rtl` | 46 | 247.43 KB | hardware design source |
 | `scripts` | 98 | 1.23 MB | reproduction, analysis, audit, packaging scripts |
-| `tb` | 39 | 312.14 KB | testbenches and Verilator harnesses |
-| `third_party` | 54 | 616.29 KB | vendored dependencies |
+| `tb` | 39 | 316.31 KB | testbenches and Verilator harnesses |
+| `third_party` | 54 | 616.82 KB | vendored dependencies |
 
 ## Implemented Components
 
