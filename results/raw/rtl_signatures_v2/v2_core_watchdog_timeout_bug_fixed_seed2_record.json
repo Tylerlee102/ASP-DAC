@@ -25,5 +25,6 @@
   "replay_consumer_expected": 0,
   "replay_consumer_consumed": 0,
   "replay_consumer_error_code": 0,
-  "notes": "no false property failure"
+  "replay_stimulus_source": "record_environment",
+  "notes": "no false property failure; rtl capture store retained 8/8 replay-critical words for reset-persistent source replay"
 }

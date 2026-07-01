@@ -55,6 +55,12 @@ CANDIDATES = {
 MEASURED_EXPANSION = {
     "commanded_actuator_limit_bug": ("commanded_actuator_limit", "1"),
     "late_config_sequence_bug": ("late_config_sequence", "5"),
+    "sensor_debounce_bug": ("sensor_debounce", "3"),
+    "status_clear_on_read_bug": ("status_clear_on_read", "1"),
+    "platform2_status_window_bug": ("platform2_status_window", "1"),
+    "platform2_config_order_bug": ("platform2_config_order", "5"),
+    "environmental_controller_bug": ("environmental_controller", "1"),
+    "power_rail_sequencer_bug": ("power_rail_sequencer", "5"),
 }
 
 

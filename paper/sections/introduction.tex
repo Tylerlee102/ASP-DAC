@@ -7,8 +7,8 @@ ReplayCapsule-RV studies that point in the design space. For a deterministic sin
 This paper makes three contributions:
 \begin{itemize}
   \item a commit-indexed boundary-event model for replaying scoped single-hart RV32I interrupt/MMIO failures;
-  \item a record-side ReplayCapsule-RV hardware path and host-driven RTL replay harness that validate those events against compiler-built firmware;
-  \item a generated evidence package covering replay success, corruption rejection, runtime cost, buffer-depth tradeoffs, and same-target FPGA overhead.
+  \item a record-side ReplayCapsule-RV hardware path plus a v2 replay-consume path that drives core-facing MMIO/IRQ replay from streamed capsule words;
+  \item a generated evidence package covering replay success, corruption rejection, expanded benchmark breadth, baseline trace-size comparisons, runtime cost, buffer-depth tradeoffs, and same-target FPGA overhead.
 \end{itemize}
 
-The evaluation is intentionally audit-oriented. The artifact reports compiler-backed firmware builds, \rcFullReplayPass/\rcFullReplayTotal\ full RTL replay PASS rows, full RTL corrupted-capsule checks, runtime overhead summaries across baseline and recorder configurations, and full-core ECP5 mapped results. Claims outside this scope are treated as limitations rather than inferred results.
+The evaluation is intentionally audit-oriented. The artifact reports compiler-backed firmware builds, \rcFullReplayPass/\rcFullReplayTotal\ v1 and \rcVTwoReplayPass/\rcVTwoReplayTotal\ v2 full RTL replay PASS rows, full RTL corrupted-capsule checks, \rcExpandedReplayPass/\rcExpandedReplayTotal\ expanded benchmark replay rows, runtime overhead summaries across baseline and recorder configurations, and full-core ECP5 mapped results. Claims outside this scope are treated as limitations rather than inferred results.

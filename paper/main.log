@@ -406,7 +406,7 @@ LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> OT1/minlibertine/m/n on input line 376
 .
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/minlibertine/m/n --> OT1/minlibertine/b/n on input 
+(Font)                  OT1/minlibertine/m/n --> OT1/minlibertine/b/n on input
 line 377.
 LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 383.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
@@ -508,7 +508,7 @@ ts for all LaTeX engines.
  (textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ) (fontspec.sty (xparse.sty (expl3.sty
-Package: expl3 2022-02-24 L3 programming layer (loader) 
+Package: expl3 2022-02-24 L3 programming layer (loader)
 
 (l3backend-xetex.def
 File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
@@ -569,10 +569,10 @@ Package fontspec Info: Font family 'LinLibertine(0)' created for font
 (fontspec)             = {Monospaced,Lining},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBI].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_R.otf]/OT:script=latn;language=df
 lt;+tnum;+lnum;mapping=tex-text;"
@@ -626,10 +626,10 @@ Package fontspec Info: Font family 'LinBiolinum(0)' created for font
 (fontspec)             = {Monospaced, Lining},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBO].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinBiolinum_R.otf]/OT:script=latn;language=dfl
 t;+tnum;+lnum;mapping=tex-text;"
@@ -662,10 +662,10 @@ Package fontspec Info: Font family 'LinLibertine(1)' created for font
 (fontspec)             {Monospaced,Lining},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBI].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_R.otf]/OT:script=latn;language=df
 lt;+tnum;+lnum;mapping=tex-text;"
@@ -708,10 +708,10 @@ Package fontspec Info: Font family 'LinLibertine(2)' created for font
 (fontspec)             { Monospaced, Lining},Scale = 1,UprightFont =
 (fontspec)             *_RZ,ItalicFont = *_RZI,BoldFont = *_RB,BoldItalicFont
 (fontspec)             = *_RBI].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_RZ.otf]/OT:script=latn;language=d
 flt;+tnum;+lnum;mapping=tex-text;"
@@ -744,10 +744,10 @@ Package fontspec Info: Font family 'LinLibertine(3)' created for font
 (fontspec)             {Monospaced,OldStyle},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBI].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_R.otf]/OT:script=latn;language=df
 lt;+tnum;+onum;mapping=tex-text;"
@@ -786,14 +786,14 @@ Package fontspec Info: Font family 'LinLibertine(4)' created for font
 (fontspec)             = .otf,SmallCapsFeatures={Letters=SmallCaps},Numbers =
 (fontspec)             {Monospaced,Lining},UprightFont = *_DR,ItalicFont =
 (fontspec)             *_RI,BoldFont = *_RB,BoldItalicFont = *_RBI].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[LinLibertine_DR.otf]/OT:script=latn;language=dflt;+
 tnum;+lnum;mapping=tex-text;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+
 tnum;+lnum;mapping=tex-text;"
@@ -820,10 +820,10 @@ Package fontspec Info: Font family 'LinBiolinum(1)' created for font
 (fontspec)             {Monospaced, Lining},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBO].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinBiolinum_R.otf]/OT:script=latn;language=dfl
 t;+tnum;+lnum;mapping=tex-text;"
@@ -856,10 +856,10 @@ Package fontspec Info: Font family 'LinBiolinum(2)' created for font
 (fontspec)             {Monospaced, OldStyle},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBO].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinBiolinum_R.otf]/OT:script=latn;language=dfl
 t;+tnum;+onum;mapping=tex-text;"
@@ -907,34 +907,34 @@ Package fontspec Info: Font family 'LinLibertine(5)' created for font
 (fontspec)             .otf,HyphenChar=None,Scale = 1,UprightFont =
 (fontspec)             *_M,ItalicFont = *_MO,BoldFont = *_MB,BoldItalicFont =
 (fontspec)             *_MBO].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_M.otf]/OT:script=latn;language=df
 lt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_MB.otf]/OT:script=latn;language=d
 flt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_MO.otf]/OT:script=latn;language=d
 flt;"
-(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_MBO.otf]/OT:script=latn;language=
 dflt;"
-(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
 
 Requested font "[LinBiolinum_K.otf]/OT" at 8.99997pt
  -> LinBiolinum_K.otf
@@ -947,15 +947,15 @@ Package fontspec Info: Font family 'LinBiolinum_K(0)' created for font
 (fontspec)             'LinBiolinum_K' with options [Extension =
 (fontspec)             .otf,HyphenChar=None,BoldFont={},ItalicFont={},SmallCaps
 Font={}].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[LinBiolinum_K.otf]/OT:script=latn;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
 
 Requested font "[LinLibertine_I.otf]/OT" at 8.99997pt
  -> LinLibertine_I.otf
@@ -969,15 +969,15 @@ Package fontspec Info: Font family 'LinLibertine_I(0)' created for font
 (fontspec)             'LinLibertine_I' with options [Extension =
 (fontspec)             .otf,HyphenChar=None,BoldFont={},ItalicFont={},SmallCaps
 Font={}].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[LinLibertine_I.otf]/OT:script=latn;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
 
 LaTeX Info: Redefining \oldstylenums on input line 474.
 LaTeX Info: Redefining \liningnums on input line 475.
@@ -988,7 +988,7 @@ Requested font "[Inconsolatazi4-Regular.otf]/OT" at 8.99997pt
  -> Inconsolatazi4-Regular.otf
 Requested font "[Inconsolatazi4-Regular.otf]/OT" at 9.00003pt
  -> Inconsolatazi4-Regular.otf
-Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;" at 
+Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;" at
 9.00003pt
  -> Inconsolatazi4-Regular.otf
 Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;" at 9.0
@@ -1001,28 +1001,28 @@ Package fontspec Info: Font family 'inconsolata(0)' created for font
 Space,Extension
 (fontspec)             = .otf,UprightFont = Inconsolatazi4-Regular,BoldFont =
 (fontspec)             Inconsolatazi4-Bold,StylisticSet=3].
-(fontspec)              
+(fontspec)
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)              
+(fontspec)
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[Inconsolatazi4-Regular.otf]/OT:script=latn;language
 =dflt;+ss03;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
 (fontspec)             and font adjustment code:
 (fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
 (fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"[Inconsolatazi4-Bold.otf]/OT:script=latn;language=df
 lt;+ss03;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
 (fontspec)             and font adjustment code:
 (fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
 (fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
 
  (caption.sty
 Package: caption 2022/03/01 v3.6b Customizing captions (AR)
@@ -1097,7 +1097,7 @@ rs
 Class acmart Info: Suppressing bibformat on input line 4.
 Class acmart Info: Suppressing CCS on input line 4.
 Class acmart Info: Printing folios on input line 4.
-Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 17.
+Package hyperref Info: Option `pdfdisplaydoctitle' set `true' on input line 18.
 
 \c@theorem=\count324
  (balance.sty
@@ -1107,63 +1107,63 @@ Package: balance 1999/02/23 4.3 (PWD)
 Excluding comment 'anonsuppress' Excluding comment 'acks' (main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 17.
+LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 18.
 LaTeX Font Info:    Trying to load font information for OML+nxlmi on input line
- 17.
+ 18.
 
 (omlnxlmi.fd
 File: omlnxlmi.fd 2013/11/19 Fontinst v1.933 font definitions for OML/nxlmi.
 )
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 18.
 LaTeX Font Info:    Trying to load font information for TS1+cmr on input line 1
-7.
+8.
  (ts1cmr.fd
 File: ts1cmr.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 17.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 
-17.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 18.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line
+18.
  (untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 17.
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 18.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 18.
 LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line
- 17.
+ 18.
  (lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 17.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 18.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 18.
 LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input lin
-e 17.
+e 18.
  (lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 17.
+(Font)              scaled to size 7.0pt on input line 18.
 Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;m
 apping=tex-text;" at 7.0pt
  -> LinLibertine_R.otf
 LaTeX Font Info:    Trying to load font information for OT1+minlibertine on inp
-ut line 17.
+ut line 18.
 
 (ot1minlibertine.fd
 File: ot1minlibertine.fd 2013/10/12 v1.0
@@ -1184,7 +1184,7 @@ Requested font "ntxexx" at 7.3pt
  -> ntxexx
 Requested font "ntxexx" at 5.5pt
  -> ntxexx
-LaTeX Font Info:    Trying to load font information for U+msa on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 18.
 
  (umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
@@ -1193,7 +1193,7 @@ Requested font "msam7" at 7.3pt
  -> msam7
 Requested font "msam5" at 5.5pt
  -> msam5
-LaTeX Font Info:    Trying to load font information for U+msb on input line 17.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 18.
 
  (umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -1202,8 +1202,8 @@ Requested font "msbm7" at 7.3pt
  -> msbm7
 Requested font "msbm5" at 5.5pt
  -> msbm5
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 
-17.
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line
+18.
  (untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
@@ -1211,8 +1211,8 @@ Requested font "nxlmia" at 7.3pt
  -> nxlmia
 Requested font "nxlmia" at 5.5pt
  -> nxlmia
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
-17.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line
+18.
  (untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
@@ -1220,8 +1220,8 @@ Requested font "ntxsym" at 7.3pt
  -> ntxsym
 Requested font "ntxsym" at 5.5pt
  -> ntxsym
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
-17.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line
+18.
  (untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
@@ -1233,11 +1233,11 @@ Requested font "ntxexa" at 7.3pt
  -> ntxexa
 Requested font "ntxexa" at 5.5pt
  -> ntxexa
-LaTeX Info: Redefining \microtypecontext on input line 17.
-Package microtype Info: Applying patch `item' on input line 17.
-Package microtype Info: Applying patch `toc' on input line 17.
-Package microtype Info: Applying patch `eqnum' on input line 17.
-Package microtype Info: Applying patch `footnote' on input line 17.
+LaTeX Info: Redefining \microtypecontext on input line 18.
+Package microtype Info: Applying patch `item' on input line 18.
+Package microtype Info: Applying patch `toc' on input line 18.
+Package microtype Info: Applying patch `eqnum' on input line 18.
+Package microtype Info: Applying patch `footnote' on input line 18.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
 Package microtype Info: No adjustment of tracking.
@@ -1247,7 +1247,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `LinLibertine' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-Package hyperref Info: Link coloring OFF on input line 17.
+Package hyperref Info: Link coloring OFF on input line 18.
 (nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (gettitlestring.sty
@@ -1255,9 +1255,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count325
 )
-LaTeX Info: Redefining \ref on input line 17.
-LaTeX Info: Redefining \pageref on input line 17.
-LaTeX Info: Redefining \nameref on input line 17.
+LaTeX Info: Redefining \ref on input line 18.
+LaTeX Info: Redefining \pageref on input line 18.
+LaTeX Info: Redefining \nameref on input line 18.
  (main.out) (main.out)
 \@outlinefile=\write4
 \openout4 = `main.out'.
@@ -1270,7 +1270,7 @@ LaTeX Info: Redefining \nameref on input line 17.
 * paper: custom
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: includehead includefoot twoside heightrounded 
+* modes: includehead includefoot twoside heightrounded
 * h-part:(L,W,R)=(54.0pt, 506.295pt, 54.0pt)
 * v-part:(T,H,B)=(57.0pt, 664.96999pt, 73.0pt)
 * \paperwidth=614.295pt
@@ -1302,12 +1302,12 @@ Package caption Info: float package is loaded.
 Package caption Info: End \AtBeginDocument code.
 (sections/generated_numbers) (sections/abstract)
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 17.28pt on input line 29.
+(Font)              scaled to size 17.28pt on input line 30.
 Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;m
 apping=tex-text;" at 17.28pt
  -> LinLibertine_R.otf
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 17.28pt on input line 29.
+(Font)              scaled to size 17.28pt on input line 30.
 Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;ma
 pping=tex-text;" at 17.28pt
  -> LinBiolinum_R.otf
@@ -1316,64 +1316,76 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/b/n' will be
-(Font)              scaled to size 17.28pt on input line 29.
+(Font)              scaled to size 17.28pt on input line 30.
 Requested font "[LinBiolinum_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;m
 apping=tex-text;" at 17.28pt
  -> LinBiolinum_RB.otf
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 29.
+(Font)              scaled to size 12.0pt on input line 30.
 Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;m
 apping=tex-text;" at 12.0pt
  -> LinLibertine_R.otf
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 29.
+(Font)              scaled to size 10.0pt on input line 30.
 Requested font "[LinLibertine_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;m
 apping=tex-text;" at 10.0pt
  -> LinLibertine_R.otf
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 9.0pt on input line 29.
+(Font)              scaled to size 9.0pt on input line 30.
 Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;
 mapping=tex-text;" at 9.0pt
  -> LinLibertine_RB.otf
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 29.
+(Font)              scaled to size 10.95pt on input line 30.
 Requested font "[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+tnum;+lnum;
 mapping=tex-text;" at 10.95pt
  -> LinLibertine_RB.otf
 
-Overfull \hbox (19.09578pt too wide) in paragraph at lines 29--29
-\TU/LinLibertine(0)/m/n/9 indexed capsules for a scoped class of single-hart RV
-32I interrupt/MMIO
+Underfull \hbox (badness 2073) in paragraph at lines 30--30
+\TU/LinLibertine(0)/m/n/9 interrupt/MMIO bugs and replays those boundary events
+ in
  []
 
 
-Overfull \hbox (22.34631pt too wide) in paragraph at lines 29--29
-\TU/LinLibertine(0)/m/n/9 PicoRV32, compiler-built RV32I firmware images, Veril
-ator record/replay
+Underfull \hbox (badness 1048) in paragraph at lines 30--30
+\TU/LinLibertine(0)/m/n/9 an RTL harness. The implementation integrates a recor
+d-side
  []
 
 
-Overfull \hbox (8.24481pt too wide) in paragraph at lines 29--29
-\TU/LinLibertine(0)/m/n/9 execution, corruption checking, runtime summaries, an
-d same-target
+Underfull \hbox (badness 2762) in paragraph at lines 30--30
+\TU/LinLibertine(0)/m/n/9 hardware capsule path with PicoRV32, compiler-built R
+V32I
  []
 
 
-Overfull \hbox (8.50426pt too wide) in paragraph at lines 29--29
-\TU/LinLibertine(0)/m/n/9 FPGA mapping. The generated artifact reports 45/45 co
-mpiler-backed
+Underfull \hbox (badness 2142) in paragraph at lines 30--30
+\TU/LinLibertine(0)/m/n/9 OpenROAD ASIC/open-PDK evidence. The generated artifa
+ct
  []
 
 
-Overfull \hbox (7.17752pt too wide) in paragraph at lines 29--29
-\TU/LinLibertine(0)/m/n/9 dates event sufficiency and replay reproducibility fo
-r bring-up/debug
+Underfull \hbox (badness 2781) in paragraph at lines 30--30
+\TU/LinLibertine(0)/m/n/9 firmware families, 243/243 captured-store self-replay
+ handoff
+ []
+
+
+Underfull \hbox (badness 1048) in paragraph at lines 30--30
+\TU/LinLibertine(0)/m/n/9 replay evidence; it does not claim a standalone board
+/silicon
  []
 
 (sections/introduction
-Overfull \hbox (1.2503pt too wide) in paragraph at lines 5--6
-\TU/LinLibertine(0)/m/n/9 embedded failures rather than attempting to replace f
-ull trace, snap-
+Underfull \hbox (badness 2057) in paragraph at lines 5--6
+\TU/LinLibertine(0)/m/n/9 and property-failure metadata. The replay harness con
+sumes
+ []
+
+
+Underfull \hbox (badness 1052) in paragraph at lines 5--6
+\TU/LinLibertine(0)/m/n/9 metadata, event payloads, and final signatures. The d
+esign is
  []
 
 Requested font "MinLibReg-ot1" at 9.0pt
@@ -1416,26 +1428,41 @@ Requested font "ntxsyc" at 9.0pt
 Requested font "ntxexa" at 9.0pt
  -> ntxexa
 
-Overfull \hbox (8.4515pt too wide) in paragraph at lines 9--10
+Underfull \hbox (badness 1735) in paragraph at lines 9--10
 []\TU/LinLibertine(0)/m/n/9 a commit-indexed boundary-event model for replaying
- scoped
- []
 
-) (sections/motivation) (sections/model
-Overfull \hbox (6.60228pt too wide) in paragraph at lines 5--6
-\TU/LinLibertine(0)/m/n/9 branch outcomes when they influence the property, che
-ckpoint/hash
  []
 
 
-Overfull \hbox (1.285pt too wide) in paragraph at lines 7--8
+Underfull \vbox (badness 2005) has occurred while \output is active []
+
+
+Underfull \hbox (badness 1755) in paragraph at lines 11--12
+[]\TU/LinLibertine(0)/m/n/9 a generated evidence package covering replay succes
+s,
+ []
+
+
+Underfull \hbox (badness 2401) in paragraph at lines 11--12
+\TU/LinLibertine(0)/m/n/9 line trace-size comparisons, runtime cost, buffer-dep
+th
+ []
+
+) (sections/motivation
+Underfull \hbox (badness 1953) in paragraph at lines 14--1
+[]\TU/LinLibertine(0)/m/n/9 The evaluation is intentionally audit-oriented. The
+ artifact
+ []
+
+) (sections/model
+Underfull \hbox (badness 3482) in paragraph at lines 7--8
 []\TU/LinLibertine(0)/m/n/9 Figure []1[] shows the intended record/replay timel
-ine. The recorder
+ine. The
  []
 
 File: figures/replay_flow.pdf Graphic file (type pdf)
 <use figures/replay_flow.pdf>
-Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;+ss03;" 
+Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;+ss03;"
 at 9.0pt
  -> Inconsolatazi4-Bold.otf
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1451,21 +1478,16 @@ ed
 
 Class acmart Warning: A possible image without description on input line 14.
 
-Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;+ss03
-;" at 9.0pt
- -> Inconsolatazi4-Regular.otf
-) (sections/architecture
-Overfull \hbox (1.1755pt too wide) in paragraph at lines 16--1
-[]\TU/LinLibertine(0)/m/n/9 The proof sketch in \TU/inconsolata(0)/m/n/9 formal
-/replay_sufficiency_theorem.md
- []
 
-[1.1
+Underfull \vbox (badness 1735) has occurred while \output is active []
 
-]
-Overfull \hbox (2.41876pt too wide) in paragraph at lines 3--4
+ [1.1
+
+])
+(sections/architecture
+Underfull \hbox (badness 1014) in paragraph at lines 3--4
 \TU/LinLibertine(0)/m/n/9 ReplayCapsule-RV instruments the processor boundary r
-ather than
+ather
  []
 
 File: figures/architecture_overview.pdf Graphic file (type pdf)
@@ -1474,125 +1496,157 @@ File: figures/architecture_overview.pdf Graphic file (type pdf)
 Class acmart Warning: A possible image without description on input line 10.
 
 
-Overfull \hbox (4.50406pt too wide) in paragraph at lines 12--13
-[]\TU/LinLibertine(0)/m/n/9 The board-level mapped wrappers expose only clock, 
-reset, UART,
+Underfull \hbox (badness 1577) in paragraph at lines 18--19
+\TU/LinLibertine(0)/m/n/9 sure while replay-critical MMIO, interrupt, property-
+fail, and
  []
 
 
-Overfull \hbox (37.20152pt too wide) in paragraph at lines 12--13
-\TU/LinLibertine(0)/m/n/9 This overhead is acceptable for the intended bring-up
-/debug-instrumentation
+Underfull \hbox (badness 1546) in paragraph at lines 18--19
+\TU/LinLibertine(0)/m/n/9 stream. The v2 implementation also includes a synthes
+izable
+ []
+
+) (sections/replay_verification
+Underfull \hbox (badness 1502) in paragraph at lines 20--1
+\TU/LinLibertine(0)/m/n/9 while the consumer validates observed boundary events
+ and
  []
 
 
-Overfull \hbox (2.09105pt too wide) in paragraph at lines 18--19
-\TU/LinLibertine(0)/m/n/9 replay-critical MMIO, interrupt, property-fail, and c
-heckpoint-hash
+Underfull \hbox (badness 1661) in paragraph at lines 5--6
+\TU/LinLibertine(0)/m/n/9 controller to launch replay from the captured store w
+ithout
  []
-
-) (sections/replay_verification) (sections/evaluation
-Overfull \hbox (47.76979pt too wide) in paragraph at lines 7--1
-\TU/LinLibertine(0)/m/n/9 mismatch handling, register access, hash/signature up
-date, and MMIO/interrupt
- []
-
-
-Overfull \hbox (6.10126pt too wide) in paragraph at lines 4--5
-\TU/LinLibertine(0)/m/n/9 45/45 compiler-backed record/replay PASS rows. The ne
-gative ledger
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 9.
+(Font)              scaled to size 9.0pt on input line 6.
 Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;ma
 pping=tex-text;" at 9.0pt
  -> LinBiolinum_R.otf
 LaTeX Font Info:    Font shape `TU/LinBiolinum(0)/m/n' will be
-(Font)              scaled to size 7.0pt on input line 9.
+(Font)              scaled to size 7.0pt on input line 6.
 Requested font "[LinBiolinum_R.otf]/OT:script=latn;language=dflt;+tnum;+lnum;ma
 pping=tex-text;" at 7.0pt
  -> LinBiolinum_R.otf
- [2.2]
-Overfull \hbox (15.43053pt too wide) in paragraph at lines 10--11
-\TU/LinLibertine(0)/m/n/9 ports median ReplayCapsule reductions versus the raw
-full-instruction-
+[2.2]) (sections/evaluation
+Underfull \hbox (badness 1466) in paragraph at lines 7--1
+\TU/LinLibertine(0)/m/n/9 obligations; they are not a mechanized end-to-end pro
+cessor
+ []
+
+Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;+ss03
+;" at 9.0pt
+ -> Inconsolatazi4-Regular.otf
+
+Underfull \hbox (badness 2689) in paragraph at lines 10--11
+\TU/LinLibertine(0)/m/n/9 83.18% for medium, 64.86% for long, and 22.84% for st
+ress.
+ []
+
+
+Underfull \hbox (badness 4266) in paragraph at lines 10--11
+\TU/LinLibertine(0)/m/n/9 while the v2 core and hashed capsule rows have median
+
+ []
+
+
+Underfull \hbox (badness 1478) in paragraph at lines 10--11
+\TU/inconsolata(0)/m/n/9 riscv_etrace_branch_trace_estimate \TU/LinLibertine(0)
+/m/n/9 row; that estimate is
+ []
+
+
+Underfull \hbox (badness 2717) in paragraph at lines 12--13
+\TU/LinLibertine(0)/m/n/9 ing, clear-on-read command/status behavior, alternate
+-MMIO-
+ []
+
+
+Underfull \hbox (badness 2809) in paragraph at lines 12--13
+\TU/LinLibertine(0)/m/n/9 configurations with an RTL capsule source and RTL-dri
+ven
+ []
+
+
+Underfull \hbox (badness 3219) in paragraph at lines 20--21
+[]\TU/LinLibertine(0)/m/n/9 The artifact also adds a Nangate45 ASIC/open-PDK la
+ne.
+ []
+
+
+Underfull \hbox (badness 1173) in paragraph at lines 20--21
+\TU/LinLibertine(0)/m/n/9 of 52058.062 square micrometers, or +1.76%. The OpenR
+OAD
  []
 
 ) (sections/related_work
-Overfull \hbox (1.65254pt too wide) in paragraph at lines 5--6
-[]\TU/LinLibertine(0)/m/n/9 Post-silicon trace compression reduces trace bandwi
-dth and stor-
+Underfull \hbox (badness 1297) in paragraph at lines 5--6
+\TU/LinLibertine(0)/m/n/9 storage by exploiting structure in instruction or con
+trol-flow
  []
 
 
-Overfull \hbox (2.9875pt too wide) in paragraph at lines 7--8
-[]\TU/LinLibertine(0)/m/n/9 Deterministic replay systems record nondeterministi
-c inputs and
- []
-
-
-Overfull \hbox (3.306pt too wide) in paragraph at lines 7--8
-\TU/LinLibertine(0)/m/n/9 ordering so an execution can be reconstructed [[], []
-]. ReplayCapsule-
- []
-
-
-Overfull \hbox (5.47151pt too wide) in paragraph at lines 13--14
-[]\TU/LinLibertine(0)/m/n/9 FPGA/emulation debugging and checkpointing can capt
-ure broad
- []
-
-
-Overfull \hbox (9.76027pt too wide) in paragraph at lines 17--18
-\TU/LinLibertine(0)/m/n/9 or per-commit state; ReplayCapsule-RV records replay-
-driving
- []
-
-
-Overfull \hbox (4.69403pt too wide) in paragraph at lines 18--19
-\TU/LinLibertine(0)/m/n/9 pressed control-flow discontinuities and synchronizat
-ion; the
- []
-
-
-Overfull \hbox (10.6678pt too wide) in paragraph at lines 19--20
-\TU/LinLibertine(0)/m/n/9 uling at OS or VM granularity; ReplayCapsule-RV uses 
-commit-
- []
-
-
-Overfull \hbox (5.07278pt too wide) in paragraph at lines 19--20
-\TU/LinLibertine(0)/m/n/9 indexed single-hart RV32I boundary events inside a fi
-rmware-
- []
-
-
-Overfull \hbox (13.62955pt too wide) in paragraph at lines 20--21
-\TU/LinLibertine(0)/m/n/9 trigger and validates the captured event stream by re
-cord/replay
- []
-
-
-Overfull \hbox (14.50128pt too wide) in paragraph at lines 22--23
-\TU/LinLibertine(0)/m/n/9 In the current implementation, v1 packets are 168.000
-000-bit boundary-
- []
-
-) (sections/limitations
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3.3])
-(sections/conclusion)
-Overfull \hbox (14.90776pt too wide) in paragraph at lines 3--40
-\TU/LinLibertine(0)/m/n/9 interrupt/MMIO failures can be recorded as commit-ind
-exed boundary-
+ [3.3]
+Underfull \hbox (badness 6461) in paragraph at lines 7--8
+[]\TU/LinLibertine(0)/m/n/9 Deterministic replay systems record nondeterministi
+c in-
  []
 
-[4.4
+
+Underfull \hbox (badness 1286) in paragraph at lines 13--14
+[]\TU/LinLibertine(0)/m/n/9 FPGA/emulation debugging and checkpointing can capt
+ure
+ []
+
+
+Underfull \hbox (badness 1755) in paragraph at lines 17--18
+\TU/LinLibertine(0)/m/n/9 or per-commit state; ReplayCapsule-RV records replay-
+
+ []
+
+
+Underfull \hbox (badness 1622) in paragraph at lines 18--19
+[]\TU/LinLibertine(0)/m/n/9 RISC-V E-Trace and N-Trace-style mechanisms capture
+
+ []
+
+
+Underfull \hbox (badness 1565) in paragraph at lines 20--21
+\TU/LinLibertine(0)/m/n/9 and checker state; ReplayCapsule-RV uses the checker
+ []
+
+
+Underfull \hbox (badness 1354) in paragraph at lines 22--23
+\TU/LinLibertine(0)/m/n/9 In the current implementation, v1 packets are 168.000
+000-bit
+ []
+
+) (sections/limitations) (sections/conclusion)
+Underfull \hbox (badness 2269) in paragraph at lines 3--41
+\TU/LinLibertine(0)/m/n/9 interrupt/MMIO failures can be recorded as commit-ind
+exed
+ []
+
+
+Underfull \hbox (badness 2205) in paragraph at lines 3--41
+\TU/LinLibertine(0)/m/n/9 compiler-backed firmware. The artifact reports 45/45
+v1 full
+ []
+
+
+Underfull \hbox (badness 3884) in paragraph at lines 3--41
+\TU/LinLibertine(0)/m/n/9 MMIO/IRQ replay stimulus, replay-mode-controller capt
+ured-
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [4.4]
+[5.5
 
 ] (main.bbl
 LaTeX Font Info:    Font shape `TU/LinLibertine(0)/m/it' will be
@@ -1612,9 +1666,9 @@ Class acmart Warning: Some images may lack descriptions.
 Class acmart Warning: ACM keywords are mandatory for papers over two pages.
 
 
-Class acmart Warning: ACM reference format is mandatory 
-(acmart)              for papers over one page. 
-(acmart)              Please add printacmref=true to the 
+Class acmart Warning: ACM reference format is mandatory
+(acmart)              for papers over one page.
+(acmart)              Please add printacmref=true to the
 (acmart)              \settopmatter command..
 
 
@@ -1624,10 +1678,10 @@ Class acmart Warning: CCS concepts are mandatory for papers over two pages.
 Overfull \vbox (1.54099pt too high) has occurred while \output is active []
 
 
-[5.5
+[6.6
 
 ] (main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 62A6641D930A3C1D9DB4F298DCC8ABB1;2033.
  )
-Output written on main.xdv (5 pages, 249372 bytes).
+Output written on main.xdv (6 pages, 287980 bytes).

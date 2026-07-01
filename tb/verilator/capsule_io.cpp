@@ -347,7 +347,8 @@ bool write_signature_json(const std::string& path, const Capsule& capsule, uint6
                           bool replay_consumer_ok,
                           uint32_t replay_consumer_expected,
                           uint32_t replay_consumer_consumed,
-                          uint32_t replay_consumer_error_code) {
+                          uint32_t replay_consumer_error_code,
+                          const std::string& replay_stimulus_source) {
   try {
     std::filesystem::create_directories(std::filesystem::path(path).parent_path());
     std::ofstream out(path);
@@ -379,6 +380,7 @@ bool write_signature_json(const std::string& path, const Capsule& capsule, uint6
     out << "  \"replay_consumer_expected\": " << replay_consumer_expected << ",\n";
     out << "  \"replay_consumer_consumed\": " << replay_consumer_consumed << ",\n";
     out << "  \"replay_consumer_error_code\": " << replay_consumer_error_code << ",\n";
+    out << "  \"replay_stimulus_source\": \"" << json_escape(replay_stimulus_source) << "\",\n";
     out << "  \"notes\": \"" << json_escape(notes) << "\"\n";
     out << "}\n";
     return true;

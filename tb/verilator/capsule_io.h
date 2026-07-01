@@ -57,4 +57,5 @@ bool write_signature_json(const std::string& path, const Capsule& capsule, uint6
                           bool replay_consumer_ok = true,
                           uint32_t replay_consumer_expected = 0,
                           uint32_t replay_consumer_consumed = 0,
-                          uint32_t replay_consumer_error_code = 0);
+                          uint32_t replay_consumer_error_code = 0,
+                          const std::string& replay_stimulus_source = "external_environment");

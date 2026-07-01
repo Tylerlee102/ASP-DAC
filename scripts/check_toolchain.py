@@ -64,7 +64,8 @@ TOOLS = (
     ToolSpec("yosys", ("yosys",), ("-V",), ("mapped-synthesis", "formal"), "synthesis/formal frontend"),
     ToolSpec("nextpnr-ice40", ("nextpnr-ice40",), ("--version",), ("mapped-synthesis",), "optional iCE40 mapped FPGA flow"),
     ToolSpec("nextpnr-ecp5", ("nextpnr-ecp5",), ("--version",), ("mapped-synthesis",), "optional ECP5 mapped FPGA flow"),
-    ToolSpec("openroad", ("openroad",), ("-version",), ("mapped-synthesis",), "optional ASIC flow"),
+    ToolSpec("openroad", ("openroad",), ("-version",), ("mapped-synthesis", "asic-openpdk"), "optional ASIC/open-PDK flow"),
+    ToolSpec("pdk-root", tuple(), tuple(), ("asic-openpdk",), "PDK_ROOT for optional ASIC/open-PDK flow"),
     ToolSpec("latexmk", ("latexmk",), ("--version",), ("paper",), "LaTeX build wrapper"),
     ToolSpec("pdflatex", ("pdflatex",), ("--version",), ("paper",), "PDF LaTeX engine"),
     ToolSpec("lualatex", ("lualatex",), ("--version",), ("paper",), "fallback PDF LaTeX engine"),
@@ -80,6 +81,7 @@ GATE_ALIASES = {
     "full-rtl-replay": ("full-rtl-replay", "firmware"),
     "mapped-synthesis": ("mapped-synthesis",),
     "mapped": ("mapped-synthesis",),
+    "asic-openpdk": ("asic-openpdk",),
     "paper": ("paper",),
     "all": ("reproduce", "rtl-smoke", "formal", "firmware", "full-rtl-replay", "mapped-synthesis", "paper"),
 }
@@ -121,6 +123,17 @@ def main() -> int:
 
 def _row_for_tool(tool: ToolSpec, selected: set[str]) -> dict[str, str]:
     required = _is_required(tool, selected)
+    if tool.tool == "pdk-root":
+        value = os.environ.get("PDK_ROOT")
+        return {
+            "tool": tool.tool,
+            "required_for": ",".join(tool.required_for),
+            "available": "yes" if value else "no",
+            "version": value or "NA",
+            "required": "yes" if required else "no",
+            "source": "environment" if value else "missing",
+            "notes": tool.notes if value else tool.notes + "; PDK_ROOT is not set",
+        }
     if tool.tool == "firmware-hex-fallback":
         available = _firmware_fallback_available()
         fallback_required = _firmware_fallback_required(selected)

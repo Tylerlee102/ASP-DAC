@@ -1,29 +1,39 @@
 path,bytes,category,notes
-paper/main.pdf,96000,paper,locked PDF or locally built PDF
-paper/main.tex,1202,paper,paper source
-README.md,8431,docs,repository README
-artifact_evaluation.md,4884,docs,artifact evaluation instructions
-docs/novelty_audit.md,4631,docs,novelty guardrails
-docs/related_work_positioning.md,2789,docs,related work guardrails
-docs/conference_readiness_dashboard.md,2158,docs,current readiness dashboard
-paper/sections/abstract.tex,1023,paper,paper section source
-paper/sections/architecture.tex,3712,paper,paper section source
-paper/sections/conclusion.tex,734,paper,paper section source
-paper/sections/evaluation.tex,3512,paper,paper section source
-paper/sections/generated_numbers.tex,1089,paper,paper section source
-paper/sections/generated_tables.tex,3514,paper,paper section source
-paper/sections/introduction.tex,2214,paper,paper section source
-paper/sections/limitations.tex,2570,paper,paper section source
-paper/sections/model.tex,1885,paper,paper section source
+paper/main.pdf,99276,paper,locked PDF or locally built PDF
+paper/main.tex,1233,paper,paper source
+README.md,13566,docs,repository README
+artifact_evaluation.md,5398,docs,artifact evaluation instructions
+docs/novelty_audit.md,5076,docs,novelty guardrails
+docs/related_work_positioning.md,3087,docs,related work guardrails
+docs/conference_readiness_dashboard.md,6337,docs,current readiness dashboard
+docs/asic_openpdk_evidence.md,3189,docs,ASIC/open-PDK global-routed physical evidence boundary
+docs/asic_physical_tool_probe.md,2921,docs,ASIC physical-flow tool availability probe
+.github/workflows/asic-openroad.yml,4247,ci,GitHub Actions OpenROAD ASIC physical-evidence workflow
+docs/second_core_breadth.md,6658,docs,second-core breadth boundary
+docs/second_core_irq_candidate.md,3626,docs,interrupt-capable second-core candidate boundary
+docs/hazard3_irq_smoke.md,1032,docs,focused Hazard3 true-ISR smoke boundary
+docs/hazard3_v2_replay_smoke.md,10665,docs,seeded Hazard3 v2 MMIO+IRQ replay matrix
+docs/second_core_replay_smokes.md,7716,docs,focused second-core replay-smoke matrix
+docs/second_core_v2_smokes.md,16972,docs,focused second-core v2 replay-consumer matrix
+docs/standalone_self_replay_smokes.md,8024,docs,focused standalone self-replay matrix boundary
+paper/sections/abstract.tex,1464,paper,paper section source
+paper/sections/architecture.tex,4112,paper,paper section source
+paper/sections/conclusion.tex,1036,paper,paper section source
+paper/sections/evaluation.tex,5184,paper,paper section source
+paper/sections/generated_numbers.tex,1669,paper,paper section source
+paper/sections/generated_tables.tex,3559,paper,paper section source
+paper/sections/introduction.tex,2402,paper,paper section source
+paper/sections/limitations.tex,3033,paper,paper section source
+paper/sections/model.tex,1853,paper,paper section source
 paper/sections/motivation.tex,888,paper,paper section source
 paper/sections/related_work.tex,3710,paper,paper section source
-paper/sections/replay_verification.tex,1411,paper,paper section source
+paper/sections/replay_verification.tex,2102,paper,paper section source
 paper/tables/table_buffer_sensitivity.tex,3095,paper,generated paper table
 paper/tables/table_buffer_sensitivity_v2.tex,546,paper,generated paper table
 paper/tables/table_capsule_baselines.tex,4562,paper,generated paper table
 paper/tables/table_capsule_baselines_v2.tex,379,paper,generated paper table
 paper/tables/table_event_ablation.tex,590,paper,generated paper table
-paper/tables/table_limitations.tex,469,paper,generated paper table
+paper/tables/table_limitations.tex,1100,paper,generated paper table
 paper/tables/table_mapped_scaling.tex,1179,paper,generated paper table
 paper/tables/table_mapped_scaling_v2.tex,596,paper,generated paper table
 paper/tables/table_negative_replay.tex,109,paper,generated paper table
@@ -47,12 +57,12 @@ paper/figures/fig_mapped_memory_scaling.pdf,985,paper,generated paper figure/sou
 paper/figures/fig_mapped_overhead_v2.pdf,845,paper,generated paper figure/source
 paper/figures/fig_mapped_scaling.pdf,899,paper,generated paper figure/source
 paper/figures/fig_recorder_config_tradeoff.pdf,660,paper,generated paper figure/source
-paper/figures/fig_recorder_config_tradeoff_v2.pdf,731,paper,generated paper figure/source
-paper/figures/fig_replay_consumer_controller.pdf,712,paper,generated paper figure/source
+paper/figures/fig_recorder_config_tradeoff_v2.pdf,752,paper,generated paper figure/source
+paper/figures/fig_replay_consumer_controller.pdf,718,paper,generated paper figure/source
 paper/figures/fig_replay_success.pdf,773,paper,generated paper figure/source
 paper/figures/fig_runtime_scaling.pdf,1005,paper,generated paper figure/source
 paper/figures/fig_runtime_scaling_v2.pdf,748,paper,generated paper figure/source
-paper/figures/fig_workload_scaling_v2.pdf,728,paper,generated paper figure/source
+paper/figures/fig_workload_scaling_v2.pdf,758,paper,generated paper figure/source
 paper/figures/mapped_overhead_summary.svg,1855,paper,generated paper figure/source
 paper/figures/randomized_interrupt_campaign.svg,7141,paper,generated paper figure/source
 paper/figures/README.md,10571,paper,generated paper figure/source
@@ -61,23 +71,29 @@ paper/figures/replay_flow.svg,2123,paper,generated paper figure/source
 paper/figures/replay_success_summary.svg,1131,paper,generated paper figure/source
 paper/figures/rtl_capsule_event_classes.svg,6077,paper,generated paper figure/source
 paper/figures/runtime_overhead_summary.svg,1724,paper,generated paper figure/source
-paper/figures/synthesis_status.svg,1669,paper,generated paper figure/source
-paper/figures/table01_synthesis_resources.md,2340,paper,generated paper figure/source
-paper/figures/table02_replay_evidence.md,1322,paper,generated paper figure/source
+paper/figures/synthesis_status.svg,2502,paper,generated paper figure/source
+paper/figures/table01_synthesis_resources.md,2663,paper,generated paper figure/source
+paper/figures/table02_replay_evidence.md,1298,paper,generated paper figure/source
 paper/figures/table03_trace_baselines.md,967,paper,generated paper figure/source
 paper/figures/table04_event_sufficiency.md,1328,paper,generated paper figure/source
 paper/figures/table05_formal_coverage.md,2361,paper,generated paper figure/source
 paper/figures/table06_proof_obligations.md,2618,paper,generated paper figure/source
-paper/figures/table07_evaluation_metrics.md,8853,paper,generated paper figure/source
+paper/figures/table07_evaluation_metrics.md,8831,paper,generated paper figure/source
 paper/figures/table_event_sufficiency.md,5523,paper,generated paper figure/source
 paper/figures/trace_size_status.svg,1135,paper,generated paper figure/source
 results/processed/ablations.csv,10573,results,processed evidence CSV
 results/processed/apt_install_status.csv,799,results,processed evidence CSV
-results/processed/artifact_manifest.csv,146757,results,processed evidence CSV
-results/processed/aspdac_submission_audit.csv,4995,results,processed evidence CSV
+results/processed/artifact_manifest.csv,296854,results,processed evidence CSV
+results/processed/asic_openpdk.csv,1929,results,processed evidence CSV
+results/processed/asic_openpdk_overhead.csv,2144,results,processed evidence CSV
+results/processed/asic_openpdk_summary.csv,95,results,processed evidence CSV
+results/processed/asic_openpdk_yosys_area.csv,1804,results,processed evidence CSV
+results/processed/asic_openpdk_yosys_area_overhead.csv,834,results,processed evidence CSV
+results/processed/asic_physical_tool_probe.csv,3320,results,processed evidence CSV
+results/processed/aspdac_submission_audit.csv,8692,results,processed evidence CSV
 results/processed/baseline_comparison.csv,43684,results,processed evidence CSV
 results/processed/benchmark_coverage.csv,2485,results,processed evidence CSV
-results/processed/benchmark_manifest.csv,2469,results,processed evidence CSV
+results/processed/benchmark_manifest.csv,3563,results,processed evidence CSV
 results/processed/buffer_sensitivity.csv,1109033,results,processed evidence CSV
 results/processed/buffer_sensitivity_fixed.csv,1077603,results,processed evidence CSV
 results/processed/buffer_sensitivity_fixed_summary.csv,8697,results,processed evidence CSV
@@ -96,30 +112,33 @@ results/processed/capsule_baseline_summary_fixed.csv,10425,results,processed evi
 results/processed/capsule_baseline_summary_v2.csv,12467,results,processed evidence CSV
 results/processed/capsule_baseline_summary_v2_measured.csv,4390,results,processed evidence CSV
 results/processed/ci_gate_failure_diagnosis.csv,622,results,processed evidence CSV
-results/processed/claim_audit.csv,89815,results,processed evidence CSV
+results/processed/claim_audit.csv,129169,results,processed evidence CSV
 results/processed/deterministic_firmware.csv,4775,results,processed evidence CSV
 results/processed/evaluation_matrix.csv,258918,results,processed evidence CSV
-results/processed/evaluation_metrics.csv,9066,results,processed evidence CSV
+results/processed/evaluation_metrics.csv,9044,results,processed evidence CSV
 results/processed/event_ablation_scaling.csv,324271,results,processed evidence CSV
 results/processed/event_sufficiency.csv,847,results,processed evidence CSV
 results/processed/event_sufficiency_matrix.csv,37601,results,processed evidence CSV
-results/processed/expanded_benchmark_replay.csv,10319,results,processed evidence CSV
-results/processed/expanded_benchmark_replay_measured.csv,15736,results,processed evidence CSV
-results/processed/expanded_firmware_build.csv,13397,results,processed evidence CSV
+results/processed/expanded_benchmark_replay.csv,24503,results,processed evidence CSV
+results/processed/expanded_benchmark_replay_measured.csv,77789,results,processed evidence CSV
+results/processed/expanded_firmware_build.csv,21841,results,processed evidence CSV
+results/processed/expanded_firmware_build_probe.csv,19491,results,processed evidence CSV
 results/processed/final_ci_gate_status.csv,25,results,processed evidence CSV
 results/processed/final_ci_verification.csv,2129,results,processed evidence CSV
 results/processed/firmware_build.csv,10156,results,processed evidence CSV
 results/processed/firmware_sim_replay.csv,938,results,processed evidence CSV
 results/processed/firmware_source_comparison.csv,8281,results,processed evidence CSV
-results/processed/firmware_source_comparison_v2.csv,16132,results,processed evidence CSV
+results/processed/firmware_source_comparison_v2.csv,26308,results,processed evidence CSV
 results/processed/formal_checks.csv,3928,results,processed evidence CSV
 results/processed/formal_coverage.csv,3515,results,processed evidence CSV
 results/processed/full_core_mapped_summary.csv,473,results,processed evidence CSV
 results/processed/full_rtl_replay.csv,16270,results,processed evidence CSV
 results/processed/full_rtl_replay_negative.csv,1467,results,processed evidence CSV
-results/processed/full_rtl_replay_v2.csv,59313,results,processed evidence CSV
+results/processed/full_rtl_replay_v2.csv,71522,results,processed evidence CSV
 results/processed/full_rtl_replay_v2_depth8_probe.csv,39336,results,processed evidence CSV
-results/processed/hdl_checks.csv,4712,results,processed evidence CSV
+results/processed/hazard3_irq_smoke.csv,346,results,processed evidence CSV
+results/processed/hazard3_v2_replay_smoke.csv,26287,results,processed evidence CSV
+results/processed/hdl_checks.csv,6682,results,processed evidence CSV
 results/processed/mapped_failure_diagnosis.csv,3109,results,processed evidence CSV
 results/processed/mapped_overhead.csv,3590,results,processed evidence CSV
 results/processed/mapped_recorder_presence.csv,1470,results,processed evidence CSV
@@ -133,11 +152,14 @@ results/processed/mapped_scaling_summary.csv,644,results,processed evidence CSV
 results/processed/mapped_scaling_v2.csv,4208,results,processed evidence CSV
 results/processed/mapped_scaling_v2_measured.csv,1296,results,processed evidence CSV
 results/processed/mapped_synthesis.csv,1160,results,processed evidence CSV
+results/processed/new_benchmark_probe_environmental.csv,1130,results,processed evidence CSV
+results/processed/new_benchmark_probe_power.csv,1120,results,processed evidence CSV
 results/processed/overflow_contracts.csv,1124,results,processed evidence CSV
 results/processed/paper_build_status.csv,96,results,processed evidence CSV
 results/processed/paper_number_audit.csv,111,results,processed evidence CSV
 results/processed/picorv32_smoke_coverage.csv,1070,results,processed evidence CSV
 results/processed/picorv32_smoke_summary.csv,3937,results,processed evidence CSV
+results/processed/platform2_probe_v2.csv,1651,results,processed evidence CSV
 results/processed/proof_obligations.csv,4795,results,processed evidence CSV
 results/processed/randomized_interrupt_campaign.csv,7896,results,processed evidence CSV
 results/processed/randomized_interrupt_corruption.csv,5271,results,processed evidence CSV
@@ -166,17 +188,23 @@ results/processed/runtime_scaling_v2_measured_summary.csv,3196,results,processed
 results/processed/scaled_firmware_build.csv,26305,results,processed evidence CSV
 results/processed/scaling_fix_audit.csv,476,results,processed evidence CSV
 results/processed/scaling_workloads.csv,2667,results,processed evidence CSV
+results/processed/second_core_breadth.csv,3756,results,processed evidence CSV
+results/processed/second_core_irq_candidate.csv,1998,results,processed evidence CSV
+results/processed/second_core_replay_smokes.csv,25712,results,processed evidence CSV
+results/processed/second_core_v2_smokes.csv,51091,results,processed evidence CSV
 results/processed/second_target_mapping.csv,567,results,processed evidence CSV
 results/processed/second_target_mapping_summary.csv,202,results,processed evidence CSV
+results/processed/self_replay_handoff_v2.csv,102709,results,processed evidence CSV
+results/processed/standalone_self_replay_smokes.csv,18374,results,processed evidence CSV
 results/processed/streaming_capture_tests.csv,929,results,processed evidence CSV
 results/processed/summary.csv,2048,results,processed evidence CSV
-results/processed/synthesis.csv,449,results,processed evidence CSV
-results/processed/synthesis_overhead.csv,402,results,processed evidence CSV
+results/processed/synthesis.csv,736,results,processed evidence CSV
+results/processed/synthesis_overhead.csv,404,results,processed evidence CSV
 results/processed/todo_audit.csv,142,results,processed evidence CSV
-results/processed/toolchain_status.csv,3041,results,processed evidence CSV
+results/processed/toolchain_status.csv,3162,results,processed evidence CSV
 results/processed/topconf_ci_gate_status.csv,27,results,processed evidence CSV
 results/processed/topconf_summary.csv,25870,results,processed evidence CSV
-results/processed/topconf_v2_artifact_manifest.csv,33824,results,processed evidence CSV
+results/processed/topconf_v2_artifact_manifest.csv,111810,results,processed evidence CSV
 results/processed/trace_sizes.csv,25220,results,processed evidence CSV
 results/processed/v2_replay_failure_diagnosis.csv,1591,results,processed evidence CSV
 results/processed/v2_zero_fail_bug_inventory.csv,229,results,processed evidence CSV
@@ -199,6 +227,372 @@ results/raw/replay_consumer_mapping/rcv2_replay_consumer_pin_limited_wrapper_ecp
 results/raw/replay_consumer_mapping/rcv2_replay_consumer_pin_limited_wrapper_ecp5-45k_yosys.txt,153637,raw,replay consumer mapping log
 results/raw/tb_rcv2_minimal_recorder_iverilog_compile.txt,1540,raw,minimal recorder HDL compile/run log
 results/raw/tb_rcv2_minimal_recorder_vvp_run.txt,68,raw,minimal recorder HDL compile/run log
+results/raw/tb_femtorv32_capsule_derived_replay_smoke_iverilog_compile.txt,1029,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_capsule_derived_replay_smoke_vvp_run.txt,258,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_sensor_threshold_smoke_iverilog_compile.txt,1029,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_sensor_threshold_smoke_vvp_run.txt,726,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_v2_replay_smoke_iverilog_compile.txt,5599,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_v2_replay_smoke_manual_compile.txt,11076,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_v2_replay_smoke_vvp_run.txt,325,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_wrapper_smoke.txt,1472,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_wrapper_smoke_iverilog_compile.txt,30866,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/tb_femtorv32_wrapper_smoke_trace.txt,15214,raw,FemtoRV32 wrapper/replay smoke compile/run log
+results/raw/verilator_lint_femtorv32_v2_wrapper.txt,308,raw,FemtoRV32 wrapper Verilator lint log
+results/raw/verilator_lint_femtorv32_wrapper.txt,308,raw,FemtoRV32 wrapper Verilator lint log
+results/raw/second_core_replay_smokes/commanded_actuator_limit_bug.txt,161,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/commanded_actuator_limit_bug_capture_all.txt,268,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/commanded_actuator_limit_bug_mmio_interrupt.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/commanded_actuator_limit_bug_property_aware.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/commanded_actuator_limit_bug_replaycapsule_default.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/compile.txt,1013,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/environmental_controller_bug_capture_all.txt,268,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/environmental_controller_bug_mmio_interrupt.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/environmental_controller_bug_property_aware.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/environmental_controller_bug_replaycapsule_default.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/interrupt_race_bug.txt,160,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/interrupt_race_bug_capture_all.txt,267,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/interrupt_race_bug_mmio_interrupt.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/interrupt_race_bug_property_aware.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/interrupt_race_bug_replaycapsule_default.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/late_config_sequence_bug.txt,161,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/late_config_sequence_bug_capture_all.txt,267,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/late_config_sequence_bug_mmio_interrupt.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/late_config_sequence_bug_property_aware.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/late_config_sequence_bug_replaycapsule_default.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/mmio_ordering_bug.txt,161,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/mmio_ordering_bug_capture_all.txt,267,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/mmio_ordering_bug_mmio_interrupt.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/mmio_ordering_bug_property_aware.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/mmio_ordering_bug_replaycapsule_default.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_config_order_bug.txt,161,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_config_order_bug_capture_all.txt,267,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_config_order_bug_mmio_interrupt.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_config_order_bug_property_aware.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_config_order_bug_replaycapsule_default.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_status_window_bug.txt,161,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_status_window_bug_capture_all.txt,268,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_status_window_bug_mmio_interrupt.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_status_window_bug_property_aware.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/platform2_status_window_bug_replaycapsule_default.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/power_rail_sequencer_bug_capture_all.txt,268,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/power_rail_sequencer_bug_mmio_interrupt.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/power_rail_sequencer_bug_property_aware.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/power_rail_sequencer_bug_replaycapsule_default.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_debounce_bug.txt,162,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_debounce_bug_capture_all.txt,267,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_debounce_bug_mmio_interrupt.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_debounce_bug_property_aware.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_debounce_bug_replaycapsule_default.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_threshold_bug.txt,162,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_threshold_bug_capture_all.txt,267,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_threshold_bug_mmio_interrupt.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_threshold_bug_property_aware.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/sensor_threshold_bug_replaycapsule_default.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/stack_corruption_bug.txt,169,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/stack_corruption_bug_capture_all.txt,267,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/stack_corruption_bug_mmio_interrupt.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/stack_corruption_bug_property_aware.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/stack_corruption_bug_replaycapsule_default.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/status_clear_on_read_bug.txt,161,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/status_clear_on_read_bug_capture_all.txt,268,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/status_clear_on_read_bug_mmio_interrupt.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/status_clear_on_read_bug_property_aware.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/status_clear_on_read_bug_replaycapsule_default.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/uart_command_bug.txt,162,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/uart_command_bug_capture_all.txt,268,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/uart_command_bug_mmio_interrupt.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/uart_command_bug_property_aware.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/uart_command_bug_replaycapsule_default.txt,266,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/watchdog_timeout_bug.txt,162,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/watchdog_timeout_bug_capture_all.txt,267,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/watchdog_timeout_bug_mmio_interrupt.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/watchdog_timeout_bug_property_aware.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_replay_smokes/watchdog_timeout_bug_replaycapsule_default.txt,265,raw,focused FemtoRV32 replay-smoke log
+results/raw/second_core_irq_candidate/verilator_lint_hazard3_cpu_1port.txt,308,raw,Hazard3 interrupt-capable second-core candidate probe log
+results/raw/hazard3_irq_smoke/firmware_build.txt,2,raw,focused Hazard3 true-ISR smoke build/run log
+results/raw/hazard3_irq_smoke/firmware_objcopy.txt,2,raw,focused Hazard3 true-ISR smoke build/run log
+results/raw/hazard3_irq_smoke/iverilog_compile.txt,2,raw,focused Hazard3 true-ISR smoke build/run log
+results/raw/hazard3_irq_smoke/vvp_run.txt,184,raw,focused Hazard3 true-ISR smoke build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_build_actuator_limit_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_build_interrupt_critical_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_build_mmio_ordering_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_build_post_config_actuator_limit_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_build_profile2_actuator_limit_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_build_profile2_interrupt_critical_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_build_profile2_mmio_ordering_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_build_stack_protect_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_objcopy_actuator_limit_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_objcopy_interrupt_critical_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_objcopy_mmio_ordering_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_objcopy_post_config_actuator_limit_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_objcopy_profile2_actuator_limit_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_objcopy_profile2_interrupt_critical_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_objcopy_profile2_mmio_ordering_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/firmware_objcopy_stack_protect_bug.txt,2,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/iverilog_compile.txt,5466,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_actuator_limit_bug_core_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_actuator_limit_bug_core_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_actuator_limit_bug_core_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_actuator_limit_bug_hashed_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_actuator_limit_bug_hashed_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_actuator_limit_bug_hashed_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_interrupt_critical_bug_core_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_interrupt_critical_bug_core_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_interrupt_critical_bug_core_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_interrupt_critical_bug_hashed_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_interrupt_critical_bug_hashed_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_interrupt_critical_bug_hashed_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_mmio_ordering_bug_core_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_mmio_ordering_bug_core_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_mmio_ordering_bug_core_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_mmio_ordering_bug_hashed_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_mmio_ordering_bug_hashed_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_mmio_ordering_bug_hashed_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_post_config_actuator_limit_bug_core_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_post_config_actuator_limit_bug_core_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_post_config_actuator_limit_bug_core_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_post_config_actuator_limit_bug_hashed_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_post_config_actuator_limit_bug_hashed_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_post_config_actuator_limit_bug_hashed_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_actuator_limit_bug_core_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_actuator_limit_bug_core_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_actuator_limit_bug_core_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_actuator_limit_bug_hashed_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_actuator_limit_bug_hashed_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_actuator_limit_bug_hashed_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_interrupt_critical_bug_core_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_interrupt_critical_bug_core_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_interrupt_critical_bug_core_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_interrupt_critical_bug_hashed_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_interrupt_critical_bug_hashed_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_interrupt_critical_bug_hashed_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_mmio_ordering_bug_core_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_mmio_ordering_bug_core_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_mmio_ordering_bug_core_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_mmio_ordering_bug_hashed_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_mmio_ordering_bug_hashed_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_profile2_mmio_ordering_bug_hashed_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_stack_protect_bug_core_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_stack_protect_bug_core_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_stack_protect_bug_core_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_stack_protect_bug_hashed_seed1.txt,416,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_stack_protect_bug_hashed_seed2.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/hazard3_v2_replay_smoke/vvp_run_stack_protect_bug_hashed_seed3.txt,418,raw,seeded Hazard3 v2 replay matrix build/run log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/commanded_actuator_limit_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/environmental_controller_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/interrupt_race_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/late_config_sequence_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/mmio_ordering_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_config_order_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/platform2_status_window_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/power_rail_sequencer_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_debounce_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/sensor_threshold_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/stack_corruption_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/status_clear_on_read_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/tb_femtorv32_v2_replay_smoke_compile.txt,5599,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/uart_command_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_core.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_core_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_core_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_core_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_full.txt,279,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_full_seed1.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_full_seed2.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_full_seed3.txt,327,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_hashed.txt,277,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_hashed_seed1.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_hashed_seed2.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/second_core_v2_smokes/watchdog_timeout_bug_hashed_seed3.txt,325,raw,focused FemtoRV32 v2 replay-consumer smoke log
+results/raw/standalone_self_replay_smokes/commanded_actuator_limit_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/commanded_actuator_limit_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/commanded_actuator_limit_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/compile.txt,4884,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/environmental_controller_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/environmental_controller_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/environmental_controller_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/interrupt_race_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/interrupt_race_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/interrupt_race_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/late_config_sequence_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/late_config_sequence_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/late_config_sequence_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/mmio_ordering_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/mmio_ordering_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/mmio_ordering_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/platform2_config_order_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/platform2_config_order_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/platform2_config_order_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/platform2_status_window_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/platform2_status_window_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/platform2_status_window_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/power_rail_sequencer_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/power_rail_sequencer_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/power_rail_sequencer_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/sensor_debounce_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/sensor_debounce_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/sensor_debounce_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/sensor_threshold_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/sensor_threshold_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/sensor_threshold_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/stack_corruption_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/stack_corruption_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/stack_corruption_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/status_clear_on_read_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/status_clear_on_read_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/status_clear_on_read_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/uart_command_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/uart_command_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/uart_command_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/watchdog_timeout_bug_core.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/watchdog_timeout_bug_full.txt,253,raw,focused standalone self-replay smoke log
+results/raw/standalone_self_replay_smokes/watchdog_timeout_bug_hashed.txt,253,raw,focused standalone self-replay smoke log
 results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem128_buf16_ecp5_85k_nextpnr.txt,25190,raw,v2 full-core mapped synthesis/place-and-route log
 results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem128_buf16_ecp5_85k_yosys.txt,462968,raw,v2 full-core mapped synthesis/place-and-route log
 results/raw/mapped_scaling_v2_measured/full_core_baseline_board_mem128_buf8_ecp5_85k_nextpnr.txt,25610,raw,v2 full-core mapped synthesis/place-and-route log
@@ -239,8 +633,44 @@ results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem128_buf8_gat
 results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem2048_buf512_ecp5_85k_yosys.txt,3257715,raw,v2 full-core mapped synthesis/place-and-route log
 results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem512_buf128_ecp5_85k_nextpnr.txt,37378,raw,v2 full-core mapped synthesis/place-and-route log
 results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem512_buf128_ecp5_85k_yosys.txt,879378,raw,v2 full-core mapped synthesis/place-and-route log
-results/raw/mapped_scaling_v2_measured/full_core_v2_minimal_board_mem128_buf8_gatedopts_ecp5_85k_nextpnr.txt,28295,raw,v2 full-core mapped synthesis/place-and-route log
-results/raw/mapped_scaling_v2_measured/full_core_v2_minimal_board_mem128_buf8_gatedopts_ecp5_85k_yosys.txt,534614,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_minimal_board_mem128_buf8_gatedopts_ecp5_85k_nextpnr.txt,28291,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/mapped_scaling_v2_measured/full_core_v2_minimal_board_mem128_buf8_gatedopts_ecp5_85k_yosys.txt,534578,raw,v2 full-core mapped synthesis/place-and-route log
+results/raw/asic_openpdk/full_core_baseline_board_flow.tcl,2008,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_openroad.def,5630148,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_openroad.odb,21994155,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_openroad_physical.txt,17710,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_synth.ys,450,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_yosys_area.txt,425091,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_yosys_area_mapped.v,2744844,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_flow.tcl,2013,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_openroad.def,7481599,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_openroad.odb,26582845,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_openroad_physical.txt,17813,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_synth.ys,1123,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_yosys_area.txt,726947,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_yosys_area_mapped.v,3416591,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_flow.tcl,2013,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_openroad.def,7835182,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_openroad.odb,27583666,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_openroad_physical.txt,17864,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_synth.ys,1123,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_yosys_area.txt,778191,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_yosys_area_mapped.v,3504580,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_flow.tcl,2019,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_openroad.def,7520367,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_openroad.odb,26648482,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_openroad_physical.txt,17837,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_synth.ys,1125,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_yosys_area.txt,745459,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_yosys_area_mapped.v,3427117,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_flow.tcl,2022,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_openroad.def,5812519,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_openroad.odb,22549520,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_openroad_physical.txt,18080,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_synth.ys,1126,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_yosys_area.txt,514906,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_yosys_area_mapped.v,2847451,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/openroad_candidates.txt,59,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
 results/raw/expanded_benchmark_replay/build_firmware.log,113,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_failing.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
@@ -250,6 +680,12 @@ results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_fixed.lo
 results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_environmental_controller_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_environmental_controller_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_environmental_controller_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_environmental_controller_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_environmental_controller_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_environmental_controller_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_failing.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
@@ -258,6 +694,36 @@ results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_fixed.log,64
 results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_late_config_sequence_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_config_order_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_config_order_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_config_order_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_config_order_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_config_order_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_config_order_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_status_window_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_status_window_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_status_window_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_status_window_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_status_window_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_platform2_status_window_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_power_rail_sequencer_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_power_rail_sequencer_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_power_rail_sequencer_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_power_rail_sequencer_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_power_rail_sequencer_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_power_rail_sequencer_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_sensor_debounce_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_sensor_debounce_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_sensor_debounce_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_sensor_debounce_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_sensor_debounce_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_sensor_debounce_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_status_clear_on_read_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_status_clear_on_read_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_status_clear_on_read_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_status_clear_on_read_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_status_clear_on_read_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/core_status_clear_on_read_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_failing.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
@@ -266,6 +732,12 @@ results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_fixed.lo
 results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_commanded_actuator_limit_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_environmental_controller_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_environmental_controller_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_environmental_controller_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_environmental_controller_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_environmental_controller_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_environmental_controller_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_failing.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
@@ -274,6 +746,36 @@ results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_fixed.log,64
 results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/full_late_config_sequence_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_config_order_bug_failing_seed1.log,877,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_config_order_bug_failing_seed2.log,877,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_config_order_bug_failing_seed3.log,877,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_config_order_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_config_order_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_config_order_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_status_window_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_status_window_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_status_window_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_status_window_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_status_window_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_platform2_status_window_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_power_rail_sequencer_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_power_rail_sequencer_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_power_rail_sequencer_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_power_rail_sequencer_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_power_rail_sequencer_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_power_rail_sequencer_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_sensor_debounce_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_sensor_debounce_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_sensor_debounce_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_sensor_debounce_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_sensor_debounce_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_sensor_debounce_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_status_clear_on_read_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_status_clear_on_read_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_status_clear_on_read_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_status_clear_on_read_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_status_clear_on_read_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/full_status_clear_on_read_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_failing.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
@@ -282,6 +784,12 @@ results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_fixed.
 results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_commanded_actuator_limit_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_environmental_controller_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_environmental_controller_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_environmental_controller_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_environmental_controller_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_environmental_controller_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_environmental_controller_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_failing.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
@@ -290,6 +798,36 @@ results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_fixed.log,
 results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/hashed_late_config_sequence_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_config_order_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_config_order_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_config_order_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_config_order_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_config_order_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_config_order_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_status_window_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_status_window_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_status_window_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_status_window_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_status_window_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_platform2_status_window_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_power_rail_sequencer_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_power_rail_sequencer_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_power_rail_sequencer_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_power_rail_sequencer_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_power_rail_sequencer_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_power_rail_sequencer_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_sensor_debounce_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_sensor_debounce_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_sensor_debounce_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_sensor_debounce_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_sensor_debounce_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_sensor_debounce_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_status_clear_on_read_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_status_clear_on_read_bug_failing_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_status_clear_on_read_bug_failing_seed3.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_status_clear_on_read_bug_fixed_seed1.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_status_clear_on_read_bug_fixed_seed2.log,64,raw,expanded benchmark replay run log
+results/raw/expanded_benchmark_replay/hashed_status_clear_on_read_bug_fixed_seed3.log,64,raw,expanded benchmark replay run log
 results/debug/topconf_v2_before/baseline_status.md,752,baseline,frozen pre-v2 evidence
 results/debug/topconf_v2_before/docs_conference_readiness_dashboard.md,1831,baseline,frozen pre-v2 evidence
 results/debug/topconf_v2_before/paper_main.pdf,103302,baseline,frozen pre-v2 evidence
@@ -310,6 +848,7 @@ results/debug/topconf_v2_before/results_processed_workload_scaling.csv,54435,bas
 rtl/replaycapsule_v2/rcv2_adaptive_window.sv,1386,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_address_dictionary.sv,1560,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_capsule_rom.sv,556,rtl,v2 RTL source
+rtl/replaycapsule_v2/rcv2_capsule_source.sv,4202,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_config.svh,2686,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv,1548,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_event_packer.sv,2655,rtl,v2 RTL source
@@ -318,25 +857,110 @@ rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv,787,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv,1192,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_payload_hasher.sv,705,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_recorder.sv,22194,rtl,v2 RTL source
-rtl/replaycapsule_v2/rcv2_replay_consumer.sv,6915,rtl,v2 RTL source
+rtl/replaycapsule_v2/rcv2_replay_consumer.sv,9930,rtl,v2 RTL source
+rtl/replaycapsule_v2/rcv2_replay_mode_controller.sv,4649,rtl,v2 RTL source
+rtl/replaycapsule_v1/rcv1_capsule_replay_checker.sv,2785,rtl,v1 capsule replay checker used by FemtoRV32 smokes
+rtl/replaycapsule_v1/rcv1_mmio_replay_driver.sv,2349,rtl,v1 MMIO replay driver used by FemtoRV32 smokes
+rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv,32670,rtl,PicoRV32 ReplayCapsule wrapper used by standalone self-replay smokes
+rtl/rv32i_integration/replaycapsule_v2_self_replay_top.sv,11169,rtl,reusable v2 self-replay top used by standalone smokes
+rtl/rv32i_integration/replaycapsule_v2_self_replay_soc.sv,9061,rtl,focused v2 self-replay SoC shell used by standalone smokes
+rtl/rv32i_integration/femtorv32_replaycapsule_v2_wrapper.sv,23293,rtl,FemtoRV32 ReplayCapsule wrapper source
+rtl/rv32i_integration/femtorv32_replaycapsule_wrapper.sv,4745,rtl,FemtoRV32 ReplayCapsule wrapper source
+rtl/rv32i_integration/hazard3_replaycapsule_v2_wrapper.sv,27291,rtl,Hazard3 ReplayCapsule v2 matrix wrapper source
 rtl/mapped/full_core_replaycapsule_v2_board_top.sv,11538,rtl,v2 full-core mapped recorder wrapper
 rtl/mapped/full_core_baseline_board_top.sv,3544,rtl,full-core mapped baseline wrapper
 rtl/mapped/mapped_memory.sv,2717,rtl,mapped board memory model
 rtl/mapped/replaycapsule_v2_recorder_wrapper.sv,4776,rtl,v2 synthesis wrapper
-rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv,2299,rtl,v2 replay-consume pin-limited wrapper
-tb/replay_consumer/tb_rcv2_replay_consumer.sv,8731,tests,v2 replay consumer testbench
-tb/replay_consumer/tb_rcv2_system_replay_consumer.sv,7159,tests,v2 replay consumer testbench
-tb/system/tb_rcv2_minimal_recorder.sv,12526,tests,selected v2 minimal recorder fidelity testbench
+rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv,2341,rtl,v2 replay-consume pin-limited wrapper
+tb/replay_consumer/tb_rcv2_replay_consumer.sv,9743,tests,v2 replay consumer testbench
+tb/replay_consumer/tb_rcv2_system_replay_consumer.sv,8231,tests,v2 replay consumer testbench
+tb/system/tb_rcv2_minimal_recorder.sv,12814,tests,selected v2 minimal recorder fidelity testbench
+tb/system/tb_picorv32_standalone_self_replay_smoke.sv,15840,tests,focused PicoRV32 standalone self-replay smoke testbench
+tb/system/tb_rcv1_capsule_replay_checker.sv,4949,tests,v1 capsule replay checker testbench
+tb/system/tb_rcv1_mmio_replay_driver.sv,3538,tests,v1 MMIO replay driver testbench
+tb/system/tb_femtorv32_v2_replay_smoke.sv,16735,tests,FemtoRV32 wrapper/replay smoke testbench
+tb/system/tb_femtorv32_wrapper_smoke.sv,20410,tests,FemtoRV32 wrapper/replay smoke testbench
+tb/system/tb_hazard3_irq_smoke.v,7620,tests,focused Hazard3 true-ISR smoke testbench
+tb/system/tb_hazard3_v2_replay_smoke.sv,17841,tests,seeded Hazard3 v2 replay matrix testbench
+firmware/hazard3_irq_smoke/hazard3_irq_smoke.S,1006,firmware,Hazard3 true-ISR smoke firmware and linker script
+firmware/hazard3_irq_smoke/linker.ld,570,firmware,Hazard3 true-ISR smoke firmware and linker script
+firmware/hazard3_replay_smoke/hazard3_replay_smoke.S,3646,firmware,Hazard3 v2 replay matrix firmware and linker script
+firmware/hazard3_replay_smoke/linker.ld,570,firmware,Hazard3 v2 replay matrix firmware and linker script
+third_party/femtorv32/femtorv32_quark.v,16383,third_party,vendored FemtoRV32 source and license metadata
+third_party/femtorv32/LICENSE,1518,third_party,vendored FemtoRV32 source and license metadata
+third_party/femtorv32/README.md,4499,third_party,vendored FemtoRV32 source and license metadata
+third_party/femtorv32/VENDORED.md,635,third_party,vendored FemtoRV32 source and license metadata
+third_party/hazard3/hdl/arith/hazard3_alu.v,9271,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/hazard3_branchcmp.v,1488,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/hazard3_mul_fast.v,4326,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/hazard3_muldiv_seq.v,9681,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/hazard3_onehot_encode.v,843,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/hazard3_onehot_priority.v,944,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/hazard3_onehot_priority_dynamic.v,2592,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/hazard3_priority_encode.v,1005,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/hazard3_shift_barrel.v,1980,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/arith/muldiv_model.py,1937,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/cdc/hazard3_apb_async_bridge.v,7066,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/cdc/hazard3_reset_sync.v,1199,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/cdc/hazard3_sync_1bit.v,1087,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dm/hazard3_dm.f,19,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dm/hazard3_dm.v,32710,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dm/hazard3_sbus_to_ahb.v,2171,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dtm/hazard3_ecp5_jtag_dtm.f,169,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dtm/hazard3_ecp5_jtag_dtm.v,6610,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dtm/hazard3_jtag_dtm.f,164,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dtm/hazard3_jtag_dtm.v,7024,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dtm/hazard3_jtag_dtm_core.v,5855,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/debug/dtm/hazard3_xilinx7_jtag_dtm.v,5362,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3.f,626,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_config.vh,11763,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_config_inst.vh,2475,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_core.v,56717,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_cpu_1port.v,11354,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_cpu_2port.v,11202,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_csr.v,58243,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_csr_addr.vh,9939,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_decode.v,34209,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_frontend.v,36467,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_instr_decompress.v,16978,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_irq_ctrl.v,10786,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_ops.vh,4273,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_pmp.v,12600,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_power_ctrl.v,5949,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_regfile_1w2r.v,2263,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_rvfi_monitor.vh,13770,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_rvfi_standalone_defs.vh,3336,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_triggers.v,18366,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/hazard3_width_const.vh,833,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/hdl/rv_opcodes.vh,14949,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/LICENSE,11558,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/Readme.md,25612,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/VENDORED.md,432,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/picorv32/COPYING,792,third_party,vendored PicoRV32 source and license metadata
+third_party/picorv32/picorv32.v,97706,third_party,vendored PicoRV32 source and license metadata
+third_party/picorv32/README.md,31025,third_party,vendored PicoRV32 source and license metadata
+third_party/picorv32/VENDORED.md,324,third_party,vendored PicoRV32 source and license metadata
 scripts/diagnose_workload_failures.py,3436,scripts,v2 diagnosis script
 scripts/run_buffer_sensitivity_v2.py,6157,scripts,v2 buffer script
 scripts/run_workload_scaling_v2.py,7214,scripts,v2 workload script
 scripts/run_capsule_baselines_v2.py,8454,scripts,v2 capsule script
 scripts/run_replay_consumer_tests.py,5336,scripts,v2 replay consumer test script
 scripts/run_replay_consumer_mapping.py,7742,scripts,v2 replay consumer mapping script
-scripts/run_hdl_checks.py,24339,scripts,HDL frontend and minimal recorder fidelity checks
+scripts/run_hdl_checks.py,32298,scripts,HDL frontend and minimal recorder fidelity checks
+scripts/run_standalone_self_replay_smokes.py,17151,scripts,focused standalone self-replay smoke matrix
 scripts/run_mapped_scaling_v2.py,10868,scripts,v2 mapped-status script
 scripts/run_v2_measured_evaluation.py,47622,scripts,measured v2 workload/runtime/mapped evidence script
-scripts/audit_aspdac_submission.py,14555,scripts,ASP-DAC submission audit
+scripts/audit_aspdac_submission.py,31319,scripts,ASP-DAC submission audit
+scripts/run_second_core_breadth.py,17404,scripts,second-core breadth gate
+scripts/probe_second_core_irq_candidate.py,11404,scripts,Hazard3 interrupt-capable second-core candidate probe
+scripts/run_hazard3_irq_smoke.py,11544,scripts,focused Hazard3 true-ISR smoke runner
+scripts/run_hazard3_v2_replay_smoke.py,21081,scripts,seeded Hazard3 v2 replay matrix runner
+scripts/materialize_nangate45_from_orfs.py,4830,scripts,Nangate45 PDK materializer for OpenROAD Docker image
+scripts/probe_asic_physical_tools.py,21187,scripts,ASIC physical-flow tool probe
+scripts/run_asic_openpdk.py,32515,scripts,ASIC OpenROAD/open-PDK evidence runner
+scripts/run_asic_openroad_docker.ps1,1776,scripts,local Docker wrapper for OpenROAD ASIC evidence
+scripts/run_second_core_replay_smokes.py,14277,scripts,focused second-core replay-smoke matrix
+scripts/run_second_core_v2_smokes.py,16385,scripts,focused second-core v2 replay-consumer matrix
 scripts/run_second_target_mapping.py,4258,scripts,v2 second-target script
-scripts/benchmark_manifest.py,6165,scripts,benchmark diversity manifest script
-scripts/generate_topconf_v2_tables.py,14907,scripts,v2 paper table/figure script
+scripts/benchmark_manifest.py,6551,scripts,benchmark diversity manifest script
+scripts/generate_topconf_v2_tables.py,15089,scripts,v2 paper table/figure script

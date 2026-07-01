@@ -1,0 +1,55 @@
+OpenROAD 26Q2-2270-g4c26918f5a
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[INFO ODB-0227] LEF file: .tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef, created 22 layers, 27 vias, 135 library cells
+[WARNING STA-0441] set_input_delay relative to a clock defined on the same port/pin not allowed.
+[WARNING IFP-0028] Core area lower left (20.000, 20.000) snapped to (20.140, 21.000).
+[INFO IFP-0001] Added 217 rows of 1604 site FreePDK45_38x28_10R_NP_162NW_34O.
+[INFO IFP-0100] Die BBox:  (  0.000  0.000 ) ( 344.980 344.980 ) um
+[INFO IFP-0101] Core BBox: ( 20.140 21.000 ) ( 324.900 324.800 ) um
+[INFO IFP-0102] Core area:                        92586.088 um^2
+[INFO IFP-0103] Total instances area:             51157.652 um^2
+[INFO IFP-0104] Effective utilization:                0.553
+[INFO IFP-0105] Number of instances:                  22559
+Found 0 macro blocks.
+Using 2 tracks default min distance between IO pins.
+[ERROR PPL-0021] Horizontal routing tracks not found for layer metal3.
+RC_OPENROAD_ERROR place_pins PPL-0021
+[INFO GPL-0001] ---- Initialize GPL Main Data Structures
+[INFO GPL-0002] DBU: 2000
+[INFO GPL-0003] SiteSize: (  0.190  1.400 ) um
+[INFO GPL-0004] CoreBBox: ( 20.140 21.000 ) ( 324.900 324.800 ) um
+[INFO GPL-0036] Movable instances area:      51157.652 um^2
+[INFO GPL-0037] Total instances area:        51157.652 um^2
+[INFO GPL-0035] Pin density area adjust:      4284.679 um^2
+[ERROR GPL-0326] capsule_event_seen toplevel port is not placed.
+RC_OPENROAD_ERROR global_placement GPL-0326
+[WARNING DPL-0387] BTerm capsule_event_seen is unplaced.
+[WARNING DPL-0387] BTerm clk is unplaced.
+[WARNING DPL-0387] BTerm gpio_in[0] is unplaced.
+[WARNING DPL-0387] BTerm gpio_in[1] is unplaced.
+[WARNING DPL-0387] BTerm gpio_in[2] is unplaced.
+[WARNING DPL-0387] BTerm gpio_in[3] is unplaced.
+[WARNING DPL-0387] BTerm gpio_out[0] is unplaced.
+[WARNING DPL-0387] BTerm gpio_out[1] is unplaced.
+[WARNING DPL-0387] BTerm gpio_out[2] is unplaced.
+[WARNING DPL-0387] BTerm gpio_out[3] is unplaced.
+[WARNING DPL-0387] BTerm gpio_out[4] is unplaced.
+[WARNING DPL-0387] BTerm gpio_out[5] is unplaced.
+[WARNING DPL-0387] BTerm gpio_out[6] is unplaced.
+[WARNING DPL-0387] BTerm gpio_out[7] is unplaced.
+[WARNING DPL-0387] BTerm recorder_status_xor is unplaced.
+[WARNING DPL-0387] BTerm rst_n is unplaced.
+[WARNING DPL-0387] BTerm status_led[0] is unplaced.
+[WARNING DPL-0387] BTerm status_led[1] is unplaced.
+[WARNING DPL-0387] BTerm status_led[2] is unplaced.
+[WARNING DPL-0387] BTerm status_led[3] is unplaced.
+[WARNING DPL-0387] BTerm recorder_overflow_seen is unplaced.
+[WARNING DPL-0387] BTerm uart_rx is unplaced.
+[WARNING DPL-0387] BTerm uart_tx is unplaced.
+[INFO DPL-0006] Core area: 92586.09 um^2, Instances area: 51157.65 um^2, Utilization: 55.3%
+[INFO DPL-0005] Diamond search max displacement: +/- 500 sites horizontally, +/- 100 rows vertically.
+[INFO DPL-1101] Legalizing using diamond search.
+
+RC_OPENROAD_TIMEOUT after 300s

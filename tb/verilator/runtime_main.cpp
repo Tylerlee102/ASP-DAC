@@ -253,6 +253,15 @@ void configure_recorder(RuntimeTop* top, const Options& options) {
   top->replay_consume_valid = 0;
   top->replay_consume_word = 0;
   top->replay_consume_stream_done = 0;
+  top->replay_consume_use_source = 0;
+  top->replay_source_store_clear = 0;
+  top->replay_source_capture_enable = 0;
+  top->replay_source_load_valid = 0;
+  top->replay_source_load_addr = 0;
+  top->replay_source_load_word = 0;
+  top->replay_controller_enable = 0;
+  top->replay_controller_arm_record = 0;
+  top->replay_controller_start = 0;
   top->capsule_stream_ready = 1;
 #endif
 }

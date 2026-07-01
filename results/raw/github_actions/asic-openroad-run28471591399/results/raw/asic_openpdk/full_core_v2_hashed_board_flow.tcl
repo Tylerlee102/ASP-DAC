@@ -1,0 +1,9 @@
+read_liberty .tools/openpdk/nangate45/NangateOpenCellLibrary_typical.lib
+read_lef .tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef
+read_verilog results/raw/asic_openpdk/full_core_v2_hashed_board_yosys_area_mapped.v
+link_design full_core_replaycapsule_v2_board_top
+read_sdc constraints/asic_openpdk.sdc
+report_checks -path_delay max
+report_tns
+report_wns
+report_power

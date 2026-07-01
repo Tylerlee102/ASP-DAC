@@ -1,0 +1,2 @@
+RC_STANDALONE_SELF_REPLAY_PASS shell=rtl_self_replay_soc property=3 captured=2 sent=2 consumed=2 controller_done=1 irq_record=0 irq_replay=0 signature=5e050080
+tb/system/tb_picorv32_standalone_self_replay_smoke.sv:401: $finish called at 5526000 (1ps)

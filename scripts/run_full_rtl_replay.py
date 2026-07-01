@@ -46,6 +46,12 @@ BASE_BENCHMARKS = (
 EXPANDED_BENCHMARKS = (
     "commanded_actuator_limit_bug",
     "late_config_sequence_bug",
+    "sensor_debounce_bug",
+    "status_clear_on_read_bug",
+    "platform2_status_window_bug",
+    "platform2_config_order_bug",
+    "environmental_controller_bug",
+    "power_rail_sequencer_bug",
 )
 
 BENCHMARKS = BASE_BENCHMARKS + (EXPANDED_BENCHMARKS if EXPANDED_BENCHMARKS_ENABLED else ())
@@ -59,6 +65,12 @@ VARIANTS = {
     "watchdog_timeout_bug": ("failing", "fixed", "no_failure_edge"),
     "commanded_actuator_limit_bug": ("failing", "fixed"),
     "late_config_sequence_bug": ("failing", "fixed"),
+    "sensor_debounce_bug": ("failing", "fixed"),
+    "status_clear_on_read_bug": ("failing", "fixed"),
+    "platform2_status_window_bug": ("failing", "fixed"),
+    "platform2_config_order_bug": ("failing", "fixed"),
+    "environmental_controller_bug": ("failing", "fixed"),
+    "power_rail_sequencer_bug": ("failing", "fixed"),
 }
 
 VERILATOR_SOURCE_PATHS = (
@@ -81,6 +93,8 @@ VERILATOR_SOURCE_PATHS = (
     "rtl/replaycapsule_v2/rcv2_recorder.sv",
     "rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv",
     "rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv",
+    "rtl/replaycapsule_v2/rcv2_capsule_source.sv",
+    "rtl/replaycapsule_v2/rcv2_replay_mode_controller.sv",
     "rtl/replaycapsule_v2/rcv2_replay_consumer.sv",
     "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
     "tb/verilator/main.cpp",
@@ -142,6 +156,7 @@ FIELDS_V2 = [
     "replay_consumer_consumed",
     "replay_consumer_expected",
     "replay_consumer_error_code",
+    "replay_stimulus_source",
     "stream_event_count",
     "stream_event_sent_count",
     "replay_critical_event_count",
@@ -181,6 +196,12 @@ EXPECTED_PROPERTIES = {
     "watchdog_timeout_bug": 6,
     "commanded_actuator_limit_bug": 1,
     "late_config_sequence_bug": 5,
+    "sensor_debounce_bug": 3,
+    "status_clear_on_read_bug": 1,
+    "platform2_status_window_bug": 1,
+    "platform2_config_order_bug": 5,
+    "environmental_controller_bug": 1,
+    "power_rail_sequencer_bug": 5,
 }
 
 
@@ -587,6 +608,7 @@ def _run_case(
         "replay_consumer_consumed": str(replay_payload.get("replay_consumer_consumed", "NA")),
         "replay_consumer_expected": str(replay_payload.get("replay_consumer_expected", "NA")),
         "replay_consumer_error_code": str(replay_payload.get("replay_consumer_error_code", "NA")),
+        "replay_stimulus_source": str(replay_payload.get("replay_stimulus_source", "NA")),
         "stream_event_count": str(record_payload.get("stream_event_count", "NA")),
         "stream_event_sent_count": str(record_payload.get("stream_event_sent_count", "NA")),
         "replay_critical_event_count": str(record_payload.get("replay_critical_event_count", "NA")),
@@ -1048,6 +1070,7 @@ def _blocked_row(benchmark: str, variant: str, seed: int, notes: str) -> dict[st
         "replay_consumer_consumed": "NA",
         "replay_consumer_expected": "NA",
         "replay_consumer_error_code": "NA",
+        "replay_stimulus_source": "NA",
         "stream_event_count": "NA",
         "stream_event_sent_count": "NA",
         "replay_critical_event_count": "NA",
@@ -1096,6 +1119,7 @@ def _failed_row(
         "replay_consumer_consumed": "NA",
         "replay_consumer_expected": "NA",
         "replay_consumer_error_code": "NA",
+        "replay_stimulus_source": "NA",
         "stream_event_count": str(record_payload.get("stream_event_count", "NA")),
         "stream_event_sent_count": str(record_payload.get("stream_event_sent_count", "NA")),
         "replay_critical_event_count": str(record_payload.get("replay_critical_event_count", "NA")),

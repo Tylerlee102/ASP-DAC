@@ -1,0 +1,1 @@
+PASS self_replay benchmark=uart_command_bug variant=no_failure_edge seed=2 arch=v2 recorder_config=full property=0 events=33331 cycles=100000 commits=33328 notes="record/replay replay-critical events match; rtl replay mode controller launched captured-store replay and streamed 1/1 and replay consumer consumed 1/1 without harness preload"

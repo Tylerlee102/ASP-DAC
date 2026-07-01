@@ -17,6 +17,10 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 OUT_CSV = REPO_ROOT / "results/processed/firmware_build.csv"
 OUT_CSV = Path(os.environ.get("REPLAYCAPSULE_FIRMWARE_BUILD_CSV", OUT_CSV))
 BUILD_ROOT = Path(os.environ.get("REPLAYCAPSULE_FIRMWARE_BUILD_ROOT", REPO_ROOT / "firmware/build"))
+if not OUT_CSV.is_absolute():
+    OUT_CSV = REPO_ROOT / OUT_CSV
+if not BUILD_ROOT.is_absolute():
+    BUILD_ROOT = REPO_ROOT / BUILD_ROOT
 LINKER = REPO_ROOT / "firmware/linker.ld"
 STARTUP = REPO_ROOT / "firmware/startup.S"
 RISCV_ARCH = "rv32i"
@@ -35,6 +39,12 @@ BENCHMARK_DIRS = {
 EXPANDED_BENCHMARK_DIRS = {
     "commanded_actuator_limit_bug": "bug_commanded_actuator_limit",
     "late_config_sequence_bug": "bug_late_config_sequence",
+    "sensor_debounce_bug": "bug_sensor_debounce",
+    "status_clear_on_read_bug": "bug_status_clear_on_read",
+    "platform2_status_window_bug": "bug_platform2_status_window",
+    "platform2_config_order_bug": "bug_platform2_config_order",
+    "environmental_controller_bug": "bug_environmental_controller",
+    "power_rail_sequencer_bug": "bug_power_rail_sequencer",
 }
 
 VARIANTS = {
@@ -49,6 +59,12 @@ VARIANTS = {
 EXPANDED_VARIANTS = {
     "commanded_actuator_limit_bug": ("failing", "fixed"),
     "late_config_sequence_bug": ("failing", "fixed"),
+    "sensor_debounce_bug": ("failing", "fixed"),
+    "status_clear_on_read_bug": ("failing", "fixed"),
+    "platform2_status_window_bug": ("failing", "fixed"),
+    "platform2_config_order_bug": ("failing", "fixed"),
+    "environmental_controller_bug": ("failing", "fixed"),
+    "power_rail_sequencer_bug": ("failing", "fixed"),
 }
 
 FIELDNAMES = [

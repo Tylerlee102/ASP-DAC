@@ -5,6 +5,10 @@ module property_checker #(
   parameter logic [31:0] ACTUATOR_ADDR     = 32'h4000_0004,
   parameter logic [31:0] CONFIG_ADDR       = 32'h4000_0008,
   parameter logic [31:0] COMMAND_ADDR      = 32'h4000_000c,
+  parameter logic [31:0] PROFILE2_SENSOR_ADDR   = 32'h4000_0040,
+  parameter logic [31:0] PROFILE2_ACTUATOR_ADDR = 32'h4000_0044,
+  parameter logic [31:0] PROFILE2_CONFIG_ADDR   = 32'h4000_0048,
+  parameter logic [31:0] PROFILE2_COMMAND_ADDR  = 32'h4000_004c,
   parameter logic [31:0] STACK_LOW_ADDR    = 32'h0000_1000,
   parameter logic [31:0] STACK_HIGH_ADDR   = 32'h0000_1400,
   parameter logic [31:0] SENSOR_THRESHOLD  = 32'd700,
@@ -55,13 +59,29 @@ module property_checker #(
 
   assign watchdog_enabled = ENABLE_WATCHDOG || watchdog_enable;
 
+  function automatic logic is_sensor_addr(input logic [31:0] addr);
+    is_sensor_addr = (addr == SENSOR_ADDR) || (addr == PROFILE2_SENSOR_ADDR);
+  endfunction
+
+  function automatic logic is_actuator_addr(input logic [31:0] addr);
+    is_actuator_addr = (addr == ACTUATOR_ADDR) || (addr == PROFILE2_ACTUATOR_ADDR);
+  endfunction
+
+  function automatic logic is_config_addr(input logic [31:0] addr);
+    is_config_addr = (addr == CONFIG_ADDR) || (addr == PROFILE2_CONFIG_ADDR);
+  endfunction
+
+  function automatic logic is_command_addr(input logic [31:0] addr);
+    is_command_addr = (addr == COMMAND_ADDR) || (addr == PROFILE2_COMMAND_ADDR);
+  endfunction
+
   always_comb begin
     detected_fail = 1'b0;
     detected_property_id = 8'h0;
     detected_signature = 32'h0;
 
     if (event_valid) begin
-      if (event_type == EV_MMIO_WRITE && event_addr == ACTUATOR_ADDR && event_data > ACTUATOR_MAX_SAFE) begin
+      if (event_type == EV_MMIO_WRITE && is_actuator_addr(event_addr) && event_data > ACTUATOR_MAX_SAFE) begin
         detected_fail = 1'b1;
         detected_property_id = PROP_ACTUATOR_LIMIT;
         detected_signature = event_data ^ event_commit_index ^ 32'hac70_0001;
@@ -81,7 +101,7 @@ module property_checker #(
         detected_fail = 1'b1;
         detected_property_id = PROP_STACK_PROTECT;
         detected_signature = event_addr ^ event_data ^ 32'h57ac_0004;
-      end else if (event_type == EV_MMIO_WRITE && event_addr == ACTUATOR_ADDR && event_data != 32'h0 && !safe_config_seen) begin
+      end else if (event_type == EV_MMIO_WRITE && is_actuator_addr(event_addr) && event_data != 32'h0 && !safe_config_seen) begin
         detected_fail = 1'b1;
         detected_property_id = PROP_MMIO_ORDERING;
         detected_signature = event_data ^ event_commit_index ^ 32'h0d0e_0005;
@@ -116,31 +136,31 @@ module property_checker #(
       property_signature <= detected_signature;
 
       if (event_valid) begin
-        if (event_type == EV_MMIO_WRITE && event_addr == COMMAND_ADDR && event_data[0] && event_data != WATCHDOG_HEARTBEAT) begin
+        if (event_type == EV_MMIO_WRITE && is_command_addr(event_addr) && event_data[0] && event_data != WATCHDOG_HEARTBEAT) begin
           critical_section_active <= 1'b1;
-        end else if (event_type == EV_MMIO_WRITE && event_addr == CONFIG_ADDR) begin
+        end else if (event_type == EV_MMIO_WRITE && is_config_addr(event_addr)) begin
           critical_section_active <= 1'b0;
         end
 
-        if (event_type == EV_MMIO_WRITE && event_addr == CONFIG_ADDR && event_data == CONFIG_SAFE_MAGIC) begin
+        if (event_type == EV_MMIO_WRITE && is_config_addr(event_addr) && event_data == CONFIG_SAFE_MAGIC) begin
           safe_config_seen <= 1'b1;
         end
 
-        if (event_type == EV_MMIO_READ && event_addr == SENSOR_ADDR && event_data > SENSOR_THRESHOLD) begin
+        if (event_type == EV_MMIO_READ && is_sensor_addr(event_addr) && event_data > SENSOR_THRESHOLD) begin
           sensor_deadline_active <= 1'b1;
           deadline_count <= RESPONSE_DEADLINE_VALUE;
           if (watchdog_enabled) begin
             watchdog_active <= 1'b1;
             watchdog_count <= WATCHDOG_TIMEOUT_VALUE;
           end
-        end else if (event_type == EV_MMIO_WRITE && event_addr == COMMAND_ADDR && event_data == WATCHDOG_HEARTBEAT) begin
+        end else if (event_type == EV_MMIO_WRITE && is_command_addr(event_addr) && event_data == WATCHDOG_HEARTBEAT) begin
           watchdog_active <= 1'b0;
           watchdog_count <= 8'h0;
         end else if (event_type == EV_COMMIT && watchdog_active && watchdog_count != 8'h0) begin
           watchdog_count <= watchdog_count - 8'h1;
         end
 
-        if (event_type == EV_MMIO_WRITE && event_addr == ACTUATOR_ADDR && event_data <= ACTUATOR_MAX_SAFE) begin
+        if (event_type == EV_MMIO_WRITE && is_actuator_addr(event_addr) && event_data <= ACTUATOR_MAX_SAFE) begin
           sensor_deadline_active <= 1'b0;
           deadline_count <= 8'h0;
         end else if (event_type == EV_COMMIT && sensor_deadline_active && deadline_count != 8'h0) begin

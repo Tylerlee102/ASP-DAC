@@ -106,7 +106,7 @@ def _full_rtl_replay_success_metric(rows: list[dict[str, str]]) -> dict[str, str
         "percent",
         "rtl",
         "results/processed/full_rtl_replay.csv",
-        "Host-driven Verilator record/replay rows across evaluated benchmark/variant/seed cases; not a mapped hardware timing or autonomous replay-engine claim.",
+        "Verilator record/replay rows across evaluated benchmark/variant/seed cases; not a mapped hardware timing or autonomous replay-engine claim.",
     )
 
 
@@ -191,7 +191,7 @@ def _benchmark_coverage_metrics(rows: list[dict[str, str]]) -> list[dict[str, st
             "percent",
             "model+firmware-sim+rtl-smoke",
             "results/processed/benchmark_coverage.csv",
-            "Per-benchmark local evidence coverage across model replay, firmware-sim replay, wrapper smokes, RTL-smoke exports, alignment, and sufficiency rows; host-driven full RTL replay is reported separately and is not a mapped hardware timing claim.",
+            "Per-benchmark local evidence coverage across model replay, firmware-sim replay, wrapper smokes, RTL-smoke exports, alignment, and sufficiency rows; full RTL replay is reported separately and is not a mapped hardware timing claim.",
         )
     ]
 

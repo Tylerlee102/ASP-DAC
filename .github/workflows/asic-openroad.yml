@@ -1,0 +1,109 @@
+name: ReplayCapsule-RV ASIC OpenROAD Evidence
+
+on:
+  push:
+    paths:
+      - ".github/workflows/asic-openroad.yml"
+      - "constraints/asic_openpdk.sdc"
+      - "rtl/**"
+      - "scripts/materialize_nangate45_from_orfs.py"
+      - "scripts/probe_asic_physical_tools.py"
+      - "scripts/run_asic_openpdk.py"
+  workflow_dispatch:
+
+concurrency:
+  group: asic-openroad-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  asic-openroad:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    env:
+      OPENROAD_DOCKER_IMAGE: openroad/orfs:latest
+      ASIC_OPENPDK_ROUTE_STAGE: global
+      ASIC_OPENPDK_OPENROAD_TIMEOUT: "900"
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Pull OpenROAD container
+        run: docker pull "$OPENROAD_DOCKER_IMAGE"
+
+      - name: Run ASIC physical evidence flow
+        run: |
+          set -euo pipefail
+          docker run --rm \
+            -v "$PWD:/work" \
+            -w /work \
+            -e PDK_ROOT=/work/.tools/openpdk/nangate45 \
+            -e ASIC_OPENPDK_PLATFORM=nangate45 \
+            -e ASIC_OPENPDK_LIBERTY=/work/.tools/openpdk/nangate45/NangateOpenCellLibrary_typical.lib \
+            -e ASIC_OPENPDK_LEF=/work/.tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef \
+            -e ASIC_OPENPDK_ROUTE_STAGE="$ASIC_OPENPDK_ROUTE_STAGE" \
+            -e ASIC_OPENPDK_OPENROAD_TIMEOUT="$ASIC_OPENPDK_OPENROAD_TIMEOUT" \
+            "$OPENROAD_DOCKER_IMAGE" \
+            bash -lc '
+              set -euo pipefail
+              python3 --version
+              which yosys
+              yosys -V
+              if ! command -v openroad >/dev/null 2>&1; then
+                mkdir -p results/raw/asic_openpdk
+                find / -type f -name openroad -perm /111 2>/dev/null | sort > results/raw/asic_openpdk/openroad_candidates.txt
+                OPENROAD_BIN="$(head -n 1 results/raw/asic_openpdk/openroad_candidates.txt || true)"
+                if [ -n "$OPENROAD_BIN" ]; then
+                  export PATH="$(dirname "$OPENROAD_BIN"):$PATH"
+                fi
+              fi
+              which openroad
+              openroad -version
+              python3 scripts/materialize_nangate45_from_orfs.py
+              python3 scripts/probe_asic_physical_tools.py
+              python3 scripts/run_asic_openpdk.py
+            '
+
+      - name: Require placed/routed ASIC rows
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import csv
+          import sys
+          from pathlib import Path
+
+          summary_path = Path("results/processed/asic_openpdk_summary.csv")
+          rows_path = Path("results/processed/asic_openpdk.csv")
+          if not summary_path.exists() or not rows_path.exists():
+              print("missing ASIC OpenROAD output CSVs")
+              sys.exit(1)
+
+          summary = next(csv.DictReader(summary_path.open(newline="", encoding="utf-8")))
+          rows = list(csv.DictReader(rows_path.open(newline="", encoding="utf-8")))
+          pass_rows = [row for row in rows if row.get("status") == "PASS"]
+          numeric_fields = ("cell_area_um2", "wns_ns", "power_mw")
+          bad_numeric = [
+              row.get("design", "<unknown>")
+              for row in pass_rows
+              if any(row.get(field, "NA") in {"", "NA"} for field in numeric_fields)
+          ]
+          if summary.get("status") != "PASS" or len(pass_rows) != len(rows) or bad_numeric:
+              print(f"ASIC OpenROAD summary is not fully physical PASS: {summary}")
+              print(f"PASS rows: {len(pass_rows)}/{len(rows)}")
+              print(f"Rows missing numeric physical fields: {bad_numeric}")
+              sys.exit(1)
+          print(f"ASIC OpenROAD physical evidence PASS rows: {len(pass_rows)}/{len(rows)}")
+          PY
+
+      - name: Upload ASIC evidence
+        uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: replaycapsule-rv-asic-openroad-evidence
+          if-no-files-found: warn
+          path: |
+            results/processed/asic_openpdk*.csv
+            results/processed/asic_physical_tool_probe.csv
+            results/raw/asic_openpdk/
+            docs/asic_openpdk_evidence.md
+            docs/asic_physical_tool_probe.md

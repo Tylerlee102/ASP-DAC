@@ -23,11 +23,16 @@ PROOF_OBLIGATIONS_CSV = REPO_ROOT / "results/processed/proof_obligations.csv"
 EVALUATION_METRICS_CSV = REPO_ROOT / "results/processed/evaluation_metrics.csv"
 FIRMWARE_BUILD_CSV = REPO_ROOT / "results/processed/firmware_build.csv"
 FULL_RTL_REPLAY_CSV = REPO_ROOT / "results/processed/full_rtl_replay.csv"
+FULL_RTL_REPLAY_V2_CSV = REPO_ROOT / "results/processed/full_rtl_replay_v2.csv"
+EXPANDED_BENCHMARK_REPLAY_CSV = REPO_ROOT / "results/processed/expanded_benchmark_replay_measured.csv"
+SELF_REPLAY_HANDOFF_CSV = REPO_ROOT / "results/processed/self_replay_handoff_v2.csv"
 FULL_RTL_NEGATIVE_CSV = REPO_ROOT / "results/processed/full_rtl_replay_negative.csv"
 RUNTIME_OVERHEAD_SUMMARY_CSV = REPO_ROOT / "results/processed/runtime_overhead_summary.csv"
 MAPPED_OVERHEAD_CSV = REPO_ROOT / "results/processed/mapped_overhead.csv"
 MAPPED_RECORDER_PRESENCE_CSV = REPO_ROOT / "results/processed/mapped_recorder_presence.csv"
 FULL_CORE_MAPPED_SUMMARY_CSV = REPO_ROOT / "results/processed/full_core_mapped_summary.csv"
+REPLAY_CONSUMER_TESTS_CSV = REPO_ROOT / "results/processed/replay_consumer_tests.csv"
+CAPSULE_BASELINE_SUMMARY_V2_MEASURED_CSV = REPO_ROOT / "results/processed/capsule_baseline_summary_v2_measured.csv"
 PAPER_FIGURES = REPO_ROOT / "paper/figures"
 PAPER_SECTIONS = REPO_ROOT / "paper/sections"
 
@@ -204,7 +209,7 @@ def _render_replay_table(
         "`../../results/processed/rtl_firmware_alignment.csv`.",
         "",
         "Model and firmware-sim rows are commit-index replay checks. RTL-smoke rows are "
-        "property/key-event alignment checks; the final row reports host-driven full RTL replay.",
+        "property/key-event alignment checks; the final row reports full RTL replay.",
         "",
         "| Benchmark | Model replay | Firmware-sim replay | RTL-smoke property alignment | RTL-smoke key-event alignment | Property ID |",
         "| --- | --- | --- | --- | --- | --- |",
@@ -234,7 +239,7 @@ def _render_replay_table(
     ]
     if full_rtl_rows:
         rtl_status = "PASS" if len(rtl_pass) == len(full_rtl_rows) else "FAIL"
-        rtl_notes = f"{len(rtl_pass)}/{len(full_rtl_rows)} compiler-backed host-driven Verilator rows"
+        rtl_notes = f"{len(rtl_pass)}/{len(full_rtl_rows)} compiler-backed Verilator rows"
     else:
         rtl_status = "TODO"
         rtl_notes = "missing full_rtl_replay.csv"
@@ -405,6 +410,11 @@ def _render_generated_numbers() -> str:
     firmware_rows = _read_rows(FIRMWARE_BUILD_CSV)
     replay_rows = _read_rows(FULL_RTL_REPLAY_CSV)
     negative_rows = _read_rows(FULL_RTL_NEGATIVE_CSV)
+    v2_replay_rows = _read_rows(FULL_RTL_REPLAY_V2_CSV)
+    expanded_rows = _read_rows(EXPANDED_BENCHMARK_REPLAY_CSV)
+    self_replay_rows = _read_rows(SELF_REPLAY_HANDOFF_CSV)
+    replay_consumer_tests = _read_rows(REPLAY_CONSUMER_TESTS_CSV)
+    v2_capsule_summary = _read_rows(CAPSULE_BASELINE_SUMMARY_V2_MEASURED_CSV)
     runtime_rows = _read_rows(RUNTIME_OVERHEAD_SUMMARY_CSV)
     mapped_rows = _read_rows(MAPPED_SYNTHESIS_CSV)
     mapped_overhead = _read_rows(MAPPED_OVERHEAD_CSV)
@@ -416,6 +426,31 @@ def _render_generated_numbers() -> str:
         and row.get("replay_status") == "PASS"
         and row.get("final_signature_match") == "PASS"
     ]
+    v2_replay_pass = [
+        row for row in v2_replay_rows
+        if row.get("rtl_record_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+        and row.get("replay_consumer_status") == "PASS"
+        and row.get("replay_stimulus_source") == "rtl_capsule_source_mmio_irq"
+    ]
+    expanded_replay_pass = [
+        row for row in expanded_rows
+        if row.get("rtl_record_status") == "PASS"
+        and row.get("replay_status") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+        and row.get("replay_consumer_status") == "PASS"
+        and row.get("replay_stimulus_source") == "rtl_capsule_source_mmio_irq"
+    ]
+    self_replay_pass = [
+        row for row in self_replay_rows
+        if row.get("self_replay_status") == "PASS"
+        and row.get("event_match") == "PASS"
+        and row.get("final_signature_match") == "PASS"
+        and row.get("replay_consumer_status") == "PASS"
+        and row.get("replay_stimulus_source") == "rtl_replay_mode_controller_capture_store_mmio_irq"
+    ]
+    replay_consumer_pass = [row for row in replay_consumer_tests if row.get("passed") == "true"]
     compiler_firmware = [
         row for row in firmware_rows
         if row.get("build_status") == "PASS"
@@ -432,6 +467,19 @@ def _render_generated_numbers() -> str:
         "rcFirmwareImages": str(len(compiler_firmware)),
         "rcFullReplayPass": str(len(replay_pass)),
         "rcFullReplayTotal": str(len(replay_rows)),
+        "rcVTwoReplayPass": str(len(v2_replay_pass)),
+        "rcVTwoReplayTotal": str(len(v2_replay_rows)),
+        "rcExpandedReplayPass": str(len(expanded_replay_pass)),
+        "rcExpandedReplayTotal": str(len(expanded_rows)),
+        "rcExpandedBenchmarks": str(len({row.get("benchmark", "") for row in expanded_rows if row.get("benchmark")})),
+        "rcSelfReplayPass": str(len(self_replay_pass)),
+        "rcSelfReplayTotal": str(len(self_replay_rows)),
+        "rcReplayConsumerTestsPass": str(len(replay_consumer_pass)),
+        "rcReplayConsumerTestsTotal": str(len(replay_consumer_tests)),
+        "rcVTwoStressFullInstructionBytes": _summary_value(v2_capsule_summary, "stress", "full_instruction_trace", "median_bytes"),
+        "rcVTwoStressFullCommitBytes": _summary_value(v2_capsule_summary, "stress", "full_commit_trace", "median_bytes"),
+        "rcVTwoStressCoreBytes": _summary_value(v2_capsule_summary, "stress", "v2_core", "median_bytes"),
+        "rcVTwoStressHashedBytes": _summary_value(v2_capsule_summary, "stress", "v2_hashed", "median_bytes"),
         "rcNegativeReject": str(len(rejected)),
         "rcNegativeTotal": str(len(negative_rows)),
         "rcNegativeUnexpectedAccept": str(len(unexpected_accepts)),
@@ -518,7 +566,7 @@ def _latex_replay_success_table(rows: list[dict[str, str]]) -> str:
     compiler_rows = [row for row in rows if row.get("firmware_source") == "compiler_c" and row.get("compiler_backed") == "true"]
     lines = [
         "\\begin{table}[t]",
-        "\\caption{Host-driven full RTL replay success. Source: \\texttt{results/processed/full\\_rtl\\_replay.csv}.}",
+        "\\caption{Full RTL replay success. Source: \\texttt{results/processed/full\\_rtl\\_replay.csv}.}",
         "\\label{tab:replay-success}",
         "\\centering",
         "\\begin{tabular}{lrrl}",
@@ -622,8 +670,8 @@ def _latex_limitations_table() -> str:
         "\\midrule",
         "Processor & single-hart RV32I/PicoRV32 \\\\",
         "Nondeterminism & commit-indexed interrupt/MMIO boundary events \\\\",
-        "Replay engine & host-driven Verilator harness \\\\",
-        "Replay hardware & v2 host-streamed full-core consumer check; no autonomous replay engine \\\\",
+        "Replay flow & controller-driven captured-store self-replay measured; standalone board/silicon flow future \\\\",
+        "Replay hardware & v2 source streams capsule words and consumer drives MMIO/IRQ replay \\\\",
         "Memory system & no multicore, DMA, cache-coherence, or analog-device model \\\\",
         "Optimization & bring-up/debug fidelity prioritized over area minimization \\\\",
         "\\bottomrule",
@@ -666,6 +714,10 @@ def _find_design(rows: list[dict[str, str]], design: str) -> dict[str, str]:
 
 def _runtime_value(rows: list[dict[str, str]], metric: str, config: str, field: str) -> str:
     return _find_row(rows, metric=metric, config=config).get(field, "NA")
+
+
+def _summary_value(rows: list[dict[str, str]], workload_scale: str, baseline: str, field: str) -> str:
+    return _find_row(rows, workload_scale=workload_scale, baseline=baseline).get(field, "NA")
 
 
 def _overhead_value(rows: list[dict[str, str]], metric: str, field: str) -> str:

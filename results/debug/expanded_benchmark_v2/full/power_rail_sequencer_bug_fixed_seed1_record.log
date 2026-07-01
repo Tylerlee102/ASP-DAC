@@ -1,0 +1,24 @@
+benchmark=power_rail_sequencer_bug
+variant=fixed
+seed=1
+firmware_hex=firmware/build_expanded/power_rail_sequencer_bug/fixed.hex
+firmware_sha256=e87860f2bb5244959cf92bbad2f721eb3c4d19fe5b82e807c95dcfa31ed6c685
+firmware_source=compiler_c
+compiler_backed=true
+compiler=riscv-none-elf-gcc.EXE
+compiler_version=riscv-none-elf-gcc.EXE (xPack GNU RISC-V Embedded GCC x86_64) 15.2.0
+compiler_flags=-march=rv32i -mabi=ilp32 -O2 -ffreestanding -fno-builtin -nostdlib -nostartfiles -Wall -Wextra
+expected_property_id=0
+observed_property_id=0
+record_returncode=0
+replay_returncode=0
+error_code=NA
+cycles_reached=100000
+commits_reached=33325
+main_returned=unknown_from_current_symbol_set
+post_main_infinite_loop=inspect_pc_trace
+interrupt_events=inspect_property_trace_and_interrupt_trace
+mmio_accesses=inspect_mmio_trace
+property_checker_io=inspect_property_trace
+record_stdout=PASS record benchmark=power_rail_sequencer_bug variant=fixed seed=1 arch=v2 recorder_config=full property=0 events=33331 cycles=100000 commits=33325 notes="no false property failure; rtl capture store retained 4/4 replay-critical words for reset-persistent source replay"\n
+replay_stdout=PASS replay benchmark=power_rail_sequencer_bug variant=fixed seed=1 arch=v2 recorder_config=full property=0 events=33331 cycles=100000 commits=33325 notes="record/replay replay-critical events match; rtl capsule source streamed 4/4 and replay consumer consumed 4/4 while driving MMIO/IRQ replay"\n

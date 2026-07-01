@@ -1,0 +1,1 @@
+tb_rcv2_capsule_source.sv:<line>: $finish called at 196000 (1ps)

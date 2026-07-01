@@ -1,0 +1,24 @@
+benchmark=interrupt_race_bug
+variant=failing
+seed=1
+firmware_hex=firmware/build/interrupt_race_bug/failing.hex
+firmware_sha256=eb831e5251bbb085a4a48b9cd5410a94ff3aec29ac284b044ad14ff84512d592
+firmware_source=compiler_c
+compiler_backed=true
+compiler=riscv-none-elf-gcc.EXE
+compiler_version=riscv-none-elf-gcc.EXE (xPack GNU RISC-V Embedded GCC x86_64) 15.2.0
+compiler_flags=-march=rv32i -mabi=ilp32 -O2 -ffreestanding -fno-builtin -nostdlib -nostartfiles -Wall -Wextra
+expected_property_id=2
+observed_property_id=2
+record_returncode=0
+replay_returncode=1
+error_code=NA
+cycles_reached=61
+commits_reached=15
+main_returned=unknown_from_current_symbol_set
+post_main_infinite_loop=inspect_pc_trace
+interrupt_events=inspect_property_trace_and_interrupt_trace
+mmio_accesses=inspect_mmio_trace
+property_checker_io=inspect_property_trace
+record_stdout=PASS record benchmark=interrupt_race_bug variant=failing seed=1 arch=v2 recorder_config=core property=2 events=3 cycles=61 commits=15 notes="property failure observed"\n
+replay_stdout=FAIL replay benchmark=interrupt_race_bug variant=failing seed=1 arch=v2 recorder_config=core property=2 events=3 cycles=65 commits=16 notes="hardware replay consumer error_code=3 consumed=1/3"\nerror_code=REPLAY_STIMULUS\n

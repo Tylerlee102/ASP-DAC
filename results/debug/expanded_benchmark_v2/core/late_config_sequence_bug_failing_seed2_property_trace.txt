@@ -1,5 +1,5 @@
 # property trace
 [record]
-no matching events
+{"addr": "0x00000005", "commit": 15, "commit_index": 15, "cycle": null, "data": "0x0d0e0013", "diagnostic_only": false, "event_id": 1, "event_type": 10, "flags": 0, "flags_hex": "0x00000000", "index": 1, "interrupt_cause": 0, "interrupt_pending": false, "interrupt_pending_or_taken": false, "interrupt_taken": false, "mmio_address": "0x00000005", "mmio_value": "0x0d0e0013", "notes": "replay-critical", "packet": "a000050d0e001305", "payload_hash": "0x0d0e0013", "pc": "0x00000000", "property_id": 5, "raw_mmio_value": "0x00000000", "replay_required": true, "schema_version": 2, "source": "record"}
 [replay]
-no matching events
+{"addr": "0x00000005", "commit": 15, "commit_index": 15, "cycle": null, "data": "0x0d0e0013", "diagnostic_only": false, "event_id": 1, "event_type": 10, "flags": 0, "flags_hex": "0x00000000", "index": 1, "interrupt_cause": 0, "interrupt_pending": false, "interrupt_pending_or_taken": false, "interrupt_taken": false, "mmio_address": "0x00000005", "mmio_value": "0x0d0e0013", "notes": "replay-critical", "packet": "a000050d0e001305", "payload_hash": "0x0d0e0013", "pc": "0x00000000", "property_id": 5, "raw_mmio_value": "0x00000000", "replay_required": true, "schema_version": 2, "source": "replay"}

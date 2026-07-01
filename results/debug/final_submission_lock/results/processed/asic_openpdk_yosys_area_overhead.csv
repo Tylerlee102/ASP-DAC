@@ -1,0 +1,5 @@
+recorder_config,target,flow,metric,baseline,with_replaycapsule,delta,percent_overhead,status,notes
+minimal,nangate45,yosys+abc-nangate45-area-only,area_um2,51157.652,52058.062,900.410,1.76,PASS,"synthesis-only Nangate45 cell-area overhead; no placement, routing, timing, or power"
+core,nangate45,yosys+abc-nangate45-area-only,area_um2,51157.652,61305.552,10147.900,19.84,PASS,"synthesis-only Nangate45 cell-area overhead; no placement, routing, timing, or power"
+hashed,nangate45,yosys+abc-nangate45-area-only,area_um2,51157.652,61525.800,10368.148,20.27,PASS,"synthesis-only Nangate45 cell-area overhead; no placement, routing, timing, or power"
+full,nangate45,yosys+abc-nangate45-area-only,area_um2,51157.652,62290.550,11132.898,21.76,PASS,"synthesis-only Nangate45 cell-area overhead; no placement, routing, timing, or power"

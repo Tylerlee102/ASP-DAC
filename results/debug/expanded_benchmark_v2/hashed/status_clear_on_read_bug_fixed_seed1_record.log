@@ -1,0 +1,24 @@
+benchmark=status_clear_on_read_bug
+variant=fixed
+seed=1
+firmware_hex=firmware/build_expanded/status_clear_on_read_bug/fixed.hex
+firmware_sha256=c4db8f415cc3a0ad38141844b15b25076807d009d36207a8bb98d38d3e819231
+firmware_source=compiler_c
+compiler_backed=true
+compiler=riscv-none-elf-gcc.EXE
+compiler_version=riscv-none-elf-gcc.EXE (xPack GNU RISC-V Embedded GCC x86_64) 15.2.0
+compiler_flags=-march=rv32i -mabi=ilp32 -O2 -ffreestanding -fno-builtin -nostdlib -nostartfiles -Wall -Wextra
+expected_property_id=0
+observed_property_id=0
+record_returncode=0
+replay_returncode=0
+error_code=NA
+cycles_reached=100000
+commits_reached=33326
+main_returned=unknown_from_current_symbol_set
+post_main_infinite_loop=inspect_pc_trace
+interrupt_events=inspect_property_trace_and_interrupt_trace
+mmio_accesses=inspect_mmio_trace
+property_checker_io=inspect_property_trace
+record_stdout=PASS record benchmark=status_clear_on_read_bug variant=fixed seed=1 arch=v2 recorder_config=hashed property=0 events=3 cycles=100000 commits=33326 notes="no false property failure; rtl capture store retained 3/3 replay-critical words for reset-persistent source replay"\n
+replay_stdout=PASS replay benchmark=status_clear_on_read_bug variant=fixed seed=1 arch=v2 recorder_config=hashed property=0 events=3 cycles=100000 commits=33327 notes="record/replay replay-critical events match; rtl capsule source streamed 3/3 and replay consumer consumed 3/3 while driving MMIO/IRQ replay"\n

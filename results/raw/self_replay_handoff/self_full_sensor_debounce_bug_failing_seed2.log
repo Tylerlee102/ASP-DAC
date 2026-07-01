@@ -1,0 +1,1 @@
+PASS self_replay benchmark=sensor_debounce_bug variant=failing seed=2 arch=v2 recorder_config=full property=3 events=45 cycles=129 commits=31 notes="record/replay replay-critical events match; rtl replay mode controller launched captured-store replay and streamed 3/3 and replay consumer consumed 3/3 without harness preload"

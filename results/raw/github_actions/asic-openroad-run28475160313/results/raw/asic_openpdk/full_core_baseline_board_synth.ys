@@ -1,0 +1,8 @@
+read_verilog -sv -Irtl -Irtl/replaycapsule_v2 -Irtl/mapped -Ithird_party/picorv32 \
+  third_party/picorv32/picorv32.v \
+  rtl/mapped/mapped_memory.sv \
+  rtl/mapped/full_core_baseline_board_top.sv
+chparam -set MEM_WORDS 128 full_core_baseline_board_top
+synth -top full_core_baseline_board_top
+abc -liberty .tools/openpdk/nangate45/NangateOpenCellLibrary_typical.lib
+write_verilog results/raw/asic_openpdk/full_core_baseline_board_yosys_area_mapped.v

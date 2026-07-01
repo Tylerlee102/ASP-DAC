@@ -197,12 +197,12 @@ def _event_ablation_table_rows() -> list[dict[str, object]]:
 
 def _limitations() -> list[dict[str, object]]:
     return [
-        {"limitation": "host_driven_replay", "paper_wording": "Full-core replay consume remains host-driven in the Verilator harness."},
-        {"limitation": "v2_consumer_scope", "paper_wording": "The v2 replay-consume controller is tested and host-streamed in full-core replay, but autonomous capsule storage and MMIO/IRQ replay muxing are not integrated."},
+        {"limitation": "replay_orchestration_scope", "paper_wording": "Full-core replay uses RTL source/consumer MMIO/IRQ drive, but reset orchestration and the memory/peripheral shell remain in the harness."},
+        {"limitation": "v2_consumer_scope", "paper_wording": "The v2 replay-mode controller, captured-store source, and replay consumer are tested, but a board/silicon replay flow is not integrated."},
         {"limitation": "buffer_depth_tradeoff", "paper_wording": "Replay-critical workload scaling uses workload-aware capsule depth; stress rows require the deepest generated setting."},
-        {"limitation": "mapped_scope", "paper_wording": "Mapped data measures bring-up/debug instrumentation, not an area-optimized autonomous replay-consume engine."},
+        {"limitation": "mapped_scope", "paper_wording": "Mapped data measures bring-up/debug instrumentation, not an area-optimized shipped implementation."},
         {"limitation": "high_area_overhead", "paper_wording": "FF/LUT overhead remains high even after disabling unselected recorder logic."},
-        {"limitation": "no_asic_power", "paper_wording": "ASIC area, timing, and power are not evaluated."},
+        {"limitation": "asic_scope", "paper_wording": "Nangate45 OpenROAD global-routed area, timing, and power rows are reported; detailed-route signoff, tapeout, silicon, and energy are not evaluated."},
         {"limitation": "single_hart_scope", "paper_wording": "Evaluation is single-hart RV32I and excludes multicore, DMA, caches/coherence, and arbitrary peripherals."},
     ]
 

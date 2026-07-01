@@ -1,0 +1,24 @@
+{
+  "benchmark": "status_clear_on_read_bug",
+  "variant": "fixed",
+  "seed": 3,
+  "mode": "record",
+  "architecture": "v2",
+  "schema_version": 2,
+  "recorder_config": "hashed",
+  "packet_width_bits": 64,
+  "property_id": 0,
+  "property_signature": "0x00000000",
+  "overflow": false,
+  "stream_event_count": 3,
+  "stream_event_sent_count": 3,
+  "replay_critical_event_count": 3,
+  "stream_stall_count": 0,
+  "dropped_diagnostic_count": 0,
+  "replay_critical_overflow_count": 0,
+  "events": [
+    {"index": 0, "cycle": null, "packet": "520c0c0000005500", "schema_version": 2, "flags": 2, "flags_hex": "0x00000002", "event_type": 5, "event_id": 0, "commit": 12, "commit_index": 12, "pc": "0x00000000", "addr": "0x4000000c", "data": "0x00000055", "mmio_address": "0x4000000c", "mmio_value": "0x00000055", "raw_mmio_value": "0x00000055", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 0, "payload_hash": "0xab5b8cf9", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 1, "cycle": null, "packet": "5604000000000000", "schema_version": 2, "flags": 6, "flags_hex": "0x00000006", "event_type": 5, "event_id": 1, "commit": 16, "commit_index": 16, "pc": "0x00000000", "addr": "0x4000000c", "data": "0x00000000", "mmio_address": "0x4000000c", "mmio_value": "0x00000000", "raw_mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 0, "payload_hash": "0xa8dc864c", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"},
+    {"index": 2, "cycle": null, "packet": "6203040000000000", "schema_version": 2, "flags": 2, "flags_hex": "0x00000002", "event_type": 6, "event_id": 2, "commit": 19, "commit_index": 19, "pc": "0x00000000", "addr": "0x40000004", "data": "0x00000000", "mmio_address": "0x40000004", "mmio_value": "0x00000000", "raw_mmio_value": "0x00000000", "interrupt_cause": 0, "interrupt_pending": false, "interrupt_taken": false, "interrupt_pending_or_taken": false, "property_id": 0, "payload_hash": "0xc016ece0", "replay_required": true, "diagnostic_only": false, "source": "record", "notes": "replay-critical"}
+  ]
+}

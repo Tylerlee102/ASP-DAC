@@ -1,0 +1,15 @@
+{
+  "benchmark": "interrupt_race_bug",
+  "command_value": 0,
+  "hex": "firmware/build_expanded_probe/interrupt_race_bug/failing.hex",
+  "interrupt_commit": 4,
+  "labels": {
+    "irq_handler": "0x000000b0",
+    "irq_window": "0x00000094"
+  },
+  "mem": "firmware/build_expanded_probe/interrupt_race_bug/failing.mem",
+  "reset_pc": "0x00000080",
+  "sensor_value": 850,
+  "variant": "failing",
+  "word_count": 13
+}

@@ -1,0 +1,1 @@
+PASS self_replay benchmark=watchdog_timeout_bug variant=no_failure_edge seed=3 arch=v2 recorder_config=core property=0 events=2 cycles=100000 commits=33327 notes="record/replay replay-critical events match; rtl replay mode controller launched captured-store replay and streamed 2/2 and replay consumer consumed 2/2 without harness preload"

@@ -29,5 +29,5 @@ g++    capsule_io.o main.o rtl_harness.o verilated.o verilated_threads.o Vreplay
 rm Vreplaycapsule_verilator_top__ALL.verilator_deplist.tmp
 make[1]: Leaving directory './.cache/replaycapsule-rv/verilator/obj_dir_depth256'
 - V e r i l a t i o n   R e p o r t: Verilator 5.049 devel rev v5.048-331-g0ebae4371 (mod)
-- Verilator: Built from 3.387 MB sources in 29 modules, into 0.979 MB in 5 C++ files needing 0.001 MB
-- Verilator: Walltime 14.716 s (elab=0.036, cvt=0.103, bld=14.530); cpu 0.000 s on 1 threads; allocated 34.258 MB
+- Verilator: Built from 4.043 MB sources in 31 modules, into 1.130 MB in 5 C++ files needing 0.001 MB
+- Verilator: Walltime 15.030 s (elab=0.024, cvt=0.099, bld=14.848); cpu 0.000 s on 1 threads; allocated 35.727 MB

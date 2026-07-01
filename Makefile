@@ -1,4 +1,4 @@
-.PHONY: test reproduce quickcheck check-toolchain firmware verify-deterministic-firmware check-evidence firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth workload-scaling-quick workload-scaling-full runtime-scaling-quick runtime-scaling-full capsule-baselines capsule-baselines-full buffer-sensitivity buffer-sensitivity-full recorder-config-quick recorder-config-full mapped-scaling-quick mapped-scaling-full event-ablation-scaling event-ablation-scaling-full topconf-matrix topconf-tables topconf-figures topconf-artifact private-marker-scan topconf-quick topconf-full topconf-v2-evidence topconf-v2-measured replay-consumer-v2 streaming-capture-v2 topconf-v2-artifact topconf-v2-quick topconf-v2-full paper paper-audit artifact replay-demo phase12-smoke
+.PHONY: test reproduce quickcheck chat-context check-toolchain firmware verify-deterministic-firmware check-evidence firmware-sim rtl-smoke verilator-smoke verilator-harness runtime-harnesses full-rtl-replay full-rtl-replay-one firmware-source-compare full-rtl-negative runtime-overhead mapped-synth asic-tool-probe asic-openpdk asic-openroad-docker second-core-breadth second-core-replay-smokes second-core-v2-smokes hazard3-v2-replay-smoke workload-scaling-quick workload-scaling-full runtime-scaling-quick runtime-scaling-full capsule-baselines capsule-baselines-full buffer-sensitivity buffer-sensitivity-full recorder-config-quick recorder-config-full mapped-scaling-quick mapped-scaling-full event-ablation-scaling event-ablation-scaling-full topconf-matrix topconf-tables topconf-figures topconf-artifact private-marker-scan topconf-quick topconf-full topconf-v2-evidence topconf-v2-measured replay-consumer-v2 streaming-capture-v2 standalone-self-replay topconf-v2-artifact topconf-v2-quick topconf-v2-full paper paper-audit artifact replay-demo phase12-smoke
 
 PYTHON ?= python3
 VERILATOR ?= verilator
@@ -44,6 +44,8 @@ RTL_COMMON = \
 	rtl/replaycapsule_v2/rcv2_recorder.sv \
 	rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv \
 	rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv \
+	rtl/replaycapsule_v2/rcv2_capsule_source.sv \
+	rtl/replaycapsule_v2/rcv2_replay_mode_controller.sv \
 	rtl/replaycapsule_v2/rcv2_replay_consumer.sv
 
 VERILATOR_SOURCES = \
@@ -78,6 +80,9 @@ test:
 reproduce: check-toolchain firmware verilator-harness full-rtl-replay full-rtl-negative runtime-overhead firmware-source-compare mapped-synth paper paper-audit artifact
 
 quickcheck: check-toolchain firmware verilator-smoke paper-audit
+
+chat-context:
+	$(PYTHON) scripts/update_chat_context.py
 
 check-toolchain:
 	$(PYTHON) scripts/check_toolchain.py --gate reproduce
@@ -153,6 +158,27 @@ runtime-overhead: full-rtl-replay
 
 mapped-synth:
 	$(PYTHON) scripts/run_mapped_synthesis.py
+
+asic-tool-probe:
+	$(PYTHON) scripts/probe_asic_physical_tools.py
+
+asic-openpdk: asic-tool-probe
+	$(PYTHON) scripts/run_asic_openpdk.py
+
+asic-openroad-docker:
+	powershell -NoProfile -ExecutionPolicy Bypass -File scripts/run_asic_openroad_docker.ps1
+
+second-core-breadth:
+	$(PYTHON) scripts/run_second_core_breadth.py
+
+second-core-replay-smokes:
+	$(PYTHON) scripts/run_second_core_replay_smokes.py
+
+second-core-v2-smokes:
+	$(PYTHON) scripts/run_second_core_v2_smokes.py
+
+hazard3-v2-replay-smoke:
+	$(PYTHON) scripts/run_hazard3_v2_replay_smoke.py
 
 topconf-matrix:
 	$(PYTHON) scripts/generate_topconf_matrix.py
@@ -242,6 +268,9 @@ replay-consumer-v2:
 streaming-capture-v2:
 	$(PYTHON) scripts/run_streaming_capture_tests.py
 
+standalone-self-replay:
+	$(PYTHON) scripts/run_standalone_self_replay_smokes.py
+
 topconf-v2-evidence:
 	$(PYTHON) scripts/diagnose_workload_failures.py
 	$(PYTHON) scripts/run_workload_scaling_v2.py
@@ -254,6 +283,10 @@ topconf-v2-evidence:
 topconf-v2-measured:
 	$(PYTHON) scripts/run_v2_measured_evaluation.py --timeout-sec 45 --measure-all-buffer-depths
 	$(PYTHON) scripts/run_streaming_capture_tests.py
+	$(PYTHON) scripts/run_standalone_self_replay_smokes.py
+	$(PYTHON) scripts/run_second_core_replay_smokes.py
+	$(PYTHON) scripts/run_second_core_v2_smokes.py
+	$(PYTHON) scripts/run_hazard3_v2_replay_smoke.py
 	$(PYTHON) scripts/run_expanded_benchmark_replay.py
 	$(PYTHON) scripts/benchmark_manifest.py
 	$(PYTHON) scripts/build_v2_zero_fail_bug_inventory.py
@@ -261,9 +294,9 @@ topconf-v2-measured:
 topconf-v2-artifact:
 	$(PYTHON) scripts/package_topconf_v2_artifact.py
 
-topconf-v2-quick: firmware full-rtl-replay full-rtl-negative runtime-overhead workload-scaling-quick runtime-scaling-quick topconf-v2-evidence replay-consumer-v2 paper paper-audit artifact topconf-v2-artifact private-marker-scan
+topconf-v2-quick: firmware full-rtl-replay full-rtl-negative runtime-overhead workload-scaling-quick runtime-scaling-quick topconf-v2-evidence replay-consumer-v2 standalone-self-replay second-core-replay-smokes second-core-v2-smokes hazard3-v2-replay-smoke paper paper-audit artifact topconf-v2-artifact private-marker-scan
 
-topconf-v2-full: firmware full-rtl-replay full-rtl-negative workload-scaling-full buffer-sensitivity-full capsule-baselines-full runtime-scaling-full mapped-scaling-full event-ablation-scaling-full recorder-config-full topconf-v2-evidence topconf-v2-measured replay-consumer-v2 paper paper-audit artifact topconf-v2-artifact private-marker-scan
+topconf-v2-full: firmware full-rtl-replay full-rtl-negative workload-scaling-full buffer-sensitivity-full capsule-baselines-full runtime-scaling-full mapped-scaling-full event-ablation-scaling-full recorder-config-full topconf-v2-evidence topconf-v2-measured replay-consumer-v2 standalone-self-replay second-core-replay-smokes second-core-v2-smokes hazard3-v2-replay-smoke paper paper-audit artifact topconf-v2-artifact private-marker-scan
 
 paper:
 	$(PYTHON) scripts/generate_conference_evidence_tables.py

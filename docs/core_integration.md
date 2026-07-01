@@ -8,6 +8,8 @@ The current implementation uses a deterministic SoC scaffold in `rtl/rv32i_integ
 
 PicoRV32 has also been vendored under `third_party/picorv32`, and `rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv` instantiates the upstream core with IRQ and trace support enabled. The wrapper connects native memory transactions, trace-valid events, IRQ/EOI observations, and external inputs into `replay_capsule_top`.
 
+The v2 self-replay source/controller integration now also exists as reusable RTL in `rtl/rv32i_integration/replaycapsule_v2_self_replay_top.sv`. The focused Icarus smoke `tb_picorv32_standalone_self_replay_smoke` records a PicoRV32 v2 failure, resets the core, launches captured-store replay through that shell, checks that the replay consumer consumes the captured words, and requires matching nonzero PicoRV32 interrupt-handler entry counts on IRQ-triggered rows. This is still a focused testbench shell, not a board/silicon replay flow.
+
 The current wrapper handles PicoRV32 trace classes explicitly: `TRACE_ADDR`
 records are treated as memory-address sideband rather than commit records, and
 the commit counter advances only on non-address trace records. Memory events in

@@ -60,7 +60,7 @@ bool parse_args(int argc, char** argv, HarnessOptions* options) {
   }
   return !options->benchmark.empty() && !options->variant.empty() && !options->firmware.empty() &&
          !options->capsule_path.empty() && !options->signature_path.empty() &&
-         (options->mode == "record" || options->mode == "replay") &&
+         (options->mode == "record" || options->mode == "replay" || options->mode == "self_replay") &&
          (options->arch == "v1" || options->arch == "v2") &&
          (options->recorder_config == "core" || options->recorder_config == "hashed" ||
           options->recorder_config == "full");
@@ -68,7 +68,7 @@ bool parse_args(int argc, char** argv, HarnessOptions* options) {
 
 void usage(const char* argv0) {
   std::cerr
-      << "usage: " << argv0 << " --mode record|replay --benchmark NAME --variant NAME\n"
+      << "usage: " << argv0 << " --mode record|replay|self_replay --benchmark NAME --variant NAME\n"
       << "  --firmware firmware/build/<benchmark>/<variant>.hex\n"
       << "  --capsule results/raw/rtl_capsules/<name>.json\n"
       << "  --signature results/raw/rtl_signatures/<name>.json\n"

@@ -65,7 +65,17 @@ def main() -> int:
 
 def _allowed_numbers() -> set[str]:
     values: set[str] = set()
-    for path in [*sorted((REPO_ROOT / "results/processed").glob("*.csv")), *sorted((REPO_ROOT / "paper/figures").glob("table*.md"))]:
+    for path in sorted((REPO_ROOT / "results/processed").glob("*.csv")):
+        text = path.read_text(encoding="utf-8", errors="replace")
+        for match in TOKEN_RE.finditer(text):
+            values.add(match.group(1).rstrip("%x"))
+        try:
+            with path.open(newline="", encoding="utf-8") as handle:
+                row_count = sum(1 for _ in csv.DictReader(handle))
+            values.add(str(row_count))
+        except (OSError, csv.Error):
+            pass
+    for path in sorted((REPO_ROOT / "paper/figures").glob("table*.md")):
         text = path.read_text(encoding="utf-8", errors="replace")
         for match in TOKEN_RE.finditer(text):
             values.add(match.group(1).rstrip("%x"))

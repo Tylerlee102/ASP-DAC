@@ -20,6 +20,12 @@ DEBUG_DIR = REPO_ROOT / "results/debug/expanded_benchmark_v2"
 BENCHMARKS = (
     "commanded_actuator_limit_bug",
     "late_config_sequence_bug",
+    "sensor_debounce_bug",
+    "status_clear_on_read_bug",
+    "platform2_status_window_bug",
+    "platform2_config_order_bug",
+    "environmental_controller_bug",
+    "power_rail_sequencer_bug",
 )
 VARIANTS = ("failing", "fixed")
 CONFIGS = ("core", "hashed", "full")

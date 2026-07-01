@@ -1,0 +1,32 @@
+../../rtl/replaycapsule_v2/rcv2_capsule_source.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'capture_store_delta[31:0]').
+../../rtl/replaycapsule_v2/rcv2_capsule_source.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'capture_store_delta[31:0]').
+../../rtl/replaycapsule_v2/rcv2_event_packer.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'data[31:0]').
+../../rtl/replaycapsule_v2/rcv2_event_packer.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_delta16[15:0]').
+../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_index[31:0]').
+../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_index[31:0]').
+../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'addr[31:0]').
+../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'addr[31:0]').
+../../rtl/replaycapsule_v2/rcv2_event_packer.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'data[31:0]').
+../../rtl/replaycapsule_v2/rcv2_event_packer.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_delta16[15:0]').
+../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_index[31:0]').
+../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_index[31:0]').
+../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'addr[31:0]').
+../../rtl/replaycapsule_v2/rcv2_payload_hasher.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'addr[31:0]').
+../../rtl/replaycapsule_v2/rcv2_event_packer.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'data[31:0]').
+../../rtl/replaycapsule_v2/rcv2_event_packer.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'pc[31:0]').
+../../rtl/replaycapsule_v2/rcv2_event_packer.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'commit_delta16[15:0]').
+../../rtl/replaycapsule_v2/rcv2_config.svh:68: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'word[63:0]').
+../../rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'flags[3:0]').
+../../rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'observed_addr[31:0]').
+../../rtl/replaycapsule_v2/rcv2_config.svh:68: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'word[63:0]').
+../../rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'payload[31:0]').
+../../rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'observed_cause[31:0]').
+tb_femtorv32_v2_replay_smoke.sv:<line>: sorry: constant selects in always_* processes are not fully supported (the process will be sensitive to all bits in 'mem_addr[31:0]').
+tb_femtorv32_v2_replay_smoke.sv:<line>: warning: System task ($display) cannot be synthesized in an always_ff process.
+tb_femtorv32_v2_replay_smoke.sv:<line>: warning: System task ($display) cannot be synthesized in an always_ff process.
+tb_femtorv32_v2_replay_smoke.sv:<line>: warning: System task ($fatal) cannot be synthesized in an always_ff process.
+tb_femtorv32_v2_replay_smoke.sv:<line>: warning: System task ($display) cannot be synthesized in an always_ff process.
+../../rtl/replaycapsule_v2/rcv2_replay_mode_controller.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
+../../rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
+../../rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.
+../../rtl/replaycapsule_v2/rcv2_event_stream_fifo.sv:<line>: vvp.tgt sorry: Case unique/unique0 qualities are ignored.

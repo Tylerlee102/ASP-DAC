@@ -1,0 +1,2 @@
+RC_FEMTO_REPLAY_SMOKE_PASS property=4 count=3 signature=8901aefb replay_sensor=-559038737
+tb/system/tb_femtorv32_wrapper_smoke.sv:376: $finish called at 1179000 (1ps)

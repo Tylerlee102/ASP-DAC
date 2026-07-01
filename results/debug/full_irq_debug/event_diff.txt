@@ -1,0 +1,9 @@
+record_property_id=2
+replay_property_id=0
+record_property_signature=0x1a1e00c1
+replay_property_signature=0x00000000
+record_event_count=20
+replay_event_count=17
+first_divergence_event_index=17
+record_event={"addr": "0x00000000", "commit": 14, "commit_index": 14, "cycle": null, "data": "0x00000000", "diagnostic_only": true, "event_id": 17, "event_type": 0, "flags": 3, "flags_hex": "0x00000003", "index": 17, "interrupt_cause": 0, "interrupt_pending": false, "interrupt_pending_or_taken": false, "interrupt_taken": false, "mmio_address": "0x00000000", "mmio_value": "0x00000000", "notes": "diagnostic/context", "packet": "03000000000000cc", "payload_hash": "0x9ff4f9b9", "pc": "0x00000000", "property_id": 2, "raw_mmio_value": "0x00000000", "replay_required": false, "schema_version": 2, "source": "record"}
+replay_event=null

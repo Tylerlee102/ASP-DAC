@@ -1,0 +1,1 @@
+PASS self_replay benchmark=status_clear_on_read_bug variant=failing seed=1 arch=v2 recorder_config=hashed property=1 events=4 cycles=76 commits=20 notes="record/replay replay-critical events match; rtl replay mode controller launched captured-store replay and streamed 4/4 and replay consumer consumed 4/4 without harness preload"

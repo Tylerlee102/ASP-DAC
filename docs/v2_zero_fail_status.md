@@ -21,7 +21,8 @@ measured v2 evidence set.
 | v2 mapped full-core overhead | `results/processed/mapped_scaling_v2_measured.csv` and `results/processed/mapped_scaling_overhead_v2_measured.csv` | Same-target ECP5-85k baseline plus v2 minimal/core/hashed PASS at memory 128, buffer depth 8; selected minimal recorder profile is `+8.26%` LUT and `+3.77%` FF |
 | v2 mapped recorder presence | `results/processed/mapped_recorder_presence_v2_measured.csv` | 3/3 measured minimal/core/hashed rows PASS with recorder hierarchy present |
 | v2 minimal recorder fidelity | `results/processed/hdl_checks.csv` | `tb_rcv2_minimal_recorder` PASS: selected minimal recorder emits replay-critical boundary events accepted by the v2 replay consumer |
-| v2 new benchmark PASS coverage | `results/processed/expanded_benchmark_replay_measured.csv` | 36/36 PASS rows for `commanded_actuator_limit_bug` and `late_config_sequence_bug` across core/hashed/full and three seeds |
+| v2 expanded benchmark PASS coverage | `results/processed/expanded_benchmark_replay_measured.csv` | 144/144 PASS rows for eight expanded families across core/hashed/full and three seeds, including two alternate-MMIO-profile families and two realistic-control families |
+| v2 self-replay handoff | `results/processed/self_replay_handoff_v2.csv` | 243/243 PASS rows from the replay-mode controller and captured RTL store across base and expanded families |
 | v2 replay-consume system tests | `results/processed/replay_consumer_system_tests.csv` | 8/8 PASS rows |
 
 ## Reproduction Commands
@@ -54,22 +55,25 @@ make replay-consumer-v2 PYTHON=/path/to/python
 
 Safe claims:
 
-- Compiler-backed, host-driven v2 full RTL record/replay passes for the scoped
-  single-hart RV32I interrupt/MMIO benchmark suite.
+- Compiler-backed v2 full RTL record/replay passes for the scoped single-hart
+  RV32I interrupt/MMIO benchmark suite, with RTL capsule-source and replay
+  consumer checks for MMIO/IRQ replay stimulus.
 - v2 workload scaling, runtime overhead, measured-depth buffer sensitivity, and
   same-target ECP5 full-core overhead for the selected minimal recorder profile
   are measured in the listed CSVs; core/hashed mapped rows are diagnostic
   comparisons.
-- Two additional compiler-backed firmware benchmark families have measured v2
-  PASS coverage across three seeds.
+- Six additional compiler-backed firmware benchmark families have measured v2
+  PASS coverage across three seeds, including two alternate-MMIO-profile
+  command/configuration families.
 
 Still forbidden:
 
-- Do not claim autonomous full-core hardware replay consumption. The
-  replay-consume controller is real RTL with tests and host-streamed full-core
-  checks, but capsule storage/streaming and MMIO/IRQ replay muxing remain
-  future work.
-- Do not claim ASIC area, power, or timing.
+- Do not claim a standalone board/silicon replay engine. The replay-mode
+  controller, replay-consume controller, and capture/source path are real RTL
+  with saved-capsule and captured-store full-core checks, but reset
+  orchestration and the memory/peripheral shell remain in the Verilator
+  harness.
+- Claim only the generated Nangate45 OpenROAD placed/global-routed area, timing, and power rows; do not claim detailed-route signoff, tapeout, silicon, or energy.
 - Do not claim multicore, DMA, cache-coherent, OS, or broad platform replay.
 - Do not describe broad v2 overhead as low; report the measured overhead for
   each recorder config.

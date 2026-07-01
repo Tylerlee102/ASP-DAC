@@ -1,0 +1,5 @@
+# interrupt trace
+[record]
+no matching events
+[replay]
+no matching events

@@ -32,8 +32,12 @@ REQUIRED_RTL = [
     "rtl/hash_signature.sv",
     "rtl/rv32i_integration/replaycapsule_soc.sv",
     "rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv",
+    "rtl/rv32i_integration/femtorv32_replaycapsule_wrapper.sv",
     "third_party/picorv32/picorv32.v",
     "third_party/picorv32/COPYING",
+    "third_party/femtorv32/femtorv32_quark.v",
+    "third_party/femtorv32/LICENSE",
+    "third_party/femtorv32/VENDORED.md",
 ]
 
 REQUIRED_EVENT_TYPES = [
@@ -80,6 +84,7 @@ REQUIRED_TB = [
     "tb/system/tb_registers.sv",
     "tb/system/tb_replaycapsule_soc.sv",
     "tb/system/tb_picorv32_wrapper_smoke.sv",
+    "tb/system/tb_femtorv32_wrapper_smoke.sv",
     "tb/system/tb_rcv2_minimal_recorder.sv",
 ]
 
@@ -111,6 +116,7 @@ PYTHON_FILES = [
     "scripts/run_replay_negative_tests.py",
     "scripts/run_replay_experiments.py",
     "scripts/run_rtl_smoke_ablations.py",
+    "scripts/run_second_core_breadth.py",
     "scripts/synth_yosys.py",
     "scripts/make_figures.py",
     "scripts/render_paper_tables.py",
@@ -353,6 +359,12 @@ def main() -> int:
         failures,
         "synthesis_overhead_summary",
         [sys.executable, "scripts/summarize_synthesis_overhead.py"],
+    )
+    _run_subprocess(
+        rows,
+        failures,
+        "second_core_breadth",
+        [sys.executable, "scripts/run_second_core_breadth.py"],
     )
     _run_subprocess(
         rows,

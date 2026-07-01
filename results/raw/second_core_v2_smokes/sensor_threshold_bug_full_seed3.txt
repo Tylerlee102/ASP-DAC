@@ -1,0 +1,2 @@
+RC_FEMTO_V2_REPLAY_SMOKE_PASS seed=3 config=2 property=3 words=42 consumed=42 record_signature=5e0500c2 replay_signature=5e0500c2 signature_match=1 replay_sensor_input=2 changed_input=1 replay_command_input=0 changed_command=0 require_signature_match=1
+tb_femtorv32_v2_replay_smoke.sv:<line>: $finish called at 2346000 (1ps)

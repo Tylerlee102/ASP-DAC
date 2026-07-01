@@ -8,4 +8,4 @@ The strongest story is now an honest scoped systems/hardware artifact: compiler-
 
 ## Likely Decision
 
-Weak accept to accept if the paper preserves the scoped contribution wording and avoids unsupported claims. Borderline if the paper presents the host-driven replay harness as deployed hardware replay or treats the ECP5 implementation as area-optimized.
+Weak accept to accept if the paper preserves the scoped contribution wording and avoids unsupported claims. Borderline if the paper presents the Verilator-orchestrated replay path as a deployed board/silicon replay engine or treats the ECP5 implementation as area-optimized.

@@ -1,0 +1,2 @@
+gate,status,pass_rows,area_only_rows,blocked_rows,fail_rows,notes
+asic_openpdk,PASS,5,5,0,0,

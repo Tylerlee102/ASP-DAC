@@ -1,0 +1,24 @@
+benchmark=platform2_config_order_bug
+variant=failing
+seed=3
+firmware_hex=firmware/build_expanded/platform2_config_order_bug/failing.hex
+firmware_sha256=b9bcbdead792754d4472caa8c30b8f93626c47c07446be62ca03a6111d80e08c
+firmware_source=compiler_c
+compiler_backed=true
+compiler=riscv-none-elf-gcc.EXE
+compiler_version=riscv-none-elf-gcc.EXE (xPack GNU RISC-V Embedded GCC x86_64) 15.2.0
+compiler_flags=-march=rv32i -mabi=ilp32 -O2 -ffreestanding -fno-builtin -nostdlib -nostartfiles -Wall -Wextra
+expected_property_id=5
+observed_property_id=5
+record_returncode=0
+replay_returncode=0
+error_code=NA
+cycles_reached=59
+commits_reached=16
+main_returned=unknown_from_current_symbol_set
+post_main_infinite_loop=inspect_pc_trace
+interrupt_events=inspect_property_trace_and_interrupt_trace
+mmio_accesses=inspect_mmio_trace
+property_checker_io=inspect_property_trace
+record_stdout=PASS record benchmark=platform2_config_order_bug variant=failing seed=3 arch=v2 recorder_config=core property=5 events=2 cycles=59 commits=16 notes="property failure observed; rtl capture store retained 2/2 replay-critical words for reset-persistent source replay"\n
+replay_stdout=PASS replay benchmark=platform2_config_order_bug variant=failing seed=3 arch=v2 recorder_config=core property=5 events=2 cycles=58 commits=16 notes="record/replay replay-critical events match; rtl capsule source streamed 2/2 and replay consumer consumed 2/2 while driving MMIO/IRQ replay"\n

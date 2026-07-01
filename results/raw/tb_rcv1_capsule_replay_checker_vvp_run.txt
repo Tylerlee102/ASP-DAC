@@ -1,0 +1,6 @@
+RESULT,valid_stream_consumes_all_packets,1,1,0,3
+RESULT,packet_mismatch_rejects,0,1,1,0
+RESULT,extra_packet_rejects,0,1,2,1
+RESULT,truncated_stream_rejects,0,1,3,1
+RCV1_CAPSULE_REPLAY_CHECKER_PASS passed=4 total=4
+tb_rcv1_capsule_replay_checker.sv:<line>: $finish called at 300000 (1ps)

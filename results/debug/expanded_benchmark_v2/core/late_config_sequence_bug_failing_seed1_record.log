@@ -14,11 +14,11 @@ record_returncode=0
 replay_returncode=0
 error_code=NA
 cycles_reached=59
-commits_reached=15
+commits_reached=16
 main_returned=unknown_from_current_symbol_set
 post_main_infinite_loop=inspect_pc_trace
 interrupt_events=inspect_property_trace_and_interrupt_trace
 mmio_accesses=inspect_mmio_trace
 property_checker_io=inspect_property_trace
-record_stdout=PASS record benchmark=late_config_sequence_bug variant=failing seed=1 arch=v2 recorder_config=core property=5 events=1 cycles=59 commits=15 notes="property failure observed"\n
-replay_stdout=PASS replay benchmark=late_config_sequence_bug variant=failing seed=1 arch=v2 recorder_config=core property=5 events=1 cycles=58 commits=15 notes="record/replay canonical events match; rtl replay consumer consumed 1/1"\n
+record_stdout=PASS record benchmark=late_config_sequence_bug variant=failing seed=1 arch=v2 recorder_config=core property=5 events=2 cycles=59 commits=16 notes="property failure observed; rtl capture store retained 2/2 replay-critical words for reset-persistent source replay"\n
+replay_stdout=PASS replay benchmark=late_config_sequence_bug variant=failing seed=1 arch=v2 recorder_config=core property=5 events=2 cycles=58 commits=16 notes="record/replay replay-critical events match; rtl capsule source streamed 2/2 and replay consumer consumed 2/2 while driving MMIO/IRQ replay"\n

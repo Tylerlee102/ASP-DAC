@@ -1,0 +1,11 @@
+OpenROAD 26Q2-2270-g4c26918f5a
+Features included (+) or not (-): +GPU +GUI +Python
+This program is licensed under the BSD-3 license. See the LICENSE file for details.
+Components of this program may be licensed under more restrictive licenses which must be honored.
+[WARNING ODB-0220] INFO (LEFPARS-3000): There are still data after the END LIBRARY See file .tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef at line 783.
+
+[INFO ODB-0227] LEF file: .tools/openpdk/nangate45/NangateOpenCellLibrary.combined.lef, created 22 layers, 27 vias
+[WARNING ORD-2012] Liberty cell INV_X1 has no LEF master.
+[ERROR ORD-2013] instance _0884_ LEF master INV_X1 not found.
+Error: full_core_v2_core_board_flow.tcl, 12 ORD-2013
+

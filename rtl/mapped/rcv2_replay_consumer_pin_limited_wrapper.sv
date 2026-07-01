@@ -40,6 +40,7 @@ module rcv2_replay_consumer_pin_limited_wrapper #(
     .capsule_ready(capsule_ready),
     .capsule_word(capsule_word),
     .stream_done(stream_done),
+    .current_commit_index(observed_commit_index),
     .observed_valid(observed_valid),
     .observed_event_type(observed_event_type),
     .observed_commit_index(observed_commit_index),

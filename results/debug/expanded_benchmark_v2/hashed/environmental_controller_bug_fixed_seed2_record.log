@@ -1,0 +1,24 @@
+benchmark=environmental_controller_bug
+variant=fixed
+seed=2
+firmware_hex=firmware/build_expanded/environmental_controller_bug/fixed.hex
+firmware_sha256=a66fa7a8d63d017132fee5a3ecdf89d4e51d61322aad9e7b4ae6eb718b99824e
+firmware_source=compiler_c
+compiler_backed=true
+compiler=riscv-none-elf-gcc.EXE
+compiler_version=riscv-none-elf-gcc.EXE (xPack GNU RISC-V Embedded GCC x86_64) 15.2.0
+compiler_flags=-march=rv32i -mabi=ilp32 -O2 -ffreestanding -fno-builtin -nostdlib -nostartfiles -Wall -Wextra
+expected_property_id=0
+observed_property_id=0
+record_returncode=0
+replay_returncode=0
+error_code=NA
+cycles_reached=100000
+commits_reached=33324
+main_returned=unknown_from_current_symbol_set
+post_main_infinite_loop=inspect_pc_trace
+interrupt_events=inspect_property_trace_and_interrupt_trace
+mmio_accesses=inspect_mmio_trace
+property_checker_io=inspect_property_trace
+record_stdout=PASS record benchmark=environmental_controller_bug variant=fixed seed=2 arch=v2 recorder_config=hashed property=0 events=4 cycles=100000 commits=33324 notes="no false property failure; rtl capture store retained 4/4 replay-critical words for reset-persistent source replay"\n
+replay_stdout=PASS replay benchmark=environmental_controller_bug variant=fixed seed=2 arch=v2 recorder_config=hashed property=0 events=4 cycles=100000 commits=33324 notes="record/replay replay-critical events match; rtl capsule source streamed 4/4 and replay consumer consumed 4/4 while driving MMIO/IRQ replay"\n
