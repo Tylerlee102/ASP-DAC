@@ -2,57 +2,16 @@
 
 > Generated file. Refresh after code, paper, evidence, or artifact changes with `make chat-context` or by running `scripts/update_chat_context.py` with a real Python 3 executable.
 
-- Generated at: `2026-06-30T21:25:09-07:00`
+- Generated at: `2026-06-30T22:19:48-07:00`
 - Repository root: `C:\Users\tyboy\OneDrive\Documents\New project`
 - Python used for this snapshot: `C:\Users\tyboy\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
 
 ## Current Git State
 
-- Branch: `master`
-- Commit: `bd61b5b3`
-- Working tree status: `2457 changed paths`
-- Changed paths:
-  - `M Makefile`
-  - ` M README.md`
-  - ` M artifact_evaluation.md`
-  - ` M dist/artifact_package_manifest.csv`
-  - ` M dist/replaycapsule-rv-artifact.zip`
-  - ` M dist/replaycapsule-rv-topconf-artifact.zip`
-  - ` M dist/replaycapsule-rv-topconf-v2-artifact.zip`
-  - ` M dist/topconf_artifact_package_manifest.csv`
-  - ` M dist/topconf_v2_artifact_manifest.csv`
-  - ` M docs/conference_readiness_dashboard.md`
-  - ` M docs/core_integration.md`
-  - ` M docs/experimental_methodology.md`
-  - ` M docs/figure_plan.md`
-  - ` M docs/final_evidence_lock.md`
-  - ` M docs/final_reviewer_report.md`
-  - ` M docs/final_submission_blockers.md`
-  - ` M docs/firmware_sim.md`
-  - ` M docs/gate_status.md`
-  - ` M docs/limitations.md`
-  - ` M docs/main_track_readiness_review.md`
-  - ` M docs/main_track_submission_review.md`
-  - ` M docs/novelty_audit.md`
-  - ` M docs/phase_status.md`
-  - ` M docs/related_work_positioning.md`
-  - ` M docs/research_plan.md`
-  - ` M docs/reviewer_attack_list.md`
-  - ` M docs/reviewer_attack_responses.md`
-  - ` M docs/top_conference_reviewer_audit.md`
-  - ` M docs/v2_zero_fail_status.md`
-  - ` M firmware/build_expanded/commanded_actuator_limit_bug/failing.elf`
-  - ` M firmware/build_expanded/commanded_actuator_limit_bug/failing.map`
-  - ` M firmware/build_expanded/commanded_actuator_limit_bug/fixed.elf`
-  - ` M firmware/build_expanded/commanded_actuator_limit_bug/fixed.map`
-  - ` M firmware/build_expanded/interrupt_race_bug/failing.elf`
-  - ` M firmware/build_expanded/interrupt_race_bug/failing.map`
-  - ` M firmware/build_expanded/interrupt_race_bug/fixed.elf`
-  - ` M firmware/build_expanded/interrupt_race_bug/fixed.map`
-  - ` M firmware/build_expanded/late_config_sequence_bug/failing.elf`
-  - ` M firmware/build_expanded/late_config_sequence_bug/failing.map`
-  - ` M firmware/build_expanded/late_config_sequence_bug/fixed.elf`
-  - `... 2417 more`
+- Branch: `codex/aspdac-80-submission-package`
+- Commit: `e820b299`
+- Working tree status: `0 changed paths`
+- Changed paths: none
 
 ## Read This First
 
@@ -87,7 +46,7 @@
 | `firmware` | 717 | 1.43 MB | firmware benchmarks and build outputs |
 | `formal` | 35 | 88.53 KB | formal assumptions/proof scripts |
 | `Makefile` | 1 | 14.66 KB | top-level file |
-| `paper` | 84 | 375.80 KB | paper source, figures, tables, PDF |
+| `paper` | 84 | 377.07 KB | paper source, figures, tables, PDF |
 | `README.md` | 1 | 13.25 KB | top-level file |
 | `requirements.txt` | 1 | 177 B | top-level file |
 | `results` | 50513 | 5.76 GB | raw and processed evidence |
