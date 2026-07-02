@@ -20,15 +20,15 @@ BT
 (Replay Success By Workload Scale) Tj
 /F1 10 Tf
 0 -24 Td
-(long: 75/75 PASS) Tj
+(long: 30/75 PASS) Tj
 0 -16 Td
-(medium: 75/75 PASS) Tj
+(medium: 30/75 PASS) Tj
 0 -16 Td
-(short: 75/75 PASS) Tj
+(short: 30/75 PASS) Tj
 0 -16 Td
-(smoke: 75/75 PASS) Tj
+(smoke: 30/75 PASS) Tj
 0 -16 Td
-(stress: 75/75 PASS) Tj
+(stress: 30/75 PASS) Tj
 ET
 endstream
 endobj

@@ -1,13 +1,13 @@
 Info: constraining clock net 'clk' to 50.00 MHz
 
 Info: Logic utilisation before packing:
-Info:     Total LUT4s:      5432/83640     6%
-Info:         logic LUTs:   4790/83640     5%
-Info:         carry LUTs:    642/83640     0%
+Info:     Total LUT4s:      7704/83640     9%
+Info:         logic LUTs:   6970/83640     8%
+Info:         carry LUTs:    734/83640     0%
 Info:           RAM LUTs:      0/10455     0%
 Info:          RAMW LUTs:      0/20910     0%
 
-Info:      Total DFFs:      2630/83640     3%
+Info:      Total DFFs:      2689/83640     3%
 
 Info: Packing IOs..
 Info: pin 'uart_tx$tr_io' constrained to Bel 'X0/Y56/PIOC'.
@@ -38,497 +38,711 @@ Info: Packing carries...
 Info: Packing LUTs...
 Info: Packing LUT5-7s...
 Info: Packing FFs...
-Info:     1049 FFs paired with LUTs.
+Info:     966 FFs paired with LUTs.
 Info: Generating derived timing constraints...
 Info: Promoting globals...
 Info:     promoting clock net clk$TRELLIS_IO_IN to global network
-Info: Checksum: 0x4da7aae7
+Info: Checksum: 0xc265cde0
+
+Info: Annotating ports with timing budgets for target frequency 50.00 MHz
+Info: Checksum: 0x12b214ab
 
 Info: Device utilisation:
-Info: 	          TRELLIS_IO:      23/    365     6%
-Info: 	                DCCA:       1/     56     1%
-Info: 	              DP16KD:       3/    208     1%
-Info: 	          MULT18X18D:       0/    156     0%
-Info: 	              ALU54B:       0/     78     0%
-Info: 	             EHXPLLL:       0/      4     0%
-Info: 	             EXTREFB:       0/      2     0%
-Info: 	                DCUA:       0/      2     0%
-Info: 	           PCSCLKDIV:       0/      2     0%
-Info: 	             IOLOGIC:       0/    224     0%
-Info: 	            SIOLOGIC:       0/    141     0%
-Info: 	                 GSR:       0/      1     0%
-Info: 	               JTAGG:       0/      1     0%
-Info: 	                OSCG:       0/      1     0%
-Info: 	               SEDGA:       0/      1     0%
-Info: 	                 DTR:       0/      1     0%
-Info: 	             USRMCLK:       0/      1     0%
-Info: 	             CLKDIVF:       0/      4     0%
-Info: 	           ECLKSYNCB:       0/     10     0%
-Info: 	             DLLDELD:       0/      8     0%
-Info: 	              DDRDLL:       0/      4     0%
-Info: 	             DQSBUFM:       0/     14     0%
-Info: 	     TRELLIS_ECLKBUF:       0/      8     0%
-Info: 	        ECLKBRIDGECS:       0/      2     0%
-Info: 	                DCSC:       0/      2     0%
-Info: 	          TRELLIS_FF:    2630/  83640     3%
-Info: 	        TRELLIS_COMB:    5532/  83640     6%
-Info: 	        TRELLIS_RAMW:       0/  10455     0%
+Info: 	          TRELLIS_IO:    23/  365     6%
+Info: 	                DCCA:     1/   56     1%
+Info: 	              DP16KD:     3/  208     1%
+Info: 	          MULT18X18D:     0/  156     0%
+Info: 	              ALU54B:     0/   78     0%
+Info: 	             EHXPLLL:     0/    4     0%
+Info: 	             EXTREFB:     0/    2     0%
+Info: 	                DCUA:     0/    2     0%
+Info: 	           PCSCLKDIV:     0/    2     0%
+Info: 	             IOLOGIC:     0/  224     0%
+Info: 	            SIOLOGIC:     0/  141     0%
+Info: 	                 GSR:     0/    1     0%
+Info: 	               JTAGG:     0/    1     0%
+Info: 	                OSCG:     0/    1     0%
+Info: 	               SEDGA:     0/    1     0%
+Info: 	                 DTR:     0/    1     0%
+Info: 	             USRMCLK:     0/    1     0%
+Info: 	             CLKDIVF:     0/    4     0%
+Info: 	           ECLKSYNCB:     0/   10     0%
+Info: 	             DLLDELD:     0/    8     0%
+Info: 	              DDRDLL:     0/    4     0%
+Info: 	             DQSBUFM:     0/   14     0%
+Info: 	     TRELLIS_ECLKBUF:     0/    8     0%
+Info: 	        ECLKBRIDGECS:     0/    2     0%
+Info: 	                DCSC:     0/    2     0%
+Info: 	          TRELLIS_FF:  2689/83640     3%
+Info: 	        TRELLIS_COMB:  7812/83640     9%
+Info: 	        TRELLIS_RAMW:     0/10455     0%
 
 Info: Placed 23 cells based on constraints.
-Info: Creating initial analytic placement for 5420 cells, random placement wirelen = 568875.
-Info:     at initial placer iter 0, wirelen = 2595
-Info:     at initial placer iter 1, wirelen = 2468
-Info:     at initial placer iter 2, wirelen = 2364
-Info:     at initial placer iter 3, wirelen = 2368
-Info: Running main analytical placer, max placement attempts per cell = 8382465.
-Info:     at iteration #1, type ALL: wirelen solved = 2346, spread = 50836, legal = 52553; time = 0.10s
-Info:     at iteration #2, type ALL: wirelen solved = 6123, spread = 39093, legal = 42351; time = 0.09s
-Info:     at iteration #3, type ALL: wirelen solved = 10252, spread = 35501, legal = 38324; time = 0.10s
-Info:     at iteration #4, type ALL: wirelen solved = 14216, spread = 33364, legal = 35764; time = 0.08s
-Info:     at iteration #5, type ALL: wirelen solved = 16926, spread = 31567, legal = 33947; time = 0.09s
-Info:     at iteration #6, type ALL: wirelen solved = 18248, spread = 31903, legal = 34135; time = 0.08s
-Info:     at iteration #7, type ALL: wirelen solved = 19858, spread = 30618, legal = 33807; time = 0.09s
-Info:     at iteration #8, type ALL: wirelen solved = 20687, spread = 30936, legal = 34245; time = 0.08s
-Info:     at iteration #9, type ALL: wirelen solved = 21726, spread = 30507, legal = 33405; time = 0.08s
-Info:     at iteration #10, type ALL: wirelen solved = 22746, spread = 30288, legal = 33701; time = 0.08s
-Info:     at iteration #11, type ALL: wirelen solved = 23363, spread = 31191, legal = 34086; time = 0.08s
-Info:     at iteration #12, type ALL: wirelen solved = 24468, spread = 31956, legal = 34565; time = 0.08s
-Info:     at iteration #13, type ALL: wirelen solved = 26031, spread = 32356, legal = 34793; time = 0.08s
-Info:     at iteration #14, type ALL: wirelen solved = 26400, spread = 31751, legal = 34891; time = 0.07s
-Info: HeAP Placer Time: 1.95s
-Info:   of which solving equations: 0.96s
-Info:   of which spreading cells: 0.24s
-Info:   of which strict legalisation: 0.15s
+Info: Creating initial analytic placement for 6907 cells, random placement wirelen = 698749.
+Info:     at initial placer iter 0, wirelen = 3537
+Info:     at initial placer iter 1, wirelen = 2867
+Info:     at initial placer iter 2, wirelen = 2820
+Info:     at initial placer iter 3, wirelen = 2791
+Info: Running main analytical placer, max placement attempts per cell = 13854848.
+Info:     at iteration #1, type ALL: wirelen solved = 2773, spread = 61719, legal = 68871; time = 0.22s
+Info:     at iteration #2, type ALL: wirelen solved = 9955, spread = 48461, legal = 54383; time = 0.20s
+Info:     at iteration #3, type ALL: wirelen solved = 15025, spread = 44095, legal = 52438; time = 0.18s
+Info:     at iteration #4, type ALL: wirelen solved = 18595, spread = 40980, legal = 50217; time = 0.17s
+Info:     at iteration #5, type ALL: wirelen solved = 21271, spread = 40597, legal = 49714; time = 0.17s
+Info:     at iteration #6, type ALL: wirelen solved = 22969, spread = 38312, legal = 47572; time = 0.17s
+Info:     at iteration #7, type ALL: wirelen solved = 24648, spread = 36620, legal = 45411; time = 0.17s
+Info:     at iteration #8, type ALL: wirelen solved = 26088, spread = 36247, legal = 44871; time = 0.16s
+Info:     at iteration #9, type ALL: wirelen solved = 27290, spread = 36456, legal = 45047; time = 0.16s
+Info:     at iteration #10, type ALL: wirelen solved = 28422, spread = 36415, legal = 44528; time = 0.18s
+Info:     at iteration #11, type ALL: wirelen solved = 28838, spread = 38363, legal = 44432; time = 0.21s
+Info:     at iteration #12, type ALL: wirelen solved = 30768, spread = 37916, legal = 46022; time = 0.18s
+Info:     at iteration #13, type ALL: wirelen solved = 31088, spread = 37866, legal = 43806; time = 0.15s
+Info:     at iteration #14, type ALL: wirelen solved = 31509, spread = 38214, legal = 45644; time = 0.15s
+Info:     at iteration #15, type ALL: wirelen solved = 31971, spread = 39687, legal = 45311; time = 0.17s
+Info:     at iteration #16, type ALL: wirelen solved = 33077, spread = 39526, legal = 47014; time = 0.17s
+Info:     at iteration #17, type ALL: wirelen solved = 33322, spread = 39643, legal = 48630; time = 0.19s
+Info:     at iteration #18, type ALL: wirelen solved = 33499, spread = 38969, legal = 47570; time = 0.17s
+Info: HeAP Placer Time: 4.38s
+Info:   of which solving equations: 1.93s
+Info:   of which spreading cells: 0.44s
+Info:   of which strict legalisation: 1.03s
 
 Info: Running simulated annealing placer for refinement.
-Info:   at iteration #1: temp = 0.000000, timing cost = 2459, wirelen = 33405
-Info:   at iteration #5: temp = 0.000000, timing cost = 2213, wirelen = 29636
-Info:   at iteration #10: temp = 0.000000, timing cost = 2370, wirelen = 28673
-Info:   at iteration #15: temp = 0.000000, timing cost = 2215, wirelen = 28110
-Info:   at iteration #20: temp = 0.000000, timing cost = 2130, wirelen = 27955
-Info:   at iteration #23: temp = 0.000000, timing cost = 2134, wirelen = 27893 
-Info: SA placement time 6.42s
+Info:   at iteration #1: temp = 0.000000, timing cost = 3159, wirelen = 43806
+Info:   at iteration #5: temp = 0.000000, timing cost = 1534, wirelen = 38814
+Info:   at iteration #10: temp = 0.000000, timing cost = 1233, wirelen = 37493
+Info:   at iteration #15: temp = 0.000000, timing cost = 1293, wirelen = 36867
+Info:   at iteration #20: temp = 0.000000, timing cost = 1241, wirelen = 36669
+Info:   at iteration #25: temp = 0.000000, timing cost = 1262, wirelen = 36611
+Info:   at iteration #26: temp = 0.000000, timing cost = 1304, wirelen = 36595 
+Info: SA placement time 10.36s
 
-Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 49.84 MHz (FAIL at 50.00 MHz)
+Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 34.79 MHz (FAIL at 50.00 MHz)
 
-Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 21.05 ns
-Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 21.64 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 31.57 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 43.58 ns
 
 Info: Slack histogram:
-Info:  legend: * represents 10 endpoint(s)
-Info:          + represents [1,10) endpoint(s)
-Info: [   -64,    902) |**+
-Info: [   902,   1868) |****************************************+
-Info: [  1868,   2834) |************************************************************ 
-Info: [  2834,   3800) |**************************************+
-Info: [  3800,   4766) |********+
-Info: [  4766,   5732) |****************+
-Info: [  5732,   6698) |*****************+
-Info: [  6698,   7664) |*************************+
-Info: [  7664,   8630) |***************+
-Info: [  8630,   9596) |****+
-Info: [  9596,  10562) |**********+
-Info: [ 10562,  11528) |*******************+
-Info: [ 11528,  12494) |*******************+
-Info: [ 12494,  13460) |*************************+
-Info: [ 13460,  14426) |*********************+
-Info: [ 14426,  15392) |***********************+
-Info: [ 15392,  16358) |**************************************+
-Info: [ 16358,  17324) |****************************************+
-Info: [ 17324,  18290) |*********************************+
-Info: [ 18290,  19256) |***********+
-Info: Checksum: 0x55d2e86f
+Info:  legend: * represents 22 endpoint(s)
+Info:          + represents [1,22) endpoint(s)
+Info: [-23584, -21442) |+
+Info: [-21442, -19300) | 
+Info: [-19300, -17158) | 
+Info: [-17158, -15016) |+
+Info: [-15016, -12874) |+
+Info: [-12874, -10732) |+
+Info: [-10732,  -8590) |*+
+Info: [ -8590,  -6448) |********************************+
+Info: [ -6448,  -4306) |*****************************+
+Info: [ -4306,  -2164) |******************+
+Info: [ -2164,    -22) |************************************************************ 
+Info: [   -22,   2120) |*****************************+
+Info: [  2120,   4262) |**************+
+Info: [  4262,   6404) |*****************+
+Info: [  6404,   8546) |**************+
+Info: [  8546,  10688) |*******************+
+Info: [ 10688,  12830) |*********************************+
+Info: [ 12830,  14972) |**************************************************+
+Info: [ 14972,  17114) |*************************************+
+Info: [ 17114,  19256) |*********+
+Info: Checksum: 0x1e2fec54
 Info: Routing globals...
 Info:     routing clock net $glbnet$clk$TRELLIS_IO_IN using global 0
 
 Info: Routing..
 Info: Setting up routing queue.
-Info: Routing 23362 arcs.
+Info: Routing 29403 arcs.
 Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
 Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
-Info:       1000 |      273        726 |  273   726 |     22859|       0.39       0.39|
-Info:       2000 |      470       1529 |  197   803 |     22152|       0.21       0.60|
-Info:       3000 |      709       2290 |  239   761 |     21500|       0.18       0.78|
-Info:       4000 |      920       3079 |  211   789 |     20807|       0.16       0.94|
-Info:       5000 |     1084       3915 |  164   836 |     20042|       0.18       1.12|
-Info:       6000 |     1278       4721 |  194   806 |     19266|       0.16       1.28|
-Info:       7000 |     1488       5511 |  210   790 |     18604|       0.17       1.45|
-Info:       8000 |     1690       6309 |  202   798 |     17833|       0.19       1.63|
-Info:       9000 |     1964       7035 |  274   726 |     17269|       0.21       1.84|
-Info:      10000 |     2197       7802 |  233   767 |     16618|       0.17       2.01|
-Info:      11000 |     2402       8597 |  205   795 |     15887|       0.18       2.19|
-Info:      12000 |     2605       9326 |  203   729 |     15167|       0.18       2.37|
-Info:      13000 |     2860      10010 |  255   684 |     14478|       0.18       2.55|
-Info:      14000 |     3086      10754 |  226   744 |     13742|       0.17       2.72|
-Info:      15000 |     3388      11403 |  302   649 |     13134|       0.21       2.94|
-Info:      16000 |     3653      12103 |  265   700 |     12462|       0.21       3.14|
-Info:      17000 |     3887      12809 |  234   706 |     11758|       0.20       3.34|
-Info:      18000 |     4132      13529 |  245   720 |     11130|       0.27       3.61|
-Info:      19000 |     4430      14203 |  298   674 |     10707|       0.25       3.86|
-Info:      20000 |     4679      14884 |  249   681 |     10092|       0.22       4.08|
-Info:      21000 |     4943      15524 |  264   640 |      9477|       0.28       4.36|
-Info:      22000 |     5239      16194 |  296   670 |      8944|       0.26       4.62|
-Info:      23000 |     5540      16874 |  301   680 |      8346|       0.30       4.92|
-Info:      24000 |     5845      17466 |  305   592 |      7786|       0.34       5.26|
-Info:      25000 |     6042      18190 |  197   724 |      7059|       0.22       5.48|
-Info:      26000 |     6278      18952 |  236   762 |      6402|       0.27       5.75|
-Info:      27000 |     6316      19847 |   38   895 |      5473|       0.20       5.95|
-Info:      28000 |     6367      20727 |   51   880 |      4571|       0.19       6.14|
-Info:      29000 |     6427      21600 |   60   873 |      3632|       0.20       6.34|
-Info:      30000 |     6522      22448 |   95   848 |      2740|       0.22       6.56|
-Info:      31000 |     6661      23249 |  139   801 |      1906|       0.25       6.81|
-Info:      32000 |     6875      23985 |  214   736 |      1191|       0.30       7.12|
-Info:      33000 |     7120      24704 |  245   719 |       696|       0.30       7.42|
-Info:      34000 |     7355      25439 |  235   735 |        40|       0.26       7.68|
-Info:      34070 |     7377      25484 |   22    45 |         0|       0.05       7.73|
+Info:       1000 |      179        820 |  179   820 |     28611|       0.31       0.31|
+Info:       2000 |      536       1463 |  357   643 |     28037|       0.10       0.41|
+Info:       3000 |      926       2073 |  390   610 |     27526|       0.11       0.52|
+Info:       4000 |     1270       2729 |  344   656 |     26987|       0.13       0.65|
+Info:       5000 |     1492       3507 |  222   778 |     26282|       0.12       0.78|
+Info:       6000 |     1713       4286 |  221   779 |     25673|       0.12       0.89|
+Info:       7000 |     1951       5048 |  238   762 |     25022|       0.11       1.00|
+Info:       8000 |     2177       5822 |  226   774 |     24463|       0.11       1.11|
+Info:       9000 |     2435       6564 |  258   742 |     23832|       0.10       1.21|
+Info:      10000 |     2682       7317 |  247   753 |     23211|       0.11       1.32|
+Info:      11000 |     2955       8044 |  273   727 |     22585|       0.12       1.44|
+Info:      12000 |     3220       8779 |  265   735 |     22035|       0.11       1.55|
+Info:      13000 |     3484       9515 |  264   736 |     21427|       0.12       1.66|
+Info:      14000 |     3716      10234 |  232   719 |     20752|       0.11       1.77|
+Info:      15000 |     3927      10984 |  211   750 |     20049|       0.11       1.88|
+Info:      16000 |     4141      11700 |  214   716 |     19381|       0.16       2.04|
+Info:      17000 |     4374      12385 |  233   685 |     18766|       0.13       2.16|
+Info:      18000 |     4620      13082 |  246   697 |     18175|       0.13       2.29|
+Info:      19000 |     4877      13735 |  257   653 |     17460|       0.12       2.41|
+Info:      20000 |     5139      14425 |  262   690 |     16821|       0.14       2.56|
+Info:      21000 |     5438      15091 |  299   666 |     16210|       0.14       2.70|
+Info:      22000 |     5709      15752 |  271   661 |     15592|       0.14       2.84|
+Info:      23000 |     5983      16376 |  274   624 |     14963|       0.15       2.99|
+Info:      24000 |     6296      16996 |  313   620 |     14395|       0.14       3.13|
+Info:      25000 |     6529      17711 |  233   715 |     13667|       0.13       3.25|
+Info:      26000 |     6759      18389 |  230   678 |     12936|       0.11       3.36|
+Info:      27000 |     7040      19050 |  281   661 |     12297|       0.14       3.50|
+Info:      28000 |     7298      19752 |  258   702 |     11617|       0.15       3.65|
+Info:      29000 |     7521      20505 |  223   753 |     10962|       0.12       3.77|
+Info:      30000 |     7688      21289 |  167   784 |     10280|       0.13       3.90|
+Info:      31000 |     7785      22132 |   97   843 |      9443|       0.11       4.02|
+Info:      32000 |     7875      22973 |   90   841 |      8576|       0.13       4.14|
+Info:      33000 |     7973      23811 |   98   838 |      7700|       0.11       4.25|
+Info:      34000 |     8090      24637 |  117   826 |      6861|       0.14       4.39|
+Info:      35000 |     8212      25449 |  122   812 |      6018|       0.12       4.52|
+Info:      36000 |     8323      26281 |  111   832 |      5131|       0.13       4.64|
+Info:      37000 |     8454      27087 |  131   806 |      4282|       0.13       4.78|
+Info:      38000 |     8622      27860 |  168   773 |      3466|       0.14       4.92|
+Info:      39000 |     8832      28598 |  210   738 |      2773|       0.20       5.12|
+Info:      40000 |     9036      29339 |  204   741 |      1989|       0.23       5.36|
+Info:      41000 |     9282      30036 |  246   697 |      1272|       0.20       5.56|
+Info:      42000 |     9596      30672 |  314   636 |       641|       0.20       5.76|
+Info:      43000 |     9965      31271 |  369   599 |       140|       0.18       5.94|
+Info:      43275 |    10066      31437 |  101   166 |         0|       0.11       6.05|
 Info: Routing complete.
-Info: Router1 time 7.73s
-Info: Checksum: 0x2d34b3ac
+Info: Router1 time 6.05s
+Info: Checksum: 0xb80354b2
 
 Info: Critical path report for clock '$glbnet$clk$TRELLIS_IO_IN' (posedge -> posedge):
-Info:       type curr  total name
-Info:   clk-to-q  5.61  5.61 Source u_mapped_memory.mem.0.0.DOA12
-Info:    routing  1.00  6.61 Net u_mapped_memory.mem.0.0_DOA12[1] (10,22) -> (10,19)
-Info:                          Sink u_mapped_memory.mem.0.0_DOA12_LUT4_C.C
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  6.84 Source u_mapped_memory.mem.0.0_DOA12_LUT4_C.F
-Info:    routing  0.64  7.48 Net u_mapped_memory.mem.0.0_DOA12_LUT4_C_Z[3] (10,19) -> (12,19)
-Info:                          Sink mem_rdata_LUT4_Z.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  7.71 Source mem_rdata_LUT4_Z.F
-Info:    routing  0.44  8.16 Net mem_rdata[12] (12,19) -> (12,19)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_CE_LUT4_Z_D_LUT4_Z_B_LUT4_Z_B_LUT4_Z_D_LUT4_Z.A
-Info:                          Defined in:
-Info:                               rtl/mapped/mapped_memory.sv:13.23-13.32
-Info:      logic  0.24  8.39 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_CE_LUT4_Z_D_LUT4_Z_B_LUT4_Z_B_LUT4_Z_D_LUT4_Z.F
-Info:    routing  0.48  8.88 Net u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_CE_LUT4_Z_D_LUT4_Z_B_LUT4_Z_B_LUT4_Z_D[2] (12,19) -> (12,21)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_CE_LUT4_Z_D_LUT4_Z_B_LUT4_Z_B_LUT4_Z.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  9.11 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_CE_LUT4_Z_D_LUT4_Z_B_LUT4_Z_B_LUT4_Z.F
-Info:    routing  1.06  10.17 Net u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_CE_LUT4_Z_D_LUT4_Z_B_LUT4_Z_B[3] (12,21) -> (11,26)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_3_C_LUT4_Z_C_LUT4_C_Z_LUT4_D_Z_LUT4_Z_2.C
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  10.41 Source u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_3_C_LUT4_Z_C_LUT4_C_Z_LUT4_D_Z_LUT4_Z_2.F
-Info:    routing  1.15  11.55 Net u_full_core_replaycapsule.u_replay_capsule_top.u_capsule_buffer.overflow_TRELLIS_FF_Q_DI_TRELLIS_FF_DI_Q_LUT4_Z_3_C_LUT4_Z_C_LUT4_C_Z_LUT4_D_Z[3] (11,26) -> (11,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB0.A
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.45  12.00 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB0.FCO
-Info:    routing  0.00  12.00 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_FCI_INT (11,29) -> (11,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB1.FCI
-Info:      logic  0.00  12.00 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB1.FCO
-Info:    routing  0.00  12.00 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_CIN (11,29) -> (11,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.07 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  12.07 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_FCI_INT (11,29) -> (11,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  12.07 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  12.07 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_14_D_CCU2C_A1_COUT (11,29) -> (12,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_7_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.14 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_7_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  12.14 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_7_D_CCU2C_A1$CCU2_FCI_INT (12,29) -> (12,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_7_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  12.14 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_7_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  12.14 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_7_D_CCU2C_A1_COUT (12,29) -> (12,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.21 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  12.21 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_FCI_INT (12,29) -> (12,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  12.21 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  12.21 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1_COUT (12,29) -> (12,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.28 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCO
-Info:    routing  0.00  12.28 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_FCI_INT (12,29) -> (12,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCI
-Info:      logic  0.00  12.28 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_26_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCO
-Info:    routing  0.00  12.28 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1_CIN (12,29) -> (12,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.35 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  12.35 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1$CCU2_FCI_INT (12,29) -> (12,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  12.35 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  12.35 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1_COUT (12,29) -> (13,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.43 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCO
-Info:    routing  0.00  12.43 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_FCI_INT (13,29) -> (13,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCI
-Info:      logic  0.00  12.43 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_5_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCO
-Info:    routing  0.00  12.43 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_9_D_CCU2C_A1_CIN (13,29) -> (13,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_9_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.50 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_9_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  12.50 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_9_D_CCU2C_A1$CCU2_FCI_INT (13,29) -> (13,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_9_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  12.50 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_9_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  12.50 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_9_D_CCU2C_A1_COUT (13,29) -> (13,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_3_D_CCU2C_A0$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.57 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_3_D_CCU2C_A0$CCU2_COMB0.FCO
-Info:    routing  0.00  12.57 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_3_D_CCU2C_A0$CCU2_FCI_INT (13,29) -> (13,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_3_D_CCU2C_A0$CCU2_COMB1.FCI
-Info:      logic  0.00  12.57 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_3_D_CCU2C_A0$CCU2_COMB1.FCO
-Info:    routing  0.00  12.57 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_3_D_CCU2C_A0_COUT (13,29) -> (13,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:64.73-64.103
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  12.64 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  12.64 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1$CCU2_FCI_INT (13,29) -> (13,29)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  12.64 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  12.64 Net $nextpnr_CCU2C_36$CIN (13,29) -> (14,29)
-Info:                          Sink $nextpnr_CCU2C_36$CCU2_COMB0.FCI
-Info:      logic  0.44  13.08 Source $nextpnr_CCU2C_36$CCU2_COMB0.F
-Info:    routing  1.00  14.08 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1_COUT[6] (14,29) -> (12,32)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1_COUT_L6MUX21_SD_1_D0_PFUMX_Z_ALUT_LUT4_Z.M
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.26  14.34 Source u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1_COUT_L6MUX21_SD_1_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
-Info:    routing  1.35  15.68 Net u_full_core_replaycapsule.u_replay_capsule_top.final_data_LUT4_Z_17_D_CCU2C_A1_COUT_L6MUX21_SD_Z[3] (12,32) -> (16,36)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_LUT4_Z_1_D_LUT4_Z.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  15.92 Source u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_LUT4_Z_1_D_LUT4_Z.F
-Info:    routing  0.62  16.54 Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_LUT4_Z_1_D[3] (16,36) -> (16,36)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_LUT4_Z_1.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  16.78 Source u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_LUT4_Z_1.F
-Info:    routing  0.13  16.91 Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z[25] (16,36) -> (16,36)
-Info:                          Sink u_full_core_replaycapsule.running_signature_LUT4_Z_11_C_LUT4_A_Z_TRELLIS_FF_Q.DI
-Info:      setup  0.00  16.91 Source u_full_core_replaycapsule.running_signature_LUT4_Z_11_C_LUT4_A_Z_TRELLIS_FF_Q.DI
-Info: 9.05 ns logic, 7.86 ns routing
+Info: curr total
+Info:  5.6  5.6  Source u_mapped_memory.mem.0.0.DOA7
+Info:  1.8  7.4    Net u_mapped_memory.mem.0.0_DOA7[1] budget 0.000000 ns (8,22) -> (8,11)
+Info:                Sink u_mapped_memory.mem.0.0_DOA7_LUT4_B.C
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2  7.7  Source u_mapped_memory.mem.0.0_DOA7_LUT4_B.F
+Info:  0.0  7.7    Net mem_rdata_PFUMX_Z_24_ALUT budget 0.000000 ns (8,11) -> (8,11)
+Info:                Sink mem_rdata_PFUMX_Z_24_BLUT_LUT4_Z.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:133.22-133.24
+Info:  0.2  7.8  Source mem_rdata_PFUMX_Z_24_BLUT_LUT4_Z.OFX
+Info:  1.0  8.9    Net mem_rdata[7] budget 0.000000 ns (8,11) -> (9,15)
+Info:                Sink u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_LUT4_C_Z_PFUMX_ALUT_BLUT_LUT4_Z.C
+Info:                Defined in:
+Info:                  rtl/mapped/full_core_replaycapsule_board_top.sv:136.5-151.4
+Info:                  rtl/mapped/mapped_memory.sv:13.23-13.32
+Info:  0.4  9.3  Source u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_LUT4_C_Z_PFUMX_ALUT_BLUT_LUT4_Z.OFX
+Info:  0.0  9.3    Net u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_L6MUX21_SD_1_D0 budget 0.000000 ns (9,15) -> (9,15)
+Info:                Sink u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_L6MUX21_SD_1_D1_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.50-157.52
+Info:  0.2  9.5  Source u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_L6MUX21_SD_1_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  0.0  9.5    Net u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_L6MUX21_SD_1_Z budget 0.000000 ns (9,15) -> (9,15)
+Info:                Sink u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_L6MUX21_SD_D0_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.66-157.68
+Info:  0.2  9.7  Source u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_L6MUX21_SD_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  1.5 11.2    Net u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_L6MUX21_SD_Z_L6MUX21_D1_Z[1] budget 0.000000 ns (9,15) -> (16,19)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.event_data_LUT4_Z_26.C
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 11.5  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.event_data_LUT4_Z_26.F
+Info:  0.9 12.3    Net u_full_core_replaycapsule.u_replay_capsule_top.raw_event_data[7] budget 0.000000 ns (16,19) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_1$CCU2_COMB1.B
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.4 12.8  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_1$CCU2_COMB1.FCO
+Info:  0.0 12.8    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[8] budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 12.8  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0$CCU2_COMB0.FCO
+Info:  0.0 12.8    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0$CCU2_FCI_INT budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0$CCU2_COMB1.FCI
+Info:  0.0 12.8  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0$CCU2_COMB1.FCO
+Info:  0.0 12.8    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[10] budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 12.9  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_COMB0.FCO
+Info:  0.0 12.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_FCI_INT budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_COMB1.FCI
+Info:  0.0 12.9  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_COMB1.FCO
+Info:  0.0 12.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[12] budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.0  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_COMB0.FCO
+Info:  0.0 13.0    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_FCI_INT budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_COMB1.FCI
+Info:  0.0 13.0  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_COMB1.FCO
+Info:  0.0 13.0    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[14] budget 0.000000 ns (16,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.0  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_COMB0.FCO
+Info:  0.0 13.0    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_FCI_INT budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_COMB1.FCI
+Info:  0.0 13.0  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_COMB1.FCO
+Info:  0.0 13.0    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[16] budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.1  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_COMB0.FCO
+Info:  0.0 13.1    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_FCI_INT budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_COMB1.FCI
+Info:  0.0 13.1  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_COMB1.FCO
+Info:  0.0 13.1    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[18] budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.2  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_COMB0.FCO
+Info:  0.0 13.2    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_FCI_INT budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_COMB1.FCI
+Info:  0.0 13.2  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_COMB1.FCO
+Info:  0.0 13.2    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[20] budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.3  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_COMB0.FCO
+Info:  0.0 13.3    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_FCI_INT budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_COMB1.FCI
+Info:  0.0 13.3  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_COMB1.FCO
+Info:  0.0 13.3    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[22] budget 0.000000 ns (17,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.3  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_COMB0.FCO
+Info:  0.0 13.3    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_FCI_INT budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_COMB1.FCI
+Info:  0.0 13.3  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_COMB1.FCO
+Info:  0.0 13.3    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[24] budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.4  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_COMB0.FCO
+Info:  0.0 13.4    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_FCI_INT budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_COMB1.FCI
+Info:  0.0 13.4  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_COMB1.FCO
+Info:  0.0 13.4    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[26] budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.5  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_COMB0.FCO
+Info:  0.0 13.5    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_FCI_INT budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_COMB1.FCI
+Info:  0.0 13.5  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_COMB1.FCO
+Info:  0.0 13.5    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[28] budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.5  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_COMB0.FCO
+Info:  0.0 13.5    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_FCI_INT budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_COMB1.FCI
+Info:  0.0 13.5  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_COMB1.FCO
+Info:  0.0 13.5    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[30] budget 0.000000 ns (18,20) -> (19,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 13.6  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_COMB0.FCO
+Info:  0.0 13.6    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_FCI_INT budget 0.000000 ns (19,20) -> (19,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_COMB1.FCI
+Info:  0.0 13.6  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_COMB1.FCO
+Info:  0.0 13.6    Net $nextpnr_CCU2C_19$CIN budget 0.000000 ns (19,20) -> (19,20)
+Info:                Sink $nextpnr_CCU2C_19$CCU2_COMB0.FCI
+Info:  0.4 14.1  Source $nextpnr_CCU2C_19$CCU2_COMB0.F
+Info:  1.5 15.5    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z[3] budget 4.675000 ns (19,20) -> (22,30)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C.B
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 15.8  Source u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C.F
+Info:  0.0 15.8    Net u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C_Z budget 0.667000 ns (22,30) -> (22,30)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_PFUMX_C0_BLUT_LUT4_Z.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:141.30-141.32
+Info:  0.2 15.9  Source u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_PFUMX_C0_BLUT_LUT4_Z.OFX
+Info:  0.0 15.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_PFUMX_C0_Z budget 0.000000 ns (22,30) -> (22,30)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C.FXB
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:141.38-141.40
+Info:  0.2 16.2  Source u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C.OFX
+Info:  1.3 17.4    Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_6_B[2] budget 0.874000 ns (22,30) -> (12,28)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_LUT4_C.D
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 17.7  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_LUT4_C.F
+Info:  2.1 19.7    Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_2_B_LUT4_C_Z_LUT4_C_Z[1] budget 0.803000 ns (12,28) -> (29,31)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_ALUT_LUT4_Z.B
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 20.0  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_ALUT_LUT4_Z.F
+Info:  0.0 20.0    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_ALUT budget 0.803000 ns (29,31) -> (29,31)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:133.22-133.24
+Info:  0.2 20.1  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:  0.4 20.5    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI budget 0.803000 ns (29,31) -> (29,31)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4.M
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:112.3-171.6
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:  0.0 20.5  Setup u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4.M
+Info: 10.1 ns logic, 10.4 ns routing
 
 Info: Critical path report for cross-domain path '<async>' -> 'posedge $glbnet$clk$TRELLIS_IO_IN':
-Info:       type curr  total name
-Info:     source  0.00  0.00 Source uart_rx$tr_io.O
-Info:    routing  4.87  4.87 Net uart_rx$TRELLIS_IO_IN (0,89) -> (10,21)
-Info:                          Sink u_full_core_replaycapsule_external_input_valid_LUT4_Z.C
-Info:                          Defined in:
-Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:15.22-15.29
-Info:      logic  0.24  5.11 Source u_full_core_replaycapsule_external_input_valid_LUT4_Z.F
-Info:    routing  1.90  7.01 Net u_full_core_replaycapsule_external_input_valid (10,21) -> (16,36)
-Info:                          Sink u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A1_LUT4_Z_C_LUT4_C.B
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  7.25 Source u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A1_LUT4_Z_C_LUT4_C.F
-Info:    routing  1.00  8.24 Net u_full_core_replaycapsule.trace_is_addr_LUT4_C_Z_CCU2C_B0_A1_LUT4_Z_C_LUT4_C_Z[5] (16,36) -> (16,32)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_7_D_LUT4_Z.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  8.48 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_7_D_LUT4_Z.F
-Info:    routing  1.50  9.98 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_7_D[1] (16,32) -> (16,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_3_D_CCU2C_A1_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_COMB0.A
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.45  10.43 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_3_D_CCU2C_A1_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_COMB0.FCO
-Info:    routing  0.00  10.43 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_3_D_CCU2C_A1_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_FCI_INT (16,38) -> (16,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_3_D_CCU2C_A1_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_COMB1.FCI
-Info:      logic  0.00  10.43 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_3_D_CCU2C_A1_COUT_CCU2C_CIN_COUT_CCU2C_CIN$CCU2_COMB1.FCO
-Info:    routing  0.00  10.43 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_3_D_CCU2C_A1_COUT_CCU2C_CIN_COUT_CCU2C_CIN_COUT (16,38) -> (16,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT_CIN_CCU2C_COUT$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:80.46-80.74
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  10.50 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT_CIN_CCU2C_COUT$CCU2_COMB0.FCO
-Info:    routing  0.00  10.50 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT_CIN_CCU2C_COUT$CCU2_FCI_INT (16,38) -> (16,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT_CIN_CCU2C_COUT$CCU2_COMB1.FCI
-Info:      logic  0.00  10.50 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT_CIN_CCU2C_COUT$CCU2_COMB1.FCO
-Info:    routing  0.00  10.50 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT_CIN (16,38) -> (16,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:80.46-80.74
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  10.57 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB0.FCO
-Info:    routing  0.00  10.57 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_FCI_INT (16,38) -> (16,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB1.FCI
-Info:      logic  0.00  10.57 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN_CCU2C_COUT$CCU2_COMB1.FCO
-Info:    routing  0.00  10.57 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_CIN (16,38) -> (17,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:80.46-80.74
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  10.64 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  10.64 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1$CCU2_FCI_INT (17,38) -> (17,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  10.64 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  10.64 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_17_D_CCU2C_A1_COUT (17,38) -> (17,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:80.46-80.74
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  10.71 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1$CCU2_COMB0.FCO
-Info:    routing  0.00  10.71 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1$CCU2_FCI_INT (17,38) -> (17,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1$CCU2_COMB1.FCI
-Info:      logic  0.00  10.71 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1$CCU2_COMB1.FCO
-Info:    routing  0.00  10.71 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1_COUT (17,38) -> (17,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCI
-Info:                          Defined in:
-Info:                               rtl/property_checker.sv:80.46-80.74
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/arith_map_ccu2c.v:74.7-80.4
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice\ccu2c_sim.vh:9.9-9.13
-Info:      logic  0.07  10.78 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB0.FCO
-Info:    routing  0.00  10.78 Net u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_FCI_INT (17,38) -> (17,38)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCI
-Info:      logic  0.00  10.78 Source u_full_core_replaycapsule.u_replay_capsule_top.final_addr_LUT4_Z_10_D_CCU2C_A1_COUT_CCU2C_CIN$CCU2_COMB1.FCO
-Info:    routing  0.00  10.78 Net $nextpnr_CCU2C_40$CIN (17,38) -> (17,38)
-Info:                          Sink $nextpnr_CCU2C_40$CCU2_COMB0.FCI
-Info:      logic  0.44  11.23 Source $nextpnr_CCU2C_40$CCU2_COMB0.F
-Info:    routing  2.08  13.30 Net u_full_core_replaycapsule.property_id_LUT4_Z_1_C_LUT4_B_D[3] (17,38) -> (5,26)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_PFUMX_Z_15_C0_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.40  13.70 Source u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_PFUMX_Z_15_C0_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
-Info:    routing  0.00  13.70 Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_PFUMX_Z_15_C0_L6MUX21_Z_D1 (5,26) -> (5,26)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_PFUMX_Z_15_C0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:141.38-141.40
-Info:      logic  0.24  13.94 Source u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_PFUMX_Z_15_C0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
-Info:    routing  0.63  14.58 Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_PFUMX_Z_15_C0[4] (5,26) -> (5,27)
-Info:                          Sink u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_PFUMX_Z_15_BLUT_LUT4_Z.M
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.26  14.83 Source u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z_PFUMX_Z_15_BLUT_LUT4_Z.OFX
-Info:    routing  0.68  15.51 Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_5_D_LUT4_C_Z_LUT4_C_Z_PFUMX_ALUT_Z[7] (5,27) -> (5,26)
-Info:                          Sink u_full_core_replaycapsule.property_signature_LUT4_Z_24_C_TRELLIS_FF_Q.M
-Info:      setup  0.00  15.51 Source u_full_core_replaycapsule.property_signature_LUT4_Z_24_C_TRELLIS_FF_Q.M
-Info: 2.85 ns logic, 12.66 ns routing
+Info: curr total
+Info:  0.0  0.0  Source uart_rx$tr_io.O
+Info:  5.2  5.2    Net uart_rx$TRELLIS_IO_IN budget 0.000000 ns (0,89) -> (13,15)
+Info:                Sink u_full_core_replaycapsule_external_input_valid_LUT4_Z.D
+Info:                Defined in:
+Info:                  rtl/mapped/full_core_replaycapsule_board_top.sv:15.22-15.29
+Info:  0.2  5.4  Source u_full_core_replaycapsule_external_input_valid_LUT4_Z.F
+Info:  1.2  6.7    Net u_full_core_replaycapsule_external_input_valid budget 0.000000 ns (13,15) -> (12,12)
+Info:                Sink u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_18_B_L6MUX21_SD_D0_PFUMX_Z_ALUT_LUT4_Z.M
+Info:                Defined in:
+Info:                  rtl/mapped/full_core_replaycapsule_board_top.sv:106.27-106.66
+Info:  0.3  6.9  Source u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_18_B_L6MUX21_SD_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  1.5  8.5    Net u_full_core_replaycapsule.u_picorv32.mem_rdata_LUT4_Z_20_B_L6MUX21_SD_Z_L6MUX21_D1_Z[2] budget 0.000000 ns (12,12) -> (16,19)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.event_data_LUT4_Z_25.C
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2  8.7  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.event_data_LUT4_Z_25.F
+Info:  1.1  9.8    Net u_full_core_replaycapsule.u_replay_capsule_top.raw_event_data[9] budget 0.000000 ns (16,19) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0$CCU2_COMB1.B
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.4 10.2  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0$CCU2_COMB1.FCO
+Info:  0.0 10.2    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[10] budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.3  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_COMB0.FCO
+Info:  0.0 10.3    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_FCI_INT budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_COMB1.FCI
+Info:  0.0 10.3  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_13$CCU2_COMB1.FCO
+Info:  0.0 10.3    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[12] budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.4  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_COMB0.FCO
+Info:  0.0 10.4    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_FCI_INT budget 0.000000 ns (16,20) -> (16,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_COMB1.FCI
+Info:  0.0 10.4  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_12$CCU2_COMB1.FCO
+Info:  0.0 10.4    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[14] budget 0.000000 ns (16,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.4  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_COMB0.FCO
+Info:  0.0 10.4    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_FCI_INT budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_COMB1.FCI
+Info:  0.0 10.4  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_11$CCU2_COMB1.FCO
+Info:  0.0 10.4    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[16] budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.5  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_COMB0.FCO
+Info:  0.0 10.5    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_FCI_INT budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_COMB1.FCI
+Info:  0.0 10.5  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_10$CCU2_COMB1.FCO
+Info:  0.0 10.5    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[18] budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.6  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_COMB0.FCO
+Info:  0.0 10.6    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_FCI_INT budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_COMB1.FCI
+Info:  0.0 10.6  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_9$CCU2_COMB1.FCO
+Info:  0.0 10.6    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[20] budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.6  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_COMB0.FCO
+Info:  0.0 10.6    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_FCI_INT budget 0.000000 ns (17,20) -> (17,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_COMB1.FCI
+Info:  0.0 10.6  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_8$CCU2_COMB1.FCO
+Info:  0.0 10.6    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[22] budget 0.000000 ns (17,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.7  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_COMB0.FCO
+Info:  0.0 10.7    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_FCI_INT budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_COMB1.FCI
+Info:  0.0 10.7  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_7$CCU2_COMB1.FCO
+Info:  0.0 10.7    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[24] budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.8  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_COMB0.FCO
+Info:  0.0 10.8    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_FCI_INT budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_COMB1.FCI
+Info:  0.0 10.8  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_6$CCU2_COMB1.FCO
+Info:  0.0 10.8    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[26] budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.9  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_COMB0.FCO
+Info:  0.0 10.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_FCI_INT budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_COMB1.FCI
+Info:  0.0 10.9  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_5$CCU2_COMB1.FCO
+Info:  0.0 10.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[28] budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 10.9  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_COMB0.FCO
+Info:  0.0 10.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_FCI_INT budget 0.000000 ns (18,20) -> (18,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_COMB1.FCI
+Info:  0.0 10.9  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_4$CCU2_COMB1.FCO
+Info:  0.0 10.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT_S0_CCU2C_S0_COUT[30] budget 0.000000 ns (18,20) -> (19,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_COMB0.FCI
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:84.74-84.104
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:                  /usr/bin/../share/yosys/ecp5/arith_map.v:63.22-63.23
+Info:  0.1 11.0  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_COMB0.FCO
+Info:  0.0 11.0    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_FCI_INT budget 0.000000 ns (19,20) -> (19,20)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_COMB1.FCI
+Info:  0.0 11.0  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_CCU2C_COUT$CCU2_COMB1.FCO
+Info:  0.0 11.0    Net $nextpnr_CCU2C_19$CIN budget 0.000000 ns (19,20) -> (19,20)
+Info:                Sink $nextpnr_CCU2C_19$CCU2_COMB0.FCI
+Info:  0.4 11.4  Source $nextpnr_CCU2C_19$CCU2_COMB0.F
+Info:  1.5 12.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z[3] budget 4.675000 ns (19,20) -> (22,30)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C.B
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 13.2  Source u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C.F
+Info:  0.0 13.2    Net u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C_Z budget 0.667000 ns (22,30) -> (22,30)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_PFUMX_C0_BLUT_LUT4_Z.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:141.30-141.32
+Info:  0.2 13.3  Source u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_PFUMX_C0_BLUT_LUT4_Z.OFX
+Info:  0.0 13.3    Net u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_PFUMX_C0_Z budget 0.000000 ns (22,30) -> (22,30)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C.FXB
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:141.38-141.40
+Info:  0.2 13.6  Source u_full_core_replaycapsule.u_replay_capsule_top.u_event_tap.candidate_count_CCU2C_S0_2_B1_LUT4_Z_D_LUT4_C_Z_PFUMX_C0_Z_LUT4_C_1_Z_LUT4_C.OFX
+Info:  1.3 14.8    Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_6_B[2] budget 0.874000 ns (22,30) -> (12,28)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_LUT4_C.D
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 15.1  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.critical_section_active_TRELLIS_FF_Q_CE_LUT4_Z_C_LUT4_Z_C_LUT4_D_Z_LUT4_Z_B_PFUMX_Z_C0_LUT4_A_C_LUT4_C_Z_LUT4_C.F
+Info:  2.1 17.1    Net u_full_core_replaycapsule.u_replay_capsule_top.final_pc_LUT4_Z_2_B_LUT4_C_Z_LUT4_C_Z[1] budget 0.803000 ns (12,28) -> (29,31)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_ALUT_LUT4_Z.B
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 17.4  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_ALUT_LUT4_Z.F
+Info:  0.0 17.4    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_ALUT budget 0.803000 ns (29,31) -> (29,31)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:133.22-133.24
+Info:  0.2 17.5  Source u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:  0.4 17.9    Net u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4_DI budget 0.803000 ns (29,31) -> (29,31)
+Info:                Sink u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4.M
+Info:                Defined in:
+Info:                  rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv:325.5-358.4
+Info:                  rtl/property_checker.sv:112.3-171.6
+Info:                  rtl/replay_capsule_top.sv:109.5-125.4
+Info:  0.0 17.9  Setup u_full_core_replaycapsule.u_replay_capsule_top.u_property_checker.property_signature_TRELLIS_FF_Q_4.M
+Info: 3.7 ns logic, 14.2 ns routing
 
 Info: Critical path report for cross-domain path 'posedge $glbnet$clk$TRELLIS_IO_IN' -> '<async>':
-Info:       type curr  total name
-Info:   clk-to-q  0.52  0.52 Source board_counter_TRELLIS_FF_Q_14.Q
-Info:    routing  2.28  2.80 Net board_counter[1] (8,23) -> (6,32)
-Info:                          Sink u_full_core_replaycapsule.capsule_read_addr_LUT4_D_5.C
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  3.04 Source u_full_core_replaycapsule.capsule_read_addr_LUT4_D_5.F
-Info:    routing  1.89  4.93 Net u_full_core_replaycapsule.capsule_read_addr_LUT4_D_5_Z[3] (6,32) -> (23,37)
-Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_72_D_LUT4_Z.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  5.16 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_72_D_LUT4_Z.F
-Info:    routing  1.14  6.30 Net u_full_core_replaycapsule.capsule_read_data_LUT4_Z_72_D[2] (23,37) -> (21,36)
-Info:                          Sink u_full_core_replaycapsule.capsule_read_data_LUT4_Z_72.C
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  6.54 Source u_full_core_replaycapsule.capsule_read_data_LUT4_Z_72.F
-Info:    routing  1.39  7.92 Net capsule_read_data[118] (21,36) -> (18,35)
-Info:                          Sink u_mapped_memory.mem.0.0_DOB4_LUT4_C_Z_LUT4_Z.A
-Info:                          Defined in:
-Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:41.37-41.54
-Info:      logic  0.24  8.16 Source u_mapped_memory.mem.0.0_DOB4_LUT4_C_Z_LUT4_Z.F
-Info:    routing  2.69  10.85 Net u_mapped_memory.mem.0.0_DOB4_LUT4_C_Z[3] (18,35) -> (13,20)
-Info:                          Sink u_mapped_memory.io_read_value_LUT4_Z_8_C_LUT4_Z_B_LUT4_A_Z_LUT4_D_Z_PFUMX_Z_BLUT_LUT4_Z.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.40  11.25 Source u_mapped_memory.io_read_value_LUT4_Z_8_C_LUT4_Z_B_LUT4_A_Z_LUT4_D_Z_PFUMX_Z_BLUT_LUT4_Z.OFX
-Info:    routing  1.94  13.19 Net u_mapped_memory.io_read_value_LUT4_Z_8_C_LUT4_Z_B_LUT4_A_Z_LUT4_D_Z[2] (13,20) -> (20,31)
-Info:                          Sink recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z_L6MUX21_Z_2_D1_PFUMX_Z_ALUT_LUT4_Z.C
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  13.42 Source recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z_L6MUX21_Z_2_D1_PFUMX_Z_ALUT_LUT4_Z.F
-Info:    routing  0.00  13.42 Net recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z_L6MUX21_Z_2_D1_PFUMX_Z_ALUT (20,31) -> (20,31)
-Info:                          Sink recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z_L6MUX21_Z_2_D1_PFUMX_Z_BLUT_LUT4_Z.F1
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:141.30-141.32
-Info:      logic  0.17  13.59 Source recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z_L6MUX21_Z_2_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
-Info:    routing  0.00  13.59 Net recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z_L6MUX21_Z_2_D1 (20,31) -> (20,31)
-Info:                          Sink recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z_L6MUX21_Z_2_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:141.38-141.40
-Info:      logic  0.24  13.83 Source recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z_L6MUX21_Z_2_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
-Info:    routing  1.80  15.63 Net recorder_status_mix_LUT4_Z_1_D_LUT4_C_Z[3] (20,31) -> (3,31)
-Info:                          Sink recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.D
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:108.23-108.24
-Info:      logic  0.24  15.86 Source recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.F
-Info:    routing  0.00  15.86 Net recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT (3,31) -> (3,31)
-Info:                          Sink recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.F1
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.46-157.48
-Info:      logic  0.17  16.03 Source recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
-Info:    routing  0.00  16.03 Net recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1 (3,31) -> (3,31)
-Info:                          Sink recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.62-157.64
-Info:      logic  0.24  16.27 Source recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
-Info:    routing  0.00  16.27 Net recorder_status_xor_L6MUX21_Z_D1 (3,31) -> (3,31)
-Info:                          Sink recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.FXB
-Info:                          Defined in:
-Info:                               .\OneDrive\DOCUME~1\NEWPRO~1\TOOLS~1\OSS-CA~1\OSS-CA~1\bin\../share/yosys/lattice/cells_map_trellis.v:157.70-157.72
-Info:      logic  0.24  16.51 Source recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
-Info:    routing  1.49  18.00 Net recorder_status_xor$TRELLIS_IO_OUT (3,31) -> (0,38)
-Info:                          Sink recorder_status_xor$tr_io.I
-Info:                          Defined in:
-Info:                               rtl/mapped/full_core_replaycapsule_board_top.sv:22.22-22.41
-Info: 3.40 ns logic, 14.60 ns routing
+Info: curr total
+Info:  0.5  0.5  Source board_counter_TRELLIS_FF_Q_31.Q
+Info:  3.0  3.5    Net board_counter[0] budget 0.557000 ns (10,16) -> (8,41)
+Info:                Sink u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_BLUT_LUT4_Z_A_LUT4_Z_3_A_LUT4_Z_1_A_LUT4_Z_1.C
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2  3.7  Source u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_BLUT_LUT4_Z_A_LUT4_Z_3_A_LUT4_Z_1_A_LUT4_Z_1.F
+Info:  3.0  6.8    Net u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_BLUT_LUT4_Z_A_LUT4_Z_3_A_LUT4_Z_1_A[0] budget 0.603000 ns (8,41) -> (41,27)
+Info:                Sink u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_72_BLUT_LUT4_Z_A_LUT4_Z_3_C_LUT4_Z_1.A
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2  7.0  Source u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_72_BLUT_LUT4_Z_A_LUT4_Z_3_C_LUT4_Z_1.F
+Info:  0.6  7.6    Net u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_72_BLUT_LUT4_Z_A_LUT4_Z_3_C[3] budget 0.603000 ns (41,27) -> (41,27)
+Info:                Sink u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_72_BLUT_LUT4_Z_A_LUT4_Z_3.D
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2  7.9  Source u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_72_BLUT_LUT4_Z_A_LUT4_Z_3.F
+Info:  0.6  8.5    Net u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_72_BLUT_LUT4_Z_A[2] budget 0.603000 ns (41,27) -> (40,27)
+Info:                Sink u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_72_BLUT_LUT4_Z.C
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.4  8.9  Source u_full_core_replaycapsule.capsule_read_data_PFUMX_Z_72_BLUT_LUT4_Z.OFX
+Info:  2.0 10.9    Net capsule_read_data[95] budget 0.603000 ns (40,27) -> (37,35)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.B
+Info:                Defined in:
+Info:                  rtl/mapped/full_core_replaycapsule_board_top.sv:41.37-41.54
+Info:  0.2 11.1  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.F
+Info:  0.0 11.1    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT budget 0.603000 ns (37,35) -> (37,35)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.30-157.32
+Info:  0.2 11.3  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:  0.0 11.3    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1 budget 0.000000 ns (37,35) -> (37,35)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.54-157.56
+Info:  0.2 11.5  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  0.0 11.5    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0 budget 0.000000 ns (37,35) -> (37,35)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.66-157.68
+Info:  0.2 11.8  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  1.9 13.6    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A[0] budget 0.723000 ns (37,35) -> (27,30)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.A
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 13.9  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.F
+Info:  0.0 13.9    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_ALUT budget 0.723000 ns (27,30) -> (27,30)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.22-157.24
+Info:  0.2 14.0  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:  0.0 14.0    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D0 budget 0.000000 ns (27,30) -> (27,30)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.50-157.52
+Info:  0.2 14.3  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  0.0 14.3    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D0 budget 0.000000 ns (27,30) -> (27,30)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.FXA
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.66-157.68
+Info:  0.2 14.5  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  3.6 18.1    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A[0] budget 0.843000 ns (27,30) -> (12,6)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.A
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 18.3  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.F
+Info:  0.0 18.3    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT budget 0.843000 ns (12,6) -> (12,6)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.46-157.48
+Info:  0.2 18.5  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:  0.0 18.5    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D1 budget 0.000000 ns (12,6) -> (12,6)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.62-157.64
+Info:  0.2 18.7  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  0.0 18.7    Net recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1 budget 0.000000 ns (12,6) -> (12,6)
+Info:                Sink recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.FXB
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:157.70-157.72
+Info:  0.2 19.0  Source recorder_status_mix_LUT4_Z_B_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  2.3 21.3    Net recorder_status_mix_LUT4_Z_B[1] budget 0.964000 ns (12,6) -> (18,12)
+Info:                Sink recorder_status_mix_LUT4_Z_B_LUT4_A.B
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 21.5  Source recorder_status_mix_LUT4_Z_B_LUT4_A.F
+Info:  0.0 21.5    Net recorder_status_mix_LUT4_Z_B_LUT4_A_Z budget 0.964000 ns (18,12) -> (18,12)
+Info:                Sink recorder_status_mix_LUT4_Z_B_LUT4_A_1.F1
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:141.30-141.32
+Info:  0.2 21.7  Source recorder_status_mix_LUT4_Z_B_LUT4_A_1.OFX
+Info:  0.0 21.7    Net recorder_status_mix_LUT4_Z_B_LUT4_A_Z_PFUMX_ALUT_Z budget 0.000000 ns (18,12) -> (18,12)
+Info:                Sink recorder_status_mix_LUT4_Z_B_LUT4_A.FXB
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:141.38-141.40
+Info:  0.2 21.9  Source recorder_status_mix_LUT4_Z_B_LUT4_A.OFX
+Info:  1.1 23.0    Net recorder_status_mix_LUT4_Z_B_LUT4_A_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z[3] budget 1.084000 ns (18,12) -> (16,11)
+Info:                Sink recorder_status_mix_LUT4_Z_B_LUT4_A_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z_LUT4_A.D
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.2 23.3  Source recorder_status_mix_LUT4_Z_B_LUT4_A_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z_LUT4_A.F
+Info:  1.5 24.8    Net recorder_status_mix_LUT4_Z_B_LUT4_A_Z_PFUMX_ALUT_Z_L6MUX21_D1_Z_LUT4_A_Z[6] budget 1.084000 ns (16,11) -> (5,12)
+Info:                Sink recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.M
+Info:                Defined in:
+Info:                  /usr/bin/../share/yosys/ecp5/cells_map.v:108.23-108.24
+Info:  0.3 25.1  Source recorder_status_xor_L6MUX21_Z_D1_L6MUX21_Z_D0_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:  2.8 27.8    Net recorder_status_xor$TRELLIS_IO_OUT budget 0.903000 ns (5,12) -> (0,38)
+Info:                Sink recorder_status_xor$tr_io.I
+Info:                Defined in:
+Info:                  rtl/mapped/full_core_replaycapsule_board_top.sv:22.22-22.41
+Info: 5.4 ns logic, 22.4 ns routing
 
-Info: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 59.14 MHz (PASS at 50.00 MHz)
+ERROR: Max frequency for clock '$glbnet$clk$TRELLIS_IO_IN': 48.74 MHz (FAIL at 50.00 MHz)
 
-Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 15.51 ns
-Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 18.00 ns
+Info: Max delay <async>                           -> posedge $glbnet$clk$TRELLIS_IO_IN: 17.91 ns
+Info: Max delay posedge $glbnet$clk$TRELLIS_IO_IN -> <async>                          : 27.83 ns
 
 Info: Slack histogram:
-Info:  legend: * represents 13 endpoint(s)
-Info:          + represents [1,13) endpoint(s)
-Info: [  3092,   3891) |*+
-Info: [  3891,   4690) |****+
-Info: [  4690,   5489) |*********************************+
-Info: [  5489,   6288) |************************************************************ 
-Info: [  6288,   7087) |****************+
-Info: [  7087,   7886) |*********+
-Info: [  7886,   8685) |****************+
-Info: [  8685,   9484) |*******+
-Info: [  9484,  10283) |**************+
-Info: [ 10283,  11082) |*************** 
-Info: [ 11082,  11881) |*************+
-Info: [ 11881,  12680) |**********+
-Info: [ 12680,  13479) |***********+
-Info: [ 13479,  14278) |*************+
-Info: [ 14278,  15077) |****************+
-Info: [ 15077,  15876) |*************************+
-Info: [ 15876,  16675) |************************+
-Info: [ 16675,  17474) |*****************************+
-Info: [ 17474,  18273) |**************************+
-Info: [ 18273,  19072) |************+
+Info:  legend: * represents 30 endpoint(s)
+Info:          + represents [1,30) endpoint(s)
+Info: [ -7834,  -6489) |+
+Info: [ -6489,  -5144) | 
+Info: [ -5144,  -3799) | 
+Info: [ -3799,  -2454) |+
+Info: [ -2454,  -1109) |+
+Info: [ -1109,    236) |+
+Info: [   236,   1581) |*+
+Info: [  1581,   2926) |+
+Info: [  2926,   4271) |*+
+Info: [  4271,   5616) |***************************************+
+Info: [  5616,   6961) |************************************************************ 
+Info: [  6961,   8306) |******+
+Info: [  8306,   9651) |********************+
+Info: [  9651,  10996) |*******************+
+Info: [ 10996,  12341) |************+
+Info: [ 12341,  13686) |**********+
+Info: [ 13686,  15031) |***************+
+Info: [ 15031,  16376) |****************************************+
+Info: [ 16376,  17721) |******************************+
+Info: [ 17721,  19066) |**********+
+0 warnings, 1 error
 
 Info: Program finished normally.

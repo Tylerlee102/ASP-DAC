@@ -1,14 +1,16 @@
 check,status,evidence,notes
-workflow_status,PASS,local-preflight,final-reproduce verification for branch master commit 1c6307c6aac358cb4f53a086212c9c8207906e24
-critical_steps_no_continue_on_error,PASS,.github/workflows/final-reproduce.yml,critical reproduction steps are not marked continue-on-error
-firmware_gate,PASS,results/processed/firmware_build.csv,compiler-backed PASS rows 15/15; fallback rows 0
-rtl_replay_gate,PASS,results/processed/full_rtl_replay.csv,compiler-backed full RTL replay PASS rows 45/45
-negative_replay_gate,PASS,results/processed/full_rtl_replay_negative.csv,rejects=10 unexpected_accepts=0 failures=0 na=2
-runtime_overhead_gate,PASS,results/processed/runtime_overhead_summary.csv,observed runtime summary configs 5; required configs present=True
-mapped_synth_gate,PASS,results/processed/full_core_mapped_summary.csv; results/processed/mapped_recorder_presence.csv; results/processed/mapped_scaling_v2_measured.csv; results/processed/mapped_recorder_presence_v2_measured.csv; results/processed/mapped_scaling_overhead_v2_measured.csv,legacy target=ecp5-85k flow=yosys+synth_ecp5+nextpnr-ecp5 summary=PASS recorder_presence=PASS; v2_measured baseline=True mapped=3/3 presence=3/3 selected_overhead=1/1
-v2_minimal_recorder_fidelity,PASS,results\raw\tb_rcv2_minimal_recorder_vvp_run.txt,minimal recorder emits only replay-critical boundary events and replays them through the v2 consumer
-paper_gate,PASS,paper/main.pdf; results/processed/*audit.csv,pdf_exists=True claim_review=0 number_fail=0 todo_fail=0
-artifact_gate,PASS,dist/replaycapsule-rv-artifact.zip; results/processed/artifact_manifest.csv,manifest_missing=0 required_zip_absent=0 build_entries=0
-public_readme_updated,PASS,README.md,stale_patterns=0 missing_required_terms=0
-private_path_scan,PASS,repo text scan,private path or automation marker hits=0
-ci_annotations_reviewed,PASS,.github/workflows/final-reproduce.yml; results/processed/final_ci_verification.csv,previous exit-code-2 annotation was traced to the old installer loop and fixed; latest green run has only a non-critical GitHub Actions Node.js deprecation warning
+topconf_gate_clean,FAIL,results/processed/topconf_ci_gate_status.csv,top-conference gate blockers=1
+v2_zero_fail_inventory_empty,PASS,results/processed/v2_zero_fail_bug_inventory.csv,inventory_rows=0
+full_rtl_replay_v2_clean,PASS,results/processed/full_rtl_replay_v2.csv,rows=135 bad_rows=0
+workload_scaling_v2_clean,PASS,results/processed/workload_scaling_v2_measured_summary.csv,groups=10 bad_groups=0
+buffer_sensitivity_v2_clean,FAIL,results/processed/buffer_sensitivity_v2_measured_summary.csv,groups=90 bad_groups=75
+runtime_scaling_v2_clean,PASS,results/processed/runtime_scaling_v2_measured_summary.csv,groups=25 bad_groups=0
+mapped_scaling_v2_clean,PASS,results/processed/mapped_scaling_overhead_v2_measured.csv; results/processed/mapped_recorder_presence_v2_measured.csv,selected_claim=1/1 recorder_presence=3/3
+v2_minimal_recorder_fidelity_clean,PASS,results\raw\tb_rcv2_minimal_recorder_vvp_run.txt,minimal recorder boundary-event stream is accepted by replay consumer
+replay_consumer_tests_clean,PASS,results/processed/replay_consumer_tests.csv; results/processed/replay_consumer_system_tests.csv; results/processed/replay_consumer_mapped.csv,test_rows=17 bad_tests=0 mapped_ok=True
+expanded_benchmarks_clean,PASS,results/processed/expanded_benchmark_replay_measured.csv,rows=144 bad_rows=0
+paper_audit_clean,PASS,paper/main.pdf; results/processed/claim_audit.csv; results/processed/paper_number_audit.csv; results/processed/todo_audit.csv,pdf_exists=True claim_review=0 number_fail=0 todo_fail=0
+artifact_manifest_clean,PASS,results/processed/artifact_manifest.csv; dist/replaycapsule-rv-artifact.zip; dist/replaycapsule-rv-topconf-artifact.zip,manifest_rows=1191 missing_required=0 absent_zips=0
+private_path_scan_clean,PASS,results/processed/private_marker_scan.csv,rows=1 failures=0
+readme_not_stale,PASS,README.md,stale_patterns=0 missing_terms=0
+ci_annotations_reviewed,PASS,results/processed/ci_gate_failure_diagnosis.csv,red gate annotation traced to mapped-scaling claimable-point failure; Node action warning handled by workflow action major update

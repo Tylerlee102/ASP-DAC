@@ -1,14 +1,14 @@
 path,bytes,category,notes
 paper/main.pdf,99276,paper,locked PDF or locally built PDF
-paper/main.tex,1233,paper,paper source
-README.md,13566,docs,repository README
-artifact_evaluation.md,5398,docs,artifact evaluation instructions
-docs/novelty_audit.md,5076,docs,novelty guardrails
-docs/related_work_positioning.md,3087,docs,related work guardrails
+paper/main.tex,1238,paper,paper source
+README.md,13623,docs,repository README
+artifact_evaluation.md,5425,docs,artifact evaluation instructions
+docs/novelty_audit.md,5082,docs,novelty guardrails
+docs/related_work_positioning.md,3094,docs,related work guardrails
 docs/conference_readiness_dashboard.md,6337,docs,current readiness dashboard
-docs/asic_openpdk_evidence.md,3189,docs,ASIC/open-PDK global-routed physical evidence boundary
+docs/asic_openpdk_evidence.md,3236,docs,ASIC/open-PDK global-routed physical evidence boundary
 docs/asic_physical_tool_probe.md,2921,docs,ASIC physical-flow tool availability probe
-.github/workflows/asic-openroad.yml,4247,ci,GitHub Actions OpenROAD ASIC physical-evidence workflow
+.github/workflows/asic-openroad.yml,4356,ci,GitHub Actions OpenROAD ASIC physical-evidence workflow
 docs/second_core_breadth.md,6658,docs,second-core breadth boundary
 docs/second_core_irq_candidate.md,3626,docs,interrupt-capable second-core candidate boundary
 docs/hazard3_irq_smoke.md,1032,docs,focused Hazard3 true-ISR smoke boundary
@@ -16,32 +16,32 @@ docs/hazard3_v2_replay_smoke.md,10665,docs,seeded Hazard3 v2 MMIO+IRQ replay mat
 docs/second_core_replay_smokes.md,7716,docs,focused second-core replay-smoke matrix
 docs/second_core_v2_smokes.md,16972,docs,focused second-core v2 replay-consumer matrix
 docs/standalone_self_replay_smokes.md,8024,docs,focused standalone self-replay matrix boundary
-paper/sections/abstract.tex,1464,paper,paper section source
-paper/sections/architecture.tex,4112,paper,paper section source
-paper/sections/conclusion.tex,1036,paper,paper section source
-paper/sections/evaluation.tex,5184,paper,paper section source
-paper/sections/generated_numbers.tex,1669,paper,paper section source
-paper/sections/generated_tables.tex,3559,paper,paper section source
-paper/sections/introduction.tex,2402,paper,paper section source
-paper/sections/limitations.tex,3033,paper,paper section source
-paper/sections/model.tex,1853,paper,paper section source
+paper/sections/abstract.tex,1465,paper,paper section source
+paper/sections/architecture.tex,4117,paper,paper section source
+paper/sections/conclusion.tex,1037,paper,paper section source
+paper/sections/evaluation.tex,5194,paper,paper section source
+paper/sections/generated_numbers.tex,1656,paper,paper section source
+paper/sections/generated_tables.tex,3546,paper,paper section source
+paper/sections/introduction.tex,2405,paper,paper section source
+paper/sections/limitations.tex,3036,paper,paper section source
+paper/sections/model.tex,1854,paper,paper section source
 paper/sections/motivation.tex,888,paper,paper section source
 paper/sections/related_work.tex,3710,paper,paper section source
-paper/sections/replay_verification.tex,2102,paper,paper section source
-paper/tables/table_buffer_sensitivity.tex,3095,paper,generated paper table
+paper/sections/replay_verification.tex,2103,paper,paper section source
+paper/tables/table_buffer_sensitivity.tex,3072,paper,generated paper table
 paper/tables/table_buffer_sensitivity_v2.tex,546,paper,generated paper table
 paper/tables/table_capsule_baselines.tex,4562,paper,generated paper table
 paper/tables/table_capsule_baselines_v2.tex,379,paper,generated paper table
-paper/tables/table_event_ablation.tex,590,paper,generated paper table
+paper/tables/table_event_ablation.tex,568,paper,generated paper table
 paper/tables/table_limitations.tex,1100,paper,generated paper table
-paper/tables/table_mapped_scaling.tex,1179,paper,generated paper table
+paper/tables/table_mapped_scaling.tex,1180,paper,generated paper table
 paper/tables/table_mapped_scaling_v2.tex,596,paper,generated paper table
 paper/tables/table_negative_replay.tex,109,paper,generated paper table
-paper/tables/table_recorder_config_tradeoff.tex,136,paper,generated paper table
+paper/tables/table_recorder_config_tradeoff.tex,329,paper,generated paper table
 paper/tables/table_replay_consumer_tests.tex,134,paper,generated paper table
-paper/tables/table_replay_success.tex,1423,paper,generated paper table
-paper/tables/table_runtime_overhead.tex,1164,paper,generated paper table
-paper/tables/table_runtime_scaling.tex,1164,paper,generated paper table
+paper/tables/table_replay_success.tex,1393,paper,generated paper table
+paper/tables/table_runtime_overhead.tex,1174,paper,generated paper table
+paper/tables/table_runtime_scaling.tex,1174,paper,generated paper table
 paper/tables/table_runtime_scaling_v2.tex,355,paper,generated paper table
 paper/figures/ablation_heatmap.svg,21477,paper,generated paper figure/source
 paper/figures/architecture_overview.pdf,2661,paper,generated paper figure/source
@@ -51,28 +51,28 @@ paper/figures/fig_buffer_sensitivity.pdf,1232,paper,generated paper figure/sourc
 paper/figures/fig_buffer_sensitivity_v2.pdf,714,paper,generated paper figure/source
 paper/figures/fig_capsule_scaling.pdf,1045,paper,generated paper figure/source
 paper/figures/fig_capsule_scaling_v2.pdf,775,paper,generated paper figure/source
-paper/figures/fig_event_ablation_scaling.pdf,1506,paper,generated paper figure/source
+paper/figures/fig_event_ablation_scaling.pdf,1484,paper,generated paper figure/source
 paper/figures/fig_mapped_buffer_scaling.pdf,999,paper,generated paper figure/source
-paper/figures/fig_mapped_memory_scaling.pdf,985,paper,generated paper figure/source
+paper/figures/fig_mapped_memory_scaling.pdf,986,paper,generated paper figure/source
 paper/figures/fig_mapped_overhead_v2.pdf,845,paper,generated paper figure/source
 paper/figures/fig_mapped_scaling.pdf,899,paper,generated paper figure/source
-paper/figures/fig_recorder_config_tradeoff.pdf,660,paper,generated paper figure/source
+paper/figures/fig_recorder_config_tradeoff.pdf,954,paper,generated paper figure/source
 paper/figures/fig_recorder_config_tradeoff_v2.pdf,752,paper,generated paper figure/source
 paper/figures/fig_replay_consumer_controller.pdf,718,paper,generated paper figure/source
 paper/figures/fig_replay_success.pdf,773,paper,generated paper figure/source
-paper/figures/fig_runtime_scaling.pdf,1005,paper,generated paper figure/source
+paper/figures/fig_runtime_scaling.pdf,1010,paper,generated paper figure/source
 paper/figures/fig_runtime_scaling_v2.pdf,748,paper,generated paper figure/source
 paper/figures/fig_workload_scaling_v2.pdf,758,paper,generated paper figure/source
-paper/figures/mapped_overhead_summary.svg,1855,paper,generated paper figure/source
+paper/figures/mapped_overhead_summary.svg,1844,paper,generated paper figure/source
 paper/figures/randomized_interrupt_campaign.svg,7141,paper,generated paper figure/source
 paper/figures/README.md,10571,paper,generated paper figure/source
 paper/figures/replay_flow.pdf,2255,paper,generated paper figure/source
 paper/figures/replay_flow.svg,2123,paper,generated paper figure/source
 paper/figures/replay_success_summary.svg,1131,paper,generated paper figure/source
 paper/figures/rtl_capsule_event_classes.svg,6077,paper,generated paper figure/source
-paper/figures/runtime_overhead_summary.svg,1724,paper,generated paper figure/source
+paper/figures/runtime_overhead_summary.svg,1725,paper,generated paper figure/source
 paper/figures/synthesis_status.svg,2502,paper,generated paper figure/source
-paper/figures/table01_synthesis_resources.md,2663,paper,generated paper figure/source
+paper/figures/table01_synthesis_resources.md,3109,paper,generated paper figure/source
 paper/figures/table02_replay_evidence.md,1298,paper,generated paper figure/source
 paper/figures/table03_trace_baselines.md,967,paper,generated paper figure/source
 paper/figures/table04_event_sufficiency.md,1328,paper,generated paper figure/source
@@ -83,40 +83,40 @@ paper/figures/table_event_sufficiency.md,5523,paper,generated paper figure/sourc
 paper/figures/trace_size_status.svg,1135,paper,generated paper figure/source
 results/processed/ablations.csv,10573,results,processed evidence CSV
 results/processed/apt_install_status.csv,799,results,processed evidence CSV
-results/processed/artifact_manifest.csv,296854,results,processed evidence CSV
+results/processed/artifact_manifest.csv,302535,results,processed evidence CSV
 results/processed/asic_openpdk.csv,1929,results,processed evidence CSV
 results/processed/asic_openpdk_overhead.csv,2144,results,processed evidence CSV
 results/processed/asic_openpdk_summary.csv,95,results,processed evidence CSV
 results/processed/asic_openpdk_yosys_area.csv,1804,results,processed evidence CSV
 results/processed/asic_openpdk_yosys_area_overhead.csv,834,results,processed evidence CSV
-results/processed/asic_physical_tool_probe.csv,3320,results,processed evidence CSV
+results/processed/asic_physical_tool_probe.csv,3322,results,processed evidence CSV
 results/processed/aspdac_submission_audit.csv,8692,results,processed evidence CSV
 results/processed/baseline_comparison.csv,43684,results,processed evidence CSV
 results/processed/benchmark_coverage.csv,2485,results,processed evidence CSV
 results/processed/benchmark_manifest.csv,3563,results,processed evidence CSV
-results/processed/buffer_sensitivity.csv,1109033,results,processed evidence CSV
+results/processed/buffer_sensitivity.csv,1124768,results,processed evidence CSV
 results/processed/buffer_sensitivity_fixed.csv,1077603,results,processed evidence CSV
 results/processed/buffer_sensitivity_fixed_summary.csv,8697,results,processed evidence CSV
-results/processed/buffer_sensitivity_summary.csv,9014,results,processed evidence CSV
-results/processed/buffer_sensitivity_v2.csv,5852865,results,processed evidence CSV
+results/processed/buffer_sensitivity_summary.csv,8991,results,processed evidence CSV
+results/processed/buffer_sensitivity_v2.csv,5503425,results,processed evidence CSV
 results/processed/buffer_sensitivity_v2_measured.csv,1087514,results,processed evidence CSV
 results/processed/buffer_sensitivity_v2_measured_summary.csv,13134,results,processed evidence CSV
-results/processed/buffer_sensitivity_v2_summary.csv,44412,results,processed evidence CSV
+results/processed/buffer_sensitivity_v2_summary.csv,45023,results,processed evidence CSV
 results/processed/buffer_sweep.csv,3723,results,processed evidence CSV
-results/processed/capsule_baseline_comparison.csv,836442,results,processed evidence CSV
+results/processed/capsule_baseline_comparison.csv,837122,results,processed evidence CSV
 results/processed/capsule_baseline_comparison_fixed.csv,820287,results,processed evidence CSV
-results/processed/capsule_baseline_comparison_v2.csv,988170,results,processed evidence CSV
+results/processed/capsule_baseline_comparison_v2.csv,996330,results,processed evidence CSV
 results/processed/capsule_baseline_comparison_v2_measured.csv,341026,results,processed evidence CSV
 results/processed/capsule_baseline_summary.csv,10763,results,processed evidence CSV
 results/processed/capsule_baseline_summary_fixed.csv,10425,results,processed evidence CSV
-results/processed/capsule_baseline_summary_v2.csv,12467,results,processed evidence CSV
+results/processed/capsule_baseline_summary_v2.csv,12601,results,processed evidence CSV
 results/processed/capsule_baseline_summary_v2_measured.csv,4390,results,processed evidence CSV
 results/processed/ci_gate_failure_diagnosis.csv,622,results,processed evidence CSV
-results/processed/claim_audit.csv,129169,results,processed evidence CSV
+results/processed/claim_audit.csv,129360,results,processed evidence CSV
 results/processed/deterministic_firmware.csv,4775,results,processed evidence CSV
-results/processed/evaluation_matrix.csv,258918,results,processed evidence CSV
+results/processed/evaluation_matrix.csv,260585,results,processed evidence CSV
 results/processed/evaluation_metrics.csv,9044,results,processed evidence CSV
-results/processed/event_ablation_scaling.csv,324271,results,processed evidence CSV
+results/processed/event_ablation_scaling.csv,87386,results,processed evidence CSV
 results/processed/event_sufficiency.csv,847,results,processed evidence CSV
 results/processed/event_sufficiency_matrix.csv,37601,results,processed evidence CSV
 results/processed/expanded_benchmark_replay.csv,24503,results,processed evidence CSV
@@ -125,33 +125,33 @@ results/processed/expanded_firmware_build.csv,21841,results,processed evidence C
 results/processed/expanded_firmware_build_probe.csv,19491,results,processed evidence CSV
 results/processed/final_ci_gate_status.csv,25,results,processed evidence CSV
 results/processed/final_ci_verification.csv,2129,results,processed evidence CSV
-results/processed/firmware_build.csv,10156,results,processed evidence CSV
+results/processed/firmware_build.csv,7996,results,processed evidence CSV
 results/processed/firmware_sim_replay.csv,938,results,processed evidence CSV
 results/processed/firmware_source_comparison.csv,8281,results,processed evidence CSV
 results/processed/firmware_source_comparison_v2.csv,26308,results,processed evidence CSV
 results/processed/formal_checks.csv,3928,results,processed evidence CSV
 results/processed/formal_coverage.csv,3515,results,processed evidence CSV
 results/processed/full_core_mapped_summary.csv,473,results,processed evidence CSV
-results/processed/full_rtl_replay.csv,16270,results,processed evidence CSV
+results/processed/full_rtl_replay.csv,16216,results,processed evidence CSV
 results/processed/full_rtl_replay_negative.csv,1467,results,processed evidence CSV
 results/processed/full_rtl_replay_v2.csv,71522,results,processed evidence CSV
 results/processed/full_rtl_replay_v2_depth8_probe.csv,39336,results,processed evidence CSV
 results/processed/hazard3_irq_smoke.csv,346,results,processed evidence CSV
 results/processed/hazard3_v2_replay_smoke.csv,26287,results,processed evidence CSV
 results/processed/hdl_checks.csv,6682,results,processed evidence CSV
-results/processed/mapped_failure_diagnosis.csv,3109,results,processed evidence CSV
-results/processed/mapped_overhead.csv,3590,results,processed evidence CSV
+results/processed/mapped_failure_diagnosis.csv,4648,results,processed evidence CSV
+results/processed/mapped_overhead.csv,3606,results,processed evidence CSV
 results/processed/mapped_recorder_presence.csv,1470,results,processed evidence CSV
 results/processed/mapped_recorder_presence_v2.csv,2260,results,processed evidence CSV
 results/processed/mapped_recorder_presence_v2_measured.csv,885,results,processed evidence CSV
-results/processed/mapped_scaling.csv,3717,results,processed evidence CSV
-results/processed/mapped_scaling_overhead.csv,2913,results,processed evidence CSV
+results/processed/mapped_scaling.csv,3880,results,processed evidence CSV
+results/processed/mapped_scaling_overhead.csv,2917,results,processed evidence CSV
 results/processed/mapped_scaling_overhead_v2.csv,4836,results,processed evidence CSV
 results/processed/mapped_scaling_overhead_v2_measured.csv,1984,results,processed evidence CSV
-results/processed/mapped_scaling_summary.csv,644,results,processed evidence CSV
+results/processed/mapped_scaling_summary.csv,645,results,processed evidence CSV
 results/processed/mapped_scaling_v2.csv,4208,results,processed evidence CSV
 results/processed/mapped_scaling_v2_measured.csv,1296,results,processed evidence CSV
-results/processed/mapped_synthesis.csv,1160,results,processed evidence CSV
+results/processed/mapped_synthesis.csv,1763,results,processed evidence CSV
 results/processed/new_benchmark_probe_environmental.csv,1130,results,processed evidence CSV
 results/processed/new_benchmark_probe_power.csv,1120,results,processed evidence CSV
 results/processed/overflow_contracts.csv,1124,results,processed evidence CSV
@@ -166,9 +166,9 @@ results/processed/randomized_interrupt_corruption.csv,5271,results,processed evi
 results/processed/randomized_interrupt_coverage.csv,2446,results,processed evidence CSV
 results/processed/randomized_interrupt_summary.csv,930,results,processed evidence CSV
 results/processed/rcv2_rtl_build_status.csv,308,results,processed evidence CSV
-results/processed/recorder_config_mapped.csv,2935,results,processed evidence CSV
-results/processed/recorder_config_replay.csv,152,results,processed evidence CSV
-results/processed/recorder_config_runtime.csv,159,results,processed evidence CSV
+results/processed/recorder_config_mapped.csv,3641,results,processed evidence CSV
+results/processed/recorder_config_replay.csv,242323,results,processed evidence CSV
+results/processed/recorder_config_runtime.csv,486245,results,processed evidence CSV
 results/processed/replay_consumer_mapped.csv,322,results,processed evidence CSV
 results/processed/replay_consumer_system_tests.csv,1852,results,processed evidence CSV
 results/processed/replay_consumer_tests.csv,1152,results,processed evidence CSV
@@ -179,13 +179,13 @@ results/processed/rtl_capsule_exports.csv,5274,results,processed evidence CSV
 results/processed/rtl_firmware_alignment.csv,2604,results,processed evidence CSV
 results/processed/rtl_smoke_ablations.csv,29092,results,processed evidence CSV
 results/processed/rtl_smoke_event_sufficiency.csv,1352,results,processed evidence CSV
-results/processed/runtime_overhead.csv,25631,results,processed evidence CSV
-results/processed/runtime_overhead_summary.csv,1534,results,processed evidence CSV
-results/processed/runtime_scaling.csv,207181,results,processed evidence CSV
-results/processed/runtime_scaling_summary.csv,3350,results,processed evidence CSV
+results/processed/runtime_overhead.csv,25676,results,processed evidence CSV
+results/processed/runtime_overhead_summary.csv,1540,results,processed evidence CSV
+results/processed/runtime_scaling.csv,207720,results,processed evidence CSV
+results/processed/runtime_scaling_summary.csv,3380,results,processed evidence CSV
 results/processed/runtime_scaling_v2_measured.csv,5420,results,processed evidence CSV
 results/processed/runtime_scaling_v2_measured_summary.csv,3196,results,processed evidence CSV
-results/processed/scaled_firmware_build.csv,26305,results,processed evidence CSV
+results/processed/scaled_firmware_build.csv,26380,results,processed evidence CSV
 results/processed/scaling_fix_audit.csv,476,results,processed evidence CSV
 results/processed/scaling_workloads.csv,2667,results,processed evidence CSV
 results/processed/second_core_breadth.csv,3756,results,processed evidence CSV
@@ -197,25 +197,25 @@ results/processed/second_target_mapping_summary.csv,202,results,processed eviden
 results/processed/self_replay_handoff_v2.csv,102709,results,processed evidence CSV
 results/processed/standalone_self_replay_smokes.csv,18374,results,processed evidence CSV
 results/processed/streaming_capture_tests.csv,929,results,processed evidence CSV
-results/processed/summary.csv,2048,results,processed evidence CSV
+results/processed/summary.csv,2016,results,processed evidence CSV
 results/processed/synthesis.csv,736,results,processed evidence CSV
 results/processed/synthesis_overhead.csv,404,results,processed evidence CSV
 results/processed/todo_audit.csv,142,results,processed evidence CSV
-results/processed/toolchain_status.csv,3162,results,processed evidence CSV
+results/processed/toolchain_status.csv,3494,results,processed evidence CSV
 results/processed/topconf_ci_gate_status.csv,27,results,processed evidence CSV
-results/processed/topconf_summary.csv,25870,results,processed evidence CSV
-results/processed/topconf_v2_artifact_manifest.csv,111810,results,processed evidence CSV
+results/processed/topconf_summary.csv,27859,results,processed evidence CSV
+results/processed/topconf_v2_artifact_manifest.csv,111809,results,processed evidence CSV
 results/processed/trace_sizes.csv,25220,results,processed evidence CSV
 results/processed/v2_replay_failure_diagnosis.csv,1591,results,processed evidence CSV
 results/processed/v2_zero_fail_bug_inventory.csv,229,results,processed evidence CSV
-results/processed/verilator_compile_smoke.csv,213,results,processed evidence CSV
-results/processed/workload_failure_diagnosis.csv,45491,results,processed evidence CSV
-results/processed/workload_scaling.csv,56533,results,processed evidence CSV
+results/processed/verilator_compile_smoke.csv,215,results,processed evidence CSV
+results/processed/workload_failure_diagnosis.csv,186,results,processed evidence CSV
+results/processed/workload_scaling.csv,105991,results,processed evidence CSV
 results/processed/workload_scaling_fixed.csv,99881,results,processed evidence CSV
-results/processed/workload_scaling_v2.csv,465369,results,processed evidence CSV
+results/processed/workload_scaling_v2.csv,448059,results,processed evidence CSV
 results/processed/workload_scaling_v2_measured.csv,126877,results,processed evidence CSV
 results/processed/workload_scaling_v2_measured_summary.csv,1442,results,processed evidence CSV
-results/processed/workload_scaling_v2_summary.csv,3352,results,processed evidence CSV
+results/processed/workload_scaling_v2_summary.csv,3395,results,processed evidence CSV
 results/raw/replay_consumer/compile.log,1102,raw,replay consumer compile/run log
 results/raw/replay_consumer/run.log,491,raw,replay consumer compile/run log
 results/raw/replay_consumer_mapping/rcv2_recorder_wrapper_yosys_check.txt,27564,raw,replay consumer mapping log
@@ -635,42 +635,42 @@ results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem512_buf128_e
 results/raw/mapped_scaling_v2_measured/full_core_v2_hashed_board_mem512_buf128_ecp5_85k_yosys.txt,879378,raw,v2 full-core mapped synthesis/place-and-route log
 results/raw/mapped_scaling_v2_measured/full_core_v2_minimal_board_mem128_buf8_gatedopts_ecp5_85k_nextpnr.txt,28291,raw,v2 full-core mapped synthesis/place-and-route log
 results/raw/mapped_scaling_v2_measured/full_core_v2_minimal_board_mem128_buf8_gatedopts_ecp5_85k_yosys.txt,534578,raw,v2 full-core mapped synthesis/place-and-route log
-results/raw/asic_openpdk/full_core_baseline_board_flow.tcl,2008,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_baseline_board_openroad.def,5630148,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_flow.tcl,2051,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_openroad.def,5687789,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
 results/raw/asic_openpdk/full_core_baseline_board_openroad.odb,21994155,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_baseline_board_openroad_physical.txt,17710,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_baseline_board_synth.ys,450,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_baseline_board_yosys_area.txt,425091,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_baseline_board_yosys_area_mapped.v,2744844,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_core_board_flow.tcl,2013,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_core_board_openroad.def,7481599,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_openroad_physical.txt,18055,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_synth.ys,458,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_yosys_area.txt,430029,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_baseline_board_yosys_area_mapped.v,2905828,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_flow.tcl,2056,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_openroad.def,7550854,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
 results/raw/asic_openpdk/full_core_v2_core_board_openroad.odb,26582845,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_core_board_openroad_physical.txt,17813,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_core_board_synth.ys,1123,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_core_board_yosys_area.txt,726947,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_core_board_yosys_area_mapped.v,3416591,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_full_board_flow.tcl,2013,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_full_board_openroad.def,7835182,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_openroad_physical.txt,18159,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_synth.ys,1147,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_yosys_area.txt,736593,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_core_board_yosys_area_mapped.v,3613067,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_flow.tcl,2056,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_openroad.def,7907584,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
 results/raw/asic_openpdk/full_core_v2_full_board_openroad.odb,27583666,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_full_board_openroad_physical.txt,17864,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_full_board_synth.ys,1123,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_full_board_yosys_area.txt,778191,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_full_board_yosys_area_mapped.v,3504580,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_hashed_board_flow.tcl,2019,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_hashed_board_openroad.def,7520367,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_openroad_physical.txt,18214,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_synth.ys,1147,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_yosys_area.txt,788678,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_full_board_yosys_area_mapped.v,3706028,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_flow.tcl,2062,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_openroad.def,7589680,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
 results/raw/asic_openpdk/full_core_v2_hashed_board_openroad.odb,26648482,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_hashed_board_openroad_physical.txt,17837,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_hashed_board_synth.ys,1125,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_hashed_board_yosys_area.txt,745459,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_hashed_board_yosys_area_mapped.v,3427117,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_minimal_board_flow.tcl,2022,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_minimal_board_openroad.def,5812519,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_openroad_physical.txt,18183,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_synth.ys,1149,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_yosys_area.txt,755480,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_hashed_board_yosys_area_mapped.v,3624140,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_flow.tcl,2065,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_openroad.def,5871948,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
 results/raw/asic_openpdk/full_core_v2_minimal_board_openroad.odb,22549520,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_minimal_board_openroad_physical.txt,18080,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_minimal_board_synth.ys,1126,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_minimal_board_yosys_area.txt,514906,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/full_core_v2_minimal_board_yosys_area_mapped.v,2847451,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
-results/raw/asic_openpdk/openroad_candidates.txt,59,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_openroad_physical.txt,18430,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_synth.ys,1150,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_yosys_area.txt,521101,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/full_core_v2_minimal_board_yosys_area_mapped.v,3013827,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
+results/raw/asic_openpdk/openroad_candidates.txt,60,raw,ASIC OpenROAD/open-PDK physical-flow logs and generated design outputs
 results/raw/expanded_benchmark_replay/build_firmware.log,113,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_failing.log,64,raw,expanded benchmark replay run log
 results/raw/expanded_benchmark_replay/core_commanded_actuator_limit_bug_failing_seed1.log,64,raw,expanded benchmark replay run log
@@ -848,7 +848,7 @@ results/debug/topconf_v2_before/results_processed_workload_scaling.csv,54435,bas
 rtl/replaycapsule_v2/rcv2_adaptive_window.sv,1386,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_address_dictionary.sv,1560,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_capsule_rom.sv,556,rtl,v2 RTL source
-rtl/replaycapsule_v2/rcv2_capsule_source.sv,4202,rtl,v2 RTL source
+rtl/replaycapsule_v2/rcv2_capsule_source.sv,4323,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_config.svh,2686,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_event_fifo_bram.sv,1548,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_event_packer.sv,2655,rtl,v2 RTL source
@@ -857,39 +857,39 @@ rtl/replaycapsule_v2/rcv2_irq_replay_driver.sv,787,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_mmio_replay_driver.sv,1192,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_payload_hasher.sv,705,rtl,v2 RTL source
 rtl/replaycapsule_v2/rcv2_recorder.sv,22194,rtl,v2 RTL source
-rtl/replaycapsule_v2/rcv2_replay_consumer.sv,9930,rtl,v2 RTL source
-rtl/replaycapsule_v2/rcv2_replay_mode_controller.sv,4649,rtl,v2 RTL source
-rtl/replaycapsule_v1/rcv1_capsule_replay_checker.sv,2785,rtl,v1 capsule replay checker used by FemtoRV32 smokes
-rtl/replaycapsule_v1/rcv1_mmio_replay_driver.sv,2349,rtl,v1 MMIO replay driver used by FemtoRV32 smokes
-rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv,32670,rtl,PicoRV32 ReplayCapsule wrapper used by standalone self-replay smokes
-rtl/rv32i_integration/replaycapsule_v2_self_replay_top.sv,11169,rtl,reusable v2 self-replay top used by standalone smokes
-rtl/rv32i_integration/replaycapsule_v2_self_replay_soc.sv,9061,rtl,focused v2 self-replay SoC shell used by standalone smokes
-rtl/rv32i_integration/femtorv32_replaycapsule_v2_wrapper.sv,23293,rtl,FemtoRV32 ReplayCapsule wrapper source
-rtl/rv32i_integration/femtorv32_replaycapsule_wrapper.sv,4745,rtl,FemtoRV32 ReplayCapsule wrapper source
-rtl/rv32i_integration/hazard3_replaycapsule_v2_wrapper.sv,27291,rtl,Hazard3 ReplayCapsule v2 matrix wrapper source
+rtl/replaycapsule_v2/rcv2_replay_consumer.sv,10086,rtl,v2 RTL source
+rtl/replaycapsule_v2/rcv2_replay_mode_controller.sv,4791,rtl,v2 RTL source
+rtl/replaycapsule_v1/rcv1_capsule_replay_checker.sv,2864,rtl,v1 capsule replay checker used by FemtoRV32 smokes
+rtl/replaycapsule_v1/rcv1_mmio_replay_driver.sv,2426,rtl,v1 MMIO replay driver used by FemtoRV32 smokes
+rtl/rv32i_integration/picorv32_replaycapsule_wrapper.sv,32745,rtl,PicoRV32 ReplayCapsule wrapper used by standalone self-replay smokes
+rtl/rv32i_integration/replaycapsule_v2_self_replay_top.sv,11430,rtl,reusable v2 self-replay top used by standalone smokes
+rtl/rv32i_integration/replaycapsule_v2_self_replay_soc.sv,9303,rtl,focused v2 self-replay SoC shell used by standalone smokes
+rtl/rv32i_integration/femtorv32_replaycapsule_v2_wrapper.sv,23842,rtl,FemtoRV32 ReplayCapsule wrapper source
+rtl/rv32i_integration/femtorv32_replaycapsule_wrapper.sv,4894,rtl,FemtoRV32 ReplayCapsule wrapper source
+rtl/rv32i_integration/hazard3_replaycapsule_v2_wrapper.sv,27983,rtl,Hazard3 ReplayCapsule v2 matrix wrapper source
 rtl/mapped/full_core_replaycapsule_v2_board_top.sv,11538,rtl,v2 full-core mapped recorder wrapper
 rtl/mapped/full_core_baseline_board_top.sv,3544,rtl,full-core mapped baseline wrapper
 rtl/mapped/mapped_memory.sv,2717,rtl,mapped board memory model
 rtl/mapped/replaycapsule_v2_recorder_wrapper.sv,4776,rtl,v2 synthesis wrapper
-rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv,2341,rtl,v2 replay-consume pin-limited wrapper
-tb/replay_consumer/tb_rcv2_replay_consumer.sv,9743,tests,v2 replay consumer testbench
-tb/replay_consumer/tb_rcv2_system_replay_consumer.sv,8231,tests,v2 replay consumer testbench
-tb/system/tb_rcv2_minimal_recorder.sv,12814,tests,selected v2 minimal recorder fidelity testbench
-tb/system/tb_picorv32_standalone_self_replay_smoke.sv,15840,tests,focused PicoRV32 standalone self-replay smoke testbench
-tb/system/tb_rcv1_capsule_replay_checker.sv,4949,tests,v1 capsule replay checker testbench
-tb/system/tb_rcv1_mmio_replay_driver.sv,3538,tests,v1 MMIO replay driver testbench
-tb/system/tb_femtorv32_v2_replay_smoke.sv,16735,tests,FemtoRV32 wrapper/replay smoke testbench
-tb/system/tb_femtorv32_wrapper_smoke.sv,20410,tests,FemtoRV32 wrapper/replay smoke testbench
-tb/system/tb_hazard3_irq_smoke.v,7620,tests,focused Hazard3 true-ISR smoke testbench
-tb/system/tb_hazard3_v2_replay_smoke.sv,17841,tests,seeded Hazard3 v2 replay matrix testbench
-firmware/hazard3_irq_smoke/hazard3_irq_smoke.S,1006,firmware,Hazard3 true-ISR smoke firmware and linker script
-firmware/hazard3_irq_smoke/linker.ld,570,firmware,Hazard3 true-ISR smoke firmware and linker script
-firmware/hazard3_replay_smoke/hazard3_replay_smoke.S,3646,firmware,Hazard3 v2 replay matrix firmware and linker script
-firmware/hazard3_replay_smoke/linker.ld,570,firmware,Hazard3 v2 replay matrix firmware and linker script
-third_party/femtorv32/femtorv32_quark.v,16383,third_party,vendored FemtoRV32 source and license metadata
-third_party/femtorv32/LICENSE,1518,third_party,vendored FemtoRV32 source and license metadata
-third_party/femtorv32/README.md,4499,third_party,vendored FemtoRV32 source and license metadata
-third_party/femtorv32/VENDORED.md,635,third_party,vendored FemtoRV32 source and license metadata
+rtl/mapped/rcv2_replay_consumer_pin_limited_wrapper.sv,2350,rtl,v2 replay-consume pin-limited wrapper
+tb/replay_consumer/tb_rcv2_replay_consumer.sv,9798,tests,v2 replay consumer testbench
+tb/replay_consumer/tb_rcv2_system_replay_consumer.sv,8286,tests,v2 replay consumer testbench
+tb/system/tb_rcv2_minimal_recorder.sv,13203,tests,selected v2 minimal recorder fidelity testbench
+tb/system/tb_picorv32_standalone_self_replay_smoke.sv,16273,tests,focused PicoRV32 standalone self-replay smoke testbench
+tb/system/tb_rcv1_capsule_replay_checker.sv,5112,tests,v1 capsule replay checker testbench
+tb/system/tb_rcv1_mmio_replay_driver.sv,3681,tests,v1 MMIO replay driver testbench
+tb/system/tb_femtorv32_v2_replay_smoke.sv,17182,tests,FemtoRV32 wrapper/replay smoke testbench
+tb/system/tb_femtorv32_wrapper_smoke.sv,21005,tests,FemtoRV32 wrapper/replay smoke testbench
+tb/system/tb_hazard3_irq_smoke.v,7882,tests,focused Hazard3 true-ISR smoke testbench
+tb/system/tb_hazard3_v2_replay_smoke.sv,18300,tests,seeded Hazard3 v2 replay matrix testbench
+firmware/hazard3_irq_smoke/hazard3_irq_smoke.S,1074,firmware,Hazard3 true-ISR smoke firmware and linker script
+firmware/hazard3_irq_smoke/linker.ld,609,firmware,Hazard3 true-ISR smoke firmware and linker script
+firmware/hazard3_replay_smoke/hazard3_replay_smoke.S,3820,firmware,Hazard3 v2 replay matrix firmware and linker script
+firmware/hazard3_replay_smoke/linker.ld,609,firmware,Hazard3 v2 replay matrix firmware and linker script
+third_party/femtorv32/femtorv32_quark.v,16806,third_party,vendored FemtoRV32 source and license metadata
+third_party/femtorv32/LICENSE,1547,third_party,vendored FemtoRV32 source and license metadata
+third_party/femtorv32/README.md,4568,third_party,vendored FemtoRV32 source and license metadata
+third_party/femtorv32/VENDORED.md,644,third_party,vendored FemtoRV32 source and license metadata
 third_party/hazard3/hdl/arith/hazard3_alu.v,9271,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
 third_party/hazard3/hdl/arith/hazard3_branchcmp.v,1488,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
 third_party/hazard3/hdl/arith/hazard3_mul_fast.v,4326,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
@@ -935,7 +935,7 @@ third_party/hazard3/hdl/hazard3_width_const.vh,833,third_party,vendored Hazard3 
 third_party/hazard3/hdl/rv_opcodes.vh,14949,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
 third_party/hazard3/LICENSE,11558,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
 third_party/hazard3/Readme.md,25612,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
-third_party/hazard3/VENDORED.md,432,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
+third_party/hazard3/VENDORED.md,441,third_party,vendored Hazard3 interrupt-capable candidate source and metadata
 third_party/picorv32/COPYING,792,third_party,vendored PicoRV32 source and license metadata
 third_party/picorv32/picorv32.v,97706,third_party,vendored PicoRV32 source and license metadata
 third_party/picorv32/README.md,31025,third_party,vendored PicoRV32 source and license metadata
@@ -946,21 +946,21 @@ scripts/run_workload_scaling_v2.py,7214,scripts,v2 workload script
 scripts/run_capsule_baselines_v2.py,8454,scripts,v2 capsule script
 scripts/run_replay_consumer_tests.py,5336,scripts,v2 replay consumer test script
 scripts/run_replay_consumer_mapping.py,7742,scripts,v2 replay consumer mapping script
-scripts/run_hdl_checks.py,32298,scripts,HDL frontend and minimal recorder fidelity checks
-scripts/run_standalone_self_replay_smokes.py,17151,scripts,focused standalone self-replay smoke matrix
+scripts/run_hdl_checks.py,32526,scripts,HDL frontend and minimal recorder fidelity checks
+scripts/run_standalone_self_replay_smokes.py,17626,scripts,focused standalone self-replay smoke matrix
 scripts/run_mapped_scaling_v2.py,10868,scripts,v2 mapped-status script
 scripts/run_v2_measured_evaluation.py,47622,scripts,measured v2 workload/runtime/mapped evidence script
-scripts/audit_aspdac_submission.py,31319,scripts,ASP-DAC submission audit
-scripts/run_second_core_breadth.py,17404,scripts,second-core breadth gate
-scripts/probe_second_core_irq_candidate.py,11404,scripts,Hazard3 interrupt-capable second-core candidate probe
-scripts/run_hazard3_irq_smoke.py,11544,scripts,focused Hazard3 true-ISR smoke runner
-scripts/run_hazard3_v2_replay_smoke.py,21081,scripts,seeded Hazard3 v2 replay matrix runner
-scripts/materialize_nangate45_from_orfs.py,4830,scripts,Nangate45 PDK materializer for OpenROAD Docker image
-scripts/probe_asic_physical_tools.py,21187,scripts,ASIC physical-flow tool probe
-scripts/run_asic_openpdk.py,32515,scripts,ASIC OpenROAD/open-PDK evidence runner
-scripts/run_asic_openroad_docker.ps1,1776,scripts,local Docker wrapper for OpenROAD ASIC evidence
-scripts/run_second_core_replay_smokes.py,14277,scripts,focused second-core replay-smoke matrix
-scripts/run_second_core_v2_smokes.py,16385,scripts,focused second-core v2 replay-consumer matrix
+scripts/audit_aspdac_submission.py,31656,scripts,ASP-DAC submission audit
+scripts/run_second_core_breadth.py,17689,scripts,second-core breadth gate
+scripts/probe_second_core_irq_candidate.py,11671,scripts,Hazard3 interrupt-capable second-core candidate probe
+scripts/run_hazard3_irq_smoke.py,11868,scripts,focused Hazard3 true-ISR smoke runner
+scripts/run_hazard3_v2_replay_smoke.py,21623,scripts,seeded Hazard3 v2 replay matrix runner
+scripts/materialize_nangate45_from_orfs.py,4971,scripts,Nangate45 PDK materializer for OpenROAD Docker image
+scripts/probe_asic_physical_tools.py,21879,scripts,ASIC physical-flow tool probe
+scripts/run_asic_openpdk.py,33321,scripts,ASIC OpenROAD/open-PDK evidence runner
+scripts/run_asic_openroad_docker.ps1,1825,scripts,local Docker wrapper for OpenROAD ASIC evidence
+scripts/run_second_core_replay_smokes.py,14644,scripts,focused second-core replay-smoke matrix
+scripts/run_second_core_v2_smokes.py,16774,scripts,focused second-core v2 replay-consumer matrix
 scripts/run_second_target_mapping.py,4258,scripts,v2 second-target script
-scripts/benchmark_manifest.py,6551,scripts,benchmark diversity manifest script
-scripts/generate_topconf_v2_tables.py,15089,scripts,v2 paper table/figure script
+scripts/benchmark_manifest.py,6718,scripts,benchmark diversity manifest script
+scripts/generate_topconf_v2_tables.py,15136,scripts,v2 paper table/figure script

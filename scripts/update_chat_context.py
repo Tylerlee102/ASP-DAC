@@ -41,8 +41,8 @@ def render_context() -> str:
             "> Generated file. Refresh after code, paper, evidence, or artifact changes with `make chat-context` or by running `scripts/update_chat_context.py` with a real Python 3 executable.",
             "",
             f"- Generated at: `{generated_at}`",
-            f"- Repository root: `{REPO_ROOT}`",
-            f"- Python used for this snapshot: `{sys.executable}`",
+            "- Repository root: current checkout (`.`)",
+            f"- Python used for this snapshot: `{Path(sys.executable).name or 'python'}`",
             "",
         ]
     )
@@ -593,7 +593,7 @@ def section_update_rules() -> list[str]:
         "## Update Rules",
         "",
         "- Run `make chat-context` after adding/removing RTL, firmware, scripts, paper sections, generated evidence, or artifacts.",
-        f"- If `python` or `python3` resolves to the Windows Store alias, run `make PYTHON=\"{sys.executable.replace(os.sep, '/')}\" chat-context`.",
+        "- If `python` or `python3` resolves to the Windows Store alias, run `make PYTHON=\"<path-to-real-python>\" chat-context`.",
         "- Future chats should read this file first and refresh it if it looks stale relative to `git status` or recent work.",
         "- This file is generated, so do not manually edit it for lasting changes. Edit `scripts/update_chat_context.py`, rerun the updater, and commit both files if using git.",
         "",

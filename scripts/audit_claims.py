@@ -224,6 +224,8 @@ def _is_config_name_use(claim_type: str, matched_text: str, context: str) -> boo
     config_markers = (
         "`minimal`",
         "_minimal_",
+        "recorder\\_config",
+        "recorder_config",
         "recorder config",
         "minimal/core/hashed",
         "minimal, core, and hashed",

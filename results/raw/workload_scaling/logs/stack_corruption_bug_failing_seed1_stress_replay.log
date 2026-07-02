@@ -1,1 +1,1 @@
-PASS replay benchmark=stack_corruption_bug variant=failing seed=1 arch=v1 recorder_config=core property=4 events=8195 cycles=94271 commits=20497 notes="record/replay capsule packets match"
+PASS replay benchmark=stack_corruption_bug variant=failing seed=1 arch=v1 recorder_config=core property=4 events=8195 cycles=94274 commits=20498 notes="record/replay capsule packets match"

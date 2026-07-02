@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 121 >>
+<< /Length 415 >>
 stream
 BT
 /F1 15 Tf
@@ -20,7 +20,15 @@ BT
 (Recorder Config Tradeoff) Tj
 /F1 10 Tf
 0 -24 Td
-(No recorder config replay rows available.) Tj
+(core: 375/375 replay PASS, median capsule 61866 bytes) Tj
+0 -16 Td
+(diagnostic: 360/375 replay PASS, median capsule 172473 bytes) Tj
+0 -16 Td
+(full: 360/375 replay PASS, median capsule 172473 bytes) Tj
+0 -16 Td
+(hashed: 375/375 replay PASS, median capsule 61866 bytes) Tj
+0 -16 Td
+(minimal: 375/375 replay PASS, median capsule 21 bytes) Tj
 ET
 endstream
 endobj
@@ -34,5 +42,5 @@ xref
 0000000311 00000 n
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-483
+777
 %%EOF

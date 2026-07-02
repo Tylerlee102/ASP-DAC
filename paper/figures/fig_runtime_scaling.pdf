@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 466 >>
+<< /Length 471 >>
 stream
 BT
 /F1 15 Tf
@@ -20,15 +20,15 @@ BT
 (Runtime Scaling) Tj
 /F1 10 Tf
 0 -24 Td
-(long: cycle 0.000000%, commit 0.000000%, simulator wall 34.800000%) Tj
+(long: cycle 0.000000%, commit 0.000000%, simulator wall 526.420000%) Tj
 0 -16 Td
-(medium: cycle 0.000000%, commit 0.000000%, simulator wall 30.970000%) Tj
+(medium: cycle 0.000000%, commit 0.000000%, simulator wall 394.380000%) Tj
 0 -16 Td
-(short: cycle 0.000000%, commit 0.000000%, simulator wall 16.300000%) Tj
+(short: cycle 0.000000%, commit 0.000000%, simulator wall 113.390000%) Tj
 0 -16 Td
-(smoke: cycle 0.000000%, commit 0.000000%, simulator wall 6.990000%) Tj
+(smoke: cycle 0.000000%, commit 0.000000%, simulator wall 49.340000%) Tj
 0 -16 Td
-(stress: cycle 0.000000%, commit 0.000000%, simulator wall 38.850000%) Tj
+(stress: cycle 0.000000%, commit 0.000000%, simulator wall 721.900000%) Tj
 ET
 endstream
 endobj
@@ -42,5 +42,5 @@ xref
 0000000311 00000 n
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-828
+833
 %%EOF

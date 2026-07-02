@@ -1,5 +1,5 @@
 check,status,evidence,notes
-workflow_status,PASS,local-preflight,final-reproduce verification for branch aspdac-80-submission-package commit fa7c8357613f186837d081560c10dc3fed896d22
+workflow_status,PASS,local-preflight,final-reproduce verification for branch master commit 87f595c9a6b76516dcd08bf2e427cba71df850a7
 critical_steps_no_continue_on_error,PASS,.github/workflows/final-reproduce.yml,critical reproduction steps are not marked continue-on-error
 firmware_gate,PASS,results/processed/firmware_build.csv,compiler-backed PASS rows 15/15; fallback rows 0
 rtl_replay_gate,PASS,results/processed/full_rtl_replay.csv,compiler-backed full RTL replay PASS rows 45/45

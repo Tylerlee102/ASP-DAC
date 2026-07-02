@@ -1,1 +1,1 @@
-PASS replay benchmark=watchdog_timeout_bug variant=failing seed=5 arch=v1 recorder_config=core property=6 events=518 cycles=5997 commits=1308 notes="record/replay capsule packets match"
+PASS replay benchmark=watchdog_timeout_bug variant=failing seed=5 arch=v1 recorder_config=core property=6 events=518 cycles=6000 commits=1309 notes="record/replay capsule packets match"

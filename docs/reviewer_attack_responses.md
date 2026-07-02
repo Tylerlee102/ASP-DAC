@@ -16,7 +16,7 @@ The record-side RTL and board wrappers are synthesized and placed. The v2 replay
 
 ## 4. Why is overhead high?
 
-The diagnostic prototype prioritizes replay fidelity and auditability over area. Legacy full-core ECP5 overhead is reported in `results/processed/mapped_overhead.csv`: LUT 143.75%, FF 341.79%, BRAM 0.00%, Fmax delta -20.12%. The v2 minimal recorder profile is the selected replay-critical mapped path and is reported separately in `results/processed/mapped_scaling_overhead_v2_measured.csv`: LUT 8.26%, FF 3.77%, BRAM 0.00%, Fmax -0.04%.
+The diagnostic prototype prioritizes replay fidelity and auditability over area. Legacy full-core ECP5 overhead is reported in `results/processed/mapped_overhead.csv`: LUT NA%, FF NA%, BRAM NA%, Fmax delta NA%. The v2 minimal recorder profile is the selected replay-critical mapped path and is reported separately in `results/processed/mapped_scaling_overhead_v2_measured.csv`: LUT 8.26%, FF 3.77%, BRAM 0.00%, Fmax -0.04%.
 
 The artifact also includes Nangate45 OpenROAD placed/global-routed physical-flow rows in `results/processed/asic_openpdk.csv` with parsed area, WNS/TNS, and power for baseline plus v2 minimal/core/hashed/full configurations. Selected v2 minimal physical area overhead is 1.72%, and selected v2 minimal physical power overhead is 10.02%. These rows support scoped implementation-cost evidence, not detailed-route signoff, tapeout, silicon, or energy claims. Synthesis-only Yosys+ABC standard-cell area rows remain in `results/processed/asic_openpdk_yosys_area.csv`; the selected v2 minimal synthesis-only area overhead is 1.76%.
 

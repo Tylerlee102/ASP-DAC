@@ -10,58 +10,53 @@ RAM              0x00002000         0x00002000         xrw
 
 Linker script and memory map
 
-LOAD C:\Users\tyboy\AppData\Local\Temp\cca9fOcx.o
-LOAD C:\Users\tyboy\AppData\Local\Temp\cc9l8M2l.o
+LOAD /tmp/ccUBUxbv.o
+LOAD /tmp/cc3UFQp0.o
 
 .irq_vector     0x00000010        0x4
  *(.text.irq)
- .text.irq      0x00000010        0x4 C:\Users\tyboy\AppData\Local\Temp\cca9fOcx.o
+ .text.irq      0x00000010        0x4 /tmp/ccUBUxbv.o
                 0x00000010                default_irq
 
-.text           0x00000080       0xa4
+.text           0x00000080       0xb0
  *(.text.start)
- .text.start    0x00000080       0x30 C:\Users\tyboy\AppData\Local\Temp\cca9fOcx.o
+ .text.start    0x00000080       0x30 /tmp/ccUBUxbv.o
                 0x00000080                _start
  *(.text .text.*)
- .text          0x000000b0        0x0 C:\Users\tyboy\AppData\Local\Temp\cca9fOcx.o
- .text          0x000000b0        0x0 C:\Users\tyboy\AppData\Local\Temp\cc9l8M2l.o
- .text.startup  0x000000b0       0x74 C:\Users\tyboy\AppData\Local\Temp\cc9l8M2l.o
+ .text          0x000000b0        0x0 /tmp/ccUBUxbv.o
+ .text          0x000000b0        0x0 /tmp/cc3UFQp0.o
+ .text.startup  0x000000b0       0x80 /tmp/cc3UFQp0.o
                 0x000000b0                main
  *(.rodata .rodata.*)
 
-.rela.dyn       0x00000124        0x0
+.rela.dyn       0x00000130        0x0
  .rela.text.start
-                0x00000124        0x0 C:\Users\tyboy\AppData\Local\Temp\cca9fOcx.o
+                0x00000130        0x0 /tmp/ccUBUxbv.o
 
-.data           0x00002000        0x0 load address 0x00000124
+.data           0x00002000        0x0 load address 0x00000130
  *(.sdata .sdata.*)
  *(.data .data.*)
- .data          0x00002000        0x0 C:\Users\tyboy\AppData\Local\Temp\cca9fOcx.o
- .data          0x00002000        0x0 C:\Users\tyboy\AppData\Local\Temp\cc9l8M2l.o
+ .data          0x00002000        0x0 /tmp/ccUBUxbv.o
+ .data          0x00002000        0x0 /tmp/cc3UFQp0.o
 
-.bss            0x00002000        0x0 load address 0x00000124
+.bss            0x00002000        0x0 load address 0x00000130
                 0x00002000                        __bss_start = .
  *(.sbss .sbss.*)
  *(.bss .bss.*)
- .bss           0x00002000        0x0 C:\Users\tyboy\AppData\Local\Temp\cca9fOcx.o
- .bss           0x00002000        0x0 C:\Users\tyboy\AppData\Local\Temp\cc9l8M2l.o
+ .bss           0x00002000        0x0 /tmp/ccUBUxbv.o
+ .bss           0x00002000        0x0 /tmp/cc3UFQp0.o
  *(COMMON)
                 0x00002000                        __bss_end = .
                 0x00004000                        __stack_top = (ORIGIN (RAM) + LENGTH (RAM))
-OUTPUT(C:\Users\tyboy\OneDrive\Documents\New project\firmware\build_scaled\smoke\interrupt_race_bug\failing.elf elf32-littleriscv)
+OUTPUT(/work/firmware/build_scaled/smoke/interrupt_race_bug/failing.elf elf32-littleriscv)
 
 .riscv.attributes
                 0x00000000       0x1c
  .riscv.attributes
-                0x00000000       0x1a C:\Users\tyboy\AppData\Local\Temp\cca9fOcx.o
+                0x00000000       0x1a /tmp/ccUBUxbv.o
  .riscv.attributes
-                0x0000001a       0x1c C:\Users\tyboy\AppData\Local\Temp\cc9l8M2l.o
+                0x0000001a       0x1c /tmp/cc3UFQp0.o
 
-.comment        0x00000000       0x33
- .comment       0x00000000       0x33 C:\Users\tyboy\AppData\Local\Temp\cc9l8M2l.o
-                                 0x34 (size before relaxing)
-
-.note.GNU-stack
-                0x00000000        0x0
- .note.GNU-stack
-                0x00000000        0x0 C:\Users\tyboy\AppData\Local\Temp\cc9l8M2l.o
+.comment        0x00000000       0x22
+ .comment       0x00000000       0x22 /tmp/cc3UFQp0.o
+                                 0x23 (size before relaxing)

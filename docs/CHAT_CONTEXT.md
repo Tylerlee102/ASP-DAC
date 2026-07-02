@@ -2,16 +2,57 @@
 
 > Generated file. Refresh after code, paper, evidence, or artifact changes with `make chat-context` or by running `scripts/update_chat_context.py` with a real Python 3 executable.
 
-- Generated at: `2026-07-01T11:43:23-07:00`
-- Repository root: `C:\Users\tyboy\OneDrive\Documents\New project`
-- Python used for this snapshot: `C:\Users\tyboy\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\python.exe`
+- Generated at: `2026-07-01T15:21:23-07:00`
+- Repository root: current checkout (`.`)
+- Python used for this snapshot: `python.exe`
 
 ## Current Git State
 
 - Branch: `master`
-- Commit: `d071b176`
-- Working tree status: `0 changed paths`
-- Changed paths: none
+- Commit: `87f595c9`
+- Working tree status: `3062 changed paths`
+- Changed paths:
+  - `M AGENTS.md`
+  - ` M dist/artifact_package_manifest.csv`
+  - ` M dist/replaycapsule-rv-artifact.zip`
+  - ` M dist/replaycapsule-rv-topconf-artifact.zip`
+  - ` M dist/replaycapsule-rv-topconf-v2-artifact.zip`
+  - ` M dist/topconf_artifact_package_manifest.csv`
+  - ` M dist/topconf_v2_artifact_manifest.csv`
+  - ` M docs/CHAT_CONTEXT.md`
+  - ` M docs/final_evidence_lock.md`
+  - ` M docs/reviewer_attack_responses.md`
+  - ` M docs/top_conference_evaluation_matrix.md`
+  - ` M firmware/build/interrupt_race_bug/failing.hex`
+  - ` M firmware/build/interrupt_race_bug/failing.json`
+  - ` M firmware/build/interrupt_race_bug/failing.mem`
+  - ` M firmware/build/interrupt_race_bug/fixed.hex`
+  - ` M firmware/build/interrupt_race_bug/fixed.json`
+  - ` M firmware/build/interrupt_race_bug/fixed.mem`
+  - ` M firmware/build/mmio_ordering_bug/failing.hex`
+  - ` M firmware/build/mmio_ordering_bug/failing.json`
+  - ` M firmware/build/mmio_ordering_bug/failing.mem`
+  - ` M firmware/build/mmio_ordering_bug/fixed.hex`
+  - ` M firmware/build/mmio_ordering_bug/fixed.json`
+  - ` M firmware/build/mmio_ordering_bug/fixed.mem`
+  - ` M firmware/build/sensor_threshold_bug/failing.hex`
+  - ` M firmware/build/sensor_threshold_bug/failing.json`
+  - ` M firmware/build/sensor_threshold_bug/failing.mem`
+  - ` M firmware/build/sensor_threshold_bug/fixed.hex`
+  - ` M firmware/build/sensor_threshold_bug/fixed.json`
+  - ` M firmware/build/sensor_threshold_bug/fixed.mem`
+  - ` M firmware/build/sensor_threshold_bug/no_failure_edge.hex`
+  - ` M firmware/build/stack_corruption_bug/failing.hex`
+  - ` M firmware/build/stack_corruption_bug/failing.json`
+  - ` M firmware/build/stack_corruption_bug/failing.mem`
+  - ` M firmware/build/stack_corruption_bug/fixed.hex`
+  - ` M firmware/build/stack_corruption_bug/fixed.json`
+  - ` M firmware/build/stack_corruption_bug/fixed.mem`
+  - ` M firmware/build/uart_command_bug/failing.hex`
+  - ` M firmware/build/uart_command_bug/failing.json`
+  - ` M firmware/build/uart_command_bug/failing.mem`
+  - ` M firmware/build/uart_command_bug/fixed.hex`
+  - `... 3022 more`
 
 ## Read This First
 
@@ -23,8 +64,8 @@
 
 ## Repository Inventory
 
-- Counted files: `52118`
-- Counted size: `6.06 GB`
+- Counted files: `60800`
+- Counted size: `22.89 GB`
 - `.git` and `.tools` are skipped as repository metadata/local toolchain cache.
 
 | Path | Files | Size | Notes |
@@ -36,22 +77,22 @@
 | `.github` | 4 | 20.08 KB | CI workflows |
 | `.gitignore` | 1 | 79 B | top-level file |
 | `.tools` | 0 | 0 B | skipped local metadata/toolchain |
-| `AGENTS.md` | 1 | 668 B | top-level file |
+| `AGENTS.md` | 1 | 621 B | top-level file |
 | `artifact_evaluation.md` | 1 | 5.30 KB | top-level file |
-| `build` | 451 | 156.95 MB | generated build outputs |
+| `build` | 458 | 158.17 MB | generated build outputs |
 | `constraints` | 2 | 2.60 KB | FPGA constraints |
-| `dist` | 6 | 142.06 MB | artifact zip packages |
+| `dist` | 6 | 848.02 MB | artifact zip packages |
 | `Dockerfile` | 1 | 830 B | top-level file |
-| `docs` | 59 | 320.80 KB | design, review, and readiness docs |
-| `firmware` | 717 | 1.42 MB | firmware benchmarks and build outputs |
+| `docs` | 59 | 322.09 KB | design, review, and readiness docs |
+| `firmware` | 717 | 1.37 MB | firmware benchmarks and build outputs |
 | `formal` | 35 | 88.53 KB | formal assumptions/proof scripts |
 | `Makefile` | 1 | 14.79 KB | top-level file |
-| `paper` | 84 | 377.17 KB | paper source, figures, tables, PDF |
+| `paper` | 86 | 414.08 KB | paper source, figures, tables, PDF |
 | `README.md` | 1 | 13.30 KB | top-level file |
 | `requirements.txt` | 1 | 177 B | top-level file |
-| `results` | 50513 | 5.77 GB | raw and processed evidence |
+| `results` | 59186 | 21.90 GB | raw and processed evidence |
 | `rtl` | 46 | 247.43 KB | hardware design source |
-| `scripts` | 98 | 1.23 MB | reproduction, analysis, audit, packaging scripts |
+| `scripts` | 98 | 1.24 MB | reproduction, analysis, audit, packaging scripts |
 | `tb` | 39 | 316.31 KB | testbenches and Verilator harnesses |
 | `third_party` | 54 | 616.82 KB | vendored dependencies |
 
@@ -198,6 +239,6 @@ Remaining boundary: the broad replay matrix still uses Verilator orchestration, 
 ## Update Rules
 
 - Run `make chat-context` after adding/removing RTL, firmware, scripts, paper sections, generated evidence, or artifacts.
-- If `python` or `python3` resolves to the Windows Store alias, run `make PYTHON="C:/Users/tyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe" chat-context`.
+- If `python` or `python3` resolves to the Windows Store alias, run `make PYTHON="<path-to-real-python>" chat-context`.
 - Future chats should read this file first and refresh it if it looks stale relative to `git status` or recent work.
 - This file is generated, so do not manually edit it for lasting changes. Edit `scripts/update_chat_context.py`, rerun the updater, and commit both files if using git.

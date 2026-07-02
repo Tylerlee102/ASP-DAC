@@ -149,7 +149,7 @@ Event-sufficiency ablation at scale,quick_event_ablation_medium,all,all,all,medi
 Workload scaling,quick_workload_stress,all,all,all,stress,NA,NA,NA,NA,NA,yes,results/processed/workload_scaling.csv,DEFINED,stress deterministic pre-trigger delay
 Buffer-depth sensitivity,quick_buffer_stress,all,all,all,stress,NA,NA,NA,NA,NA,yes,results/processed/buffer_sensitivity.csv,DEFINED,quick
 Event-sufficiency ablation at scale,quick_event_ablation_stress,all,all,all,stress,NA,NA,NA,NA,NA,yes,results/processed/event_ablation_scaling.csv,DEFINED,quick
-Recorder-configuration sensitivity,quick_recorder_minimal,all,all,all,all,NA,NA,minimal,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,MMIO/interrupt/property-fail capture mode
+Recorder-configuration sensitivity,quick_recorder_minimal,all,all,all,all,NA,NA,minimal,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,replay-critical MMIO/interrupt/external-input boundary-event capture
 Recorder-configuration sensitivity,quick_recorder_core,all,all,all,all,NA,NA,core,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,ReplayCapsule-RV property-relevant capture mode
 Recorder-configuration sensitivity,quick_recorder_hashed,all,all,all,all,NA,NA,hashed,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,core capture mode; hash evidence is carried by signatures
 Recorder-configuration sensitivity,quick_recorder_diagnostic,all,all,all,all,NA,NA,diagnostic,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,capture-all diagnostic mode
@@ -1300,7 +1300,7 @@ Event-sufficiency ablation at scale,full_event_ablation_long,all,all,all,long,NA
 Workload scaling,full_workload_stress,all,all,all,stress,NA,NA,NA,NA,NA,yes,results/processed/workload_scaling.csv,DEFINED,stress deterministic pre-trigger delay
 Buffer-depth sensitivity,full_buffer_stress,all,all,all,stress,NA,NA,NA,NA,NA,yes,results/processed/buffer_sensitivity.csv,DEFINED,full
 Event-sufficiency ablation at scale,full_event_ablation_stress,all,all,all,stress,NA,NA,NA,NA,NA,yes,results/processed/event_ablation_scaling.csv,DEFINED,full
-Recorder-configuration sensitivity,full_recorder_minimal,all,all,all,all,NA,NA,minimal,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,MMIO/interrupt/property-fail capture mode
+Recorder-configuration sensitivity,full_recorder_minimal,all,all,all,all,NA,NA,minimal,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,replay-critical MMIO/interrupt/external-input boundary-event capture
 Recorder-configuration sensitivity,full_recorder_core,all,all,all,all,NA,NA,core,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,ReplayCapsule-RV property-relevant capture mode
 Recorder-configuration sensitivity,full_recorder_hashed,all,all,all,all,NA,NA,hashed,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,core capture mode; hash evidence is carried by signatures
 Recorder-configuration sensitivity,full_recorder_diagnostic,all,all,all,all,NA,NA,diagnostic,NA,NA,yes,results/processed/recorder_config_replay.csv,DEFINED,capture-all diagnostic mode

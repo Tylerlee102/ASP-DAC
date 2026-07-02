@@ -1,5 +1,5 @@
 fallback_property_id=1
 compiler_property_id=1
 fallback_event_count=11
-compiler_event_count=3
-first_divergence=compiler-backed RTL row unavailable
+compiler_event_count=5
+first_divergence=event_count fallback=11 compiler=5

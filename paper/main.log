@@ -406,7 +406,7 @@ LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
 (Font)                  OT1/cmr/bx/n --> OT1/minlibertine/m/n on input line 376
 .
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/minlibertine/m/n --> OT1/minlibertine/b/n on input
+(Font)                  OT1/minlibertine/m/n --> OT1/minlibertine/b/n on input 
 line 377.
 LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 383.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
@@ -508,7 +508,7 @@ ts for all LaTeX engines.
  (textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
 ) (fontspec.sty (xparse.sty (expl3.sty
-Package: expl3 2022-02-24 L3 programming layer (loader)
+Package: expl3 2022-02-24 L3 programming layer (loader) 
 
 (l3backend-xetex.def
 File: l3backend-xetex.def 2022-02-07 L3 backend support: XeTeX
@@ -569,10 +569,10 @@ Package fontspec Info: Font family 'LinLibertine(0)' created for font
 (fontspec)             = {Monospaced,Lining},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBI].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_R.otf]/OT:script=latn;language=df
 lt;+tnum;+lnum;mapping=tex-text;"
@@ -626,10 +626,10 @@ Package fontspec Info: Font family 'LinBiolinum(0)' created for font
 (fontspec)             = {Monospaced, Lining},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBO].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinBiolinum_R.otf]/OT:script=latn;language=dfl
 t;+tnum;+lnum;mapping=tex-text;"
@@ -662,10 +662,10 @@ Package fontspec Info: Font family 'LinLibertine(1)' created for font
 (fontspec)             {Monospaced,Lining},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBI].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_R.otf]/OT:script=latn;language=df
 lt;+tnum;+lnum;mapping=tex-text;"
@@ -708,10 +708,10 @@ Package fontspec Info: Font family 'LinLibertine(2)' created for font
 (fontspec)             { Monospaced, Lining},Scale = 1,UprightFont =
 (fontspec)             *_RZ,ItalicFont = *_RZI,BoldFont = *_RB,BoldItalicFont
 (fontspec)             = *_RBI].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_RZ.otf]/OT:script=latn;language=d
 flt;+tnum;+lnum;mapping=tex-text;"
@@ -744,10 +744,10 @@ Package fontspec Info: Font family 'LinLibertine(3)' created for font
 (fontspec)             {Monospaced,OldStyle},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBI].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_R.otf]/OT:script=latn;language=df
 lt;+tnum;+onum;mapping=tex-text;"
@@ -786,14 +786,14 @@ Package fontspec Info: Font family 'LinLibertine(4)' created for font
 (fontspec)             = .otf,SmallCapsFeatures={Letters=SmallCaps},Numbers =
 (fontspec)             {Monospaced,Lining},UprightFont = *_DR,ItalicFont =
 (fontspec)             *_RI,BoldFont = *_RB,BoldItalicFont = *_RBI].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[LinLibertine_DR.otf]/OT:script=latn;language=dflt;+
 tnum;+lnum;mapping=tex-text;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"[LinLibertine_RB.otf]/OT:script=latn;language=dflt;+
 tnum;+lnum;mapping=tex-text;"
@@ -820,10 +820,10 @@ Package fontspec Info: Font family 'LinBiolinum(1)' created for font
 (fontspec)             {Monospaced, Lining},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBO].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinBiolinum_R.otf]/OT:script=latn;language=dfl
 t;+tnum;+lnum;mapping=tex-text;"
@@ -856,10 +856,10 @@ Package fontspec Info: Font family 'LinBiolinum(2)' created for font
 (fontspec)             {Monospaced, OldStyle},Scale = 1,UprightFont =
 (fontspec)             *_R,ItalicFont = *_RI,BoldFont = *_RB,BoldItalicFont =
 (fontspec)             *_RBO].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinBiolinum_R.otf]/OT:script=latn;language=dfl
 t;+tnum;+onum;mapping=tex-text;"
@@ -907,34 +907,34 @@ Package fontspec Info: Font family 'LinLibertine(5)' created for font
 (fontspec)             .otf,HyphenChar=None,Scale = 1,UprightFont =
 (fontspec)             *_M,ItalicFont = *_MO,BoldFont = *_MB,BoldItalicFont =
 (fontspec)             *_MBO].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_M.otf]/OT:script=latn;language=df
 lt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_MB.otf]/OT:script=latn;language=d
 flt;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 (fontspec)             - 'italic' (m/it) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_MO.otf]/OT:script=latn;language=d
 flt;"
-(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.: 
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 (fontspec)             - 'bold italic' (b/it) with NFSS spec.:
 (fontspec)             <->s*[1]"[LinLibertine_MBO.otf]/OT:script=latn;language=
 dflt;"
-(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.: 
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 
 Requested font "[LinBiolinum_K.otf]/OT" at 8.99997pt
  -> LinBiolinum_K.otf
@@ -947,15 +947,15 @@ Package fontspec Info: Font family 'LinBiolinum_K(0)' created for font
 (fontspec)             'LinBiolinum_K' with options [Extension =
 (fontspec)             .otf,HyphenChar=None,BoldFont={},ItalicFont={},SmallCaps
 Font={}].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[LinBiolinum_K.otf]/OT:script=latn;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 
 Requested font "[LinLibertine_I.otf]/OT" at 8.99997pt
  -> LinLibertine_I.otf
@@ -969,15 +969,15 @@ Package fontspec Info: Font family 'LinLibertine_I(0)' created for font
 (fontspec)             'LinLibertine_I' with options [Extension =
 (fontspec)             .otf,HyphenChar=None,BoldFont={},ItalicFont={},SmallCaps
 Font={}].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[LinLibertine_I.otf]/OT:script=latn;language=dflt;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 
 LaTeX Info: Redefining \oldstylenums on input line 474.
 LaTeX Info: Redefining \liningnums on input line 475.
@@ -988,7 +988,7 @@ Requested font "[Inconsolatazi4-Regular.otf]/OT" at 8.99997pt
  -> Inconsolatazi4-Regular.otf
 Requested font "[Inconsolatazi4-Regular.otf]/OT" at 9.00003pt
  -> Inconsolatazi4-Regular.otf
-Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;" at
+Requested font "[Inconsolatazi4-Regular.otf]/OT:script=latn;language=dflt;" at 
 9.00003pt
  -> Inconsolatazi4-Regular.otf
 Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;" at 9.0
@@ -1001,28 +1001,28 @@ Package fontspec Info: Font family 'inconsolata(0)' created for font
 Space,Extension
 (fontspec)             = .otf,UprightFont = Inconsolatazi4-Regular,BoldFont =
 (fontspec)             Inconsolatazi4-Bold,StylisticSet=3].
-(fontspec)
+(fontspec)              
 (fontspec)              This font family consists of the following NFSS
 (fontspec)             series/shapes:
-(fontspec)
+(fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
 (fontspec)             <->"[Inconsolatazi4-Regular.otf]/OT:script=latn;language
 =dflt;+ss03;"
-(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
 (fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
 (fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
 (fontspec)             <->"[Inconsolatazi4-Bold.otf]/OT:script=latn;language=df
 lt;+ss03;"
-(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.: 
 (fontspec)             and font adjustment code:
 (fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
 (fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
 (fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
-(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop:
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
 
  (caption.sty
 Package: caption 2022/03/01 v3.6b Customizing captions (AR)
@@ -1133,7 +1133,7 @@ LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 18.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 
 18.
  (untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
@@ -1202,7 +1202,7 @@ Requested font "msbm7" at 7.3pt
  -> msbm7
 Requested font "msbm5" at 5.5pt
  -> msbm5
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 
 18.
  (untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
@@ -1211,7 +1211,7 @@ Requested font "nxlmia" at 7.3pt
  -> nxlmia
 Requested font "nxlmia" at 5.5pt
  -> nxlmia
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 
 18.
  (untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
@@ -1220,7 +1220,7 @@ Requested font "ntxsym" at 7.3pt
  -> ntxsym
 Requested font "ntxsym" at 5.5pt
  -> ntxsym
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 
 18.
  (untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
@@ -1270,7 +1270,7 @@ LaTeX Info: Redefining \nameref on input line 18.
 * paper: custom
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: includehead includefoot twoside heightrounded
+* modes: includehead includefoot twoside heightrounded 
 * h-part:(L,W,R)=(54.0pt, 506.295pt, 54.0pt)
 * v-part:(T,H,B)=(57.0pt, 664.96999pt, 73.0pt)
 * \paperwidth=614.295pt
@@ -1462,7 +1462,7 @@ ine. The
 
 File: figures/replay_flow.pdf Graphic file (type pdf)
 <use figures/replay_flow.pdf>
-Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;+ss03;"
+Requested font "[Inconsolatazi4-Bold.otf]/OT:script=latn;language=dflt;+ss03;" 
 at 9.0pt
  -> Inconsolatazi4-Bold.otf
 Package microtype Info: Loading generic protrusion settings for font family
@@ -1632,7 +1632,7 @@ exed
 
 
 Underfull \hbox (badness 2205) in paragraph at lines 3--41
-\TU/LinLibertine(0)/m/n/9 compiler-backed firmware. The artifact reports 45/45
+\TU/LinLibertine(0)/m/n/9 compiler-backed firmware. The artifact reports 45/45 
 v1 full
  []
 
@@ -1666,9 +1666,9 @@ Class acmart Warning: Some images may lack descriptions.
 Class acmart Warning: ACM keywords are mandatory for papers over two pages.
 
 
-Class acmart Warning: ACM reference format is mandatory
-(acmart)              for papers over one page.
-(acmart)              Please add printacmref=true to the
+Class acmart Warning: ACM reference format is mandatory 
+(acmart)              for papers over one page. 
+(acmart)              Please add printacmref=true to the 
 (acmart)              \settopmatter command..
 
 

@@ -1,1 +1,1 @@
-PASS record benchmark=sensor_threshold_bug variant=failing seed=4 arch=v1 recorder_config=core property=3 events=520 cycles=6020 commits=1313 notes="property failure observed"
+PASS record benchmark=sensor_threshold_bug variant=failing seed=4 arch=v1 recorder_config=core property=3 events=520 cycles=6023 commits=1314 notes="property failure observed"

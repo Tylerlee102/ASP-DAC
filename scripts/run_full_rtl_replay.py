@@ -395,6 +395,13 @@ def _ensure_simulator() -> str | None:
                 "VERILATOR_SOURCES=" + " ".join((REPO_ROOT / path).as_posix() for path in VERILATOR_SOURCE_PATHS),
             ]
         )
+    elif capsule_depth != 256:
+        build_args.extend(
+            [
+                f"VERILATOR_MDIR=build/verilator/obj_dir_depth{capsule_depth}",
+                f"VERILATOR_OUTPUT=../replaycapsule_sim_depth{capsule_depth}",
+            ]
+        )
     if capsule_depth != 256:
         build_args.append(f"VERILATOR_EXTRA_FLAGS=-GCAPSULE_DEPTH={capsule_depth}")
     completed = subprocess.run(

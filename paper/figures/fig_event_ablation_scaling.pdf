@@ -12,7 +12,7 @@ endobj
 << /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
 endobj
 5 0 obj
-<< /Length 966 >>
+<< /Length 944 >>
 stream
 BT
 /F1 15 Tf
@@ -20,29 +20,29 @@ BT
 (Event Ablation Scaling) Tj
 /F1 10 Tf
 0 -24 Td
-(commit_index: rejected 225/225, diagnostic-only 0, blocked 0) Tj
+(commit_index: rejected 60/60, diagnostic-only 0, blocked 0) Tj
 0 -16 Td
-(cycle_delta: rejected 0/225, diagnostic-only 225, blocked 0) Tj
+(cycle_delta: rejected 0/60, diagnostic-only 60, blocked 0) Tj
 0 -16 Td
-(diagnostic_context: rejected 225/225, diagnostic-only 225, blocked 0) Tj
+(diagnostic_context: rejected 60/60, diagnostic-only 60, blocked 0) Tj
 0 -16 Td
-(interrupt_pending: rejected 10/225, diagnostic-only 0, blocked 0) Tj
+(interrupt_pending: rejected 10/60, diagnostic-only 0, blocked 0) Tj
 0 -16 Td
-(interrupt_taken: rejected 10/225, diagnostic-only 0, blocked 0) Tj
+(interrupt_taken: rejected 10/60, diagnostic-only 0, blocked 0) Tj
 0 -16 Td
-(mmio_address: rejected 140/225, diagnostic-only 0, blocked 0) Tj
+(mmio_address: rejected 50/60, diagnostic-only 0, blocked 0) Tj
 0 -16 Td
-(mmio_read: rejected 90/225, diagnostic-only 0, blocked 0) Tj
+(mmio_read: rejected 30/60, diagnostic-only 0, blocked 0) Tj
 0 -16 Td
-(mmio_value: rejected 140/225, diagnostic-only 0, blocked 0) Tj
+(mmio_value: rejected 50/60, diagnostic-only 0, blocked 0) Tj
 0 -16 Td
-(mmio_write: rejected 90/225, diagnostic-only 0, blocked 0) Tj
+(mmio_write: rejected 30/60, diagnostic-only 0, blocked 0) Tj
 0 -16 Td
-(payload_hash: rejected 225/225, diagnostic-only 0, blocked 0) Tj
+(payload_hash: rejected 60/60, diagnostic-only 0, blocked 0) Tj
 0 -16 Td
-(pc_context: rejected 225/225, diagnostic-only 225, blocked 0) Tj
+(pc_context: rejected 60/60, diagnostic-only 60, blocked 0) Tj
 0 -16 Td
-(property_id: rejected 225/225, diagnostic-only 0, blocked 0) Tj
+(property_id: rejected 60/60, diagnostic-only 0, blocked 0) Tj
 ET
 endstream
 endobj
@@ -56,5 +56,5 @@ xref
 0000000311 00000 n
 trailer << /Size 6 /Root 1 0 R >>
 startxref
-1328
+1306
 %%EOF

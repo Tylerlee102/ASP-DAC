@@ -1,1 +1,1 @@
-PASS record benchmark=watchdog_timeout_bug variant=fixed seed=4 arch=v1 recorder_config=core property=0 events=16384 cycles=200000 commits=55733 notes="no false property failure"
+PASS record benchmark=watchdog_timeout_bug variant=fixed seed=4 arch=v1 recorder_config=core property=0 events=16384 cycles=200000 commits=55735 notes="no false property failure"

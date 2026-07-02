@@ -8,10 +8,10 @@ After adding, removing, or materially changing RTL, firmware, scripts, paper tex
 make chat-context
 ```
 
-On this Windows workspace, if `python` or `python3` resolves to the Microsoft Store alias, use:
+On Windows, if `python` or `python3` resolves to the Microsoft Store alias, pass a real Python executable explicitly:
 
 ```sh
-make PYTHON="C:/Users/tyboy/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe" chat-context
+make PYTHON="<path-to-real-python.exe>" chat-context
 ```
 
 Do not manually edit `docs/CHAT_CONTEXT.md` for lasting changes. Edit `scripts/update_chat_context.py`, then regenerate the file.

@@ -1,33 +1,33 @@
 group,metric,value,n,evidence,notes
-replay_correctness,pass_rate_by_benchmark:interrupt_race_bug,100.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_benchmark:mmio_ordering_bug,100.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_benchmark:sensor_threshold_bug,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_benchmark:stack_corruption_bug,100.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_benchmark:uart_command_bug,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_benchmark:watchdog_timeout_bug,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_workload_scale:long,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_workload_scale:medium,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_workload_scale:short,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_workload_scale:smoke,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
-replay_correctness,pass_rate_by_workload_scale:stress,100.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:interrupt_race_bug,50.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:mmio_ordering_bug,50.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:sensor_threshold_bug,33.333333,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:stack_corruption_bug,50.000000,50,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:uart_command_bug,33.333333,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_benchmark:watchdog_timeout_bug,33.333333,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:long,40.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:medium,40.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:short,40.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:smoke,40.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
+replay_correctness,pass_rate_by_workload_scale:stress,40.000000,75,results/processed/workload_scaling.csv,PASS means record/replay/final signature/event match
 negative_replay,rejected,10,12,results/processed/full_rtl_replay_negative.csv,corrupted capsule rejection count
 negative_replay,unexpected_accepted,0,12,results/processed/full_rtl_replay_negative.csv,unexpected accepts remain visible
 negative_replay,na,2,12,results/processed/full_rtl_replay_negative.csv,not-applicable negative rows
 runtime_scaling,median_cycle_overhead_pct:long,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_commit_overhead_pct:long,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-runtime_scaling,median_sim_wall_time_overhead_pct:long,34.800000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_sim_wall_time_overhead_pct:long,526.420000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_cycle_overhead_pct:medium,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_commit_overhead_pct:medium,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-runtime_scaling,median_sim_wall_time_overhead_pct:medium,30.970000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_sim_wall_time_overhead_pct:medium,394.380000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_cycle_overhead_pct:short,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_commit_overhead_pct:short,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-runtime_scaling,median_sim_wall_time_overhead_pct:short,16.300000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_sim_wall_time_overhead_pct:short,113.390000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_cycle_overhead_pct:smoke,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_commit_overhead_pct:smoke,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-runtime_scaling,median_sim_wall_time_overhead_pct:smoke,6.990000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_sim_wall_time_overhead_pct:smoke,49.340000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_cycle_overhead_pct:stress,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 runtime_scaling,median_commit_overhead_pct:stress,0.000000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
-runtime_scaling,median_sim_wall_time_overhead_pct:stress,38.850000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
+runtime_scaling,median_sim_wall_time_overhead_pct:stress,721.900000,75,results/processed/runtime_scaling_summary.csv,simulator wall time is not hardware runtime; cycle/commit overhead is architectural harness observation
 capsule_scaling,median_bytes:long,86016.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
 capsule_scaling,median_reduction_vs_full_instruction:long,64.860000,75,results/processed/capsule_baseline_summary.csv,full instruction trace is formula-estimated
 capsule_scaling,median_bytes:medium,21504.000000,75,results/processed/capsule_baseline_summary.csv,measured capsule bytes
@@ -103,47 +103,62 @@ buffer_sensitivity,depth_16384_medium_overflow_pct,0.000000,75,results/processed
 buffer_sensitivity,depth_16384_short_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
 buffer_sensitivity,depth_16384_smoke_overflow_pct,0.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
 buffer_sensitivity,depth_16384_stress_overflow_pct,60.000000,75,results/processed/buffer_sensitivity_summary.csv,summary of analytic overflow/replay availability against measured event counts
-mapped_scaling,lut:mem512:buf8:core,114.20,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,ff:mem512:buf8:core,174.53,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem512:buf8:core,123.95,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem512:buf8:core,180.69,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem512:buf8:core,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem512:buf8:core,-19.56,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,lut:mem1024:buf16:core,123.89,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,ff:mem1024:buf16:core,341.79,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem512:buf8:core,-26.04,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem1024:buf16:core,146.11,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem1024:buf16:core,348.47,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem1024:buf16:core,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem1024:buf16:core,-18.38,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,lut:mem2048:buf16:core,138.40,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,ff:mem2048:buf16:core,341.79,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem1024:buf16:core,-22.51,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem2048:buf16:core,144.60,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem2048:buf16:core,348.47,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem2048:buf16:core,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem2048:buf16:core,-16.76,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,lut:mem2048:buf32:full,218.36,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,ff:mem2048:buf32:full,646.43,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem2048:buf16:core,-30.93,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem2048:buf32:full,209.88,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem2048:buf32:full,653.11,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem2048:buf32:full,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem2048:buf32:full,-15.06,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,lut:mem4096:buf32:full,221.23,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,ff:mem4096:buf32:full,646.43,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,fmax_mhz:mem2048:buf32:full,-23.46,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,lut:mem4096:buf32:full,203.18,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+mapped_scaling,ff:mem4096:buf32:full,653.11,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
 mapped_scaling,bram:mem4096:buf32:full,0.00,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-mapped_scaling,fmax_mhz:mem4096:buf32:full,-9.98,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
-event_ablation,commit_index_reject_rate,100.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,commit_index_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,cycle_delta_reject_rate,0.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,cycle_delta_diagnostic_only_rows,225,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,diagnostic_context_reject_rate,100.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,diagnostic_context_diagnostic_only_rows,225,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,interrupt_pending_reject_rate,4.444444,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,interrupt_pending_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,interrupt_taken_reject_rate,4.444444,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,interrupt_taken_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,mmio_address_reject_rate,62.222222,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,mmio_address_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,mmio_read_reject_rate,40.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,mmio_read_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,mmio_value_reject_rate,62.222222,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,mmio_value_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,mmio_write_reject_rate,40.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,mmio_write_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,payload_hash_reject_rate,100.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,payload_hash_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,pc_context_reject_rate,100.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,pc_context_diagnostic_only_rows,225,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
-event_ablation,property_id_reject_rate,100.000000,225,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
-event_ablation,property_id_diagnostic_only_rows,0,225,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+mapped_scaling,fmax_mhz:mem4096:buf32:full,-20.52,1,results/processed/mapped_scaling_overhead.csv,same-target P&R overhead
+event_ablation,commit_index_reject_rate,100.000000,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,commit_index_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,cycle_delta_reject_rate,0.000000,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,cycle_delta_diagnostic_only_rows,60,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,diagnostic_context_reject_rate,100.000000,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,diagnostic_context_diagnostic_only_rows,60,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,interrupt_pending_reject_rate,16.666667,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,interrupt_pending_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,interrupt_taken_reject_rate,16.666667,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,interrupt_taken_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,mmio_address_reject_rate,83.333333,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,mmio_address_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,mmio_read_reject_rate,50.000000,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,mmio_read_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,mmio_value_reject_rate,83.333333,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,mmio_value_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,mmio_write_reject_rate,50.000000,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,mmio_write_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,payload_hash_reject_rate,100.000000,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,payload_hash_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,pc_context_reject_rate,100.000000,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,pc_context_diagnostic_only_rows,60,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+event_ablation,property_id_reject_rate,100.000000,60,results/processed/event_ablation_scaling.csv,event-sufficiency ablation rows; diagnostic-only rows are labeled separately
+event_ablation,property_id_diagnostic_only_rows,0,60,results/processed/event_ablation_scaling.csv,diagnostic-only corruption may accept if final replay properties still match
+recorder_config,core_replay_pass_rate,100.000000,375,results/processed/recorder_config_replay.csv,capture-mode replay rows
+recorder_config,core_payload_corruption_reject_rate,100.000000,375,results/processed/recorder_config_replay.csv,payload-hash corruption check
+recorder_config,core_median_capsule_bytes,61866.000000,375,results/processed/recorder_config_replay.csv,measured per capture mode
+recorder_config,diagnostic_replay_pass_rate,96.000000,375,results/processed/recorder_config_replay.csv,capture-mode replay rows
+recorder_config,diagnostic_payload_corruption_reject_rate,100.000000,375,results/processed/recorder_config_replay.csv,payload-hash corruption check
+recorder_config,diagnostic_median_capsule_bytes,172473.000000,375,results/processed/recorder_config_replay.csv,measured per capture mode
+recorder_config,full_replay_pass_rate,96.000000,375,results/processed/recorder_config_replay.csv,capture-mode replay rows
+recorder_config,full_payload_corruption_reject_rate,100.000000,375,results/processed/recorder_config_replay.csv,payload-hash corruption check
+recorder_config,full_median_capsule_bytes,172473.000000,375,results/processed/recorder_config_replay.csv,measured per capture mode
+recorder_config,hashed_replay_pass_rate,100.000000,375,results/processed/recorder_config_replay.csv,capture-mode replay rows
+recorder_config,hashed_payload_corruption_reject_rate,100.000000,375,results/processed/recorder_config_replay.csv,payload-hash corruption check
+recorder_config,hashed_median_capsule_bytes,61866.000000,375,results/processed/recorder_config_replay.csv,measured per capture mode
+recorder_config,minimal_replay_pass_rate,100.000000,375,results/processed/recorder_config_replay.csv,capture-mode replay rows
+recorder_config,minimal_payload_corruption_reject_rate,93.333333,375,results/processed/recorder_config_replay.csv,payload-hash corruption check
+recorder_config,minimal_median_capsule_bytes,21.000000,375,results/processed/recorder_config_replay.csv,measured per capture mode

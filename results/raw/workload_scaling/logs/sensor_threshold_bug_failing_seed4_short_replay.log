@@ -1,1 +1,1 @@
-PASS replay benchmark=sensor_threshold_bug variant=failing seed=4 arch=v1 recorder_config=core property=3 events=136 cycles=1604 commits=353 notes="record/replay capsule packets match"
+PASS replay benchmark=sensor_threshold_bug variant=failing seed=4 arch=v1 recorder_config=core property=3 events=136 cycles=1607 commits=354 notes="record/replay capsule packets match"
